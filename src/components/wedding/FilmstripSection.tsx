@@ -265,19 +265,30 @@ const FilmstripSection = () => {
         </motion.span>
       </motion.div>
 
-      {/* Bottom editorial attribution */}
+      {/* Bottom editorial attribution — enriched */}
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl mt-10 md:mt-14 relative">
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+          className="h-px mb-8 origin-center"
+          style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2), hsl(var(--gold) / 0.08), transparent)" }}
+        />
         <div className="flex items-center justify-between">
           <p className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-muted-foreground/15">
             Hickory & Rose · Selected Works
           </p>
           <div className="flex items-center gap-3">
-            <span className="w-8 h-px bg-border/20" />
-            <span className="font-serif-wedding text-xs text-primary/10 italic">❖</span>
-            <span className="w-8 h-px bg-border/20" />
+            <span className="w-8 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.15))" }} />
+            <span
+              className="w-1.5 h-1.5 rotate-45"
+              style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.1))" }}
+            />
+            <span className="w-8 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.15), transparent)" }} />
           </div>
           <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] text-muted-foreground/15 tabular-nums">
-            2023 — 2024
+            2023 — 2026
           </p>
         </div>
       </div>

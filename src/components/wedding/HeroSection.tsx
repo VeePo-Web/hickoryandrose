@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Navigation from "./Navigation";
 import MagneticButton from "./MagneticButton";
-import heroImage from "@/assets/hero-wedding.jpg";
+import heroImage from "@/assets/hero-wedding-premium.jpg";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 
 const charVariants = {
@@ -74,7 +74,7 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <motion.img
           src={heroImage}
-          alt="Elegant wedding tablescape with sage green and ivory florals at golden hour"
+          alt="Luxury wedding tablescape in rustic timber barn with sage linen, brass candles, garden roses, and Canadian Rocky Mountain peaks at golden hour"
           className="w-full h-[120%] object-cover"
           loading="eager"
           decoding="async"
