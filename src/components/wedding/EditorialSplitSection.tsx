@@ -23,9 +23,28 @@ const EditorialSplitSection = () => {
   return (
     <section
       ref={ref}
-      className="grid grid-cols-1 lg:grid-cols-2 min-h-[70vh] overflow-hidden"
+      className="grid grid-cols-1 lg:grid-cols-2 min-h-[70vh] overflow-hidden relative"
       aria-label="Editorial quote"
     >
+      {/* Scroll-linked gold center divider — desktop only */}
+      <motion.div
+        className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 origin-top hidden lg:block z-10"
+        style={{
+          scaleY: centerLineScale,
+          background: "linear-gradient(180deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.3) 40%, hsl(var(--gold, 38 60% 55%) / 0.3) 60%, transparent)",
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Radial gold glow at center intersection */}
+      <motion.div
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full pointer-events-none hidden lg:block z-10"
+        style={{
+          opacity: glowOpacity,
+          background: "radial-gradient(circle, hsl(var(--gold, 38 60% 55%)), transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
       {/* Quote side */}
       <div className="bg-sage-deep flex items-center justify-center py-section-mobile md:py-section-tablet px-8 lg:px-16 relative overflow-hidden">
         {/* Large decorative ampersand */}
