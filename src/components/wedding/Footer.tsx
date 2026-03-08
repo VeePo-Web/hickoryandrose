@@ -296,7 +296,7 @@ const Footer = () => {
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLElement).style.boxShadow = "0 0 0 rgba(255,140,42,0)";
               }}
-              aria-label="This experience was crafted by VeePo — visit case studies"
+              aria-label="This experience was crafted by VeePo.ca — visit case studies"
             >
               {/* VeePo brand-color gradient divider — top */}
               <div
