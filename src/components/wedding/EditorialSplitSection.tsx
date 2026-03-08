@@ -33,6 +33,11 @@ const EditorialSplitSection = () => {
 
         <ScrollReveal>
           <div className="max-w-md relative">
+            {/* Index marker */}
+            <span className="font-serif-wedding text-sm text-primary-foreground/15 block mb-6">
+              03
+            </span>
+
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
@@ -46,9 +51,24 @@ const EditorialSplitSection = () => {
               <em>inevitable</em>. As if every detail was always meant to be
               exactly this way.
             </blockquote>
-            <span className="font-script text-xl text-primary-foreground/35">
-              Hickory & Rose
-            </span>
+
+            <div className="flex items-center gap-4">
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="w-6 h-px bg-primary-foreground/15 origin-left"
+              />
+              <span className="font-script text-xl text-primary-foreground/35">
+                Hickory & Rose
+              </span>
+            </div>
+
+            {/* Philosophy note */}
+            <p className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-primary-foreground/15 mt-10">
+              Our Design Philosophy
+            </p>
           </div>
         </ScrollReveal>
       </div>
@@ -62,6 +82,12 @@ const EditorialSplitSection = () => {
           style={{ y: imageY }}
           loading="lazy"
         />
+        {/* Subtle image caption */}
+        <div className="absolute bottom-4 right-4 opacity-0 hover:opacity-100 transition-opacity duration-500">
+          <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-white/40 bg-black/20 backdrop-blur-sm px-3 py-1.5">
+            Detail · Calligraphy & Gold
+          </p>
+        </div>
       </div>
     </section>
   );

@@ -36,10 +36,20 @@ const PreFooterDivider = () => {
             Currently accepting a limited number of weddings for 2025 & 2026.
           </p>
 
-          <p className="font-sans-wedding text-body-sm text-muted-foreground/40 font-light mb-8 max-w-md mx-auto">
+          <p className="font-sans-wedding text-body-sm text-muted-foreground/40 font-light mb-4 max-w-md mx-auto">
             We take on a curated number of couples each season to ensure every
             wedding receives our full attention and care.
           </p>
+
+          {/* Trust signals */}
+          <div className="flex items-center justify-center gap-3 mb-8">
+            {["Complimentary Discovery Call", "No Commitment Required"].map((signal, i) => (
+              <span key={signal} className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/25">
+                {i > 0 && <span className="mr-3">·</span>}
+                {signal}
+              </span>
+            ))}
+          </div>
 
           <Link
             to="/inquire"
