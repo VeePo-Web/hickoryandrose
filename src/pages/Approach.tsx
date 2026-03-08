@@ -447,14 +447,9 @@ const Approach = () => {
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {["Calm Leadership", "Elevated Design", "Seamless Execution"].map((pill) => (
-                      <span key={pill} className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/35 border border-primary/10 px-3 py-1 relative overflow-hidden group/pill cursor-default">
-                        <span
-                          className="absolute inset-0 -translate-x-full group-hover/pill:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
-                          style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.08), transparent)" }}
-                          aria-hidden="true"
-                        />
-                        <span className="relative">{pill}</span>
-                      </span>
+                      <MagneticPill key={pill}>
+                        {pill}
+                      </MagneticPill>
                     ))}
                   </div>
                 </div>
