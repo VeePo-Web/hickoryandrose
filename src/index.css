@@ -220,6 +220,25 @@ html.lenis, html.lenis body {
     margin: 0 0.35em;
     opacity: 0.3;
   }
+
+  /* Gold shimmer for editorial accents */
+  @keyframes shimmer-gold {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .shimmer-gold {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--gold)) 50%,
+      hsl(var(--primary)) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer-gold 4s ease-in-out infinite;
+  }
 }
 
 /* Reduced motion */

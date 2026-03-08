@@ -268,13 +268,14 @@ const Services = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
-              { tier: "Day-Of", icon: "🗓", desc: "You've planned it all — we perfect and lead the day.", price: "From $2,500" },
-              { tier: "Partial", icon: "🌿", desc: "Collaborate on design and vendors with expert guidance.", price: "From $5,000" },
-              { tier: "Full-Service", icon: "👑", desc: "We handle everything from vision to final send-off.", price: "From $8,500" },
+              { tier: "Day-Of", Icon: Calendar, desc: "You've planned it all — we perfect and lead the day.", price: "From $2,500" },
+              { tier: "Partial", Icon: Flower2, desc: "Collaborate on design and vendors with expert guidance.", price: "From $5,000" },
+              { tier: "Full-Service", Icon: Crown, desc: "We handle everything from vision to final send-off.", price: "From $8,500" },
             ].map((item, i) => (
               <ScrollReveal key={item.tier} delay={i * 0.1}>
-                <div className="bg-background p-8 text-center group hover:shadow-lg transition-shadow duration-500">
-                  <span className="text-2xl mb-4 block">{item.icon}</span>
+                <div className="bg-background p-8 text-center group hover:shadow-lg transition-shadow duration-500 border border-transparent hover:border-primary/10">
+                  <item.Icon size={28} strokeWidth={1} className="text-primary mx-auto mb-4" />
+                  <hr className="editorial-rule mx-auto mb-4" />
                   <h3 className="font-serif-wedding text-display-md text-foreground mb-2">
                     {item.tier}
                   </h3>

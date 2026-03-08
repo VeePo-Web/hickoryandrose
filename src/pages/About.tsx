@@ -250,8 +250,12 @@ const About = () => {
       </section>
 
       {/* Press & Recognition */}
-      <section className="py-12 md:py-16 bg-card border-t border-border">
-        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+      <section className="py-12 md:py-16 bg-card border-t border-border relative overflow-hidden">
+        {/* Subtle dot texture */}
+        <div className="absolute inset-0 opacity-[0.02]" aria-hidden="true">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
+        </div>
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative">
           <ScrollReveal>
             <p className="font-overline text-muted-foreground text-center mb-8">
               Press & Recognition

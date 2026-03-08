@@ -75,7 +75,11 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1.0] as const }}
           className="font-sans-wedding text-label uppercase text-white/70 mb-6"
         >
-          Edmonton's Luxury Wedding Planner
+          <span className="inline-flex items-center gap-3">
+            <span className="w-6 h-px bg-white/30" />
+            Edmonton's Luxury Wedding Planner
+            <span className="w-6 h-px bg-white/30" />
+          </span>
         </motion.p>
 
         <h1 className="font-serif-wedding text-display-xl font-light max-w-4xl mb-6 leading-tight overflow-hidden">
