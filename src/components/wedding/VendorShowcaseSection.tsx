@@ -96,7 +96,15 @@ const VendorShowcaseSection = () => {
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(var(--gold)_/_0.15)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
               </div>
 
-              <div className="grid grid-cols-12 items-center py-7 md:py-10 hover:bg-primary/[0.015] transition-colors duration-500 -mx-3 px-3">
+              <div className="grid grid-cols-12 items-center py-7 md:py-10 hover:bg-primary/[0.015] transition-colors duration-500 -mx-3 px-3 relative">
+                {/* Gold left-border reveal on hover */}
+                <motion.div
+                  className="absolute left-0 top-0 bottom-0 w-[2px] origin-top"
+                  style={{ background: "linear-gradient(180deg, hsl(var(--gold)), hsl(var(--primary) / 0.3))" }}
+                  initial={{ scaleY: 0 }}
+                  animate={{ scaleY: hoveredIndex === index ? 1 : 0 }}
+                  transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                />
                 {/* Index */}
                 <div className="col-span-2 md:col-span-1">
                   <span className="font-serif-wedding text-xs text-primary/15 tabular-nums group-hover:text-primary/30 transition-colors duration-500">
