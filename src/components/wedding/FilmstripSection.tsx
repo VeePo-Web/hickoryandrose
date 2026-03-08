@@ -214,6 +214,24 @@ const FilmstripSection = () => {
         ))}
       </motion.div>
 
+      {/* Floating scroll-linked frame counter — desktop */}
+      <motion.div
+        className="absolute top-6 right-6 md:right-12 hidden lg:flex items-center gap-3 pointer-events-none"
+        style={{ opacity: frameCounterOpacity }}
+        aria-hidden="true"
+      >
+        <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-muted-foreground/20">
+          Scroll to explore
+        </span>
+        <motion.span
+          className="inline-block"
+          animate={{ x: [0, 6, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <span className="font-serif-wedding text-xs text-muted-foreground/20">→</span>
+        </motion.span>
+      </motion.div>
+
       {/* Bottom editorial attribution */}
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl mt-10 md:mt-14 relative">
         <div className="flex items-center justify-between">
