@@ -88,6 +88,8 @@ const VendorShowcaseSection = () => {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
               className="group cursor-default"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Top rule with gold shimmer */}
               <div className="h-px bg-border/30 relative overflow-hidden">
