@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
-import { Calendar, Flower2, Crown, Link as LinkIcon } from "lucide-react";
+import { Calendar, Flower2, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
 import servicePlanningImage from "@/assets/service-planning.jpg";
 import serviceStationeryImage from "@/assets/service-stationery.jpg";
@@ -81,6 +82,10 @@ const editorialBreaks = [
 ];
 
 const Services = () => {
+  useEffect(() => {
+    document.title = "Services | Hickory & Rose — Edmonton Wedding Planner";
+  }, []);
+
   return (
     <main id="main-content">
       <Navigation variant="solid" />
@@ -104,7 +109,7 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Service Tiers with editorial image breaks */}
+      {/* Service Tiers */}
       {serviceTiers.map((service, index) => (
         <div key={service.id}>
           <section
@@ -158,7 +163,6 @@ const Services = () => {
             </div>
           </section>
 
-          {/* Editorial image break between tiers */}
           {index < editorialBreaks.length && (
             <FullWidthImage
               src={editorialBreaks[index].src}

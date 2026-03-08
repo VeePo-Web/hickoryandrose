@@ -1,7 +1,10 @@
+import { useEffect } from "react";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
+import FullWidthImage from "@/components/wedding/FullWidthImage";
+import ceremonyImage from "@/assets/ceremony-setup.jpg";
 
 const processSteps = [
   { number: "01", title: "Discovery Call", time: "Week 1", description: "We start with a relaxed conversation. Tell us about your vision, your story, and how you want to feel on your wedding day. No pressure, no sales pitch — just genuine connection." },
@@ -12,6 +15,10 @@ const processSteps = [
 ];
 
 const Approach = () => {
+  useEffect(() => {
+    document.title = "Our Approach | Hickory & Rose — Edmonton Wedding Planner";
+  }, []);
+
   return (
     <main id="main-content">
       <Navigation variant="solid" />
@@ -40,7 +47,7 @@ const Approach = () => {
             {processSteps.map((step, index) => (
               <ScrollReveal key={step.number} delay={index * 0.08}>
                 <div className="relative flex gap-6 md:gap-8">
-                  {/* Timeline line + circle */}
+                  {/* Timeline circle */}
                   <div className="flex flex-col items-center shrink-0">
                     <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
                       <span className="font-sans-wedding text-[11px] font-semibold text-primary-foreground">
@@ -68,6 +75,33 @@ const Approach = () => {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Editorial image break */}
+      <FullWidthImage
+        src={ceremonyImage}
+        alt="Outdoor wedding ceremony setup in mountain meadow with floral arch"
+        height="h-[35vh] md:h-[45vh]"
+      />
+
+      {/* Promise section */}
+      <section className="py-section-mobile md:py-section-tablet bg-sage-mist">
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+          <ScrollReveal>
+            <div className="w-12 h-px bg-primary mx-auto mb-10" />
+            <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-8">
+              "Our job isn't just to plan your wedding — it's to protect the
+              feeling of your day."
+            </blockquote>
+            <div className="flex items-center justify-center gap-4">
+              <span className="w-8 h-px bg-primary/30" />
+              <span className="font-script text-xl text-primary/60">
+                Hickory & Rose
+              </span>
+              <span className="w-8 h-px bg-primary/30" />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

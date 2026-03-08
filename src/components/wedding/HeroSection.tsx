@@ -1,10 +1,15 @@
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import Navigation from "./Navigation";
 import heroImage from "@/assets/hero-wedding.jpg";
 
 const HeroSection = () => {
+  useEffect(() => {
+    document.title = "Hickory & Rose | Edmonton's Luxury Wedding Planner";
+  }, []);
+
   const scrollToContent = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -14,20 +19,22 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-screen w-full overflow-hidden" aria-label="Hero">
-      {/* Background Image */}
+      {/* Background Image with Ken Burns zoom */}
       <div className="absolute inset-0">
-        <img
+        <motion.img
           src={heroImage}
           alt="Elegant wedding tablescape with sage green and ivory florals at golden hour"
           className="w-full h-full object-cover"
           loading="eager"
           fetchPriority="high"
+          initial={{ scale: 1.0 }}
+          animate={{ scale: 1.08 }}
+          transition={{ duration: 20, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
         />
-        {/* Warm sage overlay for text legibility */}
+        {/* Warm overlay for legibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
       </div>
 
-      {/* Navigation */}
       <Navigation variant="overlay" />
 
       {/* Content */}
@@ -67,7 +74,7 @@ const HeroSection = () => {
         >
           <Link
             to="/inquire"
-            className="inline-flex items-center border border-white/50 hover:border-white hover:bg-white/10 text-white font-sans-wedding text-xs tracking-[0.2em] uppercase px-10 py-4 transition-all duration-200"
+            className="inline-flex items-center border border-white/50 hover:border-white hover:bg-white/10 text-white font-sans-wedding text-xs tracking-[0.2em] uppercase px-10 py-4 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent"
           >
             Begin Your Story
           </Link>

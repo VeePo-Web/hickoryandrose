@@ -12,12 +12,14 @@ import FounderTeaserSection from "@/components/wedding/FounderTeaserSection";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
 import ScrollProgress from "@/components/wedding/ScrollProgress";
+import BackToTop from "@/components/wedding/BackToTop";
 import venueImage from "@/assets/portfolio-venue.jpg";
 
 const Index = () => {
   return (
     <main id="main-content" className="overflow-hidden">
       <ScrollProgress />
+      <BackToTop />
       <HeroSection />
       <BrandPromiseSection />
       <TrustBarSection />

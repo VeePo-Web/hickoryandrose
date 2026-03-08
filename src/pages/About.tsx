@@ -1,7 +1,10 @@
+import { useEffect } from "react";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
+import FullWidthImage from "@/components/wedding/FullWidthImage";
+import BranchDecoration from "@/components/wedding/BranchDecoration";
 import founderImage from "@/assets/founder-portrait.jpg";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 
@@ -32,6 +35,10 @@ const milestones = [
 ];
 
 const About = () => {
+  useEffect(() => {
+    document.title = "About | Hickory & Rose — Edmonton Wedding Planner";
+  }, []);
+
   return (
     <main id="main-content">
       <Navigation variant="solid" />
@@ -51,15 +58,18 @@ const About = () => {
       </section>
 
       {/* Founder Story */}
-      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
-        <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden">
+        {/* Decorative branch */}
+        <BranchDecoration className="absolute -right-8 top-12 hidden lg:block" />
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <ScrollReveal>
               <div className="aspect-[3/4] overflow-hidden">
                 <img
                   src={founderImage}
                   alt="Founder of Hickory & Rose"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700"
                   loading="lazy"
                 />
               </div>
@@ -99,21 +109,18 @@ const About = () => {
         </div>
       </section>
 
-      {/* Editorial image break */}
-      <section className="w-full">
-        <div className="aspect-[21/9] w-full overflow-hidden">
-          <img
-            src={bouquetImage}
-            alt="Bridal bouquet with white roses and sage eucalyptus"
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
-      </section>
+      {/* Editorial image break with parallax */}
+      <FullWidthImage
+        src={bouquetImage}
+        alt="Bridal bouquet with white roses and sage eucalyptus"
+        height="h-[35vh] md:h-[45vh]"
+      />
 
       {/* Values */}
-      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
-        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card relative overflow-hidden">
+        <BranchDecoration className="absolute -left-8 bottom-8 hidden lg:block" flip />
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative">
           <ScrollReveal>
             <div className="text-center mb-12">
               <h2 className="font-serif-wedding text-display-lg text-foreground">
@@ -124,7 +131,8 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {values.map((value, index) => (
               <ScrollReveal key={value.title} delay={index * 0.1}>
-                <div className="text-center">
+                <div className="text-center group">
+                  <div className="w-8 h-px bg-primary mx-auto mb-6 group-hover:w-12 transition-all duration-300" />
                   <h3 className="font-serif-wedding text-display-md text-foreground mb-3">
                     {value.title}
                   </h3>
