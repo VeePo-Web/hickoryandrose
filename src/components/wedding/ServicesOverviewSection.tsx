@@ -226,7 +226,13 @@ const ServicesOverviewSection = () => {
               </Link>
             </ScrollReveal>
           ))}
-          <div className="border-t border-border/60" />
+          {/* Terminal gold ornament after last service */}
+          <div className="border-t border-border/60 relative">
+            <span
+              className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rotate-45"
+              style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }}
+            />
+          </div>
         </div>
 
         {/* Quick comparison row */}
