@@ -4,13 +4,13 @@ import { motion, useSpring } from "framer-motion";
 const CursorFollower = () => {
   const [visible, setVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [cursorLabel, setCursorLabel] = useState("");
 
   const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
   const x = useSpring(0, springConfig);
   const y = useSpring(0, springConfig);
 
   useEffect(() => {
-    // Only on desktop
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const handleMove = (e: MouseEvent) => {
@@ -21,8 +21,19 @@ const CursorFollower = () => {
 
     const handleOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const interactive = target.closest("a, button, [role='button'], input, textarea, select, [data-cursor-hover]");
-      setIsHovering(!!interactive);
+      const cursorEl = target.closest("[data-cursor-hover]");
+      const interactive = target.closest("a, button, [role='button'], input, textarea, select");
+
+      if (cursorEl) {
+        setIsHovering(true);
+        setCursorLabel(cursorEl.getAttribute("data-cursor-label") || "");
+      } else if (interactive) {
+        setIsHovering(true);
+        setCursorLabel("");
+      } else {
+        setIsHovering(false);
+        setCursorLabel("");
+      }
     };
 
     const handleLeave = () => setVisible(false);
@@ -51,18 +62,29 @@ const CursorFollower = () => {
       {/* Inner dot */}
       <motion.div
         animate={{
-          width: isHovering ? 48 : 8,
-          height: isHovering ? 48 : 8,
+          width: isHovering ? (cursorLabel ? 64 : 48) : 8,
+          height: isHovering ? (cursorLabel ? 64 : 48) : 8,
           opacity: isHovering ? 0.25 : 0.5,
         }}
         transition={{ duration: 0.25, ease: "easeOut" }}
-        className="rounded-full bg-primary -translate-x-1/2 -translate-y-1/2"
-      />
-      {/* Outer ring — appears on hover */}
+        className="rounded-full bg-primary -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
+      >
+        {cursorLabel && (
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-primary-foreground font-medium"
+          >
+            {cursorLabel}
+          </motion.span>
+        )}
+      </motion.div>
+      {/* Outer ring */}
       <motion.div
         animate={{
-          width: isHovering ? 56 : 8,
-          height: isHovering ? 56 : 8,
+          width: isHovering ? (cursorLabel ? 72 : 56) : 8,
+          height: isHovering ? (cursorLabel ? 72 : 56) : 8,
           opacity: isHovering ? 0.12 : 0,
         }}
         transition={{ duration: 0.3, ease: "easeOut" }}

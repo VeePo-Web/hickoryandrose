@@ -45,17 +45,31 @@ const FullWidthImage = ({
         />
       )}
 
-      {/* Optional dark overlay for depth */}
       {overlay && (
         <div className="absolute inset-0 bg-foreground/15 pointer-events-none" />
       )}
 
-      {/* Optional editorial caption */}
       {caption && (
-        <div className="absolute bottom-0 left-0 right-0 py-4 px-6">
-          <p className="font-overline text-white/50 text-center text-[0.6rem] tracking-[0.25em]">
-            {caption}
-          </p>
+        <div className="absolute bottom-0 left-0 right-0 py-6 px-6">
+          <div className="flex items-center justify-center gap-4">
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="w-8 h-px bg-white/25 origin-right hidden md:block"
+            />
+            <p className="font-overline text-white/50 text-center text-[0.6rem] tracking-[0.25em]">
+              {caption}
+            </p>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="w-8 h-px bg-white/25 origin-left hidden md:block"
+            />
+          </div>
         </div>
       )}
     </section>
