@@ -350,29 +350,33 @@ const Inquire = () => {
             <label htmlFor="date" className="font-overline text-muted-foreground mb-2 block">
               Wedding Date
             </label>
-            <input
-              type="text"
-              id="date"
-              name="date"
-              value={formData.date}
-              onChange={(e) => set("date", e.target.value)}
-              className={inputCls("date")}
-              placeholder="Month / Year or TBD"
-            />
+            <InputWrapper>
+              <input
+                type="text"
+                id="date"
+                name="date"
+                value={formData.date}
+                onChange={(e) => set("date", e.target.value)}
+                className={inputCls("date")}
+                placeholder="Month / Year or TBD"
+              />
+            </InputWrapper>
           </div>
           <div>
             <label htmlFor="venue" className="font-overline text-muted-foreground mb-2 block">
               Venue
             </label>
-            <input
-              type="text"
-              id="venue"
-              name="venue"
-              value={formData.venue}
-              onChange={(e) => set("venue", e.target.value)}
-              className={inputCls("venue")}
-              placeholder="Venue name or TBD"
-            />
+            <InputWrapper>
+              <input
+                type="text"
+                id="venue"
+                name="venue"
+                value={formData.venue}
+                onChange={(e) => set("venue", e.target.value)}
+                className={inputCls("venue")}
+                placeholder="Venue name or TBD"
+              />
+            </InputWrapper>
           </div>
         </div>
 
