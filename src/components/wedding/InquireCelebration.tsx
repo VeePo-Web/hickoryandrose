@@ -1,42 +1,86 @@
 import { motion } from "framer-motion";
-import { Heart } from "lucide-react";
 import BreathingDiamond from "./BreathingDiamond";
+import MagneticButton from "./MagneticButton";
+import ScrollReveal from "./ScrollReveal";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
+
+const DIAMONDS = Array.from({ length: 16 }, (_, i) => {
+  const wave = i < 8 ? 0 : 1;
+  const idx = i % 8;
+  const col = idx % 2;
+  return {
+    size: 2 + (idx % 3),
+    left: 42 + col * 16 + (idx % 3) * 3,
+    delay: wave * 1.5 + idx * 0.12,
+    yEnd: -100 - idx * 30,
+    opacity: 0.5 - wave * 0.15,
+  };
+});
+
+const STEPS = [
+  { text: "We'll review your details and respond within 48 hours." },
+  { text: "We'll schedule a complimentary discovery call." },
+  { text: "If we're a perfect fit, you'll receive a custom proposal." },
+];
+
+const clipReveal = (i: number) => ({
+  hidden: { clipPath: "inset(100% 0 0 0)", opacity: 0 },
+  visible: {
+    clipPath: "inset(0% 0 0 0)",
+    opacity: 1,
+    transition: { duration: 0.6, delay: 0.5 + i * 0.18, ease: [0.25, 0.1, 0.25, 1] as const },
+  },
+});
 
 const InquireCelebration = () => (
   <main id="main-content">
     <Navigation variant="solid" />
     <section className="min-h-[80vh] flex items-center justify-center bg-background px-6 py-32 relative overflow-hidden">
-      {/* Gold shimmer burst */}
+      {/* Layer 1: Radial gold pulse */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         initial={{ opacity: 0 }}
-        animate={{ opacity: [0, 0.08, 0] }}
+        animate={{ opacity: [0, 0.12, 0] }}
         transition={{ duration: 3, ease: "easeOut" }}
-        style={{ background: "radial-gradient(ellipse at center, hsl(var(--gold) / 0.2), transparent 60%)" }}
+        style={{ background: "radial-gradient(ellipse at center, hsl(var(--gold) / 0.25), transparent 65%)" }}
         aria-hidden="true"
       />
 
-      {/* Breathing diamond cascade */}
-      <div className="absolute inset-0 pointer-events-none flex items-center justify-center" aria-hidden="true">
-        {[0, 1, 2, 3, 4].map((i) => (
-          <motion.div
+      {/* Layer 2: Horizontal gold sweep */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        initial={{ x: "-100%" }}
+        animate={{ x: "200%" }}
+        transition={{ duration: 2, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+        style={{
+          background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.08) 40%, hsl(var(--gold) / 0.15) 50%, hsl(var(--gold) / 0.08) 60%, transparent 100%)",
+          height: "120%",
+          top: "-10%",
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Layer 3: Vignette */}
+      <div className="vignette absolute inset-0 pointer-events-none" aria-hidden="true" />
+
+      {/* Diamond cascade waterfall */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        {DIAMONDS.map((d, i) => (
+          <motion.span
             key={i}
-            className="absolute"
-            initial={{ opacity: 0, scale: 0, y: 0 }}
-            animate={{ opacity: [0, 0.6, 0], scale: [0.5, 1.2, 0.5], y: [0, -60 - i * 25, -120 - i * 40] }}
-            transition={{ duration: 2.5, delay: 0.3 + i * 0.15, ease: "easeOut" }}
+            className="absolute block rotate-45"
+            initial={{ opacity: 0, scale: 0.5, y: 0 }}
+            animate={{ opacity: [0, d.opacity, 0], scale: [0.5, 1.2, 0.5], y: [0, d.yEnd] }}
+            transition={{ duration: 2.5, delay: 0.3 + d.delay, ease: "easeOut" }}
             style={{
-              left: `${45 + (i % 3) * 5}%`,
+              left: `${d.left}%`,
               top: "55%",
+              width: d.size,
+              height: d.size,
+              background: `linear-gradient(135deg, hsl(var(--gold) / ${d.opacity}), hsl(var(--gold) / 0.08))`,
             }}
-          >
-            <span
-              className="block w-2 h-2 rotate-45"
-              style={{ background: `linear-gradient(135deg, hsl(var(--gold) / ${0.4 - i * 0.06}), hsl(var(--gold) / 0.1))` }}
-            />
-          </motion.div>
+          />
         ))}
       </div>
 
@@ -46,84 +90,92 @@ const InquireCelebration = () => (
         transition={{ duration: 0.6 }}
         className="text-center max-w-lg relative z-10"
       >
+        {/* Central ornament with triple expanding rings */}
         <div className="relative inline-block mb-8">
-          {/* Expanding ring */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: [0, 0.3, 0], scale: [0.5, 2.5, 3.5] }}
-            transition={{ duration: 2.5, ease: "easeOut" }}
-            className="absolute inset-0 m-auto w-16 h-16 rounded-full"
-            style={{ border: "1px solid hsl(var(--gold) / 0.3)" }}
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: [0, 0.15, 0], scale: [0.5, 1.8, 2.8] }}
-            transition={{ duration: 2, delay: 0.3, ease: "easeOut" }}
-            className="absolute inset-0 m-auto w-16 h-16 rounded-full"
-            style={{ border: "1px solid hsl(var(--gold) / 0.2)" }}
-          />
-          <Heart size={40} strokeWidth={1} className="text-primary relative z-10" />
+          {[0, 1, 2].map((ring) => (
+            <motion.div
+              key={ring}
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: [0, 0.3 - ring * 0.08, 0], scale: [0.5, 2 + ring * 0.8, 3 + ring] }}
+              transition={{ duration: 2.5 - ring * 0.3, delay: ring * 0.25, ease: "easeOut" }}
+              className="absolute inset-0 m-auto w-16 h-16 rounded-full"
+              style={{ border: `1px solid hsl(var(--gold) / ${0.3 - ring * 0.08})` }}
+              aria-hidden="true"
+            />
+          ))}
+          <BreathingDiamond size={24} className="relative z-10" />
         </div>
 
         <BreathingDiamond size={8} className="mx-auto mb-6" />
 
-        <h1 className="font-serif-wedding text-display-lg text-foreground mb-4">
-          Thank you, beautiful.
+        {/* Editorial headline */}
+        <p className="font-script text-2xl text-primary/70 mb-2">Thank you</p>
+        <h1 className="font-serif-wedding text-display-xl text-foreground mb-4">
+          Your story begins here.
         </h1>
-        <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light mb-12">
-          Your inquiry has been received. Here's what happens next:
+
+        {/* Gold editorial rule */}
+        <div className="editorial-rule mx-auto mb-6" />
+
+        {/* Body copy with drop cap */}
+        <p className="drop-cap font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light mb-12 max-w-md mx-auto">
+          Your inquiry has been received with care. Here is what happens next on the path to your beautifully curated celebration.
         </p>
 
-        <div className="text-left max-w-sm mx-auto space-y-6 mb-12">
-          {[
-            { step: "01", text: "We'll review your details and respond within 48 hours." },
-            { step: "02", text: "We'll schedule a complimentary discovery call." },
-            { step: "03", text: "If we're a fit, you'll receive a custom proposal." },
-          ].map((item, i) => (
-            <motion.div
-              key={item.step}
-              initial={{ opacity: 0, x: -12 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4 + i * 0.15, duration: 0.5 }}
-              className="flex gap-4 items-start"
-            >
-              <span
-                className="font-serif-wedding text-lg shrink-0"
-                style={{
-                  background: "linear-gradient(135deg, hsl(var(--gold) / 0.6), hsl(var(--primary) / 0.4))",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
+        {/* Steps timeline with vertical gold connector */}
+        <div className="relative max-w-sm mx-auto mb-12 pl-8">
+          {/* Vertical gold line */}
+          <motion.div
+            className="absolute left-3 top-2 bottom-2 w-px origin-top"
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: 1 }}
+            transition={{ duration: 1.2, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.08))" }}
+          />
+
+          <div className="space-y-7 text-left">
+            {STEPS.map((item, i) => (
+              <motion.div
+                key={i}
+                variants={clipReveal(i)}
+                initial="hidden"
+                animate="visible"
+                className="flex gap-4 items-start relative"
               >
-                {item.step}
-              </span>
-              <p className="font-sans-wedding text-body-sm text-muted-foreground font-light leading-relaxed">
-                {item.text}
-              </p>
-            </motion.div>
-          ))}
+                <div className="absolute -left-5 top-1">
+                  <BreathingDiamond size={6} />
+                </div>
+                <p className="font-sans-wedding text-body-sm text-muted-foreground font-light leading-relaxed">
+                  {item.text}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* Gold separator */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="w-12 h-px mx-auto mb-8 origin-center"
+          transition={{ duration: 1, delay: 1.2 }}
+          className="w-12 h-px mx-auto mb-10 origin-center"
           style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }}
         />
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
-          className="font-sans-wedding text-xs text-muted-foreground/50 font-light"
-        >
-          In the meantime, explore our{" "}
-          <a href="/portfolio" className="underline underline-offset-4 hover:text-primary transition-colors">portfolio</a>{" "}
-          or learn more about our{" "}
-          <a href="/approach" className="underline underline-offset-4 hover:text-primary transition-colors">approach</a>.
-        </motion.p>
+
+        {/* CTA */}
+        <ScrollReveal delay={1}>
+          <div className="flex flex-col items-center gap-4">
+            <MagneticButton to="/portfolio" variant="primary">
+              Explore Our Portfolio
+            </MagneticButton>
+            <a
+              href="/approach"
+              className="font-sans-wedding text-xs text-muted-foreground/50 underline underline-offset-4 hover:text-primary transition-colors"
+            >
+              Learn about our approach
+            </a>
+          </div>
+        </ScrollReveal>
       </motion.div>
     </section>
     <Footer />
