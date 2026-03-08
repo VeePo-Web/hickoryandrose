@@ -156,25 +156,29 @@ const FAQ = () => {
         </div>
       </section>
 
-      {/* Still have questions */}
-      <section className="py-section-mobile md:py-section-tablet bg-background">
+      {/* Still have questions — merged CTA */}
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <h3 className="font-serif-wedding text-display-md text-foreground mb-4">
-              Still have questions?
+            <p className="font-overline text-muted-foreground mb-4">Still Curious?</p>
+            <h3 className="font-serif-wedding text-display-lg text-foreground mb-4">
+              We'd love to hear from you.
             </h3>
-            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto font-light">
-              We'd love to hear from you. Reach out and we'll get back to you
-              within 48 hours.
+            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-10 max-w-md mx-auto font-light">
+              No question is too small. Reach out and we'll get back to you
+              within 48 hours — or schedule a discovery call to chat in person.
             </p>
-            <MagneticButton to="/inquire" variant="primary">
-              Get in Touch
-            </MagneticButton>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <MagneticButton to="/inquire" variant="primary">
+                Start a Conversation
+              </MagneticButton>
+              <MagneticButton to="/services" variant="outline">
+                Explore Services
+              </MagneticButton>
+            </div>
           </ScrollReveal>
         </div>
       </section>
-
-      <CTASection />
       <Footer />
     </main>
   );
