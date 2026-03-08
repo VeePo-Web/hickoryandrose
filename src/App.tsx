@@ -22,7 +22,8 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <SmoothScrollProvider>
+        <LoadingScreen>
+          <SmoothScrollProvider>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/services" element={<Services />} />
