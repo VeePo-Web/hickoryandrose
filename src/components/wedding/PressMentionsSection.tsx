@@ -154,12 +154,38 @@ const PressMentionsSection = () => {
           ))}
         </div>
 
-        {/* Bottom ornament */}
+        {/* Bottom ornament — premium gold treatment */}
         <ScrollReveal delay={0.3}>
-          <div className="flex items-center justify-center gap-4 mt-10">
-            <span className="w-6 h-px bg-border/20" />
-            <span className="font-script text-sm text-primary/8">Hickory & Rose</span>
-            <span className="w-6 h-px bg-border/20" />
+          <div className="flex flex-col items-center gap-5 mt-12 md:mt-16">
+            <div className="flex items-center gap-4" aria-hidden="true">
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-14 h-px origin-right"
+                style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25))" }}
+              />
+              <span
+                className="w-2 h-2 rotate-45"
+                style={{
+                  background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.15))",
+                  boxShadow: "0 0 10px 3px hsl(var(--gold) / 0.1)",
+                }}
+              />
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="w-14 h-px origin-left"
+                style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.25), transparent)" }}
+              />
+            </div>
+            <p className="font-script text-lg text-primary/10">Hickory & Rose</p>
+            <p className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-muted-foreground/15">
+              Recognized across Canada & beyond
+            </p>
           </div>
         </ScrollReveal>
       </div>
