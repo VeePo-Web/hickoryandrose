@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
 import GoldFrame from "./GoldFrame";
+import BreathingDiamond from "./BreathingDiamond";
 import founderImage from "@/assets/founder-portrait.jpg";
 
 const differentiators = [
