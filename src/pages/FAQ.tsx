@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { setPageMeta } from "@/lib/seo";
 import Navigation from "@/components/wedding/Navigation";
+import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Footer from "@/components/wedding/Footer";
 import CTASection from "@/components/wedding/CTASection";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
