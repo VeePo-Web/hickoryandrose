@@ -340,9 +340,16 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                   <Link
                     to="/inquire"
                     onClick={() => setIsOpen(false)}
-                    className="inline-flex items-center px-10 py-3.5 text-[0.6875rem] tracking-[0.2em] uppercase font-sans-wedding font-light bg-primary text-primary-foreground hover:bg-sage-deep transition-colors duration-200"
+                    className="relative inline-flex items-center px-10 py-3.5 text-[0.6875rem] tracking-[0.2em] uppercase font-sans-wedding font-light bg-primary text-primary-foreground hover:bg-sage-deep transition-colors duration-200 overflow-hidden group"
                   >
-                    Inquire
+                    {/* Mobile gold shimmer sweep */}
+                    <span
+                      className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"
+                      style={{
+                        background: "linear-gradient(110deg, transparent 20%, hsl(var(--gold) / 0.2) 40%, hsl(var(--gold) / 0.35) 50%, hsl(var(--gold) / 0.2) 60%, transparent 80%)",
+                      }}
+                    />
+                    <span className="relative z-10">Inquire</span>
                   </Link>
                 </motion.div>
 
