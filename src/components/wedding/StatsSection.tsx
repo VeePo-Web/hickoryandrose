@@ -87,15 +87,14 @@ const StatsSection = () => {
           ))}
         </div>
 
-        {/* Brand signature */}
         <ScrollReveal delay={0.4}>
-          <div className="flex items-center justify-center gap-3 mt-20 md:mt-28">
-            <span className="w-8 h-px bg-background/10" />
-            <span className="font-script text-xl text-background/15">
-              H & R
-            </span>
-            <span className="w-8 h-px bg-background/10" />
-          </div>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="w-16 h-px bg-background/10 mx-auto mt-20 md:mt-28 origin-center"
+          />
         </ScrollReveal>
       </div>
     </section>

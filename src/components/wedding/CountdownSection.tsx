@@ -83,12 +83,13 @@ const CountdownSection = () => {
           </div>
         </ScrollReveal>
 
-        {/* Bottom flourish */}
-        <div className="flex items-center justify-center gap-3 mt-12">
-          <span className="w-8 h-px bg-primary/20" />
-          <span className="font-script text-sm text-primary/25">H & R</span>
-          <span className="w-8 h-px bg-primary/20" />
-        </div>
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="w-12 h-px bg-primary/20 mx-auto mt-12 origin-center"
+        />
       </div>
     </section>
   );

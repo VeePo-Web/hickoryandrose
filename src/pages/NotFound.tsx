@@ -99,11 +99,12 @@ const NotFound = () => {
             className="mt-12"
           >
             {/* Brand flourish */}
-            <div className="flex items-center justify-center gap-3 mb-3">
-              <span className="w-6 h-px bg-border" />
-              <span className="font-script text-sm text-muted-foreground/30">H & R</span>
-              <span className="w-6 h-px bg-border" />
-            </div>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="w-10 h-px bg-border mx-auto mb-3 origin-center"
+            />
             <p className="font-sans-wedding text-xs text-muted-foreground/50 font-light">
               Or{" "}
               <Link to="/inquire" className="underline underline-offset-4 hover:text-primary transition-colors">

@@ -22,8 +22,8 @@ const PageTransition = ({ children }: PageTransitionProps) => {
           transition={{ duration: 0.3, delay: 0.1 }}
           className="absolute inset-0 flex items-center justify-center"
         >
-          <span className="font-script text-2xl text-primary-foreground/40">
-            H & R
+          <span className="font-script text-xl text-primary-foreground/30">
+            &
           </span>
         </motion.div>
       </motion.div>

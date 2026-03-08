@@ -36,23 +36,13 @@ const Footer = () => {
           className="text-center mb-16 md:mb-20"
         >
           {/* Decorative monogram */}
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <motion.span
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-16 h-px bg-background/15 origin-right"
-            />
-            <span className="font-script text-2xl text-background/20">H & R</span>
-            <motion.span
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-16 h-px bg-background/15 origin-left"
-            />
-          </div>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="w-16 h-px bg-background/15 mx-auto mb-6 origin-center"
+          />
 
           <Link to="/" className="inline-block group">
             <span className="font-serif-wedding text-3xl md:text-4xl font-light tracking-[-0.03em] text-background">
