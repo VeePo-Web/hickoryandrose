@@ -158,13 +158,23 @@ const Approach = () => {
           </ScrollReveal>
 
           <div className="relative">
-            {/* Vertical timeline line */}
+            {/* Gold gradient vertical timeline line */}
             <motion.div
-              className="absolute left-[1.75rem] md:left-[3.25rem] top-0 bottom-0 w-px bg-border/40 origin-top hidden md:block"
+              className="absolute left-[1.75rem] md:left-[3.25rem] top-0 bottom-0 w-px origin-top hidden md:block"
+              style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.1), hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.1))" }}
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1.0] }}
+            />
+            {/* Glow trail behind timeline */}
+            <motion.div
+              className="absolute left-[1.75rem] md:left-[3.25rem] top-0 bottom-0 w-px origin-top hidden md:block blur-[2px]"
+              style={{ background: "linear-gradient(180deg, transparent, hsl(var(--gold) / 0.2), transparent)" }}
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.8, ease: [0.25, 0.1, 0.25, 1.0], delay: 0.2 }}
             />
 
             {processSteps.map((step, index) => (
