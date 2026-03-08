@@ -1,8 +1,8 @@
+import { useEffect } from "react";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
-import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-wedding.jpg";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import detailImage from "@/assets/detail-placecard.jpg";
@@ -13,73 +13,21 @@ import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import venueImage from "@/assets/portfolio-venue.jpg";
 
 const weddingStories = [
-  {
-    src: heroImage,
-    alt: "Elegant garden reception tablescape at golden hour",
-    couple: "Sarah & Michael",
-    venue: "Fairmont Hotel Macdonald",
-    season: "Summer",
-    aspect: "aspect-[3/4]",
-  },
-  {
-    src: receptionImage,
-    alt: "Rustic farmhouse reception with eucalyptus and candlelight",
-    couple: "Emma & James",
-    venue: "The Glass House",
-    season: "Autumn",
-    aspect: "aspect-square",
-  },
-  {
-    src: ceremonyImage,
-    alt: "Mountain ceremony with floral arch and white draping",
-    couple: "Olivia & Noah",
-    venue: "Jasper Park Lodge",
-    season: "Summer",
-    aspect: "aspect-[4/5]",
-  },
-  {
-    src: bouquetImage,
-    alt: "Bridal bouquet with white roses and sage eucalyptus",
-    couple: "Alyssa & Daniel",
-    venue: "Art Gallery of Alberta",
-    season: "Spring",
-    aspect: "aspect-[3/4]",
-  },
-  {
-    src: venueImage,
-    alt: "Rustic barn venue at twilight with string lights",
-    couple: "Lauren & Ethan",
-    venue: "Willow Creek Barn",
-    season: "Autumn",
-    aspect: "aspect-[16/10]",
-  },
-  {
-    src: editorialImage,
-    alt: "Sage and ivory floral arrangement detail",
-    couple: "Hannah & Liam",
-    venue: "Muttart Conservatory",
-    season: "Winter",
-    aspect: "aspect-square",
-  },
-  {
-    src: firstDanceImage,
-    alt: "First dance under string lights at outdoor reception",
-    couple: "Rachel & Marcus",
-    venue: "River Valley Estate",
-    season: "Summer",
-    aspect: "aspect-[3/4]",
-  },
-  {
-    src: detailImage,
-    alt: "Calligraphy place card with gold cutlery detail",
-    couple: "Claire & Jonathan",
-    venue: "The Enjoy Centre",
-    season: "Spring",
-    aspect: "aspect-square",
-  },
+  { src: heroImage, alt: "Elegant garden reception tablescape at golden hour", couple: "Sarah & Michael", venue: "Fairmont Hotel Macdonald", season: "Summer", aspect: "aspect-[3/4]" },
+  { src: receptionImage, alt: "Rustic farmhouse reception with eucalyptus and candlelight", couple: "Emma & James", venue: "The Glass House", season: "Autumn", aspect: "aspect-square" },
+  { src: ceremonyImage, alt: "Mountain ceremony with floral arch and white draping", couple: "Olivia & Noah", venue: "Jasper Park Lodge", season: "Summer", aspect: "aspect-[4/5]" },
+  { src: bouquetImage, alt: "Bridal bouquet with white roses and sage eucalyptus", couple: "Alyssa & Daniel", venue: "Art Gallery of Alberta", season: "Spring", aspect: "aspect-[3/4]" },
+  { src: venueImage, alt: "Rustic barn venue at twilight with string lights", couple: "Lauren & Ethan", venue: "Willow Creek Barn", season: "Autumn", aspect: "aspect-[16/10]" },
+  { src: editorialImage, alt: "Sage and ivory floral arrangement detail", couple: "Hannah & Liam", venue: "Muttart Conservatory", season: "Winter", aspect: "aspect-square" },
+  { src: firstDanceImage, alt: "First dance under string lights at outdoor reception", couple: "Rachel & Marcus", venue: "River Valley Estate", season: "Summer", aspect: "aspect-[3/4]" },
+  { src: detailImage, alt: "Calligraphy place card with gold cutlery detail", couple: "Claire & Jonathan", venue: "The Enjoy Centre", season: "Spring", aspect: "aspect-square" },
 ];
 
 const Portfolio = () => {
+  useEffect(() => {
+    document.title = "Portfolio | Hickory & Rose — Real Weddings Edmonton";
+  }, []);
+
   return (
     <main id="main-content">
       <Navigation variant="solid" />
@@ -102,7 +50,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Gallery with story cards */}
+      {/* Gallery */}
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
         <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
           <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
@@ -117,7 +65,6 @@ const Portfolio = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
-                  {/* Hover overlay */}
                   <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/40 transition-all duration-500 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100">
                     <p className="font-serif-wedding text-xl md:text-2xl text-white mb-1 translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
                       {story.couple}

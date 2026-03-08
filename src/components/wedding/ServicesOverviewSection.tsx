@@ -44,11 +44,11 @@ const ServicesOverviewSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {services.map((service, index) => (
             <ScrollReveal key={service.title} delay={index * 0.1}>
-              <div className="bg-background p-8 md:p-10 shadow-subtle hover:shadow-medium transition-shadow duration-300 text-center group">
+              <div className="bg-background p-8 md:p-10 shadow-subtle hover:shadow-medium hover:-translate-y-1 transition-all duration-300 text-center group">
                 <service.icon
                   size={32}
                   strokeWidth={1}
-                  className="text-primary mx-auto mb-6"
+                  className="text-primary mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
                 />
                 <h3 className="font-serif-wedding text-display-md text-foreground mb-4">
                   {service.title}
