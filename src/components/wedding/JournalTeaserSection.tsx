@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
@@ -17,7 +16,7 @@ const articles = [
       "How letting go of the details you've obsessed over is the final — and most important — step in your wedding journey.",
     readTime: "6 min read",
     date: "March 2026",
-    aspect: "aspect-[3/4]",
+    pullQuote: "Presence is the final gift you give yourself.",
   },
   {
     image: journalVowsImage,
@@ -28,7 +27,7 @@ const articles = [
       "Forget the templates. Here's how to find words that carry the weight of what you actually feel.",
     readTime: "4 min read",
     date: "February 2026",
-    aspect: "aspect-square",
+    pullQuote: "Your words don't need to be perfect — they need to be yours.",
   },
   {
     image: journalReceptionImage,
@@ -39,7 +38,7 @@ const articles = [
       "Why your reception table is the most underestimated design element — and how to make it unforgettable.",
     readTime: "5 min read",
     date: "January 2026",
-    aspect: "aspect-[4/5]",
+    pullQuote: "A table is never just a table — it's the first chapter of your evening.",
   },
 ];
 
@@ -50,6 +49,7 @@ const JournalTeaserSection = () => {
     offset: ["start end", "end start"],
   });
   const watermarkY = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const verticalRuleScale = useTransform(scrollYProgress, [0.1, 0.5], [0, 1]);
 
   return (
     <section
@@ -67,6 +67,13 @@ const JournalTeaserSection = () => {
           Journal
         </span>
       </motion.div>
+
+      {/* Scroll-linked vertical accent */}
+      <motion.div
+        className="absolute right-6 md:right-12 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/8 to-transparent hidden lg:block"
+        style={{ scaleY: verticalRuleScale, transformOrigin: "top" }}
+        aria-hidden="true"
+      />
 
       <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative">
         {/* Header */}
@@ -98,7 +105,7 @@ const JournalTeaserSection = () => {
           </div>
         </ScrollReveal>
 
-        {/* Editorial asymmetric grid — first card tall, next two stacked */}
+        {/* Editorial asymmetric grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
           {/* Featured large card */}
           <div className="lg:col-span-7">
@@ -166,7 +173,11 @@ const ArticleCard = ({
             loading="lazy"
           />
           {/* Cinematic gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+          {/* Corner frame accents */}
+          <div className="absolute top-3 left-3 w-4 h-4 border-t border-l border-white/0 group-hover:border-white/15 transition-colors duration-500" />
+          <div className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-white/0 group-hover:border-white/15 transition-colors duration-500" />
 
           {/* Category tag */}
           <div className="absolute top-4 left-4">
@@ -175,8 +186,13 @@ const ArticleCard = ({
             </span>
           </div>
 
-          {/* Hover reveal: title */}
+          {/* Hover reveal: pull-quote + title */}
           <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+            {featured && (
+              <p className="font-serif-wedding text-xs italic text-white/40 mb-2">
+                "{article.pullQuote}"
+              </p>
+            )}
             <p className="font-serif-wedding text-lg md:text-xl text-white leading-snug">
               {article.title}
             </p>
@@ -209,12 +225,25 @@ const ArticleCard = ({
           {article.excerpt}
         </p>
 
-        <div className="mt-4 flex items-center gap-3">
-          <motion.div
-            className="h-px bg-primary/30 w-0 group-hover:w-8 transition-all duration-500 origin-left"
-          />
-          <span className="font-sans-wedding text-[0.6rem] tracking-[0.12em] uppercase text-muted-foreground/30 group-hover:text-primary/60 transition-colors duration-500">
-            {article.date}
+        {/* Editorial pull-quote below excerpt — visible on featured */}
+        {featured && (
+          <p className="font-serif-wedding text-xs italic text-primary/25 mt-3 hidden lg:block">
+            "{article.pullQuote}"
+          </p>
+        )}
+
+        <div className="mt-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <motion.div
+              className="h-px bg-primary/30 w-0 group-hover:w-8 transition-all duration-500 origin-left"
+            />
+            <span className="font-sans-wedding text-[0.6rem] tracking-[0.12em] uppercase text-muted-foreground/30 group-hover:text-primary/60 transition-colors duration-500">
+              {article.date}
+            </span>
+          </div>
+          {/* Read indicator */}
+          <span className="font-sans-wedding text-[0.55rem] tracking-[0.1em] uppercase text-muted-foreground/0 group-hover:text-muted-foreground/30 transition-all duration-500 translate-x-2 group-hover:translate-x-0">
+            Read →
           </span>
         </div>
       </div>
