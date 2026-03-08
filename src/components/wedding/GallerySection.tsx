@@ -106,6 +106,9 @@ const GallerySection = () => {
                     alt={photo.alt}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
+                    decoding="async"
+                    width={800}
+                    height={600}
                   />
                 </button>
               </ImageReveal>

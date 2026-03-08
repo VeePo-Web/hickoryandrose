@@ -57,6 +57,9 @@ const HeroSection = () => {
           alt="Elegant wedding tablescape with sage green and ivory florals at golden hour"
           className="w-full h-full object-cover"
           loading="eager"
+          decoding="async"
+          width={1920}
+          height={1080}
           fetchPriority="high"
           initial={{ scale: 1.0 }}
           animate={{ scale: 1.08 }}

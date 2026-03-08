@@ -1,7 +1,8 @@
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, useSpring } from "framer-motion";
+import { memo } from "react";
 
-const CursorFollower = () => {
+const CursorFollower = memo(() => {
   const [visible, setVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [cursorLabel, setCursorLabel] = useState("");
@@ -96,6 +97,8 @@ const CursorFollower = () => {
       />
     </motion.div>
   );
-};
+});
+
+CursorFollower.displayName = "CursorFollower";
 
 export default CursorFollower;
