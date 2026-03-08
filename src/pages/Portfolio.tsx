@@ -221,8 +221,21 @@ const Portfolio = () => {
       </section>
 
       {/* Gallery */}
-      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
-        <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden">
+        {/* Parallax watermark */}
+        <motion.div
+          className="absolute -left-4 top-1/4 pointer-events-none select-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+        >
+          <span className="font-serif-wedding text-[8rem] md:text-[14rem] font-light text-foreground/[0.015] whitespace-nowrap tracking-tight italic leading-none">
+            Stories
+          </span>
+        </motion.div>
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative">
           <motion.div layout className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
             <AnimatePresence mode="popLayout">
               {filtered.map((story, index) => (
@@ -244,7 +257,22 @@ const Portfolio = () => {
                         loading="lazy"
                       />
                       {/* Cinematic gradient reveal */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                      {/* Corner frame accents */}
+                      <div className="absolute top-3 left-3 w-4 h-4 border-t border-l border-white/0 group-hover:border-white/20 transition-colors duration-500" />
+                      <div className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-white/0 group-hover:border-white/20 transition-colors duration-500" />
+
+                      {/* Category badge */}
+                      <span className="absolute top-3 left-3 mt-6 font-sans-wedding text-[0.45rem] tracking-[0.18em] uppercase text-white/0 group-hover:text-white/50 transition-colors duration-500 bg-white/0 group-hover:bg-white/10 backdrop-blur-sm px-2 py-0.5">
+                        {story.category}
+                      </span>
+
+                      {/* Frame index */}
+                      <span className="absolute top-3 right-3 font-serif-wedding text-[0.5rem] text-white/0 group-hover:text-white/25 transition-colors duration-500 tabular-nums">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+
                       <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                         <p className="font-serif-wedding text-lg md:text-xl text-white mb-0.5">
                           {story.couple}

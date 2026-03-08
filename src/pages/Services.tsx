@@ -213,10 +213,22 @@ const Services = () => {
         <div key={service.id}>
           <section
             id={service.id}
-            className={`py-section-mobile md:py-section-tablet lg:py-section-desktop ${
+            className={`py-section-mobile md:py-section-tablet lg:py-section-desktop relative overflow-hidden ${
               index % 2 === 0 ? "bg-background" : "bg-card"
             }`}
           >
+            {/* Per-tier parallax watermark */}
+            <motion.div
+              className="absolute -right-4 top-1/3 pointer-events-none select-none"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5 }}
+            >
+              <span className="font-serif-wedding text-[8rem] md:text-[12rem] font-light text-foreground/[0.015] whitespace-nowrap tracking-tight italic leading-none">
+                {service.title.split(" ")[0]}
+              </span>
+            </motion.div>
             <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
               <div className={`grid grid-cols-1 ${service.image ? "lg:grid-cols-2 gap-12 lg:gap-16 items-start" : "max-w-4xl mx-auto"}`}>
                 {/* Image column (alternating sides) */}
@@ -321,12 +333,22 @@ const Services = () => {
             </div>
           </section>
 
-          {/* Editorial image break between tiers */}
+          {/* Editorial image breaks between tiers */}
           {index < serviceTiers.length - 1 && index === 0 && (
             <FullWidthImage
               src={editorialFloralsImage}
               alt="Sage eucalyptus and ivory garden rose arrangement detail"
               height="h-[25vh] md:h-[35vh]"
+              caption="Every petal, placed with purpose"
+            />
+          )}
+          {index < serviceTiers.length - 1 && index === 1 && (
+            <FullWidthImage
+              src={vendorDetailImage}
+              alt="Luxury wedding stationery with calligraphy and gold wax seal"
+              height="h-[25vh] md:h-[35vh]"
+              overlay
+              caption="Design-led planning for couples who value intention"
             />
           )}
         </div>

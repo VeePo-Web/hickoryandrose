@@ -27,7 +27,7 @@ const EditorialImageBreak = () => {
       {/* Top blending gradient */}
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
 
-      <div className="aspect-[21/9] md:aspect-[21/9] w-full overflow-hidden">
+      <div className="aspect-[21/9] md:aspect-[21/9] w-full overflow-hidden grain-overlay">
         <motion.img
           src={editorialImage}
           alt="Elegant floral arrangement with sage eucalyptus and ivory garden roses in warm natural light"
@@ -37,10 +37,18 @@ const EditorialImageBreak = () => {
           width={1920}
           height={823}
         />
+        {/* Vignette overlay */}
+        <div className="absolute inset-0 vignette pointer-events-none" />
       </div>
 
       {/* Bottom blending gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
+
+      {/* Corner frame accents — cinematic touch */}
+      <div className="absolute top-10 left-8 w-8 h-8 border-t border-l border-white/[0.06] z-20 pointer-events-none hidden md:block" />
+      <div className="absolute top-10 right-8 w-8 h-8 border-t border-r border-white/[0.06] z-20 pointer-events-none hidden md:block" />
+      <div className="absolute bottom-10 left-8 w-8 h-8 border-b border-l border-white/[0.06] z-20 pointer-events-none hidden md:block" />
+      <div className="absolute bottom-10 right-8 w-8 h-8 border-b border-r border-white/[0.06] z-20 pointer-events-none hidden md:block" />
 
       {/* Floating editorial typography */}
       <motion.div
