@@ -6,9 +6,9 @@ import ImageReveal from "./ImageReveal";
 import founderImage from "@/assets/founder-portrait.jpg";
 
 const credentials = [
-  { value: "150+", label: "Weddings Coordinated", icon: "✦" },
-  { value: "8", label: "Years of Experience", icon: "✦" },
-  { value: "100%", label: "Client Satisfaction", icon: "✦" },
+  { value: "150+", label: "Weddings Coordinated" },
+  { value: "8", label: "Years of Experience" },
+  { value: "100%", label: "Client Satisfaction" },
 ];
 
 const philosophyPillars = [
@@ -241,14 +241,13 @@ const FounderTeaserSection = () => {
                   onMouseEnter={() => setActivePillar(i)}
                   onMouseLeave={() => setActivePillar(null)}
                 >
-                  {/* Decorative icon */}
+                  {/* Gold-gradient diamond */}
                   <motion.span
-                    className="text-primary/10 text-xs block mb-2 group-hover:text-primary/30 transition-colors duration-500"
-                    animate={{ rotate: activePillar === i ? 180 : 0 }}
+                    className="w-2 h-2 rotate-45 block mb-2 mx-auto"
+                    style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }}
+                    animate={{ rotate: activePillar === i ? 225 : 45 }}
                     transition={{ duration: 0.4 }}
-                  >
-                    {cred.icon}
-                  </motion.span>
+                  />
                   <p className="font-serif-wedding text-xl md:text-2xl font-light text-primary/60 group-hover:text-primary transition-colors duration-500">
                     {cred.value}
                   </p>

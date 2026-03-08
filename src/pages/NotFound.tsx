@@ -7,9 +7,9 @@ import MagneticButton from "@/components/wedding/MagneticButton";
 import notfoundImage from "@/assets/notfound-editorial.jpg";
 
 const suggestedPages = [
-  { label: "Our Services", path: "/services", desc: "Day-of, partial, and full-service planning", icon: "◆" },
-  { label: "Portfolio", path: "/portfolio", desc: "See our work in refined rustic elegance", icon: "◇" },
-  { label: "Our Approach", path: "/approach", desc: "How we plan your perfect day", icon: "○" },
+  { label: "Our Services", path: "/services", desc: "Day-of, partial, and full-service planning" },
+  { label: "Portfolio", path: "/portfolio", desc: "See our work in refined rustic elegance" },
+  { label: "Our Approach", path: "/approach", desc: "How we plan your perfect day" },
 ];
 
 const NotFound = () => {
