@@ -110,6 +110,7 @@ const Index = () => {
           direction="right"
         />
         <PressMentionsSection />
+        <BrandManifestoSection />
         <FullWidthImage
           src={rockiesImage}
           alt="Cinematic aerial view of the Canadian Rocky Mountains at golden hour with alpine lake and evergreen forests"
