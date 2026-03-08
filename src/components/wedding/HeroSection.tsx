@@ -1,10 +1,11 @@
 import { ChevronDown } from "lucide-react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Navigation from "./Navigation";
 import MagneticButton from "./MagneticButton";
+import HeroFloatingInset from "./HeroFloatingInset";
+import HeroSidebars from "./HeroSidebars";
 import heroImage from "@/assets/hero-wedding-premium.jpg";
-import ceremonyImage from "@/assets/ceremony-setup.jpg";
 
 const charVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -51,7 +52,6 @@ const seasonAvailability = [
 
 const HeroSection = () => {
   const ref = useRef<HTMLElement>(null);
-  const [isInsetHovered, setIsInsetHovered] = useState(false);
   const [activeSeasonIdx, setActiveSeasonIdx] = useState(0);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -68,7 +68,6 @@ const HeroSection = () => {
     document.title = "Hickory & Rose | Edmonton's Luxury Wedding Planner";
   }, []);
 
-  // Rotate season availability
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSeasonIdx((i) => (i + 1) % seasonAvailability.length);
@@ -101,14 +100,12 @@ const HeroSection = () => {
           transition={{ duration: 20, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
           style={{ y: imgY }}
         />
-        {/* Multi-layered gradient for cinematic depth */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/15 to-black/55" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/10" />
       </div>
 
       {/* Cinematic gold-traced frame overlay */}
       <div className="absolute inset-0 pointer-events-none z-[5]" aria-hidden="true">
-        {/* Top frame line */}
         <motion.div
           className="absolute top-6 md:top-10 left-6 md:left-10 right-6 md:right-10 h-px origin-left"
           style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.2), hsl(var(--gold) / 0.08) 50%, transparent)" }}
@@ -116,7 +113,6 @@ const HeroSection = () => {
           animate={{ scaleX: 1 }}
           transition={{ duration: 1.5, delay: 2.8, ease: [0.25, 0.1, 0.25, 1] }}
         />
-        {/* Left frame line */}
         <motion.div
           className="absolute top-6 md:top-10 left-6 md:left-10 bottom-6 md:bottom-10 w-px origin-top"
           style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.2), transparent 60%)" }}
@@ -124,7 +120,6 @@ const HeroSection = () => {
           animate={{ scaleY: 1 }}
           transition={{ duration: 1.2, delay: 3.2, ease: [0.25, 0.1, 0.25, 1] }}
         />
-        {/* Bottom frame line */}
         <motion.div
           className="absolute bottom-6 md:bottom-10 left-6 md:left-10 right-6 md:right-10 h-px origin-right"
           style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.15), transparent 50%)" }}
@@ -132,7 +127,6 @@ const HeroSection = () => {
           animate={{ scaleX: 1 }}
           transition={{ duration: 1.2, delay: 3.5, ease: [0.25, 0.1, 0.25, 1] }}
         />
-        {/* Right frame line */}
         <motion.div
           className="absolute top-6 md:top-10 right-6 md:right-10 bottom-6 md:bottom-10 w-px origin-bottom hidden lg:block"
           style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.15), transparent 60%)" }}
@@ -166,82 +160,12 @@ const HeroSection = () => {
         </span>
       </motion.div>
 
-      {/* Left sidebar — "Scroll to Explore" vertical text */}
-      <motion.div
-        className="absolute left-6 md:left-10 top-1/2 z-20 hidden lg:flex flex-col items-center gap-4 pointer-events-none"
-        style={{ y: sideTextY }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 3.2, duration: 0.8 }}
-        aria-hidden="true"
-      >
-        <motion.div
-          className="w-px h-12 origin-top"
-          style={{ background: "linear-gradient(180deg, transparent, hsl(var(--gold) / 0.3))" }}
-          initial={{ scaleY: 0 }}
-          animate={{ scaleY: 1 }}
-          transition={{ delay: 3.4, duration: 0.8 }}
-        />
-        <span
-          className="font-sans-wedding text-[0.45rem] tracking-[0.3em] uppercase text-white/20 font-light"
-          style={{ writingMode: "vertical-rl" }}
-        >
-          Scroll to Explore
-        </span>
-        <motion.div
-          className="w-px h-8 origin-top"
-          style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.2), transparent)" }}
-          initial={{ scaleY: 0 }}
-          animate={{ scaleY: 1 }}
-          transition={{ delay: 3.6, duration: 0.6 }}
-        />
-      </motion.div>
-
-      {/* Right sidebar — Animated season availability ticker */}
-      <motion.div
-        className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 z-20 hidden lg:flex flex-col items-center gap-4 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 3.5, duration: 0.8 }}
-        aria-hidden="true"
-      >
-        <span className="font-sans-wedding text-[0.4rem] tracking-[0.25em] uppercase text-white/15" style={{ writingMode: "vertical-rl" }}>
-          Now Booking
-        </span>
-        <motion.div
-          className="w-px h-6 origin-top"
-          style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.25), transparent)" }}
-          initial={{ scaleY: 0 }}
-          animate={{ scaleY: 1 }}
-          transition={{ delay: 3.7, duration: 0.5 }}
-        />
-        <div className="h-10 overflow-hidden relative">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeSeasonIdx}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.4 }}
-              className="text-center"
-            >
-              <span className="font-serif-wedding text-[0.6rem] text-white/25 block" style={{ writingMode: "vertical-rl" }}>
-                {seasonAvailability[activeSeasonIdx].label}
-              </span>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-        <div className="flex flex-col items-center gap-1">
-          {seasonAvailability.map((_, i) => (
-            <span
-              key={i}
-              className={`w-1 h-1 rounded-full transition-all duration-300 ${
-                i === activeSeasonIdx ? "bg-gold/50 scale-125" : "bg-white/10"
-              }`}
-            />
-          ))}
-        </div>
-      </motion.div>
+      {/* Sidebars */}
+      <HeroSidebars
+        sideTextY={sideTextY}
+        activeSeasonIdx={activeSeasonIdx}
+        seasonAvailability={seasonAvailability}
+      />
 
       <Navigation variant="overlay" />
 
@@ -309,7 +233,6 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 2.8 }}
           className="absolute bottom-24 left-0 right-0"
         >
-          {/* Gold gradient separator line */}
           <motion.div
             className="w-48 h-px mx-auto mb-5"
             initial={{ scaleX: 0 }}
@@ -339,77 +262,11 @@ const HeroSection = () => {
         </motion.div>
       </motion.div>
 
-      {/* Floating editorial inset image — bottom-right corner */}
-      <motion.div
-        className="absolute bottom-16 right-6 md:right-12 z-20 hidden lg:block"
-        style={{ y: secondaryImgY, opacity: secondaryImgOpacity }}
-        initial={{ opacity: 0, y: 30, clipPath: "inset(100% 0 0 0)" }}
-        animate={{ opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)" }}
-        transition={{ duration: 1.2, delay: 2.5, ease: [0.25, 0.1, 0.25, 1] }}
-      >
-        <div
-          className="relative group"
-          onMouseEnter={() => setIsInsetHovered(true)}
-          onMouseLeave={() => setIsInsetHovered(false)}
-        >
-          <div className="w-40 xl:w-48 aspect-[3/4] overflow-hidden shadow-2xl relative">
-            {/* Cinematic sprocket holes — film strip effect */}
-            <div className="absolute top-0 bottom-0 left-0 w-3 z-10 flex flex-col justify-between py-3 items-center pointer-events-none">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <span
-                  key={i}
-                  className="w-1.5 h-1.5 rounded-[1px] border border-white/10"
-                  style={{ background: "hsl(var(--gold) / 0.06)" }}
-                />
-              ))}
-            </div>
-            <img
-              src={ceremonyImage}
-              alt="Mountain barn ceremony with candlelit aisle and eucalyptus garlands"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="eager"
-            />
-            {/* Cinematic gradient on hover */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
-              animate={{ opacity: isInsetHovered ? 1 : 0 }}
-              transition={{ duration: 0.4 }}
-            />
-            {/* Corner frame accents — gold gradient */}
-            <div className="absolute top-2 left-2 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true">
-              <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
-              <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), transparent)" }} />
-            </div>
-            <div className="absolute bottom-2 right-2 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true">
-              <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.3), transparent)" }} />
-              <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
-            </div>
-            {/* Hover caption */}
-            <motion.div
-              className="absolute bottom-3 left-3 right-3"
-              initial={false}
-              animate={{ opacity: isInsetHovered ? 1 : 0, y: isInsetHovered ? 0 : 6 }}
-              transition={{ duration: 0.3 }}
-            >
-              <p className="font-serif-wedding text-[0.6rem] text-white/60 italic">
-                "A ceremony as calm as the mountains"
-              </p>
-            </motion.div>
-          </div>
-          {/* Elegant caption below inset */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 3.2, duration: 0.6 }}
-            className="flex items-center justify-end gap-2 mt-3"
-          >
-            <span className="w-4 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2))" }} />
-            <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/30">
-              Jasper · Alberta
-            </span>
-          </motion.div>
-        </div>
-      </motion.div>
+      {/* Floating editorial inset image */}
+      <HeroFloatingInset
+        secondaryImgY={secondaryImgY}
+        secondaryImgOpacity={secondaryImgOpacity}
+      />
 
       {/* Scroll Indicator */}
       <motion.button

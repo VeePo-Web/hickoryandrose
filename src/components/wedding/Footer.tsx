@@ -1,7 +1,9 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Mail, MapPin, ArrowUp, Check } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Mail, MapPin, ArrowUp } from "lucide-react";
+import { motion } from "framer-motion";
+import FooterNewsletter from "./FooterNewsletter";
+import FooterServiceAreas from "./FooterServiceAreas";
 
 const footerLinks = [
   { label: "Services", path: "/services" },
@@ -12,34 +14,11 @@ const footerLinks = [
   { label: "Inquire", path: "/inquire" },
 ];
 
-const serviceAreas = [
-  { name: "Edmonton", venues: 45 },
-  { name: "Jasper", venues: 12 },
-  { name: "Banff", venues: 18 },
-  { name: "Lake Louise", venues: 8 },
-  { name: "Calgary", venues: 22 },
-  { name: "The Canadian Rockies", venues: 30 },
-];
-
 const Footer = () => {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [focused, setFocused] = useState(false);
-  const [hoveredArea, setHoveredArea] = useState<number | null>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
   const footerRef = useRef<HTMLElement>(null);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email.trim() && email.includes("@")) {
-      setSubmitted(true);
-      setEmail("");
-      setTimeout(() => setSubmitted(false), 4000);
-    }
   };
 
   return (
@@ -62,7 +41,6 @@ const Footer = () => {
         transition={{ duration: 2, ease: [0.25, 0.1, 0.25, 1] }}
         aria-hidden="true"
       >
-        {/* Radial gold glow behind monogram */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 xl:w-96 xl:h-96 rounded-full"
           style={{
@@ -77,102 +55,8 @@ const Footer = () => {
         </span>
       </motion.div>
 
-      {/* Pre-footer email capture — upgraded with micro-interactions */}
-      <div className="border-b border-background/[0.06]">
-        <div className="container mx-auto px-6 lg:px-8 max-w-6xl py-16 md:py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
-          >
-            <div className="md:col-span-5">
-              <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-background/20 mb-3">
-                Stay Inspired
-              </p>
-              <h3 className="font-serif-wedding text-2xl md:text-3xl text-background/70 font-light leading-tight">
-                Planning wisdom, delivered with care.
-              </h3>
-              <p className="font-sans-wedding text-xs text-background/25 font-light mt-3 leading-relaxed max-w-xs">
-                Curated inspiration, vendor insights, and planning tips — never spam, always intentional.
-              </p>
-            </div>
-            <div className="md:col-span-7 md:flex md:justify-end">
-              <AnimatePresence mode="wait">
-                {submitted ? (
-                  <motion.div
-                    key="success"
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.4 }}
-                    className="flex items-center gap-3"
-                  >
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 15, delay: 0.1 }}
-                      className="w-8 h-8 rounded-full border border-background/20 flex items-center justify-center"
-                    >
-                      <Check size={14} strokeWidth={1.5} className="text-background/50" />
-                    </motion.div>
-                    <div>
-                      <p className="font-serif-wedding text-sm text-background/60 italic">
-                        Welcome to the Hickory & Rose community.
-                      </p>
-                      <p className="font-sans-wedding text-[0.55rem] text-background/20 mt-1">
-                        Check your inbox for a warm welcome.
-                      </p>
-                    </div>
-                  </motion.div>
-                ) : (
-                  <motion.form
-                    key="form"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    onSubmit={handleSubscribe}
-                    className="flex flex-col sm:flex-row gap-3 max-w-md w-full md:w-auto"
-                  >
-                    <div className="relative flex-1">
-                      <input
-                        ref={inputRef}
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        onFocus={() => setFocused(true)}
-                        onBlur={() => setFocused(false)}
-                        placeholder="Your email address"
-                        className="w-full bg-transparent border-b border-background/15 focus:border-background/40 py-3 px-0 text-sm text-background/60 placeholder:text-background/20 font-sans-wedding font-light outline-none transition-colors duration-300"
-                        aria-label="Email address for newsletter"
-                        required
-                      />
-                      {/* Animated gold focus line */}
-                      <motion.div
-                        className="absolute bottom-0 left-0 right-0 h-px origin-left"
-                        style={{
-                          background: "linear-gradient(90deg, hsl(var(--gold, 38 60% 55%)), hsl(var(--primary)))",
-                        }}
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: focused ? 1 : 0 }}
-                        transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="inline-flex items-center justify-center px-8 py-3 text-[0.6rem] tracking-[0.2em] uppercase font-sans-wedding font-light border border-background/15 text-background/40 hover:text-background/80 hover:border-background/40 transition-all duration-300 shrink-0 relative overflow-hidden group"
-                    >
-                      <span className="absolute inset-0 bg-background/5 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
-                      <span className="relative z-10">Subscribe</span>
-                    </button>
-                  </motion.form>
-                )}
-              </AnimatePresence>
-            </div>
-          </motion.div>
-        </div>
-      </div>
+      {/* Pre-footer email capture */}
+      <FooterNewsletter />
 
       <div className="container mx-auto px-6 lg:px-8 max-w-6xl pt-24 md:pt-32 pb-10 md:pb-14">
         {/* Top: Large editorial monogram + tagline */}
@@ -285,68 +169,12 @@ const Footer = () => {
               </div>
 
               {/* Social + Service area */}
-              <div>
-                <p className="font-overline text-background/20 mb-5 text-[0.6rem]">
-                  Follow
-                </p>
-                <a
-                  href="https://www.instagram.com/hickoryandrose"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 font-sans-wedding text-sm text-background/40 hover:text-background transition-colors duration-200 font-light group/social relative overflow-hidden"
-                >
-                  <Instagram size={14} strokeWidth={1.5} className="text-background/20 group-hover/social:text-background/50 transition-colors duration-300" />
-                  <span className="relative">
-                    @hickoryandrose
-                    {/* Gold shimmer sweep on hover */}
-                    <span
-                      className="absolute inset-0 -translate-x-full group-hover/social:translate-x-[200%] transition-transform duration-700 ease-out pointer-events-none"
-                      style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2), transparent)", width: "60%" }}
-                    />
-                  </span>
-                </a>
-
-                <div className="mt-8">
-                  <p className="font-overline text-background/20 mb-3 text-[0.6rem]">
-                    Serving
-                  </p>
-                  <div className="flex flex-wrap gap-x-1.5 gap-y-1">
-                    {serviceAreas.map((area, i) => (
-                      <span
-                        key={area.name}
-                        className="inline-flex items-center gap-1 group/area cursor-default"
-                        onMouseEnter={() => setHoveredArea(i)}
-                        onMouseLeave={() => setHoveredArea(null)}
-                      >
-                        <span className="font-sans-wedding text-[0.7rem] text-background/20 font-light group-hover/area:text-background/50 transition-colors duration-300">
-                          {area.name}
-                        </span>
-                        <AnimatePresence>
-                          {hoveredArea === i && (
-                            <motion.span
-                              initial={{ opacity: 0, width: 0 }}
-                              animate={{ opacity: 1, width: "auto" }}
-                              exit={{ opacity: 0, width: 0 }}
-                              transition={{ duration: 0.2 }}
-                              className="font-serif-wedding text-[0.55rem] italic text-background/15 overflow-hidden whitespace-nowrap"
-                            >
-                              ({area.venues} venues)
-                            </motion.span>
-                          )}
-                        </AnimatePresence>
-                        {i < serviceAreas.length - 1 && (
-                          <span className="text-background/10 mx-0.5">·</span>
-                        )}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <FooterServiceAreas />
             </div>
           </motion.div>
         </div>
 
-      {/* Centered monogram above legal bar */}
+        {/* Centered monogram above legal bar */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -385,7 +213,6 @@ const Footer = () => {
               background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.2), transparent)",
             }}
           >
-            {/* Traveling shimmer */}
             <motion.span
               className="absolute inset-0"
               animate={{ x: ["-100%", "200%"] }}
@@ -431,13 +258,6 @@ const Footer = () => {
                 <span className="relative z-10">
                   <ArrowUp size={10} strokeWidth={1.5} className="group-hover:-translate-y-0.5 transition-transform duration-200" />
                 </span>
-                {/* Gold ambient glow on hover */}
-                <motion.span
-                  className="absolute -inset-4 rounded-full pointer-events-none"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.12), transparent 70%)" }}
-                />
                 <span
                   className="absolute -inset-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.08), transparent 70%)" }}
