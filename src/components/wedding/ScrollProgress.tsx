@@ -39,19 +39,27 @@ const ScrollProgress = memo(() => {
           background: "linear-gradient(90deg, hsl(var(--sage-deep)), hsl(var(--gold)), hsl(var(--sage-deep)))",
         }}
       />
-      {/* Leading edge glow dot */}
+      {/* Leading edge diamond ornament with gold glow trail */}
       <motion.div
         className="fixed top-0 z-[61] pointer-events-none"
         style={{
-          left: useTransform(scaleX, (v) => `calc(${v * 100}% - 3px)`),
+          left: useTransform(scaleX, (v) => `calc(${v * 100}% - 4px)`),
           opacity: useTransform(scaleX, [0, 0.02, 0.98, 1], [0, 1, 1, 0]),
         }}
       >
+        {/* Trailing glow smear */}
         <div
-          className="w-1.5 h-1.5 rounded-full"
+          className="absolute top-[1px] right-full w-12 h-[3px] opacity-40"
+          style={{
+            background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.6))",
+          }}
+        />
+        {/* Diamond ornament */}
+        <div
+          className="w-2 h-2 rotate-45 -translate-y-[1px]"
           style={{
             background: "hsl(var(--gold))",
-            boxShadow: "0 0 8px 2px hsl(var(--gold) / 0.5)",
+            boxShadow: "0 0 10px 3px hsl(var(--gold) / 0.4), 0 0 20px 6px hsl(var(--gold) / 0.15)",
           }}
         />
       </motion.div>

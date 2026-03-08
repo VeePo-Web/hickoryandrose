@@ -58,6 +58,18 @@ const NowBookingSection = () => {
       </motion.div>
 
       <Link to="/inquire" className="block group relative" aria-label="Inquire about booking">
+        {/* Gold shimmer sweep on hover */}
+        <div
+          className="absolute inset-0 pointer-events-none overflow-hidden z-[1]"
+          aria-hidden="true"
+        >
+          <div
+            className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-in-out"
+            style={{
+              background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.06) 40%, hsl(var(--gold) / 0.12) 50%, hsl(var(--gold) / 0.06) 60%, transparent 100%)",
+            }}
+          />
+        </div>
         <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center">
             {/* Left: Status indicator + dates */}
