@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { z } from "zod";
 import Navigation from "@/components/wedding/Navigation";
 import Footer from "@/components/wedding/Footer";
+import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import { toast } from "@/hooks/use-toast";
 import { Heart, ArrowRight, ArrowLeft } from "lucide-react";
