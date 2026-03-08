@@ -22,6 +22,7 @@ export default {
         "display-xl": ["clamp(2.75rem, 5.5vw, 5rem)", { lineHeight: "1.05", letterSpacing: "-0.03em", fontWeight: "300" }],
         "display-lg": ["clamp(2rem, 4vw, 3.5rem)", { lineHeight: "1.1", letterSpacing: "-0.025em", fontWeight: "300" }],
         "display-md": ["clamp(1.5rem, 3vw, 2rem)", { lineHeight: "1.2", letterSpacing: "-0.015em", fontWeight: "400" }],
+        "display-sm": ["clamp(1.125rem, 2vw, 1.5rem)", { lineHeight: "1.3", letterSpacing: "-0.01em", fontWeight: "400" }],
         "pull-quote": ["clamp(1.5rem, 3vw, 2.25rem)", { lineHeight: "1.35", letterSpacing: "-0.01em", fontWeight: "300" }],
         "body-lg": ["1.0625rem", { lineHeight: "1.7", fontWeight: "300" }],
         "body": ["0.9375rem", { lineHeight: "1.7", fontWeight: "300" }],
