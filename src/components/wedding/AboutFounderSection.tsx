@@ -12,6 +12,7 @@ const AboutFounderSection = () => {
     offset: ["start end", "end start"],
   });
   const founderImgY = useTransform(founderScroll, [0, 1], ["4%", "-4%"]);
+  const founderImgScale = useTransform(founderScroll, [0, 0.5, 1], [1.05, 1, 0.98]);
 
   return (
     <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
