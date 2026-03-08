@@ -80,7 +80,7 @@ const PreFooterDivider = () => {
                 className="w-24 h-px mx-auto lg:mx-0 mb-10 origin-center lg:origin-left"
                 style={{
                   scaleX: lineScale,
-                  background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.3), transparent)",
+                  background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.35), transparent)",
                 }}
               />
 
@@ -123,10 +123,16 @@ const PreFooterDivider = () => {
 
               <Link
                 to="/inquire"
-                className="inline-flex items-center font-overline text-primary/60 hover:text-primary transition-colors duration-300 group"
+                className="inline-flex items-center font-overline transition-colors duration-300 group relative"
+                style={{
+                  background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--gold)))",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
               >
                 Check Availability
-                <span className="ml-2 group-hover:translate-x-1.5 transition-transform duration-300">
+                <span className="ml-2 group-hover:translate-x-1.5 transition-transform duration-300" style={{ WebkitTextFillColor: "hsl(var(--gold))" }}>
                   →
                 </span>
               </Link>
@@ -136,7 +142,7 @@ const PreFooterDivider = () => {
                 className="w-24 h-px mx-auto lg:mx-0 mt-10 origin-center lg:origin-left"
                 style={{
                   scaleX: lineScale,
-                  background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.3), transparent)",
+                  background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.35), transparent)",
                 }}
               />
 

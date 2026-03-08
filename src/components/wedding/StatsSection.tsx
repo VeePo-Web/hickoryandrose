@@ -149,7 +149,7 @@ const StatsSection = () => {
           className="h-px mb-12 md:mb-16 origin-center"
           style={{
             scaleX: horizontalRuleScale,
-            background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.15), transparent)",
+            background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25), hsl(var(--primary) / 0.15), transparent)",
           }}
           aria-hidden="true"
         />
