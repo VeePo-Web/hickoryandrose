@@ -49,7 +49,7 @@ const Inquire = () => {
   };
 
   const inputClasses =
-    "w-full px-4 py-3.5 bg-transparent border border-border font-sans-wedding text-sm text-foreground placeholder:text-brand-text-light focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all duration-200";
+    "w-full px-4 py-3.5 bg-transparent border border-border font-sans-wedding text-body text-foreground font-light placeholder:text-brand-text-light/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all duration-200";
 
   const renderField = (
     id: string,
