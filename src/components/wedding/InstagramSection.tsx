@@ -21,7 +21,13 @@ const InstagramSection = () => {
   return (
     <section className="bg-background" aria-label="Instagram gallery">
       <ScrollReveal>
-        <div className="text-center py-10 md:py-14">
+        <div className="text-center py-12 md:py-16">
+          {/* Decorative header */}
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <span className="w-12 h-px bg-border" />
+            <span className="font-script text-xl text-primary/40">H & R</span>
+            <span className="w-12 h-px bg-border" />
+          </div>
           <a
             href="https://www.instagram.com/hickoryandrose"
             target="_blank"

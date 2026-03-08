@@ -23,7 +23,7 @@ const FounderTeaserSection = () => {
           {/* Portrait with subtle parallax */}
           <ScrollReveal className="lg:col-span-3">
             <ImageReveal direction="left" delay={0.1}>
-              <div className="aspect-[4/5] max-w-md mx-auto lg:max-w-none overflow-hidden">
+              <div className="aspect-[4/5] max-w-md mx-auto lg:max-w-none overflow-hidden relative">
                 <motion.img
                   src={founderImage}
                   alt="Founder of Hickory & Rose, smiling warmly in a garden setting"
@@ -33,6 +33,10 @@ const FounderTeaserSection = () => {
                   width={1024}
                   height={1024}
                 />
+                {/* Decorative corner accent */}
+                <div className="absolute bottom-0 right-0 w-24 h-24 pointer-events-none">
+                  <div className="absolute bottom-4 right-4 w-12 h-12 border-b border-r border-primary-foreground/20" />
+                </div>
               </div>
             </ImageReveal>
           </ScrollReveal>
@@ -40,6 +44,12 @@ const FounderTeaserSection = () => {
           {/* Story */}
           <ScrollReveal delay={0.15} className="lg:col-span-2">
             <div>
+              {/* Decorative top accent */}
+              <div className="flex items-center gap-3 mb-6">
+                <span className="w-8 h-px bg-primary/30" />
+                <span className="font-script text-sm text-primary/40">H & R</span>
+              </div>
+
               <p className="font-overline text-muted-foreground mb-4">
                 Meet the Planner
               </p>
@@ -56,6 +66,14 @@ const FounderTeaserSection = () => {
                 My mission is simple: handle every detail with quiet confidence
                 so you can be fully present with the people you love.
               </p>
+
+              {/* Pull quote accent */}
+              <div className="border-l-2 border-primary/20 pl-5 mb-8">
+                <p className="font-serif-wedding text-base text-foreground/70 italic leading-relaxed">
+                  "Calm is not the absence of planning — it's the presence of it."
+                </p>
+              </div>
+
               <Link
                 to="/about"
                 className="inline-flex items-center font-sans-wedding text-xs tracking-[0.15em] uppercase text-accent hover:text-primary transition-colors duration-200 group"
