@@ -1,191 +1,34 @@
 
-# Wedding Website - Multi-Page Implementation Plan
 
-## Overview
-Creating a complete multi-page wedding website for "Alicia & Andres" with faithful recreation of the design, including 5 main pages matching the navigation structure.
+# Approach Page -- Next-Level Polish Pass
 
-## Page Structure
+## Audit Findings
+The page already has: staggered hero, stats ribbon, accordion differentiators, dual testimonials, bridge section, founder attribution. Console shows only unrelated warnings (FooterNewsletter ref, CursorFollower ref). The Approach page itself is clean.
 
-Based on the navigation in the design image, we'll create these pages:
+## Remaining Gaps to Upgrade
 
-| Route | Page | Content |
-|-------|------|---------|
-| `/` | Home | Hero section with full navigation |
-| `/our-story` | Our Story | Couple's story with photos |
-| `/details` | Details | Location, Wedding Party, Accommodations |
-| `/schedule` | Schedule | Itinerary/Timeline for wedding weekend |
-| `/registry` | Registry | Gift registry information and links |
+### 1. Process Timeline -- Missing Micro-Narrative Intros (ApproachProcessTimeline.tsx)
+Each step jumps straight into description. Add a one-line italic "hook" sentence before the description for steps that don't have pull quotes. This creates editorial rhythm where every step opens with emotional context before practical detail. Add hooks to steps 02 and 04 which currently lack pull quotes.
 
-## Design System
+### 2. Philosophy Section -- Missing Scroll-Linked Parallax on Image (Approach.tsx ~line 216-239)
+The desktop portrait image is static. Add a subtle `useScroll` + `useTransform` parallax (y shift of ~30px over scroll range) to the image, matching the editorial motion language used elsewhere on the site.
 
-### Color Palette (to add to CSS variables)
-```text
---wedding-sage: 65 12% 45%        (Olive/sage for hero overlay, location section)
---wedding-cream: 40 30% 97%       (Off-white background sections)
---wedding-text: 0 0% 20%          (Dark text color)
---wedding-teal: 175 50% 35%       (Accent for buttons, day labels)
-```
+### 3. Stats Ribbon -- Numbers Lack Stagger Rhythm (ApproachStatsRibbon.tsx)
+All 4 counters start animating simultaneously when in view. Stagger each counter's start by 200ms using the existing `useInView` + a delay parameter, so they cascade left-to-right for a more cinematic reveal.
 
-### Typography (Google Fonts to import)
-- **Great Vibes**: Script font for "Alicia & Andres" title
-- **Cormorant Garamond**: Elegant serif for section headings
-- **Open Sans**: Clean sans-serif for body text and navigation
+### 4. Brand Quote Section -- Quote Mark Too Small (Approach.tsx ~line 484)
+The decorative `"` is `text-6xl` at very low opacity. Increase to `text-8xl` and bump opacity slightly to `0.08` for more editorial gravitas matching the testimonial section's `text-7xl` quotation marks.
 
-## Files to Create
+### 5. "Your Next Step" Bridge -- Missing Soft CTA Button (Approach.tsx ~line 441-470)
+The bridge section has trust chips but no actual call-to-action link. Add a subtle gold-outlined button linking to `/inquire` below the chips: "Begin the Conversation" with hover shimmer.
 
-### Shared Components
-```text
-src/components/wedding/
-├── Navigation.tsx         - Persistent navigation header
-├── Footer.tsx             - RSVP footer section
-├── BranchDecoration.tsx   - Reusable SVG branch illustration
-```
+### 6. Dual Testimonial -- Add Staggered Entrance for Quote Marks (Approach.tsx ~line 382-438)
+The gold quotation marks appear instantly. Add a subtle `y: 10` → `0` with 0.3s delay offset between the two columns for a more choreographed reveal.
 
-### Page Components
-```text
-src/pages/
-├── Index.tsx              - Home page (Hero + overview)
-├── OurStory.tsx           - Our Story page
-├── Details.tsx            - Details page (Location, Party, Hotels)
-├── Schedule.tsx           - Schedule/Itinerary page
-├── Registry.tsx           - Registry page
-```
+## Files Modified
+- `src/pages/Approach.tsx` -- Parallax on philosophy image, larger quote mark, CTA button in bridge
+- `src/components/wedding/ApproachProcessTimeline.tsx` -- Add pull quotes to steps 02 and 04
+- `src/components/wedding/ApproachStatsRibbon.tsx` -- Stagger counter start delays
 
-### Section Components
-```text
-src/components/wedding/
-├── HeroSection.tsx        - Full-height hero with overlay
-├── StorySection.tsx       - Story content with photo
-├── WeddingPartySection.tsx - Groomsmen/Bridesmaids tabs
-├── LocationSection.tsx    - Venue information
-├── AccommodationsSection.tsx - Hotel cards
-├── ItinerarySection.tsx   - Timeline with day tabs
-├── RegistrySection.tsx    - Registry logos and info
-```
+## No New Dependencies
 
-## Files to Modify
-
-### 1. src/index.css
-Add wedding-specific CSS variables and Google Fonts import:
-- Import Great Vibes, Cormorant Garamond, Open Sans from Google Fonts
-- Add wedding color variables
-- Add custom font-family classes
-
-### 2. tailwind.config.ts
-Extend theme with:
-- Wedding color palette using CSS variables
-- Font family definitions for script, serif, sans
-
-### 3. src/App.tsx
-Add routes:
-- `/` - Home
-- `/our-story` - Our Story
-- `/details` - Details
-- `/schedule` - Schedule
-- `/registry` - Registry
-
-## Detailed Component Specifications
-
-### Navigation Component
-- Fixed/sticky header on all pages
-- Links: Home, Our Story, Details, Schedule, Registry
-- Active state with underline accent
-- On hero: transparent overlay style
-- On other pages: solid cream background
-
-### Hero Section (Home Page)
-- Full viewport height (100vh)
-- Background: Placeholder couple photo with sage overlay
-- Centered script title "Alicia & Andres"
-- Date line: "February 15, 2025 | Joshua Tree, California"
-- Scroll indicator arrow at bottom
-
-### Our Story Page
-- Branch decoration SVG at top
-- "Our Story" heading in serif
-- Two-column layout: text left, photo right
-- Cream background
-- Story paragraphs with date highlights
-
-### Details Page
-Contains 3 sections:
-
-**Wedding Party Section:**
-- Tab switcher: Groomsmen | Bridesmaids
-- 4 circular avatar photos per tab
-- Names beneath each photo
-- Groomsmen: Julian Bernard, Damien Huber, Mark Pavone, David Blaine
-- Bridesmaids: Similar structure with female names
-
-**Location Section:**
-- Sage/olive background color
-- "The Location" label
-- "Joshua Tree Carmine Resort" large heading
-- Description paragraph
-- Full-width venue/couple photo
-
-**Accommodations Section:**
-- White background
-- 3-column grid of hotel cards
-- Each card: Name, description, "Reserve" button
-- Hotels: Joshua Tree Inn, Desert Sage Lodge, Carmine Resort
-
-### Schedule Page
-- "Itinerary" heading
-- 3 date tabs: Feb 14, Feb 15 (Wedding Day), Feb 16
-- Each day has timeline entries:
-  - Time marker
-  - Event name
-  - Location/venue
-  - Brief description
-
-### Registry Page
-- Branch decoration SVG
-- "Registry" heading
-- Paragraph about gifts
-- 3 registry badges/logos as styled text blocks:
-  - Crate & Barrel
-  - Target
-  - Williams Sonoma
-
-### Footer Component
-- Simple cream background
-- Centered "RSVP" text or button
-- Optional: Copyright line
-
-## Responsive Breakpoints
-
-### Desktop (default)
-- Full layouts as designed
-- 3-column grids for accommodations
-- 4 avatars in row for wedding party
-
-### Tablet (md: 768px)
-- 2-column grids where applicable
-- Slightly reduced padding
-
-### Mobile (sm: 640px)
-- Single column layouts
-- Hamburger menu for navigation
-- Stacked sections
-- 2x2 grid for wedding party avatars
-
-## Image Strategy
-Using placeholder images from Unsplash or similar:
-- Hero: Desert/couple themed landscape
-- Story: Couple portrait
-- Location: Joshua Tree landscape
-- Accommodations: Hotel exterior placeholders
-- Wedding Party: Generic avatar placeholders
-
-## Implementation Order
-
-1. **Foundation** - Update design system (CSS, Tailwind config)
-2. **Shared Components** - Navigation, Footer, Branch decoration
-3. **Home Page** - Hero section with navigation overlay
-4. **Our Story Page** - Story content and layout
-5. **Details Page** - Location, Wedding Party, Accommodations
-6. **Schedule Page** - Itinerary with tabs
-7. **Registry Page** - Registry section
-8. **App Routes** - Wire up all routes in App.tsx
-9. **Polish** - Responsive adjustments, smooth scroll, hover states
