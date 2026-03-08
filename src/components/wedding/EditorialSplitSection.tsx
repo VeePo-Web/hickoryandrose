@@ -17,6 +17,8 @@ const EditorialSplitSection = () => {
   const quoteLineH = useTransform(scrollYProgress, [0.2, 0.6], ["0%", "100%"]);
   const floatingTextY = useTransform(scrollYProgress, [0, 1], [20, -20]);
   const decorativeRotate = useTransform(scrollYProgress, [0, 1], [-3, 3]);
+  const centerLineScale = useTransform(scrollYProgress, [0.1, 0.7], [0, 1]);
+  const glowOpacity = useTransform(scrollYProgress, [0.3, 0.5, 0.7], [0, 0.08, 0]);
 
   return (
     <section
