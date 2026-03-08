@@ -27,14 +27,19 @@ const CTASection = () => {
           loading="lazy"
           aria-hidden="true"
         />
-        {/* Gradient overlay — warm bottom fade for editorial depth */}
+        {/* Multi-layer gradient for cinematic depth */}
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/65 to-foreground/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-foreground/15 via-transparent to-foreground/10" />
       </div>
 
       <div className="relative container mx-auto px-6 lg:px-8 text-center max-w-2xl">
         <ScrollReveal>
-          <p className="font-overline text-white/30 mb-6">
-            Let's Begin
+          <p className="font-sans-wedding text-label uppercase text-white/30 mb-6">
+            <span className="inline-flex items-center gap-3">
+              <span className="w-5 h-px bg-white/20" />
+              Let's Begin
+              <span className="w-5 h-px bg-white/20" />
+            </span>
           </p>
 
           <motion.div
@@ -42,19 +47,33 @@ const CTASection = () => {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="w-16 h-px bg-white/20 mx-auto mb-10 origin-center"
+            className="w-16 h-px bg-white/15 mx-auto mb-10 origin-center"
           />
 
           <h2 className="font-serif-wedding text-display-lg text-white mb-4 leading-tight">
             Ready to feel calm about your wedding day?
           </h2>
-          <p className="font-sans-wedding text-sm text-white/60 leading-relaxed mb-12 max-w-md mx-auto">
+          <p className="font-sans-wedding text-sm text-white/50 leading-relaxed mb-12 max-w-md mx-auto font-light">
             Let's talk about your vision, your day, and how Hickory & Rose can
             make it effortlessly beautiful.
           </p>
+
           <MagneticButton to="/inquire" variant="outline-light">
-            Let's Talk
+            Begin Your Story
           </MagneticButton>
+
+          {/* Subtle bottom attribution */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="mt-16"
+          >
+            <span className="font-script text-lg text-white/15">
+              Hickory & Rose
+            </span>
+          </motion.div>
         </ScrollReveal>
       </div>
     </section>
