@@ -32,6 +32,20 @@ const CTASection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/15 via-transparent to-foreground/10" />
       </div>
 
+      {/* Decorative background monogram */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 2 }}
+        aria-hidden="true"
+      >
+        <span className="font-script text-[12rem] md:text-[18rem] text-white/[0.03] select-none leading-none">
+          &
+        </span>
+      </motion.div>
+
       <div className="relative container mx-auto px-6 lg:px-8 text-center max-w-2xl">
         <ScrollReveal>
           <p className="font-sans-wedding text-label uppercase text-white/30 mb-6">
@@ -53,9 +67,14 @@ const CTASection = () => {
           <h2 className="font-serif-wedding text-display-lg text-white mb-4 leading-tight">
             Ready to feel calm about your wedding day?
           </h2>
-          <p className="font-sans-wedding text-sm text-white/50 leading-relaxed mb-12 max-w-md mx-auto font-light">
+          <p className="font-sans-wedding text-sm text-white/50 leading-relaxed mb-4 max-w-md mx-auto font-light">
             Let's talk about your vision, your day, and how Hickory & Rose can
             make it effortlessly beautiful.
+          </p>
+
+          {/* Trust line */}
+          <p className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-white/25 mb-12">
+            Complimentary discovery call · No obligation · Typically responds within 48 hours
           </p>
 
           <MagneticButton to="/inquire" variant="outline-light">
