@@ -54,7 +54,7 @@ const StatsSection = () => {
     >
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
         <ScrollReveal>
-          <p className="font-overline text-background/25 mb-16 md:mb-24 text-center">
+          <p className="font-sans-wedding text-label uppercase text-background/25 mb-16 md:mb-24 text-center tracking-[0.2em]">
             By the Numbers
           </p>
         </ScrollReveal>
@@ -73,10 +73,8 @@ const StatsSection = () => {
                 ease: [0.25, 0.1, 0.25, 1],
               }}
               className={`py-12 md:py-16 px-4 md:px-8 group ${
-                /* Top border for rows 2+ */
                 index >= 2 ? "border-t border-background/8" : ""
               } ${
-                /* Left border for right column */
                 index % 2 === 1 ? "md:border-l md:border-background/8" : ""
               }`}
             >
@@ -85,7 +83,7 @@ const StatsSection = () => {
               </p>
               <div className="flex items-center gap-3">
                 <span className="w-6 h-px bg-primary/50" />
-                <p className="font-overline text-background/40">{stat.label}</p>
+                <p className="font-sans-wedding text-label uppercase text-background/40">{stat.label}</p>
               </div>
               <p className="font-sans-wedding text-xs text-background/20 mt-2 font-light italic">
                 {stat.detail}

@@ -18,14 +18,14 @@ import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import venueImage from "@/assets/portfolio-venue.jpg";
 
 const weddingStories = [
-  { src: heroImage, alt: "Elegant garden reception tablescape at golden hour", couple: "Sarah & Michael", venue: "Fairmont Hotel Macdonald", season: "Summer", category: "Full Planning", aspect: "aspect-[3/4]" },
-  { src: receptionImage, alt: "Rustic farmhouse reception with eucalyptus and candlelight", couple: "Emma & James", venue: "The Glass House", season: "Autumn", category: "Full Planning", aspect: "aspect-square" },
-  { src: ceremonyImage, alt: "Mountain ceremony with floral arch and white draping", couple: "Olivia & Noah", venue: "Jasper Park Lodge", season: "Summer", category: "Partial Planning", aspect: "aspect-[4/5]" },
-  { src: bouquetImage, alt: "Bridal bouquet with white roses and sage eucalyptus", couple: "Alyssa & Daniel", venue: "Art Gallery of Alberta", season: "Spring", category: "Day-Of", aspect: "aspect-[3/4]" },
-  { src: venueImage, alt: "Rustic barn venue at twilight with string lights", couple: "Lauren & Ethan", venue: "Willow Creek Barn", season: "Autumn", category: "Full Planning", aspect: "aspect-[16/10]" },
-  { src: editorialImage, alt: "Sage and ivory floral arrangement detail", couple: "Hannah & Liam", venue: "Muttart Conservatory", season: "Winter", category: "Day-Of", aspect: "aspect-square" },
-  { src: firstDanceImage, alt: "First dance under string lights at outdoor reception", couple: "Rachel & Marcus", venue: "River Valley Estate", season: "Summer", category: "Partial Planning", aspect: "aspect-[3/4]" },
-  { src: detailImage, alt: "Calligraphy place card with gold cutlery detail", couple: "Claire & Jonathan", venue: "The Enjoy Centre", season: "Spring", category: "Full Planning", aspect: "aspect-square" },
+  { src: heroImage, alt: "Elegant garden reception tablescape at golden hour", couple: "Sarah & Michael", venue: "Fairmont Hotel Macdonald", season: "Summer 2024", category: "Full Planning", aspect: "aspect-[3/4]" },
+  { src: receptionImage, alt: "Rustic farmhouse reception with eucalyptus and candlelight", couple: "Emma & James", venue: "The Glass House", season: "Autumn 2024", category: "Full Planning", aspect: "aspect-square" },
+  { src: ceremonyImage, alt: "Mountain ceremony with floral arch and white draping", couple: "Olivia & Noah", venue: "Jasper Park Lodge", season: "Summer 2023", category: "Partial Planning", aspect: "aspect-[4/5]" },
+  { src: bouquetImage, alt: "Bridal bouquet with white roses and sage eucalyptus", couple: "Alyssa & Daniel", venue: "Art Gallery of Alberta", season: "Spring 2024", category: "Day-Of", aspect: "aspect-[3/4]" },
+  { src: venueImage, alt: "Rustic barn venue at twilight with string lights", couple: "Lauren & Ethan", venue: "Willow Creek Barn", season: "Autumn 2023", category: "Full Planning", aspect: "aspect-[16/10]" },
+  { src: editorialImage, alt: "Sage and ivory floral arrangement detail", couple: "Hannah & Liam", venue: "Muttart Conservatory", season: "Winter 2024", category: "Day-Of", aspect: "aspect-square" },
+  { src: firstDanceImage, alt: "First dance under string lights at outdoor reception", couple: "Rachel & Marcus", venue: "River Valley Estate", season: "Summer 2023", category: "Partial Planning", aspect: "aspect-[3/4]" },
+  { src: detailImage, alt: "Calligraphy place card with gold cutlery detail", couple: "Claire & Jonathan", venue: "The Enjoy Centre", season: "Spring 2023", category: "Full Planning", aspect: "aspect-square" },
 ];
 
 const filters = ["All", "Full Planning", "Partial Planning", "Day-Of"] as const;
@@ -72,13 +72,17 @@ const Portfolio = () => {
           style={{ opacity: heroOpacity }}
         >
           <ScrollReveal>
-            <p className="font-overline text-white/50 mb-4">
-              Our Work
+            <p className="font-sans-wedding text-label uppercase text-white/50 mb-4">
+              <span className="inline-flex items-center gap-3">
+                <span className="w-6 h-px bg-white/30" />
+                Our Work
+                <span className="w-6 h-px bg-white/30" />
+              </span>
             </p>
-            <h1 className="font-serif-wedding text-display-xl text-white mb-6">
+            <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">
               Real Weddings
             </h1>
-            <p className="font-sans-wedding text-body-sm text-white/60 leading-relaxed max-w-xl mx-auto font-light">
+            <p className="font-sans-wedding text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto font-light">
               Every wedding tells a unique story. Here are some of the moments
               we've had the privilege of helping create.
             </p>
@@ -86,7 +90,7 @@ const Portfolio = () => {
         </motion.div>
       </section>
 
-      {/* Filter Tabs — refined */}
+      {/* Filter Tabs */}
       <section className="py-6 md:py-8 bg-background border-b border-border/60 sticky top-[72px] z-30">
         <div className="container mx-auto px-6 lg:px-8 flex justify-center gap-1 flex-wrap">
           {filters.map((f) => (
@@ -135,12 +139,14 @@ const Portfolio = () => {
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/40 transition-all duration-500 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100">
-                        <p className="font-serif-wedding text-xl md:text-2xl text-white mb-1 translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
+                      {/* Cinematic gradient reveal from bottom */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                        <p className="font-serif-wedding text-lg md:text-xl text-white mb-0.5">
                           {story.couple}
                         </p>
-                        <p className="font-sans-wedding text-xs tracking-[0.15em] uppercase text-white/70 translate-y-3 group-hover:translate-y-0 transition-transform duration-500 delay-75">
-                          {story.venue}
+                        <p className="font-sans-wedding text-[0.625rem] tracking-[0.15em] uppercase text-white/60">
+                          {story.venue} · {story.season}
                         </p>
                       </div>
                     </div>
