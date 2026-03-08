@@ -239,10 +239,10 @@ const GallerySection = () => {
 
           {/* Bottom ornament */}
           <ScrollReveal delay={0.3}>
-            <div className="flex items-center justify-center gap-3 mt-12 md:mt-16" aria-hidden="true">
-              <span className="w-8 h-px bg-border/30" />
-              <span className="font-serif-wedding text-xs text-primary/10 italic">❖</span>
-              <span className="w-8 h-px bg-border/30" />
+            <div className="flex items-center justify-center gap-4 mt-12 md:mt-16" aria-hidden="true">
+              <span className="w-10 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2))" }} />
+              <span className="w-1.5 h-1.5 rotate-45" style={{ background: "hsl(var(--gold) / 0.2)" }} />
+              <span className="w-10 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.2), transparent)" }} />
             </div>
           </ScrollReveal>
         </div>

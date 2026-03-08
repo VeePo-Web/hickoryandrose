@@ -54,20 +54,26 @@ const LoveQuoteSection = () => {
         </span>
       </motion.div>
 
-      {/* Floating corner ornaments */}
+      {/* Floating corner ornaments — gold gradient */}
       <motion.div
         className="absolute top-12 left-12 hidden lg:block pointer-events-none"
         style={{ y: floatingOrnamentY }}
         aria-hidden="true"
       >
-        <div className="w-12 h-12 border-t border-l border-primary-foreground/8" />
+        <div className="w-12 h-12 relative">
+          <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.15), transparent)" }} />
+          <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.15), transparent)" }} />
+        </div>
       </motion.div>
       <motion.div
         className="absolute bottom-12 right-12 hidden lg:block pointer-events-none"
         style={{ y: floatingOrnamentY }}
         aria-hidden="true"
       >
-        <div className="w-12 h-12 border-b border-r border-primary-foreground/8" />
+        <div className="w-12 h-12 relative">
+          <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.15), transparent)" }} />
+          <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.15), transparent)" }} />
+        </div>
       </motion.div>
 
       {/* Scroll-linked secondary quote layer */}
