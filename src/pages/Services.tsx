@@ -97,7 +97,6 @@ const Services = () => {
       path: "/services",
     });
   }, []);
-  }, []);
 
   return (
     <main id="main-content">

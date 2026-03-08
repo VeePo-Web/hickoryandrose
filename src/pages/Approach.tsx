@@ -24,7 +24,6 @@ const Approach = () => {
       path: "/approach",
     });
   }, []);
-  }, []);
 
   return (
     <main id="main-content">

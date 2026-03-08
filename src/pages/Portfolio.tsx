@@ -38,7 +38,6 @@ const Portfolio = () => {
       path: "/portfolio",
     });
   }, []);
-  }, []);
 
   const filtered = active === "All" ? weddingStories : weddingStories.filter((s) => s.category === active);
 
