@@ -20,6 +20,7 @@ import {
 const faqCategories = [
   {
     category: "Services & Planning",
+    index: "01",
     questions: [
       { q: "What's the difference between Day-Of Coordination and Full-Service Planning?", a: "Day-Of Coordination is designed for couples who have done the planning themselves and need a professional to execute their vision flawlessly on the wedding day. Full-Service Planning means we're with you from the very beginning — handling design, vendor sourcing, budgeting, logistics, and everything in between, so you can simply enjoy the journey." },
       { q: "How far in advance should I book?", a: "We recommend reaching out 10-14 months before your wedding for Full-Service Planning, and at least 3-4 months for Day-Of Coordination. That said, we're always happy to chat — even if your timeline is tighter, we may be able to help." },
@@ -29,6 +30,7 @@ const faqCategories = [
   },
   {
     category: "Process & Communication",
+    index: "02",
     questions: [
       { q: "What does the discovery call look like?", a: "It's a relaxed, 30-minute video or phone call where we learn about your vision, your priorities, and how you want to feel on your wedding day. There's absolutely no pressure — it's simply a conversation to see if we're the right fit." },
       { q: "How do you communicate throughout the planning process?", a: "We use a combination of email, a shared planning portal, and scheduled check-in calls. You'll always know what's happening, what's coming next, and what needs your attention — without ever feeling overwhelmed." },
@@ -37,6 +39,7 @@ const faqCategories = [
   },
   {
     category: "Investment & Logistics",
+    index: "03",
     questions: [
       { q: "What is the investment range for your services?", a: "Day-Of Coordination starts at $2,500, Partial Planning at $5,000, and Full-Service Planning at $8,500. Every proposal is customized based on your unique needs, guest count, and event complexity." },
       { q: "Do you offer payment plans?", a: "Yes, we offer flexible payment plans spread across the planning timeline. A retainer is required upon booking, with remaining payments due at agreed-upon milestones." },
@@ -130,30 +133,66 @@ const FAQ = () => {
         </motion.div>
       </section>
 
+      {/* FAQ Categories — editorial ruled layout with index numbers */}
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           {faqCategories.map((category, catIndex) => (
             <ScrollReveal key={category.category} delay={catIndex * 0.08}>
-              <div className={catIndex > 0 ? "mt-12 md:mt-16" : ""}>
-                <h2 className="font-serif-wedding text-display-md text-foreground mb-6">
-                  {category.category}
-                </h2>
-                <Accordion type="single" collapsible className="w-full">
-                  {category.questions.map((faq, index) => (
-                    <AccordionItem
-                      key={index}
-                      value={`${catIndex}-${index}`}
-                      className="border-border/60"
+              <div className={catIndex > 0 ? "mt-16 md:mt-24" : ""}>
+                {/* Category header with index */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline mb-8 md:mb-10">
+                  <div className="md:col-span-2">
+                    <motion.span
+                      className="font-serif-wedding text-5xl md:text-6xl font-light text-primary/10"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.1 }}
                     >
-                      <AccordionTrigger className="font-sans-wedding text-body-sm text-foreground text-left hover:text-primary hover:no-underline py-5 font-light">
-                        {faq.q}
-                      </AccordionTrigger>
-                      <AccordionContent className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed pb-5 font-light">
-                        {faq.a}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
+                      {category.index}
+                    </motion.span>
+                  </div>
+                  <div className="md:col-span-10">
+                    <h2 className="font-serif-wedding text-display-md text-foreground">
+                      {category.category}
+                    </h2>
+                    <motion.div
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.2 }}
+                      className="h-px bg-border/60 mt-4 origin-left"
+                    />
+                  </div>
+                </div>
+
+                {/* Questions */}
+                <div className="md:grid md:grid-cols-12 md:gap-8">
+                  <div className="md:col-span-2" />
+                  <div className="md:col-span-10">
+                    <Accordion type="single" collapsible className="w-full">
+                      {category.questions.map((faq, index) => (
+                        <AccordionItem
+                          key={index}
+                          value={`${catIndex}-${index}`}
+                          className="border-border/30 group"
+                        >
+                          <AccordionTrigger className="font-sans-wedding text-body text-foreground text-left hover:text-primary hover:no-underline py-6 font-light gap-4">
+                            <span className="flex items-baseline gap-4">
+                              <span className="font-serif-wedding text-xs text-muted-foreground/30 shrink-0 tabular-nums">
+                                {category.index}.{String(index + 1).padStart(2, "0")}
+                              </span>
+                              <span>{faq.q}</span>
+                            </span>
+                          </AccordionTrigger>
+                          <AccordionContent className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed pb-6 pl-12 font-light">
+                            {faq.a}
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </div>
+                </div>
               </div>
             </ScrollReveal>
           ))}
@@ -193,7 +232,7 @@ const FAQ = () => {
       <section className="py-section-mobile md:py-section-tablet bg-background">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">Still Curious?</p>
+            <p className="font-overline text-muted-foreground/50 mb-4">Still Curious?</p>
             <h3 className="font-serif-wedding text-display-lg text-foreground mb-4">
               We'd love to hear from you.
             </h3>

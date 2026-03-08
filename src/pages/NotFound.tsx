@@ -6,6 +6,12 @@ import Footer from "@/components/wedding/Footer";
 import MagneticButton from "@/components/wedding/MagneticButton";
 import notfoundImage from "@/assets/notfound-editorial.jpg";
 
+const suggestedPages = [
+  { label: "Our Services", path: "/services", desc: "Day-of, partial, and full-service planning" },
+  { label: "Portfolio", path: "/portfolio", desc: "See our work in refined rustic elegance" },
+  { label: "Our Approach", path: "/approach", desc: "How we plan your perfect day" },
+];
+
 const NotFound = () => {
   const location = useLocation();
   const heroRef = useRef<HTMLElement>(null);
@@ -43,18 +49,18 @@ const NotFound = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
         </motion.div>
 
-        {/* Large decorative 404 — parallax shifted */}
+        {/* Large decorative 404 */}
         <motion.p
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.06 }}
+          animate={{ opacity: 0.05 }}
           transition={{ duration: 1.5 }}
-          className="absolute font-serif-wedding text-[16rem] md:text-[24rem] font-light text-white select-none pointer-events-none"
+          className="absolute font-serif-wedding text-[14rem] md:text-[22rem] font-light text-white select-none pointer-events-none"
           aria-hidden="true"
         >
           404
         </motion.p>
 
-        <div className="relative z-10 text-center max-w-lg px-6">
+        <div className="relative z-10 text-center max-w-xl px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -86,35 +92,51 @@ const NotFound = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
           >
             <MagneticButton to="/" variant="outline-light">
               Return Home
             </MagneticButton>
-            <MagneticButton to="/portfolio" variant="outline-light">
-              View Our Work
+            <MagneticButton to="/inquire" variant="outline-light">
+              Start a Conversation
             </MagneticButton>
           </motion.div>
 
+          {/* Suggested pages */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9, duration: 0.5 }}
-            className="mt-12"
           >
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 1 }}
-              className="w-10 h-px bg-white/20 mx-auto mb-3 origin-center"
+              className="w-16 h-px bg-white/15 mx-auto mb-8 origin-center"
             />
-            <p className="font-sans-wedding text-xs text-white/40 font-light">
-              Or{" "}
-              <Link to="/inquire" className="underline underline-offset-4 hover:text-white transition-colors">
-                reach out directly
-              </Link>{" "}
-              — we'd love to hear from you.
-            </p>
+            <p className="font-overline text-white/30 mb-6">Or explore</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {suggestedPages.map((page, i) => (
+                <motion.div
+                  key={page.path}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.1 + i * 0.1 }}
+                >
+                  <Link
+                    to={page.path}
+                    className="block p-4 border border-white/10 hover:border-white/25 transition-colors duration-300 group"
+                  >
+                    <p className="font-sans-wedding text-sm text-white/80 group-hover:text-white transition-colors font-light mb-1">
+                      {page.label}
+                    </p>
+                    <p className="font-sans-wedding text-xs text-white/30 font-light">
+                      {page.desc}
+                    </p>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>

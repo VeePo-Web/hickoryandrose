@@ -13,11 +13,11 @@ import approachDetailsImage from "@/assets/approach-details.jpg";
 import approachHeroImage from "@/assets/approach-hero.jpg";
 
 const processSteps = [
-  { number: "01", title: "Discovery Call", time: "Week 1", description: "We start with a relaxed conversation. Tell us about your vision, your story, and how you want to feel on your wedding day. No pressure, no sales pitch — just genuine connection." },
-  { number: "02", title: "Proposal & Booking", time: "Week 1–2", description: "Based on our call, we craft a customized proposal that fits your needs and budget. Once you say yes, the real magic begins." },
-  { number: "03", title: "Design & Planning", time: "Months 2–10", description: "We dive deep into your vision — curating vendors, refining design concepts, building timelines, and handling every logistical detail so you don't have to." },
-  { number: "04", title: "Final Details", time: "Month 11", description: "Everything comes together. Final walkthroughs, vendor confirmations, timeline refinements, and a comprehensive rehearsal to ensure every person knows their role." },
-  { number: "05", title: "Your Wedding Day", time: "The Day", description: "We arrive early, coordinate everything behind the scenes, and lead with calm authority. You simply show up and feel every beautiful moment." },
+  { number: "01", title: "Discovery Call", time: "Week 1", description: "We start with a relaxed conversation. Tell us about your vision, your story, and how you want to feel on your wedding day. No pressure, no sales pitch — just genuine connection.", pullQuote: "Every great wedding begins with listening." },
+  { number: "02", title: "Proposal & Booking", time: "Week 1–2", description: "Based on our call, we craft a customized proposal that fits your needs and budget. Once you say yes, the real magic begins.", pullQuote: null },
+  { number: "03", title: "Design & Planning", time: "Months 2–10", description: "We dive deep into your vision — curating vendors, refining design concepts, building timelines, and handling every logistical detail so you don't have to.", pullQuote: "This is where your vision becomes tangible." },
+  { number: "04", title: "Final Details", time: "Month 11", description: "Everything comes together. Final walkthroughs, vendor confirmations, timeline refinements, and a comprehensive rehearsal to ensure every person knows their role.", pullQuote: null },
+  { number: "05", title: "Your Wedding Day", time: "The Day", description: "We arrive early, coordinate everything behind the scenes, and lead with calm authority. You simply show up and feel every beautiful moment.", pullQuote: "You feel it. We handle it." },
 ];
 
 const Approach = () => {
@@ -72,8 +72,32 @@ const Approach = () => {
         </motion.div>
       </section>
 
-      {/* Process Steps — horizontal ruled rows */}
-      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
+      {/* Philosophy intro — asymmetric editorial */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+          <ScrollReveal>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-baseline">
+              <div className="md:col-span-4">
+                <p className="font-overline text-muted-foreground/50 mb-3">Philosophy</p>
+                <h2 className="font-serif-wedding text-display-md text-foreground">
+                  Planning with intention.
+                </h2>
+              </div>
+              <div className="md:col-span-8">
+                <p className="font-sans-wedding text-body text-muted-foreground leading-relaxed font-light mb-4">
+                  We believe the planning process should feel as beautiful as the wedding day itself. Our approach is grounded in calm leadership, creative partnership, and an obsessive attention to the details that make your celebration uniquely yours.
+                </p>
+                <p className="font-sans-wedding text-body-sm text-muted-foreground/70 leading-relaxed font-light">
+                  From the first discovery call to the final dance, every touchpoint is designed to reduce your stress, protect your presence, and ensure nothing falls through the cracks.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Process Steps — timeline with vertical connecting line */}
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           <ScrollReveal>
             <div className="text-center mb-16 md:mb-24">
@@ -84,11 +108,28 @@ const Approach = () => {
             </div>
           </ScrollReveal>
 
-          <div className="space-y-0">
+          <div className="relative">
+            {/* Vertical timeline line */}
+            <motion.div
+              className="absolute left-[1.75rem] md:left-[3.25rem] top-0 bottom-0 w-px bg-border/40 origin-top hidden md:block"
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1.0] }}
+            />
+
             {processSteps.map((step, index) => (
               <ScrollReveal key={step.number} delay={index * 0.08}>
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline py-10 md:py-14 border-t border-border/60 group">
-                  <div className="md:col-span-2">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-10 md:py-14 group relative">
+                  {/* Step number with timeline dot */}
+                  <div className="md:col-span-2 relative flex items-baseline">
+                    <motion.div
+                      className="hidden md:block absolute left-[3.25rem] top-3 w-2 h-2 rounded-full bg-primary/30 -translate-x-1/2 group-hover:bg-primary/60 transition-colors duration-500"
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 + index * 0.1 }}
+                    />
                     <motion.span
                       className="font-serif-wedding text-5xl md:text-6xl font-light text-primary/15 group-hover:text-primary/30 transition-colors duration-700"
                       initial={{ opacity: 0, x: -20 }}
@@ -99,6 +140,8 @@ const Approach = () => {
                       {step.number}
                     </motion.span>
                   </div>
+
+                  {/* Title + time */}
                   <div className="md:col-span-3">
                     <h3 className="font-serif-wedding text-display-md text-foreground group-hover:text-primary transition-colors duration-500">
                       {step.title}
@@ -107,15 +150,38 @@ const Approach = () => {
                       {step.time}
                     </p>
                   </div>
+
+                  {/* Description + pull quote */}
                   <div className="md:col-span-7">
                     <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
                       {step.description}
                     </p>
+                    {step.pullQuote && (
+                      <motion.p
+                        className="font-serif-wedding text-lg italic text-primary/40 mt-4 pl-4 border-l border-primary/15"
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                      >
+                        {step.pullQuote}
+                      </motion.p>
+                    )}
+                  </div>
+
+                  {/* Bottom rule */}
+                  <div className="md:col-span-12">
+                    <motion.div
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.2 }}
+                      className="h-px bg-border/40 mt-6 origin-left"
+                    />
                   </div>
                 </div>
               </ScrollReveal>
             ))}
-            <div className="border-t border-border/60" />
           </div>
         </div>
       </section>
@@ -127,7 +193,7 @@ const Approach = () => {
       />
 
       {/* Editorial promise */}
-      <section className="py-16 md:py-24 bg-card">
+      <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           <ScrollReveal>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-baseline">
@@ -136,11 +202,14 @@ const Approach = () => {
                 <h3 className="font-serif-wedding text-display-md text-foreground">Every detail, protected.</h3>
               </div>
               <div className="md:col-span-2">
-                <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
+                <p className="font-sans-wedding text-body text-muted-foreground leading-relaxed font-light mb-4">
                   We don't just plan logistics — we anticipate emotions. From the
                   moment your guests arrive to the final dance, we ensure every
                   transition is seamless, every moment is savored, and you never
                   have to think about what comes next.
+                </p>
+                <p className="font-sans-wedding text-body-sm text-muted-foreground/60 leading-relaxed font-light">
+                  That's the Hickory & Rose difference: you're not just getting a planner — you're getting a partner who protects the feeling of your day.
                 </p>
               </div>
             </div>
