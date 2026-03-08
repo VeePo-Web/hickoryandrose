@@ -17,6 +17,7 @@ const TrustBarSection = () => {
     offset: ["start end", "end start"],
   });
   const watermarkX = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const verticalRuleScale = useTransform(scrollYProgress, [0.1, 0.6], [0, 1]);
 
   return (
     <section
@@ -47,8 +48,15 @@ const TrustBarSection = () => {
           </div>
         </ScrollReveal>
 
-        {/* Editorial ruled list */}
-        <div className="max-w-4xl mx-auto">
+        {/* Editorial ruled list with animated vertical accent */}
+        <div className="max-w-4xl mx-auto relative">
+          {/* Animated left accent line */}
+          <motion.div
+            className="absolute -left-6 md:-left-10 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/15 to-transparent hidden lg:block"
+            style={{ scaleY: verticalRuleScale, transformOrigin: "top" }}
+            aria-hidden="true"
+          />
+
           {publications.map((pub, index) => (
             <motion.div
               key={pub.name}
@@ -76,12 +84,11 @@ const TrustBarSection = () => {
                 </div>
                 <div className="flex items-center gap-3 md:gap-6">
                   {/* Award note — visible on hover */}
-                  <motion.span
-                    className="font-serif-wedding text-xs italic text-primary/30 hidden md:inline opacity-0 group-hover:opacity-100 transition-opacity duration-500 -translate-x-2 group-hover:translate-x-0"
-                    style={{ transition: "opacity 0.5s, transform 0.5s" }}
+                  <span
+                    className="font-serif-wedding text-xs italic text-primary/30 hidden md:inline opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-2 group-hover:translate-x-0"
                   >
                     {pub.note}
-                  </motion.span>
+                  </span>
                   <motion.div
                     className="h-px bg-primary/15 origin-right hidden md:block"
                     initial={{ width: 0 }}
@@ -102,11 +109,13 @@ const TrustBarSection = () => {
           <div className="border-t border-border/40" />
         </div>
 
-        {/* Bottom ornament */}
+        {/* Bottom editorial tagline */}
         <ScrollReveal delay={0.3}>
-          <div className="flex items-center justify-center gap-3 mt-12 md:mt-16" aria-hidden="true">
+          <div className="flex items-center justify-center gap-4 mt-14 md:mt-20" aria-hidden="true">
             <span className="w-8 h-px bg-border/30" />
-            <span className="font-serif-wedding text-xs text-primary/10 italic">❖</span>
+            <p className="font-serif-wedding text-xs italic text-muted-foreground/20">
+              Recognized for excellence across Canada and beyond
+            </p>
             <span className="w-8 h-px bg-border/30" />
           </div>
         </ScrollReveal>
