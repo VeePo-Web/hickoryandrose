@@ -83,6 +83,12 @@ const Index = () => {
       <NowBookingSection />
       <Suspense fallback={null}>
         <ServicesOverviewSection />
+        <EditorialQuoteRibbon
+          quote="Your wedding day should be felt, not managed."
+          attribution="Hickory & Rose"
+          direction="left"
+        />
+        <GallerySection />
         <EditorialImageBreak />
         <TestimonialSection />
         <EditorialSplitSection />
@@ -97,6 +103,10 @@ const Index = () => {
         />
         <FounderTeaserSection />
         <StatsSection />
+        <EditorialQuoteRibbon
+          quote="Every detail, placed with intention. Every moment, protected."
+          direction="right"
+        />
         <PressMentionsSection />
         <FilmstripSection />
         <CTASection />
