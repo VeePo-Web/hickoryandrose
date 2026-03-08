@@ -11,24 +11,54 @@ const footerLinks = [
   { label: "Inquire", path: "/inquire" },
 ];
 
+const colVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.12, ease: [0.25, 0.1, 0.25, 1] as const },
+  }),
+};
+
 const Footer = () => {
   return (
-    <footer className="bg-foreground text-background py-16 md:py-20" role="contentinfo">
+    <footer className="bg-foreground text-background py-16 md:py-24" role="contentinfo">
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+        {/* Signature wordmark */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-16 md:mb-20"
+        >
+          <Link to="/" className="inline-block group">
+            <span className="font-serif-wedding text-3xl md:text-4xl font-light tracking-tight text-background">
+              Hickory <span className="font-normal opacity-50">&</span>{" "}
+              <span className="font-script text-4xl md:text-5xl group-hover:text-primary transition-colors duration-300">Rose</span>
+            </span>
+          </Link>
+          <p className="font-sans-wedding text-xs text-background/30 tracking-[0.2em] uppercase mt-4">
+            Edmonton's Luxury Wedding Planner
+          </p>
+        </motion.div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16">
           {/* Brand */}
-          <div>
-            <Link to="/" className="inline-block mb-4 group">
-              <span className="font-serif-wedding text-xl font-semibold tracking-tight text-background">
-                Hickory <span className="font-normal">&</span>{" "}
-                <span className="font-script text-2xl group-hover:text-primary transition-colors duration-300">Rose</span>
-              </span>
-            </Link>
-            <p className="font-sans-wedding text-sm text-background/50 leading-relaxed mb-6">
-              Luxury wedding planning in Edmonton, Alberta. Refined rustic
-              elegance with calm, intentional leadership.
+          <motion.div
+            custom={0}
+            variants={colVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <p className="font-sans-wedding text-label uppercase text-background/40 mb-4">
+              About
             </p>
-            {/* Social Icons */}
+            <p className="font-sans-wedding text-sm text-background/50 leading-relaxed mb-6">
+              Refined rustic elegance with calm, intentional leadership. We
+              protect what matters most on your wedding day — your presence.
+            </p>
             <div className="flex items-center gap-4">
               <a
                 href="https://www.instagram.com/hickoryandrose"
@@ -47,10 +77,16 @@ const Footer = () => {
                 <Mail size={18} strokeWidth={1.5} />
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Navigation */}
-          <div>
+          <motion.div
+            custom={1}
+            variants={colVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             <p className="font-sans-wedding text-label uppercase text-background/40 mb-4">
               Explore
             </p>
@@ -66,10 +102,16 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact */}
-          <div>
+          <motion.div
+            custom={2}
+            variants={colVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             <p className="font-sans-wedding text-label uppercase text-background/40 mb-4">
               Get in Touch
             </p>
@@ -95,7 +137,7 @@ const Footer = () => {
                 @hickoryandrose
               </a>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom */}
@@ -103,7 +145,7 @@ const Footer = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
         >
           <p className="font-sans-wedding text-xs text-background/30">

@@ -1,33 +1,60 @@
 import { Link } from "react-router-dom";
-import ScrollReveal from "./ScrollReveal";
-import { Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+
+const marqueeItems = [
+  "Now Booking Fall 2025 & 2026 Weddings",
+  "✦",
+  "Edmonton's Luxury Wedding Planner",
+  "✦",
+  "Refined Rustic Elegance",
+  "✦",
+  "Now Booking Fall 2025 & 2026 Weddings",
+  "✦",
+  "Edmonton's Luxury Wedding Planner",
+  "✦",
+  "Refined Rustic Elegance",
+  "✦",
+];
+
+const MarqueeContent = () => (
+  <div className="flex items-center gap-8 shrink-0">
+    {marqueeItems.map((item, i) => (
+      <span
+        key={i}
+        className={`whitespace-nowrap ${
+          item === "✦"
+            ? "text-primary-foreground/30 text-xs"
+            : "font-serif-wedding text-sm md:text-base text-primary-foreground tracking-wide"
+        }`}
+      >
+        {item}
+      </span>
+    ))}
+  </div>
+);
 
 const NowBookingSection = () => {
   return (
-    <section className="py-10 md:py-14 bg-primary" aria-label="Now booking">
-      <div className="container mx-auto px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-center md:text-left">
-            <Sparkles
-              size={20}
-              strokeWidth={1.5}
-              className="text-primary-foreground/60 hidden md:block"
-            />
-            <p className="font-serif-wedding text-lg md:text-xl text-primary-foreground">
-              Now booking{" "}
-              <span className="font-semibold">Fall 2025</span> &{" "}
-              <span className="font-semibold">2026 weddings</span>
-            </p>
-            <span className="hidden md:block w-px h-5 bg-primary-foreground/20" />
-            <Link
-              to="/inquire"
-              className="inline-flex items-center px-6 py-2 border border-primary-foreground/40 hover:border-primary-foreground hover:bg-primary-foreground/10 text-primary-foreground font-sans-wedding text-xs tracking-[0.15em] uppercase transition-all duration-200"
-            >
-              Check Availability
-            </Link>
-          </div>
-        </ScrollReveal>
-      </div>
+    <section className="py-4 md:py-5 bg-primary overflow-hidden" aria-label="Now booking">
+      <Link to="/inquire" className="block group">
+        <div className="relative flex">
+          <motion.div
+            className="flex gap-8"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 25,
+                ease: "linear",
+              },
+            }}
+          >
+            <MarqueeContent />
+            <MarqueeContent />
+          </motion.div>
+        </div>
+      </Link>
     </section>
   );
 };
