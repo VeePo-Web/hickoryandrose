@@ -58,7 +58,7 @@ const ServicesOverviewSection = () => {
                 </p>
                 <Link
                   to={service.link}
-                  className="inline-flex items-center font-sans-wedding text-xs tracking-[0.15em] uppercase text-accent hover:text-primary transition-colors duration-200"
+                  className="inline-flex items-center font-overline text-accent hover:text-primary transition-colors duration-200"
                 >
                   Learn More
                   <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>

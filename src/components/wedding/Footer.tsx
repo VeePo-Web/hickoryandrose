@@ -115,7 +115,7 @@ const Footer = () => {
             <p className="font-overline text-background/40 mb-5">
               Get in Touch
             </p>
-            <div className="space-y-3 font-sans-wedding text-sm text-background/60">
+            <div className="space-y-3 font-sans-wedding text-body-sm text-background/50 font-light">
               <div className="flex items-center gap-2">
                 <MapPin size={14} strokeWidth={1.5} className="shrink-0 text-background/40" />
                 <span>Edmonton, Alberta</span>

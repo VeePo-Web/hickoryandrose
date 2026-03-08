@@ -193,7 +193,7 @@ const Inquire = () => {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="inline-flex items-center px-12 py-4 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.2em] uppercase font-semibold hover:bg-sage-deep transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+                  className="inline-flex items-center px-12 py-4 bg-primary text-primary-foreground font-sans-wedding text-[0.6875rem] tracking-[0.2em] uppercase font-light hover:bg-sage-deep transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
                 >
                   Send Inquiry
                 </motion.button>

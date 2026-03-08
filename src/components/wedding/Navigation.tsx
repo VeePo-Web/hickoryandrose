@@ -174,7 +174,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                     <Link
                       to="/inquire"
                       onClick={() => setIsOpen(false)}
-                      className="inline-flex items-center px-8 py-3 text-sm tracking-[0.15em] uppercase font-sans-wedding font-semibold bg-primary text-primary-foreground hover:bg-sage-deep transition-colors"
+                      className="inline-flex items-center px-8 py-3 text-[0.6875rem] tracking-[0.18em] uppercase font-sans-wedding font-light bg-primary text-primary-foreground hover:bg-sage-deep transition-colors"
                     >
                       Inquire
                     </Link>

@@ -23,8 +23,8 @@ const MarqueeContent = () => (
         key={i}
         className={`whitespace-nowrap ${
           item === "✦"
-            ? "text-primary-foreground/30 text-xs"
-            : "font-serif-wedding text-sm md:text-base text-primary-foreground tracking-wide"
+            ? "text-primary-foreground/30 text-[0.5rem]"
+            : "font-sans-wedding text-[0.6875rem] md:text-[0.8125rem] font-light text-primary-foreground tracking-[0.15em] uppercase"
         }`}
       >
         {item}
