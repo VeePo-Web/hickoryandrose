@@ -14,6 +14,8 @@ const slides = [
     venue: "Jasper Park Lodge",
     label: "Ceremony",
     season: "Summer 2024",
+    snippet: "An intimate mountain exchange under a wild eucalyptus arch.",
+    category: "Full-Service",
   },
   {
     src: detailImage,
@@ -22,6 +24,8 @@ const slides = [
     venue: "The Enjoy Centre",
     label: "Details",
     season: "Spring 2023",
+    snippet: "Hand-lettered place cards on Italian linen with gold leaf.",
+    category: "Partial Planning",
   },
   {
     src: receptionImage,
@@ -30,6 +34,8 @@ const slides = [
     venue: "The Glass House",
     label: "Reception",
     season: "Autumn 2024",
+    snippet: "Twilight reception under the glass canopy, 200 candles lit.",
+    category: "Full-Service",
   },
   {
     src: bouquetImage,
@@ -38,6 +44,8 @@ const slides = [
     venue: "Art Gallery of Alberta",
     label: "Florals",
     season: "Spring 2024",
+    snippet: "Garden roses and sage eucalyptus — perfectly unstructured.",
+    category: "Day-Of",
   },
   {
     src: firstDanceImage,
@@ -46,6 +54,8 @@ const slides = [
     venue: "River Valley Estate",
     label: "Celebration",
     season: "Summer 2023",
+    snippet: "Their first dance under a canopy of a thousand lights.",
+    category: "Full-Service",
   },
 ];
 
@@ -56,7 +66,6 @@ const FilmstripSection = () => {
     offset: ["start end", "end start"],
   });
 
-  // Horizontal pan driven by vertical scroll
   const x = useTransform(scrollYProgress, [0, 1], ["5%", "-30%"]);
   const watermarkX = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
 
@@ -117,16 +126,23 @@ const FilmstripSection = () => {
                 loading="lazy"
               />
               {/* Cinematic gradient on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               {/* Film frame number overlay */}
-              <motion.span
+              <span
                 className="absolute top-3 right-3 font-sans-wedding text-[0.5rem] tracking-[0.2em] text-white/0 group-hover:text-white/30 transition-colors duration-500 tabular-nums"
                 aria-hidden="true"
               >
                 FR{String(i + 1).padStart(2, "0")}
-              </motion.span>
-              {/* Hover caption */}
+              </span>
+              {/* Category badge */}
+              <span className="absolute top-3 left-3 font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-white/0 group-hover:text-white/50 transition-colors duration-500 border border-white/0 group-hover:border-white/20 px-2 py-0.5">
+                {slide.category}
+              </span>
+              {/* Hover caption with story snippet */}
               <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <p className="font-serif-wedding text-xs text-white/70 italic leading-relaxed mb-2">
+                  {slide.snippet}
+                </p>
                 <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/40">
                   {slide.season}
                 </p>

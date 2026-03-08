@@ -48,6 +48,7 @@ const TestimonialSection = () => {
     offset: ["start end", "end start"],
   });
   const watermarkY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const galleryLineH = useTransform(scrollYProgress, [0.2, 0.7], ["0%", "100%"]);
 
   const advance = useCallback(() => {
     setActiveIndex((i) => (i + 1) % testimonials.length);
@@ -96,7 +97,6 @@ const TestimonialSection = () => {
           {/* Testimonial with crossfade */}
           <ScrollReveal>
             <div>
-              {/* Section index + label */}
               <div className="flex items-center gap-4 mb-8">
                 <span className="font-serif-wedding text-sm text-primary/20 font-light">05</span>
                 <span className="w-8 h-px bg-primary/20" />
@@ -114,14 +114,12 @@ const TestimonialSection = () => {
                     exit={{ opacity: 0, y: -16 }}
                     transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] }}
                   >
-                    {/* Large decorative quote */}
                     <span className="font-serif-wedding text-6xl text-primary/[0.08] leading-none block -mb-6" aria-hidden="true">"</span>
                     
                     <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-8">
                       {active.quote}
                     </blockquote>
 
-                    {/* Attribution with service tag */}
                     <div className="flex items-start gap-4">
                       <motion.div
                         initial={{ scaleY: 0 }}
@@ -151,7 +149,7 @@ const TestimonialSection = () => {
                 </AnimatePresence>
               </div>
 
-              {/* Progress indicators with counter */}
+              {/* Progress indicators */}
               <div className="flex items-center gap-4 mt-12">
                 <div className="flex gap-2 flex-1">
                   {testimonials.map((_, index) => (
@@ -183,62 +181,74 @@ const TestimonialSection = () => {
             </div>
           </ScrollReveal>
 
-          {/* Editorial Gallery with labels */}
+          {/* Editorial Gallery with scroll-linked accent */}
           <ScrollReveal delay={0.15}>
-            <div className="grid grid-cols-2 gap-3">
-              <ImageReveal direction="up" delay={0.1}>
-                <div className="aspect-[3/4] overflow-hidden relative group">
-                  <img
-                    src={galleryImages[0].src}
-                    alt={galleryImages[0].alt}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                    width={512}
-                    height={683}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
-                    <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/50 block">
-                      {galleryImages[0].label}
-                    </span>
-                    <p className="font-serif-wedding text-xs text-white/80 italic mt-0.5">
-                      {galleryImages[0].venue}
-                    </p>
-                  </div>
-                </div>
-              </ImageReveal>
-              <div className="space-y-3">
-                {galleryImages.slice(1).map((img, i) => (
-                  <ImageReveal key={i} direction="left" delay={0.2 + i * 0.1}>
-                    <div className="aspect-square overflow-hidden relative group">
-                      <img
-                        src={img.src}
-                        alt={img.alt}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        loading="lazy"
-                        width={512}
-                        height={512}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <div className="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/50 block">
-                          {img.label}
-                        </span>
-                        <p className="font-serif-wedding text-[0.6rem] text-white/80 italic mt-0.5">
-                          {img.venue}
-                        </p>
-                      </div>
+            <div className="relative">
+              {/* Scroll-linked vertical gallery accent */}
+              <motion.div
+                className="absolute -left-4 top-0 w-px bg-gradient-to-b from-transparent via-primary/15 to-transparent origin-top hidden lg:block"
+                style={{ height: galleryLineH }}
+                aria-hidden="true"
+              />
+
+              <div className="grid grid-cols-2 gap-3">
+                <ImageReveal direction="up" delay={0.1}>
+                  <div className="aspect-[3/4] overflow-hidden relative group">
+                    <img
+                      src={galleryImages[0].src}
+                      alt={galleryImages[0].alt}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                      width={512}
+                      height={683}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
+                      <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/50 block">
+                        {galleryImages[0].label}
+                      </span>
+                      <p className="font-serif-wedding text-xs text-white/80 italic mt-0.5">
+                        {galleryImages[0].venue}
+                      </p>
                     </div>
-                  </ImageReveal>
-                ))}
+                  </div>
+                </ImageReveal>
+                <div className="space-y-3">
+                  {galleryImages.slice(1).map((img, i) => (
+                    <ImageReveal key={i} direction="left" delay={0.2 + i * 0.1}>
+                      <div className="aspect-square overflow-hidden relative group">
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                          loading="lazy"
+                          width={512}
+                          height={512}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/50 block">
+                            {img.label}
+                          </span>
+                          <p className="font-serif-wedding text-[0.6rem] text-white/80 italic mt-0.5">
+                            {img.venue}
+                          </p>
+                        </div>
+                      </div>
+                    </ImageReveal>
+                  ))}
+                </div>
               </div>
-            </div>
-            {/* Gallery caption */}
-            <div className="mt-4 flex items-center justify-between">
-              <span className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/25">
-                Real Hickory & Rose Weddings
-              </span>
-              <span className="w-8 h-px bg-border/40" />
+              {/* Gallery caption with ornament */}
+              <div className="mt-4 flex items-center justify-between">
+                <span className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/25">
+                  Real Hickory & Rose Weddings
+                </span>
+                <div className="flex items-center gap-2">
+                  <span className="font-serif-wedding text-xs text-primary/10 italic">❖</span>
+                  <span className="w-8 h-px bg-border/40" />
+                </div>
+              </div>
             </div>
           </ScrollReveal>
         </div>
