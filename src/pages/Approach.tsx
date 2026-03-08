@@ -184,7 +184,7 @@ const Approach = () => {
                       {["top-2 left-2", "top-2 right-2 rotate-90", "bottom-2 right-2 rotate-180", "bottom-2 left-2 -rotate-90"].map((pos, i) => (
                         <div
                           key={i}
-                          className={`absolute ${pos} w-6 h-6 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                          className={`absolute ${pos} w-8 h-8 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                           aria-hidden="true"
                         >
                           <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.5), transparent)" }} />
