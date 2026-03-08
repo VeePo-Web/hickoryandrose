@@ -638,47 +638,11 @@ const Inquire = () => {
 
             {/* Right — form wizard */}
             <div className="lg:col-span-3">
-              {/* Progress bar */}
-              <div className="mb-10">
-                <div className="flex items-center justify-between mb-2">
-                  <p className="font-sans-wedding text-xs text-muted-foreground/40 tracking-widest uppercase font-light">
-                    Step {step + 1} of {TOTAL_STEPS}
-                  </p>
-                  <p className="font-sans-wedding text-xs text-muted-foreground/40 font-light">
-                    {step === 0 && "About You"}
-                    {step === 1 && "Wedding Details"}
-                    {step === 2 && "Your Needs"}
-                    {step === 3 && "Your Vision"}
-                  </p>
-                </div>
-                <div className="h-px bg-border/40 w-full overflow-hidden relative">
-                  <motion.div
-                    className="h-full relative"
-                    style={{
-                      background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--gold)), hsl(var(--primary)))",
-                    }}
-                    animate={{ width: `${progress}%` }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0] }}
-                  >
-                    {/* Traveling shimmer on progress bar */}
-                    <motion.div
-                      className="absolute inset-0"
-                      style={{ background: "linear-gradient(90deg, transparent 0%, hsl(0 0% 100% / 0.3) 50%, transparent 100%)" }}
-                      animate={{ x: ["-100%", "200%"] }}
-                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
-                    />
-                  </motion.div>
-                  {/* Gold glow beneath progress */}
-                  <motion.div
-                    className="absolute top-0 left-0 h-[3px] blur-[2px] pointer-events-none"
-                    style={{
-                      background: "linear-gradient(90deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.15))",
-                    }}
-                    animate={{ width: `${progress}%` }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0] }}
-                  />
-                </div>
-              </div>
+              <InquireStepIndicator
+                currentStep={step}
+                totalSteps={TOTAL_STEPS}
+                stepLabels={stepLabels}
+              />
 
               {/* Step content */}
               <form
