@@ -346,9 +346,26 @@ const Journal = () => {
                           "{article.pullQuote}"
                         </p>
                       </div>
-                      <span className="absolute top-4 right-4 font-serif-wedding text-[0.5rem] text-white/20 tabular-nums">
-                        {String(index + 2).padStart(2, "0")}
-                      </span>
+                      {/* Reading-time circular indicator — appears on hover */}
+                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="relative w-8 h-8 flex items-center justify-center">
+                          <svg className="w-full h-full -rotate-90" viewBox="0 0 32 32">
+                            <circle cx="16" cy="16" r="14" fill="none" stroke="hsl(var(--gold) / 0.1)" strokeWidth="1" />
+                            <circle
+                              cx="16" cy="16" r="14" fill="none"
+                              stroke="hsl(var(--gold) / 0.5)"
+                              strokeWidth="1"
+                              strokeDasharray={`${88 * (parseInt(article.readTime) / 10)} 88`}
+                              strokeLinecap="round"
+                              className="transition-all duration-700 ease-out"
+                              style={{ filter: "drop-shadow(0 0 3px hsl(var(--gold) / 0.3))" }}
+                            />
+                          </svg>
+                          <span className="absolute font-sans-wedding text-[0.4rem] text-white/50 tabular-nums font-light">
+                            {article.readTime.replace(' read', '').replace(' min', '')}
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </ImageReveal>
 
