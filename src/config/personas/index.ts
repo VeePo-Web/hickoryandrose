@@ -18,3 +18,4 @@ export { STRATEGIC_NARRATIVE } from './strategic-narrative';
 export { MARKET_RESEARCH } from './market-research';
 export { SEO_PERSONA } from './seo-expert';
 export { FAQ_SEO_PERSONA } from './seo-faq';
+export { SCROLL_MOTION_PERSONA } from './scroll-motion';
