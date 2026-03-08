@@ -266,25 +266,40 @@ const HeroSection = () => {
           </MagneticButton>
         </motion.div>
 
-        {/* Trust credential ticker */}
+        {/* Trust credential bar with gold separator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 2.8 }}
-          className="absolute bottom-24 left-0 right-0 flex items-center justify-center gap-6 md:gap-10"
+          className="absolute bottom-24 left-0 right-0"
         >
-          {trustCredentials.map((cred, i) => (
-            <motion.span
-              key={cred}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3.0 + i * 0.15, duration: 0.4 }}
-              className="font-sans-wedding text-[0.6rem] md:text-[0.65rem] tracking-[0.18em] uppercase text-white/25 font-light"
-            >
-              {i > 0 && <span className="mr-6 md:mr-10 opacity-30">·</span>}
-              {cred}
-            </motion.span>
-          ))}
+          {/* Gold gradient separator line */}
+          <motion.div
+            className="w-48 h-px mx-auto mb-5"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1, delay: 3.2, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }}
+          />
+          <div className="flex items-center justify-center gap-6 md:gap-10">
+            {trustCredentials.map((cred, i) => (
+              <motion.span
+                key={cred}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 3.0 + i * 0.15, duration: 0.4 }}
+                className="font-sans-wedding text-[0.6rem] md:text-[0.65rem] tracking-[0.18em] uppercase text-white/25 font-light inline-flex items-center gap-6 md:gap-10"
+              >
+                {i > 0 && (
+                  <span
+                    className="w-1 h-1 rotate-45 -ml-3 md:-ml-5"
+                    style={{ background: "hsl(var(--gold) / 0.25)" }}
+                  />
+                )}
+                {cred}
+              </motion.span>
+            ))}
+          </div>
         </motion.div>
       </motion.div>
 
@@ -302,6 +317,16 @@ const HeroSection = () => {
           onMouseLeave={() => setIsInsetHovered(false)}
         >
           <div className="w-40 xl:w-48 aspect-[3/4] overflow-hidden shadow-2xl relative">
+            {/* Cinematic sprocket holes — film strip effect */}
+            <div className="absolute top-0 bottom-0 left-0 w-3 z-10 flex flex-col justify-between py-3 items-center pointer-events-none">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <span
+                  key={i}
+                  className="w-1.5 h-1.5 rounded-[1px] border border-white/10"
+                  style={{ background: "hsl(var(--gold) / 0.06)" }}
+                />
+              ))}
+            </div>
             <img
               src={ceremonyImage}
               alt="Mountain barn ceremony with candlelit aisle and eucalyptus garlands"

@@ -226,22 +226,34 @@ const ServicesOverviewSection = () => {
               </Link>
             </ScrollReveal>
           ))}
-          <div className="border-t border-border/60" />
+          {/* Terminal gold ornament after last service */}
+          <div className="border-t border-border/60 relative">
+            <span
+              className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rotate-45"
+              style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }}
+            />
+          </div>
         </div>
 
         {/* Quick comparison row */}
         <ScrollReveal delay={0.2}>
-          <div className="mt-12 md:mt-16 border border-border/30 p-6 md:p-8 hidden md:block">
-            <div className="flex items-center gap-3 mb-6">
-              <span
-                className="w-2 h-2 rotate-45"
-                style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.15))" }}
-              />
-              <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-muted-foreground/30 font-light">
-                Quick Comparison
-              </p>
-              <span className="flex-1 h-px bg-border/20" />
-            </div>
+          <div className="mt-12 md:mt-16 border border-border/30 hidden md:block overflow-hidden">
+            {/* Gold gradient header bar */}
+            <div
+              className="h-px w-full"
+              style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25), hsl(var(--gold) / 0.1), transparent)" }}
+            />
+            <div className="p-6 md:p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <span
+                  className="w-2 h-2 rotate-45"
+                  style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.15))" }}
+                />
+                <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-muted-foreground/30 font-light">
+                  Quick Comparison
+                </p>
+                <span className="flex-1 h-px bg-border/20" />
+              </div>
             <div className="grid grid-cols-4 gap-4 text-center">
               <div />
               {services.map((s) => (
@@ -268,6 +280,7 @@ const ServicesOverviewSection = () => {
                   ))}
                 </div>
               ))}
+            </div>
             </div>
           </div>
         </ScrollReveal>

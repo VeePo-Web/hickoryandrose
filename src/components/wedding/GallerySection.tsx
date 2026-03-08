@@ -326,11 +326,21 @@ const GallerySection = () => {
                 className="flex flex-col items-center max-w-4xl relative z-10"
                 onClick={(e) => e.stopPropagation()}
               >
-                <img
-                  src={photos[selectedIndex].src}
-                  alt={photos[selectedIndex].alt}
-                  className="max-w-full max-h-[70vh] object-contain"
-                />
+                {/* Gold-traced border frame */}
+                <div className="relative">
+                  <div
+                    className="absolute -inset-[1px] pointer-events-none z-10"
+                    style={{
+                      border: "1px solid transparent",
+                      borderImage: "linear-gradient(135deg, hsl(var(--gold) / 0.2), transparent 30%, transparent 70%, hsl(var(--gold) / 0.15)) 1",
+                    }}
+                  />
+                  <img
+                    src={photos[selectedIndex].src}
+                    alt={photos[selectedIndex].alt}
+                    className="max-w-full max-h-[70vh] object-contain"
+                  />
+                </div>
 
                 {/* Lightbox editorial metadata */}
                 <motion.div
