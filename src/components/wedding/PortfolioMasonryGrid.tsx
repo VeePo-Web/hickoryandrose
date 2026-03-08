@@ -47,6 +47,20 @@ const PortfolioMasonryGrid = ({ stories }: PortfolioMasonryGridProps) => (
             >
               <ImageReveal delay={index * 0.04} direction={index % 3 === 0 ? "up" : index % 3 === 1 ? "left" : "right"}>
                 <div className={`${story.aspect} overflow-hidden relative group cursor-pointer`}>
+                  {/* Cinematic letterbox bars */}
+                  <div
+                    className="absolute top-0 left-0 right-0 z-20 h-[6%] bg-foreground/90 -translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] pointer-events-none"
+                  />
+                  <div
+                    className="absolute bottom-0 left-0 right-0 z-20 h-[6%] bg-foreground/90 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] pointer-events-none"
+                  />
+
+                  {/* Gold shimmer sweep */}
+                  <div
+                    className="absolute inset-0 z-10 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none"
+                    style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.08) 40%, hsl(var(--gold) / 0.12) 50%, hsl(var(--gold) / 0.08) 60%, transparent 100%)" }}
+                  />
+
                   <img
                     src={story.src}
                     alt={story.alt}
@@ -66,25 +80,25 @@ const PortfolioMasonryGrid = ({ stories }: PortfolioMasonryGridProps) => (
                   </div>
 
                   {/* Category badge */}
-                  <span className="absolute top-3 left-3 mt-6 font-sans-wedding text-[0.45rem] tracking-[0.18em] uppercase text-white/0 group-hover:text-white/50 transition-colors duration-500 bg-white/0 group-hover:bg-white/10 backdrop-blur-sm px-2 py-0.5">
+                  <span className="absolute top-3 left-3 mt-6 font-sans-wedding text-[0.45rem] tracking-[0.18em] uppercase text-white/0 group-hover:text-white/50 transition-colors duration-500 bg-white/0 group-hover:bg-white/10 backdrop-blur-sm px-2 py-0.5 z-20">
                     {story.category}
                   </span>
 
                   {/* Frame index */}
-                  <span className="absolute top-3 right-3 font-serif-wedding text-[0.5rem] text-white/0 group-hover:text-white/25 transition-colors duration-500 tabular-nums">
+                  <span className="absolute top-3 right-3 font-serif-wedding text-[0.5rem] text-white/0 group-hover:text-white/25 transition-colors duration-500 tabular-nums z-20">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 z-10">
                     <p className="font-serif-wedding text-lg md:text-xl text-white mb-0.5">
                       {story.couple}
                     </p>
-                    <p className="font-sans-wedding text-[0.625rem] tracking-[0.15em] uppercase text-white/60 mb-3">
+                    <p className="font-sans-wedding text-[0.625rem] tracking-[0.15em] uppercase text-white/60 mb-3 translate-y-2 group-hover:translate-y-0 transition-transform duration-500 delay-75">
                       {story.venue} · {story.season}
                     </p>
-                    <span className="inline-flex items-center gap-2 font-sans-wedding text-[0.55rem] tracking-[0.18em] uppercase text-white/70 group-hover:text-white transition-colors duration-300">
+                    <span className="inline-flex items-center gap-2 font-sans-wedding text-[0.55rem] tracking-[0.18em] uppercase text-white/70 group-hover:text-white transition-all duration-300 delay-150 translate-y-2 group-hover:translate-y-0">
                       <span
-                        className="w-0 group-hover:w-5 h-px transition-all duration-500 ease-out"
+                        className="w-0 group-hover:w-5 h-px transition-all duration-500 ease-out delay-200"
                         style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.6), transparent)" }}
                       />
                       View Story
