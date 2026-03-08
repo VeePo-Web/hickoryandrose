@@ -137,7 +137,16 @@ const VendorShowcaseSection = () => {
 
                 {/* Note + arrow */}
                 <div className="col-span-5 md:col-span-4 flex items-center justify-end gap-4">
-                  <span className="font-serif-wedding text-xs italic text-primary/20 group-hover:text-primary/40 transition-colors duration-500 hidden md:inline">
+                  <span
+                    className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/0 group-hover:text-primary/50 transition-all duration-500 hidden md:inline-flex items-center gap-1.5 backdrop-blur-sm px-2.5 py-1 border border-transparent group-hover:border-primary/10"
+                    style={hoveredIndex === index ? { background: "linear-gradient(135deg, hsl(var(--gold) / 0.06), hsl(var(--primary) / 0.04))" } : undefined}
+                  >
+                    <motion.span
+                      className="w-1 h-1 rounded-full shrink-0"
+                      style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.6), hsl(var(--gold) / 0.15))" }}
+                      animate={hoveredIndex === index ? { opacity: [0.4, 1, 0.4] } : { opacity: 0 }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    />
                     {vendor.note}
                   </span>
                   <span className="font-sans-wedding text-sm text-muted-foreground/0 group-hover:text-muted-foreground/25 transition-all duration-500 translate-x-0 group-hover:translate-x-1">
