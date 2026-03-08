@@ -27,23 +27,28 @@ const CTASection = () => {
           loading="lazy"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-foreground/70" />
+        {/* Gradient overlay — warm bottom fade for editorial depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/65 to-foreground/80" />
       </div>
 
       <div className="relative container mx-auto px-6 lg:px-8 text-center max-w-2xl">
         <ScrollReveal>
+          <p className="font-overline text-white/30 mb-6">
+            Let's Begin
+          </p>
+
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="w-16 h-px bg-background/20 mx-auto mb-10 origin-center"
+            className="w-16 h-px bg-white/20 mx-auto mb-10 origin-center"
           />
 
-          <h2 className="font-serif-wedding text-display-lg text-white mb-6">
+          <h2 className="font-serif-wedding text-display-lg text-white mb-4 leading-tight">
             Ready to feel calm about your wedding day?
           </h2>
-          <p className="font-sans-wedding text-sm text-white/70 leading-relaxed mb-10">
+          <p className="font-sans-wedding text-sm text-white/60 leading-relaxed mb-12 max-w-md mx-auto">
             Let's talk about your vision, your day, and how Hickory & Rose can
             make it effortlessly beautiful.
           </p>

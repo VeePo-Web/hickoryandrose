@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Mail, MapPin, Heart } from "lucide-react";
+import { Instagram, Mail, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
 const footerLinks = [
@@ -11,23 +11,20 @@ const footerLinks = [
   { label: "Inquire", path: "/inquire" },
 ];
 
-const colVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.12, ease: [0.25, 0.1, 0.25, 1] as const },
-  }),
-};
-
 const Footer = () => {
   return (
-    <footer className="bg-foreground text-background pt-0 pb-16 md:pb-24" role="contentinfo">
+    <footer className="bg-foreground text-background" role="contentinfo">
       {/* Gradient accent line */}
-      <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, transparent, hsl(var(--primary)) 30%, hsl(var(--gold-accent, 38 60% 55%)) 50%, hsl(var(--primary)) 70%, transparent)' }} />
-      <div className="pt-16 md:pt-24">
-      <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
-        {/* Signature wordmark with decorative botanical accent */}
+      <div
+        className="h-px w-full"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, hsl(var(--primary)) 30%, hsl(var(--gold-accent, 38 60% 55%)) 50%, hsl(var(--primary)) 70%, transparent)",
+        }}
+      />
+
+      <div className="container mx-auto px-6 lg:px-8 max-w-5xl pt-20 md:pt-28 pb-12 md:pb-16">
+        {/* Top: Wordmark centered */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -35,167 +32,123 @@ const Footer = () => {
           transition={{ duration: 0.7 }}
           className="text-center mb-16 md:mb-20"
         >
-          {/* Decorative monogram */}
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="w-16 h-px bg-background/15 mx-auto mb-6 origin-center"
-          />
-
           <Link to="/" className="inline-block group">
             <span className="font-serif-wedding text-3xl md:text-4xl font-light tracking-[-0.03em] text-background">
               Hickory <span className="font-normal opacity-50">&</span>{" "}
-              <span className="font-script text-4xl md:text-5xl group-hover:text-primary transition-colors duration-300">Rose</span>
+              <span className="font-script text-4xl md:text-5xl group-hover:text-primary transition-colors duration-300">
+                Rose
+              </span>
             </span>
           </Link>
           <p className="font-overline text-background/25 mt-5">
             Edmonton's Luxury Wedding Planner
           </p>
-
-          {/* Brand tagline */}
-          <p className="font-serif-wedding text-sm italic text-background/20 mt-3 tracking-wide">
-            Refined Rustic Elegance Since 2018
-          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16">
-          {/* Brand */}
-          <motion.div
-            custom={0}
-            variants={colVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <p className="font-overline text-background/40 mb-5">
-              About
-            </p>
-            <p className="font-sans-wedding text-body-sm text-background/45 leading-relaxed mb-6 font-light">
-              Refined rustic elegance with calm, intentional leadership. We
-              protect what matters most on your wedding day — your presence.
-            </p>
-            <div className="flex items-center gap-4">
-              <a
-                href="https://www.instagram.com/hickoryandrose"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-background/15 flex items-center justify-center text-background/40 hover:text-background hover:border-background/40 transition-all duration-200"
-                aria-label="Follow us on Instagram"
-              >
-                <Instagram size={16} strokeWidth={1.5} />
-              </a>
-              <a
-                href="mailto:sales@hickoryandrose.com"
-                className="w-9 h-9 rounded-full border border-background/15 flex items-center justify-center text-background/40 hover:text-background hover:border-background/40 transition-all duration-200"
-                aria-label="Email us"
-              >
-                <Mail size={16} strokeWidth={1.5} />
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Navigation */}
-          <motion.div
-            custom={1}
-            variants={colVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <p className="font-overline text-background/40 mb-5">
-              Explore
-            </p>
-            <ul className="space-y-2">
-              {footerLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="font-sans-wedding text-body-sm text-background/50 hover:text-background transition-colors duration-200 inline-block hover:translate-x-0.5 transform font-light"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Contact */}
-          <motion.div
-            custom={2}
-            variants={colVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <p className="font-overline text-background/40 mb-5">
-              Get in Touch
-            </p>
-            <div className="space-y-3 font-sans-wedding text-body-sm text-background/50 font-light">
-              <div className="flex items-center gap-2">
-                <MapPin size={14} strokeWidth={1.5} className="shrink-0 text-background/40" />
-                <span>Edmonton, Alberta</span>
-              </div>
-              <a
-                href="mailto:sales@hickoryandrose.com"
-                className="flex items-center gap-2 hover:text-background transition-colors duration-200"
-              >
-                <Mail size={14} strokeWidth={1.5} className="shrink-0 text-background/40" />
-                sales@hickoryandrose.com
-              </a>
-              <a
-                href="https://www.instagram.com/hickoryandrose"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-background transition-colors duration-200"
-              >
-                <Instagram size={14} strokeWidth={1.5} className="shrink-0 text-background/40" />
-                @hickoryandrose
-              </a>
-            </div>
-
-            {/* Serving areas */}
-            <div className="mt-6 pt-4 border-t border-background/10">
-              <p className="font-overline text-background/25 mb-2 text-[0.6rem]">
-                Proudly Serving
-              </p>
-              <p className="font-sans-wedding text-xs text-background/30 font-light leading-relaxed">
-                Edmonton · Jasper · Banff · Lake Louise · Calgary · The Rockies
-              </p>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Bottom */}
+        {/* Middle: Ruled navigation row */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
+          transition={{ duration: 0.6, delay: 0.15 }}
         >
-          <p className="font-sans-wedding text-xs text-background/30 flex items-center gap-1.5">
-            © {new Date().getFullYear()} Hickory & Rose. Crafted with
-            <Heart size={10} className="text-background/20" fill="currentColor" />
-            in Edmonton.
+          <div className="border-t border-background/10" />
+          <nav
+            className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-8 md:py-10"
+            aria-label="Footer navigation"
+          >
+            {footerLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className="font-sans-wedding text-[0.6875rem] tracking-[0.18em] uppercase text-background/40 hover:text-background transition-colors duration-200 font-light"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="border-t border-background/10" />
+        </motion.div>
+
+        {/* Bottom: Three-column info */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 pt-10 md:pt-14"
+        >
+          {/* Location */}
+          <div className="text-center md:text-left">
+            <p className="font-overline text-background/25 mb-3 text-[0.6rem]">
+              Location
+            </p>
+            <div className="flex items-center justify-center md:justify-start gap-2 font-sans-wedding text-xs text-background/40 font-light">
+              <MapPin size={12} strokeWidth={1.5} className="shrink-0 text-background/25" />
+              Edmonton, Alberta
+            </div>
+            <p className="font-sans-wedding text-[0.65rem] text-background/20 font-light mt-2 leading-relaxed">
+              Serving Edmonton · Jasper · Banff · Lake Louise · Calgary · The Rockies
+            </p>
+          </div>
+
+          {/* Contact */}
+          <div className="text-center">
+            <p className="font-overline text-background/25 mb-3 text-[0.6rem]">
+              Contact
+            </p>
+            <a
+              href="mailto:sales@hickoryandrose.com"
+              className="flex items-center justify-center gap-2 font-sans-wedding text-xs text-background/40 hover:text-background transition-colors duration-200 font-light"
+            >
+              <Mail size={12} strokeWidth={1.5} className="shrink-0 text-background/25" />
+              sales@hickoryandrose.com
+            </a>
+          </div>
+
+          {/* Social */}
+          <div className="text-center md:text-right">
+            <p className="font-overline text-background/25 mb-3 text-[0.6rem]">
+              Follow
+            </p>
+            <a
+              href="https://www.instagram.com/hickoryandrose"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-sans-wedding text-xs text-background/40 hover:text-background transition-colors duration-200 font-light"
+            >
+              <Instagram size={12} strokeWidth={1.5} className="text-background/25" />
+              @hickoryandrose
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Legal */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="border-t border-background/8 mt-12 md:mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <p className="font-sans-wedding text-[0.65rem] text-background/20">
+            © {new Date().getFullYear()} Hickory & Rose. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link
               to="/privacy"
-              className="font-sans-wedding text-xs text-background/30 hover:text-background/60 transition-colors"
+              className="font-sans-wedding text-[0.65rem] text-background/20 hover:text-background/50 transition-colors"
             >
-              Privacy Policy
+              Privacy
             </Link>
             <Link
               to="/terms"
-              className="font-sans-wedding text-xs text-background/30 hover:text-background/60 transition-colors"
+              className="font-sans-wedding text-[0.65rem] text-background/20 hover:text-background/50 transition-colors"
             >
               Terms
             </Link>
           </div>
         </motion.div>
-      </div>
       </div>
     </footer>
   );
