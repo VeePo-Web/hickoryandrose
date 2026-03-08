@@ -123,6 +123,34 @@ const PreFooterDivider = () => {
                 wedding receives our full attention and care.
               </p>
 
+              {/* Rotating seasonal availability ticker */}
+              <div className="mb-6 flex items-center justify-center lg:justify-start gap-4">
+                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.7), hsl(var(--gold) / 0.2))" }} />
+                <div className="h-5 overflow-hidden relative">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={activeSeason}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.35 }}
+                      className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-foreground/40 font-light inline-block"
+                    >
+                      {seasonSlots[activeSeason].season} — <span className={seasonSlots[activeSeason].accent ? "text-primary/60" : "text-muted-foreground/40"}>{seasonSlots[activeSeason].status}</span>
+                    </motion.span>
+                  </AnimatePresence>
+                </div>
+                <div className="flex gap-1.5">
+                  {seasonSlots.map((_, i) => (
+                    <span
+                      key={i}
+                      className={`w-4 h-[1.5px] transition-all duration-400 ${i === activeSeason ? "" : "bg-border/30"}`}
+                      style={i === activeSeason ? { background: "linear-gradient(90deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.2))" } : undefined}
+                    />
+                  ))}
+                </div>
+              </div>
+
               {/* Trust signals */}
               <div className="flex items-center justify-center lg:justify-start gap-3 mb-8">
                 {["Complimentary Discovery Call", "No Commitment Required"].map((signal, i) => (
