@@ -5,11 +5,19 @@ interface BranchDecorationProps {
   flip?: boolean;
 }
 
-const BranchDecoration = ({ className = "" }: BranchDecorationProps) => {
+const BranchDecoration = ({ className = "", flip = false }: BranchDecorationProps) => {
   return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 0.15 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1 }}
+      className={`pointer-events-none select-none ${flip ? "scale-x-[-1]" : ""} ${className}`}
+      aria-hidden="true"
+    >
     <svg
       viewBox="0 0 200 60"
-      className={`w-48 md:w-64 h-auto ${className}`}
+      className="w-48 md:w-64 h-auto"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
