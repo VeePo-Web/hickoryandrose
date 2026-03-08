@@ -16,6 +16,7 @@ const Services = lazy(() => import("./pages/Services"));
 const Portfolio = lazy(() => import("./pages/Portfolio"));
 const About = lazy(() => import("./pages/About"));
 const Approach = lazy(() => import("./pages/Approach"));
+const Journal = lazy(() => import("./pages/Journal"));
 const Inquire = lazy(() => import("./pages/Inquire"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const NotFound = lazy(() => import("./pages/NotFound"));
