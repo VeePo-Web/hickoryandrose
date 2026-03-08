@@ -1,29 +1,71 @@
+import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import detailImage from "@/assets/detail-placecard.jpg";
 import firstDanceImage from "@/assets/first-dance.jpg";
 
+const testimonials = [
+  {
+    quote:
+      "We actually got to enjoy our wedding day. Every single moment felt taken care of — we never once worried about what was happening behind the scenes.",
+    couple: "Sarah & Michael",
+    venue: "Fairmont Hotel Macdonald, Edmonton",
+  },
+  {
+    quote:
+      "Hiring Hickory & Rose was the best decision we made in our entire planning process. The calm energy, the attention to detail — it was beyond anything we imagined.",
+    couple: "Emma & James",
+    venue: "The Glass House, Autumn 2024",
+  },
+  {
+    quote:
+      "From our first call, we knew we were in the right hands. Our wedding felt exactly like us — intimate, elegant, and completely stress-free.",
+    couple: "Olivia & Noah",
+    venue: "Jasper Park Lodge, Summer 2024",
+  },
+];
+
 const TestimonialSection = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = testimonials[activeIndex];
+
   return (
-    <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-sage-mist" aria-label="Testimonials">
+    <section
+      className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-sage-mist"
+      aria-label="Testimonials"
+    >
       <div className="container mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
-          {/* Testimonial */}
+          {/* Testimonial with navigation */}
           <ScrollReveal>
             <div>
               <div className="w-8 h-px bg-primary mb-8" />
-              <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-8">
-                "We actually got to enjoy our wedding day. Every single moment
-                felt taken care of — we never once worried about what was
-                happening behind the scenes."
+              <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-8 min-h-[120px]">
+                "{active.quote}"
               </blockquote>
-              <div className="font-sans-wedding">
+              <div className="font-sans-wedding mb-8">
                 <p className="text-sm font-semibold text-foreground">
-                  Sarah & Michael
+                  {active.couple}
                 </p>
                 <p className="text-xs text-muted-foreground mt-1">
-                  Fairmont Hotel Macdonald, Edmonton
+                  {active.venue}
                 </p>
+              </div>
+
+              {/* Pagination dots */}
+              <div className="flex items-center gap-3">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === activeIndex
+                        ? "bg-primary w-6"
+                        : "bg-primary/30 hover:bg-primary/50"
+                    }`}
+                    aria-label={`View testimonial ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </ScrollReveal>

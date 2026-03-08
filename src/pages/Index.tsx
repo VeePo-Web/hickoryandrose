@@ -1,5 +1,6 @@
 import HeroSection from "@/components/wedding/HeroSection";
 import BrandPromiseSection from "@/components/wedding/BrandPromiseSection";
+import TrustBarSection from "@/components/wedding/TrustBarSection";
 import ServicesOverviewSection from "@/components/wedding/ServicesOverviewSection";
 import EditorialImageBreak from "@/components/wedding/EditorialImageBreak";
 import TestimonialSection from "@/components/wedding/TestimonialSection";
@@ -16,6 +17,7 @@ const Index = () => {
     <main id="main-content" className="overflow-hidden">
       <HeroSection />
       <BrandPromiseSection />
+      <TrustBarSection />
       <ServicesOverviewSection />
       <EditorialImageBreak />
       <TestimonialSection />

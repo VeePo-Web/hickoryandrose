@@ -13,6 +13,7 @@ const navLinks = [
   { name: "Portfolio", path: "/portfolio" },
   { name: "About", path: "/about" },
   { name: "Approach", path: "/approach" },
+  { name: "FAQ", path: "/faq" },
 ];
 
 const Navigation = ({ variant = "solid" }: NavigationProps) => {

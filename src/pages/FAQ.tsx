@@ -1,0 +1,154 @@
+import Navigation from "@/components/wedding/Navigation";
+import Footer from "@/components/wedding/Footer";
+import CTASection from "@/components/wedding/CTASection";
+import ScrollReveal from "@/components/wedding/ScrollReveal";
+import { Link } from "react-router-dom";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const faqCategories = [
+  {
+    category: "Services & Planning",
+    questions: [
+      {
+        q: "What's the difference between Day-Of Coordination and Full-Service Planning?",
+        a: "Day-Of Coordination is designed for couples who have done the planning themselves and need a professional to execute their vision flawlessly on the wedding day. Full-Service Planning means we're with you from the very beginning — handling design, vendor sourcing, budgeting, logistics, and everything in between, so you can simply enjoy the journey.",
+      },
+      {
+        q: "How far in advance should I book?",
+        a: "We recommend reaching out 10-14 months before your wedding for Full-Service Planning, and at least 3-4 months for Day-Of Coordination. That said, we're always happy to chat — even if your timeline is tighter, we may be able to help.",
+      },
+      {
+        q: "Do you plan non-wedding events?",
+        a: "Yes! While weddings are our specialty, we also coordinate milestone celebrations, corporate events, and intimate gatherings. If it involves intentional design and calm logistics, we'd love to be part of it.",
+      },
+      {
+        q: "Can I customize my package?",
+        a: "Absolutely. Every couple is unique, and our services are designed to be flexible. After our discovery call, we'll craft a custom proposal that matches your specific needs, priorities, and budget.",
+      },
+    ],
+  },
+  {
+    category: "Process & Communication",
+    questions: [
+      {
+        q: "What does the discovery call look like?",
+        a: "It's a relaxed, 30-minute video or phone call where we learn about your vision, your priorities, and how you want to feel on your wedding day. There's absolutely no pressure — it's simply a conversation to see if we're the right fit.",
+      },
+      {
+        q: "How do you communicate throughout the planning process?",
+        a: "We use a combination of email, a shared planning portal, and scheduled check-in calls. You'll always know what's happening, what's coming next, and what needs your attention — without ever feeling overwhelmed.",
+      },
+      {
+        q: "Will you be the one on-site on our wedding day?",
+        a: "Yes. The planner you work with throughout the process will be the one leading your wedding day. We believe in personal connection and continuity — no hand-offs to unfamiliar faces.",
+      },
+    ],
+  },
+  {
+    category: "Investment & Logistics",
+    questions: [
+      {
+        q: "What is the investment range for your services?",
+        a: "Day-Of Coordination starts at $2,500, Partial Planning at $5,000, and Full-Service Planning at $8,500. Every proposal is customized based on your unique needs, guest count, and event complexity.",
+      },
+      {
+        q: "Do you offer payment plans?",
+        a: "Yes, we offer flexible payment plans spread across the planning timeline. A retainer is required upon booking, with remaining payments due at agreed-upon milestones.",
+      },
+      {
+        q: "What areas do you serve?",
+        a: "We're based in Edmonton, Alberta, and serve couples throughout the greater Edmonton area, the Alberta Rockies (Jasper, Banff, Lake Louise), and surrounding communities. Travel fees may apply for destination weddings.",
+      },
+      {
+        q: "How many weddings do you take on per year?",
+        a: "We intentionally limit our calendar to ensure every couple receives our full attention and care. We typically take on 15-20 weddings per year, which means we never feel stretched thin on your day.",
+      },
+    ],
+  },
+];
+
+const FAQ = () => {
+  return (
+    <main id="main-content">
+      <Navigation variant="solid" />
+
+      {/* Hero */}
+      <section className="bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet">
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+          <ScrollReveal>
+            <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
+              Common Questions
+            </p>
+            <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
+              Frequently Asked Questions
+            </h1>
+            <p className="font-sans-wedding text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
+              We know choosing a wedding planner is a big decision. Here are
+              answers to the questions we hear most often.
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* FAQ Sections */}
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
+          {faqCategories.map((category, catIndex) => (
+            <ScrollReveal key={category.category} delay={catIndex * 0.08}>
+              <div className={catIndex > 0 ? "mt-12 md:mt-16" : ""}>
+                <h2 className="font-serif-wedding text-display-md text-foreground mb-6">
+                  {category.category}
+                </h2>
+                <Accordion type="single" collapsible className="w-full">
+                  {category.questions.map((faq, index) => (
+                    <AccordionItem
+                      key={index}
+                      value={`${catIndex}-${index}`}
+                      className="border-border"
+                    >
+                      <AccordionTrigger className="font-sans-wedding text-sm text-foreground text-left hover:text-primary hover:no-underline py-5">
+                        {faq.q}
+                      </AccordionTrigger>
+                      <AccordionContent className="font-sans-wedding text-sm text-muted-foreground leading-relaxed pb-5">
+                        {faq.a}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </ScrollReveal>
+          ))}
+
+          {/* Still have questions */}
+          <ScrollReveal delay={0.2}>
+            <div className="mt-16 pt-16 border-t border-border text-center">
+              <h3 className="font-serif-wedding text-display-md text-foreground mb-4">
+                Still have questions?
+              </h3>
+              <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto">
+                We'd love to hear from you. Reach out and we'll get back to you
+                within 48 hours.
+              </p>
+              <Link
+                to="/inquire"
+                className="inline-flex items-center px-10 py-4 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.2em] uppercase font-semibold hover:bg-sage-deep transition-colors duration-200"
+              >
+                Get in Touch
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <CTASection />
+      <Footer />
+    </main>
+  );
+};
+
+export default FAQ;
