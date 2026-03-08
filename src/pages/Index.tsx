@@ -5,6 +5,7 @@ import NowBookingSection from "@/components/wedding/NowBookingSection";
 import ServicesOverviewSection from "@/components/wedding/ServicesOverviewSection";
 import EditorialImageBreak from "@/components/wedding/EditorialImageBreak";
 import TestimonialSection from "@/components/wedding/TestimonialSection";
+import EditorialSplitSection from "@/components/wedding/EditorialSplitSection";
 import LoveQuoteSection from "@/components/wedding/LoveQuoteSection";
 import ProcessTeaserSection from "@/components/wedding/ProcessTeaserSection";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
@@ -27,6 +28,7 @@ const Index = () => {
       <ServicesOverviewSection />
       <EditorialImageBreak />
       <TestimonialSection />
+      <EditorialSplitSection />
       <LoveQuoteSection />
       <ProcessTeaserSection />
       <FullWidthImage
