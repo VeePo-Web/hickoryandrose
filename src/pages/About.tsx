@@ -177,14 +177,23 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <ScrollReveal>
               <ImageReveal direction="left" delay={0.1}>
-                <div className="aspect-[3/4] overflow-hidden sticky top-28">
+                <div className="aspect-[3/4] overflow-hidden sticky top-28 relative group">
                   <motion.img
                     src={founderImage}
                     alt="Founder of Hickory & Rose"
-                    className="w-full h-[110%] object-cover"
+                    className="w-full h-[110%] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     style={{ y: founderImgY }}
                     loading="lazy"
                   />
+                  {/* Gold corner frame accents on hover */}
+                  <div className="absolute top-3 left-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                    <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                    <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                  </div>
+                  <div className="absolute bottom-3 right-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                    <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                    <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                  </div>
                 </div>
               </ImageReveal>
             </ScrollReveal>
@@ -233,20 +242,72 @@ const About = () => {
         </div>
       </section>
 
-      {/* Signature Quote */}
-      <section className="py-20 md:py-28 bg-sage-deep">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+      {/* Signature Quote — editorial with gold ornaments */}
+      <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden">
+        {/* Radial gold ambient glow */}
+        <motion.div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.06 }}
+          viewport={{ once: true }}
+          transition={{ duration: 2 }}
+          style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.12), transparent 70%)" }}
+          aria-hidden="true"
+        />
+
+        {/* Parallax watermark */}
+        <motion.div
+          className="absolute -left-4 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.025 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+        >
+          <span className="font-serif-wedding text-[10rem] md:text-[14rem] text-primary-foreground leading-none tracking-tight italic whitespace-nowrap">
+            Promise
+          </span>
+        </motion.div>
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
           <ScrollReveal>
+            {/* Gold diamond ornament */}
+            <div className="flex items-center justify-center gap-4 mb-10">
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-10 h-px origin-right"
+                style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25))" }}
+              />
+              <span
+                className="w-2 h-2 rotate-45 shrink-0"
+                style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))" }}
+              />
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-10 h-px origin-left"
+                style={{ background: "linear-gradient(270deg, transparent, hsl(var(--gold) / 0.25))" }}
+              />
+            </div>
+
+            <span className="font-serif-wedding text-6xl text-primary-foreground/[0.06] leading-none block -mb-4" aria-hidden="true">"</span>
+            <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">
+              "We don't just plan weddings — we protect the feeling of your day."
+            </blockquote>
+
+            {/* Attribution with gold separator */}
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="w-12 h-px bg-primary-foreground/20 mx-auto mb-10 origin-center"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="w-8 h-px mx-auto mb-4 origin-center"
+              style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }}
             />
-            <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">
-              "We don't just plan weddings — we protect the feeling of your day."
-            </blockquote>
             <span className="font-script text-xl text-primary-foreground/35">
               Hickory & Rose
             </span>
@@ -316,7 +377,66 @@ const About = () => {
         </div>
       </section>
 
-      {/* NEW: Cinematic Parallax Testimonial Carousel */}
+      {/* Editorial Image Mosaic — asymmetric 3-image grid */}
+      <section className="py-12 md:py-16 bg-card overflow-hidden">
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
+          <div className="grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-4">
+            {/* Large left image */}
+            <ScrollReveal delay={0} className="col-span-2 md:col-span-7">
+              <div className="aspect-[4/3] overflow-hidden relative group">
+                <img
+                  src={bouquetImage}
+                  alt="Bridal bouquet detail with ivory roses and sage greenery"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute top-3 left-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                  <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                  <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                </div>
+                <div className="absolute bottom-3 right-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                  <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                  <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Right stacked pair */}
+            <div className="col-span-2 md:col-span-5 flex flex-col gap-3 md:gap-4">
+              <ScrollReveal delay={0.1}>
+                <div className="aspect-[3/2] overflow-hidden relative group">
+                  <img
+                    src={editorialFloralsImage}
+                    alt="Sage eucalyptus and ivory floral arrangement on ceremony table"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-3 left-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                    <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                    <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                  </div>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal delay={0.2}>
+                <div className="aspect-[3/2] overflow-hidden relative group">
+                  <img
+                    src={aboutHeroImage}
+                    alt="Wedding planner coordinating details in sunlit garden"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute bottom-3 right-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                    <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                    <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Cinematic Parallax Testimonial Carousel */}
       <section className="py-section-mobile md:py-section-tablet bg-card relative overflow-hidden">
         {/* Parallax watermark */}
         <motion.div
