@@ -26,3 +26,4 @@ export { RESPONSIVE_MOBILE_PERSONA } from './responsive-mobile';
 export { FOOTER_ARCHITECT_PERSONA } from './footer-architect';
 export { MASTER_VISUAL_PERSONA } from './master-visual';
 export { BRAND_IDENTITY_ARCHITECT } from './brand-identity-architect';
+export { FRONTEND_ENGINEER_PERSONA } from './frontend-engineer';
