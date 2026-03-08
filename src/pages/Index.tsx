@@ -47,6 +47,8 @@ const Index = () => {
         src={venueImage}
         alt="Rustic barn wedding venue at twilight with warm string lights and mountain backdrop"
         height="h-[50vh] md:h-[60vh]"
+        overlay
+        caption="Edmonton · Alberta · The Canadian Rockies"
       />
       <FounderTeaserSection />
       <StatsSection />

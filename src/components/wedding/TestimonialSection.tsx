@@ -30,7 +30,6 @@ const testimonials = [
 const TestimonialSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Auto-advance every 6s
   const advance = useCallback(() => {
     setActiveIndex((i) => (i + 1) % testimonials.length);
   }, []);
@@ -44,14 +43,24 @@ const TestimonialSection = () => {
 
   return (
     <section
-      className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-sage-mist"
+      className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-sage-mist relative overflow-hidden"
       aria-label="Testimonials"
     >
-      <div className="container mx-auto px-6 lg:px-8">
+      {/* Decorative large quote mark */}
+      <div className="absolute top-10 left-8 md:left-16 pointer-events-none select-none" aria-hidden="true">
+        <span className="font-serif-wedding text-[8rem] md:text-[12rem] leading-none text-primary/[0.04]">
+          "
+        </span>
+      </div>
+
+      <div className="container mx-auto px-6 lg:px-8 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
           {/* Testimonial with crossfade */}
           <ScrollReveal>
             <div>
+              <p className="font-overline text-muted-foreground mb-6">
+                Kind Words
+              </p>
               <div className="w-8 h-px bg-primary mb-8" />
               <div className="min-h-[180px] md:min-h-[160px] relative">
                 <AnimatePresence mode="wait">
@@ -91,6 +100,10 @@ const TestimonialSection = () => {
                     aria-label={`View testimonial ${index + 1}`}
                   />
                 ))}
+                {/* Counter */}
+                <span className="ml-auto font-sans-wedding text-xs text-muted-foreground/50 tabular-nums">
+                  {String(activeIndex + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
+                </span>
               </div>
             </div>
           </ScrollReveal>

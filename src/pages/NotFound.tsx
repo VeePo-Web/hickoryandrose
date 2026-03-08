@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import Footer from "@/components/wedding/Footer";
+import BranchDecoration from "@/components/wedding/BranchDecoration";
 import editorialFlorals from "@/assets/editorial-florals.jpg";
 
 const NotFound = () => {
@@ -35,7 +36,7 @@ const NotFound = () => {
         {/* Decorative floral image — faded */}
         <motion.div
           initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 0.08, scale: 1 }}
+          animate={{ opacity: 0.06, scale: 1 }}
           transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1.0] }}
           className="absolute inset-0 pointer-events-none"
           aria-hidden="true"
@@ -53,7 +54,7 @@ const NotFound = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1.0] }}
           >
-            <hr className="editorial-rule mx-auto mb-8" />
+            <BranchDecoration className="mx-auto mb-6" />
             <p className="font-overline text-muted-foreground mb-6">
               Page Not Found
             </p>
@@ -86,18 +87,26 @@ const NotFound = () => {
             </Link>
           </motion.div>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9, duration: 0.5 }}
-            className="mt-12 font-sans-wedding text-xs text-muted-foreground/50 font-light"
+            className="mt-12"
           >
-            Or{" "}
-            <Link to="/inquire" className="underline underline-offset-4 hover:text-primary transition-colors">
-              reach out directly
-            </Link>{" "}
-            — we'd love to hear from you.
-          </motion.p>
+            {/* Brand flourish */}
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <span className="w-6 h-px bg-border" />
+              <span className="font-script text-sm text-muted-foreground/30">H & R</span>
+              <span className="w-6 h-px bg-border" />
+            </div>
+            <p className="font-sans-wedding text-xs text-muted-foreground/50 font-light">
+              Or{" "}
+              <Link to="/inquire" className="underline underline-offset-4 hover:text-primary transition-colors">
+                reach out directly
+              </Link>{" "}
+              — we'd love to hear from you.
+            </p>
+          </motion.div>
         </div>
       </section>
       <Footer />
