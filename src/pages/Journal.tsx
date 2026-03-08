@@ -7,6 +7,8 @@ import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import ImageReveal from "@/components/wedding/ImageReveal";
 import PreFooterDivider from "@/components/wedding/PreFooterDivider";
+import GoldFrame from "@/components/wedding/GoldFrame";
+import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 import journalVowsImage from "@/assets/journal-vows.jpg";
 import journalBrideImage from "@/assets/journal-bride.jpg";
 import journalReceptionImage from "@/assets/journal-reception.jpg";
