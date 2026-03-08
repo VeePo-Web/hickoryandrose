@@ -26,6 +26,7 @@ const FounderTeaserSection = () => {
   });
   const verticalLineH = useTransform(sectionProgress, [0.1, 0.6], ["0%", "100%"]);
   const watermarkY = useTransform(sectionProgress, [0, 1], [40, -40]);
+  const ribbonX = useTransform(sectionProgress, [0.2, 0.8], ["5%", "-5%"]);
 
   return (
     <section
@@ -82,9 +83,7 @@ const FounderTeaserSection = () => {
                   width={1024}
                   height={1024}
                 />
-                {/* Subtle overlay on hover */}
                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/[0.03] transition-colors duration-700" />
-                {/* Corner caption */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -99,8 +98,34 @@ const FounderTeaserSection = () => {
               </div>
             </ImageReveal>
 
-            {/* Credential row below image — ruled dividers with animated reveals */}
-            <div className="grid grid-cols-3 gap-0 mt-8 border-t border-border/40">
+            {/* Editorial pull-quote ribbon between portrait and credentials */}
+            <motion.div
+              className="relative my-6 md:my-8 py-5 md:py-6 overflow-hidden"
+              style={{ x: ribbonX }}
+            >
+              <div className="flex items-center gap-4">
+                <motion.div
+                  className="w-10 h-px bg-primary/20 shrink-0 origin-left"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                />
+                <p className="font-serif-wedding text-base md:text-lg italic text-foreground/40 leading-relaxed whitespace-nowrap">
+                  "Calm is not the absence of planning — it's the presence of it."
+                </p>
+                <motion.div
+                  className="w-10 h-px bg-primary/20 shrink-0 origin-right"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Credential row below ribbon */}
+            <div className="grid grid-cols-3 gap-0 border-t border-border/40">
               {credentials.map((cred, i) => (
                 <motion.div
                   key={cred.label}
@@ -133,7 +158,6 @@ const FounderTeaserSection = () => {
           {/* Story */}
           <ScrollReveal delay={0.15} className="lg:col-span-2">
             <div>
-              {/* Section index */}
               <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-4">
                 04
               </span>
@@ -162,13 +186,6 @@ const FounderTeaserSection = () => {
                 My mission is simple: handle every detail with quiet confidence
                 so you can be fully present with the people you love.
               </p>
-
-              {/* Pull quote accent */}
-              <div className="border-l-2 border-primary/20 pl-5 mb-8">
-                <p className="font-serif-wedding text-base text-foreground/70 italic leading-relaxed">
-                  "Calm is not the absence of planning — it's the presence of it."
-                </p>
-              </div>
 
               {/* Signature flourish */}
               <div className="mb-6">
