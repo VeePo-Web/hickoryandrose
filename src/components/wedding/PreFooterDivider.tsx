@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
 import ScrollReveal from "./ScrollReveal";
+import BreathingDiamond from "./BreathingDiamond";
 import inquireImage from "@/assets/inquire-editorial.jpg";
 
 const seasonSlots = [
