@@ -392,11 +392,17 @@ const Footer = () => {
               </Link>
               <button
                 onClick={scrollToTop}
-                className="flex items-center gap-1.5 font-sans-wedding text-[0.65rem] text-background/15 hover:text-background/40 transition-colors font-light group"
+                className="flex items-center gap-1.5 font-sans-wedding text-[0.65rem] text-background/15 hover:text-background/40 transition-colors font-light group relative"
                 aria-label="Back to top"
               >
-                Top
-                <ArrowUp size={10} strokeWidth={1.5} className="group-hover:-translate-y-0.5 transition-transform duration-200" />
+                <span className="relative z-10">Top</span>
+                <span className="relative z-10">
+                  <ArrowUp size={10} strokeWidth={1.5} className="group-hover:-translate-y-0.5 transition-transform duration-200" />
+                </span>
+                <span
+                  className="absolute -inset-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.08), transparent 70%)" }}
+                />
               </button>
             </div>
           </div>
