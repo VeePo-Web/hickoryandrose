@@ -28,7 +28,7 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
               transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1.0] }}
               className="text-center"
             >
-              <p className="font-serif-wedding text-2xl md:text-3xl font-semibold tracking-tight text-foreground">
+              <p className="font-serif-wedding text-2xl md:text-3xl font-light tracking-tight text-foreground">
                 Hickory <span className="font-normal">&</span>{" "}
                 <span className="font-script text-3xl md:text-4xl">Rose</span>
               </p>

@@ -44,13 +44,13 @@ const Portfolio = () => {
       <section className="bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
+            <p className="font-overline text-muted-foreground mb-4">
               Our Work
             </p>
             <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
               Real Weddings
             </h1>
-            <p className="font-sans-wedding text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
+            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed max-w-xl mx-auto font-light">
               Every wedding tells a unique story. Here are some of the moments
               we've had the privilege of helping create.
             </p>
@@ -121,18 +121,18 @@ const Portfolio = () => {
       <section className="py-section-mobile md:py-section-tablet bg-sage-mist">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <div className="w-12 h-px bg-primary mx-auto mb-10" />
+            <hr className="editorial-rule mx-auto mb-10" />
             <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-8">
               "Working with Hickory & Rose was the best decision we made. Every
               detail felt intentional, every moment felt protected."
             </blockquote>
-            <p className="font-sans-wedding text-sm font-semibold text-foreground">
+            <p className="font-sans-wedding text-body-sm font-light text-foreground">
               Emma & James
             </p>
             <p className="font-sans-wedding text-xs text-muted-foreground mt-1">
               The Glass House, Autumn 2024
             </p>
-            <div className="w-12 h-px bg-primary mx-auto mt-10" />
+            <hr className="editorial-rule mx-auto mt-10" />
           </ScrollReveal>
         </div>
       </section>
