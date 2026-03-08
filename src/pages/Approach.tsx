@@ -65,10 +65,17 @@ const Approach = () => {
           className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
           style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "15%"]) }}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.03 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 2, delay: 0.5 }}
         >
-          <span className="font-serif-wedding text-[14rem] md:text-[22rem] text-white leading-none tracking-tight whitespace-nowrap">
+          <span
+            className="font-serif-wedding text-[14rem] md:text-[22rem] leading-none tracking-tight whitespace-nowrap"
+            style={{
+              background: "linear-gradient(180deg, hsl(var(--gold) / 0.06), hsl(var(--gold) / 0.015))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
             Approach
           </span>
         </motion.div>
@@ -112,6 +119,22 @@ const Approach = () => {
           ))}
         </motion.div>
 
+        {/* Scroll-down indicator */}
+        <motion.div
+          className="absolute bottom-14 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none"
+          initial={{ opacity: 0, y: -6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2, duration: 0.8 }}
+        >
+          <span className="font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-white/25">Scroll</span>
+          <motion.span
+            className="w-px h-6"
+            style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), transparent)" }}
+            animate={{ scaleY: [0, 1, 0], originY: 0 }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.div>
+
         <motion.span
           className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/15 tracking-widest z-20"
           initial={{ opacity: 0 }}
@@ -147,6 +170,20 @@ const Approach = () => {
                 <p className="font-overline text-muted-foreground/50 mb-3">Philosophy</p>
                 <h2 className="font-serif-wedding text-display-md text-foreground">Planning with intention.</h2>
 
+                {/* Editorial image inset — mobile */}
+                <div className="md:hidden mt-6 mb-2">
+                  <ImageReveal direction="up" delay={0.15}>
+                    <div className="aspect-[16/9] overflow-hidden relative">
+                      <img
+                        src={approachDetailsImage}
+                        alt="Wedding planning details with gold accents"
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  </ImageReveal>
+                </div>
+
                 {/* Editorial image inset — desktop */}
                 <div className="hidden md:block mt-8">
                   <ImageReveal direction="up" delay={0.2}>
@@ -161,7 +198,7 @@ const Approach = () => {
                       {["top-2 left-2", "top-2 right-2 rotate-90", "bottom-2 right-2 rotate-180", "bottom-2 left-2 -rotate-90"].map((pos, i) => (
                         <div
                           key={i}
-                          className={`absolute ${pos} w-6 h-6 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                          className={`absolute ${pos} w-8 h-8 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                           aria-hidden="true"
                         >
                           <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.5), transparent)" }} />
@@ -294,7 +331,7 @@ const Approach = () => {
       </section>
 
       {/* Inline testimonial — upgraded with gold quotation mark + diamond separator + scroll accent */}
-      <section className="py-14 md:py-20 bg-background relative overflow-hidden" aria-label="Testimonial">
+      <section className="py-14 md:py-20 bg-background relative overflow-hidden grain-overlay" aria-label="Testimonial">
         <motion.div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] pointer-events-none" initial={{ opacity: 0 }} whileInView={{ opacity: 0.06 }} viewport={{ once: true }} transition={{ duration: 2 }} style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.12), transparent 70%)" }} aria-hidden="true" />
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
           <ScrollReveal>
@@ -352,7 +389,7 @@ const Approach = () => {
       <FullWidthImage src={ceremonyImage} alt="Outdoor wedding ceremony setup in mountain meadow with floral arch" height="h-[35vh] md:h-[45vh]" />
 
       {/* Promise quote */}
-      <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden" aria-label="Brand Promise">
+      <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden grain-overlay vignette" aria-label="Brand Promise">
         <motion.div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] pointer-events-none" initial={{ opacity: 0 }} whileInView={{ opacity: 0.06 }} viewport={{ once: true }} transition={{ duration: 2 }} style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.15), transparent 70%)" }} aria-hidden="true" />
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
           <ScrollReveal>
@@ -366,7 +403,14 @@ const Approach = () => {
               "Our job isn't just to plan your wedding — it's to protect the feeling of your day."
             </blockquote>
             <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="w-10 h-px mx-auto mb-5 origin-center" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.35), transparent)" }} />
-            <span className="font-script text-xl text-primary-foreground/35">Hickory & Rose</span>
+            <span
+              className="font-script text-xl"
+              style={{
+                background: "linear-gradient(135deg, hsl(var(--gold) / 0.6), hsl(var(--gold) / 0.25))",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >Hickory & Rose</span>
             <div className="flex items-center justify-center gap-3 mt-3">
               <span className="w-4 h-px bg-primary-foreground/10" />
               <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-primary-foreground/20">Est. 2018</span>

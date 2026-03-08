@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
 import GoldFrame from "./GoldFrame";
+import BreathingDiamond from "./BreathingDiamond";
 import founderImage from "@/assets/founder-portrait.jpg";
 
 const differentiators = [
@@ -161,6 +162,11 @@ const ApproachDifferentiators = () => {
                   </div>
                 </ScrollReveal>
               ))}
+            </div>
+
+            {/* Terminal breathing diamond */}
+            <div className="flex justify-center mt-10">
+              <BreathingDiamond size={8} />
             </div>
           </div>
         </div>
