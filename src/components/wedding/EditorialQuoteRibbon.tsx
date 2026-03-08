@@ -113,7 +113,7 @@ const EditorialQuoteRibbon = ({
       {/* Main quote layer */}
       <motion.div className="whitespace-nowrap relative" style={{ x }}>
         <p className="font-serif-wedding text-3xl md:text-5xl lg:text-6xl text-background/10 italic tracking-tight inline-block">
-          <span className="text-background/[0.06] mr-4">❖</span>
+          <span className="inline-block mx-4 w-1 h-1 rotate-45 bg-gold/20" aria-hidden="true" />
           {quote}
           {attribution && (
             <span className="font-script text-2xl md:text-4xl text-background/[0.06] ml-8">
