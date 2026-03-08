@@ -53,7 +53,7 @@ const ServicesOverviewSection = () => {
                 <h3 className="font-serif-wedding text-display-md text-foreground mb-4">
                   {service.title}
                 </h3>
-                <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed mb-6">
+                <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-6 font-light">
                   {service.description}
                 </p>
                 <Link
