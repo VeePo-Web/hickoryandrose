@@ -24,7 +24,7 @@ const InstagramSection = () => {
         <ScrollReveal>
           <div className="flex flex-col md:flex-row items-center justify-between mb-10 md:mb-14 gap-4">
             <div>
-              <p className="font-overline text-muted-foreground/40 mb-2">Follow Along</p>
+              <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 mb-2">Follow Along</p>
               <a
                 href="https://www.instagram.com/hickoryandrose"
                 target="_blank"
@@ -65,8 +65,8 @@ const InstagramSection = () => {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-colors duration-500 flex items-center justify-center">
-                <Instagram size={20} strokeWidth={1.5} className="text-background opacity-0 group-hover:opacity-70 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-4">
+                <Instagram size={18} strokeWidth={1.5} className="text-white/80" />
               </div>
             </motion.a>
           ))}
