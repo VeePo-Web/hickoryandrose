@@ -11,6 +11,7 @@ import rockiesImage from "@/assets/service-area-rockies.jpg";
 
 // Lazy-load below-fold sections
 const ServicesOverviewSection = lazy(() => import("@/components/wedding/ServicesOverviewSection"));
+const VendorShowcaseSection = lazy(() => import("@/components/wedding/VendorShowcaseSection"));
 const EditorialImageBreak = lazy(() => import("@/components/wedding/EditorialImageBreak"));
 const TestimonialSection = lazy(() => import("@/components/wedding/TestimonialSection"));
 const EditorialSplitSection = lazy(() => import("@/components/wedding/EditorialSplitSection"));
@@ -119,6 +120,7 @@ const Index = () => {
           caption="Serving Edmonton · Jasper · Banff · Lake Louise · The Canadian Rockies"
         />
         <FilmstripSection />
+        <VendorShowcaseSection />
         <CTASection />
         <InstagramSection />
         <JournalTeaserSection />

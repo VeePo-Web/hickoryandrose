@@ -436,11 +436,24 @@ const About = () => {
         height="h-[25vh] md:h-[35vh]"
       />
 
-      {/* Journey — horizontal ruled rows */}
-      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
-        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+      {/* Journey — cinematic vertical timeline */}
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden">
+        {/* Parallax watermark */}
+        <motion.div
+          className="absolute -right-8 top-1/3 pointer-events-none select-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.015 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+        >
+          <span className="font-serif-wedding text-[10rem] md:text-[16rem] font-light text-foreground leading-none tracking-tight italic whitespace-nowrap">
+            Journey
+          </span>
+        </motion.div>
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative">
           <ScrollReveal>
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 md:mb-24">
               <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">04</span>
               <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
                 <span className="inline-flex items-center gap-3">
@@ -455,33 +468,93 @@ const About = () => {
             </div>
           </ScrollReveal>
 
-          <div className="space-y-0">
-            {milestones.map((milestone, index) => (
-              <ScrollReveal key={milestone.year} delay={index * 0.08}>
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline py-8 border-t border-border/60 group">
-                  <div className="md:col-span-2">
-                    <span className="font-serif-wedding text-2xl font-light text-foreground group-hover:text-primary transition-colors duration-500">
-                      {milestone.year}
-                    </span>
-                  </div>
-                  <div className="md:col-span-1 hidden md:block">
-                    <motion.div
-                      className="w-full h-px bg-primary/20 origin-left"
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: index * 0.08 }}
-                    />
-                  </div>
-                  <div className="md:col-span-9">
-                    <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
-                      {milestone.event}
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-            <div className="border-t border-border/60" />
+          {/* Vertical timeline */}
+          <div className="relative">
+            {/* Central timeline spine */}
+            <div className="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-px hidden md:block">
+              <motion.div
+                className="w-full h-full origin-top"
+                style={{ background: "linear-gradient(180deg, transparent, hsl(var(--primary) / 0.15), hsl(var(--gold) / 0.2), hsl(var(--primary) / 0.15), transparent)" }}
+                initial={{ scaleY: 0 }}
+                whileInView={{ scaleY: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
+              />
+            </div>
+            {/* Mobile spine */}
+            <div className="absolute left-6 top-0 bottom-0 w-px md:hidden">
+              <motion.div
+                className="w-full h-full origin-top"
+                style={{ background: "linear-gradient(180deg, transparent, hsl(var(--primary) / 0.15), hsl(var(--gold) / 0.2), hsl(var(--primary) / 0.15), transparent)" }}
+                initial={{ scaleY: 0 }}
+                whileInView={{ scaleY: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
+              />
+            </div>
+
+            <div className="space-y-0">
+              {milestones.map((milestone, index) => {
+                const isEven = index % 2 === 0;
+                return (
+                  <motion.div
+                    key={milestone.year}
+                    initial={{ opacity: 0, x: isEven ? -20 : 20, y: 12 }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ duration: 0.6, delay: index * 0.12, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="relative group"
+                  >
+                    {/* Timeline node */}
+                    <div className="absolute left-6 md:left-1/2 top-8 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 z-10">
+                      <motion.div
+                        className="w-3 h-3 rotate-45 border border-primary/25 group-hover:border-primary/50 transition-colors duration-500 relative"
+                        whileInView={{ scale: [0, 1.2, 1] }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.2 + index * 0.12 }}
+                      >
+                        <span
+                          className="absolute inset-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                          style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--primary) / 0.2))" }}
+                        />
+                      </motion.div>
+                    </div>
+
+                    {/* Content card */}
+                    <div className={`pl-16 md:pl-0 md:grid md:grid-cols-2 md:gap-16 py-8 md:py-12 ${isEven ? '' : ''}`}>
+                      <div className={`${isEven ? 'md:text-right md:pr-12' : 'md:col-start-2 md:pl-12'}`}>
+                        <span className="font-serif-wedding text-3xl md:text-4xl font-light text-primary/20 group-hover:text-primary/50 transition-colors duration-500 block mb-2">
+                          {milestone.year}
+                        </span>
+                        <motion.div
+                          className={`w-8 h-px mb-3 ${isEven ? 'md:ml-auto' : ''}`}
+                          style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), hsl(var(--primary) / 0.1))" }}
+                          initial={{ scaleX: 0 }}
+                          whileInView={{ scaleX: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                        />
+                        <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light group-hover:text-foreground/70 transition-colors duration-500">
+                          {milestone.event}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Timeline end ornament */}
+            <div className="flex justify-center mt-8">
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="w-2 h-2 rotate-45 border border-primary/20"
+                style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.2), transparent)" }}
+              />
+            </div>
           </div>
         </div>
       </section>

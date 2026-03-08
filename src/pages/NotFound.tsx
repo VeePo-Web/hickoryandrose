@@ -65,6 +65,26 @@ const NotFound = () => {
           </motion.p>
         </motion.div>
 
+        {/* Gold radial glow */}
+        <motion.div
+          className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.08 }}
+          transition={{ duration: 2, delay: 0.5 }}
+          style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.3), transparent 70%)" }}
+          aria-hidden="true"
+        />
+
+        {/* Floating script ornament */}
+        <motion.div
+          className="absolute bottom-1/4 right-12 pointer-events-none select-none hidden lg:block"
+          animate={{ y: [0, -10, 0], rotate: [0, 3, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          aria-hidden="true"
+        >
+          <span className="font-script text-6xl text-white/[0.03]">&</span>
+        </motion.div>
+
         {/* Content with scroll-linked fade */}
         <motion.div
           className="relative z-10 text-center max-w-xl px-6"
@@ -144,8 +164,13 @@ const NotFound = () => {
                 >
                   <Link
                     to={page.path}
-                    className="block p-5 border border-white/8 hover:border-white/20 transition-all duration-500 group hover:bg-white/[0.03]"
+                    className="block p-5 border border-white/8 hover:border-white/20 transition-all duration-500 group hover:bg-white/[0.03] relative overflow-hidden"
                   >
+                    {/* Gold shimmer on hover */}
+                    <div
+                      className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none"
+                      style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.06) 40%, hsl(var(--gold) / 0.1) 50%, hsl(var(--gold) / 0.06) 60%, transparent 100%)" }}
+                    />
                     <span className="font-serif-wedding text-lg text-white/15 group-hover:text-white/30 transition-colors duration-500 block mb-2">
                       {page.icon}
                     </span>
@@ -155,7 +180,7 @@ const NotFound = () => {
                     <p className="font-sans-wedding text-[0.65rem] text-white/25 font-light leading-relaxed">
                       {page.desc}
                     </p>
-                    <div className="mt-3 h-px bg-white/10 w-0 group-hover:w-full transition-all duration-700 ease-out origin-left" />
+                    <div className="mt-3 h-px w-0 group-hover:w-full transition-all duration-700 ease-out origin-left" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
                   </Link>
                 </motion.div>
               ))}
