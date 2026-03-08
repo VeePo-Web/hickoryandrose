@@ -63,9 +63,13 @@ const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEn
 
 const FAQ = () => {
   const heroRef = useRef<HTMLElement>(null);
+  const categoriesRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  const { scrollYProgress: catScrollProgress } = useScroll({ target: categoriesRef, offset: ["start end", "end start"] });
+  const watermarkY = useTransform(catScrollProgress, [0, 1], ["15%", "-15%"]);
 
   useEffect(() => {
     setPageMeta({ title: "FAQ — Frequently Asked Questions | Hickory & Rose Wedding Planner", description: "Answers to common questions about Hickory & Rose wedding planning services, pricing, process, and coverage areas. Serving Edmonton, the Alberta Rockies, and beyond.", path: "/faq" });
