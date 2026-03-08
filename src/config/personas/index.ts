@@ -24,3 +24,4 @@ export { NAV_ARCHITECT_PERSONA } from './nav-architect';
 export { PERFORMANCE_ENGINEER_PERSONA } from './performance-engineer';
 export { RESPONSIVE_MOBILE_PERSONA } from './responsive-mobile';
 export { FOOTER_ARCHITECT_PERSONA } from './footer-architect';
+export { MASTER_VISUAL_PERSONA } from './master-visual';
