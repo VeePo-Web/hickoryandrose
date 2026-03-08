@@ -22,7 +22,10 @@ const colVariants = {
 
 const Footer = () => {
   return (
-    <footer className="bg-foreground text-background py-16 md:py-24" role="contentinfo">
+    <footer className="bg-foreground text-background pt-0 pb-16 md:pb-24" role="contentinfo">
+      {/* Gradient accent line */}
+      <div className="h-px w-full" style={{ background: 'linear-gradient(90deg, transparent, hsl(var(--primary)) 30%, hsl(var(--gold-accent, 38 60% 55%)) 50%, hsl(var(--primary)) 70%, transparent)' }} />
+      <div className="pt-16 md:pt-24">
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
         {/* Signature wordmark with decorative botanical accent */}
         <motion.div
