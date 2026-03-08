@@ -280,8 +280,13 @@ const Journal = () => {
             {remainingArticles.map((article, index) => (
               <ScrollReveal key={article.title} delay={index * 0.08}>
                 <article className="group cursor-pointer">
-                  <ImageReveal direction={index % 2 === 0 ? "up" : "left"} delay={index * 0.04}>
+                   <ImageReveal direction={index % 2 === 0 ? "up" : "left"} delay={index * 0.04}>
                     <div className="aspect-[4/5] overflow-hidden relative">
+                      {/* Gold shimmer sweep on hover */}
+                      <div
+                        className="absolute inset-0 z-10 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none"
+                        style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.08) 40%, hsl(var(--gold) / 0.12) 50%, hsl(var(--gold) / 0.08) 60%, transparent 100%)" }}
+                      />
                       <img
                         src={article.image}
                         alt={article.alt}
