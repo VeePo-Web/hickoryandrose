@@ -377,10 +377,11 @@ const Approach = () => {
 
       <ApproachProcessTimeline />
 
-      <FullWidthImage
+      <DocumentaryFilmstrip
         src={approachDetailsImage}
         alt="Wedding vow booklets with gold rings and eucalyptus on marble"
         height="h-[35vh] md:h-[45vh]"
+        label="VOWS & DETAILS"
       />
 
       {/* Editorial Split Section — narrative breathing room */}
