@@ -6,6 +6,7 @@ import TrustBarSection from "@/components/wedding/TrustBarSection";
 import NowBookingSection from "@/components/wedding/NowBookingSection";
 import ScrollProgress from "@/components/wedding/ScrollProgress";
 import BackToTop from "@/components/wedding/BackToTop";
+import SectionIndicator from "@/components/wedding/SectionIndicator";
 import venueImage from "@/assets/portfolio-venue.jpg";
 import rockiesImage from "@/assets/service-area-rockies.jpg";
 
@@ -80,6 +81,7 @@ const Index = () => {
     <main id="main-content" className="overflow-hidden">
       <ScrollProgress />
       <BackToTop />
+      <SectionIndicator />
       <HeroSection />
       <BrandPromiseSection />
       <TrustBarSection />
