@@ -1,5 +1,5 @@
-import { motion, useScroll, useSpring } from "framer-motion";
-import { memo } from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { memo, useState, useEffect } from "react";
 
 const ScrollProgress = memo(() => {
   const { scrollYProgress } = useScroll();
@@ -8,6 +8,18 @@ const ScrollProgress = memo(() => {
     damping: 30,
     restDelta: 0.001,
   });
+
+  // Percentage text — updates on scroll
+  const [percent, setPercent] = useState(0);
+  useEffect(() => {
+    const unsub = scrollYProgress.on("change", (v) => {
+      setPercent(Math.round(v * 100));
+    });
+    return unsub;
+  }, [scrollYProgress]);
+
+  // Show percentage indicator after scrolling past 5%
+  const showPercent = percent > 5 && percent < 98;
 
   return (
     <>
@@ -27,6 +39,34 @@ const ScrollProgress = memo(() => {
           background: "linear-gradient(90deg, hsl(var(--sage-deep)), hsl(var(--gold)), hsl(var(--sage-deep)))",
         }}
       />
+      {/* Leading edge glow dot */}
+      <motion.div
+        className="fixed top-0 z-[61] pointer-events-none"
+        style={{
+          left: useTransform(scaleX, (v) => `calc(${v * 100}% - 3px)`),
+          opacity: useTransform(scaleX, [0, 0.02, 0.98, 1], [0, 1, 1, 0]),
+        }}
+      >
+        <div
+          className="w-1.5 h-1.5 rounded-full"
+          style={{
+            background: "hsl(var(--gold))",
+            boxShadow: "0 0 8px 2px hsl(var(--gold) / 0.5)",
+          }}
+        />
+      </motion.div>
+      {/* Floating percentage — right edge */}
+      {showPercent && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="fixed top-3 right-6 z-[60] pointer-events-none"
+        >
+          <span className="font-sans-wedding text-[0.45rem] tracking-[0.25em] text-muted-foreground/20 tabular-nums">
+            {percent}%
+          </span>
+        </motion.div>
+      )}
     </>
   );
 });

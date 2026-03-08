@@ -51,6 +51,16 @@ const TrustBarSection = () => {
         </span>
       </motion.div>
 
+      {/* Radial gold glow — scroll-linked */}
+      <motion.div
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none"
+        style={{
+          opacity: useTransform(scrollYProgress, [0.15, 0.5, 0.85], [0, 0.06, 0]),
+          background: "radial-gradient(ellipse, hsl(var(--gold) / 0.3), transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
+
       {/* Decorative corner ampersand */}
       <motion.div
         className="absolute -bottom-16 -right-16 pointer-events-none select-none hidden lg:block"

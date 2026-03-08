@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { motion, useSpring } from "framer-motion";
+import { motion, useSpring, AnimatePresence } from "framer-motion";
 import { memo } from "react";
 
 const CursorFollower = memo(() => {
@@ -12,8 +12,12 @@ const CursorFollower = memo(() => {
   const x = useSpring(0, springConfig);
   const y = useSpring(0, springConfig);
 
+  // Outer ring — slightly lagged for organic feel
+  const outerSpring = { damping: 20, stiffness: 200, mass: 0.8 };
+  const outerX = useSpring(0, outerSpring);
+  const outerY = useSpring(0, outerSpring);
+
   useEffect(() => {
-    // Don't mount on touch devices at all
     if (window.matchMedia("(pointer: coarse)").matches) {
       isTouchDevice.current = true;
       return;
@@ -22,6 +26,8 @@ const CursorFollower = memo(() => {
     const handleMove = (e: MouseEvent) => {
       x.set(e.clientX);
       y.set(e.clientY);
+      outerX.set(e.clientX);
+      outerY.set(e.clientY);
       if (!visible) setVisible(true);
     };
 
@@ -56,46 +62,60 @@ const CursorFollower = memo(() => {
       document.removeEventListener("mouseleave", handleLeave);
       document.removeEventListener("mouseenter", handleEnter);
     };
-  }, [x, y, visible]);
+  }, [x, y, outerX, outerY, visible]);
 
-  // Don't render anything on touch devices or when not visible
   if (isTouchDevice.current || !visible) return null;
 
   return (
-    <motion.div
-      className="fixed top-0 left-0 z-[999] pointer-events-none mix-blend-difference will-change-transform"
-      style={{ x, y }}
-    >
+    <>
+      {/* Inner dot */}
       <motion.div
-        animate={{
-          width: isHovering ? (cursorLabel ? 64 : 48) : 8,
-          height: isHovering ? (cursorLabel ? 64 : 48) : 8,
-          opacity: isHovering ? 0.25 : 0.5,
-        }}
-        transition={{ duration: 0.25, ease: "easeOut" }}
-        className="rounded-full bg-primary -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
+        className="fixed top-0 left-0 z-[999] pointer-events-none mix-blend-difference will-change-transform"
+        style={{ x, y }}
       >
-        {cursorLabel && (
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-primary-foreground font-medium"
-          >
-            {cursorLabel}
-          </motion.span>
-        )}
+        <motion.div
+          animate={{
+            width: isHovering ? (cursorLabel ? 64 : 48) : 8,
+            height: isHovering ? (cursorLabel ? 64 : 48) : 8,
+            opacity: isHovering ? 0.25 : 0.5,
+          }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="rounded-full bg-primary -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
+        >
+          <AnimatePresence>
+            {cursorLabel && (
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-primary-foreground font-medium"
+              >
+                {cursorLabel}
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </motion.div>
       </motion.div>
+
+      {/* Outer gold accent ring — slightly lagged */}
       <motion.div
-        animate={{
-          width: isHovering ? (cursorLabel ? 72 : 56) : 8,
-          height: isHovering ? (cursorLabel ? 72 : 56) : 8,
-          opacity: isHovering ? 0.12 : 0,
-        }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-        className="absolute top-0 left-0 rounded-full border border-primary -translate-x-1/2 -translate-y-1/2"
-      />
-    </motion.div>
+        className="fixed top-0 left-0 z-[998] pointer-events-none will-change-transform"
+        style={{ x: outerX, y: outerY }}
+      >
+        <motion.div
+          animate={{
+            width: isHovering ? (cursorLabel ? 80 : 60) : 24,
+            height: isHovering ? (cursorLabel ? 80 : 60) : 24,
+            opacity: isHovering ? 0.15 : 0.08,
+            borderColor: isHovering
+              ? "hsl(var(--gold) / 0.4)"
+              : "hsl(var(--gold) / 0.15)",
+          }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          className="rounded-full border -translate-x-1/2 -translate-y-1/2"
+        />
+      </motion.div>
+    </>
   );
 });
 
