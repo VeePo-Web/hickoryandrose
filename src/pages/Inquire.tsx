@@ -679,20 +679,25 @@ const Inquire = () => {
                   {step < TOTAL_STEPS - 1 ? (
                     <button
                       type="submit"
-                      className="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.18em] uppercase font-light hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+                      className="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.18em] uppercase font-light hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 relative overflow-hidden group"
                     >
-                      Continue
-                      <ArrowRight size={14} strokeWidth={1.5} />
+                      <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.15), transparent 60%)" }} />
+                      <span className="relative z-10">Continue</span>
+                      <ArrowRight size={14} strokeWidth={1.5} className="relative z-10" />
                     </button>
                   ) : (
                     <motion.button
                       type="submit"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="inline-flex items-center gap-2 px-10 py-4 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.18em] uppercase font-light hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+                      className="inline-flex items-center gap-2 px-10 py-4 text-primary-foreground font-sans-wedding text-xs tracking-[0.18em] uppercase font-light transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 relative overflow-hidden group"
+                      style={{
+                        background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--gold) / 0.6), hsl(var(--primary)))",
+                      }}
                     >
-                      Send Inquiry
-                      <Heart size={14} strokeWidth={1.5} />
+                      <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.2), transparent 50%)" }} />
+                      <span className="relative z-10">Send Inquiry</span>
+                      <Heart size={14} strokeWidth={1.5} className="relative z-10" />
                     </motion.button>
                   )}
                 </div>

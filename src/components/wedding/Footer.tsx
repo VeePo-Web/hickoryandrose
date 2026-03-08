@@ -210,7 +210,12 @@ const Footer = () => {
 
             {/* Credential badge */}
             <div className="mt-8 flex items-center gap-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
+              <span
+                className="w-1.5 h-1.5 rounded-full"
+                style={{
+                  background: "radial-gradient(circle, hsl(var(--gold) / 0.7), hsl(var(--gold) / 0.2))",
+                }}
+              />
               <p className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-background/20 font-light">
                 Est. 2018 · Edmonton, Alberta
               </p>

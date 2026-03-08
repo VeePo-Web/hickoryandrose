@@ -314,7 +314,13 @@ const Services = () => {
                     </div>
 
                     {/* Ideal-for pull quote */}
-                    <div className="border-l-2 border-primary/15 pl-5 mt-8">
+                    <div className="pl-5 mt-8 relative">
+                      <div
+                        className="absolute left-0 top-0 bottom-0 w-[2px]"
+                        style={{
+                          background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), hsl(var(--primary) / 0.15))",
+                        }}
+                      />
                       <p className="font-serif-wedding text-sm italic text-foreground/60 leading-relaxed">
                         Ideal for: {service.idealFor}
                       </p>
