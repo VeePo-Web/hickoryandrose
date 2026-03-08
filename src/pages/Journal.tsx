@@ -355,6 +355,69 @@ const Journal = () => {
         </div>
       </section>
 
+      {/* Newsletter Subscribe — editorial CTA */}
+      <section className="py-section-mobile md:py-section-tablet bg-card relative overflow-hidden">
+        {/* Decorative background monogram */}
+        <motion.div
+          className="absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.02 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+        >
+          <span className="font-script text-[18rem] text-foreground leading-none">
+            J
+          </span>
+        </motion.div>
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl relative text-center">
+          <ScrollReveal>
+            <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">03</span>
+            <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
+              <span className="inline-flex items-center gap-3">
+                <span className="w-5 h-px bg-border" />
+                Stay Inspired
+                <span className="w-5 h-px bg-border" />
+              </span>
+            </p>
+            <h2 className="font-serif-wedding text-display-lg text-foreground mb-4">
+              Planning wisdom, delivered.
+            </h2>
+            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light max-w-lg mx-auto mb-10">
+              Join our curated newsletter for seasonal inspiration, planning tips, and first access to new journal entries. No spam — just the good stuff.
+            </p>
+
+            <form
+              onSubmit={(e) => { e.preventDefault(); }}
+              className="flex flex-col sm:flex-row items-stretch gap-3 max-w-md mx-auto mb-6"
+            >
+              <div className="flex-1 input-gold-focus relative">
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  className="w-full px-4 py-3.5 bg-transparent border border-border/60 font-sans-wedding text-sm text-foreground font-light placeholder:text-muted-foreground/40 focus:outline-none focus:ring-0 focus:border-transparent transition-colors duration-300"
+                  aria-label="Email address for newsletter"
+                />
+              </div>
+              <button
+                type="submit"
+                className="px-8 py-3.5 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.18em] uppercase font-light hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 relative overflow-hidden group shrink-0"
+              >
+                <span
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.15), transparent 60%)" }}
+                />
+                <span className="relative z-10">Subscribe</span>
+              </button>
+            </form>
+
+            <p className="font-sans-wedding text-[0.6rem] tracking-[0.08em] text-muted-foreground/30 font-light">
+              One email per month · Unsubscribe anytime
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Signature Quote */}
       <section className="py-20 md:py-28 bg-sage-deep">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">

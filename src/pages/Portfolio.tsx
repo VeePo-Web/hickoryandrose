@@ -284,9 +284,16 @@ const Portfolio = () => {
                         <p className="font-serif-wedding text-lg md:text-xl text-white mb-0.5">
                           {story.couple}
                         </p>
-                        <p className="font-sans-wedding text-[0.625rem] tracking-[0.15em] uppercase text-white/60">
+                        <p className="font-sans-wedding text-[0.625rem] tracking-[0.15em] uppercase text-white/60 mb-3">
                           {story.venue} · {story.season}
                         </p>
+                        <span className="inline-flex items-center gap-2 font-sans-wedding text-[0.55rem] tracking-[0.18em] uppercase text-white/70 group-hover:text-white transition-colors duration-300">
+                          <span
+                            className="w-0 group-hover:w-5 h-px transition-all duration-500 ease-out"
+                            style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.6), transparent)" }}
+                          />
+                          View Story
+                        </span>
                       </div>
                     </div>
                   </ImageReveal>
