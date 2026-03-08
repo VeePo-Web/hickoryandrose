@@ -22,17 +22,33 @@ const item = {
 
 const TrustBarSection = () => {
   return (
-    <section className="py-10 md:py-14 bg-card border-y border-border" aria-label="Featured in">
+    <section className="py-12 md:py-16 bg-card border-y border-border" aria-label="Featured in">
       <div className="container mx-auto px-6 lg:px-8">
-        <motion.p
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.2em] text-center mb-8"
+          className="flex items-center justify-center gap-3 mb-8"
         >
-          As Seen In
-        </motion.p>
+          <motion.span
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-10 h-px bg-border origin-right"
+          />
+          <p className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.2em]">
+            As Seen In
+          </p>
+          <motion.span
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-10 h-px bg-border origin-left"
+          />
+        </motion.div>
         <motion.div
           variants={container}
           initial="hidden"
@@ -44,11 +60,13 @@ const TrustBarSection = () => {
             <motion.span
               key={name}
               variants={item}
-              className="font-serif-wedding text-base md:text-lg text-muted-foreground/50 whitespace-nowrap relative"
+              className="font-serif-wedding text-base md:text-lg text-muted-foreground/50 whitespace-nowrap relative group cursor-default"
             >
-              {name}
+              <span className="group-hover:text-muted-foreground transition-colors duration-300">
+                {name}
+              </span>
               {index < trustLogos.length - 1 && (
-                <span className="hidden md:inline absolute -right-7 top-1/2 -translate-y-1/2 w-px h-4 bg-border" />
+                <span className="hidden md:inline absolute -right-7 top-1/2 -translate-y-1/2 text-primary/20 text-[0.5rem]">✦</span>
               )}
             </motion.span>
           ))}
