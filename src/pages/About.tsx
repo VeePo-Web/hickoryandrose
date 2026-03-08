@@ -44,7 +44,6 @@ const values = [
 const About = () => {
   const heroRef = useRef<HTMLElement>(null);
   const founderRef = useRef<HTMLDivElement>(null);
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -58,15 +57,6 @@ const About = () => {
     offset: ["start end", "end start"],
   });
   const founderImgY = useTransform(founderScroll, [0, 1], ["4%", "-4%"]);
-
-  const advanceTestimonial = useCallback(() => {
-    setActiveTestimonial((i) => (i + 1) % testimonials.length);
-  }, []);
-
-  useEffect(() => {
-    const timer = setInterval(advanceTestimonial, 6000);
-    return () => clearInterval(timer);
-  }, [advanceTestimonial]);
 
   useEffect(() => {
     setPageMeta({
