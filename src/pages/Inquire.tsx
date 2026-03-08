@@ -509,7 +509,7 @@ const Inquire = () => {
       <Navigation variant="overlay" />
 
       {/* ─── Cinematic Parallax Hero ─── */}
-      <section ref={heroRef} className="relative h-[50vh] md:h-[60vh] overflow-hidden">
+      <section ref={heroRef} className="relative h-[50vh] md:h-[60vh] overflow-hidden grain-overlay vignette">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
           <img
             src={inquireHeroImage}
