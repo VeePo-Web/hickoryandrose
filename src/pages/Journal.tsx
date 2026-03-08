@@ -355,7 +355,7 @@ const Journal = () => {
         </div>
       </section>
 
-      {/* Newsletter Subscribe — editorial CTA */}
+      {/* Newsletter Subscribe — premium editorial split layout */}
       <section className="py-section-mobile md:py-section-tablet bg-card relative overflow-hidden">
         {/* Decorative background monogram */}
         <motion.div
@@ -370,50 +370,84 @@ const Journal = () => {
           </span>
         </motion.div>
 
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl relative text-center">
+        {/* Radial gold ambient glow */}
+        <motion.div
+          className="absolute right-0 top-1/4 w-[400px] h-[400px] pointer-events-none hidden md:block"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.06 }}
+          viewport={{ once: true }}
+          transition={{ duration: 2 }}
+          style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.15), transparent 70%)" }}
+          aria-hidden="true"
+        />
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
           <ScrollReveal>
-            <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">03</span>
-            <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
-              <span className="inline-flex items-center gap-3">
-                <span className="w-5 h-px bg-border" />
-                Stay Inspired
-                <span className="w-5 h-px bg-border" />
-              </span>
-            </p>
-            <h2 className="font-serif-wedding text-display-lg text-foreground mb-4">
-              Planning wisdom, delivered.
-            </h2>
-            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light max-w-lg mx-auto mb-10">
-              Join our curated newsletter for seasonal inspiration, planning tips, and first access to new journal entries. No spam — just the good stuff.
-            </p>
-
-            <form
-              onSubmit={(e) => { e.preventDefault(); }}
-              className="flex flex-col sm:flex-row items-stretch gap-3 max-w-md mx-auto mb-6"
-            >
-              <div className="flex-1 input-gold-focus relative">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="w-full px-4 py-3.5 bg-transparent border border-border/60 font-sans-wedding text-sm text-foreground font-light placeholder:text-muted-foreground/40 focus:outline-none focus:ring-0 focus:border-transparent transition-colors duration-300"
-                  aria-label="Email address for newsletter"
-                />
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+              {/* Left: Editorial text */}
+              <div className="lg:col-span-5">
+                <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">03</span>
+                <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-3">
+                  <span className="inline-flex items-center gap-3">
+                    <span className="w-5 h-px bg-border" />
+                    Stay Inspired
+                  </span>
+                </p>
+                <h2 className="font-serif-wedding text-display-lg text-foreground mb-4 leading-tight">
+                  Planning wisdom, delivered with care.
+                </h2>
+                <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light max-w-sm">
+                  Seasonal inspiration, planning tips, and first access to new journal entries. Curated monthly — never spam.
+                </p>
               </div>
-              <button
-                type="submit"
-                className="px-8 py-3.5 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.18em] uppercase font-light hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 relative overflow-hidden group shrink-0"
-              >
-                <span
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.15), transparent 60%)" }}
-                />
-                <span className="relative z-10">Subscribe</span>
-              </button>
-            </form>
 
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.08em] text-muted-foreground/30 font-light">
-              One email per month · Unsubscribe anytime
-            </p>
+              {/* Right: Form with decorative frame */}
+              <div className="lg:col-span-7 lg:flex lg:justify-end">
+                <div className="relative max-w-md w-full">
+                  {/* Corner frame accents */}
+                  <div className="absolute -top-3 -left-3 w-8 h-8 hidden lg:block pointer-events-none" aria-hidden="true">
+                    <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.25), transparent)" }} />
+                    <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.25), transparent)" }} />
+                  </div>
+                  <div className="absolute -bottom-3 -right-3 w-8 h-8 hidden lg:block pointer-events-none" aria-hidden="true">
+                    <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.25), transparent)" }} />
+                    <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.25), transparent)" }} />
+                  </div>
+
+                  <div className="border border-border/30 p-8 md:p-10">
+                    <p className="font-serif-wedding text-sm italic text-foreground/40 mb-6">
+                      "The best planning starts with inspiration."
+                    </p>
+                    <form
+                      onSubmit={(e) => { e.preventDefault(); }}
+                      className="flex flex-col sm:flex-row items-stretch gap-3 mb-4"
+                    >
+                      <div className="flex-1 input-gold-focus relative">
+                        <input
+                          type="email"
+                          placeholder="your@email.com"
+                          className="w-full px-4 py-3.5 bg-transparent border border-border/60 font-sans-wedding text-sm text-foreground font-light placeholder:text-muted-foreground/40 focus:outline-none focus:ring-0 focus:border-transparent transition-colors duration-300"
+                          aria-label="Email address for newsletter"
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        className="px-8 py-3.5 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.18em] uppercase font-light hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 relative overflow-hidden group shrink-0"
+                      >
+                        <span
+                          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                          style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.15), transparent 60%)" }}
+                        />
+                        <span className="relative z-10">Subscribe</span>
+                      </button>
+                    </form>
+                    <p className="font-sans-wedding text-[0.6rem] tracking-[0.08em] text-muted-foreground/30 font-light">
+                      One email per month · Unsubscribe anytime
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </ScrollReveal>
         </div>
       </section>
