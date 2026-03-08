@@ -81,6 +81,7 @@ const Index = () => {
     <main id="main-content" className="overflow-hidden">
       <ScrollProgress />
       <BackToTop />
+      <SectionIndicator />
       <HeroSection />
       <BrandPromiseSection />
       <TrustBarSection />

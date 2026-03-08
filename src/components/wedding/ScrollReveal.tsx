@@ -1,13 +1,15 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { ReactNode, memo } from "react";
+import { ReactNode, memo, Children } from "react";
 
 interface ScrollRevealProps {
   children: ReactNode;
   delay?: number;
   className?: string;
   direction?: "up" | "down" | "left" | "right";
-  /** "fade" (default) uses translate+opacity. "clip" uses a cinematic clip-path mask wipe. */
-  variant?: "fade" | "clip";
+  /** "fade" (default) uses translate+opacity. "clip" uses a cinematic clip-path mask wipe. "stagger" reveals each direct child sequentially. */
+  variant?: "fade" | "clip" | "stagger";
+  /** Stagger delay between children (only for variant="stagger"). Default 0.08 */
+  staggerDelay?: number;
 }
 
 const directionOffset = {
@@ -24,11 +26,44 @@ const clipDirectionMap = {
   right: { hidden: "inset(0 0 0 100%)", visible: "inset(0 0 0 0%)" },
 };
 
-const ScrollReveal = memo(({ children, delay = 0, className = "", direction = "up", variant = "fade" }: ScrollRevealProps) => {
+const staggerContainerVariants = {
+  hidden: {},
+  visible: (staggerDelay: number) => ({
+    transition: { staggerChildren: staggerDelay, delayChildren: 0.05 },
+  }),
+};
+
+const staggerChildVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: [0.25, 0.1, 0.25, 1.0] },
+  },
+};
+
+const ScrollReveal = memo(({ children, delay = 0, className = "", direction = "up", variant = "fade", staggerDelay = 0.08 }: ScrollRevealProps) => {
   const prefersReduced = useReducedMotion();
 
   if (prefersReduced) {
     return <div className={className}>{children}</div>;
+  }
+
+  if (variant === "stagger") {
+    return (
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-60px" }}
+        custom={staggerDelay}
+        variants={staggerContainerVariants}
+        className={className}
+      >
+        {Children.map(children, (child) => (
+          <motion.div variants={staggerChildVariants}>{child}</motion.div>
+        ))}
+      </motion.div>
+    );
   }
 
   if (variant === "clip") {
