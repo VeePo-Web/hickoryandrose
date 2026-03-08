@@ -103,9 +103,9 @@ const PressMentionsSection = () => {
                   </span>
                 </div>
                 
-                {/* Name */}
+                {/* Name — each publication rendered in its own typographic voice */}
                 <div className="col-span-8 md:col-span-5">
-                  <p className="font-serif-wedding text-lg md:text-xl text-foreground/20 group-hover:text-foreground/50 transition-colors duration-500 tracking-tight">
+                  <p className={`text-lg md:text-2xl text-foreground/20 group-hover:text-foreground/55 transition-colors duration-500 ${mention.displayFont}`}>
                     {mention.name}
                   </p>
                   {/* Hover-reveal detail line */}
@@ -115,6 +115,14 @@ const PressMentionsSection = () => {
                   >
                     {mention.detail}
                   </motion.p>
+                  {/* Gold shimmer sweep on hover */}
+                  <motion.div
+                    className="h-px mt-1 origin-left"
+                    style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.05), transparent)" }}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: hoveredIndex === i ? 1 : 0 }}
+                    transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                  />
                 </div>
                 
                 {/* Type badge */}
