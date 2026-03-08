@@ -22,3 +22,4 @@ export { SCROLL_MOTION_PERSONA } from './scroll-motion';
 export { IMAGE_SEO_PERSONA } from './image-seo';
 export { NAV_ARCHITECT_PERSONA } from './nav-architect';
 export { PERFORMANCE_ENGINEER_PERSONA } from './performance-engineer';
+export { RESPONSIVE_MOBILE_PERSONA } from './responsive-mobile';
