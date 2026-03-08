@@ -32,6 +32,25 @@ const CTASection = () => {
 
       <div className="relative container mx-auto px-6 lg:px-8 text-center max-w-2xl">
         <ScrollReveal>
+          {/* Monogram flourish */}
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <motion.span
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="w-12 h-px bg-background/20 origin-right"
+            />
+            <span className="font-script text-lg text-background/25">H & R</span>
+            <motion.span
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="w-12 h-px bg-background/20 origin-left"
+            />
+          </div>
+
           <h2 className="font-serif-wedding text-display-lg text-white mb-6">
             Ready to feel calm about your wedding day?
           </h2>
@@ -42,6 +61,13 @@ const CTASection = () => {
           <MagneticButton to="/inquire" variant="outline-light">
             Let's Talk
           </MagneticButton>
+
+          {/* Bottom diamond accent */}
+          <div className="flex items-center justify-center gap-3 mt-10">
+            <span className="w-8 h-px bg-background/15" />
+            <span className="text-background/15 text-[0.5rem]">✦</span>
+            <span className="w-8 h-px bg-background/15" />
+          </div>
         </ScrollReveal>
       </div>
     </section>

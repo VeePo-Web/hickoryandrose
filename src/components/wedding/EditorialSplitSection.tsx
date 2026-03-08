@@ -18,10 +18,28 @@ const EditorialSplitSection = () => {
       aria-label="Editorial quote"
     >
       {/* Quote side */}
-      <div className="bg-sage-deep flex items-center justify-center py-section-mobile md:py-section-tablet px-8 lg:px-16">
+      <div className="bg-sage-deep flex items-center justify-center py-section-mobile md:py-section-tablet px-8 lg:px-16 relative overflow-hidden">
+        {/* Large decorative ampersand */}
+        <motion.span
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.04 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+          className="absolute -right-8 -bottom-12 font-script text-[20rem] text-primary-foreground pointer-events-none select-none leading-none"
+          aria-hidden="true"
+        >
+          &
+        </motion.span>
+
         <ScrollReveal>
-          <div className="max-w-md">
-            <div className="w-10 h-px bg-primary-foreground/30 mb-8" />
+          <div className="max-w-md relative">
+            {/* Diamond + rule flourish */}
+            <div className="flex items-center gap-3 mb-8">
+              <span className="w-10 h-px bg-primary-foreground/20" />
+              <span className="text-primary-foreground/20 text-xs">✦</span>
+              <span className="w-10 h-px bg-primary-foreground/20" />
+            </div>
+
             <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">
               The best weddings don't feel produced — they feel{" "}
               <em>inevitable</em>. As if every detail was always meant to be
@@ -29,9 +47,10 @@ const EditorialSplitSection = () => {
             </blockquote>
             <div className="flex items-center gap-3">
               <span className="w-6 h-px bg-primary-foreground/30" />
-              <span className="font-script text-lg text-primary-foreground/60">
-                Hickory & Rose
+              <span className="font-script text-lg text-primary-foreground/50">
+                H & R
               </span>
+              <span className="w-6 h-px bg-primary-foreground/30" />
             </div>
           </div>
         </ScrollReveal>
@@ -46,6 +65,9 @@ const EditorialSplitSection = () => {
           style={{ y: imageY }}
           loading="lazy"
         />
+        {/* Corner frame accent */}
+        <div className="absolute top-6 right-6 w-16 h-16 border-t border-r border-background/20 pointer-events-none" aria-hidden="true" />
+        <div className="absolute bottom-6 left-6 w-16 h-16 border-b border-l border-background/20 pointer-events-none" aria-hidden="true" />
       </div>
     </section>
   );
