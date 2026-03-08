@@ -71,11 +71,19 @@ const ServiceTierCard = ({ service, index }: ServiceTierCardProps) => {
   return (
     <section
       id={service.id}
-      className={`py-section-mobile md:py-section-tablet lg:py-section-desktop relative overflow-hidden ${
+      className={`py-section-mobile md:py-section-tablet lg:py-section-desktop relative overflow-hidden group/tier ${
         isEven ? "bg-background" : "bg-card"
       }`}
       style={{ contain: "layout style" }}
     >
+      {/* Diagonal gold shimmer sweep on hover */}
+      <span
+        className="absolute inset-0 pointer-events-none z-10 -translate-x-full -translate-y-full group-hover/tier:translate-x-[200%] group-hover/tier:translate-y-[-200%] transition-transform duration-700 ease-out"
+        style={{
+          background: "linear-gradient(135deg, transparent 40%, hsl(var(--gold) / 0.08) 50%, transparent 60%)",
+        }}
+        aria-hidden="true"
+      />
       {/* Per-tier parallax watermark */}
       <motion.div
         className="absolute -right-4 top-1/3 pointer-events-none select-none"
@@ -129,7 +137,15 @@ const ServiceTierCard = ({ service, index }: ServiceTierCardProps) => {
                 {service.description}
               </p>
 
-              <div className="border-t border-border pt-8 mb-8">
+              <div className="pt-8 mb-8 relative">
+                <motion.span
+                  className="absolute top-0 left-0 right-0 h-px origin-left"
+                  style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.4), hsl(var(--border)))" }}
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                />
                 <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-5">
                   What's Included
                 </p>
