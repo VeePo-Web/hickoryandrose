@@ -55,7 +55,7 @@ const Footer = () => {
             <p className="font-overline text-background/40 mb-5">
               About
             </p>
-            <p className="font-sans-wedding text-sm text-background/50 leading-relaxed mb-6">
+            <p className="font-sans-wedding text-body-sm text-background/45 leading-relaxed mb-6 font-light">
               Refined rustic elegance with calm, intentional leadership. We
               protect what matters most on your wedding day — your presence.
             </p>
