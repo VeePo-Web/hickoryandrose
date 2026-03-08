@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 import { Instagram } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
 const serviceAreas = [
   { name: "Edmonton", venues: 45 },
@@ -11,11 +10,11 @@ const serviceAreas = [
   { name: "The Canadian Rockies", venues: 30 },
 ];
 
-const FooterServiceAreas = () => {
+const FooterServiceAreas = forwardRef<HTMLDivElement>((_, ref) => {
   const [hoveredArea, setHoveredArea] = useState<number | null>(null);
 
   return (
-    <div>
+    <div ref={ref}>
       <p className="font-overline text-background/20 mb-5 text-[0.6rem]">
         Follow
       </p>
@@ -50,19 +49,13 @@ const FooterServiceAreas = () => {
               <span className="font-sans-wedding text-[0.7rem] text-background/20 font-light group-hover/area:text-background/50 transition-colors duration-300">
                 {area.name}
               </span>
-              <AnimatePresence>
-                {hoveredArea === i && (
-                  <motion.span
-                    initial={{ opacity: 0, width: 0 }}
-                    animate={{ opacity: 1, width: "auto" }}
-                    exit={{ opacity: 0, width: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="font-serif-wedding text-[0.55rem] italic text-background/15 overflow-hidden whitespace-nowrap"
-                  >
-                    ({area.venues} venues)
-                  </motion.span>
-                )}
-              </AnimatePresence>
+              <span
+                className={`font-serif-wedding text-[0.55rem] italic text-background/15 overflow-hidden whitespace-nowrap transition-all duration-200 ${
+                  hoveredArea === i ? "opacity-100 max-w-[80px]" : "opacity-0 max-w-0"
+                }`}
+              >
+                ({area.venues} venues)
+              </span>
               {i < serviceAreas.length - 1 && (
                 <span className="text-background/10 mx-0.5">·</span>
               )}
@@ -72,6 +65,8 @@ const FooterServiceAreas = () => {
       </div>
     </div>
   );
-};
+});
+
+FooterServiceAreas.displayName = "FooterServiceAreas";
 
 export default FooterServiceAreas;
