@@ -59,7 +59,8 @@ const StatsSection = () => {
           </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-y-20 gap-x-16">
+        {/* 2x2 grid with ruled dividers */}
+        <div className="grid grid-cols-1 md:grid-cols-2">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -71,7 +72,13 @@ const StatsSection = () => {
                 delay: index * 0.1,
                 ease: [0.25, 0.1, 0.25, 1],
               }}
-              className="group"
+              className={`py-12 md:py-16 px-4 md:px-8 group ${
+                /* Top border for rows 2+ */
+                index >= 2 ? "border-t border-background/8" : ""
+              } ${
+                /* Left border for right column */
+                index % 2 === 1 ? "md:border-l md:border-background/8" : ""
+              }`}
             >
               <p className="font-serif-wedding text-7xl md:text-8xl font-light text-background/90 mb-3 leading-none tracking-tight">
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
@@ -93,7 +100,7 @@ const StatsSection = () => {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="w-16 h-px bg-background/10 mx-auto mt-20 md:mt-28 origin-center"
+            className="w-16 h-px bg-background/10 mx-auto mt-12 md:mt-16 origin-center"
           />
         </ScrollReveal>
       </div>
