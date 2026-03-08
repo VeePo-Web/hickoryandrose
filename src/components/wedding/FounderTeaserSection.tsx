@@ -20,7 +20,20 @@ const FounderTeaserSection = () => {
   const imageY = useTransform(scrollYProgress, [0, 1], ["4%", "-4%"]);
 
   return (
-    <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card" aria-label="About the founder">
+    <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card relative overflow-hidden" aria-label="About the founder">
+      {/* Large decorative section index */}
+      <motion.div
+        className="absolute left-6 md:left-12 top-12 md:top-16 pointer-events-none select-none"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.03 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.2 }}
+      >
+        <span className="font-serif-wedding text-[10rem] md:text-[16rem] font-light text-foreground leading-none">
+          04
+        </span>
+      </motion.div>
+
       <div className="container mx-auto px-6 lg:px-8">
         <div
           ref={ref}
@@ -29,25 +42,27 @@ const FounderTeaserSection = () => {
           {/* Portrait with subtle parallax */}
           <ScrollReveal className="lg:col-span-3">
             <ImageReveal direction="left" delay={0.1}>
-              <div className="aspect-[4/5] max-w-md mx-auto lg:max-w-none overflow-hidden relative">
+              <div className="aspect-[4/5] max-w-md mx-auto lg:max-w-none overflow-hidden relative group">
                 <motion.img
                   src={founderImage}
                   alt="Founder of Hickory & Rose, smiling warmly in a garden setting"
-                  className="w-full h-[110%] object-cover"
+                  className="w-full h-[110%] object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.02]"
                   style={{ y: imageY }}
                   loading="lazy"
                   width={1024}
                   height={1024}
                 />
+                {/* Subtle overlay on hover */}
+                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/[0.03] transition-colors duration-700" />
               </div>
             </ImageReveal>
 
-            {/* Credential row below image */}
-            <div className="grid grid-cols-3 gap-4 mt-6">
+            {/* Credential row below image — ruled dividers */}
+            <div className="grid grid-cols-3 gap-0 mt-8 border-t border-border/40">
               {credentials.map((cred, i) => (
                 <motion.div
                   key={cred.label}
-                  className="text-center"
+                  className={`text-center py-5 ${i < 2 ? "border-r border-border/40" : ""}`}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -63,6 +78,11 @@ const FounderTeaserSection = () => {
           {/* Story */}
           <ScrollReveal delay={0.15} className="lg:col-span-2">
             <div>
+              {/* Section index */}
+              <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-4">
+                04
+              </span>
+
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
@@ -96,7 +116,10 @@ const FounderTeaserSection = () => {
               </div>
 
               {/* Signature */}
-              <p className="font-script text-2xl text-primary/30 mb-6">Hickory & Rose</p>
+              <p className="font-script text-2xl text-primary/30 mb-2">Hickory & Rose</p>
+              <p className="font-overline text-[0.5rem] text-muted-foreground/30 mb-6">
+                Est. 2018 · Edmonton, Alberta
+              </p>
 
               <Link
                 to="/about"

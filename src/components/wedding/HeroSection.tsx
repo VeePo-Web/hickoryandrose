@@ -36,6 +36,12 @@ const AnimatedHeadline = ({ text, startIndex = 0 }: { text: string; startIndex?:
   </>
 );
 
+const trustCredentials = [
+  "150+ Weddings",
+  "Top 10 Edmonton Planners",
+  "Est. 2018",
+];
+
 const HeroSection = () => {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -79,6 +85,18 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/15 to-black/55" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/10" />
       </div>
+
+      {/* Large decorative ampersand watermark */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.03 }}
+        transition={{ duration: 2, delay: 1.5 }}
+      >
+        <span className="font-script text-[22rem] md:text-[32rem] text-white leading-none">
+          &
+        </span>
+      </motion.div>
 
       <Navigation variant="overlay" />
 
@@ -135,6 +153,27 @@ const HeroSection = () => {
           <MagneticButton to="/inquire" variant="outline-light">
             Begin Your Story
           </MagneticButton>
+        </motion.div>
+
+        {/* Trust credential ticker */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 2.8 }}
+          className="absolute bottom-24 left-0 right-0 flex items-center justify-center gap-6 md:gap-10"
+        >
+          {trustCredentials.map((cred, i) => (
+            <motion.span
+              key={cred}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 3.0 + i * 0.15, duration: 0.4 }}
+              className="font-sans-wedding text-[0.6rem] md:text-[0.65rem] tracking-[0.18em] uppercase text-white/25 font-light"
+            >
+              {i > 0 && <span className="mr-6 md:mr-10 opacity-30">·</span>}
+              {cred}
+            </motion.span>
+          ))}
         </motion.div>
       </motion.div>
 
