@@ -3,6 +3,7 @@ import { useRef } from "react";
 import ScrollReveal from "./ScrollReveal";
 import MagneticButton from "./MagneticButton";
 import receptionImage from "@/assets/portfolio-reception.jpg";
+import ceremonyImage from "@/assets/ceremony-setup.jpg";
 
 const CTASection = () => {
   const ref = useRef<HTMLElement>(null);
@@ -11,6 +12,7 @@ const CTASection = () => {
     offset: ["start end", "end start"],
   });
   const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+  const insetY = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
 
   return (
     <section
@@ -46,54 +48,92 @@ const CTASection = () => {
         </span>
       </motion.div>
 
-      <div className="relative container mx-auto px-6 lg:px-8 text-center max-w-2xl">
-        <ScrollReveal>
-          <p className="font-sans-wedding text-label uppercase text-white/30 mb-6">
-            <span className="inline-flex items-center gap-3">
-              <span className="w-5 h-px bg-white/20" />
-              Let's Begin
-              <span className="w-5 h-px bg-white/20" />
-            </span>
-          </p>
-
+      <div className="relative container mx-auto px-6 lg:px-8 max-w-5xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left: editorial inset image */}
           <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="w-16 h-px bg-white/15 mx-auto mb-10 origin-center"
-          />
-
-          <h2 className="font-serif-wedding text-display-lg text-white mb-4 leading-tight">
-            Ready to feel calm about your wedding day?
-          </h2>
-          <p className="font-sans-wedding text-sm text-white/50 leading-relaxed mb-4 max-w-md mx-auto font-light">
-            Let's talk about your vision, your day, and how Hickory & Rose can
-            make it effortlessly beautiful.
-          </p>
-
-          {/* Trust line */}
-          <p className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-white/25 mb-12">
-            Complimentary discovery call · No obligation · Typically responds within 48 hours
-          </p>
-
-          <MagneticButton to="/inquire" variant="outline-light">
-            Begin Your Story
-          </MagneticButton>
-
-          {/* Subtle bottom attribution */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="mt-16"
+            className="lg:col-span-4 hidden lg:block"
+            style={{ y: insetY }}
           >
-            <span className="font-script text-lg text-white/15">
-              Hickory & Rose
-            </span>
+            <ScrollReveal>
+              <div className="aspect-[3/4] overflow-hidden relative">
+                <img
+                  src={ceremonyImage}
+                  alt="Candlelit barn ceremony with mountain backdrop"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+              </div>
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/25 mt-3"
+              >
+                Jasper Park Lodge · Summer 2024
+              </motion.p>
+            </ScrollReveal>
           </motion.div>
-        </ScrollReveal>
+
+          {/* Right: CTA content */}
+          <div className="lg:col-span-8 text-center lg:text-left">
+            <ScrollReveal>
+              <p className="font-sans-wedding text-label uppercase text-white/30 mb-6">
+                <span className="inline-flex items-center gap-3">
+                  <span className="w-5 h-px bg-white/20" />
+                  Let's Begin
+                </span>
+              </p>
+
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.2 }}
+                className="w-16 h-px bg-white/15 mb-10 origin-left hidden lg:block"
+              />
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.2 }}
+                className="w-16 h-px bg-white/15 mx-auto mb-10 origin-center lg:hidden"
+              />
+
+              <h2 className="font-serif-wedding text-display-lg text-white mb-4 leading-tight">
+                Ready to feel calm about your wedding day?
+              </h2>
+              <p className="font-sans-wedding text-sm text-white/50 leading-relaxed mb-4 max-w-md font-light lg:mx-0 mx-auto">
+                Let's talk about your vision, your day, and how Hickory & Rose can
+                make it effortlessly beautiful.
+              </p>
+
+              {/* Trust line */}
+              <p className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-white/25 mb-12">
+                Complimentary discovery call · No obligation · Typically responds within 48 hours
+              </p>
+
+              <MagneticButton to="/inquire" variant="outline-light">
+                Begin Your Story
+              </MagneticButton>
+
+              {/* Subtle bottom attribution */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="mt-16"
+              >
+                <span className="font-script text-lg text-white/15">
+                  Hickory & Rose
+                </span>
+              </motion.div>
+            </ScrollReveal>
+          </div>
+        </div>
       </div>
     </section>
   );
