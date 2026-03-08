@@ -339,6 +339,8 @@ const Inquire = () => {
               </div>
             </form>
           </ScrollReveal>
+            </div>
+          </div>
         </div>
       </section>
 
