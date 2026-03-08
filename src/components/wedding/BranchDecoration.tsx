@@ -1,5 +1,8 @@
+import { motion } from "framer-motion";
+
 interface BranchDecorationProps {
   className?: string;
+  flip?: boolean;
 }
 
 const BranchDecoration = ({ className = "" }: BranchDecorationProps) => {
