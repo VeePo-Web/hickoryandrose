@@ -268,18 +268,20 @@ const Inquire = () => {
           <label htmlFor="name" className="font-overline text-muted-foreground mb-2 block">
             Your Name *
           </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={(e) => set("name", e.target.value)}
-            className={inputCls("name")}
-            placeholder="First & last name"
-            autoFocus
-            aria-invalid={!!errors.name}
-            aria-describedby={errors.name ? "name-error" : undefined}
-          />
+          <InputWrapper>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={(e) => set("name", e.target.value)}
+              className={inputCls("name")}
+              placeholder="First & last name"
+              autoFocus
+              aria-invalid={!!errors.name}
+              aria-describedby={errors.name ? "name-error" : undefined}
+            />
+          </InputWrapper>
           {errors.name && (
             <p id="name-error" className="mt-1.5 font-sans-wedding text-xs text-destructive" role="alert">
               {errors.name}
@@ -291,32 +293,36 @@ const Inquire = () => {
           <label htmlFor="partner" className="font-overline text-muted-foreground mb-2 block">
             Partner's Name
           </label>
-          <input
-            type="text"
-            id="partner"
-            name="partner"
-            value={formData.partner}
-            onChange={(e) => set("partner", e.target.value)}
-            className={inputCls("partner")}
-            placeholder="First & last name"
-          />
+          <InputWrapper>
+            <input
+              type="text"
+              id="partner"
+              name="partner"
+              value={formData.partner}
+              onChange={(e) => set("partner", e.target.value)}
+              className={inputCls("partner")}
+              placeholder="First & last name"
+            />
+          </InputWrapper>
         </div>
 
         <div>
           <label htmlFor="email" className="font-overline text-muted-foreground mb-2 block">
             Email Address *
           </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={(e) => set("email", e.target.value)}
-            className={inputCls("email")}
-            placeholder="your@email.com"
-            aria-invalid={!!errors.email}
-            aria-describedby={errors.email ? "email-error" : undefined}
-          />
+          <InputWrapper>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={(e) => set("email", e.target.value)}
+              className={inputCls("email")}
+              placeholder="your@email.com"
+              aria-invalid={!!errors.email}
+              aria-describedby={errors.email ? "email-error" : undefined}
+            />
+          </InputWrapper>
           {errors.email && (
             <p id="email-error" className="mt-1.5 font-sans-wedding text-xs text-destructive" role="alert">
               {errors.email}
