@@ -8,6 +8,8 @@ import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import ImageReveal from "@/components/wedding/ImageReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
+import GoldFrame from "@/components/wedding/GoldFrame";
+import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import approachDetailsImage from "@/assets/approach-details.jpg";
