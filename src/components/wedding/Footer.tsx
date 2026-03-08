@@ -20,7 +20,9 @@ const Footer = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [focused, setFocused] = useState(false);
+  const [hoveredArea, setHoveredArea] = useState<number | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const footerRef = useRef<HTMLElement>(null);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
