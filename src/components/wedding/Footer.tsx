@@ -280,28 +280,36 @@ const Footer = () => {
           </div>
 
           {/* Powered by VeePo — Premium Agency Credit */}
-          <div className="flex justify-center pt-8 mt-6">
+          <div className="flex justify-center pt-10 mt-8 mb-4">
             <a
               href="https://veepo.ca/case-studies"
               target="_blank"
               rel="noopener noreferrer"
-              className="group/veepo relative flex flex-col items-center gap-3 px-8 py-5 md:px-12 md:py-6 rounded-sm bg-[#0a0a0a] border border-white/[0.04] transition-all duration-500 hover:border-white/[0.08] overflow-hidden"
+              className="group/veepo relative flex flex-col items-center gap-4 px-14 py-8 md:px-20 md:py-10 rounded-sm bg-[#0a0a0a] border border-white/[0.04] transition-all duration-500 hover:border-white/[0.1] hover:scale-[1.02] overflow-hidden max-w-md md:max-w-lg w-full"
               style={{
-                boxShadow: "0 0 0 rgba(255,255,255,0)",
+                boxShadow: "0 0 0 rgba(243,140,30,0)",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 30px rgba(255,255,255,0.04)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 40px rgba(243,140,30,0.08), 0 0 80px rgba(46,175,75,0.04)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 0 rgba(255,255,255,0)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 0 rgba(243,140,30,0)";
               }}
               aria-label="This experience was crafted by VeePo — visit case studies"
             >
-              {/* Gold-to-white gradient divider at top */}
+              {/* VeePo brand-color gradient divider — top */}
               <div
-                className="absolute top-0 left-0 right-0 h-px"
+                className="absolute top-0 left-0 right-0 h-px transition-opacity duration-500 opacity-50 group-hover/veepo:opacity-80"
                 style={{
-                  background: "linear-gradient(90deg, transparent 10%, hsl(var(--gold, 40 50% 55%) / 0.4) 35%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0.15) 85%, transparent 95%)",
+                  background: "linear-gradient(90deg, transparent 5%, #F38C1E 35%, #2EAF4B 65%, transparent 95%)",
+                }}
+              />
+
+              {/* VeePo brand-color gradient divider — bottom */}
+              <div
+                className="absolute bottom-0 left-0 right-0 h-px transition-opacity duration-500 opacity-30 group-hover/veepo:opacity-60"
+                style={{
+                  background: "linear-gradient(90deg, transparent 5%, #2EAF4B 35%, #F38C1E 65%, transparent 95%)",
                 }}
               />
 
@@ -309,26 +317,37 @@ const Footer = () => {
               <span
                 className="absolute inset-0 opacity-0 group-hover/veepo:opacity-100 transition-opacity duration-300 pointer-events-none"
                 style={{
-                  background: "linear-gradient(110deg, transparent 20%, rgba(255,255,255,0.03) 45%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 55%, transparent 80%)",
+                  background: "linear-gradient(110deg, transparent 20%, rgba(255,255,255,0.04) 45%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.04) 55%, transparent 80%)",
                   animation: "shimmer-sweep 1.2s ease-out",
                 }}
               />
 
               {/* Micro label */}
-              <span className="relative z-10 font-sans-wedding text-[0.5rem] md:text-[0.55rem] tracking-[0.25em] uppercase text-white/25 group-hover/veepo:text-white/40 transition-colors duration-500 font-light">
+              <span className="relative z-10 font-sans-wedding text-[0.6rem] md:text-[0.7rem] tracking-[0.25em] uppercase text-white/40 group-hover/veepo:text-white/60 transition-colors duration-500 font-light">
                 This experience was crafted by
               </span>
 
-              {/* Logo */}
+              {/* Logo — hero size, full color */}
               <img
                 src={veepoLogo}
                 alt="VeePo"
-                className="relative z-10 h-7 md:h-8 w-auto opacity-40 group-hover/veepo:opacity-80 transition-all duration-500"
+                className="relative z-10 h-12 md:h-16 w-auto opacity-70 group-hover/veepo:opacity-100 transition-all duration-500"
+                style={{
+                  filter: "drop-shadow(0 0 0px rgba(243,140,30,0))",
+                  transition: "filter 0.5s ease, opacity 0.5s ease",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.filter = "drop-shadow(0 0 20px rgba(243,140,30,0.15))";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.filter = "drop-shadow(0 0 0px rgba(243,140,30,0))";
+                }}
               />
 
-              {/* Tagline */}
-              <span className="relative z-10 font-sans-wedding text-[0.45rem] md:text-[0.5rem] tracking-[0.18em] uppercase text-white/15 group-hover/veepo:text-white/30 transition-colors duration-500 font-light">
+              {/* Tagline + arrow */}
+              <span className="relative z-10 flex items-center gap-2 font-sans-wedding text-[0.55rem] md:text-[0.65rem] tracking-[0.18em] uppercase text-white/30 group-hover/veepo:text-white/50 transition-colors duration-500 font-light">
                 Where Vision Meets Precision
+                <ArrowUp size={10} strokeWidth={1.5} className="rotate-45 opacity-0 group-hover/veepo:opacity-100 transition-all duration-500 -translate-x-1 group-hover/veepo:translate-x-0" />
               </span>
             </a>
           </div>
