@@ -71,10 +71,18 @@ const EditorialSplitSection = () => {
           </span>
         </motion.div>
 
-        {/* Scroll-linked vertical accent line */}
+        {/* Scroll-linked vertical accent line with gold tip */}
         <motion.div
           className="absolute left-8 top-0 w-px bg-gradient-to-b from-transparent via-primary-foreground/15 to-transparent origin-top"
           style={{ height: quoteLineH }}
+        />
+        <motion.div
+          className="absolute left-[31px] top-0 w-[3px] origin-top"
+          style={{
+            height: quoteLineH,
+            background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.05), transparent)",
+            scaleY: centerLineScale,
+          }}
         />
 
         {/* Corner accents */}
@@ -171,20 +179,28 @@ const EditorialSplitSection = () => {
         {/* Floating inset detail image - reveals on hover */}
         <AnimatePresence>
           {isHovered && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, x: 20 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              exit={{ opacity: 0, scale: 0.95, x: 20 }}
-              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-              className="absolute bottom-8 left-8 w-32 h-40 overflow-hidden hidden lg:block shadow-2xl"
-            >
-              <img
-                src={vendorImage}
-                alt="Vendor collaboration detail"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 border border-white/20" />
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, x: 20 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                exit={{ opacity: 0, scale: 0.95, x: 20 }}
+                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                className="absolute bottom-8 left-8 w-32 h-40 overflow-hidden hidden lg:block shadow-2xl"
+              >
+                {/* Letterbox bars */}
+                <div className="absolute top-0 left-0 right-0 h-[6%] bg-black/60 z-10" />
+                <div className="absolute bottom-0 left-0 right-0 h-[6%] bg-black/60 z-10" />
+                <img
+                  src={vendorImage}
+                  alt="Vendor collaboration detail"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 border border-white/20" />
+                {/* Gold accent line */}
+                <div
+                  className="absolute bottom-[6%] left-0 right-0 h-px z-20"
+                  style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25), transparent)" }}
+                />
+              </motion.div>
           )}
         </AnimatePresence>
         

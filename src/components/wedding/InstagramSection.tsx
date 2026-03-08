@@ -124,6 +124,16 @@ const InstagramSection = () => {
           </div>
         </ScrollReveal>
 
+        {/* Gold horizontal rule before grid */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+          className="h-px mb-10 md:mb-14 origin-left"
+          style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08), transparent)" }}
+        />
+
         {/* Staggered mosaic grid with parallax */}
         <motion.div 
           className="grid grid-cols-2 md:grid-cols-12 gap-2 md:gap-3"
@@ -277,6 +287,16 @@ const MosaicItem = ({
         {/* Corner accent frames */}
         <div className="absolute top-2 left-2 w-5 h-5 border-t border-l border-white/0 group-hover:border-white/15 transition-all duration-500 pointer-events-none" />
         <div className="absolute bottom-2 right-2 w-5 h-5 border-b border-r border-white/0 group-hover:border-white/15 transition-all duration-500 pointer-events-none" />
+        
+        {/* Film contact sheet frame number */}
+        <div className="absolute top-2 right-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <span
+            className="font-sans-wedding text-[0.4rem] tracking-[0.15em] tabular-nums text-white/30 px-1.5 py-0.5"
+            style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.1), transparent)" }}
+          >
+            FR{String(index + 1).padStart(2, "0")}
+          </span>
+        </div>
         
         {/* Featured badge */}
         {featured && (

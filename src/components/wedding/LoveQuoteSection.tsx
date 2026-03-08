@@ -168,7 +168,13 @@ const LoveQuoteSection = () => {
               transition={{ duration: 0.8 }}
               aria-hidden="true"
             >
-              "
+              <motion.span
+                className="inline-block"
+                animate={{ opacity: [0.08, 0.12, 0.08] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                "
+              </motion.span>
             </motion.span>
             We believe your wedding day should be <em className="text-primary-foreground/95">felt</em>, not managed. That the
             details should serve the moment — never compete with it. That calm
@@ -184,6 +190,16 @@ const LoveQuoteSection = () => {
               "
             </motion.span>
           </blockquote>
+
+          {/* Gold ornamental serif rule */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            className="w-24 h-px mx-auto mb-12 origin-center"
+            style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.35), transparent)" }}
+          />
 
           {/* Attribution with vertical accent */}
           <div className="flex flex-col items-center gap-5">
