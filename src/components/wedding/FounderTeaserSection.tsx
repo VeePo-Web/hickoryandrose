@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import ScrollReveal from "./ScrollReveal";
+import ImageReveal from "./ImageReveal";
 import founderImage from "@/assets/founder-portrait.jpg";
 
 const FounderTeaserSection = () => {
