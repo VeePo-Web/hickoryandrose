@@ -13,7 +13,12 @@ const footerLinks = [
 ];
 
 const serviceAreas = [
-  "Edmonton", "Jasper", "Banff", "Lake Louise", "Calgary", "The Canadian Rockies",
+  { name: "Edmonton", venues: 45 },
+  { name: "Jasper", venues: 12 },
+  { name: "Banff", venues: 18 },
+  { name: "Lake Louise", venues: 8 },
+  { name: "Calgary", venues: 22 },
+  { name: "The Canadian Rockies", venues: 30 },
 ];
 
 const Footer = () => {
