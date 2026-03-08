@@ -339,7 +339,7 @@ const Footer = () => {
               {/* Logo — hero size, full color */}
               <img
                 src={veepoLogo}
-                alt="VeePo"
+                alt="VeePo.ca"
                 className="relative z-10 h-14 md:h-20 w-auto opacity-85 group-hover/veepo:opacity-100 transition-all duration-500"
                 style={{
                   filter: "drop-shadow(0 0 0px rgba(255,140,42,0))",
@@ -352,6 +352,11 @@ const Footer = () => {
                   (e.currentTarget as HTMLElement).style.filter = "drop-shadow(0 0 0px rgba(255,140,42,0))";
                 }}
               />
+
+              {/* Domain branding */}
+              <span className="relative z-10 font-sans-wedding text-[0.7rem] md:text-[0.85rem] tracking-[0.3em] uppercase text-white/60 group-hover/veepo:text-white/90 transition-colors duration-500 font-medium">
+                veepo.ca
+              </span>
 
               {/* Tagline + arrow */}
               <span className="relative z-10 flex items-center gap-2 font-sans-wedding text-[0.6rem] md:text-[0.7rem] tracking-[0.18em] uppercase text-white/40 group-hover/veepo:text-white/60 transition-colors duration-500 font-light">
