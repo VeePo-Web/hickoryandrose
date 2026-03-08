@@ -100,30 +100,16 @@ const PreFooterDivider = () => {
             <ScrollReveal>
               {/* Top ornamental line — scroll-linked */}
               <motion.div
-                className="w-24 h-px mx-auto lg:mx-0 mb-10 origin-center lg:origin-left"
+                className="w-24 h-px mx-auto lg:mx-0 mb-6 origin-center lg:origin-left"
                 style={{
                   scaleX: lineScale,
                   background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.35), transparent)",
                 }}
               />
 
-              {/* Section ornament with ambient gold glow */}
-              <div className="relative inline-block mb-4 mx-auto">
-                <motion.div
-                  className="absolute -inset-6 pointer-events-none"
-                  style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.08), transparent 70%)" }}
-                  animate={{ opacity: [0.3, 0.7, 0.3], scale: [0.9, 1.1, 0.9] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  aria-hidden="true"
-                />
-                <motion.span
-                  className="w-4 h-4 rotate-45 block relative"
-                  style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))" }}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                />
+              {/* Breathing diamond ornament */}
+              <div className="flex justify-center lg:justify-start mb-6">
+                <BreathingDiamond size={10} />
               </div>
 
               <p className="font-overline text-muted-foreground/35 mb-6">
