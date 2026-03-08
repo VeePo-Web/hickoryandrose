@@ -325,6 +325,13 @@ const StatsSection = () => {
             </div>
           </div>
         </ScrollReveal>
+
+        {/* Breathing diamond section closer */}
+        <ScrollReveal delay={0.6}>
+          <div className="mt-12 md:mt-16 flex justify-center">
+            <BreathingDiamond size={10} />
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
