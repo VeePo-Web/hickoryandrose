@@ -12,32 +12,10 @@ import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 import AboutMilestones from "@/components/wedding/AboutMilestones";
 import AboutTestimonials from "@/components/wedding/AboutTestimonials";
 import AboutFounderSection from "@/components/wedding/AboutFounderSection";
+import AboutValuesGrid from "@/components/wedding/AboutValuesGrid";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import aboutHeroImage from "@/assets/about-hero.jpg";
 import editorialFloralsImage from "@/assets/editorial-florals.jpg";
-
-const values = [
-  {
-    title: "Calm Leadership",
-    pullQuote: "Presence over panic.",
-    description:
-      "We lead with quiet confidence so you never feel rushed, pressured, or anxious. Our composed presence on the day means you can exhale and simply be in the moment.",
-  },
-  {
-    title: "Intentional Design",
-    pullQuote: "Nothing accidental.",
-    description:
-      "Every detail is considered — from the arc of your ceremony to the way light falls across your tablescape. We design with purpose so every element tells your story.",
-  },
-  {
-    title: "Genuine Care",
-    pullQuote: "Not a project — a privilege.",
-    description:
-      "Your wedding isn't a line item to us. It's a responsibility we take personally. We invest emotionally because we believe that's the only way to create something truly meaningful.",
-  },
-];
-
-// milestones and testimonials data moved to sub-components
 
 const About = () => {
   const heroRef = useRef<HTMLElement>(null);
