@@ -177,12 +177,17 @@ const ProcessTeaserSection = () => {
                       <div className="md:col-span-2 relative">
                         <motion.div
                           className="absolute left-[1.25rem] md:left-[2rem] top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block"
-                          initial={{ scale: 0 }}
-                          whileInView={{ scale: 1 }}
+                          initial={{ scale: 0, rotate: 0 }}
+                          whileInView={{ scale: 1, rotate: 45 }}
                           viewport={{ once: true }}
-                          transition={{ duration: 0.4, delay: 0.4 + index * 0.12 }}
+                          transition={{ duration: 0.5, delay: 0.4 + index * 0.12, ease: [0.25, 0.1, 0.25, 1] }}
                         >
-                          <span className="w-2.5 h-2.5 rounded-full bg-primary/25 group-hover:bg-primary/50 block transition-colors duration-500" />
+                          <span
+                            className="w-2.5 h-2.5 block transition-all duration-500 group-hover:shadow-[0_0_8px_hsl(var(--gold)_/_0.3)]"
+                            style={{
+                              background: `linear-gradient(135deg, hsl(var(--gold) / ${activeStep === index ? '0.6' : '0.25'}), hsl(var(--primary) / ${activeStep === index ? '0.4' : '0.15'}))`,
+                            }}
+                          />
                         </motion.div>
                         <motion.span
                           className="font-serif-wedding text-5xl md:text-6xl font-light text-primary/8 group-hover:text-primary/25 transition-colors duration-700 inline-block"

@@ -118,6 +118,9 @@ const ServicesOverviewSection = () => {
                 transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
               >
                 <div className="w-48 xl:w-56 aspect-[3/4] overflow-hidden shadow-2xl relative">
+                  {/* Cinematic letterbox bars */}
+                  <div className="absolute top-0 left-0 right-0 h-[6%] bg-black/60 z-10" />
+                  <div className="absolute bottom-0 left-0 right-0 h-[6%] bg-black/60 z-10" />
                   <img
                     src={services[hoveredIndex].image}
                     alt={services[hoveredIndex].imageAlt}
@@ -125,10 +128,15 @@ const ServicesOverviewSection = () => {
                     loading="lazy"
                   />
                   {/* Corner frame accents */}
-                  <div className="absolute top-2 left-2 w-5 h-5 border-t border-l border-white/15" />
-                  <div className="absolute bottom-2 right-2 w-5 h-5 border-b border-r border-white/15" />
+                  <div className="absolute top-[8%] left-2 w-5 h-5 border-t border-l border-white/20 z-20" />
+                  <div className="absolute bottom-[8%] right-2 w-5 h-5 border-b border-r border-white/20 z-20" />
                   {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  {/* Gold accent line at bottom */}
+                  <div
+                    className="absolute bottom-[6%] left-0 right-0 h-px z-20"
+                    style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }}
+                  />
                 </div>
                 <div className="flex items-center justify-end gap-2 mt-3">
                   <span className="w-4 h-px bg-muted-foreground/15" />

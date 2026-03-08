@@ -21,6 +21,7 @@ const AnimatedCounter = ({
   duration?: number;
 }) => {
   const [count, setCount] = useState(0);
+  const [finished, setFinished] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -34,16 +35,32 @@ const AnimatedCounter = ({
       const progress = Math.min(elapsed / durationMs, 1);
       const eased = easeOutQuart(progress);
       setCount(Math.round(eased * target));
-      if (progress < 1) requestAnimationFrame(animate);
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setFinished(true);
+      }
     };
 
     requestAnimationFrame(animate);
   }, [isInView, target, duration]);
 
   return (
-    <span ref={ref} className="tabular-nums">
+    <span ref={ref} className="tabular-nums relative inline-block">
       {count}
       {suffix}
+      {/* Gold flash on completion */}
+      {finished && (
+        <motion.span
+          className="absolute inset-0 pointer-events-none"
+          initial={{ opacity: 0.4 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          style={{
+            background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2), transparent)",
+          }}
+        />
+      )}
     </span>
   );
 };

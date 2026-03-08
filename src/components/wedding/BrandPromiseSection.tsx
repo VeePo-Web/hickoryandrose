@@ -157,6 +157,14 @@ const BrandPromiseSection = () => {
                 onMouseEnter={() => setActivePillar(index)}
                 onMouseLeave={() => setActivePillar(null)}
               >
+                {/* Gold accent left border on hover */}
+                <motion.div
+                  className="absolute left-0 top-0 bottom-0 w-[2px] origin-top"
+                  style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15), transparent)" }}
+                  initial={{ scaleY: 0 }}
+                  animate={{ scaleY: activePillar === index ? 1 : 0 }}
+                  transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                />
                 <div className="md:col-span-1">
                   <span className="font-serif-wedding text-3xl font-light text-primary/8 group-hover:text-primary/25 transition-colors duration-700">
                     {String(index + 1).padStart(2, "0")}
