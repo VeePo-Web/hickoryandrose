@@ -8,6 +8,8 @@ import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import ImageReveal from "@/components/wedding/ImageReveal";
 import MagneticButton from "@/components/wedding/MagneticButton";
+import GoldFrame from "@/components/wedding/GoldFrame";
+import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 import portfolioHeroImage from "@/assets/portfolio-hero.jpg";
 import heroImage from "@/assets/hero-wedding.jpg";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
@@ -114,9 +116,24 @@ const Portfolio = () => {
           </ScrollReveal>
         </motion.div>
 
-        {/* Section corner index */}
+        <GoldFrame inset="20px" delay={1} />
+
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-4 py-3 pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.6, duration: 0.8 }}
+        >
+          {["Curated Collection", "Real Weddings", "Edmonton & Rockies"].map((t, i) => (
+            <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/30 flex items-center gap-4">
+              {i > 0 && <BreathingDiamond size={4} />}
+              {t}
+            </span>
+          ))}
+        </motion.div>
+
         <motion.span
-          className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/15 tracking-widest"
+          className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/15 tracking-widest z-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.6 }}
@@ -300,7 +317,7 @@ const Portfolio = () => {
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy"
                       />
-                      {/* Cinematic gradient reveal */}
+                      {/* Cinematic gradient reveal + gold hover frame */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                       {/* Gold gradient corner frame accents */}

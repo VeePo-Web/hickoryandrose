@@ -8,6 +8,8 @@ import CTASection from "@/components/wedding/CTASection";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import MagneticButton from "@/components/wedding/MagneticButton";
+import GoldFrame from "@/components/wedding/GoldFrame";
+import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 import faqEditorialImage from "@/assets/faq-editorial.jpg";
 import faqHeroImage from "@/assets/faq-hero.jpg";
 import {
@@ -172,8 +174,24 @@ const FAQ = () => {
           </ScrollReveal>
         </motion.div>
 
+        <GoldFrame inset="20px" delay={1} />
+
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-4 py-3 pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.6, duration: 0.8 }}
+        >
+          {["Transparent Pricing", "Custom Packages", "15–20 Weddings/Year"].map((t, i) => (
+            <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/30 flex items-center gap-4">
+              {i > 0 && <BreathingDiamond size={4} />}
+              {t}
+            </span>
+          ))}
+        </motion.div>
+
         <motion.span
-          className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/15 tracking-widest"
+          className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/15 tracking-widest z-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.6 }}
