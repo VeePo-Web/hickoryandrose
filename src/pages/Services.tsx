@@ -263,7 +263,15 @@ const Services = () => {
                       <p className="font-serif-wedding text-lg italic text-muted-foreground mb-3">
                         {service.tagline}
                       </p>
-                      <p className="font-sans-wedding text-label uppercase text-primary">
+                      <p
+                        className="font-sans-wedding text-label uppercase font-light"
+                        style={{
+                          background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--gold)))",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          backgroundClip: "text",
+                        }}
+                      >
                         {service.investment}
                       </p>
                     </div>
@@ -306,7 +314,13 @@ const Services = () => {
                     </div>
 
                     {/* Ideal-for pull quote */}
-                    <div className="border-l-2 border-primary/15 pl-5 mt-8">
+                    <div className="pl-5 mt-8 relative">
+                      <div
+                        className="absolute left-0 top-0 bottom-0 w-[2px]"
+                        style={{
+                          background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), hsl(var(--primary) / 0.15))",
+                        }}
+                      />
                       <p className="font-serif-wedding text-sm italic text-foreground/60 leading-relaxed">
                         Ideal for: {service.idealFor}
                       </p>
