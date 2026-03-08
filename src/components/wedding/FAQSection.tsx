@@ -43,22 +43,22 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section className="bg-white py-20 md:py-32">
+    <section className="bg-background py-20 md:py-32">
       <div className="container mx-auto px-6">
         <ScrollReveal>
-          <p className="font-sans-wedding text-sm tracking-widest uppercase text-wedding-text-light text-center mb-4">
+          <p className="font-sans-wedding text-label uppercase text-muted-foreground text-center mb-4">
             Questions & Answers
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <h2 className="font-serif-wedding text-4xl md:text-5xl text-wedding-text text-center mb-4">
+          <h2 className="font-serif-wedding text-display-lg text-foreground text-center mb-4">
             FAQ
           </h2>
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <p className="font-sans-wedding text-wedding-text-light text-center max-w-2xl mx-auto mb-12">
+          <p className="font-sans-wedding text-sm text-muted-foreground text-center max-w-2xl mx-auto mb-12 leading-relaxed">
             A few things that might be helpful to know. If you have other questions, 
             just reach out—we're happy to help.
           </p>
@@ -66,17 +66,17 @@ const FAQSection = () => {
 
         <ScrollReveal delay={0.3}>
           <div className="max-w-3xl mx-auto">
-            <Accordion type="single" collapsible className="space-y-4">
+            <Accordion type="single" collapsible className="space-y-3">
               {faqs.map((faq, index) => (
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="bg-wedding-cream rounded-lg px-6 border-none"
+                  className="bg-card rounded-lg px-6 border-none"
                 >
-                  <AccordionTrigger className="font-serif-wedding text-lg text-wedding-text hover:no-underline py-6">
+                  <AccordionTrigger className="font-serif-wedding text-lg text-foreground hover:no-underline py-6">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="font-sans-wedding text-wedding-text-light pb-6">
+                  <AccordionContent className="font-sans-wedding text-sm text-muted-foreground leading-relaxed pb-6">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>

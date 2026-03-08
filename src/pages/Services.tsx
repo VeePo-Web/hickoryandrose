@@ -1,9 +1,11 @@
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
+import ImageReveal from "@/components/wedding/ImageReveal";
 import { Calendar, Flower2, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
 import servicePlanningImage from "@/assets/service-planning.jpg";
@@ -28,6 +30,8 @@ const serviceTiers = [
     ],
     idealFor:
       "Couples who enjoy planning but want a professional to execute flawlessly.",
+    image: servicePlanningImage,
+    imageAlt: "Wedding planner reviewing a detailed timeline at her desk with a floral mood board",
   },
   {
     id: "partial",
@@ -47,6 +51,8 @@ const serviceTiers = [
     ],
     idealFor:
       "Couples who want expert support and creative direction while staying involved.",
+    image: serviceStationeryImage,
+    imageAlt: "Luxury wedding stationery suite with calligraphy and wax seals on marble",
   },
   {
     id: "full",
@@ -67,19 +73,19 @@ const serviceTiers = [
     ],
     idealFor:
       "Couples who want a truly hands-free, elevated experience from start to finish.",
+    image: null,
+    imageAlt: "",
   },
 ];
 
-const editorialBreaks = [
-  {
-    src: servicePlanningImage,
-    alt: "Wedding planner reviewing a detailed timeline at her desk with a floral mood board",
-  },
-  {
-    src: serviceStationeryImage,
-    alt: "Luxury wedding stationery suite with calligraphy and wax seals on marble",
-  },
-];
+const listItem = {
+  hidden: { opacity: 0, x: -8 },
+  visible: (i: number) => ({
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.35, delay: i * 0.06, ease: [0.25, 0.1, 0.25, 1] as const },
+  }),
+};
 
 const Services = () => {
   useEffect(() => {
@@ -118,58 +124,97 @@ const Services = () => {
               index % 2 === 0 ? "bg-background" : "bg-card"
             }`}
           >
-            <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
-              <ScrollReveal>
-                <div className="text-center mb-10">
-                  <service.icon
-                    size={36}
-                    strokeWidth={1}
-                    className="text-primary mx-auto mb-4"
-                  />
-                  <h2 className="font-serif-wedding text-display-lg text-foreground mb-2">
-                    {service.title}
-                  </h2>
-                  <p className="font-serif-wedding text-lg italic text-muted-foreground mb-3">
-                    {service.tagline}
-                  </p>
-                  <p className="font-sans-wedding text-sm font-semibold text-primary tracking-wide">
-                    {service.investment}
-                  </p>
+            <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+              <div className={`grid grid-cols-1 ${service.image ? "lg:grid-cols-2 gap-12 lg:gap-16 items-center" : "max-w-4xl mx-auto"}`}>
+                {/* Image column (alternating sides) */}
+                {service.image && index % 2 === 0 && (
+                  <ScrollReveal>
+                    <ImageReveal direction="left">
+                      <div className="aspect-[4/5] overflow-hidden">
+                        <img
+                          src={service.image}
+                          alt={service.imageAlt}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    </ImageReveal>
+                  </ScrollReveal>
+                )}
+
+                {/* Content column */}
+                <div>
+                  <ScrollReveal delay={service.image ? 0.1 : 0}>
+                    <div className={`${service.image ? "" : "text-center"} mb-10`}>
+                      <service.icon
+                        size={36}
+                        strokeWidth={1}
+                        className={`text-primary mb-4 ${service.image ? "" : "mx-auto"}`}
+                      />
+                      <h2 className="font-serif-wedding text-display-lg text-foreground mb-2">
+                        {service.title}
+                      </h2>
+                      <p className="font-serif-wedding text-lg italic text-muted-foreground mb-3">
+                        {service.tagline}
+                      </p>
+                      <p className="font-sans-wedding text-sm font-semibold text-primary tracking-wide">
+                        {service.investment}
+                      </p>
+                    </div>
+                  </ScrollReveal>
+                  <ScrollReveal delay={service.image ? 0.15 : 0.1}>
+                    <p className={`font-sans-wedding text-sm text-muted-foreground leading-relaxed ${service.image ? "" : "text-center max-w-2xl mx-auto"} mb-10`}>
+                      {service.description}
+                    </p>
+                    <div className="bg-sage-mist p-8 md:p-10 mb-8">
+                      <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
+                        What's Included
+                      </p>
+                      <motion.ul
+                        className="space-y-3"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-50px" }}
+                      >
+                        {service.includes.map((item, i) => (
+                          <motion.li
+                            key={item}
+                            custom={i}
+                            variants={listItem}
+                            className="flex items-start gap-3"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                            <span className="font-sans-wedding text-sm text-foreground">
+                              {item}
+                            </span>
+                          </motion.li>
+                        ))}
+                      </motion.ul>
+                    </div>
+                    <p className={`font-sans-wedding text-xs text-muted-foreground ${service.image ? "" : "text-center"} italic`}>
+                      Ideal for: {service.idealFor}
+                    </p>
+                  </ScrollReveal>
                 </div>
-              </ScrollReveal>
-              <ScrollReveal delay={0.1}>
-                <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed text-center max-w-2xl mx-auto mb-10">
-                  {service.description}
-                </p>
-                <div className="bg-sage-mist p-8 md:p-10 mb-8">
-                  <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
-                    What's Included
-                  </p>
-                  <ul className="space-y-3">
-                    {service.includes.map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                        <span className="font-sans-wedding text-sm text-foreground">
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <p className="font-sans-wedding text-xs text-muted-foreground text-center italic">
-                  Ideal for: {service.idealFor}
-                </p>
-              </ScrollReveal>
+
+                {/* Image on right for odd indexes */}
+                {service.image && index % 2 !== 0 && (
+                  <ScrollReveal>
+                    <ImageReveal direction="right">
+                      <div className="aspect-[4/5] overflow-hidden">
+                        <img
+                          src={service.image}
+                          alt={service.imageAlt}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    </ImageReveal>
+                  </ScrollReveal>
+                )}
+              </div>
             </div>
           </section>
-
-          {index < editorialBreaks.length && (
-            <FullWidthImage
-              src={editorialBreaks[index].src}
-              alt={editorialBreaks[index].alt}
-              height="h-[30vh] md:h-[40vh]"
-            />
-          )}
         </div>
       ))}
 
