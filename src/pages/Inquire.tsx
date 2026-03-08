@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
@@ -31,6 +32,8 @@ const Inquire = () => {
     guests: "", service: "", referral: "", message: "",
   });
 
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -47,6 +50,32 @@ const Inquire = () => {
 
   const inputClasses =
     "w-full px-4 py-3.5 bg-transparent border border-border font-sans-wedding text-sm text-foreground placeholder:text-brand-text-light focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all duration-200";
+
+  const renderField = (
+    id: string,
+    label: string,
+    required: boolean,
+    element: React.ReactNode
+  ) => (
+    <div className="relative">
+      <motion.label
+        htmlFor={id}
+        animate={{
+          color: focusedField === id ? "hsl(140 25% 35%)" : undefined,
+        }}
+        className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2 transition-colors"
+      >
+        {label}{required && " *"}
+      </motion.label>
+      {element}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: focusedField === id ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] }}
+        className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary origin-left"
+      />
+    </div>
+  );
 
   return (
     <main id="main-content">
@@ -73,12 +102,19 @@ const Inquire = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           <ScrollReveal>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-              {nextSteps.map((item) => (
-                <div key={item.step} className="text-center">
+              {nextSteps.map((item, index) => (
+                <motion.div
+                  key={item.step}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  className="text-center"
+                >
                   <item.icon size={24} strokeWidth={1} className="text-primary mx-auto mb-3" />
                   <p className="font-serif-wedding text-2xl font-light text-primary/30 mb-1">{item.step}</p>
                   <p className="font-sans-wedding text-xs text-muted-foreground leading-relaxed">{item.text}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </ScrollReveal>
@@ -90,66 +126,77 @@ const Inquire = () => {
           <ScrollReveal>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">Your Name *</label>
-                  <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} className={inputClasses} placeholder="First & last name" />
-                </div>
-                <div>
-                  <label htmlFor="partner" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">Partner's Name</label>
-                  <input type="text" id="partner" name="partner" value={formData.partner} onChange={handleChange} className={inputClasses} placeholder="First & last name" />
-                </div>
+                {renderField("name", "Your Name", true,
+                  <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange}
+                    onFocus={() => setFocusedField("name")} onBlur={() => setFocusedField(null)}
+                    className={inputClasses} placeholder="First & last name" />
+                )}
+                {renderField("partner", "Partner's Name", false,
+                  <input type="text" id="partner" name="partner" value={formData.partner} onChange={handleChange}
+                    onFocus={() => setFocusedField("partner")} onBlur={() => setFocusedField(null)}
+                    className={inputClasses} placeholder="First & last name" />
+                )}
               </div>
 
-              <div>
-                <label htmlFor="email" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">Email Address *</label>
-                <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} className={inputClasses} placeholder="your@email.com" />
+              {renderField("email", "Email Address", true,
+                <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange}
+                  onFocus={() => setFocusedField("email")} onBlur={() => setFocusedField(null)}
+                  className={inputClasses} placeholder="your@email.com" />
+              )}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {renderField("date", "Wedding Date", false,
+                  <input type="text" id="date" name="date" value={formData.date} onChange={handleChange}
+                    onFocus={() => setFocusedField("date")} onBlur={() => setFocusedField(null)}
+                    className={inputClasses} placeholder="Month / Year or TBD" />
+                )}
+                {renderField("venue", "Venue", false,
+                  <input type="text" id="venue" name="venue" value={formData.venue} onChange={handleChange}
+                    onFocus={() => setFocusedField("venue")} onBlur={() => setFocusedField(null)}
+                    className={inputClasses} placeholder="Venue name or TBD" />
+                )}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="date" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">Wedding Date</label>
-                  <input type="text" id="date" name="date" value={formData.date} onChange={handleChange} className={inputClasses} placeholder="Month / Year or TBD" />
-                </div>
-                <div>
-                  <label htmlFor="venue" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">Venue</label>
-                  <input type="text" id="venue" name="venue" value={formData.venue} onChange={handleChange} className={inputClasses} placeholder="Venue name or TBD" />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="guests" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">Estimated Guest Count</label>
-                  <select id="guests" name="guests" value={formData.guests} onChange={handleChange} className={`${inputClasses} appearance-none`}>
+                {renderField("guests", "Estimated Guest Count", false,
+                  <select id="guests" name="guests" value={formData.guests} onChange={handleChange}
+                    onFocus={() => setFocusedField("guests")} onBlur={() => setFocusedField(null)}
+                    className={`${inputClasses} appearance-none`}>
                     <option value="">Select range</option>
                     {guestRanges.map((r) => <option key={r} value={r}>{r}</option>)}
                   </select>
-                </div>
-                <div>
-                  <label htmlFor="service" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">Service Interest</label>
-                  <select id="service" name="service" value={formData.service} onChange={handleChange} className={`${inputClasses} appearance-none`}>
+                )}
+                {renderField("service", "Service Interest", false,
+                  <select id="service" name="service" value={formData.service} onChange={handleChange}
+                    onFocus={() => setFocusedField("service")} onBlur={() => setFocusedField(null)}
+                    className={`${inputClasses} appearance-none`}>
                     <option value="">Select a service</option>
                     {serviceOptions.map((o) => <option key={o} value={o}>{o}</option>)}
                   </select>
-                </div>
+                )}
               </div>
 
-              <div>
-                <label htmlFor="referral" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">How Did You Find Us?</label>
-                <input type="text" id="referral" name="referral" value={formData.referral} onChange={handleChange} className={inputClasses} placeholder="Instagram, referral, Google, etc." />
-              </div>
+              {renderField("referral", "How Did You Find Us?", false,
+                <input type="text" id="referral" name="referral" value={formData.referral} onChange={handleChange}
+                  onFocus={() => setFocusedField("referral")} onBlur={() => setFocusedField(null)}
+                  className={inputClasses} placeholder="Instagram, referral, Google, etc." />
+              )}
 
-              <div>
-                <label htmlFor="message" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">Tell Us About Your Vision</label>
-                <textarea id="message" name="message" rows={5} value={formData.message} onChange={handleChange} className={`${inputClasses} resize-none`} placeholder="What does your dream wedding look like? What's most important to you?" />
-              </div>
+              {renderField("message", "Tell Us About Your Vision", false,
+                <textarea id="message" name="message" rows={5} value={formData.message} onChange={handleChange}
+                  onFocus={() => setFocusedField("message")} onBlur={() => setFocusedField(null)}
+                  className={`${inputClasses} resize-none`} placeholder="What does your dream wedding look like? What's most important to you?" />
+              )}
 
               <div className="text-center pt-4">
-                <button
+                <motion.button
                   type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   className="inline-flex items-center px-12 py-4 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.2em] uppercase font-semibold hover:bg-sage-deep transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
                 >
                   Send Inquiry
-                </button>
+                </motion.button>
                 <p className="font-sans-wedding text-xs text-muted-foreground mt-4">
                   We respond to every inquiry within 48 hours.
                 </p>

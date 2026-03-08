@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
@@ -47,15 +48,37 @@ const Approach = () => {
             {processSteps.map((step, index) => (
               <ScrollReveal key={step.number} delay={index * 0.08}>
                 <div className="relative flex gap-6 md:gap-8">
-                  {/* Timeline circle */}
+                  {/* Animated timeline circle */}
                   <div className="flex flex-col items-center shrink-0">
-                    <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                      <span className="font-sans-wedding text-[11px] font-semibold text-primary-foreground">
-                        {step.number}
-                      </span>
-                    </div>
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1.0] }}
+                      className="relative"
+                    >
+                      <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                        <span className="font-sans-wedding text-[11px] font-semibold text-primary-foreground">
+                          {step.number}
+                        </span>
+                      </div>
+                      {/* Pulse ring on hover */}
+                      <motion.div
+                        initial={{ opacity: 0, scale: 1 }}
+                        whileInView={{ opacity: [0, 0.3, 0], scale: [1, 1.6, 1.6] }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.2, delay: 0.3 + index * 0.1 }}
+                        className="absolute inset-0 rounded-full border border-primary pointer-events-none"
+                      />
+                    </motion.div>
                     {index < processSteps.length - 1 && (
-                      <div className="w-px flex-1 bg-border mt-2" />
+                      <motion.div
+                        initial={{ scaleY: 0 }}
+                        whileInView={{ scaleY: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                        className="w-px flex-1 bg-border mt-2 origin-top"
+                      />
                     )}
                   </div>
 

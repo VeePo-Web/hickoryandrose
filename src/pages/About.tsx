@@ -3,6 +3,7 @@ import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
+import ImageReveal from "@/components/wedding/ImageReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import BranchDecoration from "@/components/wedding/BranchDecoration";
 import founderImage from "@/assets/founder-portrait.jpg";
@@ -59,20 +60,21 @@ const About = () => {
 
       {/* Founder Story */}
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden">
-        {/* Decorative branch */}
         <BranchDecoration className="absolute -right-8 top-12 hidden lg:block" />
 
         <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <ScrollReveal>
-              <div className="aspect-[3/4] overflow-hidden">
-                <img
-                  src={founderImage}
-                  alt="Founder of Hickory & Rose"
-                  className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700"
-                  loading="lazy"
-                />
-              </div>
+              <ImageReveal direction="left" delay={0.1}>
+                <div className="aspect-[3/4] overflow-hidden">
+                  <img
+                    src={founderImage}
+                    alt="Founder of Hickory & Rose"
+                    className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700"
+                    loading="lazy"
+                  />
+                </div>
+              </ImageReveal>
             </ScrollReveal>
             <ScrollReveal delay={0.15}>
               <div>
