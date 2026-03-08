@@ -146,9 +146,9 @@ const FullWidthImage = ({
         </motion.div>
       )}
 
-      {/* Flanking decorative lines on hover */}
-      <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-white/8 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-      <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-white/8 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      {/* Flanking decorative lines on hover — gold tint */}
+      <div className="absolute top-0 left-0 w-px h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: "linear-gradient(180deg, transparent, hsl(var(--gold) / 0.1), transparent)" }} />
+      <div className="absolute top-0 right-0 w-px h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: "linear-gradient(180deg, transparent, hsl(var(--gold) / 0.1), transparent)" }} />
     </section>
   );
 };
