@@ -5,9 +5,9 @@ import ImageReveal from "./ImageReveal";
 import editorialFloralsImage from "@/assets/editorial-florals.jpg";
 
 const pillars = [
-  { label: "Calm Leadership", detail: "Quiet confidence under pressure, so you never have to wonder what happens next.", icon: "◆", emphasis: "Confidence" },
-  { label: "Elevated Design", detail: "Cohesive, intentional aesthetics that feel like you — never cookie-cutter.", icon: "◇", emphasis: "Intentional" },
-  { label: "Protected Presence", detail: "Your day, fully felt. We handle the logistics so you can hold the moments.", icon: "○", emphasis: "Presence" },
+  { label: "Calm Leadership", detail: "Quiet confidence under pressure, so you never have to wonder what happens next.", emphasis: "Confidence" },
+  { label: "Elevated Design", detail: "Cohesive, intentional aesthetics that feel like you — never cookie-cutter.", emphasis: "Intentional" },
+  { label: "Protected Presence", detail: "Your day, fully felt. We handle the logistics so you can hold the moments.", emphasis: "Presence" },
 ];
 
 const BrandPromiseSection = () => {

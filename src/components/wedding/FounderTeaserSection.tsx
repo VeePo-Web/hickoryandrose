@@ -6,9 +6,9 @@ import ImageReveal from "./ImageReveal";
 import founderImage from "@/assets/founder-portrait.jpg";
 
 const credentials = [
-  { value: "150+", label: "Weddings Coordinated", icon: "✦" },
-  { value: "8", label: "Years of Experience", icon: "✦" },
-  { value: "100%", label: "Client Satisfaction", icon: "✦" },
+  { value: "150+", label: "Weddings Coordinated" },
+  { value: "8", label: "Years of Experience" },
+  { value: "100%", label: "Client Satisfaction" },
 ];
 
 const philosophyPillars = [
