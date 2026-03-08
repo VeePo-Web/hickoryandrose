@@ -1,24 +1,34 @@
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
 import founderImage from "@/assets/founder-portrait.jpg";
 
 const credentials = [
-  { value: "150+", label: "Weddings Coordinated" },
-  { value: "8", label: "Years of Experience" },
-  { value: "100%", label: "Client Satisfaction" },
+  { value: "150+", label: "Weddings Coordinated", icon: "✦" },
+  { value: "8", label: "Years of Experience", icon: "✦" },
+  { value: "100%", label: "Client Satisfaction", icon: "✦" },
+];
+
+const philosophyPillars = [
+  "Calm Leadership",
+  "Elevated Design",
+  "Seamless Execution",
 ];
 
 const FounderTeaserSection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const [isImageHovered, setIsImageHovered] = useState(false);
+  const [activePillar, setActivePillar] = useState<number | null>(null);
+  
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
   const imageY = useTransform(scrollYProgress, [0, 1], ["4%", "-4%"]);
+  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.05, 1, 0.98]);
 
   const { scrollYProgress: sectionProgress } = useScroll({
     target: sectionRef,
@@ -27,6 +37,8 @@ const FounderTeaserSection = () => {
   const verticalLineH = useTransform(sectionProgress, [0.1, 0.6], ["0%", "100%"]);
   const watermarkY = useTransform(sectionProgress, [0, 1], [40, -40]);
   const ribbonX = useTransform(sectionProgress, [0.2, 0.8], ["5%", "-5%"]);
+  const decorativeRotate = useTransform(sectionProgress, [0, 1], [-3, 3]);
+  const floatingQuoteY = useTransform(sectionProgress, [0, 1], [20, -20]);
 
   return (
     <section
@@ -34,6 +46,16 @@ const FounderTeaserSection = () => {
       className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card relative overflow-hidden"
       aria-label="About the founder"
     >
+      {/* Subtle film grain */}
+      <div 
+        className="absolute inset-0 opacity-[0.01] pointer-events-none mix-blend-overlay"
+        style={{ 
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E\")",
+          backgroundSize: "150px 150px"
+        }}
+        aria-hidden="true"
+      />
+
       {/* Large decorative section index */}
       <motion.div
         className="absolute left-6 md:left-12 top-12 md:top-16 pointer-events-none select-none"
@@ -58,6 +80,39 @@ const FounderTeaserSection = () => {
         </span>
       </motion.div>
 
+      {/* Decorative corner ampersand */}
+      <motion.div
+        className="absolute -bottom-20 -left-20 pointer-events-none select-none hidden xl:block"
+        style={{ rotate: decorativeRotate, opacity: 0.015 }}
+        aria-hidden="true"
+      >
+        <span className="font-script text-[20rem] text-foreground leading-none">
+          &
+        </span>
+      </motion.div>
+
+      {/* Floating philosophy pillar — desktop only */}
+      <motion.div
+        className="absolute top-1/3 right-8 pointer-events-none select-none hidden xl:block"
+        style={{ y: floatingQuoteY }}
+        aria-hidden="true"
+      >
+        <AnimatePresence mode="wait">
+          {activePillar !== null && (
+            <motion.p
+              key={activePillar}
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 0.15, x: 0 }}
+              exit={{ opacity: 0, x: -10 }}
+              transition={{ duration: 0.4 }}
+              className="font-script text-xl text-primary rotate-12 origin-center"
+            >
+              {philosophyPillars[activePillar]}
+            </motion.p>
+          )}
+        </AnimatePresence>
+      </motion.div>
+
       {/* Scroll-linked vertical accent line */}
       <motion.div
         className="absolute left-1/2 top-0 w-px bg-gradient-to-b from-transparent via-primary/10 to-transparent origin-top hidden lg:block"
@@ -73,26 +128,67 @@ const FounderTeaserSection = () => {
           {/* Portrait with subtle parallax */}
           <ScrollReveal className="lg:col-span-3">
             <ImageReveal direction="left" delay={0.1}>
-              <div className="aspect-[4/5] max-w-md mx-auto lg:max-w-none overflow-hidden relative group">
+              <div 
+                className="aspect-[4/5] max-w-md mx-auto lg:max-w-none overflow-hidden relative group"
+                onMouseEnter={() => setIsImageHovered(true)}
+                onMouseLeave={() => setIsImageHovered(false)}
+              >
                 <motion.img
                   src={founderImage}
                   alt="Founder of Hickory & Rose, smiling warmly in a garden setting with sage eucalyptus and ivory roses"
-                  className="w-full h-[110%] object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.02]"
-                  style={{ y: imageY }}
+                  className="w-full h-[110%] object-cover"
+                  style={{ y: imageY, scale: imageScale }}
+                  animate={{ filter: isImageHovered ? "brightness(0.95)" : "brightness(1)" }}
+                  transition={{ duration: 0.8 }}
                   loading="lazy"
                   width={1024}
                   height={1024}
                 />
-                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/[0.03] transition-colors duration-700" />
+                
+                {/* Cinematic hover overlay */}
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent"
+                  animate={{ opacity: isImageHovered ? 1 : 0 }}
+                  transition={{ duration: 0.5 }}
+                />
+                
+                {/* Corner frame accents */}
+                <div className="absolute top-4 left-4 w-8 h-8 border-t border-l border-foreground/0 group-hover:border-foreground/15 transition-all duration-700" />
+                <div className="absolute bottom-4 right-4 w-8 h-8 border-b border-r border-foreground/0 group-hover:border-foreground/15 transition-all duration-700" />
+                
+                {/* Founder caption — reveals on hover */}
+                <AnimatePresence>
+                  {isImageHovered && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.4 }}
+                      className="absolute bottom-6 left-6 right-6"
+                    >
+                      <p className="font-serif-wedding text-sm text-white/70 italic">
+                        "I believe every couple deserves to feel present on their wedding day."
+                      </p>
+                      <div className="flex items-center gap-2 mt-2">
+                        <span className="w-4 h-px bg-white/30" />
+                        <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/40">
+                          Founder · Hickory & Rose
+                        </span>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Frame index */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.8, duration: 0.5 }}
-                  className="absolute bottom-4 right-4 hidden md:block"
+                  className="absolute top-4 right-4 hidden md:block"
                 >
-                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/30">
-                    Founder · Hickory & Rose
+                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/0 group-hover:text-white/30 transition-colors duration-500">
+                    FR04
                   </span>
                 </motion.div>
               </div>
@@ -124,7 +220,7 @@ const FounderTeaserSection = () => {
               </div>
             </motion.div>
 
-            {/* Credential row below ribbon */}
+            {/* Credential row below ribbon with hover interactions */}
             <div className="grid grid-cols-3 gap-0 border-t border-border/40">
               {credentials.map((cred, i) => (
                 <motion.div
@@ -136,7 +232,17 @@ const FounderTeaserSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 + i * 0.12, duration: 0.5 }}
+                  onMouseEnter={() => setActivePillar(i)}
+                  onMouseLeave={() => setActivePillar(null)}
                 >
+                  {/* Decorative icon */}
+                  <motion.span
+                    className="text-primary/10 text-xs block mb-2 group-hover:text-primary/30 transition-colors duration-500"
+                    animate={{ rotate: activePillar === i ? 180 : 0 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    {cred.icon}
+                  </motion.span>
                   <p className="font-serif-wedding text-xl md:text-2xl font-light text-primary/60 group-hover:text-primary transition-colors duration-500">
                     {cred.value}
                   </p>
@@ -186,6 +292,22 @@ const FounderTeaserSection = () => {
                 My mission is simple: handle every detail with quiet confidence
                 so you can be fully present with the people you love.
               </p>
+
+              {/* Philosophy pillars row */}
+              <div className="flex flex-wrap gap-3 mb-8">
+                {philosophyPillars.map((pillar, i) => (
+                  <motion.span
+                    key={pillar}
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 + i * 0.1, duration: 0.4 }}
+                    className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-primary/40 border border-primary/10 px-3 py-1.5"
+                  >
+                    {pillar}
+                  </motion.span>
+                ))}
+              </div>
 
               {/* Signature flourish */}
               <div className="mb-6">
