@@ -331,6 +331,35 @@ const Footer = () => {
           </motion.div>
         </div>
 
+        {/* Centered monogram above legal bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="flex flex-col items-center mb-10"
+        >
+          <div
+            className="w-2 h-2 rotate-45 mb-6"
+            style={{
+              background: "linear-gradient(135deg, hsl(var(--gold, 38 60% 55%) / 0.3), hsl(var(--gold, 38 60% 55%) / 0.1))",
+            }}
+          />
+          <p className="font-script text-2xl text-background/[0.08]">
+            Hickory & Rose
+          </p>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="w-16 h-px mt-4 origin-center"
+            style={{
+              background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.15), transparent)",
+            }}
+          />
+        </motion.div>
+
         {/* Bottom legal bar */}
         <motion.div
           initial={{ opacity: 0 }}
