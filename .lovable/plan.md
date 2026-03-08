@@ -1,35 +1,191 @@
 
+# Wedding Website - Multi-Page Implementation Plan
 
-# VeePo Footer Badge -- Scale Up & Brand-Bold Upgrade
+## Overview
+Creating a complete multi-page wedding website for "Alicia & Andres" with faithful recreation of the design, including 5 main pages matching the navigation structure.
 
-## Current State
-The badge (lines 282-334) is a compact dark card with 0.4 opacity logo at h-7/h-8, micro text at 0.5rem, and very low contrast (white/15-25%). It reads as a whisper -- too subtle for an ad. The VeePo logo is vibrant orange + green which gets washed out at 40% opacity.
+## Page Structure
 
-## Plan (1 file: `src/components/wedding/Footer.tsx`, lines 282-334)
+Based on the navigation in the design image, we'll create these pages:
 
-### 1. Double the Badge Size
-- Increase padding from `px-8 py-5` to `px-14 py-8 md:px-20 md:py-10`
-- Logo from `h-7 md:h-8` to `h-12 md:h-16` -- make it the hero of the badge
-- Add `max-w-md md:max-w-lg` width constraint so it feels like a proper card, not a cramped inline element
+| Route | Page | Content |
+|-------|------|---------|
+| `/` | Home | Hero section with full navigation |
+| `/our-story` | Our Story | Couple's story with photos |
+| `/details` | Details | Location, Wedding Party, Accommodations |
+| `/schedule` | Schedule | Itinerary/Timeline for wedding weekend |
+| `/registry` | Registry | Gift registry information and links |
 
-### 2. Show the Logo at Full Color
-- Change logo opacity from `opacity-40 hover:opacity-80` to `opacity-70 hover:opacity-100` -- let the orange/green pop against the black card. The VeePo brand IS color; hiding it defeats the ad purpose
-- Add a subtle `drop-shadow` glow in VeePo orange on hover: `filter: drop-shadow(0 0 20px rgba(243,140,30,0.15))`
+## Design System
 
-### 3. Upgrade Typography Hierarchy
-- "THIS EXPERIENCE WAS CRAFTED BY" -- bump from 0.5rem to `text-[0.6rem] md:text-[0.7rem]`, increase opacity to `text-white/40 hover:text-white/60`
-- Tagline "Where Vision Meets Precision" -- bump to `text-[0.55rem] md:text-[0.65rem]`, opacity to `text-white/30 hover:text-white/50`
-- Add a small arrow icon (lucide `ExternalLink` or `ArrowUpRight`) after tagline to signal clickability
+### Color Palette (to add to CSS variables)
+```text
+--wedding-sage: 65 12% 45%        (Olive/sage for hero overlay, location section)
+--wedding-cream: 40 30% 97%       (Off-white background sections)
+--wedding-text: 0 0% 20%          (Dark text color)
+--wedding-teal: 175 50% 35%       (Accent for buttons, day labels)
+```
 
-### 4. VeePo Brand-Color Border Accent
-- Replace the gold-to-white gradient top line with a VeePo-colored gradient: `linear-gradient(90deg, transparent, #F38C1E 40%, #2EAF4B 60%, transparent)` -- orange to green matching the logo
-- Add a matching bottom border line for symmetry
-- On hover, increase border opacity from 0.4 to 0.7 for a "glow frame" effect
+### Typography (Google Fonts to import)
+- **Great Vibes**: Script font for "Alicia & Andres" title
+- **Cormorant Garamond**: Elegant serif for section headings
+- **Open Sans**: Clean sans-serif for body text and navigation
 
-### 5. Hover Interaction Upgrade
-- Scale the entire badge to `scale-[1.02]` on hover with `transition-transform duration-500`
-- The shimmer sweep stays but increase its intensity from `0.06` to `0.1` white
+## Files to Create
 
-### 6. Breathing Space
-- Add `mb-4` bottom margin after the badge so it doesn't feel cramped against the footer edge
+### Shared Components
+```text
+src/components/wedding/
+├── Navigation.tsx         - Persistent navigation header
+├── Footer.tsx             - RSVP footer section
+├── BranchDecoration.tsx   - Reusable SVG branch illustration
+```
 
+### Page Components
+```text
+src/pages/
+├── Index.tsx              - Home page (Hero + overview)
+├── OurStory.tsx           - Our Story page
+├── Details.tsx            - Details page (Location, Party, Hotels)
+├── Schedule.tsx           - Schedule/Itinerary page
+├── Registry.tsx           - Registry page
+```
+
+### Section Components
+```text
+src/components/wedding/
+├── HeroSection.tsx        - Full-height hero with overlay
+├── StorySection.tsx       - Story content with photo
+├── WeddingPartySection.tsx - Groomsmen/Bridesmaids tabs
+├── LocationSection.tsx    - Venue information
+├── AccommodationsSection.tsx - Hotel cards
+├── ItinerarySection.tsx   - Timeline with day tabs
+├── RegistrySection.tsx    - Registry logos and info
+```
+
+## Files to Modify
+
+### 1. src/index.css
+Add wedding-specific CSS variables and Google Fonts import:
+- Import Great Vibes, Cormorant Garamond, Open Sans from Google Fonts
+- Add wedding color variables
+- Add custom font-family classes
+
+### 2. tailwind.config.ts
+Extend theme with:
+- Wedding color palette using CSS variables
+- Font family definitions for script, serif, sans
+
+### 3. src/App.tsx
+Add routes:
+- `/` - Home
+- `/our-story` - Our Story
+- `/details` - Details
+- `/schedule` - Schedule
+- `/registry` - Registry
+
+## Detailed Component Specifications
+
+### Navigation Component
+- Fixed/sticky header on all pages
+- Links: Home, Our Story, Details, Schedule, Registry
+- Active state with underline accent
+- On hero: transparent overlay style
+- On other pages: solid cream background
+
+### Hero Section (Home Page)
+- Full viewport height (100vh)
+- Background: Placeholder couple photo with sage overlay
+- Centered script title "Alicia & Andres"
+- Date line: "February 15, 2025 | Joshua Tree, California"
+- Scroll indicator arrow at bottom
+
+### Our Story Page
+- Branch decoration SVG at top
+- "Our Story" heading in serif
+- Two-column layout: text left, photo right
+- Cream background
+- Story paragraphs with date highlights
+
+### Details Page
+Contains 3 sections:
+
+**Wedding Party Section:**
+- Tab switcher: Groomsmen | Bridesmaids
+- 4 circular avatar photos per tab
+- Names beneath each photo
+- Groomsmen: Julian Bernard, Damien Huber, Mark Pavone, David Blaine
+- Bridesmaids: Similar structure with female names
+
+**Location Section:**
+- Sage/olive background color
+- "The Location" label
+- "Joshua Tree Carmine Resort" large heading
+- Description paragraph
+- Full-width venue/couple photo
+
+**Accommodations Section:**
+- White background
+- 3-column grid of hotel cards
+- Each card: Name, description, "Reserve" button
+- Hotels: Joshua Tree Inn, Desert Sage Lodge, Carmine Resort
+
+### Schedule Page
+- "Itinerary" heading
+- 3 date tabs: Feb 14, Feb 15 (Wedding Day), Feb 16
+- Each day has timeline entries:
+  - Time marker
+  - Event name
+  - Location/venue
+  - Brief description
+
+### Registry Page
+- Branch decoration SVG
+- "Registry" heading
+- Paragraph about gifts
+- 3 registry badges/logos as styled text blocks:
+  - Crate & Barrel
+  - Target
+  - Williams Sonoma
+
+### Footer Component
+- Simple cream background
+- Centered "RSVP" text or button
+- Optional: Copyright line
+
+## Responsive Breakpoints
+
+### Desktop (default)
+- Full layouts as designed
+- 3-column grids for accommodations
+- 4 avatars in row for wedding party
+
+### Tablet (md: 768px)
+- 2-column grids where applicable
+- Slightly reduced padding
+
+### Mobile (sm: 640px)
+- Single column layouts
+- Hamburger menu for navigation
+- Stacked sections
+- 2x2 grid for wedding party avatars
+
+## Image Strategy
+Using placeholder images from Unsplash or similar:
+- Hero: Desert/couple themed landscape
+- Story: Couple portrait
+- Location: Joshua Tree landscape
+- Accommodations: Hotel exterior placeholders
+- Wedding Party: Generic avatar placeholders
+
+## Implementation Order
+
+1. **Foundation** - Update design system (CSS, Tailwind config)
+2. **Shared Components** - Navigation, Footer, Branch decoration
+3. **Home Page** - Hero section with navigation overlay
+4. **Our Story Page** - Story content and layout
+5. **Details Page** - Location, Wedding Party, Accommodations
+6. **Schedule Page** - Itinerary with tabs
+7. **Registry Page** - Registry section
+8. **App Routes** - Wire up all routes in App.tsx
+9. **Polish** - Responsive adjustments, smooth scroll, hover states
