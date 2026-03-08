@@ -1,86 +1,96 @@
-import { Link, useNavigate } from "react-router-dom";
-import { Heart, Instagram, Mail } from "lucide-react";
-import ScrollReveal from "./ScrollReveal";
-import { toast } from "sonner";
+import { Link } from "react-router-dom";
+
+const footerLinks = [
+  { label: "Services", path: "/services" },
+  { label: "Portfolio", path: "/portfolio" },
+  { label: "About", path: "/about" },
+  { label: "Approach", path: "/approach" },
+  { label: "Inquire", path: "/inquire" },
+];
 
 const Footer = () => {
-  const navigate = useNavigate();
-
-  const handleRSVP = () => {
-    toast.info("RSVP feature coming soon!", {
-      description: "Please email us at rsvp@aliciaandandres.com",
-    });
-  };
-
-  const handleInstagram = () => {
-    toast.success("Opening Instagram", {
-      description: "Follow us @aliciaandandres",
-    });
-    window.open("https://instagram.com", "_blank", "noopener,noreferrer");
-  };
-
-  const handleEmail = () => {
-    window.location.href = "mailto:rsvp@aliciaandandres.com?subject=Wedding%20RSVP";
-  };
-
   return (
-    <footer className="bg-wedding-sage py-16">
-      <div className="container mx-auto px-6 text-center">
-        <ScrollReveal>
-          <button
-            onClick={handleRSVP}
-            className="inline-block font-serif-wedding text-4xl md:text-5xl text-white hover:text-white/80 transition-colors tracking-wide mb-8 cursor-pointer"
-          >
-            RSVP
-          </button>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.1}>
-          <p className="font-sans-wedding text-white/80 text-sm mb-6">
-            Please respond by January 15, 2025
-          </p>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.2}>
-          <div className="flex justify-center gap-6 mb-8">
-            <button
-              onClick={handleInstagram}
-              className="text-white/60 hover:text-white transition-colors cursor-pointer"
-              aria-label="Instagram"
-            >
-              <Instagram size={24} />
-            </button>
-            <button
-              onClick={handleEmail}
-              className="text-white/60 hover:text-white transition-colors cursor-pointer"
-              aria-label="Email"
-            >
-              <Mail size={24} />
-            </button>
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.3}>
-          <button
-            onClick={() => {
-              navigator.clipboard.writeText("#AliciaAndAndres2025");
-              toast.success("Hashtag copied!", {
-                description: "Use #AliciaAndAndres2025 on your posts",
-              });
-            }}
-            className="font-sans-wedding text-sm text-white/60 hover:text-white transition-colors cursor-pointer"
-          >
-            #AliciaAndAndres2025
-          </button>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.4}>
-          <div className="mt-8 pt-8 border-t border-white/20">
-            <p className="font-sans-wedding text-xs text-white/40 flex items-center justify-center gap-1">
-              Made with <Heart size={12} className="fill-current" /> © 2025 Alicia & Andres
+    <footer className="bg-foreground text-background py-16 md:py-20" role="contentinfo">
+      <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16">
+          {/* Brand */}
+          <div>
+            <Link to="/" className="inline-block mb-4">
+              <span className="font-serif-wedding text-xl font-semibold tracking-tight text-background">
+                Hickory <span className="font-normal">&</span>{" "}
+                <span className="font-script text-2xl">Rose</span>
+              </span>
+            </Link>
+            <p className="font-sans-wedding text-sm text-background/50 leading-relaxed">
+              Luxury wedding planning in Edmonton, Alberta. Refined rustic
+              elegance with calm, intentional leadership.
             </p>
           </div>
-        </ScrollReveal>
+
+          {/* Navigation */}
+          <div>
+            <p className="font-sans-wedding text-label uppercase text-background/40 mb-4">
+              Explore
+            </p>
+            <ul className="space-y-2">
+              {footerLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="font-sans-wedding text-sm text-background/60 hover:text-background transition-colors duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <p className="font-sans-wedding text-label uppercase text-background/40 mb-4">
+              Get in Touch
+            </p>
+            <div className="space-y-2 font-sans-wedding text-sm text-background/60">
+              <p>Edmonton, Alberta</p>
+              <a
+                href="mailto:hello@hickoryandrose.com"
+                className="block hover:text-background transition-colors duration-200"
+              >
+                hello@hickoryandrose.com
+              </a>
+              <a
+                href="https://www.instagram.com/hickoryandrose"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block hover:text-background transition-colors duration-200"
+              >
+                @hickoryandrose
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="font-sans-wedding text-xs text-background/30">
+            © {new Date().getFullYear()} Hickory & Rose. All rights reserved.
+          </p>
+          <div className="flex gap-6">
+            <Link
+              to="/privacy"
+              className="font-sans-wedding text-xs text-background/30 hover:text-background/60 transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              to="/terms"
+              className="font-sans-wedding text-xs text-background/30 hover:text-background/60 transition-colors"
+            >
+              Terms
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );
