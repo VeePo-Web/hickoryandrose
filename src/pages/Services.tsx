@@ -321,12 +321,22 @@ const Services = () => {
             </div>
           </section>
 
-          {/* Editorial image break between tiers */}
+          {/* Editorial image breaks between tiers */}
           {index < serviceTiers.length - 1 && index === 0 && (
             <FullWidthImage
               src={editorialFloralsImage}
               alt="Sage eucalyptus and ivory garden rose arrangement detail"
               height="h-[25vh] md:h-[35vh]"
+              caption="Every petal, placed with purpose"
+            />
+          )}
+          {index < serviceTiers.length - 1 && index === 1 && (
+            <FullWidthImage
+              src={vendorDetailImage}
+              alt="Luxury wedding stationery with calligraphy and gold wax seal"
+              height="h-[25vh] md:h-[35vh]"
+              overlay
+              caption="Design-led planning for couples who value intention"
             />
           )}
         </div>
