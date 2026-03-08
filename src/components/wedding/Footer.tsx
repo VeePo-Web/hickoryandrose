@@ -33,12 +33,12 @@ const Footer = () => {
           className="text-center mb-16 md:mb-20"
         >
           <Link to="/" className="inline-block group">
-            <span className="font-serif-wedding text-3xl md:text-4xl font-light tracking-tight text-background">
+            <span className="font-serif-wedding text-3xl md:text-4xl font-light tracking-[-0.03em] text-background">
               Hickory <span className="font-normal opacity-50">&</span>{" "}
               <span className="font-script text-4xl md:text-5xl group-hover:text-primary transition-colors duration-300">Rose</span>
             </span>
           </Link>
-          <p className="font-sans-wedding text-xs text-background/30 tracking-[0.2em] uppercase mt-4">
+          <p className="font-overline text-background/25 mt-5">
             Edmonton's Luxury Wedding Planner
           </p>
         </motion.div>
@@ -52,10 +52,10 @@ const Footer = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <p className="font-sans-wedding text-label uppercase text-background/40 mb-4">
+            <p className="font-overline text-background/40 mb-5">
               About
             </p>
-            <p className="font-sans-wedding text-sm text-background/50 leading-relaxed mb-6">
+            <p className="font-sans-wedding text-body-sm text-background/45 leading-relaxed mb-6 font-light">
               Refined rustic elegance with calm, intentional leadership. We
               protect what matters most on your wedding day — your presence.
             </p>
@@ -87,7 +87,7 @@ const Footer = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <p className="font-sans-wedding text-label uppercase text-background/40 mb-4">
+            <p className="font-overline text-background/40 mb-5">
               Explore
             </p>
             <ul className="space-y-2">
@@ -95,7 +95,7 @@ const Footer = () => {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="font-sans-wedding text-sm text-background/60 hover:text-background transition-colors duration-200 inline-block hover:translate-x-0.5 transform"
+                    className="font-sans-wedding text-body-sm text-background/50 hover:text-background transition-colors duration-200 inline-block hover:translate-x-0.5 transform font-light"
                   >
                     {link.label}
                   </Link>
@@ -112,10 +112,10 @@ const Footer = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <p className="font-sans-wedding text-label uppercase text-background/40 mb-4">
+            <p className="font-overline text-background/40 mb-5">
               Get in Touch
             </p>
-            <div className="space-y-3 font-sans-wedding text-sm text-background/60">
+            <div className="space-y-3 font-sans-wedding text-body-sm text-background/50 font-light">
               <div className="flex items-center gap-2">
                 <MapPin size={14} strokeWidth={1.5} className="shrink-0 text-background/40" />
                 <span>Edmonton, Alberta</span>

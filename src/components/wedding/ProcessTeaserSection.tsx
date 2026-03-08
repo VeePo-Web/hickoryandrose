@@ -29,7 +29,7 @@ const ProcessTeaserSection = () => {
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
         <ScrollReveal>
           <div className="text-center mb-12 md:mb-16">
-            <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
+            <p className="font-overline text-muted-foreground mb-4">
               How We Work
             </p>
             <h2 className="font-serif-wedding text-display-lg text-foreground">
@@ -67,7 +67,7 @@ const ProcessTeaserSection = () => {
                 <h3 className="font-serif-wedding text-display-md text-foreground mb-3">
                   {step.title}
                 </h3>
-                <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
+                <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed max-w-xs mx-auto font-light">
                   {step.description}
                 </p>
               </div>
@@ -79,7 +79,7 @@ const ProcessTeaserSection = () => {
           <div className="text-center">
             <Link
               to="/approach"
-              className="inline-flex items-center font-sans-wedding text-xs tracking-[0.15em] uppercase text-accent hover:text-primary transition-colors duration-200 group"
+              className="inline-flex items-center font-overline text-accent hover:text-primary transition-colors duration-200 group"
             >
               Explore Our Approach
               <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>

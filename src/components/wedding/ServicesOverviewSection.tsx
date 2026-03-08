@@ -32,7 +32,7 @@ const ServicesOverviewSection = () => {
       <div className="container mx-auto px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-12 md:mb-16">
-            <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
+            <p className="font-overline text-muted-foreground mb-4">
               What We Offer
             </p>
             <h2 className="font-serif-wedding text-display-lg text-foreground">
@@ -53,12 +53,12 @@ const ServicesOverviewSection = () => {
                 <h3 className="font-serif-wedding text-display-md text-foreground mb-4">
                   {service.title}
                 </h3>
-                <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed mb-6">
+                <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-6 font-light">
                   {service.description}
                 </p>
                 <Link
                   to={service.link}
-                  className="inline-flex items-center font-sans-wedding text-xs tracking-[0.15em] uppercase text-accent hover:text-primary transition-colors duration-200"
+                  className="inline-flex items-center font-overline text-accent hover:text-primary transition-colors duration-200"
                 >
                   Learn More
                   <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>

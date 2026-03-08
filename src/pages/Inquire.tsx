@@ -49,7 +49,7 @@ const Inquire = () => {
   };
 
   const inputClasses =
-    "w-full px-4 py-3.5 bg-transparent border border-border font-sans-wedding text-sm text-foreground placeholder:text-brand-text-light focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all duration-200";
+    "w-full px-4 py-3.5 bg-transparent border border-border font-sans-wedding text-body text-foreground font-light placeholder:text-brand-text-light/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all duration-200";
 
   const renderField = (
     id: string,
@@ -63,7 +63,7 @@ const Inquire = () => {
         animate={{
           color: focusedField === id ? "hsl(140 25% 35%)" : undefined,
         }}
-        className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2 transition-colors"
+        className="block font-overline text-muted-foreground mb-2.5 transition-colors"
       >
         {label}{required && " *"}
       </motion.label>
@@ -83,13 +83,13 @@ const Inquire = () => {
       <section className="bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
+            <p className="font-overline text-muted-foreground mb-4">
               Start Here
             </p>
             <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
               Let's Plan Something Beautiful
             </h1>
-            <p className="font-sans-wedding text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
+            <p className="font-sans-wedding text-body text-muted-foreground leading-relaxed max-w-xl mx-auto font-light">
               Tell us about your vision. There's no commitment — just a warm
               conversation about your wedding day and how we can help.
             </p>
@@ -193,7 +193,7 @@ const Inquire = () => {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="inline-flex items-center px-12 py-4 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.2em] uppercase font-semibold hover:bg-sage-deep transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+                  className="inline-flex items-center px-12 py-4 bg-primary text-primary-foreground font-sans-wedding text-[0.6875rem] tracking-[0.2em] uppercase font-light hover:bg-sage-deep transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
                 >
                   Send Inquiry
                 </motion.button>

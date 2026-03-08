@@ -74,7 +74,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
             {/* Logo */}
             <Link
               to="/"
-              className={`font-serif-wedding text-xl md:text-2xl font-semibold tracking-tight transition-colors duration-300 ${
+              className={`font-serif-wedding text-xl md:text-2xl font-light tracking-tight transition-colors duration-300 ${
                 showSolidBg ? "text-foreground" : "text-white"
               }`}
             >
@@ -88,7 +88,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className={`relative px-4 py-2 font-sans-wedding text-xs tracking-[0.15em] uppercase transition-all duration-200 hover:opacity-80 group ${
+                    className={`relative px-4 py-2 font-sans-wedding text-[0.6875rem] tracking-[0.18em] uppercase font-light transition-all duration-200 hover:opacity-80 group ${
                       showSolidBg ? "text-foreground" : "text-white"
                     }`}
                   >
@@ -109,7 +109,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
             <div className="hidden lg:block">
               <Link
                 to="/inquire"
-                className={`inline-flex items-center px-6 py-2.5 text-xs tracking-[0.15em] uppercase font-sans-wedding font-semibold border transition-all duration-200 ${
+                className={`inline-flex items-center px-6 py-2.5 text-[0.6875rem] tracking-[0.18em] uppercase font-sans-wedding font-light border transition-all duration-200 ${
                   showSolidBg
                     ? "border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                     : "border-white/60 text-white hover:bg-white/10 hover:border-white"
@@ -174,7 +174,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                     <Link
                       to="/inquire"
                       onClick={() => setIsOpen(false)}
-                      className="inline-flex items-center px-8 py-3 text-sm tracking-[0.15em] uppercase font-sans-wedding font-semibold bg-primary text-primary-foreground hover:bg-sage-deep transition-colors"
+                      className="inline-flex items-center px-8 py-3 text-[0.6875rem] tracking-[0.18em] uppercase font-sans-wedding font-light bg-primary text-primary-foreground hover:bg-sage-deep transition-colors"
                     >
                       Inquire
                     </Link>
