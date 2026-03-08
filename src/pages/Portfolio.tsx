@@ -150,7 +150,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Filter Tabs — refined editorial */}
+      {/* Filter Tabs — refined editorial with gold accent */}
       <section className="py-5 md:py-6 bg-background border-b border-border/30 sticky top-[72px] z-30">
         <div className="container mx-auto px-6 lg:px-8 flex justify-center gap-0">
           {filters.map((f) => (
@@ -167,7 +167,8 @@ const Portfolio = () => {
               {active === f && (
                 <motion.div
                   layoutId="portfolio-filter"
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-primary/40"
+                  className="absolute bottom-0 left-0 w-full h-px origin-left"
+                  style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold)), transparent)" }}
                   transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                 />
               )}
