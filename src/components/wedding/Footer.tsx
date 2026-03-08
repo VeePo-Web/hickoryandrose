@@ -95,7 +95,7 @@ const Footer = () => {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="font-sans-wedding text-sm text-background/60 hover:text-background transition-colors duration-200 inline-block hover:translate-x-0.5 transform"
+                    className="font-sans-wedding text-body-sm text-background/50 hover:text-background transition-colors duration-200 inline-block hover:translate-x-0.5 transform font-light"
                   >
                     {link.label}
                   </Link>
