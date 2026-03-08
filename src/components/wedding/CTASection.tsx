@@ -106,6 +106,21 @@ const CTASection = () => {
                 />
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+
+                {/* Gold-traced border frame — animated on scroll */}
+                <motion.div
+                  className="absolute inset-3 pointer-events-none z-10"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, delay: 0.6 }}
+                  aria-hidden="true"
+                >
+                  <motion.span className="absolute top-0 left-0 h-px origin-left" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.35), transparent)" }} initial={{ width: 0 }} whileInView={{ width: "100%" }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.7 }} />
+                  <motion.span className="absolute top-0 right-0 w-px origin-top" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.35), transparent)" }} initial={{ height: 0 }} whileInView={{ height: "100%" }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 1 }} />
+                  <motion.span className="absolute bottom-0 right-0 h-px origin-right" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.35), transparent)" }} initial={{ width: 0 }} whileInView={{ width: "100%" }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 1.3 }} />
+                  <motion.span className="absolute bottom-0 left-0 w-px origin-bottom" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.35), transparent)" }} initial={{ height: 0 }} whileInView={{ height: "100%" }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 1.6 }} />
+                </motion.div>
                 
                 {/* Hover reveal caption */}
                 <AnimatePresence>
@@ -247,8 +262,16 @@ const CTASection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="relative"
+                className="relative group/cta"
               >
+                {/* Ambient gold glow behind CTA */}
+                <motion.div
+                  className="absolute -inset-6 pointer-events-none"
+                  animate={{ opacity: [0.03, 0.08, 0.03], scale: [0.9, 1.1, 0.9] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.2), transparent 60%)" }}
+                  aria-hidden="true"
+                />
                 <MagneticButton to="/inquire" variant="outline-light">
                   Begin Your Story
                 </MagneticButton>

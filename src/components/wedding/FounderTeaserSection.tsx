@@ -133,10 +133,19 @@ const FounderTeaserSection = () => {
                 onMouseEnter={() => setIsImageHovered(true)}
                 onMouseLeave={() => setIsImageHovered(false)}
               >
+                {/* Ambient gold radial glow behind portrait */}
+                <motion.div
+                  className="absolute -inset-8 pointer-events-none z-0"
+                  animate={{ opacity: [0.03, 0.08, 0.03], scale: [0.95, 1.05, 0.95] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                  style={{ background: "radial-gradient(ellipse at 50% 40%, hsl(var(--gold) / 0.15), transparent 60%)" }}
+                  aria-hidden="true"
+                />
+
                 <motion.img
                   src={founderImage}
                   alt="Founder of Hickory & Rose, smiling warmly in a garden setting with sage eucalyptus and ivory roses"
-                  className="w-full h-[110%] object-cover"
+                  className="w-full h-[110%] object-cover relative z-[1]"
                   style={{ y: imageY, scale: imageScale }}
                   animate={{ filter: isImageHovered ? "brightness(0.95)" : "brightness(1)" }}
                   transition={{ duration: 0.8 }}
@@ -241,13 +250,20 @@ const FounderTeaserSection = () => {
                   onMouseEnter={() => setActivePillar(i)}
                   onMouseLeave={() => setActivePillar(null)}
                 >
-                  {/* Gold-gradient diamond */}
+                  {/* Gold-gradient diamond with breathing glow */}
                   <motion.span
-                    className="w-2 h-2 rotate-45 block mb-2 mx-auto"
+                    className="w-2 h-2 rotate-45 block mb-2 mx-auto relative"
                     style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }}
                     animate={{ rotate: activePillar === i ? 225 : 45 }}
                     transition={{ duration: 0.4 }}
-                  />
+                  >
+                    <motion.span
+                      className="absolute -inset-2 rounded-full pointer-events-none"
+                      style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.15), transparent 70%)" }}
+                      animate={{ opacity: activePillar === i ? [0.3, 0.7, 0.3] : 0 }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                  </motion.span>
                   <p className="font-serif-wedding text-xl md:text-2xl font-light text-primary/60 group-hover:text-primary transition-colors duration-500">
                     {cred.value}
                   </p>
@@ -314,7 +330,7 @@ const FounderTeaserSection = () => {
                 ))}
               </div>
 
-              {/* Signature flourish */}
+              {/* Signature flourish with gold-traced underline */}
               <div className="mb-6">
                 <p className="font-script text-2xl text-primary/30 mb-1">Hickory & Rose</p>
                 <motion.div
@@ -322,9 +338,17 @@ const FounderTeaserSection = () => {
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 1.2, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="w-20 h-[2px] origin-left"
+                  className="w-20 h-[2px] origin-left relative overflow-hidden"
                   style={{ background: "linear-gradient(90deg, hsl(var(--gold)), hsl(var(--primary) / 0.15), transparent)" }}
-                />
+                >
+                  {/* Traveling shimmer on signature line */}
+                  <motion.span
+                    className="absolute inset-0"
+                    animate={{ x: ["-100%", "200%"] }}
+                    transition={{ duration: 3, repeat: Infinity, repeatDelay: 4, ease: "easeInOut" }}
+                    style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.5), transparent)" }}
+                  />
+                </motion.div>
                 <p className="font-overline text-[0.5rem] text-muted-foreground/30 mt-3">
                   Est. 2018 · Edmonton, Alberta
                 </p>
