@@ -254,7 +254,10 @@ const TestimonialSection = () => {
                   Real Hickory & Rose Weddings
                 </span>
                 <div className="flex items-center gap-2">
-                  <span className="font-serif-wedding text-xs text-primary/10 italic">❖</span>
+                  <span
+                    className="w-1.5 h-1.5 rotate-45"
+                    style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.1))" }}
+                  />
                   <span className="w-8 h-px bg-border/40" />
                 </div>
               </div>
