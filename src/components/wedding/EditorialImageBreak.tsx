@@ -112,6 +112,11 @@ const EditorialImageBreak = () => {
       {/* Bottom blending gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
 
+      {/* Breathing diamond at center bottom */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+        <BreathingDiamond size={8} />
+      </div>
+
       {/* Corner frame accents — gold gradient */}
       <div className="absolute top-10 left-8 w-10 h-10 z-20 pointer-events-none hidden md:block" aria-hidden="true">
         <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.15), transparent)" }} />
