@@ -209,7 +209,7 @@ const CTASection = () => {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-2 mb-10"
+                className="flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-2 mb-6"
               >
                 {["Complimentary discovery call", "No obligation", "Responds within 48 hours"].map((signal, i) => (
                   <span
@@ -222,12 +222,32 @@ const CTASection = () => {
                 ))}
               </motion.div>
 
-              {/* CTA Button */}
+              {/* Pulsing availability indicator */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.45 }}
+                className="flex items-center gap-2.5 justify-center lg:justify-start mb-10"
+              >
+                <motion.span
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.8), hsl(var(--gold) / 0.2))" }}
+                  animate={{ opacity: [0.5, 1, 0.5], scale: [0.9, 1.1, 0.9] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/25">
+                  Currently accepting Spring & Summer 2026
+                </span>
+              </motion.div>
+
+              {/* CTA Button with entrance shimmer */}
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.5 }}
+                className="relative"
               >
                 <MagneticButton to="/inquire" variant="outline-light">
                   Begin Your Story
