@@ -233,20 +233,72 @@ const About = () => {
         </div>
       </section>
 
-      {/* Signature Quote */}
-      <section className="py-20 md:py-28 bg-sage-deep">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+      {/* Signature Quote — editorial with gold ornaments */}
+      <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden">
+        {/* Radial gold ambient glow */}
+        <motion.div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.06 }}
+          viewport={{ once: true }}
+          transition={{ duration: 2 }}
+          style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.12), transparent 70%)" }}
+          aria-hidden="true"
+        />
+
+        {/* Parallax watermark */}
+        <motion.div
+          className="absolute -left-4 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.025 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+        >
+          <span className="font-serif-wedding text-[10rem] md:text-[14rem] text-primary-foreground leading-none tracking-tight italic whitespace-nowrap">
+            Promise
+          </span>
+        </motion.div>
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
           <ScrollReveal>
+            {/* Gold diamond ornament */}
+            <div className="flex items-center justify-center gap-4 mb-10">
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-10 h-px origin-right"
+                style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25))" }}
+              />
+              <span
+                className="w-2 h-2 rotate-45 shrink-0"
+                style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))" }}
+              />
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-10 h-px origin-left"
+                style={{ background: "linear-gradient(270deg, transparent, hsl(var(--gold) / 0.25))" }}
+              />
+            </div>
+
+            <span className="font-serif-wedding text-6xl text-primary-foreground/[0.06] leading-none block -mb-4" aria-hidden="true">"</span>
+            <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">
+              "We don't just plan weddings — we protect the feeling of your day."
+            </blockquote>
+
+            {/* Attribution with gold separator */}
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="w-12 h-px bg-primary-foreground/20 mx-auto mb-10 origin-center"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="w-8 h-px mx-auto mb-4 origin-center"
+              style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }}
             />
-            <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">
-              "We don't just plan weddings — we protect the feeling of your day."
-            </blockquote>
             <span className="font-script text-xl text-primary-foreground/35">
               Hickory & Rose
             </span>
