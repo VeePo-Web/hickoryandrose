@@ -8,6 +8,7 @@ import FullWidthImage from "@/components/wedding/FullWidthImage";
 import ImageReveal from "@/components/wedding/ImageReveal";
 import { Calendar, Flower2, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
+import MagneticButton from "@/components/wedding/MagneticButton";
 import servicePlanningImage from "@/assets/service-planning.jpg";
 import serviceStationeryImage from "@/assets/service-stationery.jpg";
 
@@ -100,13 +101,13 @@ const Services = () => {
       <section className="bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
+            <p className="font-overline text-muted-foreground mb-4">
               Our Services
             </p>
             <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
               Wedding Planning Services
             </h1>
-            <p className="font-sans-wedding text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
+            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed max-w-xl mx-auto font-light">
               Every couple is different. Our services are designed to meet you
               where you are — whether you need a steady hand on the day or a
               trusted partner from the very beginning.
@@ -157,17 +158,17 @@ const Services = () => {
                       <p className="font-serif-wedding text-lg italic text-muted-foreground mb-3">
                         {service.tagline}
                       </p>
-                      <p className="font-sans-wedding text-sm font-semibold text-primary tracking-wide">
+                      <p className="font-overline text-primary">
                         {service.investment}
                       </p>
                     </div>
                   </ScrollReveal>
                   <ScrollReveal delay={service.image ? 0.15 : 0.1}>
-                    <p className={`font-sans-wedding text-sm text-muted-foreground leading-relaxed ${service.image ? "" : "text-center max-w-2xl mx-auto"} mb-10`}>
+                    <p className={`font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light ${service.image ? "" : "text-center max-w-2xl mx-auto"} mb-10`}>
                       {service.description}
                     </p>
                     <div className="bg-sage-mist p-8 md:p-10 mb-8">
-                      <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
+                      <p className="font-overline text-muted-foreground mb-4">
                         What's Included
                       </p>
                       <motion.ul
@@ -184,14 +185,14 @@ const Services = () => {
                             className="flex items-start gap-3"
                           >
                             <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                            <span className="font-sans-wedding text-sm text-foreground">
+                            <span className="font-sans-wedding text-body-sm text-foreground font-light">
                               {item}
                             </span>
                           </motion.li>
                         ))}
                       </motion.ul>
                     </div>
-                    <p className={`font-sans-wedding text-xs text-muted-foreground ${service.image ? "" : "text-center"} italic`}>
+                    <p className={`font-sans-wedding text-caption text-muted-foreground ${service.image ? "" : "text-center"} italic font-light`}>
                       Ideal for: {service.idealFor}
                     </p>
                   </ScrollReveal>
@@ -225,16 +226,13 @@ const Services = () => {
             <h2 className="font-serif-wedding text-display-md text-foreground mb-6">
               Not sure which service is right for you?
             </h2>
-            <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed mb-8">
+            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-8 font-light">
               Every wedding is unique, and so is every couple's planning journey.
               We'd love to learn about your vision and recommend the perfect fit.
             </p>
-            <Link
-              to="/inquire"
-              className="inline-flex items-center px-10 py-4 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.2em] uppercase font-semibold hover:bg-sage-deep transition-colors duration-200"
-            >
+            <MagneticButton to="/inquire" variant="solid">
               Schedule a Discovery Call
-            </Link>
+            </MagneticButton>
           </ScrollReveal>
         </div>
       </section>

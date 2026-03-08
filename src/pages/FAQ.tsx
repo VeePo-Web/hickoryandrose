@@ -3,7 +3,7 @@ import Navigation from "@/components/wedding/Navigation";
 import Footer from "@/components/wedding/Footer";
 import CTASection from "@/components/wedding/CTASection";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
-import { Link } from "react-router-dom";
+import MagneticButton from "@/components/wedding/MagneticButton";
 import {
   Accordion,
   AccordionContent,
@@ -40,7 +40,6 @@ const faqCategories = [
   },
 ];
 
-// Build FAQ schema
 const faqSchemaItems = faqCategories.flatMap((cat) =>
   cat.questions.map((faq) => ({
     "@type": "Question" as const,
@@ -62,7 +61,6 @@ const FAQ = () => {
   useEffect(() => {
     document.title = "FAQ | Hickory & Rose — Edmonton Wedding Planner";
 
-    // Inject FAQ schema
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.textContent = JSON.stringify(faqSchema);
@@ -81,13 +79,13 @@ const FAQ = () => {
       <section className="bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
+            <p className="font-overline text-muted-foreground mb-4">
               Common Questions
             </p>
             <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
               Frequently Asked Questions
             </h1>
-            <p className="font-sans-wedding text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
+            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed max-w-xl mx-auto font-light">
               We know choosing a wedding planner is a big decision. Here are
               answers to the questions we hear most often.
             </p>
@@ -110,10 +108,10 @@ const FAQ = () => {
                       value={`${catIndex}-${index}`}
                       className="border-border"
                     >
-                      <AccordionTrigger className="font-sans-wedding text-sm text-foreground text-left hover:text-primary hover:no-underline py-5">
+                      <AccordionTrigger className="font-sans-wedding text-body-sm text-foreground text-left hover:text-primary hover:no-underline py-5 font-light">
                         {faq.q}
                       </AccordionTrigger>
-                      <AccordionContent className="font-sans-wedding text-sm text-muted-foreground leading-relaxed pb-5">
+                      <AccordionContent className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed pb-5 font-light">
                         {faq.a}
                       </AccordionContent>
                     </AccordionItem>
@@ -128,16 +126,13 @@ const FAQ = () => {
               <h3 className="font-serif-wedding text-display-md text-foreground mb-4">
                 Still have questions?
               </h3>
-              <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto">
+              <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto font-light">
                 We'd love to hear from you. Reach out and we'll get back to you
                 within 48 hours.
               </p>
-              <Link
-                to="/inquire"
-                className="inline-flex items-center px-10 py-4 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.2em] uppercase font-semibold hover:bg-sage-deep transition-colors duration-200"
-              >
+              <MagneticButton to="/inquire" variant="solid">
                 Get in Touch
-              </Link>
+              </MagneticButton>
             </div>
           </ScrollReveal>
         </div>
