@@ -5,10 +5,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
-import TravelStay from "./pages/TravelStay";
-import ThingsToDo from "./pages/ThingsToDo";
-import Registry from "./pages/Registry";
-import RSVP from "./pages/RSVP";
+import Services from "./pages/Services";
+import Portfolio from "./pages/Portfolio";
+import About from "./pages/About";
+import Approach from "./pages/Approach";
+import Inquire from "./pages/Inquire";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,10 +23,11 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/travel-stay" element={<TravelStay />} />
-          <Route path="/things-to-do" element={<ThingsToDo />} />
-          <Route path="/registry" element={<Registry />} />
-          <Route path="/rsvp" element={<RSVP />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/approach" element={<Approach />} />
+          <Route path="/inquire" element={<Inquire />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
