@@ -1,45 +1,54 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
 const publications = [
-  { name: "Edmonton Bridal", category: "Regional", year: "2024" },
-  { name: "Wedding Bells", category: "National", year: "2023" },
-  { name: "Style Me Pretty", category: "International", year: "2024" },
-  { name: "Alberta Weddings", category: "Regional", year: "2023" },
-  { name: "The Knot", category: "International", year: "2024" },
+  { name: "Edmonton Bridal", category: "Regional", year: "2024", note: "Top 10 Planners" },
+  { name: "Wedding Bells", category: "National", year: "2023", note: "Featured Planner" },
+  { name: "Style Me Pretty", category: "International", year: "2024", note: "Editor's Pick" },
+  { name: "Alberta Weddings", category: "Regional", year: "2023", note: "Cover Feature" },
+  { name: "The Knot", category: "International", year: "2024", note: "Best of Weddings" },
 ];
 
 const TrustBarSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const watermarkX = useTransform(scrollYProgress, [0, 1], [60, -60]);
+
   return (
-    <section className="py-20 md:py-28 bg-background relative overflow-hidden" aria-label="Featured in">
-      {/* Decorative background text */}
+    <section
+      ref={sectionRef}
+      className="py-20 md:py-32 bg-background relative overflow-hidden"
+      aria-label="Featured in"
+    >
+      {/* Parallax watermark */}
       <motion.div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 0.015 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5 }}
+        className="absolute left-1/2 top-1/2 -translate-y-1/2 pointer-events-none select-none"
+        style={{ x: watermarkX }}
+        aria-hidden="true"
       >
-        <span className="font-serif-wedding text-[10rem] md:text-[16rem] font-light text-foreground whitespace-nowrap">
-          Featured
+        <span className="font-serif-wedding text-[8rem] md:text-[14rem] font-light text-foreground/[0.015] whitespace-nowrap tracking-tight italic">
+          As Seen In
         </span>
       </motion.div>
 
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
         <ScrollReveal>
-          <div className="text-center mb-14 md:mb-20">
-            <p className="font-overline text-muted-foreground/40 mb-3">
-              <span className="inline-flex items-center gap-3">
-                <span className="w-8 h-px bg-gradient-to-r from-transparent to-muted-foreground/20" />
-                As Featured In
-                <span className="w-8 h-px bg-gradient-to-l from-transparent to-muted-foreground/20" />
-              </span>
+          <div className="flex items-center gap-4 mb-16 md:mb-24">
+            <span className="font-serif-wedding text-sm text-primary/20 font-light">03</span>
+            <span className="w-8 h-px bg-primary/15" />
+            <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em]">
+              As Featured In
             </p>
+            <span className="flex-1 h-px bg-border/30 hidden md:block" />
           </div>
         </ScrollReveal>
 
         {/* Editorial ruled list */}
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {publications.map((pub, index) => (
             <motion.div
               key={pub.name}
@@ -54,29 +63,36 @@ const TrustBarSection = () => {
               className="group"
             >
               <div className="border-t border-border/40 group-first:border-t-0" />
-              <div className="flex items-center justify-between py-6 md:py-8 cursor-default">
+              <div className="flex items-center justify-between py-7 md:py-10 cursor-default">
                 <div className="flex items-baseline gap-4 md:gap-6">
-                  {/* Index number */}
-                  <span className="font-serif-wedding text-sm text-primary/20 font-light w-6">
+                  {/* Index */}
+                  <span className="font-serif-wedding text-xs text-primary/15 font-light w-5 tabular-nums">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   {/* Publication name */}
-                  <span className="font-serif-wedding text-2xl md:text-3xl lg:text-4xl font-light text-foreground/15 group-hover:text-foreground/50 transition-colors duration-500 tracking-tight italic">
+                  <span className="font-serif-wedding text-2xl md:text-3xl lg:text-4xl font-light text-foreground/15 group-hover:text-foreground/60 transition-colors duration-500 tracking-tight italic">
                     {pub.name}
                   </span>
                 </div>
-                <div className="flex items-center gap-3 md:gap-5">
+                <div className="flex items-center gap-3 md:gap-6">
+                  {/* Award note — visible on hover */}
+                  <motion.span
+                    className="font-serif-wedding text-xs italic text-primary/30 hidden md:inline opacity-0 group-hover:opacity-100 transition-opacity duration-500 -translate-x-2 group-hover:translate-x-0"
+                    style={{ transition: "opacity 0.5s, transform 0.5s" }}
+                  >
+                    {pub.note}
+                  </motion.span>
                   <motion.div
                     className="h-px bg-primary/15 origin-right hidden md:block"
                     initial={{ width: 0 }}
-                    whileInView={{ width: 40 }}
+                    whileInView={{ width: 32 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 + index * 0.08 }}
                   />
-                  <span className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-muted-foreground/20 hidden md:inline">
+                  <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/20 hidden md:inline">
                     {pub.category}
                   </span>
-                  <span className="font-serif-wedding text-xs text-muted-foreground/15 font-light">
+                  <span className="font-serif-wedding text-xs text-muted-foreground/15 font-light tabular-nums">
                     {pub.year}
                   </span>
                 </div>
@@ -85,6 +101,15 @@ const TrustBarSection = () => {
           ))}
           <div className="border-t border-border/40" />
         </div>
+
+        {/* Bottom ornament */}
+        <ScrollReveal delay={0.3}>
+          <div className="flex items-center justify-center gap-3 mt-12 md:mt-16" aria-hidden="true">
+            <span className="w-8 h-px bg-border/30" />
+            <span className="font-serif-wedding text-xs text-primary/10 italic">❖</span>
+            <span className="w-8 h-px bg-border/30" />
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

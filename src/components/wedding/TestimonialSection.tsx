@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
@@ -13,6 +13,7 @@ const testimonials = [
     couple: "Sarah & Michael",
     venue: "Fairmont Hotel Macdonald, Edmonton",
     season: "Winter 2024",
+    service: "Full-Service Planning",
   },
   {
     quote:
@@ -20,6 +21,7 @@ const testimonials = [
     couple: "Emma & James",
     venue: "The Glass House",
     season: "Autumn 2024",
+    service: "Partial Planning",
   },
   {
     quote:
@@ -27,11 +29,25 @@ const testimonials = [
     couple: "Olivia & Noah",
     venue: "Jasper Park Lodge",
     season: "Summer 2024",
+    service: "Day-of Coordination",
   },
+];
+
+const galleryImages = [
+  { src: ceremonyImage, alt: "Outdoor wedding ceremony with mountain backdrop and floral arch", venue: "Jasper Park Lodge", label: "Ceremony" },
+  { src: detailImage, alt: "Elegant calligraphy place card with gold cutlery on linen", venue: "Fairmont Macdonald", label: "Details" },
+  { src: firstDanceImage, alt: "Couple's first dance under string lights at outdoor reception", venue: "The Glass House", label: "Reception" },
 ];
 
 const TestimonialSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const watermarkY = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   const advance = useCallback(() => {
     setActiveIndex((i) => (i + 1) % testimonials.length);
@@ -46,87 +62,103 @@ const TestimonialSection = () => {
 
   return (
     <section
+      ref={sectionRef}
       className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-sage-mist relative overflow-hidden"
       aria-label="Testimonials"
     >
-      {/* Decorative large quote mark */}
-      <div className="absolute top-10 left-8 md:left-16 pointer-events-none select-none" aria-hidden="true">
-        <span className="font-serif-wedding text-[8rem] md:text-[12rem] leading-none text-primary/[0.04]">
-          "
-        </span>
-      </div>
-
-      {/* Decorative index number */}
+      {/* Large parallax watermark */}
       <motion.div
-        className="absolute top-8 right-8 md:right-16 pointer-events-none select-none"
+        className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none"
+        style={{ y: watermarkY }}
         aria-hidden="true"
+      >
+        <span className="font-serif-wedding text-[6rem] md:text-[10rem] lg:text-[14rem] font-light text-primary/[0.025] whitespace-nowrap tracking-tight italic">
+          Kind Words
+        </span>
+      </motion.div>
+
+      {/* Top editorial rule with ornament */}
+      <motion.div
+        className="absolute top-0 left-1/2 -translate-x-1/2 flex items-center gap-3 pointer-events-none"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1 }}
+        aria-hidden="true"
       >
-        <span className="font-serif-wedding text-6xl md:text-8xl font-light text-primary/[0.04]">
-          {String(activeIndex + 1).padStart(2, "0")}
-        </span>
+        <span className="w-12 md:w-20 h-px bg-gradient-to-r from-transparent to-primary/15" />
+        <span className="font-serif-wedding text-xs text-primary/15 italic">❖</span>
+        <span className="w-12 md:w-20 h-px bg-gradient-to-l from-transparent to-primary/15" />
       </motion.div>
 
       <div className="container mx-auto px-6 lg:px-8 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
           {/* Testimonial with crossfade */}
           <ScrollReveal>
             <div>
-              <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-6">
-                <span className="inline-flex items-center gap-3">
-                  <span className="w-5 h-px bg-primary/30" />
+              {/* Section index + label */}
+              <div className="flex items-center gap-4 mb-8">
+                <span className="font-serif-wedding text-sm text-primary/20 font-light">05</span>
+                <span className="w-8 h-px bg-primary/20" />
+                <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 tracking-[0.2em]">
                   Kind Words
-                </span>
-              </p>
-              <div className="min-h-[220px] md:min-h-[200px] relative">
+                </p>
+              </div>
+
+              <div className="min-h-[260px] md:min-h-[240px] relative">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeIndex}
-                    initial={{ opacity: 0, y: 12 }}
+                    initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -12 }}
-                    transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1.0] }}
+                    exit={{ opacity: 0, y: -16 }}
+                    transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] }}
                   >
+                    {/* Large decorative quote */}
+                    <span className="font-serif-wedding text-6xl text-primary/[0.08] leading-none block -mb-6" aria-hidden="true">"</span>
+                    
                     <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-8">
-                      "{active.quote}"
+                      {active.quote}
                     </blockquote>
 
-                    {/* Enhanced attribution */}
-                    <motion.div
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.2 }}
-                      className="w-8 h-px bg-primary/25 origin-left mb-4"
-                    />
-                    <div className="font-sans-wedding">
-                      <p className="text-body-sm font-medium text-foreground tracking-wide">
-                        {active.couple}
-                      </p>
-                      <div className="flex items-center gap-2 mt-1.5">
-                        <p className="text-caption text-muted-foreground/60">
-                          {active.venue}
+                    {/* Attribution with service tag */}
+                    <div className="flex items-start gap-4">
+                      <motion.div
+                        initial={{ scaleY: 0 }}
+                        animate={{ scaleY: 1 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="w-px h-12 bg-primary/25 origin-top mt-1"
+                      />
+                      <div className="font-sans-wedding">
+                        <p className="text-body-sm font-medium text-foreground tracking-wide">
+                          {active.couple}
                         </p>
-                        <span className="text-muted-foreground/20">·</span>
-                        <p className="text-caption text-muted-foreground/40 italic">
-                          {active.season}
-                        </p>
+                        <div className="flex items-center gap-2 mt-1">
+                          <p className="text-caption text-muted-foreground/60">
+                            {active.venue}
+                          </p>
+                          <span className="text-muted-foreground/20">·</span>
+                          <p className="text-caption text-muted-foreground/40 italic">
+                            {active.season}
+                          </p>
+                        </div>
+                        <span className="inline-block mt-2 font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-primary/40 border border-primary/15 px-2 py-0.5">
+                          {active.service}
+                        </span>
                       </div>
                     </div>
                   </motion.div>
                 </AnimatePresence>
               </div>
 
-              {/* Progress indicators */}
-              <div className="flex items-center gap-4 mt-10">
-                <div className="flex gap-1.5 flex-1">
+              {/* Progress indicators with counter */}
+              <div className="flex items-center gap-4 mt-12">
+                <div className="flex gap-2 flex-1">
                   {testimonials.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setActiveIndex(index)}
-                      className="h-px flex-1 relative overflow-hidden bg-primary/15"
+                      className="h-[2px] flex-1 relative overflow-hidden bg-primary/10 hover:bg-primary/20 transition-colors"
                       aria-label={`View testimonial ${index + 1}`}
                     >
                       {index === activeIndex && (
@@ -139,64 +171,74 @@ const TestimonialSection = () => {
                         />
                       )}
                       {index < activeIndex && (
-                        <div className="absolute inset-0 bg-primary" />
+                        <div className="absolute inset-0 bg-primary/50" />
                       )}
                     </button>
                   ))}
                 </div>
-                <span className="font-sans-wedding text-[0.625rem] text-muted-foreground/40 tabular-nums tracking-wider">
-                  {String(activeIndex + 1).padStart(2, "0")}—{String(testimonials.length).padStart(2, "0")}
+                <span className="font-sans-wedding text-[0.6rem] text-muted-foreground/40 tabular-nums tracking-[0.15em]">
+                  {String(activeIndex + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
                 </span>
               </div>
             </div>
           </ScrollReveal>
 
-          {/* Mini Gallery */}
+          {/* Editorial Gallery with labels */}
           <ScrollReveal delay={0.15}>
             <div className="grid grid-cols-2 gap-3">
               <ImageReveal direction="up" delay={0.1}>
                 <div className="aspect-[3/4] overflow-hidden relative group">
                   <img
-                    src={ceremonyImage}
-                    alt="Outdoor wedding ceremony with mountain backdrop and floral arch"
+                    src={galleryImages[0].src}
+                    alt={galleryImages[0].alt}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                     width={512}
                     height={683}
                   />
-                  <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-white/60">
-                      Jasper Park Lodge
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
+                    <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/50 block">
+                      {galleryImages[0].label}
+                    </span>
+                    <p className="font-serif-wedding text-xs text-white/80 italic mt-0.5">
+                      {galleryImages[0].venue}
                     </p>
                   </div>
                 </div>
               </ImageReveal>
               <div className="space-y-3">
-                <ImageReveal direction="left" delay={0.2}>
-                  <div className="aspect-square overflow-hidden">
-                    <img
-                      src={detailImage}
-                      alt="Elegant calligraphy place card with gold cutlery on linen"
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                      loading="lazy"
-                      width={512}
-                      height={512}
-                    />
-                  </div>
-                </ImageReveal>
-                <ImageReveal direction="left" delay={0.3}>
-                  <div className="aspect-square overflow-hidden">
-                    <img
-                      src={firstDanceImage}
-                      alt="Couple's first dance under string lights at outdoor reception"
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                      loading="lazy"
-                      width={512}
-                      height={512}
-                    />
-                  </div>
-                </ImageReveal>
+                {galleryImages.slice(1).map((img, i) => (
+                  <ImageReveal key={i} direction="left" delay={0.2 + i * 0.1}>
+                    <div className="aspect-square overflow-hidden relative group">
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        loading="lazy"
+                        width={512}
+                        height={512}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/50 block">
+                          {img.label}
+                        </span>
+                        <p className="font-serif-wedding text-[0.6rem] text-white/80 italic mt-0.5">
+                          {img.venue}
+                        </p>
+                      </div>
+                    </div>
+                  </ImageReveal>
+                ))}
               </div>
+            </div>
+            {/* Gallery caption */}
+            <div className="mt-4 flex items-center justify-between">
+              <span className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/25">
+                Real Hickory & Rose Weddings
+              </span>
+              <span className="w-8 h-px bg-border/40" />
             </div>
           </ScrollReveal>
         </div>
