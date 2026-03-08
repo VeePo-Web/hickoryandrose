@@ -18,7 +18,9 @@ const BrandPromiseSection = () => {
         viewport={{ once: true }}
         transition={{ duration: 1.5 }}
       >
-        <span className="font-script text-[28rem] leading-none text-foreground">&</span>
+        <span className="font-script text-[28rem] leading-none text-foreground">
+          &
+        </span>
       </motion.div>
 
       <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
@@ -27,13 +29,22 @@ const BrandPromiseSection = () => {
             Our Philosophy
           </p>
 
-          <p className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-12">
+          <p className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-14">
             Calm becomes a luxury. We protect what matters most on your wedding
             day: your presence, your peace of mind, and the freedom to fully
             feel it.
           </p>
 
-          {/* Brand pillars */}
+          {/* Accent divider above pillars */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="w-12 h-px bg-primary/25 mx-auto mb-10 origin-center"
+          />
+
+          {/* Brand pillars — ruled on both sides */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
             {pillars.map((pillar, index) => (
               <motion.div
@@ -42,7 +53,7 @@ const BrandPromiseSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.12 }}
-                className="py-6 md:py-0 md:px-6 border-t md:border-t-0 md:border-l border-border/40 first:border-t-0 md:first:border-l-0"
+                className="py-6 md:py-0 md:px-8 border-t md:border-t-0 md:border-l border-border/40 first:border-t-0 md:first:border-l-0"
               >
                 <p className="font-overline text-primary text-[0.6rem] mb-1.5">
                   {pillar.label}
