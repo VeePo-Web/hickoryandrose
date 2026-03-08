@@ -12,6 +12,8 @@ import LoveQuoteSection from "@/components/wedding/LoveQuoteSection";
 import ProcessTeaserSection from "@/components/wedding/ProcessTeaserSection";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import FounderTeaserSection from "@/components/wedding/FounderTeaserSection";
+import StatsSection from "@/components/wedding/StatsSection";
+import InstagramSection from "@/components/wedding/InstagramSection";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
 import ScrollProgress from "@/components/wedding/ScrollProgress";
@@ -47,7 +49,9 @@ const Index = () => {
         height="h-[50vh] md:h-[60vh]"
       />
       <FounderTeaserSection />
+      <StatsSection />
       <CTASection />
+      <InstagramSection />
       <Footer />
     </main>
   );
