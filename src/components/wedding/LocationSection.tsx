@@ -69,7 +69,7 @@ const LocationSection = () => {
               className="flex items-center gap-2 text-white/80 hover:text-white transition-colors cursor-pointer"
             >
               <Mail size={18} />
-              <span className="font-sans-wedding text-sm">events@carmineresort.com</span>
+              <span className="font-sans-wedding text-sm">sales@hickoryandrose.com</span>
             </button>
           </div>
         </ScrollReveal>
