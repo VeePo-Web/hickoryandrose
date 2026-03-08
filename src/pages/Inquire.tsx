@@ -578,6 +578,46 @@ const Inquire = () => {
         </motion.span>
       </section>
 
+      {/* ─── What to Expect — editorial micro-section ─── */}
+      <section className="py-10 md:py-14 bg-card border-b border-border/30">
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+          <ScrollReveal>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+              {[
+                { num: "01", title: "Share your story", desc: "Fill out the form below — it takes about 3 minutes." },
+                { num: "02", title: "We'll be in touch", desc: "Expect a warm, personal response within 48 hours." },
+                { num: "03", title: "Discovery call", desc: "A relaxed 30-minute conversation about your vision — no obligation." },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.num}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="flex items-start gap-4"
+                >
+                  <span
+                    className="font-serif-wedding text-2xl font-light shrink-0 mt-0.5"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(var(--gold) / 0.5), hsl(var(--primary) / 0.3))",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
+                  >
+                    {item.num}
+                  </span>
+                  <div>
+                    <p className="font-sans-wedding text-sm font-medium text-foreground mb-1">{item.title}</p>
+                    <p className="font-sans-wedding text-xs text-muted-foreground/60 font-light leading-relaxed">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* ─── Form Section ─── */}
       <section className="bg-background py-16 md:py-24">
         <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
