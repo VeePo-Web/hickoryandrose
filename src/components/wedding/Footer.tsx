@@ -33,7 +33,7 @@ const Footer = () => {
           className="text-center mb-16 md:mb-20"
         >
           <Link to="/" className="inline-block group">
-            <span className="font-serif-wedding text-3xl md:text-4xl font-light tracking-tight text-background">
+            <span className="font-serif-wedding text-3xl md:text-4xl font-light tracking-[-0.03em] text-background">
               Hickory <span className="font-normal opacity-50">&</span>{" "}
               <span className="font-script text-4xl md:text-5xl group-hover:text-primary transition-colors duration-300">Rose</span>
             </span>
