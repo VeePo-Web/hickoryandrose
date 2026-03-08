@@ -82,14 +82,13 @@ const BackToTop = () => {
             />
           </svg>
 
-          {/* H&R monogram */}
+          {/* Diamond ornament */}
           <motion.span
-            className="relative z-10 font-script text-sm text-background/60 group-hover:text-primary-foreground transition-colors duration-300 select-none"
+            className="relative z-10 w-2.5 h-2.5 rotate-45 border border-background/40 group-hover:border-gold transition-colors duration-300"
             animate={{ y: isHovered ? -1 : 0 }}
             transition={{ duration: 0.2 }}
-          >
-            H&R
-          </motion.span>
+            style={{ display: "block" }}
+          />
 
           {/* Hover tooltip */}
           <AnimatePresence>

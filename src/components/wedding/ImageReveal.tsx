@@ -45,6 +45,16 @@ const ImageReveal = memo(({ children, className = "", delay = 0, direction = "up
       >
         {children}
       </motion.div>
+      {/* Gold edge trace — appears after reveal */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-[1px] origin-left pointer-events-none"
+        style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.15), transparent 60%)" }}
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, delay: delay + 0.8, ease: [0.25, 0.1, 0.25, 1.0] }}
+        aria-hidden="true"
+      />
     </div>
   );
 });
