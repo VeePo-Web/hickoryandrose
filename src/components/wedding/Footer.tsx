@@ -4,6 +4,7 @@ import { Mail, MapPin, ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
 import FooterNewsletter from "./FooterNewsletter";
 import FooterServiceAreas from "./FooterServiceAreas";
+import veepoLogo from "@/assets/veepo-logo.png";
 
 const footerLinks = [
   { label: "Services", path: "/services" },
