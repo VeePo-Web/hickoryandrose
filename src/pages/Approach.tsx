@@ -565,7 +565,7 @@ const Approach = () => {
         </div>
       </section>
 
-      <FullWidthImage src={ceremonyImage} alt="Outdoor wedding ceremony setup in mountain meadow with floral arch" height="h-[35vh] md:h-[45vh]" />
+      <DocumentaryFilmstrip src={ceremonyImage} alt="Outdoor wedding ceremony setup in mountain meadow with floral arch" height="h-[35vh] md:h-[45vh]" label="THE CEREMONY" />
 
       {/* ──────────────── Brand Promise Quote ──────────────── */}
       <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden grain-overlay vignette" aria-label="Brand Promise">
