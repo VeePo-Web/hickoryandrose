@@ -145,8 +145,11 @@ const Approach = () => {
       />
 
       {/* Editorial promise break */}
-      <section className="py-12 md:py-16 bg-card">
-        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+      <section className="py-12 md:py-16 bg-card relative overflow-hidden">
+        {/* Corner accents */}
+        <div className="absolute top-4 left-4 w-12 h-12 border-t border-l border-primary/10 pointer-events-none" aria-hidden="true" />
+        <div className="absolute bottom-4 right-4 w-12 h-12 border-b border-r border-primary/10 pointer-events-none" aria-hidden="true" />
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative">
           <ScrollReveal>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
               <div className="md:col-span-1">

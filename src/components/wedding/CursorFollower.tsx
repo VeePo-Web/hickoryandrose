@@ -48,14 +48,25 @@ const CursorFollower = () => {
       className="fixed top-0 left-0 z-[999] pointer-events-none mix-blend-difference"
       style={{ x, y }}
     >
+      {/* Inner dot */}
       <motion.div
         animate={{
-          width: isHovering ? 48 : 10,
-          height: isHovering ? 48 : 10,
-          opacity: isHovering ? 0.3 : 0.5,
+          width: isHovering ? 48 : 8,
+          height: isHovering ? 48 : 8,
+          opacity: isHovering ? 0.25 : 0.5,
         }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
         className="rounded-full bg-primary -translate-x-1/2 -translate-y-1/2"
+      />
+      {/* Outer ring — appears on hover */}
+      <motion.div
+        animate={{
+          width: isHovering ? 56 : 8,
+          height: isHovering ? 56 : 8,
+          opacity: isHovering ? 0.12 : 0,
+        }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="absolute top-0 left-0 rounded-full border border-primary -translate-x-1/2 -translate-y-1/2"
       />
     </motion.div>
   );
