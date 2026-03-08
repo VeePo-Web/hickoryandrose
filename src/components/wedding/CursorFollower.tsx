@@ -31,10 +31,10 @@ const CursorFollower = memo(() => {
     const dx = cx - lastParticlePos.current.x;
     const dy = cy - lastParticlePos.current.y;
     const dist = Math.sqrt(dx * dx + dy * dy);
-    if (dist < 24) return; // Only spawn when cursor moves enough
+    if (dist < 40) return; // Only spawn when cursor moves enough
     lastParticlePos.current = { x: cx, y: cy };
     const id = ++particleId;
-    setParticles((prev) => [...prev.slice(-6), { id, x: cx, y: cy }]);
+    setParticles((prev) => [...prev.slice(-3), { id, x: cx, y: cy }]);
     // Auto-remove after animation
     setTimeout(() => {
       setParticles((prev) => prev.filter((p) => p.id !== id));
