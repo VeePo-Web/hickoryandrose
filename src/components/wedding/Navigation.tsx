@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 
 interface NavigationProps {
   variant?: "overlay" | "solid";
@@ -21,6 +21,9 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
+  const { scrollYProgress } = useScroll();
+  const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   const isOverlay = variant === "overlay";
 
   useEffect(() => {
@@ -35,7 +38,6 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
     setIsOpen(false);
   }, [location.pathname]);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -49,7 +51,6 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
 
   return (
     <>
-      {/* Skip to content */}
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded"
@@ -71,7 +72,6 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
       >
         <div className="container mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
             <Link
               to="/"
               className={`font-serif-wedding text-xl md:text-2xl font-light tracking-tight transition-colors duration-300 ${
@@ -82,7 +82,6 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
               <span className="font-script text-2xl md:text-3xl">Rose</span>
             </Link>
 
-            {/* Desktop Navigation */}
             <ul className="hidden lg:flex items-center gap-1">
               {navLinks.map((link) => (
                 <li key={link.path}>
@@ -105,7 +104,6 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
               ))}
             </ul>
 
-            {/* Inquire CTA — Desktop */}
             <div className="hidden lg:block">
               <Link
                 to="/inquire"
@@ -119,7 +117,6 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`lg:hidden relative z-[60] p-2 transition-colors duration-200 ${
@@ -155,7 +152,13 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
           </div>
         </div>
 
-        {/* Mobile Navigation — Cinematic Full Screen Overlay */}
+        {/* Scroll progress line */}
+        <motion.div
+          className="absolute bottom-0 left-0 h-px bg-gradient-to-r from-primary/60 via-primary/40 to-primary/20"
+          style={{ width: progressWidth }}
+        />
+
+        {/* Mobile Navigation */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -165,7 +168,6 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
               transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0] }}
               className="fixed inset-0 bg-warm-white z-40 lg:hidden flex flex-col"
             >
-              {/* Decorative top accent */}
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
@@ -174,7 +176,6 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
               />
 
               <div className="flex-1 flex flex-col items-center justify-center pb-24">
-                {/* Brand wordmark in overlay */}
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -236,7 +237,6 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                 </motion.div>
               </div>
 
-              {/* Bottom footer in overlay */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
