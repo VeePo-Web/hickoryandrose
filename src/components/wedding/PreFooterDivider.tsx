@@ -106,15 +106,24 @@ const PreFooterDivider = () => {
                 }}
               />
 
-              {/* Section ornament */}
-              <motion.span
-                className="w-4 h-4 rotate-45 block mb-4 mx-auto"
-                style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              />
+              {/* Section ornament with ambient gold glow */}
+              <div className="relative inline-block mb-4 mx-auto">
+                <motion.div
+                  className="absolute -inset-6 pointer-events-none"
+                  style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.08), transparent 70%)" }}
+                  animate={{ opacity: [0.3, 0.7, 0.3], scale: [0.9, 1.1, 0.9] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  aria-hidden="true"
+                />
+                <motion.span
+                  className="w-4 h-4 rotate-45 block relative"
+                  style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))" }}
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                />
+              </div>
 
               <p className="font-overline text-muted-foreground/35 mb-6">
                 Limited Availability
