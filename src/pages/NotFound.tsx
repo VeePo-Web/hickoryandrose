@@ -65,6 +65,26 @@ const NotFound = () => {
           </motion.p>
         </motion.div>
 
+        {/* Gold radial glow */}
+        <motion.div
+          className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.08 }}
+          transition={{ duration: 2, delay: 0.5 }}
+          style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.3), transparent 70%)" }}
+          aria-hidden="true"
+        />
+
+        {/* Floating script ornament */}
+        <motion.div
+          className="absolute bottom-1/4 right-12 pointer-events-none select-none hidden lg:block"
+          animate={{ y: [0, -10, 0], rotate: [0, 3, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          aria-hidden="true"
+        >
+          <span className="font-script text-6xl text-white/[0.03]">&</span>
+        </motion.div>
+
         {/* Content with scroll-linked fade */}
         <motion.div
           className="relative z-10 text-center max-w-xl px-6"
