@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import ScrollReveal from "./ScrollReveal";
+import MagneticButton from "./MagneticButton";
 import receptionImage from "@/assets/portfolio-reception.jpg";
 
 const CTASection = () => {
@@ -18,7 +18,6 @@ const CTASection = () => {
       className="relative py-section-mobile md:py-section-tablet lg:py-section-desktop overflow-hidden"
       aria-label="Get in touch"
     >
-      {/* Background image with parallax */}
       <div className="absolute inset-0">
         <motion.img
           src={receptionImage}
@@ -40,12 +39,9 @@ const CTASection = () => {
             Let's talk about your vision, your day, and how Hickory & Rose can
             make it effortlessly beautiful.
           </p>
-          <Link
-            to="/inquire"
-            className="inline-flex items-center border border-white/50 hover:border-white hover:bg-white/10 text-white font-sans-wedding text-xs tracking-[0.2em] uppercase px-10 py-4 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent"
-          >
+          <MagneticButton to="/inquire" variant="outline-light">
             Let's Talk
-          </Link>
+          </MagneticButton>
         </ScrollReveal>
       </div>
     </section>
