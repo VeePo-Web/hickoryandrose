@@ -21,6 +21,7 @@ const StatsSection = lazy(() => import("@/components/wedding/StatsSection"));
 const PressMentionsSection = lazy(() => import("@/components/wedding/PressMentionsSection"));
 const FilmstripSection = lazy(() => import("@/components/wedding/FilmstripSection"));
 const InstagramSection = lazy(() => import("@/components/wedding/InstagramSection"));
+const JournalTeaserSection = lazy(() => import("@/components/wedding/JournalTeaserSection"));
 const CTASection = lazy(() => import("@/components/wedding/CTASection"));
 const Footer = lazy(() => import("@/components/wedding/Footer"));
 
