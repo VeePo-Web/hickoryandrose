@@ -12,6 +12,7 @@ const seasonSlots = [
 
 const PreFooterDivider = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [activeSeason, setActiveSeason] = useState(0);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -19,6 +20,15 @@ const PreFooterDivider = () => {
   const watermarkY = useTransform(scrollYProgress, [0, 1], ["20%", "-20%"]);
   const lineScale = useTransform(scrollYProgress, [0.1, 0.5], [0, 1]);
   const imageY = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
+
+  const advanceSeason = useCallback(() => {
+    setActiveSeason((i) => (i + 1) % seasonSlots.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(advanceSeason, 3500);
+    return () => clearInterval(timer);
+  }, [advanceSeason]);
 
   return (
     <section
