@@ -63,67 +63,62 @@ const SectionIndicator = forwardRef<HTMLDivElement>((_, ref) => {
 
   return (
     <div ref={ref}>
-      <AnimatePresence>
-        {visible && (
+      {/* CSS-driven visibility instead of AnimatePresence to avoid ref warnings */}
+      <div
+        className={`fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-center gap-4 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
+          visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-5"
+        }`}
+      >
+        {/* Vertical progress track */}
+        <div className="relative w-px h-24">
+          <div className="absolute inset-0 bg-foreground/[0.04]" />
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-            className="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-center gap-4 pointer-events-none"
+            className="absolute bottom-0 left-0 w-full origin-bottom"
+            style={{
+              height: progressHeight,
+              background: "linear-gradient(0deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.1))",
+            }}
+          />
+          <motion.div
+            className="absolute left-1/2 -translate-x-1/2 w-[5px] h-[5px] rounded-full"
+            style={{
+              top: progressHeight,
+              background: "hsl(var(--gold))",
+              boxShadow: "0 0 8px 2px hsl(var(--gold) / 0.3)",
+            }}
+          />
+        </div>
+
+        {/* Section label — rotated */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSection}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.3 }}
+            className="writing-mode-vertical"
+            style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
           >
-            {/* Vertical progress track */}
-            <div className="relative w-px h-24">
-              <div className="absolute inset-0 bg-foreground/[0.04]" />
-              <motion.div
-                className="absolute bottom-0 left-0 w-full origin-bottom"
-                style={{
-                  height: progressHeight,
-                  background: "linear-gradient(0deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.1))",
-                }}
-              />
-              <motion.div
-                className="absolute left-1/2 -translate-x-1/2 w-[5px] h-[5px] rounded-full"
-                style={{
-                  top: progressHeight,
-                  background: "hsl(var(--gold))",
-                  boxShadow: "0 0 8px 2px hsl(var(--gold) / 0.3)",
-                }}
-              />
-            </div>
-
-            {/* Section label — rotated */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSection}
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.3 }}
-                className="writing-mode-vertical"
-                style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
-              >
-                <span className="font-sans-wedding text-[0.5rem] tracking-[0.25em] uppercase text-muted-foreground/20 rotate-180 inline-block">
-                  {currentSection}
-                </span>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Section counter */}
-            {totalSections > 0 && (
-              <div className="flex flex-col items-center gap-1">
-                <span className="font-sans-wedding text-[0.4rem] tracking-[0.2em] text-muted-foreground/15 tabular-nums">
-                  {String(sectionIndex + 1).padStart(2, "0")}
-                </span>
-                <span className="w-2 h-px bg-muted-foreground/10" />
-                <span className="font-sans-wedding text-[0.4rem] tracking-[0.2em] text-muted-foreground/10 tabular-nums">
-                  {String(totalSections).padStart(2, "0")}
-                </span>
-              </div>
-            )}
+            <span className="font-sans-wedding text-[0.5rem] tracking-[0.25em] uppercase text-muted-foreground/20 rotate-180 inline-block">
+              {currentSection}
+            </span>
           </motion.div>
+        </AnimatePresence>
+
+        {/* Section counter */}
+        {totalSections > 0 && (
+          <div className="flex flex-col items-center gap-1">
+            <span className="font-sans-wedding text-[0.4rem] tracking-[0.2em] text-muted-foreground/15 tabular-nums">
+              {String(sectionIndex + 1).padStart(2, "0")}
+            </span>
+            <span className="w-2 h-px bg-muted-foreground/10" />
+            <span className="font-sans-wedding text-[0.4rem] tracking-[0.2em] text-muted-foreground/10 tabular-nums">
+              {String(totalSections).padStart(2, "0")}
+            </span>
+          </div>
         )}
-      </AnimatePresence>
+      </div>
     </div>
   );
 });
