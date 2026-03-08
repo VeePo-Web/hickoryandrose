@@ -82,9 +82,15 @@ const PreFooterDivider = () => {
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 via-transparent to-transparent" />
-              {/* Corner accents */}
-              <div className="absolute top-3 left-3 w-5 h-5 border-t border-l border-primary/15" />
-              <div className="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-primary/15" />
+              {/* Gold gradient corner accents */}
+              <div className="absolute top-3 left-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), transparent)" }} />
+              </div>
+              <div className="absolute bottom-3 right-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
+              </div>
             </div>
           </motion.div>
 
