@@ -331,7 +331,7 @@ const Approach = () => {
       </section>
 
       {/* Inline testimonial — upgraded with gold quotation mark + diamond separator + scroll accent */}
-      <section className="py-14 md:py-20 bg-background relative overflow-hidden" aria-label="Testimonial">
+      <section className="py-14 md:py-20 bg-background relative overflow-hidden grain-overlay" aria-label="Testimonial">
         <motion.div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] pointer-events-none" initial={{ opacity: 0 }} whileInView={{ opacity: 0.06 }} viewport={{ once: true }} transition={{ duration: 2 }} style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.12), transparent 70%)" }} aria-hidden="true" />
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
           <ScrollReveal>
