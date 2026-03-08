@@ -120,6 +120,7 @@ const Index = () => {
           caption="Serving Edmonton · Jasper · Banff · Lake Louise · The Canadian Rockies"
         />
         <FilmstripSection />
+        <VendorShowcaseSection />
         <CTASection />
         <InstagramSection />
         <JournalTeaserSection />

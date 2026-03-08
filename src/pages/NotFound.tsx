@@ -164,8 +164,13 @@ const NotFound = () => {
                 >
                   <Link
                     to={page.path}
-                    className="block p-5 border border-white/8 hover:border-white/20 transition-all duration-500 group hover:bg-white/[0.03]"
+                    className="block p-5 border border-white/8 hover:border-white/20 transition-all duration-500 group hover:bg-white/[0.03] relative overflow-hidden"
                   >
+                    {/* Gold shimmer on hover */}
+                    <div
+                      className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none"
+                      style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.06) 40%, hsl(var(--gold) / 0.1) 50%, hsl(var(--gold) / 0.06) 60%, transparent 100%)" }}
+                    />
                     <span className="font-serif-wedding text-lg text-white/15 group-hover:text-white/30 transition-colors duration-500 block mb-2">
                       {page.icon}
                     </span>
@@ -175,7 +180,7 @@ const NotFound = () => {
                     <p className="font-sans-wedding text-[0.65rem] text-white/25 font-light leading-relaxed">
                       {page.desc}
                     </p>
-                    <div className="mt-3 h-px bg-white/10 w-0 group-hover:w-full transition-all duration-700 ease-out origin-left" />
+                    <div className="mt-3 h-px w-0 group-hover:w-full transition-all duration-700 ease-out origin-left" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
                   </Link>
                 </motion.div>
               ))}
