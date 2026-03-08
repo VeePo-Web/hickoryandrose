@@ -117,17 +117,25 @@ const ServicesOverviewSection = () => {
                 exit={{ opacity: 0, x: 20, scale: 0.95 }}
                 transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                <div className="w-48 xl:w-56 aspect-[3/4] overflow-hidden shadow-2xl">
+                <div className="w-48 xl:w-56 aspect-[3/4] overflow-hidden shadow-2xl relative">
                   <img
                     src={services[hoveredIndex].image}
                     alt={services[hoveredIndex].imageAlt}
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
+                  {/* Corner frame accents */}
+                  <div className="absolute top-2 left-2 w-5 h-5 border-t border-l border-white/15" />
+                  <div className="absolute bottom-2 right-2 w-5 h-5 border-b border-r border-white/15" />
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                 </div>
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-muted-foreground/25 mt-3 text-right">
-                  {services[hoveredIndex].title}
-                </p>
+                <div className="flex items-center justify-end gap-2 mt-3">
+                  <span className="w-4 h-px bg-muted-foreground/15" />
+                  <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-muted-foreground/25">
+                    {services[hoveredIndex].title}
+                  </p>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -200,6 +208,46 @@ const ServicesOverviewSection = () => {
           ))}
           <div className="border-t border-border/60" />
         </div>
+
+        {/* Quick comparison row */}
+        <ScrollReveal delay={0.2}>
+          <div className="mt-12 md:mt-16 border border-border/30 p-6 md:p-8 hidden md:block">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="font-serif-wedding text-xs text-primary/20">❖</span>
+              <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-muted-foreground/30 font-light">
+                Quick Comparison
+              </p>
+              <span className="flex-1 h-px bg-border/20" />
+            </div>
+            <div className="grid grid-cols-4 gap-4 text-center">
+              <div />
+              {services.map((s) => (
+                <div key={s.number}>
+                  <p className="font-serif-wedding text-sm text-foreground/60 mb-1">{s.title}</p>
+                  <p className="font-overline text-[0.5rem] text-primary/50">{s.investment}</p>
+                </div>
+              ))}
+            </div>
+            <div className="grid grid-cols-4 gap-4 text-center mt-4 pt-4 border-t border-border/20">
+              {[
+                { label: "Vendor Coordination", vals: ["Day-of only", "Select vendors", "All vendors"] },
+                { label: "Design Direction", vals: ["—", "Guidance", "Full creative"] },
+                { label: "Timeline Management", vals: ["✓", "✓", "✓"] },
+              ].map((row) => (
+                <div key={row.label} className="contents">
+                  <p className="font-sans-wedding text-[0.55rem] tracking-[0.1em] uppercase text-muted-foreground/40 text-left py-2">
+                    {row.label}
+                  </p>
+                  {row.vals.map((val, i) => (
+                    <p key={i} className="font-sans-wedding text-xs text-muted-foreground/50 font-light py-2">
+                      {val}
+                    </p>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
 
         <ScrollReveal delay={0.3}>
           <div className="text-center mt-14 md:mt-20">

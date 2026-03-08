@@ -1,6 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Navigation from "./Navigation";
 import MagneticButton from "./MagneticButton";
 import heroImage from "@/assets/hero-wedding.jpg";
@@ -45,6 +45,7 @@ const trustCredentials = [
 
 const HeroSection = () => {
   const ref = useRef<HTMLElement>(null);
+  const [isInsetHovered, setIsInsetHovered] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -54,6 +55,7 @@ const HeroSection = () => {
   const contentY = useTransform(scrollYProgress, [0, 0.5], ["0%", "10%"]);
   const secondaryImgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const secondaryImgOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const sideTextY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   useEffect(() => {
     document.title = "Hickory & Rose | Edmonton's Luxury Wedding Planner";
@@ -89,6 +91,18 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/10" />
       </div>
 
+      {/* Radial light glow behind headline */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 3, delay: 1.2 }}
+        style={{
+          background: "radial-gradient(ellipse at center, hsl(var(--gold) / 0.04) 0%, transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
+
       {/* Large decorative ampersand watermark */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
@@ -98,6 +112,50 @@ const HeroSection = () => {
       >
         <span className="font-script text-[22rem] md:text-[32rem] text-white leading-none">
           &
+        </span>
+      </motion.div>
+
+      {/* Left sidebar — "Scroll to Explore" vertical text */}
+      <motion.div
+        className="absolute left-6 md:left-10 top-1/2 z-20 hidden lg:flex flex-col items-center gap-4 pointer-events-none"
+        style={{ y: sideTextY }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 3.2, duration: 0.8 }}
+        aria-hidden="true"
+      >
+        <motion.div
+          className="w-px h-12 origin-top"
+          style={{ background: "linear-gradient(180deg, transparent, hsl(var(--gold) / 0.3))" }}
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+          transition={{ delay: 3.4, duration: 0.8 }}
+        />
+        <span
+          className="font-sans-wedding text-[0.45rem] tracking-[0.3em] uppercase text-white/20 font-light"
+          style={{ writingMode: "vertical-rl" }}
+        >
+          Scroll to Explore
+        </span>
+        <motion.div
+          className="w-px h-8 origin-top"
+          style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.2), transparent)" }}
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+          transition={{ delay: 3.6, duration: 0.6 }}
+        />
+      </motion.div>
+
+      {/* Right sidebar — Year + Season */}
+      <motion.div
+        className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 z-20 hidden lg:flex flex-col items-center gap-3 pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 3.5, duration: 0.8 }}
+        aria-hidden="true"
+      >
+        <span className="font-serif-wedding text-xs text-white/15 tracking-widest" style={{ writingMode: "vertical-rl" }}>
+          2025 · 2026
         </span>
       </motion.div>
 
@@ -188,24 +246,51 @@ const HeroSection = () => {
         animate={{ opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)" }}
         transition={{ duration: 1.2, delay: 2.5, ease: [0.25, 0.1, 0.25, 1] }}
       >
-        <div className="relative group">
-          <div className="w-40 xl:w-48 aspect-[3/4] overflow-hidden shadow-2xl">
+        <div
+          className="relative group"
+          onMouseEnter={() => setIsInsetHovered(true)}
+          onMouseLeave={() => setIsInsetHovered(false)}
+        >
+          <div className="w-40 xl:w-48 aspect-[3/4] overflow-hidden shadow-2xl relative">
             <img
               src={ceremonyImage}
               alt="Mountain barn ceremony with candlelit aisle and eucalyptus garlands"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               loading="eager"
             />
+            {/* Cinematic gradient on hover */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
+              animate={{ opacity: isInsetHovered ? 1 : 0 }}
+              transition={{ duration: 0.4 }}
+            />
+            {/* Corner frame accents */}
+            <div className="absolute top-2 left-2 w-5 h-5 border-t border-l border-white/0 group-hover:border-white/20 transition-all duration-700" />
+            <div className="absolute bottom-2 right-2 w-5 h-5 border-b border-r border-white/0 group-hover:border-white/20 transition-all duration-700" />
+            {/* Hover caption */}
+            <motion.div
+              className="absolute bottom-3 left-3 right-3"
+              initial={false}
+              animate={{ opacity: isInsetHovered ? 1 : 0, y: isInsetHovered ? 0 : 6 }}
+              transition={{ duration: 0.3 }}
+            >
+              <p className="font-serif-wedding text-[0.6rem] text-white/60 italic">
+                "A ceremony as calm as the mountains"
+              </p>
+            </motion.div>
           </div>
           {/* Elegant caption below inset */}
-          <motion.p
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 3.2, duration: 0.6 }}
-            className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/30 mt-3 text-right"
+            className="flex items-center justify-end gap-2 mt-3"
           >
-            Jasper · Alberta
-          </motion.p>
+            <span className="w-4 h-px bg-white/15" />
+            <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/30">
+              Jasper · Alberta
+            </span>
+          </motion.div>
         </div>
       </motion.div>
 
