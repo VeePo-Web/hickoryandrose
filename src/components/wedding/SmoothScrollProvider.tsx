@@ -1,12 +1,16 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import Lenis from "lenis";
 import { useLocation } from "react-router-dom";
 
 const SmoothScrollProvider = ({ children }: { children: React.ReactNode }) => {
   const lenisRef = useRef<Lenis | null>(null);
+  const rafIdRef = useRef<number>(0);
   const { pathname } = useLocation();
 
   useEffect(() => {
+    // Skip smooth scroll on touch devices for better native performance
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+
     const lenis = new Lenis({
       lerp: 0.07,
       smoothWheel: true,
@@ -16,22 +20,24 @@ const SmoothScrollProvider = ({ children }: { children: React.ReactNode }) => {
 
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafIdRef.current = requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+    rafIdRef.current = requestAnimationFrame(raf);
 
-    // Pause when tab hidden
     const handleVisibility = () => {
       if (document.hidden) {
         lenis.stop();
+        cancelAnimationFrame(rafIdRef.current);
       } else {
         lenis.start();
+        rafIdRef.current = requestAnimationFrame(raf);
       }
     };
     document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
       document.removeEventListener("visibilitychange", handleVisibility);
+      cancelAnimationFrame(rafIdRef.current);
       lenis.destroy();
     };
   }, []);
