@@ -221,8 +221,21 @@ const Portfolio = () => {
       </section>
 
       {/* Gallery */}
-      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
-        <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden">
+        {/* Parallax watermark */}
+        <motion.div
+          className="absolute -left-4 top-1/4 pointer-events-none select-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+        >
+          <span className="font-serif-wedding text-[8rem] md:text-[14rem] font-light text-foreground/[0.015] whitespace-nowrap tracking-tight italic leading-none">
+            Stories
+          </span>
+        </motion.div>
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative">
           <motion.div layout className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
             <AnimatePresence mode="popLayout">
               {filtered.map((story, index) => (
