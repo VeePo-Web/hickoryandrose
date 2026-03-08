@@ -125,9 +125,14 @@ const Inquire = () => {
 
   /* ─── Shared input styles ─── */
   const inputCls = (field: keyof InquiryForm) =>
-    `w-full px-0 py-3 bg-transparent border-0 border-b font-sans-wedding text-base md:text-lg text-foreground font-light placeholder:text-muted-foreground/40 focus:outline-none focus:ring-0 transition-colors duration-200 ${
-      errors[field] ? "border-destructive" : "border-border/60 focus:border-primary"
+    `w-full px-0 py-3 bg-transparent border-0 border-b font-sans-wedding text-base md:text-lg text-foreground font-light placeholder:text-muted-foreground/40 focus:outline-none focus:ring-0 transition-colors duration-300 ${
+      errors[field] ? "border-destructive" : "border-border/60 focus:border-transparent"
     }`;
+
+  /** Wraps an input to add the gold underline focus effect */
+  const InputWrapper = ({ children }: { children: React.ReactNode }) => (
+    <div className="input-gold-focus relative">{children}</div>
+  );
 
   /* ─── Pill selector ─── */
   const PillSelect = ({
