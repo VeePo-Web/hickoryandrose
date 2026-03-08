@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import MagneticButton from "./MagneticButton";
 import receptionImage from "@/assets/portfolio-reception.jpg";
@@ -7,12 +7,18 @@ import ceremonyImage from "@/assets/ceremony-setup.jpg";
 
 const CTASection = () => {
   const ref = useRef<HTMLElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
-  const insetY = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+  const insetY = useTransform(scrollYProgress, [0, 1], ["15%", "-15%"]);
+  const ornamentScale = useTransform(scrollYProgress, [0.2, 0.6], [0, 1]);
+  const watermarkOpacity = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);
+  const ribbonX = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
 
   return (
     <section
@@ -20,114 +26,218 @@ const CTASection = () => {
       className="relative py-section-mobile md:py-section-tablet lg:py-section-desktop overflow-hidden grain-overlay vignette"
       aria-label="Get in touch"
     >
+      {/* Cinematic parallax background */}
       <div className="absolute inset-0">
         <motion.img
           src={receptionImage}
           alt=""
-          className="w-full h-[120%] object-cover"
+          className="w-full h-[130%] object-cover"
           style={{ y }}
           loading="lazy"
           aria-hidden="true"
         />
-        {/* Multi-layer gradient for cinematic depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/65 to-foreground/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-foreground/15 via-transparent to-foreground/10" />
+        {/* Multi-layer gradient for depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/60 to-foreground/85" />
+        <div className="absolute inset-0 bg-gradient-to-r from-foreground/20 via-transparent to-foreground/15" />
+        {/* Vignette overlay */}
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "radial-gradient(ellipse at center, transparent 30%, hsl(var(--foreground) / 0.3) 100%)"
+          }}
+        />
       </div>
 
-      {/* Decorative background monogram */}
+      {/* Floating "Begin" watermark */}
       <motion.div
-        className="absolute inset-0 flex items-center justify-center pointer-events-none"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 2 }}
+        className="absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block"
+        style={{ opacity: watermarkOpacity }}
         aria-hidden="true"
       >
-        <span className="font-script text-[12rem] md:text-[18rem] text-white/[0.03] select-none leading-none">
+        <motion.span
+          className="font-serif-wedding text-[10rem] text-white/[0.02] leading-none tracking-tight -rotate-90 inline-block origin-center"
+          style={{ x: ribbonX }}
+        >
+          Begin
+        </motion.span>
+      </motion.div>
+
+      {/* Decorative ampersand monogram */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 2, ease: [0.25, 0.1, 0.25, 1] }}
+        aria-hidden="true"
+      >
+        <span className="font-script text-[14rem] md:text-[20rem] text-white/[0.02] select-none leading-none">
           &
         </span>
       </motion.div>
 
+      {/* Top decorative hairline */}
+      <motion.div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 md:h-32 origin-top"
+        style={{ 
+          scaleY: ornamentScale,
+          background: "linear-gradient(180deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.3), transparent)"
+        }}
+      />
+
       <div className="relative container mx-auto px-6 lg:px-8 max-w-5xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left: editorial inset image */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          {/* Left: editorial inset image with hover effects */}
           <motion.div
             className="lg:col-span-4 hidden lg:block"
             style={{ y: insetY }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
             <ScrollReveal>
-              <div className="aspect-[3/4] overflow-hidden relative">
-                <img
+              <div className="aspect-[3/4] overflow-hidden relative group">
+                <motion.img
                   src={ceremonyImage}
                   alt="Candlelit barn ceremony with mountain backdrop"
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  animate={{ scale: isHovered ? 1.05 : 1 }}
+                  transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                
+                {/* Hover reveal caption */}
+                <AnimatePresence>
+                  {isHovered && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 5 }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute bottom-4 left-4 right-4"
+                    >
+                      <p className="font-serif-wedding text-xs text-white/60 italic">
+                        "A ceremony that felt like a dream"
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+                
+                {/* Corner accent */}
+                <div className="absolute top-3 right-3 w-8 h-8 border-t border-r border-white/10" />
+                <div className="absolute bottom-3 left-3 w-8 h-8 border-b border-l border-white/10" />
               </div>
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+              
+              {/* Image attribution */}
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-                className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/25 mt-3"
+                className="flex items-center justify-between mt-4"
               >
-                Jasper Park Lodge · Summer 2024
-              </motion.p>
+                <p className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/20">
+                  Jasper Park Lodge
+                </p>
+                <p className="font-serif-wedding text-[0.55rem] italic text-white/15">
+                  Summer 2024
+                </p>
+              </motion.div>
             </ScrollReveal>
           </motion.div>
 
           {/* Right: CTA content */}
           <div className="lg:col-span-8 text-center lg:text-left">
             <ScrollReveal>
-              <p className="font-sans-wedding text-label uppercase text-white/30 mb-6">
-                <span className="inline-flex items-center gap-3">
-                  <span className="w-5 h-px bg-white/20" />
+              {/* Section label with decorative elements */}
+              <div className="flex items-center gap-4 justify-center lg:justify-start mb-8">
+                <motion.span
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="w-8 h-px bg-white/15 origin-right hidden lg:block"
+                />
+                <p className="font-sans-wedding text-label uppercase text-white/25 tracking-[0.25em]">
                   Let's Begin
-                </span>
-              </p>
+                </p>
+                <motion.span
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.1 }}
+                  className="w-8 h-px bg-white/15 origin-left"
+                />
+              </div>
 
-              <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
+              {/* Main headline with staggered reveal */}
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.2 }}
-                className="w-16 h-px bg-white/15 mb-10 origin-left hidden lg:block"
-              />
-              <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.2 }}
-                className="w-16 h-px bg-white/15 mx-auto mb-10 origin-center lg:hidden"
-              />
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="font-serif-wedding text-display-lg text-white mb-6 leading-[1.1]"
+              >
+                Ready to feel{" "}
+                <span className="font-script text-[1.15em] text-white/80">calm</span>
+                <br className="hidden md:block" />
+                {" "}about your wedding day?
+              </motion.h2>
 
-              <h2 className="font-serif-wedding text-display-lg text-white mb-4 leading-tight">
-                Ready to feel calm about your wedding day?
-              </h2>
-              <p className="font-sans-wedding text-sm text-white/50 leading-relaxed mb-4 max-w-md font-light lg:mx-0 mx-auto">
+              {/* Subtext */}
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="font-sans-wedding text-sm text-white/45 leading-relaxed mb-6 max-w-md font-light lg:mx-0 mx-auto"
+              >
                 Let's talk about your vision, your day, and how Hickory & Rose can
                 make it effortlessly beautiful.
-              </p>
+              </motion.p>
 
-              {/* Trust line */}
-              <p className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-white/25 mb-12">
-                Complimentary discovery call · No obligation · Typically responds within 48 hours
-              </p>
-
-              <MagneticButton to="/inquire" variant="outline-light">
-                Begin Your Story
-              </MagneticButton>
-
-              {/* Subtle bottom attribution */}
+              {/* Trust signals with staggered entrance */}
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="mt-16"
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-2 mb-10"
               >
-                <span className="font-script text-lg text-white/15">
+                {["Complimentary discovery call", "No obligation", "Responds within 48 hours"].map((signal, i) => (
+                  <span
+                    key={signal}
+                    className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-white/20 flex items-center gap-2"
+                  >
+                    {i > 0 && <span className="w-1 h-1 rounded-full bg-white/10" />}
+                    {signal}
+                  </span>
+                ))}
+              </motion.div>
+
+              {/* CTA Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                <MagneticButton to="/inquire" variant="outline-light">
+                  Begin Your Story
+                </MagneticButton>
+              </motion.div>
+
+              {/* Bottom script attribution */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.7 }}
+                className="mt-16 flex items-center gap-4 justify-center lg:justify-start"
+              >
+                <span className="w-12 h-px bg-white/10" />
+                <span className="font-script text-lg text-white/10">
                   Hickory & Rose
                 </span>
               </motion.div>
@@ -135,6 +245,15 @@ const CTASection = () => {
           </div>
         </div>
       </div>
+
+      {/* Bottom decorative hairline */}
+      <motion.div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-16 md:h-24 origin-bottom"
+        style={{ 
+          scaleY: ornamentScale,
+          background: "linear-gradient(0deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.2), transparent)"
+        }}
+      />
     </section>
   );
 };
