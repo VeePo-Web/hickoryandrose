@@ -256,19 +256,28 @@ const TestimonialSection = () => {
                 aria-hidden="true"
               />
 
-              <div className="grid grid-cols-2 gap-3">
+               <div className="grid grid-cols-2 gap-3">
                 <ImageReveal direction="up" delay={0.1}>
-                  <div className="aspect-[3/4] overflow-hidden relative group">
+                  <div className="aspect-[3/4] overflow-hidden relative group/img">
                     <img
                       src={galleryImages[0].src}
                       alt={galleryImages[0].alt}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700"
                       loading="lazy"
                       width={512}
                       height={683}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/5 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500" />
+                    {/* Gold corner frame accents on hover */}
+                    <div className="absolute top-3 left-3 w-8 h-8 opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                      <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.4), transparent)" }} />
+                      <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), transparent)" }} />
+                    </div>
+                    <div className="absolute bottom-3 right-3 w-8 h-8 opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                      <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.4), transparent)" }} />
+                      <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.4), transparent)" }} />
+                    </div>
+                    <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 translate-y-2 group-hover/img:translate-y-0">
                       <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/50 block">
                         {galleryImages[0].label}
                       </span>
