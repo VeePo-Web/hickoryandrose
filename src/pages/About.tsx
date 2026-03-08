@@ -12,22 +12,26 @@ import MagneticButton from "@/components/wedding/MagneticButton";
 import founderImage from "@/assets/founder-portrait.jpg";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import aboutHeroImage from "@/assets/about-hero.jpg";
+import editorialFloralsImage from "@/assets/editorial-florals.jpg";
 
 const values = [
   {
     title: "Calm Leadership",
+    pullQuote: "Presence over panic.",
     description:
-      "We lead with quiet confidence so you never feel rushed, pressured, or anxious.",
+      "We lead with quiet confidence so you never feel rushed, pressured, or anxious. Our composed presence on the day means you can exhale and simply be in the moment.",
   },
   {
     title: "Intentional Design",
+    pullQuote: "Nothing accidental.",
     description:
-      "Every detail is considered — nothing is accidental, everything has meaning.",
+      "Every detail is considered — from the arc of your ceremony to the way light falls across your tablescape. We design with purpose so every element tells your story.",
   },
   {
     title: "Genuine Care",
+    pullQuote: "Not a project — a privilege.",
     description:
-      "Your wedding isn't a project to us. It's a privilege and a responsibility we take personally.",
+      "Your wedding isn't a line item to us. It's a responsibility we take personally. We invest emotionally because we believe that's the only way to create something truly meaningful.",
   },
 ];
 
@@ -41,12 +45,19 @@ const milestones = [
 
 const About = () => {
   const heroRef = useRef<HTMLElement>(null);
+  const founderRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  const { scrollYProgress: founderScroll } = useScroll({
+    target: founderRef,
+    offset: ["start end", "end start"],
+  });
+  const founderImgY = useTransform(founderScroll, [0, 1], ["4%", "-4%"]);
 
   useEffect(() => {
     setPageMeta({
@@ -96,17 +107,18 @@ const About = () => {
         </motion.div>
       </section>
 
-      {/* Founder Story */}
+      {/* Founder Story — editorial asymmetric */}
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
-        <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div ref={founderRef} className="container mx-auto px-6 lg:px-8 max-w-5xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <ScrollReveal>
               <ImageReveal direction="left" delay={0.1}>
-                <div className="aspect-[3/4] overflow-hidden">
-                  <img
+                <div className="aspect-[3/4] overflow-hidden sticky top-28">
+                  <motion.img
                     src={founderImage}
                     alt="Founder of Hickory & Rose"
-                    className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700"
+                    className="w-full h-[110%] object-cover"
+                    style={{ y: founderImgY }}
                     loading="lazy"
                   />
                 </div>
@@ -114,10 +126,16 @@ const About = () => {
             </ScrollReveal>
             <ScrollReveal delay={0.15}>
               <div>
-                <h2 className="font-serif-wedding text-display-lg text-foreground mb-6">
+                <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-3">
+                  <span className="inline-flex items-center gap-3">
+                    <span className="w-5 h-px bg-primary/30" />
+                    The Founder
+                  </span>
+                </p>
+                <h2 className="font-serif-wedding text-display-lg text-foreground mb-8">
                   The heart behind every detail.
                 </h2>
-                <div className="space-y-4 font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
+                <div className="space-y-5 font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
                   <p className="drop-cap">
                     I founded Hickory & Rose with a simple belief: your wedding
                     day should feel as calm as it is beautiful.
@@ -134,11 +152,17 @@ const About = () => {
                     wedding we touch.
                   </p>
                 </div>
-                <div className="mt-8">
-                  <MagneticButton to="/inquire" variant="outline">
-                    Work With Us
-                  </MagneticButton>
+
+                {/* Pull quote */}
+                <div className="border-l-2 border-primary/20 pl-5 my-10">
+                  <p className="font-serif-wedding text-base text-foreground/70 italic leading-relaxed">
+                    "Calm is not the absence of planning — it's the presence of it."
+                  </p>
                 </div>
+
+                <MagneticButton to="/inquire" variant="outline">
+                  Work With Us
+                </MagneticButton>
               </div>
             </ScrollReveal>
           </div>
@@ -172,45 +196,66 @@ const About = () => {
         height="h-[35vh] md:h-[45vh]"
       />
 
-      {/* Values — horizontal ruled rows */}
+      {/* Values — editorial cards with pull quotes */}
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
-        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
           <ScrollReveal>
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 md:mb-24">
               <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
-                Our Values
+                <span className="inline-flex items-center gap-3">
+                  <span className="w-5 h-px bg-border" />
+                  Our Values
+                  <span className="w-5 h-px bg-border" />
+                </span>
               </p>
               <h2 className="font-serif-wedding text-display-lg text-foreground">
                 What Guides Us
               </h2>
             </div>
           </ScrollReveal>
-          <div className="space-y-0">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {values.map((value, index) => (
-              <ScrollReveal key={value.title} delay={index * 0.08}>
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline py-10 border-t border-border/60 group">
-                  <div className="md:col-span-1">
-                    <span className="font-serif-wedding text-4xl font-light text-primary/15 group-hover:text-primary/30 transition-colors duration-700">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <div className="md:col-span-4">
-                    <h3 className="font-serif-wedding text-display-md text-foreground group-hover:text-primary transition-colors duration-500">
-                      {value.title}
-                    </h3>
-                  </div>
-                  <div className="md:col-span-7">
-                    <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
-                      {value.description}
-                    </p>
-                  </div>
+              <ScrollReveal key={value.title} delay={index * 0.1}>
+                <div className="group">
+                  {/* Number */}
+                  <span className="font-serif-wedding text-5xl font-light text-primary/10 group-hover:text-primary/20 transition-colors duration-700 block mb-4">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* Expanding accent line */}
+                  <motion.div
+                    className="h-px bg-primary/25 mb-6 origin-left"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
+                  />
+
+                  <h3 className="font-serif-wedding text-display-md text-foreground mb-2 group-hover:text-primary transition-colors duration-500">
+                    {value.title}
+                  </h3>
+
+                  <p className="font-serif-wedding text-sm italic text-primary/50 mb-4">
+                    {value.pullQuote}
+                  </p>
+
+                  <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
+                    {value.description}
+                  </p>
                 </div>
               </ScrollReveal>
             ))}
-            <div className="border-t border-border/60" />
           </div>
         </div>
       </section>
+
+      {/* Editorial image break */}
+      <FullWidthImage
+        src={editorialFloralsImage}
+        alt="Sage eucalyptus and ivory garden rose arrangement detail"
+        height="h-[25vh] md:h-[35vh]"
+      />
 
       {/* Journey — horizontal ruled rows */}
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
@@ -218,7 +263,11 @@ const About = () => {
           <ScrollReveal>
             <div className="text-center mb-16">
               <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
-                Our Journey
+                <span className="inline-flex items-center gap-3">
+                  <span className="w-5 h-px bg-border" />
+                  Our Journey
+                  <span className="w-5 h-px bg-border" />
+                </span>
               </p>
               <h2 className="font-serif-wedding text-display-lg text-foreground">
                 Milestones Along the Way
@@ -235,7 +284,16 @@ const About = () => {
                       {milestone.year}
                     </span>
                   </div>
-                  <div className="md:col-span-10">
+                  <div className="md:col-span-1 hidden md:block">
+                    <motion.div
+                      className="w-full h-px bg-primary/20 origin-left"
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.08 }}
+                    />
+                  </div>
+                  <div className="md:col-span-9">
                     <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
                       {milestone.event}
                     </p>
@@ -253,7 +311,11 @@ const About = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
           <ScrollReveal>
             <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 text-center mb-12">
-              Press & Recognition
+              <span className="inline-flex items-center gap-3">
+                <span className="w-5 h-px bg-border" />
+                Press & Recognition
+                <span className="w-5 h-px bg-border" />
+              </span>
             </p>
             <div className="flex flex-wrap items-baseline justify-center gap-x-10 md:gap-x-16 gap-y-6">
               {[
@@ -270,7 +332,7 @@ const About = () => {
                   transition={{ delay: i * 0.08, duration: 0.5 }}
                   className="text-center"
                 >
-                  <p className="font-serif-wedding text-xl md:text-2xl font-light text-foreground/25 mb-1">
+                  <p className="font-serif-wedding text-xl md:text-2xl italic font-light text-foreground/20 mb-1">
                     {press.publication}
                   </p>
                   <p className="font-sans-wedding text-[0.625rem] tracking-[0.12em] uppercase text-muted-foreground/40">

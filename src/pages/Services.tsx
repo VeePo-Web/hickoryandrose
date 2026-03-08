@@ -13,6 +13,7 @@ import servicesHeroImage from "@/assets/services-hero.jpg";
 import servicePlanningImage from "@/assets/service-planning.jpg";
 import serviceStationeryImage from "@/assets/service-stationery.jpg";
 import serviceFullserviceImage from "@/assets/service-fullservice.jpg";
+import editorialFloralsImage from "@/assets/editorial-florals.jpg";
 
 const serviceTiers = [
   {
@@ -145,22 +146,48 @@ const Services = () => {
         </motion.div>
       </section>
 
+      {/* Editorial Intro — asymmetric layout */}
+      <section className="py-16 md:py-24 bg-card">
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+          <ScrollReveal>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-baseline">
+              <div className="md:col-span-5">
+                <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-3">
+                  <span className="inline-flex items-center gap-3">
+                    <span className="w-5 h-px bg-primary/30" />
+                    Our Philosophy
+                  </span>
+                </p>
+                <h2 className="font-serif-wedding text-display-md text-foreground leading-tight">
+                  No two love stories are the same.
+                </h2>
+              </div>
+              <div className="md:col-span-7">
+                <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
+                  We don't believe in one-size-fits-all packages. Whether you've already mapped every detail or are starting from a blank page, our role adapts to yours. Each tier below represents a starting point — your custom proposal will reflect what you truly need.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Service Tiers */}
       {serviceTiers.map((service, index) => (
         <div key={service.id}>
           <section
             id={service.id}
             className={`py-section-mobile md:py-section-tablet lg:py-section-desktop ${
-              index % 2 === 0 ? "bg-card" : "bg-background"
+              index % 2 === 0 ? "bg-background" : "bg-card"
             }`}
           >
             <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
-              <div className={`grid grid-cols-1 ${service.image ? "lg:grid-cols-2 gap-12 lg:gap-16 items-center" : "max-w-4xl mx-auto"}`}>
+              <div className={`grid grid-cols-1 ${service.image ? "lg:grid-cols-2 gap-12 lg:gap-16 items-start" : "max-w-4xl mx-auto"}`}>
                 {/* Image column (alternating sides) */}
                 {service.image && index % 2 === 0 && (
                   <ScrollReveal>
                     <ImageReveal direction="left">
-                      <div className="aspect-[4/5] overflow-hidden">
+                      <div className="aspect-[4/5] overflow-hidden sticky top-28">
                         <img
                           src={service.image}
                           alt={service.imageAlt}
@@ -177,7 +204,10 @@ const Services = () => {
                   <ScrollReveal delay={service.image ? 0.1 : 0}>
                     <div className={`${service.image ? "" : "text-center"} mb-10`}>
                       <p className="font-sans-wedding text-label uppercase text-primary/60 mb-3">
-                        {String(index + 1).padStart(2, "0")}
+                        <span className="inline-flex items-center gap-3">
+                          <span className="w-4 h-px bg-primary/30" />
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
                       </p>
                       <h2 className="font-serif-wedding text-display-lg text-foreground mb-2">
                         {service.title}
@@ -211,7 +241,14 @@ const Services = () => {
                             variants={listItem}
                             className="flex items-start gap-3"
                           >
-                            <span className="w-1 h-1 rounded-full bg-primary mt-2.5 shrink-0" />
+                            <motion.span
+                              className="w-5 h-px bg-primary/40 mt-2.5 shrink-0"
+                              initial={{ scaleX: 0 }}
+                              whileInView={{ scaleX: 1 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.4, delay: i * 0.06 }}
+                              style={{ originX: 0 }}
+                            />
                             <span className="font-sans-wedding text-body-sm text-foreground font-light">
                               {item}
                             </span>
@@ -219,9 +256,13 @@ const Services = () => {
                         ))}
                       </motion.ul>
                     </div>
-                    <p className={`font-sans-wedding text-caption text-muted-foreground/60 ${service.image ? "" : "text-center"} italic font-light`}>
-                      Ideal for: {service.idealFor}
-                    </p>
+
+                    {/* Ideal-for pull quote */}
+                    <div className="border-l-2 border-primary/15 pl-5 mt-8">
+                      <p className="font-serif-wedding text-sm italic text-foreground/60 leading-relaxed">
+                        Ideal for: {service.idealFor}
+                      </p>
+                    </div>
                   </ScrollReveal>
                 </div>
 
@@ -229,7 +270,7 @@ const Services = () => {
                 {service.image && index % 2 !== 0 && (
                   <ScrollReveal>
                     <ImageReveal direction="right">
-                      <div className="aspect-[4/5] overflow-hidden">
+                      <div className="aspect-[4/5] overflow-hidden sticky top-28">
                         <img
                           src={service.image}
                           alt={service.imageAlt}
@@ -243,6 +284,15 @@ const Services = () => {
               </div>
             </div>
           </section>
+
+          {/* Editorial image break between tiers */}
+          {index < serviceTiers.length - 1 && index === 0 && (
+            <FullWidthImage
+              src={editorialFloralsImage}
+              alt="Sage eucalyptus and ivory garden rose arrangement detail"
+              height="h-[25vh] md:h-[35vh]"
+            />
+          )}
         </div>
       ))}
 
@@ -276,7 +326,13 @@ const Services = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">Find Your Fit</p>
+              <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
+                <span className="inline-flex items-center gap-3">
+                  <span className="w-5 h-px bg-border" />
+                  Find Your Fit
+                  <span className="w-5 h-px bg-border" />
+                </span>
+              </p>
               <h2 className="font-serif-wedding text-display-lg text-foreground">
                 Not sure which service is right?
               </h2>
