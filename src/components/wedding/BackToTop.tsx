@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 
 const RADIUS = 18;
@@ -42,6 +42,17 @@ const BackToTop = () => {
           className="fixed bottom-6 right-6 z-50 w-12 h-12 flex items-center justify-center bg-foreground/90 backdrop-blur-sm hover:bg-sage-deep group transition-colors duration-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 relative"
           aria-label="Back to top"
         >
+          {/* Radial glow on hover */}
+          <motion.div
+            className="absolute inset-0 pointer-events-none"
+            animate={{
+              boxShadow: isHovered
+                ? "0 0 24px 8px hsl(var(--gold) / 0.15)"
+                : "0 0 0px 0px hsl(var(--gold) / 0)",
+            }}
+            transition={{ duration: 0.4 }}
+          />
+
           {/* SVG progress ring */}
           <svg
             className="absolute inset-0 w-full h-full -rotate-90"
@@ -71,7 +82,7 @@ const BackToTop = () => {
             />
           </svg>
 
-          {/* H&R monogram instead of arrow */}
+          {/* H&R monogram */}
           <motion.span
             className="relative z-10 font-script text-sm text-background/60 group-hover:text-primary-foreground transition-colors duration-300 select-none"
             animate={{ y: isHovered ? -1 : 0 }}
