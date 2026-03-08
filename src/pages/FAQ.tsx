@@ -60,7 +60,11 @@ const faqSchema = {
 
 const FAQ = () => {
   useEffect(() => {
-    document.title = "FAQ | Hickory & Rose — Edmonton Wedding Planner";
+    setPageMeta({
+      title: "FAQ — Frequently Asked Questions | Hickory & Rose Wedding Planner",
+      description: "Answers to common questions about Hickory & Rose wedding planning services, pricing, process, and coverage areas. Serving Edmonton, the Alberta Rockies, and beyond.",
+      path: "/faq",
+    });
 
     const script = document.createElement("script");
     script.type = "application/ld+json";

@@ -91,7 +91,12 @@ const listItem = {
 
 const Services = () => {
   useEffect(() => {
-    document.title = "Services | Hickory & Rose — Edmonton Wedding Planner";
+    setPageMeta({
+      title: "Wedding Planning Services — Day-Of, Partial & Full-Service | Hickory & Rose",
+      description: "Explore Hickory & Rose wedding planning services in Edmonton. Day-of coordination from $2,500, partial planning from $5,000, full-service from $8,500. Custom proposals for every couple.",
+      path: "/services",
+    });
+  }, []);
   }, []);
 
   return (

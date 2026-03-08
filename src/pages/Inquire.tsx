@@ -25,7 +25,12 @@ const nextSteps = [
 
 const Inquire = () => {
   useEffect(() => {
-    document.title = "Inquire | Hickory & Rose — Edmonton Wedding Planner";
+    setPageMeta({
+      title: "Inquire — Start Planning Your Wedding | Hickory & Rose Edmonton",
+      description: "Ready to plan your dream wedding? Reach out to Hickory & Rose for a complimentary discovery call. No pressure, just a warm conversation about your vision.",
+      path: "/inquire",
+    });
+  }, []);
   }, []);
 
   const [formData, setFormData] = useState({
