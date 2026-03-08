@@ -3,10 +3,10 @@ import { motion, useInView } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
 const stats = [
-  { value: 75, suffix: "+", label: "Weddings Planned" },
-  { value: 7, suffix: "", label: "Years of Experience" },
-  { value: 100, suffix: "%", label: "Five-Star Reviews" },
-  { value: 15, suffix: "-20", label: "Weddings Per Year" },
+  { value: 75, suffix: "+", label: "Weddings Planned", detail: "and counting" },
+  { value: 7, suffix: "", label: "Years of Experience", detail: "since 2018" },
+  { value: 100, suffix: "%", label: "Five-Star Reviews", detail: "every single one" },
+  { value: 15, suffix: "–20", label: "Weddings Per Year", detail: "intentionally limited" },
 ];
 
 const AnimatedCounter = ({
@@ -52,57 +52,49 @@ const StatsSection = () => {
       className="py-section-mobile md:py-section-tablet bg-foreground relative overflow-hidden"
       aria-label="Our impact"
     >
-      {/* Subtle radial accent */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: "radial-gradient(circle at 50% 50%, hsl(var(--primary-foreground)) 1px, transparent 1px)",
-        backgroundSize: "40px 40px",
-      }} />
-
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
         <ScrollReveal>
-          <div className="text-center mb-12 md:mb-16">
-            <p className="font-overline text-background/30 mb-4">
-              By the Numbers
-            </p>
-            <div className="w-10 h-px bg-background/15 mx-auto" />
-          </div>
+          <p className="font-overline text-background/25 mb-16 md:mb-24 text-center">
+            By the Numbers
+          </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-y-20 gap-x-16">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{
-                duration: 0.5,
+                duration: 0.6,
                 delay: index * 0.1,
                 ease: [0.25, 0.1, 0.25, 1],
               }}
-              className={`text-center relative ${
-                index < stats.length - 1
-                  ? "md:border-r md:border-background/10"
-                  : ""
-              }`}
+              className="group"
             >
-              <p className="font-serif-wedding text-display-xl text-background mb-2">
-                <AnimatedCounter
-                  target={stat.value}
-                  suffix={stat.suffix}
-                />
+              <p className="font-serif-wedding text-7xl md:text-8xl font-light text-background/90 mb-3 leading-none tracking-tight">
+                <AnimatedCounter target={stat.value} suffix={stat.suffix} />
               </p>
-              <p className="font-overline text-background/40">{stat.label}</p>
+              <div className="flex items-center gap-3">
+                <span className="w-6 h-px bg-primary/50" />
+                <p className="font-overline text-background/40">{stat.label}</p>
+              </div>
+              <p className="font-sans-wedding text-xs text-background/20 mt-2 font-light italic">
+                {stat.detail}
+              </p>
             </motion.div>
           ))}
         </div>
 
-        {/* Bottom flourish */}
+        {/* Brand signature */}
         <ScrollReveal delay={0.4}>
-          <div className="flex items-center justify-center gap-3 mt-14 md:mt-20">
-            <span className="w-8 h-px bg-background/15" />
-            <span className="font-script text-lg text-background/20">H & R</span>
-            <span className="w-8 h-px bg-background/15" />
+          <div className="flex items-center justify-center gap-3 mt-20 md:mt-28">
+            <span className="w-8 h-px bg-background/10" />
+            <span className="font-script text-xl text-background/15">
+              H & R
+            </span>
+            <span className="w-8 h-px bg-background/10" />
           </div>
         </ScrollReveal>
       </div>
