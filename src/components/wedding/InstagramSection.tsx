@@ -65,7 +65,9 @@ const InstagramSection = () => {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300" />
+              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-colors duration-500 flex items-center justify-center">
+                <Instagram size={20} strokeWidth={1.5} className="text-background opacity-0 group-hover:opacity-70 transition-opacity duration-500" />
+              </div>
             </motion.a>
           ))}
         </div>
