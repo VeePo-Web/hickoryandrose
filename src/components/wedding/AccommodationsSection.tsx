@@ -142,7 +142,7 @@ const AccommodationsSection = () => {
             <p className="font-sans-wedding text-sm text-wedding-text-light">
               Need help with accommodations?{" "}
               <a 
-                href="mailto:rsvp@aliciaandandres.com" 
+                href="mailto:sales@hickoryandrose.com" 
                 className="text-wedding-teal hover:underline"
                 onClick={() => toast.info("Opening email client...")}
               >

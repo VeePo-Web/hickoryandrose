@@ -297,10 +297,10 @@ const RSVPSection = () => {
           <p className="font-sans-wedding text-xs text-wedding-text-light text-center mt-12">
             Questions? Reach out at{" "}
             <a
-              href="mailto:rsvp@aliciaandandres.com"
+              href="mailto:sales@hickoryandrose.com"
               className="text-wedding-teal hover:underline"
             >
-              rsvp@aliciaandandres.com
+              sales@hickoryandrose.com
             </a>
           </p>
         </ScrollReveal>
