@@ -624,9 +624,12 @@ const Inquire = () => {
                     {step === 3 && "Your Vision"}
                   </p>
                 </div>
-                <div className="h-px bg-border/40 w-full overflow-hidden">
+                <div className="h-px bg-border/40 w-full overflow-hidden relative">
                   <motion.div
-                    className="h-full bg-primary"
+                    className="h-full"
+                    style={{
+                      background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--gold)), hsl(var(--primary)))",
+                    }}
                     animate={{ width: `${progress}%` }}
                     transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0] }}
                   />
