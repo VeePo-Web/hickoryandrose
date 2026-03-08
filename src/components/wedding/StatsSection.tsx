@@ -92,6 +92,16 @@ const StatsSection = () => {
         aria-hidden="true"
       />
 
+      {/* Scroll-linked vertical accent line (desktop) */}
+      <motion.div
+        className="absolute left-6 md:left-12 top-0 bottom-0 w-px hidden md:block origin-top pointer-events-none"
+        style={{
+          scaleY: horizontalRuleScale,
+          background: "linear-gradient(180deg, transparent, hsl(var(--gold) / 0.2) 30%, hsl(var(--gold) / 0.08) 70%, transparent)",
+        }}
+        aria-hidden="true"
+      />
+
       {/* Parallax monogram with breathing gold glow */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
