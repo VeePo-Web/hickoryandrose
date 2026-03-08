@@ -263,7 +263,15 @@ const Services = () => {
                       <p className="font-serif-wedding text-lg italic text-muted-foreground mb-3">
                         {service.tagline}
                       </p>
-                      <p className="font-sans-wedding text-label uppercase text-primary">
+                      <p
+                        className="font-sans-wedding text-label uppercase font-light"
+                        style={{
+                          background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--gold)))",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          backgroundClip: "text",
+                        }}
+                      >
                         {service.investment}
                       </p>
                     </div>
