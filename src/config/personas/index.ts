@@ -15,3 +15,4 @@ export { VISUAL_PERSONA } from './ui-visual';
 export { FOOTER_PERSONA } from './ui-footer';
 export { POLISHED_PAIGE } from './ideal-customer';
 export { STRATEGIC_NARRATIVE } from './strategic-narrative';
+export { MARKET_RESEARCH } from './market-research';
