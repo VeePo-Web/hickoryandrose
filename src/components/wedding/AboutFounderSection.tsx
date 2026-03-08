@@ -103,10 +103,27 @@ const AboutFounderSection = () => {
                 </p>
               </div>
 
-              <div className="border-l-2 border-primary/20 pl-5 my-10">
-                <p className="font-serif-wedding text-base text-foreground/70 italic leading-relaxed">
+              <div className="pl-5 my-10 relative">
+                <div className="absolute left-0 top-0 bottom-0 w-[2px]" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15), transparent)" }} />
+                <motion.p
+                  className="font-serif-wedding text-base text-foreground/70 italic leading-relaxed"
+                  initial={{ opacity: 0, x: -8 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                >
                   "Calm is not the absence of planning — it's the presence of it."
-                </p>
+                </motion.p>
+                <motion.span
+                  className="block mt-3 font-script-wedding text-sm tracking-wide"
+                  style={{ color: "hsl(var(--gold) / 0.45)" }}
+                  initial={{ opacity: 0, y: 6 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.5, delay: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
+                >
+                  — The Founder
+                </motion.span>
               </div>
 
               <MagneticButton to="/inquire" variant="outline">
