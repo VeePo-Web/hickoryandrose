@@ -109,7 +109,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
             <div className="hidden lg:block">
               <Link
                 to="/inquire"
-                className={`inline-flex items-center px-6 py-2.5 text-xs tracking-[0.15em] uppercase font-sans-wedding font-semibold border transition-all duration-200 ${
+                className={`inline-flex items-center px-6 py-2.5 text-[0.6875rem] tracking-[0.18em] uppercase font-sans-wedding font-light border transition-all duration-200 ${
                   showSolidBg
                     ? "border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                     : "border-white/60 text-white hover:bg-white/10 hover:border-white"
