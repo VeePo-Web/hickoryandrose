@@ -3,13 +3,12 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
 const stats = [
-  { value: 75, suffix: "+", label: "Weddings Planned", detail: "and counting" },
-  { value: 7, suffix: "", label: "Years of Experience", detail: "since 2018" },
-  { value: 100, suffix: "%", label: "Five-Star Reviews", detail: "every single one" },
-  { value: 15, suffix: "–20", label: "Weddings Per Year", detail: "intentionally limited" },
+  { value: 75, suffix: "+", label: "Weddings Planned", detail: "and counting", icon: "✦" },
+  { value: 7, suffix: "", label: "Years of Experience", detail: "since 2018", icon: "❖" },
+  { value: 100, suffix: "%", label: "Five-Star Reviews", detail: "every single one", icon: "✧" },
+  { value: 15, suffix: "–20", label: "Weddings Per Year", detail: "intentionally limited", icon: "◆" },
 ];
 
-/* Eased counter with deceleration curve */
 const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
 
 const AnimatedCounter = ({
@@ -56,7 +55,7 @@ const StatsSection = () => {
     offset: ["start end", "end start"],
   });
   const monogramY = useTransform(scrollYProgress, [0, 1], [30, -30]);
-  const verticalRuleHeight = useTransform(scrollYProgress, [0.1, 0.5], ["0%", "100%"]);
+  const horizontalRuleScale = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);
 
   return (
     <section
@@ -73,13 +72,6 @@ const StatsSection = () => {
           &
         </span>
       </motion.div>
-
-      {/* Vertical center rule — cinematic divider */}
-      <motion.div
-        className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-background/[0.06] to-transparent hidden md:block pointer-events-none"
-        style={{ height: verticalRuleHeight }}
-        aria-hidden="true"
-      />
 
       {/* Section index watermark */}
       <motion.div
@@ -108,6 +100,13 @@ const StatsSection = () => {
               <h2 className="font-serif-wedding text-display-md text-background/60 font-light">
                 The Story So Far
               </h2>
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="w-12 h-px bg-primary/20 origin-left mt-4"
+              />
             </div>
             <div className="md:col-span-7">
               <p className="font-sans-wedding text-body-sm text-background/25 font-light leading-relaxed max-w-sm md:ml-auto">
@@ -117,8 +116,18 @@ const StatsSection = () => {
           </div>
         </ScrollReveal>
 
-        {/* 2x2 grid with hover states */}
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        {/* Scroll-linked horizontal divider between header and stats */}
+        <motion.div
+          className="h-px mb-12 md:mb-16 origin-center"
+          style={{
+            scaleX: horizontalRuleScale,
+            background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.15), transparent)",
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Editorial ruled stat rows */}
+        <div className="space-y-0">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -130,37 +139,59 @@ const StatsSection = () => {
                 delay: index * 0.1,
                 ease: [0.25, 0.1, 0.25, 1],
               }}
-              className={`py-12 md:py-16 px-4 md:px-8 group cursor-default hover:bg-background/[0.02] transition-colors duration-700 ${
-                index >= 2 ? "border-t border-background/[0.06]" : ""
-              } ${
-                index % 2 === 1 ? "md:border-l md:border-background/[0.06]" : ""
-              }`}
+              className="group cursor-default"
             >
-              {/* Index */}
-              <span className="font-serif-wedding text-xs text-background/10 block mb-4 tabular-nums">
-                {String(index + 1).padStart(2, "0")}
-              </span>
+              {/* Top rule */}
+              <div className="h-px bg-background/[0.06]" />
 
-              <p className="font-serif-wedding text-7xl md:text-8xl font-light text-background/90 mb-4 leading-none tracking-tight group-hover:text-background transition-colors duration-500">
-                <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-              </p>
-              <div className="flex items-center gap-3 mb-2">
-                <motion.span
-                  className="w-6 h-px bg-primary/40 origin-left group-hover:w-10 transition-all duration-500"
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                />
-                <p className="font-sans-wedding text-label uppercase text-background/40 group-hover:text-background/60 transition-colors duration-500">
-                  {stat.label}
-                </p>
+              <div className="grid grid-cols-12 items-center py-10 md:py-14 hover:bg-background/[0.015] transition-colors duration-700">
+                {/* Icon + Index */}
+                <div className="col-span-2 md:col-span-1 flex flex-col items-center gap-2">
+                  <span className="font-serif-wedding text-xs text-background/10 tabular-nums">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-primary/20 text-xs group-hover:text-primary/40 transition-colors duration-500">
+                    {stat.icon}
+                  </span>
+                </div>
+
+                {/* Big number */}
+                <div className="col-span-5 md:col-span-4">
+                  <p className="font-serif-wedding text-6xl md:text-7xl lg:text-8xl font-light text-background/90 leading-none tracking-tight group-hover:text-background transition-colors duration-500">
+                    <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                  </p>
+                </div>
+
+                {/* Label + Detail — editorial right column */}
+                <div className="col-span-5 md:col-span-7 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                  <div>
+                    <div className="flex items-center gap-3 mb-1">
+                      <motion.span
+                        className="w-6 h-px bg-primary/40 origin-left group-hover:w-10 transition-all duration-500"
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                      />
+                      <p className="font-sans-wedding text-label uppercase text-background/40 group-hover:text-background/60 transition-colors duration-500">
+                        {stat.label}
+                      </p>
+                    </div>
+                    <p className="font-sans-wedding text-xs text-background/20 font-light italic pl-9 group-hover:text-background/30 transition-colors duration-500">
+                      {stat.detail}
+                    </p>
+                  </div>
+
+                  {/* Hover-reveal arrow */}
+                  <span className="hidden md:block font-serif-wedding text-sm text-background/0 group-hover:text-background/20 transition-all duration-500 translate-x-0 group-hover:translate-x-1">
+                    →
+                  </span>
+                </div>
               </div>
-              <p className="font-sans-wedding text-xs text-background/20 font-light italic pl-9 group-hover:text-background/30 transition-colors duration-500">
-                {stat.detail}
-              </p>
             </motion.div>
           ))}
+          {/* Final rule */}
+          <div className="h-px bg-background/[0.06]" />
         </div>
 
         {/* Bottom tagline */}
