@@ -668,18 +668,30 @@ const Services = () => {
                   ].map((partner, i) => (
                     <motion.div
                       key={partner.category}
-                      className="grid grid-cols-12 gap-4 py-5 border-b border-border/30 group cursor-default"
+                      className="grid grid-cols-12 gap-4 py-5 border-b border-border/30 group cursor-default relative overflow-hidden"
                       initial={{ opacity: 0, x: -8 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: 0.1 + i * 0.06 }}
                     >
-                      <div className="col-span-4">
+                      {/* Gold shimmer sweep on hover */}
+                      <div
+                        className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-[1.2s] ease-in-out pointer-events-none"
+                        style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.04) 35%, hsl(var(--gold) / 0.08) 50%, hsl(var(--gold) / 0.04) 65%, transparent 100%)" }}
+                        aria-hidden="true"
+                      />
+                      {/* Gold left accent on hover */}
+                      <div
+                        className="absolute left-0 top-0 bottom-0 w-[2px] origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500"
+                        style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))" }}
+                        aria-hidden="true"
+                      />
+                      <div className="col-span-4 relative">
                         <p className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-primary/50 group-hover:text-primary transition-colors duration-500">
                           {partner.category}
                         </p>
                       </div>
-                      <div className="col-span-8">
+                      <div className="col-span-8 relative">
                         <p className="font-sans-wedding text-body-sm text-muted-foreground/60 font-light group-hover:text-foreground transition-colors duration-500">
                           {partner.names}
                         </p>

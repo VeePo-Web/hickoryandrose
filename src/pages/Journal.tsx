@@ -485,23 +485,87 @@ const Journal = () => {
         </div>
       </section>
 
-      {/* Signature Quote */}
-      <section className="py-20 md:py-28 bg-sage-deep">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+      {/* Signature Quote — editorial with gold ornaments */}
+      <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden">
+        {/* Radial gold ambient glow */}
+        <motion.div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.06 }}
+          viewport={{ once: true }}
+          transition={{ duration: 2 }}
+          style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.12), transparent 70%)" }}
+          aria-hidden="true"
+        />
+
+        {/* Parallax watermark */}
+        <motion.div
+          className="absolute -left-4 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.025 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+        >
+          <span className="font-serif-wedding text-[10rem] md:text-[14rem] text-primary-foreground leading-none tracking-tight italic whitespace-nowrap">
+            Wisdom
+          </span>
+        </motion.div>
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
           <ScrollReveal>
+            {/* Gold diamond ornament */}
+            <div className="flex items-center justify-center gap-4 mb-10">
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-10 h-px origin-right"
+                style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25))" }}
+              />
+              <motion.span
+                className="w-2 h-2 rotate-45 shrink-0"
+                style={{
+                  background: "hsl(var(--gold) / 0.25)",
+                  boxShadow: "0 0 12px 4px hsl(var(--gold) / 0.1)",
+                }}
+                animate={{ opacity: [0.4, 0.8, 0.4], scale: [0.9, 1.1, 0.9] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-10 h-px origin-left"
+                style={{ background: "linear-gradient(270deg, transparent, hsl(var(--gold) / 0.25))" }}
+              />
+            </div>
+
+            <span className="font-serif-wedding text-6xl text-primary-foreground/[0.06] leading-none block -mb-4" aria-hidden="true">"</span>
+            <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">
+              "The best planning doesn't feel like planning — it feels like permission to simply enjoy."
+            </blockquote>
+
+            {/* Attribution with gold separator */}
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="w-12 h-px bg-primary-foreground/20 mx-auto mb-10 origin-center"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="w-8 h-px mx-auto mb-4 origin-center"
+              style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }}
             />
-            <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">
-              "The best planning doesn't feel like planning — it feels like permission to simply enjoy."
-            </blockquote>
             <span className="font-script text-xl text-primary-foreground/35">
               Hickory & Rose
             </span>
+            <div className="flex items-center justify-center gap-3 mt-3">
+              <span className="w-4 h-px bg-primary-foreground/10" />
+              <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-primary-foreground/20">
+                Est. 2018
+              </span>
+              <span className="w-4 h-px bg-primary-foreground/10" />
+            </div>
           </ScrollReveal>
         </div>
       </section>
