@@ -230,7 +230,7 @@ const Services = () => {
               Every wedding is unique, and so is every couple's planning journey.
               We'd love to learn about your vision and recommend the perfect fit.
             </p>
-            <MagneticButton to="/inquire" variant="solid">
+            <MagneticButton to="/inquire" variant="primary">
               Schedule a Discovery Call
             </MagneticButton>
           </ScrollReveal>

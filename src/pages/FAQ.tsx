@@ -130,7 +130,7 @@ const FAQ = () => {
                 We'd love to hear from you. Reach out and we'll get back to you
                 within 48 hours.
               </p>
-              <MagneticButton to="/inquire" variant="solid">
+              <MagneticButton to="/inquire" variant="primary">
                 Get in Touch
               </MagneticButton>
             </div>
