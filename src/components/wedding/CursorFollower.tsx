@@ -1,17 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { motion, useSpring } from "framer-motion";
 
 const CursorFollower = () => {
   const [visible, setVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [cursorLabel, setCursorLabel] = useState("");
+  const isTouchDevice = useRef(false);
 
   const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
   const x = useSpring(0, springConfig);
   const y = useSpring(0, springConfig);
 
   useEffect(() => {
-    if (window.matchMedia("(pointer: coarse)").matches) return;
+    // Don't mount on touch devices at all
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      isTouchDevice.current = true;
+      return;
+    }
 
     const handleMove = (e: MouseEvent) => {
       x.set(e.clientX);
@@ -52,14 +57,14 @@ const CursorFollower = () => {
     };
   }, [x, y, visible]);
 
-  if (!visible) return null;
+  // Don't render anything on touch devices or when not visible
+  if (isTouchDevice.current || !visible) return null;
 
   return (
     <motion.div
-      className="fixed top-0 left-0 z-[999] pointer-events-none mix-blend-difference"
+      className="fixed top-0 left-0 z-[999] pointer-events-none mix-blend-difference will-change-transform"
       style={{ x, y }}
     >
-      {/* Inner dot */}
       <motion.div
         animate={{
           width: isHovering ? (cursorLabel ? 64 : 48) : 8,
@@ -80,7 +85,6 @@ const CursorFollower = () => {
           </motion.span>
         )}
       </motion.div>
-      {/* Outer ring */}
       <motion.div
         animate={{
           width: isHovering ? (cursorLabel ? 72 : 56) : 8,
