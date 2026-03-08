@@ -106,6 +106,42 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/10" />
       </div>
 
+      {/* Cinematic gold-traced frame overlay */}
+      <div className="absolute inset-0 pointer-events-none z-[5]" aria-hidden="true">
+        {/* Top frame line */}
+        <motion.div
+          className="absolute top-6 md:top-10 left-6 md:left-10 right-6 md:right-10 h-px origin-left"
+          style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.2), hsl(var(--gold) / 0.08) 50%, transparent)" }}
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1.5, delay: 2.8, ease: [0.25, 0.1, 0.25, 1] }}
+        />
+        {/* Left frame line */}
+        <motion.div
+          className="absolute top-6 md:top-10 left-6 md:left-10 bottom-6 md:bottom-10 w-px origin-top"
+          style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.2), transparent 60%)" }}
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+          transition={{ duration: 1.2, delay: 3.2, ease: [0.25, 0.1, 0.25, 1] }}
+        />
+        {/* Bottom frame line */}
+        <motion.div
+          className="absolute bottom-6 md:bottom-10 left-6 md:left-10 right-6 md:right-10 h-px origin-right"
+          style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.15), transparent 50%)" }}
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1.2, delay: 3.5, ease: [0.25, 0.1, 0.25, 1] }}
+        />
+        {/* Right frame line */}
+        <motion.div
+          className="absolute top-6 md:top-10 right-6 md:right-10 bottom-6 md:bottom-10 w-px origin-bottom hidden lg:block"
+          style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.15), transparent 60%)" }}
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+          transition={{ duration: 1, delay: 3.8, ease: [0.25, 0.1, 0.25, 1] }}
+        />
+      </div>
+
       {/* Radial light glow behind headline */}
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none"
