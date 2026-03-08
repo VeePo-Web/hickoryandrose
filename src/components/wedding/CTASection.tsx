@@ -262,8 +262,16 @@ const CTASection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="relative"
+                className="relative group/cta"
               >
+                {/* Ambient gold glow behind CTA */}
+                <motion.div
+                  className="absolute -inset-6 pointer-events-none"
+                  animate={{ opacity: [0.03, 0.08, 0.03], scale: [0.9, 1.1, 0.9] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.2), transparent 60%)" }}
+                  aria-hidden="true"
+                />
                 <MagneticButton to="/inquire" variant="outline-light">
                   Begin Your Story
                 </MagneticButton>

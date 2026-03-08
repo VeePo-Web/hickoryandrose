@@ -330,7 +330,7 @@ const FounderTeaserSection = () => {
                 ))}
               </div>
 
-              {/* Signature flourish */}
+              {/* Signature flourish with gold-traced underline */}
               <div className="mb-6">
                 <p className="font-script text-2xl text-primary/30 mb-1">Hickory & Rose</p>
                 <motion.div
@@ -338,9 +338,17 @@ const FounderTeaserSection = () => {
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 1.2, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="w-20 h-[2px] origin-left"
+                  className="w-20 h-[2px] origin-left relative overflow-hidden"
                   style={{ background: "linear-gradient(90deg, hsl(var(--gold)), hsl(var(--primary) / 0.15), transparent)" }}
-                />
+                >
+                  {/* Traveling shimmer on signature line */}
+                  <motion.span
+                    className="absolute inset-0"
+                    animate={{ x: ["-100%", "200%"] }}
+                    transition={{ duration: 3, repeat: Infinity, repeatDelay: 4, ease: "easeInOut" }}
+                    style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.5), transparent)" }}
+                  />
+                </motion.div>
                 <p className="font-overline text-[0.5rem] text-muted-foreground/30 mt-3">
                   Est. 2018 · Edmonton, Alberta
                 </p>

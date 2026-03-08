@@ -173,6 +173,19 @@ const FilmstripSection = () => {
               {/* Cinematic gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
+              {/* Breathing gold glow on hover — active frame indicator */}
+              <motion.div
+                className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                aria-hidden="true"
+              >
+                <motion.div
+                  className="absolute inset-0"
+                  animate={{ opacity: [0, 0.06, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  style={{ background: "radial-gradient(ellipse at 50% 70%, hsl(var(--gold) / 0.2), transparent 60%)" }}
+                />
+              </motion.div>
+
               {/* Subtle film grain on each frame */}
               <div className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-overlay grain-overlay" />
 
@@ -197,9 +210,15 @@ const FilmstripSection = () => {
                 </p>
               </div>
               
-              {/* Corner frame accents */}
-              <div className="absolute top-3 left-3 w-5 h-5 border-t border-l border-white/0 group-hover:border-white/10 transition-all duration-700 pointer-events-none" />
-              <div className="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-white/0 group-hover:border-white/10 transition-all duration-700 pointer-events-none" />
+              {/* Corner frame accents — gold gradient on hover */}
+              <div className="absolute top-3 left-3 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), transparent)" }} />
+              </div>
+              <div className="absolute bottom-3 right-3 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
+              </div>
             </div>
 
             {/* Editorial caption */}
