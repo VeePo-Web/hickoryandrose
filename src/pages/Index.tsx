@@ -94,6 +94,7 @@ const Index = () => {
         />
         <FounderTeaserSection />
         <StatsSection />
+        <PressMentionsSection />
         <FilmstripSection />
         <CTASection />
         <InstagramSection />

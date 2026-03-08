@@ -15,6 +15,7 @@ import servicePlanningImage from "@/assets/service-planning.jpg";
 import serviceStationeryImage from "@/assets/service-stationery.jpg";
 import serviceFullserviceImage from "@/assets/service-fullservice.jpg";
 import editorialFloralsImage from "@/assets/editorial-florals.jpg";
+import vendorDetailImage from "@/assets/vendor-detail.jpg";
 
 const serviceTiers = [
   {
