@@ -8,7 +8,6 @@ import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import ImageReveal from "@/components/wedding/ImageReveal";
-import MagneticButton from "@/components/wedding/MagneticButton";
 import ServiceTierCard from "@/components/wedding/ServiceTierCard";
 import ServiceComparison from "@/components/wedding/ServiceComparison";
 import GoldFrame from "@/components/wedding/GoldFrame";
