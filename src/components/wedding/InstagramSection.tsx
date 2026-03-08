@@ -165,7 +165,7 @@ const InstagramSection = () => {
                 className="w-14 h-px origin-right"
                 style={{ background: "linear-gradient(90deg, transparent, hsl(var(--border) / 0.3))" }}
               />
-              <span className="font-serif-wedding text-sm text-primary/10">❖</span>
+              <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.25), hsl(var(--gold) / 0.08))" }} />
               <motion.span
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}

@@ -154,7 +154,7 @@ const LoveQuoteSection = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="w-10 h-px bg-primary-foreground/20 origin-right"
             />
-            <span className="font-serif-wedding text-sm text-primary-foreground/30 tracking-widest">❖</span>
+            <span className="w-2 h-2 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.15))" }} />
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}

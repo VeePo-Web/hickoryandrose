@@ -111,7 +111,7 @@ const EditorialSplitSection = () => {
                 transition={{ duration: 0.8 }}
                 className="w-8 h-px bg-primary-foreground/20 origin-left"
               />
-              <span className="font-serif-wedding text-xs text-primary-foreground/20 tracking-widest">❖</span>
+              <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.1))" }} />
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}

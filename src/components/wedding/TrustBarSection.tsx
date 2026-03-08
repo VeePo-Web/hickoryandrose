@@ -192,7 +192,7 @@ const TrustBarSection = () => {
                 className="w-12 h-px origin-right"
                 style={{ background: "linear-gradient(90deg, transparent, hsl(var(--border) / 0.4))" }}
               />
-              <span className="font-script text-lg text-primary/15">❖</span>
+              <span className="w-2 h-2 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.1))" }} />
               <motion.span
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
