@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { setPageMeta } from "@/lib/seo";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
@@ -20,18 +20,21 @@ const values = [
     pullQuote: "Presence over panic.",
     description:
       "We lead with quiet confidence so you never feel rushed, pressured, or anxious. Our composed presence on the day means you can exhale and simply be in the moment.",
+    icon: "◇",
   },
   {
     title: "Intentional Design",
     pullQuote: "Nothing accidental.",
     description:
       "Every detail is considered — from the arc of your ceremony to the way light falls across your tablescape. We design with purpose so every element tells your story.",
+    icon: "◆",
   },
   {
     title: "Genuine Care",
     pullQuote: "Not a project — a privilege.",
     description:
       "Your wedding isn't a line item to us. It's a responsibility we take personally. We invest emotionally because we believe that's the only way to create something truly meaningful.",
+    icon: "○",
   },
 ];
 
@@ -43,9 +46,32 @@ const milestones = [
   { year: "2024", event: "Named Top 10 Edmonton Wedding Planners" },
 ];
 
+const testimonials = [
+  {
+    quote: "From our first call, we knew we were in the right hands. Our wedding felt exactly like us — intimate, elegant, and completely stress-free.",
+    couple: "Olivia & Noah",
+    venue: "Jasper Park Lodge",
+    season: "Summer 2024",
+  },
+  {
+    quote: "The calm energy Hickory & Rose brought to our day was transformative. We actually got to be present for every moment.",
+    couple: "Sarah & Michael",
+    venue: "Fairmont Hotel Macdonald",
+    season: "Winter 2024",
+  },
+  {
+    quote: "Hiring Hickory & Rose was the best decision we made. The attention to detail was beyond anything we imagined.",
+    couple: "Emma & James",
+    venue: "The Glass House",
+    season: "Autumn 2024",
+  },
+];
+
 const About = () => {
   const heroRef = useRef<HTMLElement>(null);
   const founderRef = useRef<HTMLDivElement>(null);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
@@ -58,6 +84,15 @@ const About = () => {
     offset: ["start end", "end start"],
   });
   const founderImgY = useTransform(founderScroll, [0, 1], ["4%", "-4%"]);
+
+  const advanceTestimonial = useCallback(() => {
+    setActiveTestimonial((i) => (i + 1) % testimonials.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(advanceTestimonial, 6000);
+    return () => clearInterval(timer);
+  }, [advanceTestimonial]);
 
   useEffect(() => {
     setPageMeta({
@@ -85,7 +120,6 @@ const About = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/10" />
         </motion.div>
 
-        {/* Large parallax watermark */}
         <motion.div
           className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
           style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "15%"]) }}
@@ -130,7 +164,6 @@ const About = () => {
           </ScrollReveal>
         </motion.div>
 
-        {/* Section corner index */}
         <motion.span
           className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/15 tracking-widest"
           initial={{ opacity: 0 }}
@@ -160,6 +193,7 @@ const About = () => {
             </ScrollReveal>
             <ScrollReveal delay={0.15}>
               <div>
+                <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">01</span>
                 <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-3">
                   <span className="inline-flex items-center gap-3">
                     <span className="w-5 h-px bg-primary/30" />
@@ -187,7 +221,6 @@ const About = () => {
                   </p>
                 </div>
 
-                {/* Pull quote */}
                 <div className="border-l-2 border-primary/20 pl-5 my-10">
                   <p className="font-serif-wedding text-base text-foreground/70 italic leading-relaxed">
                     "Calm is not the absence of planning — it's the presence of it."
@@ -235,6 +268,7 @@ const About = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
           <ScrollReveal>
             <div className="text-center mb-16 md:mb-24">
+              <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">02</span>
               <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
                 <span className="inline-flex items-center gap-3">
                   <span className="w-5 h-px bg-border" />
@@ -252,12 +286,10 @@ const About = () => {
             {values.map((value, index) => (
               <ScrollReveal key={value.title} delay={index * 0.1}>
                 <div className="group">
-                  {/* Number */}
                   <span className="font-serif-wedding text-5xl font-light text-primary/10 group-hover:text-primary/20 transition-colors duration-700 block mb-4">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  {/* Expanding accent line */}
                   <motion.div
                     className="h-px bg-primary/25 mb-6 origin-left"
                     initial={{ scaleX: 0 }}
@@ -266,9 +298,12 @@ const About = () => {
                     transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
                   />
 
-                  <h3 className="font-serif-wedding text-display-md text-foreground mb-2 group-hover:text-primary transition-colors duration-500">
-                    {value.title}
-                  </h3>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-primary/20 group-hover:text-primary/40 transition-colors text-xs">{value.icon}</span>
+                    <h3 className="font-serif-wedding text-display-md text-foreground group-hover:text-primary transition-colors duration-500">
+                      {value.title}
+                    </h3>
+                  </div>
 
                   <p className="font-serif-wedding text-sm italic text-primary/50 mb-4">
                     {value.pullQuote}
@@ -284,6 +319,116 @@ const About = () => {
         </div>
       </section>
 
+      {/* NEW: Cinematic Parallax Testimonial Carousel */}
+      <section className="py-section-mobile md:py-section-tablet bg-card relative overflow-hidden">
+        {/* Parallax watermark */}
+        <motion.div
+          className="absolute -right-8 top-1/2 -translate-y-1/2 pointer-events-none select-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.02 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+        >
+          <span className="font-serif-wedding text-[8rem] md:text-[14rem] text-foreground leading-none tracking-tight italic whitespace-nowrap">
+            Voices
+          </span>
+        </motion.div>
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
+          <ScrollReveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+              {/* Left: Label */}
+              <div className="lg:col-span-3">
+                <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">03</span>
+                <p className="font-overline text-muted-foreground/50 mb-3">Kind Words</p>
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="w-10 h-px bg-primary/25 origin-left mb-4"
+                />
+                <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light leading-relaxed">
+                  Real words from real couples who trusted us with their most important day.
+                </p>
+              </div>
+
+              {/* Right: Testimonial crossfade */}
+              <div className="lg:col-span-9">
+                <div className="min-h-[200px] md:min-h-[180px] relative">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeTestimonial}
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -16 }}
+                      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                    >
+                      <span className="font-serif-wedding text-6xl text-primary/[0.06] leading-none block -mb-4" aria-hidden="true">"</span>
+                      <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-6">
+                        {testimonials[activeTestimonial].quote}
+                      </blockquote>
+                      <div className="flex items-center gap-4">
+                        <motion.div
+                          initial={{ scaleY: 0 }}
+                          animate={{ scaleY: 1 }}
+                          transition={{ duration: 0.6, delay: 0.2 }}
+                          className="w-px h-10 bg-primary/25 origin-top"
+                        />
+                        <div>
+                          <p className="font-sans-wedding text-body-sm font-medium text-foreground/70">
+                            {testimonials[activeTestimonial].couple}
+                          </p>
+                          <div className="flex items-center gap-2 mt-1">
+                            <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/40">
+                              {testimonials[activeTestimonial].venue}
+                            </p>
+                            <span className="text-muted-foreground/20">·</span>
+                            <p className="font-serif-wedding text-xs italic text-muted-foreground/30">
+                              {testimonials[activeTestimonial].season}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
+                {/* Progress bars */}
+                <div className="flex items-center gap-4 mt-10">
+                  <div className="flex gap-2 flex-1">
+                    {testimonials.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setActiveTestimonial(index)}
+                        className="h-[2px] flex-1 relative overflow-hidden bg-primary/10 hover:bg-primary/20 transition-colors"
+                        aria-label={`View testimonial ${index + 1}`}
+                      >
+                        {index === activeTestimonial && (
+                          <motion.div
+                            className="absolute inset-0 bg-primary origin-left"
+                            initial={{ scaleX: 0 }}
+                            animate={{ scaleX: 1 }}
+                            transition={{ duration: 6, ease: "linear" }}
+                            key={`progress-${activeTestimonial}`}
+                          />
+                        )}
+                        {index < activeTestimonial && (
+                          <div className="absolute inset-0 bg-primary/50" />
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                  <span className="font-sans-wedding text-[0.6rem] text-muted-foreground/40 tabular-nums tracking-[0.15em]">
+                    {String(activeTestimonial + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Editorial image break */}
       <FullWidthImage
         src={editorialFloralsImage}
@@ -292,10 +437,11 @@ const About = () => {
       />
 
       {/* Journey — horizontal ruled rows */}
-      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           <ScrollReveal>
             <div className="text-center mb-16">
+              <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">04</span>
               <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
                 <span className="inline-flex items-center gap-3">
                   <span className="w-5 h-px bg-border" />
@@ -341,7 +487,7 @@ const About = () => {
       </section>
 
       {/* Press & Recognition */}
-      <section className="py-16 md:py-20 bg-background">
+      <section className="py-16 md:py-20 bg-card">
         <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
           <ScrollReveal>
             <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 text-center mb-12">

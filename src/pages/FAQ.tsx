@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { setPageMeta } from "@/lib/seo";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Footer from "@/components/wedding/Footer";
@@ -49,6 +49,12 @@ const faqCategories = [
   },
 ];
 
+const testimonials = [
+  { quote: "We had so many questions, and every single one was answered with patience and warmth. Nothing ever felt rushed.", couple: "Alyssa & Daniel", venue: "Art Gallery of Alberta" },
+  { quote: "The transparency around pricing made us feel respected from day one. No hidden fees, no surprises.", couple: "Lauren & Ethan", venue: "Willow Creek Barn" },
+  { quote: "From our very first call, we knew we were in the right hands.", couple: "Olivia & Noah", venue: "Jasper Park Lodge" },
+];
+
 const faqSchemaItems = faqCategories.flatMap((cat) =>
   cat.questions.map((faq) => ({
     "@type": "Question" as const,
@@ -68,12 +74,23 @@ const faqSchema = {
 
 const FAQ = () => {
   const heroRef = useRef<HTMLElement>(null);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  const advanceTestimonial = useCallback(() => {
+    setActiveTestimonial((i) => (i + 1) % testimonials.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(advanceTestimonial, 5000);
+    return () => clearInterval(timer);
+  }, [advanceTestimonial]);
 
   useEffect(() => {
     setPageMeta({
@@ -111,7 +128,6 @@ const FAQ = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/10" />
         </motion.div>
 
-        {/* Large parallax watermark */}
         <motion.div
           className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
           style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "15%"]) }}
@@ -156,7 +172,6 @@ const FAQ = () => {
           </ScrollReveal>
         </motion.div>
 
-        {/* Section corner index */}
         <motion.span
           className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/15 tracking-widest"
           initial={{ opacity: 0 }}
@@ -167,13 +182,34 @@ const FAQ = () => {
         </motion.span>
       </section>
 
+      {/* Quick stats bar — trust signal */}
+      <section className="py-6 md:py-8 bg-sage-deep border-b border-primary-foreground/[0.06]">
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+          <div className="grid grid-cols-3 gap-4 text-center">
+            {[
+              { value: "48hr", label: "Response Time" },
+              { value: "15–20", label: "Weddings Per Year" },
+              { value: "100%", label: "Client Satisfaction" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <p className="font-serif-wedding text-lg md:text-xl text-primary-foreground/60 font-light">
+                  {stat.value}
+                </p>
+                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-primary-foreground/25 mt-1">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Categories — editorial ruled layout with index numbers */}
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           {faqCategories.map((category, catIndex) => (
             <ScrollReveal key={category.category} delay={catIndex * 0.08}>
               <div className={catIndex > 0 ? "mt-16 md:mt-24" : ""}>
-                {/* Category header with index */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline mb-8 md:mb-10">
                   <div className="md:col-span-2">
                     <motion.span
@@ -200,7 +236,6 @@ const FAQ = () => {
                   </div>
                 </div>
 
-                {/* Questions */}
                 <div className="md:grid md:grid-cols-12 md:gap-8">
                   <div className="md:col-span-2" />
                   <div className="md:col-span-10">
@@ -230,6 +265,49 @@ const FAQ = () => {
               </div>
             </ScrollReveal>
           ))}
+        </div>
+      </section>
+
+      {/* Inline testimonial carousel — NEW */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+          <ScrollReveal>
+            <p className="font-overline text-muted-foreground/40 mb-8">What Couples Say</p>
+            <div className="min-h-[120px] relative">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTestimonial}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                >
+                  <blockquote className="font-serif-wedding text-pull-quote italic text-foreground/70 leading-relaxed mb-6">
+                    "{testimonials[activeTestimonial].quote}"
+                  </blockquote>
+                  <p className="font-sans-wedding text-body-sm font-light text-foreground/50">
+                    {testimonials[activeTestimonial].couple}
+                  </p>
+                  <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/30 mt-1">
+                    {testimonials[activeTestimonial].venue}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            {/* Progress dots */}
+            <div className="flex justify-center gap-2 mt-8">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveTestimonial(i)}
+                  className={`w-6 h-[2px] transition-colors duration-300 ${
+                    i === activeTestimonial ? "bg-primary/60" : "bg-border/40 hover:bg-border/60"
+                  }`}
+                  aria-label={`View testimonial ${i + 1}`}
+                />
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
