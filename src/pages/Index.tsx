@@ -1,22 +1,24 @@
 import HeroSection from "@/components/wedding/HeroSection";
-import CountdownSection from "@/components/wedding/CountdownSection";
-import StorySection from "@/components/wedding/StorySection";
-import ItinerarySection from "@/components/wedding/ItinerarySection";
-import AccommodationsSection from "@/components/wedding/AccommodationsSection";
-import ThingsToDoSection from "@/components/wedding/ThingsToDoSection";
-import RSVPSection from "@/components/wedding/RSVPSection";
+import BrandPromiseSection from "@/components/wedding/BrandPromiseSection";
+import ServicesOverviewSection from "@/components/wedding/ServicesOverviewSection";
+import EditorialImageBreak from "@/components/wedding/EditorialImageBreak";
+import TestimonialSection from "@/components/wedding/TestimonialSection";
+import ProcessTeaserSection from "@/components/wedding/ProcessTeaserSection";
+import FounderTeaserSection from "@/components/wedding/FounderTeaserSection";
+import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
 
 const Index = () => {
   return (
-    <main className="overflow-hidden">
+    <main id="main-content" className="overflow-hidden">
       <HeroSection />
-      <CountdownSection />
-      <StorySection />
-      <ItinerarySection />
-      <AccommodationsSection />
-      <ThingsToDoSection />
-      <RSVPSection />
+      <BrandPromiseSection />
+      <ServicesOverviewSection />
+      <EditorialImageBreak />
+      <TestimonialSection />
+      <ProcessTeaserSection />
+      <FounderTeaserSection />
+      <CTASection />
       <Footer />
     </main>
   );

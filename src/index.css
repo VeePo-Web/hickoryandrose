@@ -1,44 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Great+Vibes&family=Open+Sans:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Hickory & Rose — Refined Rustic Elegance */
+    --background: 40 20% 98%;
+    --foreground: 30 15% 20%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 40 30% 95%;
+    --card-foreground: 30 15% 20%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 40 20% 98%;
+    --popover-foreground: 30 15% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 140 25% 35%;
+    --primary-foreground: 40 20% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 140 25% 90%;
+    --secondary-foreground: 140 25% 35%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 140 15% 96%;
+    --muted-foreground: 30 10% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 180 25% 35%;
+    --accent-foreground: 40 20% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 35 20% 88%;
+    --input: 35 20% 88%;
+    --ring: 140 25% 35%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
+
+    /* Brand-specific extended tokens */
+    --sage-deep: 140 25% 35%;
+    --sage: 140 20% 45%;
+    --sage-light: 140 25% 90%;
+    --sage-mist: 140 15% 96%;
+    --cream: 40 30% 95%;
+    --cream-dark: 35 20% 88%;
+    --warm-white: 40 20% 98%;
+    --text-primary: 30 15% 20%;
+    --text-secondary: 30 10% 45%;
+    --text-light: 30 10% 60%;
+    --teal: 180 25% 35%;
+    --teal-light: 180 20% 90%;
+    --gold: 40 50% 55%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -48,46 +60,52 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-
-    /* Wedding specific colors */
-    --wedding-sage: 65 12% 45%;
-    --wedding-sage-light: 65 15% 55%;
-    --wedding-cream: 40 30% 97%;
-    --wedding-cream-dark: 40 20% 92%;
-    --wedding-text: 0 0% 20%;
-    --wedding-text-light: 0 0% 40%;
-    --wedding-teal: 175 50% 35%;
-    --wedding-teal-light: 175 45% 45%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Hickory & Rose is a warm brand — dark mode mirrors light for brand consistency */
+    --background: 30 10% 10%;
+    --foreground: 40 20% 92%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 30 10% 14%;
+    --card-foreground: 40 20% 92%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 30 10% 12%;
+    --popover-foreground: 40 20% 92%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 140 25% 55%;
+    --primary-foreground: 30 10% 10%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 140 15% 20%;
+    --secondary-foreground: 140 25% 80%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 30 10% 18%;
+    --muted-foreground: 30 10% 60%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 180 20% 45%;
+    --accent-foreground: 30 10% 10%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 30 10% 22%;
+    --input: 30 10% 22%;
+    --ring: 140 25% 55%;
+
+    --sage-deep: 140 25% 55%;
+    --sage: 140 20% 50%;
+    --sage-light: 140 15% 20%;
+    --sage-mist: 140 10% 14%;
+    --cream: 40 15% 16%;
+    --cream-dark: 35 10% 22%;
+    --warm-white: 30 10% 10%;
+    --text-primary: 40 20% 92%;
+    --text-secondary: 30 10% 60%;
+    --text-light: 30 10% 45%;
+    --teal: 180 20% 45%;
+    --teal-light: 180 10% 18%;
+    --gold: 40 40% 50%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -96,16 +114,6 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-
-    /* Wedding colors remain same in dark mode for consistency */
-    --wedding-sage: 65 12% 45%;
-    --wedding-sage-light: 65 15% 55%;
-    --wedding-cream: 40 30% 97%;
-    --wedding-cream-dark: 40 20% 92%;
-    --wedding-text: 0 0% 20%;
-    --wedding-text-light: 0 0% 40%;
-    --wedding-teal: 175 50% 35%;
-    --wedding-teal-light: 175 45% 45%;
   }
 }
 
@@ -114,9 +122,25 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: 'Open Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background-color: hsl(140 25% 35% / 0.15);
+    color: hsl(30 15% 20%);
   }
 }
 
@@ -131,5 +155,14 @@ All colors MUST be HSL.
   
   .font-sans-wedding {
     font-family: 'Open Sans', sans-serif;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
