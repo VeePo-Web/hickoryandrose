@@ -111,7 +111,10 @@ const Journal = () => {
   }, []);
 
   const featuredArticle = articles[0];
-  const remainingArticles = articles.slice(1);
+  const allRemaining = articles.slice(1);
+  const remainingArticles = activeFilter === "All" 
+    ? allRemaining 
+    : allRemaining.filter((a) => a.category === activeFilter);
 
   return (
     <main id="main-content">
