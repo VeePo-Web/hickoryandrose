@@ -39,34 +39,7 @@ const values = [
   },
 ];
 
-const milestones = [
-  { year: "2018", event: "Hickory & Rose founded in Edmonton, Alberta" },
-  { year: "2019", event: "First feature in Edmonton Bridal Magazine" },
-  { year: "2020", event: "Expanded to full-service planning & virtual coordination" },
-  { year: "2022", event: "50th wedding milestone — Jasper Park Lodge" },
-  { year: "2024", event: "Named Top 10 Edmonton Wedding Planners" },
-];
-
-const testimonials = [
-  {
-    quote: "From our first call, we knew we were in the right hands. Our wedding felt exactly like us — intimate, elegant, and completely stress-free.",
-    couple: "Olivia & Noah",
-    venue: "Jasper Park Lodge",
-    season: "Summer 2024",
-  },
-  {
-    quote: "The calm energy Hickory & Rose brought to our day was transformative. We actually got to be present for every moment.",
-    couple: "Sarah & Michael",
-    venue: "Fairmont Hotel Macdonald",
-    season: "Winter 2024",
-  },
-  {
-    quote: "Hiring Hickory & Rose was the best decision we made. The attention to detail was beyond anything we imagined.",
-    couple: "Emma & James",
-    venue: "The Glass House",
-    season: "Autumn 2024",
-  },
-];
+// milestones and testimonials data moved to sub-components
 
 const About = () => {
   const heroRef = useRef<HTMLElement>(null);
