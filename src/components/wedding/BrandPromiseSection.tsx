@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import ScrollReveal from "./ScrollReveal";
+import ImageReveal from "./ImageReveal";
+import editorialFloralsImage from "@/assets/editorial-florals.jpg";
 
 const pillars = [
   { label: "Calm Leadership", detail: "Quiet confidence under pressure, so you never have to wonder what happens next.", icon: "◆" },
@@ -15,6 +17,7 @@ const BrandPromiseSection = () => {
     offset: ["start end", "end start"],
   });
   const bgTextY = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
+  const floatingImgY = useTransform(scrollYProgress, [0, 1], ["15%", "-15%"]);
 
   return (
     <section
@@ -32,19 +35,6 @@ const BrandPromiseSection = () => {
       >
         <span className="font-serif-wedding text-[12rem] md:text-[18rem] font-light text-foreground leading-none tracking-tight whitespace-nowrap">
           Philosophy
-        </span>
-      </motion.div>
-
-      {/* Large decorative ampersand */}
-      <motion.div
-        className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 0.025 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5 }}
-      >
-        <span className="font-script text-[28rem] leading-none text-foreground">
-          &
         </span>
       </motion.div>
 
@@ -67,28 +57,40 @@ const BrandPromiseSection = () => {
               </p>
             </div>
 
-            {/* Right: Small editorial aside */}
-            <div className="lg:col-span-5 lg:pt-14">
-              <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="w-10 h-px bg-primary/25 mb-6 origin-left"
-              />
-              <p className="font-sans-wedding text-body-sm text-muted-foreground/60 leading-relaxed font-light italic">
-                "Our approach isn't just about logistics — it's about creating
-                space for you to be fully present on the most important day of
-                your life."
-              </p>
-              <p className="font-overline text-primary/40 mt-4 text-[0.55rem]">
-                — Founder, Hickory & Rose
-              </p>
+            {/* Right: Floating editorial image + quote */}
+            <div className="lg:col-span-5 lg:pt-8">
+              <motion.div style={{ y: floatingImgY }}>
+                <ImageReveal direction="right">
+                  <div className="aspect-[4/5] overflow-hidden mb-6">
+                    <img
+                      src={editorialFloralsImage}
+                      alt="Sage eucalyptus and ivory garden rose arrangement"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </ImageReveal>
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="w-10 h-px bg-primary/25 mb-4 origin-left"
+                />
+                <p className="font-sans-wedding text-body-sm text-muted-foreground/60 leading-relaxed font-light italic">
+                  "Our approach isn't just about logistics — it's about creating
+                  space for you to be fully present on the most important day of
+                  your life."
+                </p>
+                <p className="font-overline text-primary/40 mt-4 text-[0.55rem]">
+                  — Founder, Hickory & Rose
+                </p>
+              </motion.div>
             </div>
           </div>
         </ScrollReveal>
 
-        {/* Brand pillars — editorial ruled rows with hover expansion */}
+        {/* Brand pillars — editorial ruled rows */}
         <div className="border-t border-border/40">
           {pillars.map((pillar, index) => (
             <ScrollReveal key={pillar.label} delay={index * 0.08}>

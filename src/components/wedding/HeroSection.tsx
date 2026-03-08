@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Navigation from "./Navigation";
 import MagneticButton from "./MagneticButton";
 import heroImage from "@/assets/hero-wedding.jpg";
+import ceremonyImage from "@/assets/ceremony-setup.jpg";
 
 const charVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -51,6 +52,8 @@ const HeroSection = () => {
   const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const contentY = useTransform(scrollYProgress, [0, 0.5], ["0%", "10%"]);
+  const secondaryImgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const secondaryImgOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   useEffect(() => {
     document.title = "Hickory & Rose | Edmonton's Luxury Wedding Planner";
@@ -175,6 +178,35 @@ const HeroSection = () => {
             </motion.span>
           ))}
         </motion.div>
+      </motion.div>
+
+      {/* Floating editorial inset image — bottom-right corner */}
+      <motion.div
+        className="absolute bottom-16 right-6 md:right-12 z-20 hidden lg:block"
+        style={{ y: secondaryImgY, opacity: secondaryImgOpacity }}
+        initial={{ opacity: 0, y: 30, clipPath: "inset(100% 0 0 0)" }}
+        animate={{ opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)" }}
+        transition={{ duration: 1.2, delay: 2.5, ease: [0.25, 0.1, 0.25, 1] }}
+      >
+        <div className="relative group">
+          <div className="w-40 xl:w-48 aspect-[3/4] overflow-hidden shadow-2xl">
+            <img
+              src={ceremonyImage}
+              alt="Mountain barn ceremony with candlelit aisle and eucalyptus garlands"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="eager"
+            />
+          </div>
+          {/* Elegant caption below inset */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 3.2, duration: 0.6 }}
+            className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/30 mt-3 text-right"
+          >
+            Jasper · Alberta
+          </motion.p>
+        </div>
       </motion.div>
 
       {/* Scroll Indicator */}
