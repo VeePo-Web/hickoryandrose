@@ -296,14 +296,17 @@ const FAQ = () => {
               </AnimatePresence>
             </div>
             {/* Progress dots */}
-            <div className="flex justify-center gap-2 mt-8">
+            <div className="flex justify-center gap-3 mt-8">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveTestimonial(i)}
-                  className={`w-6 h-[2px] transition-colors duration-300 ${
-                    i === activeTestimonial ? "bg-primary/60" : "bg-border/40 hover:bg-border/60"
-                  }`}
+                  className="w-8 h-[2px] transition-all duration-500 relative overflow-hidden"
+                  style={{
+                    background: i === activeTestimonial
+                      ? "linear-gradient(90deg, hsl(var(--gold) / 0.6), hsl(var(--gold) / 0.3))"
+                      : "hsl(var(--border) / 0.4)",
+                  }}
                   aria-label={`View testimonial ${i + 1}`}
                 />
               ))}

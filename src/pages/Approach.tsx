@@ -310,13 +310,17 @@ const Approach = () => {
               <div className="border-t border-border/40">
                 {differentiators.map((diff, index) => (
                   <ScrollReveal key={diff.title} delay={index * 0.08}>
-                    <div className="py-8 md:py-10 border-b border-border/40 group cursor-default">
+                    <div className="py-8 md:py-10 border-b border-border/40 group cursor-default relative">
                       <div className="flex items-baseline gap-4 mb-3">
                         <span className="font-serif-wedding text-2xl font-light text-primary/15 group-hover:text-primary/30 transition-colors duration-500">
                           {String(index + 1).padStart(2, "0")}
                         </span>
-                        <h3 className="font-serif-wedding text-display-sm text-foreground group-hover:text-primary transition-colors duration-500">
+                        <h3 className="font-serif-wedding text-display-sm text-foreground group-hover:text-primary transition-colors duration-500 relative">
                           {diff.title}
+                          <span
+                            className="absolute bottom-0 left-0 h-px w-0 group-hover:w-full transition-all duration-700 ease-out"
+                            style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1), transparent)" }}
+                          />
                         </h3>
                       </div>
                       <p className="font-sans-wedding text-body-sm text-muted-foreground/60 leading-relaxed font-light pl-12 group-hover:text-muted-foreground transition-colors duration-500">

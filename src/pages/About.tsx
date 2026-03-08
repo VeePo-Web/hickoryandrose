@@ -395,18 +395,20 @@ const About = () => {
                 </div>
 
                 {/* Progress bars */}
-                <div className="flex items-center gap-4 mt-10">
+                <div className="flex items-center gap-4 mt-10" role="tablist" aria-label="Testimonial navigation">
                   <div className="flex gap-2 flex-1">
                     {testimonials.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setActiveTestimonial(index)}
-                        className="h-[2px] flex-1 relative overflow-hidden bg-primary/10 hover:bg-primary/20 transition-colors"
+                        className="h-[2px] flex-1 relative overflow-hidden transition-colors"
+                        style={{ background: index < activeTestimonial ? "hsl(var(--gold) / 0.2)" : "hsl(var(--primary) / 0.1)" }}
                         aria-label={`View testimonial ${index + 1}`}
                       >
                         {index === activeTestimonial && (
                           <motion.div
-                            className="absolute inset-0 bg-primary origin-left"
+                            className="absolute inset-0 origin-left"
+                            style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.6), hsl(var(--gold) / 0.35))" }}
                             initial={{ scaleX: 0 }}
                             animate={{ scaleX: 1 }}
                             transition={{ duration: 6, ease: "linear" }}
@@ -414,7 +416,7 @@ const About = () => {
                           />
                         )}
                         {index < activeTestimonial && (
-                          <div className="absolute inset-0 bg-primary/50" />
+                          <div className="absolute inset-0" style={{ background: "hsl(var(--gold) / 0.35)" }} />
                         )}
                       </button>
                     ))}
