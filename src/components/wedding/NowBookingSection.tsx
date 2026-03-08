@@ -65,7 +65,7 @@ const NowBookingSection = () => {
         style={{ y: ornamentY }}
         aria-hidden="true"
       >
-        <span className="w-3 h-3 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.15), hsl(var(--gold) / 0.05))" }} />
+        <span className="block w-3 h-3 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.15), hsl(var(--gold) / 0.05))" }} />
       </motion.div>
 
       <Link to="/inquire" className="block group relative" aria-label="Inquire about booking">

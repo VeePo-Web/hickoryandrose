@@ -241,10 +241,17 @@ const StatsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                className="text-center border-t border-background/[0.04] pt-6"
+                className="text-center pt-6 group/foot cursor-default relative"
               >
-                <p className="font-serif-wedding text-sm text-background/25 italic">{item.label}</p>
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-background/12 mt-1">{item.note}</p>
+                {/* Gold-gradient top rule */}
+                <div className="h-px mb-0 absolute top-0 left-0 right-0 overflow-hidden">
+                  <div
+                    className="h-full w-full"
+                    style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.12), transparent)" }}
+                  />
+                </div>
+                <p className="font-serif-wedding text-sm text-background/25 italic group-hover/foot:text-background/40 transition-colors duration-500">{item.label}</p>
+                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-background/12 mt-1 group-hover/foot:text-background/20 transition-colors duration-500">{item.note}</p>
               </motion.div>
             ))}
           </div>
