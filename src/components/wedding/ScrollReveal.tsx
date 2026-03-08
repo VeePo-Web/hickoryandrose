@@ -6,6 +6,8 @@ interface ScrollRevealProps {
   delay?: number;
   className?: string;
   direction?: "up" | "down" | "left" | "right";
+  /** "fade" (default) uses translate+opacity. "clip" uses a cinematic clip-path mask wipe. */
+  variant?: "fade" | "clip";
 }
 
 const directionOffset = {
@@ -15,11 +17,37 @@ const directionOffset = {
   right: { x: -20, y: 0 },
 };
 
-const ScrollReveal = memo(({ children, delay = 0, className = "", direction = "up" }: ScrollRevealProps) => {
+const clipDirectionMap = {
+  up: { hidden: "inset(100% 0 0 0)", visible: "inset(0% 0 0 0)" },
+  down: { hidden: "inset(0 0 100% 0)", visible: "inset(0 0 0% 0)" },
+  left: { hidden: "inset(0 100% 0 0)", visible: "inset(0 0% 0 0)" },
+  right: { hidden: "inset(0 0 0 100%)", visible: "inset(0 0 0 0%)" },
+};
+
+const ScrollReveal = memo(({ children, delay = 0, className = "", direction = "up", variant = "fade" }: ScrollRevealProps) => {
   const prefersReduced = useReducedMotion();
 
   if (prefersReduced) {
     return <div className={className}>{children}</div>;
+  }
+
+  if (variant === "clip") {
+    const clip = clipDirectionMap[direction];
+    return (
+      <motion.div
+        initial={{ clipPath: clip.hidden, opacity: 0.3 }}
+        whileInView={{ clipPath: clip.visible, opacity: 1 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{
+          duration: 0.8,
+          delay,
+          ease: [0.76, 0, 0.24, 1],
+        }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
   }
 
   return (
