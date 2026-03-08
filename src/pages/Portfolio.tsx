@@ -150,6 +150,49 @@ const Portfolio = () => {
         </div>
       </section>
 
+      {/* By the Numbers — premium trust-signal stats ribbon */}
+      <section className="py-8 md:py-10 bg-sage-deep relative overflow-hidden">
+        {/* Subtle radial gold ambient glow */}
+        <motion.div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[200px] pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.05 }}
+          viewport={{ once: true }}
+          transition={{ duration: 2 }}
+          style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.15), transparent 70%)" }}
+          aria-hidden="true"
+        />
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
+            {[
+              { value: "75+", label: "Weddings Planned" },
+              { value: "8", label: "Years of Experience" },
+              { value: "100%", label: "Client Satisfaction" },
+              { value: "15–20", label: "Weddings Per Year" },
+            ].map((stat, i) => (
+              <ScrollReveal key={stat.label} delay={i * 0.08}>
+                <div className="group">
+                  <p className="font-serif-wedding text-2xl md:text-3xl text-primary-foreground/50 font-light group-hover:text-primary-foreground/70 transition-colors duration-500">
+                    {stat.value}
+                  </p>
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
+                    className="w-6 h-px mx-auto my-2 origin-center"
+                    style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }}
+                  />
+                  <p className="font-sans-wedding text-[0.5rem] md:text-[0.55rem] tracking-[0.18em] uppercase text-primary-foreground/25">
+                    {stat.label}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Filter Tabs — refined editorial with gold accent */}
       <section className="py-5 md:py-6 bg-background border-b border-border/30 sticky top-[72px] z-30">
         <div className="container mx-auto px-6 lg:px-8 flex justify-center gap-0">
