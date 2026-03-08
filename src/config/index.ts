@@ -7,4 +7,4 @@
 
 export { BRAND_IDENTITY } from './brand-identity';
 export { STYLE_GUIDE } from './style-guide';
-export { DISCOVERY_FRAMEWORK, NAV_PERSONA, VISUAL_PERSONA, FOOTER_PERSONA, POLISHED_PAIGE } from './personas';
+export { DISCOVERY_FRAMEWORK, NAV_PERSONA, VISUAL_PERSONA, FOOTER_PERSONA, POLISHED_PAIGE, STRATEGIC_NARRATIVE } from './personas';
