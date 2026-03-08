@@ -67,7 +67,7 @@ const ProcessTeaserSection = () => {
                 <h3 className="font-serif-wedding text-display-md text-foreground mb-3">
                   {step.title}
                 </h3>
-                <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
+                <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed max-w-xs mx-auto font-light">
                   {step.description}
                 </p>
               </div>
