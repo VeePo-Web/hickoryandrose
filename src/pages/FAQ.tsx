@@ -270,6 +270,39 @@ const FAQ = () => {
           {faqCategories.map((category, catIndex) => (
             <ScrollReveal key={category.category} delay={catIndex * 0.08}>
               <div className={catIndex > 0 ? "mt-16 md:mt-24" : ""}>
+                {/* Breathing diamond category divider */}
+                {catIndex > 0 && (
+                  <div className="flex items-center justify-center gap-4 mb-12 md:mb-16" aria-hidden="true">
+                    <motion.span
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8 }}
+                      className="w-16 h-px origin-right"
+                      style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2))" }}
+                    />
+                    <motion.span
+                      className="w-2 h-2 rotate-45 relative"
+                      style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))" }}
+                      animate={{ opacity: [0.4, 0.8, 0.4], scale: [0.9, 1.15, 0.9] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <span
+                        className="absolute -inset-3 rounded-full pointer-events-none"
+                        style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.15), transparent 70%)" }}
+                      />
+                    </motion.span>
+                    <motion.span
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.1 }}
+                      className="w-16 h-px origin-left"
+                      style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.2), transparent)" }}
+                    />
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline mb-8 md:mb-10">
                   <div className="md:col-span-2">
                     <motion.span
@@ -305,17 +338,27 @@ const FAQ = () => {
                         <AccordionItem
                           key={index}
                           value={`${catIndex}-${index}`}
-                          className="border-border/30 group"
+                          className="border-border/30 group relative overflow-hidden"
                         >
-                          <AccordionTrigger className="font-sans-wedding text-body text-foreground text-left hover:text-primary hover:no-underline py-6 font-light gap-4 group/trigger">
+                          {/* Gold gradient left-border reveal on expand */}
+                          <div
+                            className="absolute left-0 top-0 bottom-0 w-[2px] opacity-0 group-data-[state=open]:opacity-100 transition-all duration-500 origin-top group-data-[state=open]:scale-y-100 scale-y-0"
+                            style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15), transparent)" }}
+                          />
+                          {/* Gold shimmer sweep on hover */}
+                          <div
+                            className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"
+                            style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.03) 40%, hsl(var(--gold) / 0.06) 50%, hsl(var(--gold) / 0.03) 60%, transparent 100%)" }}
+                          />
+                          <AccordionTrigger className="font-sans-wedding text-body text-foreground text-left hover:text-primary hover:no-underline py-6 font-light gap-4 group/trigger pl-3">
                             <span className="flex items-baseline gap-4">
-                              <span className="font-serif-wedding text-xs shrink-0 tabular-nums transition-colors duration-300" style={{ color: "hsl(var(--gold) / 0.25)" }}>
+                              <span className="font-serif-wedding text-xs shrink-0 tabular-nums transition-colors duration-300 group-data-[state=open]:text-primary/40" style={{ color: "hsl(var(--gold) / 0.25)" }}>
                                 {category.index}.{String(index + 1).padStart(2, "0")}
                               </span>
                               <span>{faq.q}</span>
                             </span>
                           </AccordionTrigger>
-                          <AccordionContent className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed pb-6 pl-12 font-light">
+                          <AccordionContent className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed pb-6 pl-[3.25rem] font-light">
                             {faq.a}
                           </AccordionContent>
                         </AccordionItem>
