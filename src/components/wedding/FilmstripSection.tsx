@@ -144,6 +144,25 @@ const FilmstripSection = () => {
             key={slide.label}
             className="relative shrink-0 w-[75vw] md:w-[38vw] lg:w-[30vw] group"
           >
+            {/* Gold film-gate border overlay */}
+            <div className="absolute inset-0 z-10 pointer-events-none">
+              <div
+                className="absolute top-0 left-0 right-0 h-[3px]"
+                style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.12), hsl(var(--gold) / 0.03))" }}
+              />
+              <div
+                className="absolute bottom-0 left-0 right-0 h-[3px]"
+                style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.03), hsl(var(--gold) / 0.12))" }}
+              />
+              <div
+                className="absolute top-0 bottom-0 left-0 w-[2px]"
+                style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.1), transparent 30%, transparent 70%, hsl(var(--gold) / 0.1))" }}
+              />
+              <div
+                className="absolute top-0 bottom-0 right-0 w-[2px]"
+                style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.1), transparent 30%, transparent 70%, hsl(var(--gold) / 0.1))" }}
+              />
+            </div>
             <div className="aspect-[3/4] overflow-hidden relative">
               <img
                 src={slide.src}
