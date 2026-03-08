@@ -6,18 +6,27 @@ import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
+import ImageReveal from "@/components/wedding/ImageReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import MagneticButton from "@/components/wedding/MagneticButton";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import approachDetailsImage from "@/assets/approach-details.jpg";
 import approachHeroImage from "@/assets/approach-hero.jpg";
+import founderImage from "@/assets/founder-portrait.jpg";
 
 const processSteps = [
-  { number: "01", title: "Discovery Call", time: "Week 1", description: "We start with a relaxed conversation. Tell us about your vision, your story, and how you want to feel on your wedding day. No pressure, no sales pitch — just genuine connection.", pullQuote: "Every great wedding begins with listening." },
-  { number: "02", title: "Proposal & Booking", time: "Week 1–2", description: "Based on our call, we craft a customized proposal that fits your needs and budget. Once you say yes, the real magic begins.", pullQuote: null },
-  { number: "03", title: "Design & Planning", time: "Months 2–10", description: "We dive deep into your vision — curating vendors, refining design concepts, building timelines, and handling every logistical detail so you don't have to.", pullQuote: "This is where your vision becomes tangible." },
-  { number: "04", title: "Final Details", time: "Month 11", description: "Everything comes together. Final walkthroughs, vendor confirmations, timeline refinements, and a comprehensive rehearsal to ensure every person knows their role.", pullQuote: null },
-  { number: "05", title: "Your Wedding Day", time: "The Day", description: "We arrive early, coordinate everything behind the scenes, and lead with calm authority. You simply show up and feel every beautiful moment.", pullQuote: "You feel it. We handle it." },
+  { number: "01", title: "Discovery Call", time: "Week 1", description: "We start with a relaxed conversation. Tell us about your vision, your story, and how you want to feel on your wedding day. No pressure, no sales pitch — just genuine connection.", pullQuote: "Every great wedding begins with listening.", icon: "◇" },
+  { number: "02", title: "Proposal & Booking", time: "Week 1–2", description: "Based on our call, we craft a customized proposal that fits your needs and budget. Once you say yes, the real magic begins.", pullQuote: null, icon: "○" },
+  { number: "03", title: "Design & Planning", time: "Months 2–10", description: "We dive deep into your vision — curating vendors, refining design concepts, building timelines, and handling every logistical detail so you don't have to.", pullQuote: "This is where your vision becomes tangible.", icon: "◆" },
+  { number: "04", title: "Final Details", time: "Month 11", description: "Everything comes together. Final walkthroughs, vendor confirmations, timeline refinements, and a comprehensive rehearsal to ensure every person knows their role.", pullQuote: null, icon: "◇" },
+  { number: "05", title: "Your Wedding Day", time: "The Day", description: "We arrive early, coordinate everything behind the scenes, and lead with calm authority. You simply show up and feel every beautiful moment.", pullQuote: "You feel it. We handle it.", icon: "❖" },
+];
+
+const differentiators = [
+  { title: "One Planner, Start to Finish", detail: "The planner you meet is the planner on your wedding day. No hand-offs, no surprises — just continuity and trust." },
+  { title: "Curated Vendor Network", detail: "We've spent years building relationships with Edmonton's finest vendors. Every recommendation is personally vetted and aligned with your aesthetic." },
+  { title: "Calm Under Pressure", detail: "Rain on ceremony day? Vendor running late? You'll never know. Our team leads with quiet confidence, handling every pivot behind the scenes." },
+  { title: "Design-Led Approach", detail: "We don't just coordinate logistics — we design cohesive experiences where every visual element tells your story." },
 ];
 
 const Approach = () => {
@@ -101,7 +110,6 @@ const Approach = () => {
           </ScrollReveal>
         </motion.div>
 
-        {/* Section corner index */}
         <motion.span
           className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/15 tracking-widest"
           initial={{ opacity: 0 }}
@@ -118,13 +126,14 @@ const Approach = () => {
           <ScrollReveal>
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-baseline">
               <div className="md:col-span-4">
+                <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">01</span>
                 <p className="font-overline text-muted-foreground/50 mb-3">Philosophy</p>
                 <h2 className="font-serif-wedding text-display-md text-foreground">
                   Planning with intention.
                 </h2>
               </div>
               <div className="md:col-span-8">
-                <p className="font-sans-wedding text-body text-muted-foreground leading-relaxed font-light mb-4">
+                <p className="font-sans-wedding text-body text-muted-foreground leading-relaxed font-light mb-4 drop-cap">
                   We believe the planning process should feel as beautiful as the wedding day itself. Our approach is grounded in calm leadership, creative partnership, and an obsessive attention to the details that make your celebration uniquely yours.
                 </p>
                 <p className="font-sans-wedding text-body-sm text-muted-foreground/70 leading-relaxed font-light">
@@ -162,7 +171,7 @@ const Approach = () => {
               <ScrollReveal key={step.number} delay={index * 0.08}>
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-10 md:py-14 group relative">
                   {/* Step number with timeline dot */}
-                  <div className="md:col-span-2 relative flex items-baseline">
+                  <div className="md:col-span-2 relative flex items-baseline gap-3">
                     <motion.div
                       className="hidden md:block absolute left-[3.25rem] top-3 w-2 h-2 rounded-full bg-primary/30 -translate-x-1/2 group-hover:bg-primary/60 transition-colors duration-500"
                       initial={{ scale: 0 }}
@@ -179,13 +188,21 @@ const Approach = () => {
                     >
                       {step.number}
                     </motion.span>
+                    <span className="text-primary/20 group-hover:text-primary/40 transition-colors duration-500 text-sm md:hidden">
+                      {step.icon}
+                    </span>
                   </div>
 
                   {/* Title + time */}
                   <div className="md:col-span-3">
-                    <h3 className="font-serif-wedding text-display-md text-foreground group-hover:text-primary transition-colors duration-500">
-                      {step.title}
-                    </h3>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-primary/15 group-hover:text-primary/35 transition-colors duration-500 text-xs hidden md:inline">
+                        {step.icon}
+                      </span>
+                      <h3 className="font-serif-wedding text-display-md text-foreground group-hover:text-primary transition-colors duration-500">
+                        {step.title}
+                      </h3>
+                    </div>
                     <p className="font-overline text-muted-foreground/40 mt-1">
                       {step.time}
                     </p>
@@ -209,7 +226,6 @@ const Approach = () => {
                     )}
                   </div>
 
-                  {/* Bottom rule */}
                   <div className="md:col-span-12">
                     <motion.div
                       initial={{ scaleX: 0 }}
@@ -232,12 +248,85 @@ const Approach = () => {
         height="h-[35vh] md:h-[45vh]"
       />
 
+      {/* What Makes Us Different — NEW editorial split */}
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden">
+        <motion.div
+          className="absolute -right-8 top-1/2 -translate-y-1/2 pointer-events-none select-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.015 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+        >
+          <span className="font-script text-[20rem] text-foreground leading-none">
+            &
+          </span>
+        </motion.div>
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            {/* Left: Sticky founder image */}
+            <div className="hidden lg:block">
+              <div className="sticky top-28">
+                <ImageReveal direction="left" delay={0.1}>
+                  <div className="aspect-[3/4] overflow-hidden max-w-md">
+                    <img
+                      src={founderImage}
+                      alt="Hickory & Rose founder reviewing wedding details"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </ImageReveal>
+                <p className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/25 mt-4">
+                  Your planner, from first call to last dance
+                </p>
+              </div>
+            </div>
+
+            {/* Right: Differentiators */}
+            <div>
+              <ScrollReveal>
+                <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">02</span>
+                <p className="font-overline text-muted-foreground/50 mb-3">The Difference</p>
+                <h2 className="font-serif-wedding text-display-lg text-foreground mb-4">
+                  What Sets Us Apart
+                </h2>
+                <p className="font-sans-wedding text-body-sm text-muted-foreground/60 leading-relaxed font-light mb-12 max-w-md">
+                  Beyond logistics and timelines, here's what you'll experience working with Hickory & Rose.
+                </p>
+              </ScrollReveal>
+
+              <div className="border-t border-border/40">
+                {differentiators.map((diff, index) => (
+                  <ScrollReveal key={diff.title} delay={index * 0.08}>
+                    <div className="py-8 md:py-10 border-b border-border/40 group cursor-default">
+                      <div className="flex items-baseline gap-4 mb-3">
+                        <span className="font-serif-wedding text-2xl font-light text-primary/15 group-hover:text-primary/30 transition-colors duration-500">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <h3 className="font-serif-wedding text-display-sm text-foreground group-hover:text-primary transition-colors duration-500">
+                          {diff.title}
+                        </h3>
+                      </div>
+                      <p className="font-sans-wedding text-body-sm text-muted-foreground/60 leading-relaxed font-light pl-12 group-hover:text-muted-foreground transition-colors duration-500">
+                        {diff.detail}
+                      </p>
+                    </div>
+                  </ScrollReveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Editorial promise */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 md:py-24 bg-card">
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           <ScrollReveal>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-baseline">
               <div className="md:col-span-1">
+                <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">03</span>
                 <p className="font-overline text-muted-foreground/50 mb-3">Our Promise</p>
                 <h3 className="font-serif-wedding text-display-md text-foreground">Every detail, protected.</h3>
               </div>
