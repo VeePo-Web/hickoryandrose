@@ -1,191 +1,50 @@
 
-# Wedding Website - Multi-Page Implementation Plan
 
-## Overview
-Creating a complete multi-page wedding website for "Alicia & Andres" with faithful recreation of the design, including 5 main pages matching the navigation structure.
+# Approach Page -- Premium Upgrade Plan
 
-## Page Structure
+## Current Assessment
 
-Based on the navigation in the design image, we'll create these pages:
+The Approach page has solid bones but several sections feel structurally simple compared to the rest of the site. Specific gaps:
 
-| Route | Page | Content |
-|-------|------|---------|
-| `/` | Home | Hero section with full navigation |
-| `/our-story` | Our Story | Couple's story with photos |
-| `/details` | Details | Location, Wedding Party, Accommodations |
-| `/schedule` | Schedule | Itinerary/Timeline for wedding weekend |
-| `/registry` | Registry | Gift registry information and links |
+1. **Philosophy intro** (lines 116-136): Plain 2-column text grid with no visual weight -- no image, no decorative elements, no gold accents, no ambient glow. Feels like filler compared to the editorial density elsewhere.
 
-## Design System
+2. **ApproachProcessTimeline**: The timeline dots and vertical line are good, but the step rows lack visual richness -- no imagery, no hover interactions, no gold shimmer treatments on the pull quotes, and the divider lines are plain `bg-border/40`.
 
-### Color Palette (to add to CSS variables)
-```text
---wedding-sage: 65 12% 45%        (Olive/sage for hero overlay, location section)
---wedding-cream: 40 30% 97%       (Off-white background sections)
---wedding-text: 0 0% 20%          (Dark text color)
---wedding-teal: 175 50% 35%       (Accent for buttons, day labels)
-```
+3. **ApproachDifferentiators**: The sticky founder image has no cinematic treatment (no letterbox, no gold frame, no hover effects). The differentiator rows lack gold accent animations on the divider lines.
 
-### Typography (Google Fonts to import)
-- **Great Vibes**: Script font for "Alicia & Andres" title
-- **Cormorant Garamond**: Elegant serif for section headings
-- **Open Sans**: Clean sans-serif for body text and navigation
+4. **Editorial Promise section** (lines 148-187): Competent but flat -- the gold accent line and pills feel template-level. No ambient watermark, no breathing diamond, no scroll-linked depth.
 
-## Files to Create
+5. **Inline testimonial** (lines 189-206): Bare compared to the full TestimonialSection on the home page -- no rotating quotes, no gallery, no progress indicators, no gold quotation mark treatment.
 
-### Shared Components
-```text
-src/components/wedding/
-├── Navigation.tsx         - Persistent navigation header
-├── Footer.tsx             - RSVP footer section
-├── BranchDecoration.tsx   - Reusable SVG branch illustration
-```
+6. **Promise quote section** (lines 210-233): Already polished with breathing diamond and gold accents. Minor upgrades only.
 
-### Page Components
-```text
-src/pages/
-├── Index.tsx              - Home page (Hero + overview)
-├── OurStory.tsx           - Our Story page
-├── Details.tsx            - Details page (Location, Party, Hotels)
-├── Schedule.tsx           - Schedule/Itinerary page
-├── Registry.tsx           - Registry page
-```
+7. **Missing entirely**: No editorial split section between major content blocks. The page goes timeline -> image -> differentiators with no visual breathing room or narrative pivot.
 
-### Section Components
-```text
-src/components/wedding/
-├── HeroSection.tsx        - Full-height hero with overlay
-├── StorySection.tsx       - Story content with photo
-├── WeddingPartySection.tsx - Groomsmen/Bridesmaids tabs
-├── LocationSection.tsx    - Venue information
-├── AccommodationsSection.tsx - Hotel cards
-├── ItinerarySection.tsx   - Timeline with day tabs
-├── RegistrySection.tsx    - Registry logos and info
-```
+## Upgrade Plan (7 items)
 
-## Files to Modify
+### 1. Upgrade Philosophy Intro with editorial image inset + gold accents
+In `Approach.tsx` lines 116-136: Add a small editorial image (reuse `approachDetailsImage`) floated alongside the text on desktop, with gold corner frame reveals. Add an ambient gold glow behind the "01" index. Add a gold gradient horizontal rule below the section. Add a breathing diamond ornament between the columns.
 
-### 1. src/index.css
-Add wedding-specific CSS variables and Google Fonts import:
-- Import Great Vibes, Cormorant Garamond, Open Sans from Google Fonts
-- Add wedding color variables
-- Add custom font-family classes
+### 2. Upgrade ApproachProcessTimeline with hover interactions + gold dividers
+In `ApproachProcessTimeline.tsx`: Replace plain `bg-border/40` dividers with gold gradient `linear-gradient` dividers that animate `scaleX` on scroll. Add `group-hover` gold shimmer sweep to each step row. Upgrade pull quote border-left from `border-primary/15` to a gold gradient. Add a subtle gold ambient glow behind the active/hovered step number. Add a small breathing diamond at the end of the timeline.
 
-### 2. tailwind.config.ts
-Extend theme with:
-- Wedding color palette using CSS variables
-- Font family definitions for script, serif, sans
+### 3. Upgrade ApproachDifferentiators sticky image with cinematic treatment
+In `ApproachDifferentiators.tsx`: Wrap the founder image in a `group` container with letterbox bars (top/bottom `h-[6%] bg-foreground/90` on hover), gold corner frames (all 4 corners, `w-8 h-8`), hover shimmer sweep, and a hover caption reveal. Add a GoldFrame component around the image. Upgrade the differentiator row dividers from `border-border/40` to gold gradient lines.
 
-### 3. src/App.tsx
-Add routes:
-- `/` - Home
-- `/our-story` - Our Story
-- `/details` - Details
-- `/schedule` - Schedule
-- `/registry` - Registry
+### 4. Elevate Editorial Promise section with watermark + depth
+In `Approach.tsx` lines 148-187: Add a large parallax watermark ("Promise") behind the section. Replace the flat pills with pills that have a gold shimmer sweep on hover. Add a breathing diamond between the heading and body text. Upgrade the vertical gold accent line to use scroll-linked `scaleY`.
 
-## Detailed Component Specifications
+### 5. Replace inline testimonial with richer component
+In `Approach.tsx` lines 189-206: Upgrade to include a large gold gradient quotation mark, a gold diamond ornament separator, a scroll-linked gold accent line, and an attribution block with service tag pill -- matching the pattern from `TestimonialSection.tsx`.
 
-### Navigation Component
-- Fixed/sticky header on all pages
-- Links: Home, Our Story, Details, Schedule, Registry
-- Active state with underline accent
-- On hero: transparent overlay style
-- On other pages: solid cream background
+### 6. Add Editorial Split Section between timeline and differentiators
+In `Approach.tsx`: Insert an `EditorialSplitSection`-style block (or reuse the existing component) between the FullWidthImage and ApproachDifferentiators, providing a narrative breathing point with the sage-deep background quote panel and parallax image.
 
-### Hero Section (Home Page)
-- Full viewport height (100vh)
-- Background: Placeholder couple photo with sage overlay
-- Centered script title "Alicia & Andres"
-- Date line: "February 15, 2025 | Joshua Tree, California"
-- Scroll indicator arrow at bottom
+### 7. Add scroll-linked section index markers throughout
+Add floating section index markers ("I", "II", "III", etc. or "01"-"06") to each major section on the Approach page, positioned in the margin area, with scroll-driven opacity transitions -- creating a cohesive editorial pagination feel down the entire page.
 
-### Our Story Page
-- Branch decoration SVG at top
-- "Our Story" heading in serif
-- Two-column layout: text left, photo right
-- Cream background
-- Story paragraphs with date highlights
+## Files Modified
+- `src/pages/Approach.tsx` -- Philosophy intro upgrade, editorial promise upgrade, testimonial upgrade, add EditorialSplitSection, add section indices
+- `src/components/wedding/ApproachProcessTimeline.tsx` -- Gold dividers, hover shimmer, pull quote upgrade, breathing diamond
+- `src/components/wedding/ApproachDifferentiators.tsx` -- Cinematic image treatment, gold divider upgrades
 
-### Details Page
-Contains 3 sections:
-
-**Wedding Party Section:**
-- Tab switcher: Groomsmen | Bridesmaids
-- 4 circular avatar photos per tab
-- Names beneath each photo
-- Groomsmen: Julian Bernard, Damien Huber, Mark Pavone, David Blaine
-- Bridesmaids: Similar structure with female names
-
-**Location Section:**
-- Sage/olive background color
-- "The Location" label
-- "Joshua Tree Carmine Resort" large heading
-- Description paragraph
-- Full-width venue/couple photo
-
-**Accommodations Section:**
-- White background
-- 3-column grid of hotel cards
-- Each card: Name, description, "Reserve" button
-- Hotels: Joshua Tree Inn, Desert Sage Lodge, Carmine Resort
-
-### Schedule Page
-- "Itinerary" heading
-- 3 date tabs: Feb 14, Feb 15 (Wedding Day), Feb 16
-- Each day has timeline entries:
-  - Time marker
-  - Event name
-  - Location/venue
-  - Brief description
-
-### Registry Page
-- Branch decoration SVG
-- "Registry" heading
-- Paragraph about gifts
-- 3 registry badges/logos as styled text blocks:
-  - Crate & Barrel
-  - Target
-  - Williams Sonoma
-
-### Footer Component
-- Simple cream background
-- Centered "RSVP" text or button
-- Optional: Copyright line
-
-## Responsive Breakpoints
-
-### Desktop (default)
-- Full layouts as designed
-- 3-column grids for accommodations
-- 4 avatars in row for wedding party
-
-### Tablet (md: 768px)
-- 2-column grids where applicable
-- Slightly reduced padding
-
-### Mobile (sm: 640px)
-- Single column layouts
-- Hamburger menu for navigation
-- Stacked sections
-- 2x2 grid for wedding party avatars
-
-## Image Strategy
-Using placeholder images from Unsplash or similar:
-- Hero: Desert/couple themed landscape
-- Story: Couple portrait
-- Location: Joshua Tree landscape
-- Accommodations: Hotel exterior placeholders
-- Wedding Party: Generic avatar placeholders
-
-## Implementation Order
-
-1. **Foundation** - Update design system (CSS, Tailwind config)
-2. **Shared Components** - Navigation, Footer, Branch decoration
-3. **Home Page** - Hero section with navigation overlay
-4. **Our Story Page** - Story content and layout
-5. **Details Page** - Location, Wedding Party, Accommodations
-6. **Schedule Page** - Itinerary with tabs
-7. **Registry Page** - Registry section
-8. **App Routes** - Wire up all routes in App.tsx
-9. **Polish** - Responsive adjustments, smooth scroll, hover states
