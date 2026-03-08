@@ -292,7 +292,10 @@ const Journal = () => {
                       <div className="absolute top-3 left-3 w-4 h-4 border-t border-l border-white/0 group-hover:border-white/15 transition-colors duration-500" />
                       <div className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-white/0 group-hover:border-white/15 transition-colors duration-500" />
                       <div className="absolute top-4 left-4">
-                        <span className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/70 bg-foreground/30 backdrop-blur-sm px-2.5 py-1">
+                        <span
+                          className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/80 backdrop-blur-sm px-2.5 py-1"
+                          style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.25), hsl(var(--primary) / 0.2))" }}
+                        >
                           {article.category}
                         </span>
                       </div>
