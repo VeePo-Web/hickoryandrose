@@ -7,6 +7,8 @@ import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import { toast } from "@/hooks/use-toast";
 import { MessageSquare, Calendar, FileText, Heart } from "lucide-react";
+import ImageReveal from "@/components/wedding/ImageReveal";
+import inquireEditorialImage from "@/assets/inquire-editorial.jpg";
 
 const inquirySchema = z.object({
   name: z.string().min(2, "Please enter your full name."),
@@ -220,7 +222,32 @@ const Inquire = () => {
       </section>
 
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
-        <div className="container mx-auto px-6 lg:px-8 max-w-2xl">
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+            {/* Editorial image — desktop only */}
+            <div className="hidden lg:block lg:col-span-2 sticky top-28">
+              <ScrollReveal>
+                <ImageReveal direction="left">
+                  <div className="aspect-[4/5] overflow-hidden">
+                    <img
+                      src={inquireEditorialImage}
+                      alt="Wedding planner working with mood boards, sage fabric swatches, and floral samples"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </ImageReveal>
+                <div className="mt-6">
+                  <hr className="editorial-rule mb-4" />
+                  <p className="font-serif-wedding text-lg italic text-muted-foreground leading-relaxed">
+                    "Every great wedding starts with a simple conversation."
+                  </p>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            {/* Form column */}
+            <div className="lg:col-span-3">
           {/* Accessible error summary */}
           <div ref={errorSummaryRef} aria-live="polite" className="sr-only">
             {Object.keys(errors).length > 0 && (
@@ -312,6 +339,8 @@ const Inquire = () => {
               </div>
             </form>
           </ScrollReveal>
+            </div>
+          </div>
         </div>
       </section>
 
