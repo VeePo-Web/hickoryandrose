@@ -74,7 +74,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
             {/* Logo */}
             <Link
               to="/"
-              className={`font-serif-wedding text-xl md:text-2xl font-semibold tracking-tight transition-colors duration-300 ${
+              className={`font-serif-wedding text-xl md:text-2xl font-light tracking-tight transition-colors duration-300 ${
                 showSolidBg ? "text-foreground" : "text-white"
               }`}
             >
