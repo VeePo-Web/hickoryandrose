@@ -277,6 +277,26 @@ const Footer = () => {
               </motion.button>
             </div>
           </div>
+
+          {/* Powered by VeePo */}
+          <div className="flex items-center justify-center gap-3 pt-6 mt-4 border-t border-background/[0.04]">
+            <a
+              href="https://veepo.ca/case-studies"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 group/veepo transition-all duration-300"
+              aria-label="Website powered by VeePo"
+            >
+              <span className="font-sans-wedding text-[0.55rem] tracking-[0.1em] uppercase text-background/15 group-hover/veepo:text-background/30 transition-colors duration-300 font-light">
+                The vision for this website is powered by
+              </span>
+              <img
+                src={veepoLogo}
+                alt="VeePo"
+                className="h-7 w-auto opacity-20 group-hover/veepo:opacity-40 transition-all duration-300"
+              />
+            </a>
+          </div>
         </motion.div>
       </div>
     </footer>

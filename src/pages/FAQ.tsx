@@ -173,17 +173,39 @@ const FAQ = () => {
                   <div className="md:col-span-10">
                     <Accordion type="single" collapsible className="w-full">
                       {category.questions.map((faq, index) => (
-                        <AccordionItem key={index} value={`${catIndex}-${index}`} className="border-border/30 group relative overflow-hidden transition-colors duration-500 data-[state=open]:bg-foreground/[0.015]">
-                          <div className="absolute left-0 top-0 bottom-0 w-[2px] opacity-0 group-data-[state=open]:opacity-100 transition-all duration-500 origin-top group-data-[state=open]:scale-y-100 scale-y-0" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15), transparent)" }} />
-                          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none" style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.03) 40%, hsl(var(--gold) / 0.06) 50%, hsl(var(--gold) / 0.03) 60%, transparent 100%)" }} />
-                          <AccordionTrigger className="font-sans-wedding text-body text-foreground text-left hover:text-primary hover:no-underline py-6 font-light gap-4 group/trigger pl-3">
-                            <span className="flex items-baseline gap-4">
-                              <span className="font-serif-wedding text-xs shrink-0 tabular-nums transition-colors duration-300 group-data-[state=open]:text-primary/40" style={{ color: "hsl(var(--gold) / 0.25)" }}>{category.index}.{String(index + 1).padStart(2, "0")}</span>
-                              <span>{faq.q}</span>
-                            </span>
-                          </AccordionTrigger>
-                          <AccordionContent className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed pb-6 pl-[3.25rem] font-light">{faq.a}</AccordionContent>
-                        </AccordionItem>
+                        <React.Fragment key={index}>
+                          {/* Inter-question breathing diamond separator */}
+                          {index > 0 && (
+                            <div className="flex items-center justify-center gap-3 py-1" aria-hidden="true">
+                              <span className="w-6 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.12))" }} />
+                              <motion.span
+                                className="w-1.5 h-1.5 rotate-45 shrink-0"
+                                animate={{ opacity: [0.2, 0.5, 0.2], scale: [0.85, 1.1, 0.85] }}
+                                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: index * 0.4 }}
+                                style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.1))" }}
+                              />
+                              <span className="w-6 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.12), transparent)" }} />
+                            </div>
+                          )}
+                          <AccordionItem value={`${catIndex}-${index}`} className="border-border/30 group relative overflow-hidden transition-all duration-500 data-[state=open]:bg-foreground/[0.015] data-[state=open]:shadow-[0_0_20px_hsl(var(--gold)/0.06),0_0_40px_hsl(var(--gold)/0.03)]">
+                            {/* Gold left border on open */}
+                            <div className="absolute left-0 top-0 bottom-0 w-[2px] opacity-0 group-data-[state=open]:opacity-100 transition-all duration-500 origin-top group-data-[state=open]:scale-y-100 scale-y-0" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15), transparent)" }} />
+                            {/* Hover shimmer */}
+                            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none" style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.03) 40%, hsl(var(--gold) / 0.06) 50%, hsl(var(--gold) / 0.03) 60%, transparent 100%)" }} />
+                            {/* Open-state shimmer sweep (CSS animation via data-state) */}
+                            <div
+                              className="absolute inset-0 pointer-events-none opacity-0 group-data-[state=open]:opacity-100 group-data-[state=open]:animate-[shimmer-sweep_1.2s_ease-out_forwards]"
+                              style={{ background: "linear-gradient(110deg, transparent 20%, hsl(var(--gold) / 0.05) 45%, hsl(var(--gold) / 0.1) 50%, hsl(var(--gold) / 0.05) 55%, transparent 80%)" }}
+                            />
+                            <AccordionTrigger className="font-sans-wedding text-body text-foreground text-left hover:text-primary hover:no-underline py-6 font-light gap-4 group/trigger pl-3">
+                              <span className="flex items-baseline gap-4">
+                                <span className="font-serif-wedding text-xs shrink-0 tabular-nums transition-colors duration-300 group-data-[state=open]:text-primary/40" style={{ color: "hsl(var(--gold) / 0.25)" }}>{category.index}.{String(index + 1).padStart(2, "0")}</span>
+                                <span>{faq.q}</span>
+                              </span>
+                            </AccordionTrigger>
+                            <AccordionContent className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed pb-6 pl-[3.25rem] font-light animate-[fade-in_0.4s_ease-out]">{faq.a}</AccordionContent>
+                          </AccordionItem>
+                        </React.Fragment>
                       ))}
                     </Accordion>
                   </div>
