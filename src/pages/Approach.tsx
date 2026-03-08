@@ -7,6 +7,7 @@ import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
+import approachDetailsImage from "@/assets/approach-details.jpg";
 
 const processSteps = [
   { number: "01", title: "Discovery Call", time: "Week 1", description: "We start with a relaxed conversation. Tell us about your vision, your story, and how you want to feel on your wedding day. No pressure, no sales pitch — just genuine connection." },
