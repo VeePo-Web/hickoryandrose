@@ -58,10 +58,12 @@ const TestimonialSection = () => {
           {/* Testimonial with crossfade */}
           <ScrollReveal>
             <div>
-              <p className="font-overline text-muted-foreground mb-6">
-                Kind Words
+              <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-6">
+                <span className="inline-flex items-center gap-3">
+                  <span className="w-5 h-px bg-primary/30" />
+                  Kind Words
+                </span>
               </p>
-              <div className="w-8 h-px bg-primary mb-8" />
               <div className="min-h-[180px] md:min-h-[160px] relative">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -78,7 +80,7 @@ const TestimonialSection = () => {
                       <p className="text-body-sm font-medium text-foreground tracking-wide">
                         {active.couple}
                       </p>
-                      <p className="text-caption text-muted-foreground mt-1.5">
+                      <p className="text-caption text-muted-foreground/60 mt-1.5">
                         {active.venue}
                       </p>
                     </div>
@@ -118,7 +120,7 @@ const TestimonialSection = () => {
             </div>
           </ScrollReveal>
 
-          {/* Mini Gallery */}
+          {/* Mini Gallery — refined with consistent reveal */}
           <ScrollReveal delay={0.15}>
             <div className="grid grid-cols-2 gap-3">
               <ImageReveal direction="up" delay={0.1}>
