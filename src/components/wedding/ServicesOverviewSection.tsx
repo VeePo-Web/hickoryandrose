@@ -281,6 +281,7 @@ const ServicesOverviewSection = () => {
                 </div>
               ))}
             </div>
+            </div>
           </div>
         </ScrollReveal>
 

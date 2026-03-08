@@ -317,6 +317,16 @@ const HeroSection = () => {
           onMouseLeave={() => setIsInsetHovered(false)}
         >
           <div className="w-40 xl:w-48 aspect-[3/4] overflow-hidden shadow-2xl relative">
+            {/* Cinematic sprocket holes — film strip effect */}
+            <div className="absolute top-0 bottom-0 left-0 w-3 z-10 flex flex-col justify-between py-3 items-center pointer-events-none">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <span
+                  key={i}
+                  className="w-1.5 h-1.5 rounded-[1px] border border-white/10"
+                  style={{ background: "hsl(var(--gold) / 0.06)" }}
+                />
+              ))}
+            </div>
             <img
               src={ceremonyImage}
               alt="Mountain barn ceremony with candlelit aisle and eucalyptus garlands"
