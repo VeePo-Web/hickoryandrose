@@ -8,7 +8,7 @@ import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import ImageReveal from "@/components/wedding/ImageReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
-import MagneticButton from "@/components/wedding/MagneticButton";
+
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import approachDetailsImage from "@/assets/approach-details.jpg";
 import approachHeroImage from "@/assets/approach-hero.jpg";
@@ -381,25 +381,6 @@ const Approach = () => {
             <span className="font-script text-xl text-primary-foreground/35">
               Hickory & Rose
             </span>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-section-mobile md:py-section-tablet bg-background">
-        <div className="container mx-auto px-6 lg:px-8 max-w-2xl text-center">
-          <ScrollReveal>
-            <p className="font-overline text-muted-foreground/50 mb-4">Ready?</p>
-            <h2 className="font-serif-wedding text-display-lg text-foreground mb-6">
-              Let's Begin Your Planning Journey
-            </h2>
-            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-10 font-light">
-              Every great wedding starts with a conversation. Tell us about your
-              vision and we'll show you how we can bring it to life.
-            </p>
-            <MagneticButton to="/inquire" variant="primary">
-              Schedule a Discovery Call
-            </MagneticButton>
           </ScrollReveal>
         </div>
       </section>
