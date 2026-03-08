@@ -132,7 +132,7 @@ const Portfolio = () => {
             <p className="font-sans-wedding text-xs text-muted-foreground mt-1">
               The Glass House, Autumn 2024
             </p>
-            <div className="w-12 h-px bg-primary mx-auto mt-10" />
+            <hr className="editorial-rule mx-auto mt-10" />
           </ScrollReveal>
         </div>
       </section>
