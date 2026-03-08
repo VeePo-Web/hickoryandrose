@@ -39,6 +39,8 @@ const EditorialQuoteRibbon = ({
   const borderScale = useTransform(scrollYProgress, [0.1, 0.5], [0, 1]);
   const ornamentOpacity = useTransform(scrollYProgress, [0.2, 0.5, 0.7], [0, 0.06, 0]);
   const ornamentY = useTransform(scrollYProgress, [0, 1], [10, -10]);
+  // Gold glow pulse at center
+  const glowOpacity = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [0, 0.06, 0]);
 
   return (
     <section
