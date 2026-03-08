@@ -10,6 +10,8 @@ import { toast } from "@/hooks/use-toast";
 import { Heart, ArrowRight, ArrowLeft } from "lucide-react";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
+import InquireStepIndicator from "@/components/wedding/InquireStepIndicator";
+import InquireCelebration from "@/components/wedding/InquireCelebration";
 import inquireHeroImage from "@/assets/inquire-hero.jpg";
 import inquireEditorialImage from "@/assets/inquire-editorial.jpg";
 
