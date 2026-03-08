@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { setPageMeta } from "@/lib/seo";
 import { motion } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
@@ -39,7 +40,11 @@ const milestones = [
 
 const About = () => {
   useEffect(() => {
-    document.title = "About | Hickory & Rose — Edmonton Wedding Planner";
+    setPageMeta({
+      title: "About Hickory & Rose — Edmonton Wedding Planner | Our Story",
+      description: "Meet the heart behind Hickory & Rose. Calm leadership, intentional design, and genuine care — learn why Edmonton couples trust us with their most important day.",
+      path: "/about",
+    });
   }, []);
 
   return (

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { setPageMeta } from "@/lib/seo";
 import { motion, AnimatePresence } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
@@ -31,7 +32,11 @@ const Portfolio = () => {
   const [active, setActive] = useState<string>("All");
 
   useEffect(() => {
-    document.title = "Portfolio | Hickory & Rose — Real Weddings Edmonton";
+    setPageMeta({
+      title: "Real Weddings — Portfolio | Hickory & Rose Edmonton Wedding Planner",
+      description: "Browse real Edmonton weddings planned by Hickory & Rose. Elegant receptions, mountain ceremonies, and intimate celebrations — see our work in full-service, partial, and day-of coordination.",
+      path: "/portfolio",
+    });
   }, []);
 
   const filtered = active === "All" ? weddingStories : weddingStories.filter((s) => s.category === active);

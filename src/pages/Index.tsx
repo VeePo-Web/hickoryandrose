@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { setPageMeta } from "@/lib/seo";
 import HeroSection from "@/components/wedding/HeroSection";
 import BrandPromiseSection from "@/components/wedding/BrandPromiseSection";
 import TrustBarSection from "@/components/wedding/TrustBarSection";
@@ -17,6 +19,14 @@ import BackToTop from "@/components/wedding/BackToTop";
 import venueImage from "@/assets/portfolio-venue.jpg";
 
 const Index = () => {
+  useEffect(() => {
+    setPageMeta({
+      title: "Hickory & Rose — Luxury Wedding Planner in Edmonton, Alberta",
+      description: "Edmonton's luxury wedding planner specializing in refined rustic elegance. Day-of coordination, partial & full-service planning. Calm leadership, elevated design.",
+      path: "/",
+    });
+  }, []);
+
   return (
     <main id="main-content" className="overflow-hidden">
       <ScrollProgress />
