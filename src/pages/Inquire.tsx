@@ -3,12 +3,44 @@ import Navigation from "@/components/wedding/Navigation";
 import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import { toast } from "@/hooks/use-toast";
+import { MessageSquare, Calendar, FileText, Heart } from "lucide-react";
 
 const serviceOptions = [
   "Day-Of Coordination",
   "Partial Planning",
   "Full-Service Planning",
   "Not sure yet",
+];
+
+const guestRanges = [
+  "Under 50",
+  "50 – 100",
+  "100 – 150",
+  "150 – 200",
+  "200+",
+];
+
+const nextSteps = [
+  {
+    icon: MessageSquare,
+    step: "01",
+    text: "We'll respond within 48 hours to learn more about your day.",
+  },
+  {
+    icon: Calendar,
+    step: "02",
+    text: "We'll schedule a complimentary discovery call — relaxed, no pressure.",
+  },
+  {
+    icon: FileText,
+    step: "03",
+    text: "If we're a fit, we'll send a custom proposal tailored to you.",
+  },
+  {
+    icon: Heart,
+    step: "04",
+    text: "We begin planning your beautiful, stress-free wedding day.",
+  },
 ];
 
 const Inquire = () => {
@@ -18,7 +50,9 @@ const Inquire = () => {
     partner: "",
     date: "",
     venue: "",
+    guests: "",
     service: "",
+    referral: "",
     message: "",
   });
 
@@ -26,13 +60,21 @@ const Inquire = () => {
     e.preventDefault();
     toast({
       title: "Thank you for your inquiry!",
-      description: "We'll be in touch within 48 hours to schedule a discovery call.",
+      description:
+        "We'll be in touch within 48 hours to schedule a discovery call.",
     });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const inputClasses =
+    "w-full px-4 py-3.5 bg-transparent border border-border font-sans-wedding text-sm text-foreground placeholder:text-brand-text-light focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all duration-200";
 
   return (
     <main id="main-content">
@@ -54,13 +96,41 @@ const Inquire = () => {
         </div>
       </section>
 
+      {/* What to Expect */}
+      <section className="py-12 md:py-16 bg-card border-b border-border">
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+          <ScrollReveal>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              {nextSteps.map((item, index) => (
+                <div key={item.step} className="text-center">
+                  <item.icon
+                    size={24}
+                    strokeWidth={1}
+                    className="text-primary mx-auto mb-3"
+                  />
+                  <p className="font-serif-wedding text-2xl font-light text-primary/30 mb-1">
+                    {item.step}
+                  </p>
+                  <p className="font-sans-wedding text-xs text-muted-foreground leading-relaxed">
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
         <div className="container mx-auto px-6 lg:px-8 max-w-2xl">
           <ScrollReveal>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2"
+                  >
                     Your Name *
                   </label>
                   <input
@@ -70,12 +140,15 @@ const Inquire = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-transparent border border-border font-sans-wedding text-sm text-foreground placeholder:text-brand-text-light focus:outline-none focus:border-primary transition-colors"
+                    className={inputClasses}
                     placeholder="First & last name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="partner" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">
+                  <label
+                    htmlFor="partner"
+                    className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2"
+                  >
                     Partner's Name
                   </label>
                   <input
@@ -84,14 +157,17 @@ const Inquire = () => {
                     name="partner"
                     value={formData.partner}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-transparent border border-border font-sans-wedding text-sm text-foreground placeholder:text-brand-text-light focus:outline-none focus:border-primary transition-colors"
+                    className={inputClasses}
                     placeholder="First & last name"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="email" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">
+                <label
+                  htmlFor="email"
+                  className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2"
+                >
                   Email Address *
                 </label>
                 <input
@@ -101,14 +177,17 @@ const Inquire = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-transparent border border-border font-sans-wedding text-sm text-foreground placeholder:text-brand-text-light focus:outline-none focus:border-primary transition-colors"
+                  className={inputClasses}
                   placeholder="your@email.com"
                 />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="date" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">
+                  <label
+                    htmlFor="date"
+                    className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2"
+                  >
                     Wedding Date
                   </label>
                   <input
@@ -117,12 +196,15 @@ const Inquire = () => {
                     name="date"
                     value={formData.date}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-transparent border border-border font-sans-wedding text-sm text-foreground placeholder:text-brand-text-light focus:outline-none focus:border-primary transition-colors"
+                    className={inputClasses}
                     placeholder="Month / Year or TBD"
                   />
                 </div>
                 <div>
-                  <label htmlFor="venue" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">
+                  <label
+                    htmlFor="venue"
+                    className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2"
+                  >
                     Venue
                   </label>
                   <input
@@ -131,32 +213,82 @@ const Inquire = () => {
                     name="venue"
                     value={formData.venue}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-transparent border border-border font-sans-wedding text-sm text-foreground placeholder:text-brand-text-light focus:outline-none focus:border-primary transition-colors"
+                    className={inputClasses}
                     placeholder="Venue name or TBD"
                   />
                 </div>
               </div>
 
-              <div>
-                <label htmlFor="service" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">
-                  Service Interest
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-transparent border border-border font-sans-wedding text-sm text-foreground focus:outline-none focus:border-primary transition-colors appearance-none"
-                >
-                  <option value="">Select a service</option>
-                  {serviceOptions.map((option) => (
-                    <option key={option} value={option}>{option}</option>
-                  ))}
-                </select>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label
+                    htmlFor="guests"
+                    className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2"
+                  >
+                    Estimated Guest Count
+                  </label>
+                  <select
+                    id="guests"
+                    name="guests"
+                    value={formData.guests}
+                    onChange={handleChange}
+                    className={`${inputClasses} appearance-none`}
+                  >
+                    <option value="">Select range</option>
+                    {guestRanges.map((range) => (
+                      <option key={range} value={range}>
+                        {range}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label
+                    htmlFor="service"
+                    className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2"
+                  >
+                    Service Interest
+                  </label>
+                  <select
+                    id="service"
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className={`${inputClasses} appearance-none`}
+                  >
+                    <option value="">Select a service</option>
+                    {serviceOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               <div>
-                <label htmlFor="message" className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2">
+                <label
+                  htmlFor="referral"
+                  className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2"
+                >
+                  How Did You Find Us?
+                </label>
+                <input
+                  type="text"
+                  id="referral"
+                  name="referral"
+                  value={formData.referral}
+                  onChange={handleChange}
+                  className={inputClasses}
+                  placeholder="Instagram, referral, Google, etc."
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2"
+                >
                   Tell Us About Your Vision
                 </label>
                 <textarea
@@ -165,7 +297,7 @@ const Inquire = () => {
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-transparent border border-border font-sans-wedding text-sm text-foreground placeholder:text-brand-text-light focus:outline-none focus:border-primary transition-colors resize-none"
+                  className={`${inputClasses} resize-none`}
                   placeholder="What does your dream wedding look like? What's most important to you?"
                 />
               </div>
@@ -173,33 +305,15 @@ const Inquire = () => {
               <div className="text-center pt-4">
                 <button
                   type="submit"
-                  className="inline-flex items-center px-12 py-4 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.2em] uppercase font-semibold hover:bg-sage-deep transition-colors duration-200"
+                  className="inline-flex items-center px-12 py-4 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.2em] uppercase font-semibold hover:bg-sage-deep transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
                 >
                   Send Inquiry
                 </button>
+                <p className="font-sans-wedding text-xs text-muted-foreground mt-4">
+                  We respond to every inquiry within 48 hours.
+                </p>
               </div>
             </form>
-          </ScrollReveal>
-
-          {/* What happens next */}
-          <ScrollReveal delay={0.2}>
-            <div className="mt-16 pt-16 border-t border-border text-center">
-              <h3 className="font-serif-wedding text-display-md text-foreground mb-4">
-                What Happens Next?
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-                {[
-                  { step: "01", text: "We'll respond within 48 hours to learn more about your day." },
-                  { step: "02", text: "We'll schedule a complimentary discovery call — relaxed, no pressure." },
-                  { step: "03", text: "If we're a fit, we'll send a custom proposal tailored to you." },
-                ].map((item) => (
-                  <div key={item.step} className="text-center">
-                    <p className="font-serif-wedding text-3xl font-light text-primary/30 mb-2">{item.step}</p>
-                    <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed">{item.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </ScrollReveal>
         </div>
       </section>
