@@ -543,18 +543,24 @@ const Approach = () => {
             <p className="font-sans-wedding text-body-sm text-muted-foreground/60 leading-relaxed font-light mb-8 max-w-lg mx-auto">
               Every great partnership starts with a conversation. Tell us about your vision and we'll share honestly how we can help bring it to life.
             </p>
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap justify-center gap-3 mb-10">
               {["No commitment required", "Complimentary call", "Responds within 48hrs"].map((chip) => (
-                <span key={chip} className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/35 border border-primary/10 px-4 py-1.5 relative overflow-hidden group/chip cursor-default">
-                  <span
-                    className="absolute inset-0 -translate-x-full group-hover/chip:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
-                    style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.06), transparent)" }}
-                    aria-hidden="true"
-                  />
-                  <span className="relative">{chip}</span>
-                </span>
+                <MagneticPill key={chip}>
+                  {chip}
+                </MagneticPill>
               ))}
             </div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              <MagneticButton to="/inquire" variant="outline">
+                Begin the Conversation
+              </MagneticButton>
+            </motion.div>
           </ScrollReveal>
         </div>
       </section>
