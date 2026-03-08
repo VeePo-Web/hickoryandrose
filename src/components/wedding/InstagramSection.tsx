@@ -10,18 +10,32 @@ import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import editorialImage from "@/assets/editorial-florals.jpg";
 
 const photos = [
-  { src: heroImage, alt: "Elegant wedding tablescape", span: "col-span-2 row-span-2" },
-  { src: ceremonyImage, alt: "Mountain ceremony setup", span: "col-span-1 row-span-1" },
-  { src: detailImage, alt: "Calligraphy place card detail", span: "col-span-1 row-span-1" },
-  { src: firstDanceImage, alt: "First dance under lights", span: "col-span-1 row-span-2" },
-  { src: bouquetImage, alt: "Bridal bouquet with eucalyptus", span: "col-span-1 row-span-1" },
-  { src: editorialImage, alt: "Sage floral arrangement", span: "col-span-1 row-span-1" },
+  { src: heroImage, alt: "Elegant wedding tablescape", caption: "The tablescape that started it all", span: "col-span-2 row-span-2" },
+  { src: ceremonyImage, alt: "Mountain ceremony setup", caption: "Jasper morning light", span: "col-span-1 row-span-1" },
+  { src: detailImage, alt: "Calligraphy place card detail", caption: "Every name, hand-lettered", span: "col-span-1 row-span-1" },
+  { src: firstDanceImage, alt: "First dance under lights", caption: "That first dance feeling", span: "col-span-1 row-span-2" },
+  { src: bouquetImage, alt: "Bridal bouquet with eucalyptus", caption: "Sage & garden roses", span: "col-span-1 row-span-1" },
+  { src: editorialImage, alt: "Sage floral arrangement", caption: "Detail is everything", span: "col-span-1 row-span-1" },
 ];
 
 const InstagramSection = () => {
   return (
-    <section className="bg-card py-section-mobile md:py-section-tablet" aria-label="Instagram gallery">
-      <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
+    <section className="bg-card py-section-mobile md:py-section-tablet relative overflow-hidden" aria-label="Instagram gallery">
+      {/* Decorative background text */}
+      <motion.div
+        className="absolute -left-4 bottom-8 pointer-events-none select-none"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5 }}
+        aria-hidden="true"
+      >
+        <span className="font-script text-[8rem] md:text-[12rem] text-foreground/[0.015] leading-none">
+          Follow
+        </span>
+      </motion.div>
+
+      <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative">
         <ScrollReveal>
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 md:mb-16 gap-6">
             <div>
@@ -45,7 +59,7 @@ const InstagramSection = () => {
                 />
               </a>
             </div>
-            <p className="font-sans-wedding text-body-sm text-muted-foreground font-light max-w-xs md:text-right">
+            <p className="font-sans-wedding text-body-sm text-muted-foreground font-light max-w-xs md:text-right leading-relaxed">
               Behind the scenes, real weddings, and the details that make it all come together.
             </p>
           </div>
@@ -72,8 +86,17 @@ const InstagramSection = () => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-4">
-                  <Instagram size={16} strokeWidth={1.5} className="text-white/70" />
+                {/* Editorial caption overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-3 md:p-4">
+                  <p className="font-serif-wedding text-xs md:text-sm text-white/80 italic leading-snug">
+                    {photo.caption}
+                  </p>
+                  <div className="flex items-center gap-1.5 mt-2">
+                    <Instagram size={10} strokeWidth={1.5} className="text-white/40" />
+                    <span className="font-sans-wedding text-[0.5rem] tracking-[0.1em] uppercase text-white/40">
+                      View on Instagram
+                    </span>
+                  </div>
                 </div>
               </a>
             </ImageReveal>

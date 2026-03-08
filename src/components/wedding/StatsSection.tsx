@@ -67,17 +67,23 @@ const StatsSection = () => {
 
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
         <ScrollReveal>
-          <div className="text-center mb-16 md:mb-24">
-            <p className="font-sans-wedding text-label uppercase text-background/25 tracking-[0.2em] mb-4">
-              <span className="inline-flex items-center gap-3">
-                <span className="w-5 h-px bg-background/15" />
-                By the Numbers
-                <span className="w-5 h-px bg-background/15" />
-              </span>
-            </p>
-            <h2 className="font-serif-wedding text-display-md text-background/60 font-light">
-              The Story So Far
-            </h2>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-end mb-16 md:mb-24">
+            <div className="md:col-span-5">
+              <p className="font-sans-wedding text-label uppercase text-background/25 tracking-[0.2em] mb-4">
+                <span className="inline-flex items-center gap-3">
+                  <span className="w-5 h-px bg-background/15" />
+                  By the Numbers
+                </span>
+              </p>
+              <h2 className="font-serif-wedding text-display-md text-background/60 font-light">
+                The Story So Far
+              </h2>
+            </div>
+            <div className="md:col-span-7">
+              <p className="font-sans-wedding text-body-sm text-background/25 font-light leading-relaxed max-w-sm md:ml-auto">
+                Every number here represents a couple who trusted us with their most important day — and walked away grateful they did.
+              </p>
+            </div>
           </div>
         </ScrollReveal>
 
@@ -100,6 +106,11 @@ const StatsSection = () => {
                 index % 2 === 1 ? "md:border-l md:border-background/8" : ""
               }`}
             >
+              {/* Index number */}
+              <span className="font-serif-wedding text-sm text-background/10 block mb-3">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+
               <p className="font-serif-wedding text-7xl md:text-8xl font-light text-background/90 mb-3 leading-none tracking-tight">
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
               </p>

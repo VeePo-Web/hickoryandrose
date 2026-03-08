@@ -12,18 +12,21 @@ const testimonials = [
       "We actually got to enjoy our wedding day. Every single moment felt taken care of — we never once worried about what was happening behind the scenes.",
     couple: "Sarah & Michael",
     venue: "Fairmont Hotel Macdonald, Edmonton",
+    season: "Winter 2024",
   },
   {
     quote:
       "Hiring Hickory & Rose was the best decision we made in our entire planning process. The calm energy, the attention to detail — it was beyond anything we imagined.",
     couple: "Emma & James",
-    venue: "The Glass House, Autumn 2024",
+    venue: "The Glass House",
+    season: "Autumn 2024",
   },
   {
     quote:
       "From our first call, we knew we were in the right hands. Our wedding felt exactly like us — intimate, elegant, and completely stress-free.",
     couple: "Olivia & Noah",
-    venue: "Jasper Park Lodge, Summer 2024",
+    venue: "Jasper Park Lodge",
+    season: "Summer 2024",
   },
 ];
 
@@ -53,6 +56,20 @@ const TestimonialSection = () => {
         </span>
       </div>
 
+      {/* Decorative index number */}
+      <motion.div
+        className="absolute top-8 right-8 md:right-16 pointer-events-none select-none"
+        aria-hidden="true"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+      >
+        <span className="font-serif-wedding text-6xl md:text-8xl font-light text-primary/[0.04]">
+          {String(activeIndex + 1).padStart(2, "0")}
+        </span>
+      </motion.div>
+
       <div className="container mx-auto px-6 lg:px-8 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
           {/* Testimonial with crossfade */}
@@ -64,7 +81,7 @@ const TestimonialSection = () => {
                   Kind Words
                 </span>
               </p>
-              <div className="min-h-[180px] md:min-h-[160px] relative">
+              <div className="min-h-[220px] md:min-h-[200px] relative">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeIndex}
@@ -76,13 +93,27 @@ const TestimonialSection = () => {
                     <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-8">
                       "{active.quote}"
                     </blockquote>
+
+                    {/* Enhanced attribution */}
+                    <motion.div
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ duration: 0.6, delay: 0.2 }}
+                      className="w-8 h-px bg-primary/25 origin-left mb-4"
+                    />
                     <div className="font-sans-wedding">
                       <p className="text-body-sm font-medium text-foreground tracking-wide">
                         {active.couple}
                       </p>
-                      <p className="text-caption text-muted-foreground/60 mt-1.5">
-                        {active.venue}
-                      </p>
+                      <div className="flex items-center gap-2 mt-1.5">
+                        <p className="text-caption text-muted-foreground/60">
+                          {active.venue}
+                        </p>
+                        <span className="text-muted-foreground/20">·</span>
+                        <p className="text-caption text-muted-foreground/40 italic">
+                          {active.season}
+                        </p>
+                      </div>
                     </div>
                   </motion.div>
                 </AnimatePresence>
@@ -120,19 +151,24 @@ const TestimonialSection = () => {
             </div>
           </ScrollReveal>
 
-          {/* Mini Gallery — refined with consistent reveal */}
+          {/* Mini Gallery */}
           <ScrollReveal delay={0.15}>
             <div className="grid grid-cols-2 gap-3">
               <ImageReveal direction="up" delay={0.1}>
-                <div className="aspect-[3/4] overflow-hidden">
+                <div className="aspect-[3/4] overflow-hidden relative group">
                   <img
                     src={ceremonyImage}
                     alt="Outdoor wedding ceremony with mountain backdrop and floral arch"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                     width={512}
                     height={683}
                   />
+                  <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-white/60">
+                      Jasper Park Lodge
+                    </p>
+                  </div>
                 </div>
               </ImageReveal>
               <div className="space-y-3">
