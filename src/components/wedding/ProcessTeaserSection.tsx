@@ -125,7 +125,10 @@ const ProcessTeaserSection = () => {
                 <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-muted-foreground/20 font-light">
                   Every detail, curated with care
                 </p>
-                <span className="font-serif-wedding text-xs text-primary/10 italic">❖</span>
+                <span
+                  className="w-1.5 h-1.5 rotate-45"
+                  style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.1))" }}
+                />
               </div>
             </div>
           </div>

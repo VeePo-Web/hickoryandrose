@@ -180,13 +180,12 @@ const StatsSection = () => {
                   <span className="font-serif-wedding text-xs text-background/10 tabular-nums">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <motion.span
-                    className="text-primary/20 text-xs group-hover:text-primary/40 transition-colors duration-500"
-                    whileHover={{ rotate: 45 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {stat.icon}
-                  </motion.span>
+                  <span
+                    className="w-2 h-2 rotate-45 group-hover:scale-125 transition-transform duration-500"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.1))",
+                    }}
+                  />
                 </div>
 
                 {/* Big number */}
