@@ -104,6 +104,18 @@ const Approach = () => {
   const promiseLineScale = useTransform(promiseScroll, [0, 0.5], [0, 1]);
   const promiseWatermarkY = useTransform(promiseScroll, [0, 1], ["20%", "-20%"]);
 
+  const [hoveredTestimonial, setHoveredTestimonial] = useState<number | null>(null);
+
+  const philosophyImgRef = useRef<HTMLDivElement>(null);
+  const [maskPos, setMaskPos] = useState({ x: 50, y: 50 });
+  const handlePhilosophyImgMove = (e: React.MouseEvent) => {
+    if (!philosophyImgRef.current) return;
+    const rect = philosophyImgRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setMaskPos({ x, y });
+  };
+
   useEffect(() => {
     setPageMeta({
       title: "Our Approach — How We Plan Your Wedding | Hickory & Rose Edmonton",
