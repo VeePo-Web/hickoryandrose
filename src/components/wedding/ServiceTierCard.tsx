@@ -108,7 +108,10 @@ const ServiceTierCard = ({ service, index }: ServiceTierCardProps) => {
           {service.image && isEven && <ServiceImage service={service} direction="left" />}
 
           {/* Content column */}
-          <div>
+          <div
+            className="transition-all duration-700 group-hover/tier:scale-[1.01]"
+            style={{ willChange: "transform, box-shadow" }}
+          >
             <ScrollReveal delay={service.image ? 0.1 : 0}>
               <div className={`${service.image ? "" : "text-center"} mb-10`}>
                 <p className="font-sans-wedding text-label uppercase text-primary/60 mb-3">
