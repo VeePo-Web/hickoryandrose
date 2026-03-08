@@ -1,11 +1,13 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { z } from "zod";
 import Navigation from "@/components/wedding/Navigation";
 import Footer from "@/components/wedding/Footer";
+import ScrollReveal from "@/components/wedding/ScrollReveal";
 import { toast } from "@/hooks/use-toast";
 import { Heart, ArrowRight, ArrowLeft } from "lucide-react";
+import inquireHeroImage from "@/assets/inquire-hero.jpg";
 import inquireEditorialImage from "@/assets/inquire-editorial.jpg";
 
 /* ─── Schema ─── */
@@ -42,6 +44,14 @@ const stepVariants = {
 };
 
 const Inquire = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   useEffect(() => {
     setPageMeta({
       title: "Inquire — Start Planning Your Wedding | Hickory & Rose Edmonton",
@@ -477,16 +487,53 @@ const Inquire = () => {
 
   return (
     <main id="main-content">
-      <Navigation variant="solid" />
+      <Navigation variant="overlay" />
 
-      <section className="bg-background min-h-screen pt-28 md:pt-32 pb-20">
+      {/* ─── Cinematic Parallax Hero ─── */}
+      <section ref={heroRef} className="relative h-[50vh] md:h-[60vh] overflow-hidden">
+        <motion.div className="absolute inset-0" style={{ y: heroY }}>
+          <img
+            src={inquireHeroImage}
+            alt="Calligraphy envelope with sage wax seal, gold pen, eucalyptus, and vintage ring box on cream linen"
+            className="w-full h-[120%] object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/50" />
+        </motion.div>
+
+        <motion.div
+          className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6"
+          style={{ opacity: heroOpacity }}
+        >
+          <ScrollReveal>
+            <p className="font-sans-wedding text-label uppercase text-white/50 mb-4">
+              <span className="inline-flex items-center gap-3">
+                <span className="w-6 h-px bg-white/30" />
+                Begin Your Story
+                <span className="w-6 h-px bg-white/30" />
+              </span>
+            </p>
+            <h1 className="font-serif-wedding text-display-xl text-white mb-6">
+              Let's Plan Something Beautiful
+            </h1>
+            <p className="font-sans-wedding text-body-sm text-white/60 leading-relaxed max-w-xl mx-auto font-light">
+              No commitment — just a warm conversation about your wedding day.
+            </p>
+          </ScrollReveal>
+        </motion.div>
+      </section>
+
+      {/* ─── Form Section ─── */}
+      <section className="bg-background py-16 md:py-24">
         <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
             {/* Left — editorial image (desktop) */}
             <div className="hidden lg:block lg:col-span-2 sticky top-28">
               <motion.div
                 initial={{ opacity: 0, clipPath: "inset(100% 0 0 0)" }}
-                animate={{ opacity: 1, clipPath: "inset(0% 0 0 0)" }}
+                whileInView={{ opacity: 1, clipPath: "inset(0% 0 0 0)" }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }}
               >
                 <div className="aspect-[4/5] overflow-hidden">
@@ -494,7 +541,7 @@ const Inquire = () => {
                     src={inquireEditorialImage}
                     alt="Wedding planner working with mood boards, sage fabric swatches, and floral samples"
                     className="w-full h-full object-cover"
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
                     width={800}
                     height={1000}
@@ -511,34 +558,6 @@ const Inquire = () => {
 
             {/* Right — form wizard */}
             <div className="lg:col-span-3">
-              {/* Header */}
-              <div className="mb-10">
-                <motion.p
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="font-overline text-muted-foreground/40 mb-3"
-                >
-                  Start Here
-                </motion.p>
-                <motion.h1
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="font-serif-wedding text-display-lg text-foreground mb-3"
-                >
-                  Let's Plan Something Beautiful
-                </motion.h1>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2, duration: 0.4 }}
-                  className="font-sans-wedding text-sm text-muted-foreground/60 font-light"
-                >
-                  No commitment — just a warm conversation about your wedding day.
-                </motion.p>
-              </div>
-
               {/* Progress bar */}
               <div className="mb-10">
                 <div className="flex items-center justify-between mb-2">
