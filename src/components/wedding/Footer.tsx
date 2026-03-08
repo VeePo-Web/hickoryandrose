@@ -38,7 +38,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-foreground text-background relative" role="contentinfo">
+    <footer ref={footerRef} className="bg-foreground text-background relative" role="contentinfo">
       {/* Gradient accent line */}
       <div
         className="h-px w-full"
@@ -47,6 +47,23 @@ const Footer = () => {
             "linear-gradient(90deg, transparent, hsl(var(--primary)) 30%, hsl(var(--gold, 38 60% 55%)) 50%, hsl(var(--primary)) 70%, transparent)",
         }}
       />
+
+      {/* Floating H&R monogram watermark */}
+      <motion.div
+        className="absolute right-8 md:right-16 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 2 }}
+        aria-hidden="true"
+      >
+        <span className="font-serif-wedding text-[12rem] xl:text-[16rem] font-light text-background/[0.015] leading-none tracking-tight">
+          H
+        </span>
+        <span className="font-script text-[10rem] xl:text-[14rem] text-background/[0.01] leading-none -ml-8">
+          R
+        </span>
+      </motion.div>
 
       {/* Pre-footer email capture — upgraded with micro-interactions */}
       <div className="border-b border-background/[0.06]">
