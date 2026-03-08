@@ -92,7 +92,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                 showSolidBg ? "text-foreground" : "text-white"
               }`}
             >
-              <AnimatePresence mode="wait">
+               <AnimatePresence mode="wait">
                 {showMonogram ? (
                   <motion.span
                     key="monogram"
@@ -100,11 +100,22 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="flex items-center gap-1.5"
+                    className="flex items-center gap-1.5 relative"
                   >
-                    <span className="font-serif-wedding text-lg font-light tracking-tight">H</span>
-                    <span className="font-script text-xl text-primary/60">&</span>
-                    <span className="font-script text-2xl">R</span>
+                    {/* Breathing gold glow behind monogram */}
+                    <motion.span
+                      className="absolute -inset-3 rounded-full pointer-events-none"
+                      animate={{ opacity: [0.03, 0.08, 0.03] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.4), transparent 70%)" }}
+                    />
+                    <span className="font-serif-wedding text-lg font-light tracking-tight relative">H</span>
+                    <motion.span
+                      className="font-script text-xl text-primary/60 relative"
+                      animate={{ opacity: [0.6, 0.9, 0.6] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    >&</motion.span>
+                    <span className="font-script text-2xl relative">R</span>
                   </motion.span>
                 ) : (
                   <motion.span
@@ -137,21 +148,34 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                       {link.name}
                       {isActive && (
                         <motion.span
+                          layoutId="nav-active-underline"
+                          className="absolute -bottom-1 left-0 right-0 h-px"
+                          style={{
+                            background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.7), hsl(var(--gold) / 0.4), transparent)",
+                          }}
+                          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                        />
+                      )}
+                      {isActive && (
+                        <motion.span
                           layoutId="nav-active-dot"
-                          className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full"
-                          style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.8), hsl(var(--gold) / 0.3))", boxShadow: "0 0 6px hsl(var(--gold) / 0.3)" }}
+                          className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-1 h-1 rotate-45"
+                          style={{
+                            background: "hsl(var(--gold) / 0.6)",
+                            boxShadow: "0 0 6px hsl(var(--gold) / 0.3)",
+                          }}
                           transition={{ type: "spring", stiffness: 380, damping: 30 }}
                         />
                       )}
                       {/* Gold shimmer underline on hover */}
-                      <span
-                        className="absolute bottom-0 left-1/2 -translate-x-1/2 h-px w-0 group-hover:w-6 transition-all duration-500 ease-out"
-                        style={{
-                          background: isActive
-                            ? "transparent"
-                            : "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.6), transparent)",
-                        }}
-                      />
+                      {!isActive && (
+                        <span
+                          className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-px w-0 group-hover:w-full transition-all duration-500 ease-out"
+                          style={{
+                            background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.5), transparent)",
+                          }}
+                        />
+                      )}
                     </Link>
                   </li>
                 );

@@ -134,10 +134,17 @@ const InstagramSection = () => {
           style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08), transparent)" }}
         />
 
-        {/* Staggered mosaic grid with parallax */}
+        {/* Staggered mosaic grid with film-strip reveal */}
         <motion.div 
           className="grid grid-cols-2 md:grid-cols-12 gap-2 md:gap-3"
           style={{ y: gridY }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+          }}
         >
           {/* Large feature — spans 7 cols */}
           <MosaicItem photo={photos[0]} index={0} className="col-span-2 md:col-span-7 aspect-[16/10]" featured />
@@ -202,13 +209,9 @@ const MosaicItem = ({
   
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{
-        duration: 0.7,
-        delay: index * 0.1,
-        ease: [0.25, 0.1, 0.25, 1],
+      variants={{
+        hidden: { opacity: 0, y: 30, clipPath: "inset(100% 0 0 0)" },
+        visible: { opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)", transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } },
       }}
       className={className}
       onMouseEnter={() => setIsHovered(true)}
@@ -288,14 +291,21 @@ const MosaicItem = ({
         <div className="absolute top-2 left-2 w-5 h-5 border-t border-l border-white/0 group-hover:border-[hsl(var(--gold)_/_0.2)] transition-all duration-500 pointer-events-none" />
         <div className="absolute bottom-2 right-2 w-5 h-5 border-b border-r border-white/0 group-hover:border-[hsl(var(--gold)_/_0.2)] transition-all duration-500 pointer-events-none" />
         
-        {/* Film contact sheet frame number */}
+        {/* Gold frame number badge with pulse on hover */}
         <div className="absolute top-2 right-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <span
-            className="font-sans-wedding text-[0.4rem] tracking-[0.15em] tabular-nums text-white/30 px-1.5 py-0.5"
-            style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.1), transparent)" }}
+          <motion.span
+            className="font-sans-wedding text-[0.4rem] tracking-[0.15em] tabular-nums text-white/40 px-2 py-1 inline-flex items-center gap-1.5 backdrop-blur-sm"
+            style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.15), hsl(var(--gold) / 0.05))", border: "1px solid hsl(var(--gold) / 0.1)" }}
+            whileHover={{ scale: 1.05 }}
           >
+            <motion.span
+              className="w-1 h-1 rounded-full"
+              style={{ background: "hsl(var(--gold) / 0.6)" }}
+              animate={{ opacity: [0.4, 1, 0.4] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
             FR{String(index + 1).padStart(2, "0")}
-          </span>
+          </motion.span>
         </div>
         
         {/* Featured badge */}
