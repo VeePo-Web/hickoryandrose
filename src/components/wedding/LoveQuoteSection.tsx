@@ -168,7 +168,13 @@ const LoveQuoteSection = () => {
               transition={{ duration: 0.8 }}
               aria-hidden="true"
             >
-              "
+              <motion.span
+                className="inline-block"
+                animate={{ opacity: [0.08, 0.12, 0.08] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                "
+              </motion.span>
             </motion.span>
             We believe your wedding day should be <em className="text-primary-foreground/95">felt</em>, not managed. That the
             details should serve the moment — never compete with it. That calm
