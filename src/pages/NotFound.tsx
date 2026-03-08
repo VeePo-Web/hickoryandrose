@@ -103,7 +103,7 @@ const NotFound = () => {
                 transition={{ duration: 1, delay: 0.5 }}
                 className="w-10 h-px bg-white/25 origin-right"
               />
-              <span className="font-serif-wedding text-xs text-white/25 tracking-widest italic">❖</span>
+              <span className="w-2 h-2 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }} />
               <motion.span
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
