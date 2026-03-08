@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
+import BreathingDiamond from "./BreathingDiamond";
 
 const stats = [
   { value: 75, suffix: "+", label: "Weddings Planned", detail: "and counting" },
@@ -87,6 +88,16 @@ const StatsSection = () => {
         style={{
           backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
           backgroundSize: "150px 150px",
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Scroll-linked vertical accent line (desktop) */}
+      <motion.div
+        className="absolute left-6 md:left-12 top-0 bottom-0 w-px hidden md:block origin-top pointer-events-none"
+        style={{
+          scaleY: horizontalRuleScale,
+          background: "linear-gradient(180deg, transparent, hsl(var(--gold) / 0.2) 30%, hsl(var(--gold) / 0.08) 70%, transparent)",
         }}
         aria-hidden="true"
       />
@@ -312,6 +323,13 @@ const StatsSection = () => {
                 ))}
               </div>
             </div>
+          </div>
+        </ScrollReveal>
+
+        {/* Breathing diamond section closer */}
+        <ScrollReveal delay={0.6}>
+          <div className="mt-12 md:mt-16 flex justify-center">
+            <BreathingDiamond size={10} />
           </div>
         </ScrollReveal>
       </div>
