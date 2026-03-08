@@ -66,10 +66,10 @@ const TestimonialSection = () => {
                       "{active.quote}"
                     </blockquote>
                     <div className="font-sans-wedding">
-                      <p className="text-sm font-semibold text-foreground">
+                      <p className="text-body-sm font-medium text-foreground tracking-wide">
                         {active.couple}
                       </p>
-                      <p className="text-xs text-muted-foreground mt-1">
+                      <p className="text-caption text-muted-foreground mt-1.5">
                         {active.venue}
                       </p>
                     </div>

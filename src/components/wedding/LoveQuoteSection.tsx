@@ -5,7 +5,7 @@ const LoveQuoteSection = () => {
     <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-sage-deep" aria-label="Brand manifesto">
       <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
         <ScrollReveal>
-          <p className="font-sans-wedding text-label uppercase text-primary-foreground/50 tracking-[0.2em] mb-8">
+          <p className="font-overline text-primary-foreground/50 mb-10">
             Our Promise
           </p>
           <blockquote className="font-serif-wedding text-display-md md:text-display-lg text-primary-foreground leading-relaxed mb-8">
