@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
@@ -11,6 +11,7 @@ import FullWidthImage from "@/components/wedding/FullWidthImage";
 import MagneticButton from "@/components/wedding/MagneticButton";
 import founderImage from "@/assets/founder-portrait.jpg";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
+import aboutHeroImage from "@/assets/about-hero.jpg";
 
 const values = [
   {
@@ -39,6 +40,14 @@ const milestones = [
 ];
 
 const About = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   useEffect(() => {
     setPageMeta({
       title: "About Hickory & Rose — Edmonton Wedding Planner | Our Story",
@@ -49,31 +58,42 @@ const About = () => {
 
   return (
     <main id="main-content">
-      <Navigation variant="solid" />
+      <Navigation variant="overlay" />
 
-      {/* Hero — unique editorial treatment */}
-      <section className="bg-background pt-32 pb-20 md:pb-28">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+      {/* Cinematic Parallax Hero */}
+      <section ref={heroRef} className="relative h-[60vh] md:h-[70vh] overflow-hidden">
+        <motion.div className="absolute inset-0" style={{ y: heroY }}>
+          <img
+            src={aboutHeroImage}
+            alt="Wedding planner in sunlit garden conservatory surrounded by white florals"
+            className="w-full h-[120%] object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/50" />
+        </motion.div>
+
+        <motion.div
+          className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6"
+          style={{ opacity: heroOpacity }}
+        >
           <ScrollReveal>
-            <p className="font-overline text-muted-foreground/50 mb-4">
-              About Us
+            <p className="font-sans-wedding text-label uppercase text-white/50 mb-4">
+              <span className="inline-flex items-center gap-3">
+                <span className="w-6 h-px bg-white/30" />
+                About Us
+                <span className="w-6 h-px bg-white/30" />
+              </span>
             </p>
-            <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
+            <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">
               Meet Hickory & Rose
             </h1>
-            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed max-w-xl mx-auto font-light">
+            <p className="font-sans-wedding text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto font-light">
               Refined rustic elegance, rooted in calm leadership and genuine care
               for every couple we serve.
             </p>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="w-16 h-px bg-primary/30 mx-auto mt-10 origin-center"
-            />
           </ScrollReveal>
-        </div>
+        </motion.div>
       </section>
 
       {/* Founder Story */}
@@ -157,7 +177,7 @@ const About = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="font-overline text-muted-foreground/50 mb-4">
+              <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
                 Our Values
               </p>
               <h2 className="font-serif-wedding text-display-lg text-foreground">
@@ -192,12 +212,12 @@ const About = () => {
         </div>
       </section>
 
-      {/* Journey — horizontal ruled rows instead of timeline dots */}
+      {/* Journey — horizontal ruled rows */}
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="font-overline text-muted-foreground/50 mb-4">
+              <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
                 Our Journey
               </p>
               <h2 className="font-serif-wedding text-display-lg text-foreground">
@@ -232,7 +252,7 @@ const About = () => {
       <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
           <ScrollReveal>
-            <p className="font-overline text-muted-foreground/40 text-center mb-12">
+            <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 text-center mb-12">
               Press & Recognition
             </p>
             <div className="flex flex-wrap items-baseline justify-center gap-x-10 md:gap-x-16 gap-y-6">

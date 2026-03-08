@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
@@ -8,8 +8,8 @@ import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import ImageReveal from "@/components/wedding/ImageReveal";
-import { Link } from "react-router-dom";
 import MagneticButton from "@/components/wedding/MagneticButton";
+import servicesHeroImage from "@/assets/services-hero.jpg";
 import servicePlanningImage from "@/assets/service-planning.jpg";
 import serviceStationeryImage from "@/assets/service-stationery.jpg";
 import serviceFullserviceImage from "@/assets/service-fullservice.jpg";
@@ -88,6 +88,14 @@ const listItem = {
 };
 
 const Services = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   useEffect(() => {
     setPageMeta({
       title: "Wedding Planning Services — Day-Of, Partial & Full-Service | Hickory & Rose",
@@ -98,32 +106,43 @@ const Services = () => {
 
   return (
     <main id="main-content">
-      <Navigation variant="solid" />
+      <Navigation variant="overlay" />
 
-      {/* Hero — clean editorial, no dot pattern */}
-      <section className="bg-background pt-32 pb-20 md:pb-28">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+      {/* Cinematic Parallax Hero */}
+      <section ref={heroRef} className="relative h-[60vh] md:h-[70vh] overflow-hidden">
+        <motion.div className="absolute inset-0" style={{ y: heroY }}>
+          <img
+            src={servicesHeroImage}
+            alt="Luxury wedding planning flatlay with calligraphy timeline, sage eucalyptus, and gold wax seal on marble"
+            className="w-full h-[120%] object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/15 to-black/55" />
+        </motion.div>
+
+        <motion.div
+          className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6"
+          style={{ opacity: heroOpacity }}
+        >
           <ScrollReveal>
-            <p className="font-overline text-muted-foreground/50 mb-4">
-              Our Services
+            <p className="font-sans-wedding text-label uppercase text-white/50 mb-4">
+              <span className="inline-flex items-center gap-3">
+                <span className="w-6 h-px bg-white/30" />
+                Our Services
+                <span className="w-6 h-px bg-white/30" />
+              </span>
             </p>
-            <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
-              Wedding Planning Services
+            <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">
+              Services Tailored to You
             </h1>
-            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed max-w-xl mx-auto font-light">
-              Every couple is different. Our services are designed to meet you
-              where you are — whether you need a steady hand on the day or a
-              trusted partner from the very beginning.
+            <p className="font-sans-wedding text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto font-light">
+              Every couple is different. Our services meet you where you are —
+              whether you need a steady hand on the day or a trusted partner from
+              the very beginning.
             </p>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="w-16 h-px bg-primary/30 mx-auto mt-10 origin-center"
-            />
           </ScrollReveal>
-        </div>
+        </motion.div>
       </section>
 
       {/* Service Tiers */}
@@ -157,7 +176,7 @@ const Services = () => {
                 <div>
                   <ScrollReveal delay={service.image ? 0.1 : 0}>
                     <div className={`${service.image ? "" : "text-center"} mb-10`}>
-                      <p className="font-overline text-primary/60 mb-3">
+                      <p className="font-sans-wedding text-label uppercase text-primary/60 mb-3">
                         {String(index + 1).padStart(2, "0")}
                       </p>
                       <h2 className="font-serif-wedding text-display-lg text-foreground mb-2">
@@ -166,7 +185,7 @@ const Services = () => {
                       <p className="font-serif-wedding text-lg italic text-muted-foreground mb-3">
                         {service.tagline}
                       </p>
-                      <p className="font-overline text-primary">
+                      <p className="font-sans-wedding text-label uppercase text-primary">
                         {service.investment}
                       </p>
                     </div>
@@ -176,7 +195,7 @@ const Services = () => {
                       {service.description}
                     </p>
                     <div className="border-t border-border pt-8 mb-8">
-                      <p className="font-overline text-muted-foreground mb-5">
+                      <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-5">
                         What's Included
                       </p>
                       <motion.ul
@@ -257,7 +276,7 @@ const Services = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="font-overline text-muted-foreground/50 mb-4">Find Your Fit</p>
+              <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">Find Your Fit</p>
               <h2 className="font-serif-wedding text-display-lg text-foreground">
                 Not sure which service is right?
               </h2>
@@ -283,7 +302,7 @@ const Services = () => {
                     </p>
                   </div>
                   <div className="md:col-span-3 md:text-right">
-                    <p className="font-overline text-primary">{item.price}</p>
+                    <p className="font-sans-wedding text-label uppercase text-primary">{item.price}</p>
                   </div>
                 </div>
               </ScrollReveal>
