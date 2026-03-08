@@ -151,7 +151,25 @@ const NotFound = () => {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 1.1 }}
-              className="w-16 h-px bg-white/12 mx-auto mb-8 origin-center"
+              className="w-16 h-px mx-auto mb-4 origin-center"
+              style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2), transparent)" }}
+            />
+            {/* Connecting diamond */}
+            <div className="flex justify-center mb-4">
+              <motion.span
+                initial={{ scale: 0, rotate: 0 }}
+                animate={{ scale: 1, rotate: 45 }}
+                transition={{ duration: 0.4, delay: 1.3 }}
+                className="w-1.5 h-1.5"
+                style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15))" }}
+              />
+            </div>
+            <motion.div
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 1 }}
+              transition={{ duration: 0.5, delay: 1.4 }}
+              className="w-px h-6 mx-auto mb-4 origin-top"
+              style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.2), transparent)" }}
             />
             <p className="font-overline text-white/25 mb-8">Or explore</p>
 
