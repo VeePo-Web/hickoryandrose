@@ -37,14 +37,14 @@ const NotFound = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1.0] }}
           >
-            <div className="w-12 h-px bg-primary mx-auto mb-8" />
-            <p className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.2em] mb-6">
+            <hr className="editorial-rule mx-auto mb-8" />
+            <p className="font-overline text-muted-foreground mb-6">
               Page Not Found
             </p>
             <h1 className="font-serif-wedding text-display-lg text-foreground mb-6">
               This page seems to have wandered off.
             </h1>
-            <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed mb-10">
+            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-10 font-light">
               The page you're looking for doesn't exist — but we have plenty of
               beautiful things waiting for you.
             </p>
@@ -58,13 +58,13 @@ const NotFound = () => {
           >
             <Link
               to="/"
-              className="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.15em] uppercase font-semibold hover:bg-sage-deep transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.15em] uppercase font-light hover:bg-sage-deep transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
             >
               Return Home
             </Link>
             <Link
               to="/inquire"
-              className="inline-flex items-center justify-center px-8 py-3.5 border border-primary text-primary font-sans-wedding text-xs tracking-[0.15em] uppercase font-semibold hover:bg-primary hover:text-primary-foreground transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+              className="inline-flex items-center justify-center px-8 py-3.5 border border-primary text-primary font-sans-wedding text-xs tracking-[0.15em] uppercase font-light hover:bg-primary hover:text-primary-foreground transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
             >
               Get in Touch
             </Link>
