@@ -84,14 +84,7 @@ const serviceTiers = [
   },
 ];
 
-const listItem = {
-  hidden: { opacity: 0, x: -8 },
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.35, delay: i * 0.06, ease: [0.25, 0.1, 0.25, 1] as const },
-  }),
-};
+// listItem variants moved to ServiceTierCard sub-component
 
 const Services = () => {
   const heroRef = useRef<HTMLElement>(null);
