@@ -152,10 +152,19 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="font-serif-wedding text-xl md:text-2xl font-light tracking-tight"
+                    className="font-serif-wedding text-xl md:text-2xl font-light tracking-tight relative overflow-hidden"
                   >
                     Hickory <span className="font-normal">&</span>{" "}
                     <span className="font-script text-2xl md:text-3xl">Rose</span>
+                    <motion.span
+                      className="absolute inset-0 pointer-events-none"
+                      initial={{ x: "-100%" }}
+                      animate={{ x: "200%" }}
+                      transition={{ duration: 1.2, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                      style={{
+                        background: "linear-gradient(110deg, transparent 20%, hsl(var(--gold) / 0.25) 45%, hsl(var(--gold) / 0.4) 50%, hsl(var(--gold) / 0.25) 55%, transparent 80%)",
+                      }}
+                    />
                   </motion.span>
                 )}
               </AnimatePresence>
