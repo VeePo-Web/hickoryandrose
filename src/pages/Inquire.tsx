@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { setPageMeta } from "@/lib/seo";
 import { motion } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import Footer from "@/components/wedding/Footer";
