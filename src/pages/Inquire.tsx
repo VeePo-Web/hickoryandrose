@@ -817,16 +817,41 @@ const Inquire = () => {
       </section>
 
       {/* Trust signals before footer */}
-      <section className="py-8 md:py-10 bg-card border-t border-border/20">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
+      <section className="py-8 md:py-10 bg-card border-t border-border/20 relative overflow-hidden">
+        {/* Subtle radial gold ambient glow */}
+        <motion.div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[150px] pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.04 }}
+          viewport={{ once: true }}
+          transition={{ duration: 2 }}
+          style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.2), transparent 70%)" }}
+          aria-hidden="true"
+        />
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl relative">
           <div className="grid grid-cols-3 gap-4 text-center">
             {[
               { value: "48hr", label: "Response Time" },
               { value: "100%", label: "Response Rate" },
               { value: "Free", label: "Discovery Call" },
-            ].map((stat) => (
-              <div key={stat.label}>
+            ].map((stat, i) => (
+              <div key={stat.label} className="relative">
+                {/* Gold diamond between columns (desktop) */}
+                {i > 0 && (
+                  <span
+                    className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 rotate-45 hidden md:block"
+                    style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }}
+                  />
+                )}
                 <p className="font-serif-wedding text-lg md:text-xl text-foreground/50 font-light">{stat.value}</p>
+                <motion.div
+                  className="w-4 h-px mx-auto my-1.5 origin-center"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+                  style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25), transparent)" }}
+                />
                 <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-muted-foreground/30 mt-1">{stat.label}</p>
               </div>
             ))}
