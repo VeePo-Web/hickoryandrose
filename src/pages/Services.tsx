@@ -380,6 +380,79 @@ const Services = () => {
         </div>
       </section>
 
+      {/* Why Hickory & Rose — editorial differentiator */}
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card relative overflow-hidden">
+        {/* Decorative background monogram */}
+        <motion.div
+          className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.02 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+        >
+          <span className="font-script text-[18rem] md:text-[24rem] text-foreground leading-none">
+            R
+          </span>
+        </motion.div>
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
+          <ScrollReveal>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start mb-16 md:mb-24">
+              <div className="md:col-span-5">
+                <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
+                  <span className="inline-flex items-center gap-3">
+                    <span className="w-5 h-px bg-primary/30" />
+                    The Difference
+                  </span>
+                </p>
+                <h2 className="font-serif-wedding text-display-lg text-foreground leading-tight">
+                  Why couples choose us.
+                </h2>
+              </div>
+              <div className="md:col-span-7 md:pt-8">
+                <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
+                  It's not about what we do — it's about how we make you feel. Our couples consistently describe the same thing: a deep exhale. The relief of knowing every detail is handled with care, taste, and quiet confidence.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-0">
+            {[
+              {
+                title: "Calm Under Pressure",
+                desc: "When the unexpected happens — and it always does — we handle it before you even notice. That's the promise.",
+                icon: "01",
+              },
+              {
+                title: "Design-Forward Thinking",
+                desc: "We don't just execute a vision — we elevate it. Every texture, every colour, every transition point is considered.",
+                icon: "02",
+              },
+              {
+                title: "Vendor Relationships",
+                desc: "Years of trusted partnerships mean preferred access, better pricing, and a team that works together seamlessly.",
+                icon: "03",
+              },
+            ].map((item, i) => (
+              <ScrollReveal key={item.title} delay={i * 0.1}>
+                <div className="py-10 md:py-12 md:px-8 border-t md:border-t-0 md:border-l border-border/40 first:border-t-0 md:first:border-l-0 group">
+                  <span className="font-serif-wedding text-4xl font-light text-primary/10 group-hover:text-primary/20 transition-colors duration-700 block mb-4">
+                    {item.icon}
+                  </span>
+                  <h3 className="font-serif-wedding text-xl text-foreground mb-3 group-hover:text-primary transition-colors duration-500">
+                    {item.title}
+                  </h3>
+                  <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
+                    {item.desc}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CTASection />
       <PreFooterDivider />
       <Footer />

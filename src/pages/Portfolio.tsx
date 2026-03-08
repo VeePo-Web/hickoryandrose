@@ -142,6 +142,50 @@ const Portfolio = () => {
         </div>
       </section>
 
+      {/* Featured Story Spotlight */}
+      <section className="bg-card py-section-mobile md:py-section-tablet">
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <ScrollReveal>
+              <ImageReveal direction="left">
+                <div className="aspect-[4/5] overflow-hidden">
+                  <img
+                    src={heroImage}
+                    alt="Sarah & Michael's garden reception at golden hour"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </ImageReveal>
+            </ScrollReveal>
+            <ScrollReveal delay={0.15}>
+              <div>
+                <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-3">
+                  <span className="inline-flex items-center gap-3">
+                    <span className="w-5 h-px bg-primary/30" />
+                    Featured Wedding
+                  </span>
+                </p>
+                <h2 className="font-serif-wedding text-display-lg text-foreground mb-2">
+                  Sarah & Michael
+                </h2>
+                <p className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-muted-foreground/40 mb-6">
+                  Fairmont Hotel Macdonald · Summer 2024
+                </p>
+                <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light mb-6">
+                  An intimate garden ceremony followed by a candlelit reception overlooking the river valley. Every detail — from the hand-lettered menus to the sage and ivory floral installations — reflected their story of quiet sophistication.
+                </p>
+                <div className="border-l-2 border-primary/15 pl-5">
+                  <p className="font-serif-wedding text-sm italic text-foreground/50 leading-relaxed">
+                    "Every single moment felt exactly like us. Nothing was rushed, nothing was missed."
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       {/* Gallery */}
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
         <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
