@@ -293,10 +293,17 @@ const Footer = () => {
                   href="https://www.instagram.com/hickoryandrose"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 font-sans-wedding text-sm text-background/40 hover:text-background transition-colors duration-200 font-light"
+                  className="flex items-center gap-2.5 font-sans-wedding text-sm text-background/40 hover:text-background transition-colors duration-200 font-light group/social relative overflow-hidden"
                 >
-                  <Instagram size={14} strokeWidth={1.5} className="text-background/20" />
-                  @hickoryandrose
+                  <Instagram size={14} strokeWidth={1.5} className="text-background/20 group-hover/social:text-background/50 transition-colors duration-300" />
+                  <span className="relative">
+                    @hickoryandrose
+                    {/* Gold shimmer sweep on hover */}
+                    <span
+                      className="absolute inset-0 -translate-x-full group-hover/social:translate-x-[200%] transition-transform duration-700 ease-out pointer-events-none"
+                      style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2), transparent)", width: "60%" }}
+                    />
+                  </span>
                 </a>
 
                 <div className="mt-8">
@@ -339,7 +346,7 @@ const Footer = () => {
           </motion.div>
         </div>
 
-        {/* Centered monogram above legal bar */}
+      {/* Centered monogram above legal bar */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -347,25 +354,45 @@ const Footer = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex flex-col items-center mb-10"
         >
-          <div
-            className="w-2 h-2 rotate-45 mb-6"
-            style={{
-              background: "linear-gradient(135deg, hsl(var(--gold, 38 60% 55%) / 0.3), hsl(var(--gold, 38 60% 55%) / 0.1))",
-            }}
-          />
+          {/* Breathing diamond ornament */}
+          <motion.div
+            className="relative mb-6"
+            animate={{ opacity: [0.3, 0.7, 0.3], scale: [0.9, 1.15, 0.9] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <div
+              className="w-2.5 h-2.5 rotate-45"
+              style={{
+                background: "linear-gradient(135deg, hsl(var(--gold, 38 60% 55%) / 0.5), hsl(var(--gold, 38 60% 55%) / 0.15))",
+              }}
+            />
+            <div
+              className="absolute inset-0 w-6 h-6 -top-[7px] -left-[7px] rounded-full pointer-events-none"
+              style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.15), transparent 70%)" }}
+            />
+          </motion.div>
           <p className="font-script text-2xl text-background/[0.08]">
             Hickory & Rose
           </p>
+          {/* Gold-traced horizontal rule */}
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="w-16 h-px mt-4 origin-center"
+            className="w-20 h-px mt-4 origin-center relative overflow-hidden"
             style={{
-              background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.15), transparent)",
+              background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.2), transparent)",
             }}
-          />
+          >
+            {/* Traveling shimmer */}
+            <motion.span
+              className="absolute inset-0"
+              animate={{ x: ["-100%", "200%"] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
+              style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.4), transparent)", width: "40%" }}
+            />
+          </motion.div>
         </motion.div>
 
         {/* Bottom legal bar */}

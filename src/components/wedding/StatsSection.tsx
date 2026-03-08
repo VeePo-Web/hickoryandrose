@@ -286,14 +286,32 @@ const StatsSection = () => {
           </div>
         </ScrollReveal>
 
-        {/* Bottom tagline */}
+        {/* Premium editorial credential bar */}
         <ScrollReveal delay={0.5}>
-          <div className="flex items-center justify-center gap-4 mt-10 md:mt-14" aria-hidden="true">
-            <span className="w-10 h-px bg-background/[0.06]" />
-            <p className="font-serif-wedding text-xs italic text-background/10">
-              Quality over quantity — always.
-            </p>
-            <span className="w-10 h-px bg-background/[0.06]" />
+          <div className="mt-12 md:mt-16 border-t border-background/[0.06] pt-8">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <span className="w-10 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.2), transparent)" }} />
+                <p className="font-serif-wedding text-xs italic text-background/15">
+                  Quality over quantity — always.
+                </p>
+              </div>
+              <div className="flex items-center gap-6">
+                {["WIPA Certified", "100% Five-Star", "Intentionally Limited"].map((cred, i) => (
+                  <motion.span
+                    key={cred}
+                    initial={{ opacity: 0, y: 4 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.7 + i * 0.1, duration: 0.4 }}
+                    className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-background/12 flex items-center gap-2"
+                  >
+                    <span className="w-1 h-1 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }} />
+                    {cred}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
           </div>
         </ScrollReveal>
       </div>
