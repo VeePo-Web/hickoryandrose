@@ -623,6 +623,91 @@ const Services = () => {
         </div>
       </section>
 
+      {/* Your Journey — editorial process timeline */}
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden">
+        {/* Background watermark */}
+        <motion.div
+          className="absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none select-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.015 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+        >
+          <span className="font-script text-[16rem] md:text-[22rem] text-foreground leading-none">
+            Journey
+          </span>
+        </motion.div>
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative">
+          <ScrollReveal>
+            <div className="text-center mb-16 md:mb-20">
+              <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
+                <span className="inline-flex items-center gap-3">
+                  <span className="w-5 h-px bg-border" />
+                  From Inquiry to "I Do"
+                  <span className="w-5 h-px bg-border" />
+                </span>
+              </p>
+              <h2 className="font-serif-wedding text-display-lg text-foreground">
+                Your Journey With Us
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="relative">
+            {/* Central vertical gold line (desktop) */}
+            <motion.div
+              className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2"
+              style={{ background: "linear-gradient(180deg, transparent, hsl(var(--gold) / 0.2), hsl(var(--gold) / 0.2), transparent)" }}
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+            />
+
+            {[
+              { step: "01", title: "Discovery Call", desc: "A relaxed, 30-minute conversation to learn about your vision, your priorities, and how you want to feel on your day." },
+              { step: "02", title: "Custom Proposal", desc: "Within one week, you'll receive a tailored proposal with transparent pricing, a detailed scope, and a clear next step." },
+              { step: "03", title: "Planning Begins", desc: "We dive into design direction, vendor selection, timeline building, and all the details that make your wedding uniquely yours." },
+              { step: "04", title: "Rehearsal & Final Details", desc: "Every vendor is confirmed, every timeline reviewed, every moment choreographed. You exhale — we've got this." },
+              { step: "05", title: "Your Wedding Day", desc: "We lead with calm confidence so you can be fully present. Every detail is handled. Every moment is yours." },
+            ].map((item, i) => (
+              <ScrollReveal key={item.step} delay={i * 0.08}>
+                <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 mb-12 md:mb-16 last:mb-0 items-start ${i % 2 !== 0 ? "md:direction-rtl" : ""}`}>
+                  <div className={`${i % 2 !== 0 ? "md:text-right md:order-2" : "md:order-1"}`}>
+                    <div className={`flex items-start gap-4 ${i % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
+                      {/* Gold node dot */}
+                      <motion.span
+                        className="w-2.5 h-2.5 rounded-full shrink-0 mt-2"
+                        style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.6), hsl(var(--gold) / 0.2))" }}
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 + i * 0.1, duration: 0.4, type: "spring" }}
+                      />
+                      <div>
+                        <span className="font-serif-wedding text-3xl font-light text-primary/15 block mb-1">{item.step}</span>
+                        <h3 className="font-serif-wedding text-xl text-foreground mb-2">{item.title}</h3>
+                        <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">{item.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={`hidden md:block ${i % 2 !== 0 ? "md:order-1" : "md:order-2"}`} />
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal delay={0.4}>
+            <div className="text-center mt-16">
+              <MagneticButton to="/inquire" variant="primary">
+                Begin Your Journey
+              </MagneticButton>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       <CTASection />
       <PreFooterDivider />
       <Footer />

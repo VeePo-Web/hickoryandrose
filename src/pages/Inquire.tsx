@@ -711,6 +711,25 @@ const Inquire = () => {
         </div>
       </section>
 
+      {/* Trust signals before footer */}
+      <section className="py-8 md:py-10 bg-card border-t border-border/20">
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
+          <div className="grid grid-cols-3 gap-4 text-center">
+            {[
+              { value: "48hr", label: "Response Time" },
+              { value: "100%", label: "Response Rate" },
+              { value: "Free", label: "Discovery Call" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <p className="font-serif-wedding text-lg md:text-xl text-foreground/50 font-light">{stat.value}</p>
+                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-muted-foreground/30 mt-1">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <PreFooterDivider />
       <Footer />
     </main>
   );
