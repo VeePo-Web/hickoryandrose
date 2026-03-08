@@ -274,6 +274,7 @@ const About = () => {
       </section>
 
       <CTASection />
+      <PreFooterDivider />
       <Footer />
     </main>
   );

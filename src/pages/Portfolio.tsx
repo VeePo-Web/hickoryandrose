@@ -167,6 +167,7 @@ const Portfolio = () => {
       </section>
 
       <CTASection />
+      <PreFooterDivider />
       <Footer />
     </main>
   );

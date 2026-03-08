@@ -180,6 +180,7 @@ const FAQ = () => {
           </ScrollReveal>
         </div>
       </section>
+      <PreFooterDivider />
       <Footer />
     </main>
   );

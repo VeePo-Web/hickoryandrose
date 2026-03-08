@@ -160,6 +160,7 @@ const Approach = () => {
       </section>
 
       <CTASection />
+      <PreFooterDivider />
       <Footer />
     </main>
   );
