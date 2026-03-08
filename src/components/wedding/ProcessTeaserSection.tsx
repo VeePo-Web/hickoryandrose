@@ -29,7 +29,7 @@ const ProcessTeaserSection = () => {
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
         <ScrollReveal>
           <div className="text-center mb-12 md:mb-16">
-            <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
+            <p className="font-overline text-muted-foreground mb-4">
               How We Work
             </p>
             <h2 className="font-serif-wedding text-display-lg text-foreground">
