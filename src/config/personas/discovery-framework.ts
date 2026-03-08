@@ -1,12 +1,13 @@
 /**
- * ROYAL MECHANICAL — Website Discovery Framework
+ * HICKORY & ROSE — Website Discovery Framework
  * 
  * This file is a DECISION-MAKING REFERENCE ONLY. It does not render anything.
  * It encodes the depth of thinking behind every website decision —
  * from positioning and client psychology to conversion architecture.
  * 
- * Adapted from a comprehensive discovery methodology. All industry-specific
- * references have been generalized for Royal Mechanical's context.
+ * Adapted from the Hickory & Rose Wedding and Event Planning discovery form.
+ * All decision criteria are specific to refined rustic elegance weddings
+ * and calm luxury leadership positioning.
  * 
  * HOW TO USE:
  * - When making UI/UX decisions, reference the relevant section
@@ -21,120 +22,183 @@ export const DISCOVERY_FRAMEWORK = {
   // Guides: Homepage hero, taglines, meta descriptions, about page
   // ═══════════════════════════════════════════════════════════════════
   identity: {
-    purpose: "Define what Royal Mechanical communicates in every pixel",
+    purpose: "Define what Hickory & Rose communicates in every pixel",
     decisionCriteria: {
-      brandName: "Use exact brand name consistently — never abbreviate without intent",
+      brandName: "Hickory & Rose Wedding and Event Planning (short: Hickory & Rose)",
       positioningLine: "One sentence that anchors homepage and SEO. Must pass the 'say it to a stranger' test",
-      namedPromise: "What Royal Mechanical exists to protect/deliver — this drives every CTA",
-      coreValues: "6-12 words that must describe Royal Mechanical online — these filter every design choice",
-      differentiators: "The reasons Royal Mechanical is the obvious choice — these become proof sections",
+      namedPromise: "Hickory & Rose exists to protect presence — this drives every CTA",
+      calmAsLuxury: "Calm becomes a luxury — the actions taken to create calm, not just the vibe",
+      protectingPresence: "What protecting presence looks like across planning and on the wedding day — absorbing, deciding, preventing, managing so the couple can feel the day",
+      coreValues: "6-12 words: calm, editorial, warm, polished, grounded, intentional, elevated, personal",
+      differentiators: "Calm leadership under pressure, luxury that still feels personal, seamless logistics + elevated design, trusted vendor collaboration, tailored planning support",
     },
     voiceGuidance: {
       purpose: "Voice defines how every word on the site sounds",
-      toneDirection: "Confident authority with approachable professionalism",
-      boundaries: "What the website voice should NEVER do (e.g., overpromise, use jargon without context, be snarky)",
-      reinforcementWords: "Words repeated across the site to strengthen identity",
-      prohibitedWords: "Words that dilute or misrepresent the brand",
+      toneOptions: [
+        "Calm and editorial",
+        "Warm and refined",
+        "Quiet confidence (minimal words, maximum authority)",
+        "Collaborative and conversational",
+      ],
+      boundaries: "", // TODO: From Section 1.16 — never snarky, never overly trendy, no hard-sell
+      reinforcementWords: ["calm", "presence", "intentional", "cohesive", "elevated", "protected", "refined"],
+      prohibitedWords: [], // TODO: From Section 1.18
     },
     brandPersona: {
-      purpose: "If Royal Mechanical were a person, how would they show up?",
-      behavioralCues: "Leadership style, communication style, professionalism signals",
-      manifesto: "What Royal Mechanical believes the industry deserves. What it refuses to compromise on.",
+      purpose: "If Hickory & Rose were a guest at a wedding, how would she show up?",
+      behavioralCues: "Calm leadership, warmth, discretion, precision, hospitality",
+      manifesto: "", // TODO: From Section 1.19 — what weddings deserve, what she refuses to compromise on
+    },
+    refinedRusticElegance: {
+      is: "", // TODO: From Section 1.10 — textures, palette, mood, restraint, execution standards
+      isNot: "", // TODO: From Section 1.11 — never "DIY rustic," "Pinterest collage," or "performative luxury"
     },
   },
 
   // ═══════════════════════════════════════════════════════════════════
-  // SECTION 2: IDEAL CLIENT PROFILE
+  // SECTION 2: IDEAL CLIENT PROFILE ("POLISHED PAIGE")
   // Guides: Copy tone, imagery selection, objection handling, CTA language
   // ═══════════════════════════════════════════════════════════════════
   idealClient: {
-    purpose: "Every design and copy decision should attract THIS person and filter out misfits",
+    purpose: "Every design and copy decision should attract Polished Paige and filter out misfits",
+    archetype: "Polished Paige — design-forward, detail-driven, strong taste, wants calm leadership without losing creative involvement",
     decisionCriteria: {
-      clientDescription: "Who is the ideal client? Their values, priorities, decision-making style",
-      clientContext: "Their life/work outside this purchase — decision fatigue, time pressure, stakes",
-      fears: "What they're afraid will happen if they choose wrong — drives reassurance messaging",
-      desires: "What they're most excited about — drives aspiration messaging",
+      clientDescription: "", // TODO: From Section 2.1 — describe Polished Paige in own words
+      clientContext: "", // TODO: From Section 2.2 — her life outside wedding planning
+      fears: "", // TODO: From Section 2.3 — regret, chaos, family tension, disjointed design, feeling rushed, missed moments
+      desires: "", // TODO: From Section 2.4 — guest experience, meaning, story, intimacy, aesthetic, hosting, legacy
+      weddingFeelForGuests: "", // TODO: From Section 2.5 — flow, warmth, hospitality, pacing
+      weddingLookDescription: "", // TODO: From Section 2.6 — magazine paragraph: light, texture, restraint, cohesion, mood
       pressures: [
-        "Loss aversion — they'll remember mistakes",
-        "Social/professional evaluation — others will judge the result",
-        "Decision fatigue — too many options",
-        "Control paradox — wants involvement without operational burden",
-        "Budget ambiguity — hidden costs create distrust",
-        "Vendor uncertainty — who's actually qualified?",
-        "Timeline stress — how does the process work?",
+        "Loss aversion — she'll remember mistakes forever",
+        "Social evaluation pressure — people who know taste",
+        "Decision fatigue — too many choices",
+        "Control paradox — wants involvement but not operational weight",
+        "Family dynamics/opinions",
+        "Budget ambiguity/hidden costs",
+        "Vendor uncertainty — who's actually good?",
+        "Timeline stress — how does a day flow?",
       ],
     },
     firstImpressions: {
-      fiveSeconds: "What they need to HEAR in the first 5 seconds on the homepage to stay",
-      thirtySeconds: "What they need to SEE in the first 30 seconds to trust (proof elements)",
-      byInquiry: "What they need to FEEL by the time they hit the CTA (relief, clarity, confidence)",
+      fiveSeconds: "", // TODO: From Section 2.8 — reassurance line for homepage
+      thirtySeconds: "", // TODO: From Section 2.9 — proof elements: full galleries, testimonials naming calm leadership, process clarity
+      byInquiry: "", // TODO: From Section 2.10 — relief, clarity, excitement, "she gets my taste," "I'm safe"
     },
     objections: {
       purpose: "Address these gently throughout the site — not on a single FAQ page",
-      common: [] as string[], // TODO: Populate with Royal Mechanical's common objections
+      common: [
+        "My venue has a coordinator",
+        "I don't want to lose control",
+        "Is it worth the investment?",
+        "How do I know you'll handle pressure?",
+      ], // From Section 2.11 examples; TODO: populate with actual responses
     },
     misfitProfile: {
       purpose: "Messaging should gently filter these out without being exclusionary",
-      signals: "Style mismatch, communication mismatch, expectations mismatch, budget mismatch",
+      signals: "Style mismatch, communication mismatch, expectations mismatch, budget mismatch, control issues",
+      // TODO: From Section 2.12 — specific misfit descriptions
     },
     qualificationSignals: {
-      greenFlags: "What ideal clients say/ask/value that reveals fit",
-      redFlags: "What reveals it won't be a fit",
-      bestQualifyingQuestion: "Single inquiry form question that reveals fit instantly",
+      greenFlags: "", // TODO: From Section 2.17
+      redFlags: "", // TODO: From Section 2.18
+      bestQualifyingQuestion: "", // TODO: From Section 2.19
+      wantMoreOf: "", // TODO: From Section 2.14 — season, venue type, guest count, mood, aesthetic
+      wantLessOf: "", // TODO: From Section 2.15
+      commonMisfitInquiry: "", // TODO: From Section 2.16
     },
   },
 
   // ═══════════════════════════════════════════════════════════════════
-  // SECTION 3: SERVICES AND PROCESS
+  // SECTION 3: SERVICES AND "CALM LUXURY LEADERSHIP" PROCESS
   // Guides: Services page structure, pricing display, process visualization
   // ═══════════════════════════════════════════════════════════════════
   services: {
     purpose: "Eliminate confusion, create confidence, set expectations, justify investment",
+    coreServices: [
+      "Day-of coordination",
+      "Partial planning",
+      "Full-service planning",
+      "Event planning (non-wedding)",
+    ],
     decisionCriteria: {
       serviceClarity: "Each service must be understood in 10 seconds — what it includes and why it matters",
+      misunderstoodService: "", // TODO: From Section 3.2 — e.g., "day-of" vs "wedding day management" vs "month-of"
       scopeBoundaries: "What each service explicitly does NOT include — prevents scope creep messaging",
       rightMoment: "When/why someone chooses each service level — drives self-qualification",
-      processVisibility: "End-to-end process from first contact to delivery — builds trust through transparency",
-      pricingStrategy: "Public vs private pricing, expectation-setting language, investment justification",
+      processVisibility: "End-to-end process from first contact to execution — builds trust through transparency",
+      pricingStrategy: "", // TODO: From Section 3.22/3.23 — public vs private, expectation-setting
+    },
+    dayOfCoordination: {
+      tenSecondPitch: "", // TODO: From Section 3.3
+      process: "", // TODO: From Section 3.4 — timeline, vendor confirmations, walkthroughs, rehearsal, floorplan, contingency
+      scopeBoundaries: "", // TODO: From Section 3.5
+    },
+    partialPlanning: {
+      rightMoment: "", // TODO: From Section 3.6 — started but needs clarity, cohesion, direction
+      deliverables: "", // TODO: From Section 3.7
+      flexibility: "", // TODO: From Section 3.8
+    },
+    fullServicePlanning: {
+      endToEndProcess: "", // TODO: From Section 3.9 — vision refinement → vendor team → design cohesion → production timeline → day execution
+      designAndLogisticsBalance: "", // TODO: From Section 3.10
+    },
+    designDirection: {
+      providesDesign: null as boolean | null, // TODO: From Section 3.11
+      deliverables: "", // TODO: From Section 3.12 — design deck, palette, textures, rental/linen guidance
     },
     experienceDesign: {
       purpose: "The service experience itself is a trust signal",
-      collaboration: "How clients stay involved without carrying operational weight",
-      communication: "Response time standards, update cadence, decision-making process",
-      qualityStandards: "Non-negotiable execution details that define the brand",
-      contingencyMindset: "How Royal Mechanical handles the unexpected — builds confidence",
+      tailoredPlanningSupport: "", // TODO: From Section 3.13
+      vendorCollaboration: "", // TODO: From Section 3.14 — trusted vendor collaboration, communication standards
+      vendorCoordination: "", // TODO: From Section 3.15 — confirmations, timelines, handoffs, day-of leadership
+      contingencyMindset: "", // TODO: From Section 3.16 — weather pivots, timeline delays, vendor issues, family dynamics
+      effortlessWeddingDay: "", // TODO: From Section 3.17 — pacing, transitions, invisible structure, guest flow
+      calmLeadershipExamples: [], // TODO: From Section 3.18 — 2-4 real stories
+      familyDynamics: "", // TODO: From Section 3.19
+      collaborationApproach: "", // TODO: From Section 3.20
     },
     capacity: {
       purpose: "Scarcity and quality signals",
-      constraints: "Limited capacity messaging — creates urgency and signals quality",
-      boundaries: "Scope, timeline, and communication boundaries that protect quality",
+      constraints: "", // TODO: From Section 3.21 — limited weddings, max per weekend, travel limits
+      upgrades: "", // TODO: From Section 3.25 — rehearsal coordination, extra meetings, design enhancements
     },
+    pricing: {
+      structure: "", // TODO: From Section 3.22
+      displayStrategy: "", // TODO: From Section 3.23 — public starting prices / ranges / private / private with minimum
+      expectationLanguage: "", // TODO: From Section 3.24 — if private, what language sets expectations
+    },
+    faqs: [], // TODO: From Section 3.26 — top 10 per service tier
+    proofPerService: "", // TODO: From Section 3.27 — what proof supports each service
   },
 
   // ═══════════════════════════════════════════════════════════════════
-  // SECTION 4: EXPERIENCE ENGINEERING
+  // SECTION 4: EXPERIENCE ENGINEERING (GUEST JOURNEY + FEELING)
   // Guides: Micro-interactions, page transitions, content pacing, UX flow
   // ═══════════════════════════════════════════════════════════════════
   experience: {
-    purpose: "The website itself must FEEL like the service experience",
+    purpose: "The website itself must FEEL like the Hickory & Rose service experience",
     decisionCriteria: {
-      emotionalArc: "What should the entire website journey feel like? (3-5 words)",
-      clientFeeling: "What should clients feel at each stage of interaction?",
-      guestExperience: "How do end-users/stakeholders experience the result of Royal Mechanical's work?",
+      coupleFeeling: "", // TODO: From Section 4.1 — 3-5 words
+      guestFeeling: "", // TODO: From Section 4.2 — 3-5 words
+      weddingEnergy: "", // TODO: From Section 4.3 — arrival to last dance: pacing, warmth, music, lighting, transitions
+      luxuryGuestExperience: "", // TODO: From Section 4.4 — beyond aesthetics: comfort, clarity, hospitality, flow, timing
+      personalNotGeneric: "", // TODO: From Section 4.5 — story-driven moments, intentional decisions, restraint, cohesion
     },
     microMoments: {
       purpose: "Small details that create outsized trust and delight",
-      protect: [] as string[], // Moments to protect/highlight
-      prevent: [] as string[], // Experience failures to prevent
+      protect: [], // TODO: From Section 4.6 — first look pacing, private moment after ceremony, family photo flow, reception room reveal, meaningful toasts
+      prevent: [], // TODO: From Section 4.7 — guest confusion, long gaps, rushed moments, missed food, late vendors, awkward transitions
     },
     standards: {
       purpose: "Non-negotiable execution details reflected in website quality",
-      items: [] as string[], // e.g., timeline discipline, communication clarity, precision
+      items: [], // TODO: From Section 4.8 — timeline discipline, vendor punctuality, communication clarity, setup precision
     },
+    venueCoordinatorDifference: "", // TODO: From Section 4.9 — 2-3 paragraph answer
     riskRemoval: {
-      purpose: "The single biggest risk Royal Mechanical removes for clients",
-      primaryRisk: "", // TODO: What clients fear most that RM solves
-      proofMethod: "How to prove this risk removal on the website",
+      purpose: "The single biggest risk Hickory & Rose removes for clients",
+      primaryRisk: "", // TODO: From Section 4.10 — chaos, regret, disjointed design, mental load, family stress
+      proofStories: [], // TODO: From Section 4.11 — 3 stories through proof (galleries/testimonials)
     },
   },
 
@@ -145,21 +209,25 @@ export const DISCOVERY_FRAMEWORK = {
   brandStory: {
     purpose: "Trust is built through proof, not claims",
     decisionCriteria: {
-      founderStory: "Why this work, why now, why Royal Mechanical — told as a consult conversation",
-      personality: "How Royal Mechanical shows up in client relationships",
-      onlinePresence: "What parts of personality must show online and HOW (language, structure, spacing, tone)",
-      assumptions: "What should never be assumed — must be made explicit on the site",
+      founderStory: "", // TODO: From Section 5.1 — why this work, why now, why you
+      personality: "", // TODO: From Section 5.2 — bubbly, calm, warm, organized
+      onlinePresence: "", // TODO: From Section 5.3 — warmth through language, authority through structure, calm through spacing
+      assumptions: "", // TODO: From Section 5.4 — what should never be assumed
     },
     credibility: {
-      existingSignals: [] as string[], // e.g., reviews, portfolios, certifications, years of experience
-      heroProofs: "Top 5-10 testimonials that mention key differentiators",
-      provableClaims: [] as string[], // 10 specific claims the site must be able to prove
-      missingProof: "What social proof would elevate the brand instantly if obtained",
+      existingSignals: [], // TODO: From Section 5.5 — Google reviews, testimonials, galleries, vendor referrals, venue lists, press, awards, styled shoots, years
+      heroProofs: "", // TODO: From Section 5.7 — 5-10 testimonials mentioning calm leadership, organization, enjoying the day
+      provableClaims: [], // TODO: From Section 5.9 — 10 specific claims the site must prove
+      missingProof: "", // TODO: From Section 5.10 — what social proof would elevate instantly
+    },
+    brandPhotos: {
+      hasPhotos: null as boolean | null, // TODO: From Section 5.11
+      wishList: "", // TODO: From Section 5.13 — editorial headshots, planning moments, venue walk-throughs, detail flat-lays
     },
     partnerships: {
       purpose: "Association with quality partners builds trust by proxy",
-      featuredPartners: [] as string[], // Vendors/partners to credit/feature
-      venues: [] as string[], // Locations/venues to associate with
+      venues: [], // TODO: From Section 5.14 — venues that match refined rustic elegance
+      vendors: [], // TODO: From Section 5.15 — photographers, florists, rentals to feature/credit
     },
   },
 
@@ -170,27 +238,41 @@ export const DISCOVERY_FRAMEWORK = {
   portfolio: {
     purpose: "The portfolio is the website's most important sales engine",
     decisionCriteria: {
-      curationRule: "What makes a project worthy of being featured?",
-      tenSecondProof: "What should the portfolio prove in 10 seconds?",
-      organization: "How should portfolio be organized? (individual stories, grid, both)",
-      filterTags: [] as string[], // e.g., service type, industry, scale, location
+      curationRule: "", // TODO: From Section 6.4 — what makes a wedding worthy of featuring
+      tenSecondProof: "", // TODO: From Section 6.5 — refined rustic elegance, cohesive design, elevated execution, personalization
+      organization: "", // TODO: From Section 6.6 — wedding stories, gallery grid, or both
+      filterTags: [
+        "Venue",
+        "Season",
+        "Service level (day-of/partial/full)",
+        "Aesthetic tags (refined rustic elegance)",
+        "Indoor/outdoor",
+        "Guest count range",
+        "Color palette",
+        "Cultural elements",
+      ],
     },
     storyElements: {
-      purpose: "Each featured project should include these written elements",
+      purpose: "Each featured wedding should include these written elements",
       elements: [
-        "Client context/challenge",
-        "Scope of work",
-        "Solution approach",
-        "Results/outcomes",
-        "Client testimonial",
-        "Key metrics/proof points",
+        "Couple story/vision",
+        "Design notes (palette/textures)",
+        "Planning scope (service tier)",
+        "Vendor credits",
+        "Calm moments we protected",
+        "Timeline/flow highlights",
+        "Guest experience notes",
       ],
     },
     imageStrategy: {
-      editingStyle: "", // e.g., "professional, true-to-life, clean"
-      behindTheScenes: "Images showing process, expertise, leadership in action",
-      creditFormat: "", // How partners/subcontractors are credited
+      editingStyle: "", // TODO: From Section 6.15 — warm, true-to-life, film, etc.
+      behindTheScenes: "Images showing calm leadership and execution in action",
+      creditFormat: "", // TODO: From Section 6.14 — vendor credits per story, single list, or both
     },
+    galleryStorage: "", // TODO: From Section 6.2 — Drive, Pixieset, photographer galleries
+    portfolioMix: "", // TODO: From Section 6.3 — real weddings vs styled shoots ratio
+    featuredWeddings: [], // TODO: From Section 6.11 — 5-10 weddings by couple/date/venue
+    privacyRestrictions: "", // TODO: From Section 6.13
   },
 
   // ═══════════════════════════════════════════════════════════════════
@@ -200,38 +282,76 @@ export const DISCOVERY_FRAMEWORK = {
   websiteStrategy: {
     purpose: "Turn visitors into qualified leads with minimal friction",
     decisionCriteria: {
-      primaryAction: "The ONE action every page should drive toward",
-      secondaryActions: [] as string[], // Supporting actions
-      instagramGap: "What the website must do that social media cannot",
-      homepageTruth: "What must be true in the visitor's mind by end of homepage",
+      primaryAction: "", // TODO: From Section 7.1 — inquire, book consult, view services then inquire, etc.
+      secondaryActions: [
+        "Read approach/process",
+        "Understand service differences",
+        "View reviews",
+        "View full galleries",
+        "Learn your story",
+        "Get pricing context",
+        "Follow on Instagram",
+        "Join email list",
+      ],
+      instagramGap: "", // TODO: From Section 7.3 — qualify leads, show full galleries, explain process, elevate trust
+      homepageTruth: "", // TODO: From Section 7.4 — "She gets my taste," "I'm safe," "This feels calm," "This is worth the investment"
     },
     navigation: {
-      pages: [] as string[], // TODO: Core pages for Royal Mechanical
-      topMenu: "", // Main navigation items
-      criticalPath: "If someone only reads 3 pages before inquiring, which 3?",
+      pages: [], // TODO: From Section 7.5 — Home, About, Services, Portfolio, etc.
+      topMenu: "", // TODO: From Section 7.6
+      criticalPath: "", // TODO: From Section 7.7 — if someone reads only 3 pages before inquiring
     },
     homepage: {
-      aboveTheFold: "Named promise + supporting line + CTA + proof snippet + location cue",
-      storyArc: "Reassurance → proof → process → services → reviews → CTA",
-      trustSignals: "3 most important trust signals to show early",
+      aboveTheFold: "Named promise + supporting line + CTA + proof snippet + portfolio image + Edmonton cue",
+      storyArc: "", // TODO: From Section 7.10 — reassurance → aesthetic proof → process → services → reviews → CTA
+      trustSignals: "", // TODO: From Section 7.9 — 3 most important trust signals
     },
     servicesPage: {
       purpose: "Eliminate confusion, create confidence, set expectations, justify investment",
-      betterThan: "What this page should do better than competitor sites",
+      betterThan: "", // TODO: From Section 7.11 — what this page does better than competitors
+    },
+    approachPage: {
+      proves: "", // TODO: From Section 7.12 — calm organized method, how you protect presence
+      namedFramework: null as boolean | null, // TODO: From Section 7.13
+      frameworkName: "", // TODO: From Section 7.14 — e.g., "Calm, Organized, Elevated"
+      processOutline: "", // TODO: From Section 7.15
+    },
+    reviewsPage: {
+      emphasis: "", // TODO: From Section 7.16 — calm leadership, organization, vendor management, enjoying the day
+    },
+    faqPage: {
+      purpose: "", // TODO: From Section 7.17 — filter objections, set expectations, reduce consult time
     },
     inquiryPage: {
-      emotionalTone: "What should the inquiry page feel like? (relief, professionalism, warmth, clarity)",
-      formFields: [] as string[], // Fields that qualify leads
-      responseExpectation: "", // e.g., "Replies within 24-48 business hours"
+      emotionalTone: "", // TODO: From Section 7.18 — relief, professionalism, warmth, clarity, confidence
+      formFields: [
+        "Wedding date",
+        "Venue",
+        "Guest count",
+        "Service tier",
+        "Budget range",
+        "Aesthetic notes",
+        "City",
+        "How they found you",
+      ],
+      responseExpectation: "", // TODO: From Section 7.20 — "Replies within 24-48 business hours"
     },
     leadMagnet: {
-      enabled: false, // TODO: Does Royal Mechanical want a downloadable resource?
-      options: [] as string[], // Potential lead magnet ideas
+      enabled: null as boolean | null, // TODO: From Section 7.21
+      options: [
+        "Edmonton wedding planning checklist",
+        "Wedding timeline template",
+        "Wedding budget breakdown (Edmonton/Alberta)",
+        "Vendor tipping guide (Canada)",
+        "Rainy-day wedding plan",
+        "Refined rustic elegance style guide",
+        "Planner vs venue coordinator guide",
+      ],
     },
     ctaLanguage: {
-      primary: "", // TODO: Primary CTA text
-      promise: "", // What the CTA promises
-      capacityMessage: "", // Limited availability messaging
+      primary: "", // TODO: From Section 7.23 — e.g., "Get your calm back"
+      promise: "", // TODO: From Section 7.24 — clarity, relief, confident plan, fit confirmation
+      capacityMessage: "", // TODO: From Section 7.25/7.26 — limited weddings each season
     },
   },
 
@@ -240,21 +360,30 @@ export const DISCOVERY_FRAMEWORK = {
   // Guides: Meta tags, page titles, content hierarchy, blog topics
   // ═══════════════════════════════════════════════════════════════════
   seo: {
-    purpose: "Rank locally and build topical authority",
+    purpose: "Rank locally in Edmonton and build topical authority in wedding planning",
     decisionCriteria: {
-      localKeywords: [] as string[], // TODO: e.g., "mechanical contractor [city]"
-      targetKeywords: [] as string[], // All keywords to win
-      contentTopics: [] as string[], // Topics the ideal client searches for
+      localKeywords: [
+        "Edmonton wedding planner",
+        "Luxury wedding planner Edmonton",
+        "Wedding coordinator Edmonton",
+        "Day-of coordination Edmonton",
+        "Wedding day management Edmonton",
+        "Partial wedding planning Edmonton",
+        "Full-service wedding planning Edmonton",
+      ],
+      targetKeywords: [], // TODO: From Section 8.3
+      contentTopics: [], // TODO: From Section 8.4 — checklist, timeline template, budget breakdown, vendor tipping, rainy day plan, winter wedding Edmonton, refined rustic ideas Alberta
     },
     blog: {
-      launchStrategy: "", // "launch with posts", "structure only", "no blog"
-      postCount: 0,
-      areaGuides: false,
+      launchStrategy: "", // TODO: From Section 8.5 — "launch with posts", "structure only", "no blog"
+      postCount: 0, // TODO: From Section 8.6
+      areaGuides: null as boolean | null, // TODO: From Section 8.7 — venue highlights, seasonal planning
     },
     listings: {
-      googleBusiness: "", // Link to Google Business Profile
-      directories: [] as string[], // Industry directories
+      googleBusiness: "", // TODO: From Section 8.9/8.10
+      directories: [], // TODO: From Section 8.11 — WeddingWire, The Knot, venue preferred lists
     },
+    terminology: "", // TODO: From Section 8.2 — "Day-of coordination" vs "wedding day management"
   },
 
   // ═══════════════════════════════════════════════════════════════════
@@ -262,24 +391,30 @@ export const DISCOVERY_FRAMEWORK = {
   // Guides: Every visual decision — typography, color, spacing, motion
   // ═══════════════════════════════════════════════════════════════════
   designDirection: {
-    purpose: "Visual execution must match brand promise",
+    purpose: "Visual execution must match brand promise — refined rustic elegance with quiet luxury",
     decisionCriteria: {
       referenceWebsites: {
-        like: [] as string[], // URLs of sites that match desired polish
-        dislike: [] as string[], // URLs of sites to avoid resembling
+        like: [], // TODO: From Section 9.1 — 5-10 URLs with notes on what's liked
+        dislike: [], // TODO: From Section 9.2 — 2-3 URLs and why
       },
-      firstFiveSeconds: "What should a visitor FEEL in the first 5 seconds?",
-      visualNonNegotiables: [] as string[], // Must-haves
-      visualAvoid: [] as string[], // Must-avoids
+      firstFiveSeconds: "", // TODO: From Section 9.3 — calm, trust, taste, warmth, professionalism
+      visualNonNegotiables: [], // TODO: From Section 9.4 — warm neutrals, natural textures, candlelight, refined florals, restraint, editorial whitespace
+      visualAvoid: [], // TODO: From Section 9.5 — clutter, overly trendy fonts, loud colors, heavy patterns, "Pinterest collage"
     },
     balance: {
-      modernVsTimeless: 3, // 1=very timeless, 5=very modern
-      warmthVsMinimalism: 3, // 1=very minimal, 5=very warm
-      typographyDirection: "", // "serif-led", "sans-led", "balanced"
-      motionLevel: 3, // 1=minimal, 5=refined motion
+      modernVsTimeless: 0, // TODO: From Section 9.6 — 1=very timeless, 5=very modern
+      warmthVsMinimalism: 0, // TODO: From Section 9.7 — 1=very minimal, 5=very warm/romantic
+      typographyDirection: "", // TODO: From Section 9.8 — "elegant serif-led", "clean sans-serif-led", "balanced serif + sans"
+      motionLevel: 0, // TODO: From Section 9.14 — 1=minimal, 5=refined motion
+    },
+    logo: {
+      status: "", // TODO: From Section 9.9 — "final", "needs refinement", "needs creation"
+    },
+    brandGuidelines: {
+      status: "", // TODO: From Section 9.11 — "full", "some basics", "none"
     },
     accessibility: {
-      preferences: [] as string[], // e.g., "larger text", "high contrast", "minimal animation"
+      preferences: [], // TODO: From Section 9.15 — larger text, high contrast, minimal animation
     },
   },
 
@@ -289,12 +424,13 @@ export const DISCOVERY_FRAMEWORK = {
   // ═══════════════════════════════════════════════════════════════════
   content: {
     purpose: "Know what exists, what's needed, and what's urgent",
-    existingSources: [] as string[], // Where current content lives
-    copyStatus: "", // "ready", "rough notes", "needs writing"
-    urgentPages: [] as string[], // Pages that need copy most urgently
-    launchMustHaves: [] as string[], // Non-negotiables for launch day
-    phaseTwo: [] as string[], // Can wait until after launch
-    migration: false, // Content from existing site?
+    existingSources: [], // TODO: From Section 10.1 — Instagram captions, Google Docs, Notes app, Pinterest, pricing guide PDF, old website
+    copyStatus: "", // TODO: From Section 10.3 — "ready", "rough notes", "will write internally", "a mix"
+    urgentPages: [], // TODO: From Section 10.4 — pages where articulation is hardest
+    launchMustHaves: [], // TODO: From Section 10.7 — core services, portfolio proof, reviews, inquiry flow
+    phaseTwo: [], // TODO: From Section 10.8 — blog volume, venue guides, additional galleries
+    migration: null as boolean | null, // TODO: From Section 10.9
+    policiesReady: null as boolean | null, // TODO: From Section 10.11
   },
 
   // ═══════════════════════════════════════════════════════════════════
@@ -302,23 +438,23 @@ export const DISCOVERY_FRAMEWORK = {
   // Guides: Platform choices, CRM routing, analytics, embedded tools
   // ═══════════════════════════════════════════════════════════════════
   technical: {
-    domain: "", // TODO: Domain name
-    brandedEmail: false,
-    editableContent: [] as string[], // What must be easy to update without dev
+    domain: "", // TODO: From Section 11.2
+    brandedEmail: null as boolean | null, // TODO: From Section 11.3
+    editableContent: [], // TODO: From Section 11.6 — portfolio, testimonials, blog, FAQs, services, about
     crm: {
-      platform: "", // e.g., "HubSpot", "Salesforce"
-      autoRoute: false,
+      platform: "", // TODO: From Section 11.8 — HoneyBook, Dubsado, Aisle Planner
+      autoRoute: null as boolean | null, // TODO: From Section 11.9
     },
     scheduling: {
-      enabled: false,
-      tool: "", // e.g., "Calendly"
+      enabled: null as boolean | null, // TODO: From Section 11.10
+      tool: "", // TODO: From Section 11.11 — Calendly, HoneyBook scheduler, Dubsado scheduler
     },
     email: {
-      enabled: false,
-      platform: "", // e.g., "Mailchimp"
+      enabled: null as boolean | null, // TODO: From Section 11.12
+      platform: "", // TODO: From Section 11.13 — Flodesk, Mailchimp, ConvertKit
     },
-    analytics: [] as string[], // e.g., "Google Analytics", "Search Console"
-    embeddedTools: [] as string[], // Existing scripts/widgets
+    analytics: [], // TODO: From Section 11.14 — Google Analytics, Search Console, Meta pixel, Google Ads tag
+    embeddedTools: [], // TODO: From Section 11.15
   },
 
   // ═══════════════════════════════════════════════════════════════════
@@ -326,16 +462,26 @@ export const DISCOVERY_FRAMEWORK = {
   // Guides: Priority decisions, quality benchmarks, KPI tracking
   // ═══════════════════════════════════════════════════════════════════
   launch: {
-    targetDate: "", // TODO: Launch date/window
-    hardDeadlines: false,
-    decisionMaker: "", // Primary approver
-    feedbackTurnaround: "", // e.g., "1-2 days"
+    targetDate: "", // TODO: From Section 12.1
+    hardDeadlines: null as boolean | null, // TODO: From Section 12.2
+    budgetRange: "", // TODO: From Section 12.4
+    decisionMaker: "", // TODO: From Section 12.5
+    feedbackTurnaround: "", // TODO: From Section 12.7
     success: {
-      thirtyDays: "", // What success looks like at 30 days
-      sixMonths: "", // What success looks like at 6-12 months
-      kpis: [] as string[], // Key performance indicators
+      thirtyDays: "", // TODO: From Section 12.8 — more qualified inquiries, clarity, stronger trust, fewer misfit leads
+      sixMonths: "", // TODO: From Section 12.9 — consistent bookings, improved SEO in Edmonton, portfolio-driven conversions
+      kpis: [
+        "Inquiry volume",
+        "Inquiry quality/fit",
+        "Consult bookings",
+        "Conversion rate",
+        "Portfolio engagement",
+        "SEO rankings",
+        "Website traffic",
+        "Email signups",
+      ],
     },
-    stopDoing: "", // What the website should help Royal Mechanical stop doing repeatedly
-    oneTruth: "", // If the website could only communicate ONE truth, what is it?
+    stopDoing: "", // TODO: From Section 12.11 — explaining day-of vs partial vs full, justifying investment
+    oneTruth: "", // TODO: From Section 12.12 — if the website could only communicate ONE truth
   },
 } as const;
