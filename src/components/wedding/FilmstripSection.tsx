@@ -68,6 +68,7 @@ const FilmstripSection = () => {
 
   const x = useTransform(scrollYProgress, [0, 1], ["5%", "-30%"]);
   const watermarkX = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
+  const sprocketX = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
 
   return (
     <section
@@ -75,6 +76,19 @@ const FilmstripSection = () => {
       className="py-16 md:py-24 bg-card overflow-hidden relative"
       aria-label="Wedding filmstrip gallery"
     >
+      {/* Cinematic grain overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.012] pointer-events-none mix-blend-overlay"
+        style={{
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          backgroundSize: "150px 150px",
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Vignette edges */}
+      <div className="absolute inset-0 pointer-events-none" style={{ boxShadow: "inset 0 0 120px 40px hsl(var(--card) / 0.6)" }} aria-hidden="true" />
+
       {/* Parallax watermark */}
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-y-1/2 pointer-events-none select-none"
@@ -101,12 +115,16 @@ const FilmstripSection = () => {
         </div>
       </div>
 
-      {/* Film sprocket holes — top */}
-      <div className="flex gap-[3.6rem] md:gap-[5.2rem] pl-6 md:pl-16 mb-3 overflow-hidden" aria-hidden="true">
-        {Array.from({ length: 20 }).map((_, i) => (
+      {/* Film sprocket holes — top (with parallax) */}
+      <motion.div
+        className="flex gap-[3.6rem] md:gap-[5.2rem] pl-6 md:pl-16 mb-3 overflow-hidden"
+        style={{ x: sprocketX }}
+        aria-hidden="true"
+      >
+        {Array.from({ length: 24 }).map((_, i) => (
           <div key={`top-${i}`} className="w-3 h-2 rounded-sm bg-foreground/[0.03] shrink-0" />
         ))}
-      </div>
+      </motion.div>
 
       {/* Horizontal filmstrip */}
       <motion.div
@@ -127,6 +145,10 @@ const FilmstripSection = () => {
               />
               {/* Cinematic gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              {/* Subtle film grain on each frame */}
+              <div className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-overlay grain-overlay" />
+
               {/* Film frame number overlay */}
               <span
                 className="absolute top-3 right-3 font-sans-wedding text-[0.5rem] tracking-[0.2em] text-white/0 group-hover:text-white/30 transition-colors duration-500 tabular-nums"
@@ -147,6 +169,10 @@ const FilmstripSection = () => {
                   {slide.season}
                 </p>
               </div>
+              
+              {/* Corner frame accents */}
+              <div className="absolute top-3 left-3 w-5 h-5 border-t border-l border-white/0 group-hover:border-white/10 transition-all duration-700 pointer-events-none" />
+              <div className="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-white/0 group-hover:border-white/10 transition-all duration-700 pointer-events-none" />
             </div>
 
             {/* Editorial caption */}
@@ -176,11 +202,32 @@ const FilmstripSection = () => {
         ))}
       </motion.div>
 
-      {/* Film sprocket holes — bottom */}
-      <div className="flex gap-[3.6rem] md:gap-[5.2rem] pl-6 md:pl-16 mt-3 overflow-hidden" aria-hidden="true">
-        {Array.from({ length: 20 }).map((_, i) => (
+      {/* Film sprocket holes — bottom (with parallax) */}
+      <motion.div
+        className="flex gap-[3.6rem] md:gap-[5.2rem] pl-6 md:pl-16 mt-3 overflow-hidden"
+        style={{ x: sprocketX }}
+        aria-hidden="true"
+      >
+        {Array.from({ length: 24 }).map((_, i) => (
           <div key={`bot-${i}`} className="w-3 h-2 rounded-sm bg-foreground/[0.03] shrink-0" />
         ))}
+      </motion.div>
+
+      {/* Bottom editorial attribution */}
+      <div className="container mx-auto px-6 lg:px-8 max-w-5xl mt-10 md:mt-14 relative">
+        <div className="flex items-center justify-between">
+          <p className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-muted-foreground/15">
+            Hickory & Rose · Selected Works
+          </p>
+          <div className="flex items-center gap-3">
+            <span className="w-8 h-px bg-border/20" />
+            <span className="font-serif-wedding text-xs text-primary/10 italic">❖</span>
+            <span className="w-8 h-px bg-border/20" />
+          </div>
+          <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] text-muted-foreground/15 tabular-nums">
+            2023 — 2024
+          </p>
+        </div>
       </div>
     </section>
   );
