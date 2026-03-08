@@ -177,6 +177,53 @@ const EditorialSplitSection = () => {
         
         {/* Subtle gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+        {/* Gold-traced border frame — inset 16px, animated on scroll */}
+        <motion.div
+          className="absolute inset-4 pointer-events-none z-10 hidden lg:block"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 0.4 }}
+          aria-hidden="true"
+        >
+          {/* Top */}
+          <motion.span
+            className="absolute top-0 left-0 h-px origin-left"
+            style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.08), transparent)" }}
+            initial={{ width: 0 }}
+            whileInView={{ width: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.5 }}
+          />
+          {/* Right */}
+          <motion.span
+            className="absolute top-0 right-0 w-px origin-top"
+            style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.08), transparent)" }}
+            initial={{ height: 0 }}
+            whileInView={{ height: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.8 }}
+          />
+          {/* Bottom */}
+          <motion.span
+            className="absolute bottom-0 right-0 h-px origin-right"
+            style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.08), transparent)" }}
+            initial={{ width: 0 }}
+            whileInView={{ width: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 1.1 }}
+          />
+          {/* Left */}
+          <motion.span
+            className="absolute bottom-0 left-0 w-px origin-bottom"
+            style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.08), transparent)" }}
+            initial={{ height: 0 }}
+            whileInView={{ height: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 1.4 }}
+          />
+        </motion.div>
         
         {/* Corner accent frames on hover — gold gradient */}
         <div className="absolute top-4 left-4 w-10 h-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true">
@@ -187,6 +234,17 @@ const EditorialSplitSection = () => {
           <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.3), transparent)" }} />
           <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
         </div>
+
+        {/* Breathing diamond ornament at text/image junction — centered on divider line */}
+        <motion.div
+          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 z-20 hidden lg:flex items-center justify-center"
+          animate={{ opacity: [0.3, 0.7, 0.3], scale: [0.9, 1.15, 0.9] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          aria-hidden="true"
+        >
+          <span className="w-3 h-3 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15))" }} />
+          <span className="absolute w-8 h-8 rounded-full" style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.12), transparent 70%)" }} />
+        </motion.div>
         
         {/* Floating inset detail image - reveals on hover */}
         <AnimatePresence>

@@ -105,6 +105,19 @@ const VendorShowcaseSection = () => {
                   animate={{ scaleY: hoveredIndex === index ? 1 : 0 }}
                   transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                 />
+
+                {/* Breathing glow halo on active row */}
+                {hoveredIndex === index && (
+                  <motion.div
+                    className="absolute inset-0 pointer-events-none"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: [0, 0.04, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    style={{ background: "radial-gradient(ellipse at 30% 50%, hsl(var(--gold) / 0.15), transparent 60%)" }}
+                    aria-hidden="true"
+                  />
+                )}
+
                 {/* Index */}
                 <div className="col-span-2 md:col-span-1">
                   <span className="font-serif-wedding text-xs text-primary/15 tabular-nums group-hover:text-primary/30 transition-colors duration-500">
@@ -119,17 +132,21 @@ const VendorShowcaseSection = () => {
                   </p>
                 </div>
 
-                {/* Category */}
+                {/* Category — gold-traced pill on hover */}
                 <div className="col-span-3 md:col-span-3 hidden md:block">
                   <div className="flex items-center gap-3">
                     <motion.span
-                      className="w-4 h-px bg-primary/20 origin-left"
+                      className="w-4 h-px origin-left"
+                      style={{ background: hoveredIndex === index ? "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" : "hsl(var(--primary) / 0.2)" }}
                       initial={{ scaleX: 0 }}
                       whileInView={{ scaleX: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
                     />
-                    <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/30 group-hover:text-muted-foreground/50 transition-colors duration-500">
+                    <span
+                      className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/30 group-hover:text-muted-foreground/50 transition-all duration-500 px-2 py-0.5 border border-transparent group-hover:border-primary/10"
+                      style={hoveredIndex === index ? { background: "linear-gradient(135deg, hsl(var(--gold) / 0.04), transparent)" } : undefined}
+                    >
                       {vendor.category}
                     </span>
                   </div>
@@ -186,6 +203,23 @@ const VendorShowcaseSection = () => {
           <p className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/20 text-center mt-4">
             Partnerships built on trust & shared excellence
           </p>
+
+          {/* Editorial credential strip */}
+          <div className="flex items-center justify-center gap-6 mt-8">
+            {["Vetted & Verified", "Exclusive Rates", "Shared Values"].map((cred, i) => (
+              <motion.span
+                key={cred}
+                initial={{ opacity: 0, y: 6 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.8 + i * 0.1 }}
+                className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-muted-foreground/25 px-3 py-1 border border-border/20"
+                style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.02), transparent)" }}
+              >
+                {cred}
+              </motion.span>
+            ))}
+          </div>
         </ScrollReveal>
       </div>
     </section>
