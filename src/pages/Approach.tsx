@@ -389,7 +389,7 @@ const Approach = () => {
       <FullWidthImage src={ceremonyImage} alt="Outdoor wedding ceremony setup in mountain meadow with floral arch" height="h-[35vh] md:h-[45vh]" />
 
       {/* Promise quote */}
-      <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden" aria-label="Brand Promise">
+      <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden grain-overlay vignette" aria-label="Brand Promise">
         <motion.div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] pointer-events-none" initial={{ opacity: 0 }} whileInView={{ opacity: 0.06 }} viewport={{ once: true }} transition={{ duration: 2 }} style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.15), transparent 70%)" }} aria-hidden="true" />
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
           <ScrollReveal>
