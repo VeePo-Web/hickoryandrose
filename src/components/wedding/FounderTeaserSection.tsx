@@ -33,10 +33,6 @@ const FounderTeaserSection = () => {
                   width={1024}
                   height={1024}
                 />
-                {/* Decorative corner accent */}
-                <div className="absolute bottom-0 right-0 w-24 h-24 pointer-events-none">
-                  <div className="absolute bottom-4 right-4 w-12 h-12 border-b border-r border-primary-foreground/20" />
-                </div>
               </div>
             </ImageReveal>
           </ScrollReveal>
@@ -44,11 +40,13 @@ const FounderTeaserSection = () => {
           {/* Story */}
           <ScrollReveal delay={0.15} className="lg:col-span-2">
             <div>
-              {/* Decorative top accent */}
-              <div className="flex items-center gap-3 mb-6">
-                <span className="w-8 h-px bg-primary/30" />
-                <span className="font-script text-sm text-primary/40">H & R</span>
-              </div>
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-10 h-px bg-primary/30 mb-6 origin-left"
+              />
 
               <p className="font-overline text-muted-foreground mb-4">
                 Meet the Planner
