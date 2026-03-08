@@ -290,7 +290,17 @@ const Approach = () => {
                 {/* Editorial image inset — desktop: portrait crop with GoldFrame */}
                 <div className="hidden md:block mt-4">
                   <ImageReveal direction="up" delay={0.2}>
-                    <div className="aspect-[3/4] overflow-hidden relative group">
+                    <div 
+                      ref={philosophyImgRef}
+                      onMouseMove={handlePhilosophyImgMove}
+                      onMouseLeave={() => setMaskPos({ x: 50, y: 50 })}
+                      className="aspect-[3/4] overflow-hidden relative group"
+                      style={{
+                        maskImage: `radial-gradient(circle 200px at ${maskPos.x}% ${maskPos.y}%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.7) 100%)`,
+                        WebkitMaskImage: `radial-gradient(circle 200px at ${maskPos.x}% ${maskPos.y}%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.7) 100%)`,
+                        transition: "mask-image 0.3s ease-out, -webkit-mask-image 0.3s ease-out"
+                      }}
+                    >
                       <GoldFrame inset="10px" delay={0.8} />
                       <img
                         src={approachDetailsImage}
