@@ -97,7 +97,7 @@ const Footer = () => {
                 <Instagram size={16} strokeWidth={1.5} />
               </a>
               <a
-                href="mailto:hello@hickoryandrose.com"
+                href="mailto:sales@hickoryandrose.com"
                 className="w-9 h-9 rounded-full border border-background/15 flex items-center justify-center text-background/40 hover:text-background hover:border-background/40 transition-all duration-200"
                 aria-label="Email us"
               >
