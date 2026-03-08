@@ -122,65 +122,131 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`lg:hidden p-2 transition-colors duration-200 ${
-                showSolidBg ? "text-foreground" : "text-white"
+              className={`lg:hidden relative z-[60] p-2 transition-colors duration-200 ${
+                isOpen ? "text-foreground" : showSolidBg ? "text-foreground" : "text-white"
               }`}
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              <AnimatePresence mode="wait">
+                {isOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ opacity: 0, rotate: -90 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: 90 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X size={24} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ opacity: 0, rotate: 90 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: -90 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu size={24} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation — Full Screen Overlay */}
+        {/* Mobile Navigation — Cinematic Full Screen Overlay */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 top-16 bg-warm-white z-40 lg:hidden"
+              transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0] }}
+              className="fixed inset-0 bg-warm-white z-40 lg:hidden flex flex-col"
             >
-              <div className="flex flex-col items-center justify-center h-full pb-20">
-                <ul className="flex flex-col items-center gap-6">
+              {/* Decorative top accent */}
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1.0] }}
+                className="h-px bg-primary/20 origin-left mx-6 mt-20"
+              />
+
+              <div className="flex-1 flex flex-col items-center justify-center pb-24">
+                {/* Brand wordmark in overlay */}
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15, duration: 0.5 }}
+                  className="mb-12"
+                >
+                  <p className="font-serif-wedding text-3xl font-light text-foreground tracking-tight text-center">
+                    Hickory <span className="font-normal">&</span>{" "}
+                    <span className="font-script text-4xl">Rose</span>
+                  </p>
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.4, delay: 0.4 }}
+                    className="h-px w-12 bg-primary/30 mx-auto mt-4 origin-center"
+                  />
+                </motion.div>
+
+                <ul className="flex flex-col items-center gap-1">
                   {navLinks.map((link, index) => (
                     <motion.li
                       key={link.path}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 24 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.08, duration: 0.4 }}
+                      transition={{
+                        delay: 0.25 + index * 0.06,
+                        duration: 0.5,
+                        ease: [0.25, 0.1, 0.25, 1.0],
+                      }}
                     >
                       <Link
                         to={link.path}
                         onClick={() => setIsOpen(false)}
-                        className={`font-serif-wedding text-2xl tracking-wide transition-colors ${
+                        className={`block py-3 px-6 font-serif-wedding text-2xl tracking-wide transition-all duration-200 ${
                           location.pathname === link.path
                             ? "text-primary"
-                            : "text-foreground hover:text-primary"
+                            : "text-foreground/70 hover:text-foreground"
                         }`}
                       >
                         {link.name}
                       </Link>
                     </motion.li>
                   ))}
-                  <motion.li
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: navLinks.length * 0.08, duration: 0.4 }}
-                    className="mt-4"
-                  >
-                    <Link
-                      to="/inquire"
-                      onClick={() => setIsOpen(false)}
-                      className="inline-flex items-center px-8 py-3 text-[0.6875rem] tracking-[0.18em] uppercase font-sans-wedding font-light bg-primary text-primary-foreground hover:bg-sage-deep transition-colors"
-                    >
-                      Inquire
-                    </Link>
-                  </motion.li>
                 </ul>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.25 + navLinks.length * 0.06 + 0.1, duration: 0.5 }}
+                  className="mt-10"
+                >
+                  <Link
+                    to="/inquire"
+                    onClick={() => setIsOpen(false)}
+                    className="inline-flex items-center px-10 py-3.5 text-[0.6875rem] tracking-[0.2em] uppercase font-sans-wedding font-light bg-primary text-primary-foreground hover:bg-sage-deep transition-colors duration-200"
+                  >
+                    Inquire
+                  </Link>
+                </motion.div>
               </div>
+
+              {/* Bottom footer in overlay */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.4 }}
+                className="pb-8 text-center"
+              >
+                <p className="font-sans-wedding text-[0.625rem] tracking-[0.15em] uppercase text-muted-foreground/50 font-light">
+                  Edmonton · Alberta · The Rockies
+                </p>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
