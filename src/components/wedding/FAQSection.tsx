@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import {
   Accordion,
@@ -43,40 +44,61 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section className="bg-background py-20 md:py-32">
-      <div className="container mx-auto px-6">
+    <section className="bg-background py-section-mobile md:py-section-tablet lg:py-section-desktop relative overflow-hidden">
+      {/* Decorative background text */}
+      <motion.div
+        className="absolute -right-10 top-1/4 pointer-events-none select-none"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.02 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5 }}
+      >
+        <span className="font-serif-wedding text-[12rem] md:text-[18rem] font-light text-foreground leading-none whitespace-nowrap">
+          FAQ
+        </span>
+      </motion.div>
+
+      <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative">
         <ScrollReveal>
-          <p className="font-sans-wedding text-label uppercase text-muted-foreground text-center mb-4">
-            Questions & Answers
-          </p>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-14 md:mb-20 items-baseline">
+            <div className="md:col-span-4">
+              <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
+                <span className="inline-flex items-center gap-3">
+                  <span className="w-5 h-px bg-border" />
+                  Questions & Answers
+                </span>
+              </p>
+              <h2 className="font-serif-wedding text-display-lg text-foreground">
+                FAQ
+              </h2>
+            </div>
+            <div className="md:col-span-8 md:pt-8">
+              <p className="font-sans-wedding text-body-sm text-muted-foreground font-light leading-relaxed">
+                A few things that might be helpful to know. If you have other questions,
+                just reach out—we're happy to help.
+              </p>
+            </div>
+          </div>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <h2 className="font-serif-wedding text-display-lg text-foreground text-center mb-4">
-            FAQ
-          </h2>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.2}>
-          <p className="font-sans-wedding text-sm text-muted-foreground text-center max-w-2xl mx-auto mb-12 leading-relaxed">
-            A few things that might be helpful to know. If you have other questions, 
-            just reach out—we're happy to help.
-          </p>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.3}>
           <div className="max-w-3xl mx-auto">
-            <Accordion type="single" collapsible className="space-y-3">
+            <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, index) => (
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="bg-card rounded-lg px-6 border-none"
+                  className="border-border/30 group"
                 >
-                  <AccordionTrigger className="font-serif-wedding text-lg text-foreground hover:no-underline py-6">
-                    {faq.question}
+                  <AccordionTrigger className="font-sans-wedding text-body text-foreground text-left hover:text-primary hover:no-underline py-6 font-light gap-4">
+                    <span className="flex items-baseline gap-4">
+                      <span className="font-serif-wedding text-xs text-muted-foreground/30 shrink-0 tabular-nums">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span>{faq.question}</span>
+                    </span>
                   </AccordionTrigger>
-                  <AccordionContent className="font-sans-wedding text-sm text-muted-foreground leading-relaxed pb-6">
+                  <AccordionContent className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed pb-6 pl-12 font-light">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>

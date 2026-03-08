@@ -10,6 +10,7 @@ const EditorialSplitSection = () => {
     offset: ["start end", "end start"],
   });
   const imageY = useTransform(scrollYProgress, [0, 1], ["8%", "-8%"]);
+  const quoteLineH = useTransform(scrollYProgress, [0.2, 0.6], ["0%", "100%"]);
 
   return (
     <section
@@ -31,6 +32,12 @@ const EditorialSplitSection = () => {
           &
         </motion.span>
 
+        {/* Scroll-linked vertical accent line */}
+        <motion.div
+          className="absolute left-8 top-0 w-px bg-primary-foreground/10 origin-top"
+          style={{ height: quoteLineH }}
+        />
+
         <ScrollReveal>
           <div className="max-w-md relative">
             {/* Index marker */}
@@ -38,13 +45,24 @@ const EditorialSplitSection = () => {
               03
             </span>
 
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="w-12 h-px bg-primary-foreground/20 mb-10 origin-left"
-            />
+            {/* Decorative ornament */}
+            <div className="flex items-center gap-3 mb-8">
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-8 h-px bg-primary-foreground/20 origin-left"
+              />
+              <span className="font-serif-wedding text-xs text-primary-foreground/20 tracking-widest">❖</span>
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="w-8 h-px bg-primary-foreground/20 origin-left"
+              />
+            </div>
 
             <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">
               The best weddings don't feel produced — they feel{" "}
@@ -74,20 +92,28 @@ const EditorialSplitSection = () => {
       </div>
 
       {/* Image side with parallax */}
-      <div className="overflow-hidden relative min-h-[40vh] lg:min-h-0">
+      <div className="overflow-hidden relative min-h-[40vh] lg:min-h-0 group">
         <motion.img
           src={detailImage}
           alt="Elegant calligraphy place card with gold cutlery on fine linen"
-          className="absolute inset-0 w-full h-[120%] object-cover"
+          className="absolute inset-0 w-full h-[120%] object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-[1.02]"
           style={{ y: imageY }}
           loading="lazy"
         />
-        {/* Subtle image caption */}
-        <div className="absolute bottom-4 right-4 opacity-0 hover:opacity-100 transition-opacity duration-500">
-          <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-white/40 bg-black/20 backdrop-blur-sm px-3 py-1.5">
+        {/* Subtle gradient overlay on hover */}
+        <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/[0.03] transition-colors duration-700" />
+        {/* Image caption */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="absolute bottom-6 right-6"
+        >
+          <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-white/30">
             Detail · Calligraphy & Gold
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
