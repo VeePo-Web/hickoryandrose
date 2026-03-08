@@ -109,6 +109,13 @@ const Index = () => {
           direction="right"
         />
         <PressMentionsSection />
+        <FullWidthImage
+          src={rockiesImage}
+          alt="Cinematic aerial view of the Canadian Rocky Mountains at golden hour with alpine lake and evergreen forests"
+          height="h-[45vh] md:h-[55vh]"
+          overlay
+          caption="Serving Edmonton · Jasper · Banff · Lake Louise · The Canadian Rockies"
+        />
         <FilmstripSection />
         <CTASection />
         <InstagramSection />
