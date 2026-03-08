@@ -9,6 +9,8 @@ import ScrollReveal from "@/components/wedding/ScrollReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import ImageReveal from "@/components/wedding/ImageReveal";
 import MagneticButton from "@/components/wedding/MagneticButton";
+import GoldFrame from "@/components/wedding/GoldFrame";
+import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 import servicesHeroImage from "@/assets/services-hero.jpg";
 import serviceDayofImage from "@/assets/service-dayof.jpg";
 import servicePlanningImage from "@/assets/service-planning.jpg";
