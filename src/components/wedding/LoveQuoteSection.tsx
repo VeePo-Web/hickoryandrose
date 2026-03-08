@@ -33,13 +33,32 @@ const LoveQuoteSection = () => {
             Our Promise
           </p>
 
+          {/* Pull-quote dashes */}
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="w-8 h-px bg-primary-foreground/20 origin-right"
+            />
+            <span className="font-serif-wedding text-sm text-primary-foreground/30 tracking-widest">❖</span>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="w-8 h-px bg-primary-foreground/20 origin-left"
+            />
+          </div>
+
           <blockquote className="font-serif-wedding text-display-md md:text-display-lg text-primary-foreground leading-relaxed mb-12">
             We believe your wedding day should be felt, not managed. That the
             details should serve the moment — never compete with it. That calm
             is not the absence of planning, but the presence of it.
           </blockquote>
 
-          {/* Refined attribution — no generic symbols */}
+          {/* Refined attribution */}
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}

@@ -23,7 +23,7 @@ const EditorialImageBreak = () => {
       className="w-full overflow-hidden relative"
       aria-label="Editorial wedding detail"
     >
-      {/* Top blending gradient — fades from the previous section's bg */}
+      {/* Top blending gradient */}
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
 
       <div className="aspect-[21/9] md:aspect-[21/9] w-full overflow-hidden">
@@ -47,6 +47,24 @@ const EditorialImageBreak = () => {
         style={{ opacity: textOpacity }}
       >
         <motion.div className="text-center" style={{ y: textY }}>
+          {/* Flanking lines around the quote */}
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="w-10 h-px bg-white/40 origin-right"
+            />
+            <span className="font-script text-white/50 text-lg">&</span>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="w-10 h-px bg-white/40 origin-left"
+            />
+          </div>
           <p className="font-serif-wedding text-xl md:text-3xl lg:text-4xl text-white italic leading-relaxed tracking-wide drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
             Every detail, placed with intention.
           </p>

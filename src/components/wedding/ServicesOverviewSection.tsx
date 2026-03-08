@@ -11,6 +11,7 @@ const services = [
       "You've planned your wedding with care — we step in to execute it flawlessly. Calm leadership on the day that matters most.",
     investment: "From $2,500",
     link: "/services#day-of",
+    featured: false,
   },
   {
     number: "02",
@@ -20,6 +21,7 @@ const services = [
       "Collaborative guidance through the details that need a professional touch, from vendor coordination to design refinement.",
     investment: "From $5,000",
     link: "/services#partial",
+    featured: false,
   },
   {
     number: "03",
@@ -29,6 +31,7 @@ const services = [
       "From vision to celebration, we handle every detail. You get to simply be present and enjoy the unfolding of your story.",
     investment: "From $8,500",
     link: "/services#full",
+    featured: true,
   },
 ];
 
@@ -44,9 +47,12 @@ const ServicesOverviewSection = () => {
             <p className="font-overline text-muted-foreground mb-4">
               What We Offer
             </p>
-            <h2 className="font-serif-wedding text-display-lg text-foreground">
+            <h2 className="font-serif-wedding text-display-lg text-foreground mb-4">
               Services Tailored to You
             </h2>
+            <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light max-w-lg mx-auto leading-relaxed">
+              Every couple is different. Our services flex to meet you exactly where you are in your planning journey.
+            </p>
           </div>
         </ScrollReveal>
 
@@ -57,7 +63,20 @@ const ServicesOverviewSection = () => {
                 to={service.link}
                 className="group block"
               >
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline py-10 md:py-14 border-t border-border/60">
+                <div className={`grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline py-10 md:py-14 border-t border-border/60 relative ${service.featured ? "bg-primary/[0.02]" : ""}`}>
+                  {/* Featured badge */}
+                  {service.featured && (
+                    <motion.span
+                      initial={{ opacity: 0, y: -8 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 }}
+                      className="absolute top-3 right-4 font-overline text-[0.5rem] text-primary/60 tracking-[0.25em]"
+                    >
+                      Most Popular
+                    </motion.span>
+                  )}
+
                   {/* Number */}
                   <div className="md:col-span-1">
                     <motion.span
@@ -79,6 +98,8 @@ const ServicesOverviewSection = () => {
                     <p className="font-serif-wedding text-sm italic text-muted-foreground/60 mt-1">
                       {service.tagline}
                     </p>
+                    {/* Expanding underline on hover */}
+                    <div className="mt-2 h-px bg-primary/40 w-0 group-hover:w-full transition-all duration-700 ease-out origin-left" />
                   </div>
 
                   {/* Description */}
