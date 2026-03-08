@@ -92,7 +92,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                 showSolidBg ? "text-foreground" : "text-white"
               }`}
             >
-               <AnimatePresence mode="wait">
+              <AnimatePresence mode="wait">
                 {showMonogram ? (
                   <motion.span
                     key="monogram"
@@ -115,6 +115,35 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                       transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     >&</motion.span>
                     <span className="font-script text-2xl relative">R</span>
+                    {/* Page context label */}
+                    {(() => {
+                      const pageLabels: Record<string, string> = {
+                        "/journal": "Journal",
+                        "/services": "Services",
+                        "/portfolio": "Portfolio",
+                        "/about": "About",
+                        "/approach": "Approach",
+                        "/faq": "FAQ",
+                      };
+                      const label = pageLabels[location.pathname];
+                      if (!label) return null;
+                      return (
+                        <motion.span
+                          className="flex items-center gap-2 ml-2"
+                          initial={{ opacity: 0, x: -6 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.4, delay: 0.15 }}
+                        >
+                          <span
+                            className="w-1 h-1 rounded-full shrink-0"
+                            style={{ background: "hsl(var(--gold) / 0.5)" }}
+                          />
+                          <span className="font-sans-wedding text-[0.55rem] tracking-[0.18em] uppercase text-muted-foreground/40 font-light">
+                            {label}
+                          </span>
+                        </motion.span>
+                      );
+                    })()}
                   </motion.span>
                 ) : (
                   <motion.span
