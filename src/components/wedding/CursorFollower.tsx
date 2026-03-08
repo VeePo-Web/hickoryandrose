@@ -97,6 +97,8 @@ const CursorFollower = memo(() => {
       />
     </motion.div>
   );
-};
+});
+
+CursorFollower.displayName = "CursorFollower";
 
 export default CursorFollower;

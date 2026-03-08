@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, memo } from "react";
 
 interface ImageRevealProps {
   children: ReactNode;
@@ -23,7 +23,7 @@ const clipVariants = {
   },
 };
 
-const ImageReveal = ({ children, className = "", delay = 0, direction = "up" }: ImageRevealProps) => {
+const ImageReveal = memo(({ children, className = "", delay = 0, direction = "up" }: ImageRevealProps) => {
   return (
     <motion.div
       initial={clipVariants[direction].hidden}
@@ -39,6 +39,8 @@ const ImageReveal = ({ children, className = "", delay = 0, direction = "up" }: 
       {children}
     </motion.div>
   );
-};
+});
+
+ImageReveal.displayName = "ImageReveal";
 
 export default ImageReveal;
