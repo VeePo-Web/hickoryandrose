@@ -114,7 +114,12 @@ const TestimonialSection = () => {
                     exit={{ opacity: 0, y: -16 }}
                     transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] }}
                   >
-                    <span className="font-serif-wedding text-6xl text-primary/[0.08] leading-none block -mb-6" aria-hidden="true">"</span>
+                     <motion.span
+                       className="font-serif-wedding text-6xl text-gold/[0.12] leading-none block -mb-6"
+                       aria-hidden="true"
+                       animate={{ opacity: [0.08, 0.15, 0.08] }}
+                       transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                     >"</motion.span>
                     
                     <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-8">
                       {active.quote}
