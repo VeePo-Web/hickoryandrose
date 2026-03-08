@@ -13,14 +13,21 @@ const footerLinks = [
 ];
 
 const serviceAreas = [
-  "Edmonton", "Jasper", "Banff", "Lake Louise", "Calgary", "The Canadian Rockies",
+  { name: "Edmonton", venues: 45 },
+  { name: "Jasper", venues: 12 },
+  { name: "Banff", venues: 18 },
+  { name: "Lake Louise", venues: 8 },
+  { name: "Calgary", venues: 22 },
+  { name: "The Canadian Rockies", venues: 30 },
 ];
 
 const Footer = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [focused, setFocused] = useState(false);
+  const [hoveredArea, setHoveredArea] = useState<number | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const footerRef = useRef<HTMLElement>(null);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -36,7 +43,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-foreground text-background relative" role="contentinfo">
+    <footer ref={footerRef} className="bg-foreground text-background relative" role="contentinfo">
       {/* Gradient accent line */}
       <div
         className="h-px w-full"
@@ -45,6 +52,23 @@ const Footer = () => {
             "linear-gradient(90deg, transparent, hsl(var(--primary)) 30%, hsl(var(--gold, 38 60% 55%)) 50%, hsl(var(--primary)) 70%, transparent)",
         }}
       />
+
+      {/* Floating H&R monogram watermark */}
+      <motion.div
+        className="absolute right-8 md:right-16 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 2 }}
+        aria-hidden="true"
+      >
+        <span className="font-serif-wedding text-[12rem] xl:text-[16rem] font-light text-background/[0.015] leading-none tracking-tight">
+          H
+        </span>
+        <span className="font-script text-[10rem] xl:text-[14rem] text-background/[0.01] leading-none -ml-8">
+          R
+        </span>
+      </motion.div>
 
       {/* Pre-footer email capture — upgraded with micro-interactions */}
       <div className="border-b border-background/[0.06]">
@@ -264,9 +288,36 @@ const Footer = () => {
                   <p className="font-overline text-background/20 mb-3 text-[0.6rem]">
                     Serving
                   </p>
-                  <p className="font-sans-wedding text-[0.7rem] text-background/20 font-light leading-relaxed">
-                    {serviceAreas.join(" · ")}
-                  </p>
+                  <div className="flex flex-wrap gap-x-1.5 gap-y-1">
+                    {serviceAreas.map((area, i) => (
+                      <span
+                        key={area.name}
+                        className="inline-flex items-center gap-1 group/area cursor-default"
+                        onMouseEnter={() => setHoveredArea(i)}
+                        onMouseLeave={() => setHoveredArea(null)}
+                      >
+                        <span className="font-sans-wedding text-[0.7rem] text-background/20 font-light group-hover/area:text-background/50 transition-colors duration-300">
+                          {area.name}
+                        </span>
+                        <AnimatePresence>
+                          {hoveredArea === i && (
+                            <motion.span
+                              initial={{ opacity: 0, width: 0 }}
+                              animate={{ opacity: 1, width: "auto" }}
+                              exit={{ opacity: 0, width: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="font-serif-wedding text-[0.55rem] italic text-background/15 overflow-hidden whitespace-nowrap"
+                            >
+                              ({area.venues} venues)
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
+                        {i < serviceAreas.length - 1 && (
+                          <span className="text-background/10 mx-0.5">·</span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
