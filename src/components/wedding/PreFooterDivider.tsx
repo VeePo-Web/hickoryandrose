@@ -86,14 +86,13 @@ const PreFooterDivider = () => {
 
               {/* Section ornament */}
               <motion.span
-                className="font-serif-wedding text-4xl font-light text-primary/8 block mb-4"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                className="w-4 h-4 rotate-45 block mb-4 mx-auto"
+                style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }}
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-              >
-                ❖
-              </motion.span>
+              />
 
               <p className="font-overline text-muted-foreground/35 mb-6">
                 Limited Availability
