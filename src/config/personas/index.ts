@@ -16,3 +16,4 @@ export { FOOTER_PERSONA } from './ui-footer';
 export { POLISHED_PAIGE } from './ideal-customer';
 export { STRATEGIC_NARRATIVE } from './strategic-narrative';
 export { MARKET_RESEARCH } from './market-research';
+export { SEO_PERSONA } from './seo-expert';
