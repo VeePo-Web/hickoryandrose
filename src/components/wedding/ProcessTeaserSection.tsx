@@ -186,10 +186,24 @@ const ProcessTeaserSection = () => {
               {steps.map((step, index) => (
                 <ScrollReveal key={step.number} delay={index * 0.12}>
                   <div
-                    className="relative py-10 md:py-14 border-t border-border/30 group cursor-default hover:bg-muted/15 transition-all duration-500 -mx-4 px-4 md:-mx-6 md:px-6"
+                    className="relative py-10 md:py-14 border-t border-border/30 group cursor-default hover:bg-muted/15 transition-all duration-500 -mx-4 px-4 md:-mx-6 md:px-6 overflow-hidden"
                     onMouseEnter={() => setActiveStep(index)}
                     onMouseLeave={() => setActiveStep(null)}
                   >
+                    {/* Gold shimmer sweep on hover */}
+                    <div
+                      className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-[1.2s] ease-out pointer-events-none"
+                      style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.04) 40%, hsl(var(--gold) / 0.08) 50%, hsl(var(--gold) / 0.04) 60%, transparent 100%)" }}
+                    />
+                    {/* Gold left-border reveal on hover */}
+                    <motion.div
+                      className="absolute left-0 top-0 bottom-0 w-[2px] origin-top"
+                      style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15), transparent)" }}
+                      initial={{ scaleY: 0 }}
+                      animate={{ scaleY: activeStep === index ? 1 : 0 }}
+                      transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    />
+
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
                       {/* Number */}
                       <div className="md:col-span-2 relative">
@@ -201,11 +215,20 @@ const ProcessTeaserSection = () => {
                           transition={{ duration: 0.5, delay: 0.4 + index * 0.12, ease: [0.25, 0.1, 0.25, 1] }}
                         >
                           <span
-                            className="w-2.5 h-2.5 block transition-all duration-500 group-hover:shadow-[0_0_8px_hsl(var(--gold)_/_0.3)]"
+                            className="w-2.5 h-2.5 block transition-all duration-500 group-hover:shadow-[0_0_12px_hsl(var(--gold)_/_0.4)]"
                             style={{
-                              background: `linear-gradient(135deg, hsl(var(--gold) / ${activeStep === index ? '0.6' : '0.25'}), hsl(var(--primary) / ${activeStep === index ? '0.4' : '0.15'}))`,
+                              background: `linear-gradient(135deg, hsl(var(--gold) / ${activeStep === index ? '0.7' : '0.25'}), hsl(var(--primary) / ${activeStep === index ? '0.5' : '0.15'}))`,
                             }}
                           />
+                          {/* Breathing glow halo on active */}
+                          {activeStep === index && (
+                            <motion.span
+                              className="absolute -inset-3 rounded-full pointer-events-none"
+                              animate={{ opacity: [0.2, 0.5, 0.2], scale: [0.8, 1.2, 0.8] }}
+                              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                              style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.25), transparent 70%)" }}
+                            />
+                          )}
                         </motion.div>
                         <motion.span
                           className="font-serif-wedding text-5xl md:text-6xl font-light text-primary/8 group-hover:text-primary/25 transition-colors duration-700 inline-block"
