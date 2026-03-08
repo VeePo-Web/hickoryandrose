@@ -158,7 +158,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
               })}
             </ul>
 
-            {/* CTA button */}
+            {/* CTA button with diagonal gold shimmer */}
             <div className="hidden lg:block">
               <Link
                 to="/inquire"
@@ -168,9 +168,17 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                     : "border-white/60 text-white hover:bg-white/10 hover:border-white"
                 }`}
               >
+                {/* Solid fill on hover */}
                 <span className={`absolute inset-0 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out ${
                   showSolidBg ? "bg-primary" : "bg-white/10"
                 }`} />
+                {/* Diagonal gold shimmer sweep */}
+                <span
+                  className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"
+                  style={{
+                    background: "linear-gradient(110deg, transparent 20%, hsl(var(--gold) / 0.15) 40%, hsl(var(--gold) / 0.25) 50%, hsl(var(--gold) / 0.15) 60%, transparent 80%)",
+                  }}
+                />
                 <span className="relative z-10">Inquire</span>
               </Link>
             </div>
@@ -332,9 +340,16 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                   <Link
                     to="/inquire"
                     onClick={() => setIsOpen(false)}
-                    className="inline-flex items-center px-10 py-3.5 text-[0.6875rem] tracking-[0.2em] uppercase font-sans-wedding font-light bg-primary text-primary-foreground hover:bg-sage-deep transition-colors duration-200"
+                    className="relative inline-flex items-center px-10 py-3.5 text-[0.6875rem] tracking-[0.2em] uppercase font-sans-wedding font-light bg-primary text-primary-foreground hover:bg-sage-deep transition-colors duration-200 overflow-hidden group"
                   >
-                    Inquire
+                    {/* Mobile gold shimmer sweep */}
+                    <span
+                      className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"
+                      style={{
+                        background: "linear-gradient(110deg, transparent 20%, hsl(var(--gold) / 0.2) 40%, hsl(var(--gold) / 0.35) 50%, hsl(var(--gold) / 0.2) 60%, transparent 80%)",
+                      }}
+                    />
+                    <span className="relative z-10">Inquire</span>
                   </Link>
                 </motion.div>
 
