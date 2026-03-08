@@ -8,13 +8,15 @@ const LoveQuoteSection = () => {
     target: ref,
     offset: ["start end", "end start"],
   });
-  
+
   const decorScale = useTransform(scrollYProgress, [0, 0.5], [0.85, 1]);
   const decorOpacity = useTransform(scrollYProgress, [0, 0.4], [0, 0.04]);
   const watermarkY = useTransform(scrollYProgress, [0, 1], [40, -40]);
   const secondaryQuoteOpacity = useTransform(scrollYProgress, [0.2, 0.5], [0, 0.2]);
   const cornerRotate = useTransform(scrollYProgress, [0, 1], [-2, 2]);
   const floatingOrnamentY = useTransform(scrollYProgress, [0, 1], [15, -15]);
+  // Radial glow intensity based on scroll position
+  const glowOpacity = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [0, 0.08, 0]);
 
   return (
     <section
@@ -23,11 +25,21 @@ const LoveQuoteSection = () => {
       aria-label="Brand manifesto"
     >
       {/* Subtle film grain texture overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.015] pointer-events-none mix-blend-overlay"
-        style={{ 
+        style={{
           backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E\")",
-          backgroundSize: "150px 150px"
+          backgroundSize: "150px 150px",
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Radial glow behind quote — scroll-linked */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[900px] md:h-[900px] rounded-full pointer-events-none"
+        style={{
+          opacity: glowOpacity,
+          background: "radial-gradient(circle, hsl(var(--gold, 38 60% 55%) / 0.3) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
@@ -76,6 +88,21 @@ const LoveQuoteSection = () => {
         />
       </motion.div>
 
+      {/* Floating seasonal indicator — left side */}
+      <motion.div
+        className="absolute top-1/2 left-8 -translate-y-1/2 pointer-events-none select-none hidden xl:block"
+        style={{ y: floatingOrnamentY }}
+        aria-hidden="true"
+      >
+        <div className="flex flex-col items-center gap-3 -rotate-90 origin-center">
+          <span className="w-8 h-px bg-primary-foreground/8" />
+          <span className="font-sans-wedding text-[0.45rem] tracking-[0.25em] uppercase text-primary-foreground/10">
+            Est. 2018
+          </span>
+          <span className="w-8 h-px bg-primary-foreground/8" />
+        </div>
+      </motion.div>
+
       {/* Section index watermark */}
       <motion.div
         className="absolute top-8 left-8 md:left-16 pointer-events-none select-none"
@@ -91,7 +118,7 @@ const LoveQuoteSection = () => {
         <ScrollReveal>
           {/* Refined overline with flanking lines */}
           <div className="flex items-center justify-center gap-5 mb-12">
-            <motion.span 
+            <motion.span
               className="w-12 h-px hidden md:block origin-right"
               style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.2))" }}
               initial={{ scaleX: 0 }}
@@ -102,7 +129,7 @@ const LoveQuoteSection = () => {
             <p className="font-overline text-primary-foreground/45 tracking-[0.25em]">
               Our Promise
             </p>
-            <motion.span 
+            <motion.span
               className="w-12 h-px hidden md:block origin-left"
               style={{ background: "linear-gradient(90deg, hsl(var(--primary-foreground) / 0.2), transparent)" }}
               initial={{ scaleX: 0 }}
@@ -165,7 +192,8 @@ const LoveQuoteSection = () => {
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-px h-10 bg-gradient-to-b from-primary-foreground/25 to-transparent origin-top"
+              className="w-px h-10 origin-top"
+              style={{ background: "linear-gradient(180deg, hsl(var(--primary-foreground) / 0.25), transparent)" }}
             />
             <span className="font-script text-2xl text-primary-foreground/40">
               Hickory & Rose
