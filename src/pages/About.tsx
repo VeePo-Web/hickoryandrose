@@ -395,7 +395,7 @@ const About = () => {
                 </div>
 
                 {/* Progress bars */}
-                <div className="flex items-center gap-4 mt-10">
+                <div className="flex items-center gap-4 mt-10" role="tablist" aria-label="Testimonial navigation">
                   <div className="flex gap-2 flex-1">
                     {testimonials.map((_, index) => (
                       <button

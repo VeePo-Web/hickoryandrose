@@ -187,7 +187,10 @@ const Journal = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute top-4 left-4">
-                    <span className="font-sans-wedding text-[0.55rem] tracking-[0.18em] uppercase text-white/70 bg-foreground/30 backdrop-blur-sm px-3 py-1.5">
+                    <span
+                      className="font-sans-wedding text-[0.55rem] tracking-[0.18em] uppercase text-white/80 backdrop-blur-sm px-3 py-1.5"
+                      style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--primary) / 0.2))" }}
+                    >
                       Featured
                     </span>
                   </div>
