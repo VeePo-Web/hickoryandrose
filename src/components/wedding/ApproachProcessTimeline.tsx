@@ -66,23 +66,40 @@ const ApproachProcessTimeline = () => {
         </ScrollReveal>
 
         <div className="relative">
-          {/* Gold gradient vertical timeline line */}
-          <motion.div
-            className="absolute left-[1.75rem] md:left-[3.25rem] top-0 bottom-0 w-px origin-top hidden md:block"
-            style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.1), hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.1))" }}
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
-          />
-          <motion.div
-            className="absolute left-[1.75rem] md:left-[3.25rem] top-0 bottom-0 w-px origin-top hidden md:block blur-[2px]"
-            style={{ background: "linear-gradient(180deg, transparent, hsl(var(--gold) / 0.2), transparent)" }}
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
-          />
+          {/* The "Golden Thread" Interactive Timeline */}
+          <div className="absolute left-[1.75rem] md:left-[3.25rem] top-0 bottom-0 w-12 hidden md:block -translate-x-1/2 pointer-events-none z-0">
+            <svg viewBox="0 0 48 1000" preserveAspectRatio="none" className="w-full h-full overflow-visible">
+              <motion.path
+                d="M 24 0 C 24 100, 48 150, 48 250 C 48 350, 0 400, 0 500 C 0 600, 48 650, 48 750 C 48 850, 24 900, 24 1000"
+                fill="none"
+                stroke="url(#golden-thread-grad)"
+                strokeWidth="1.5"
+                style={{
+                  pathLength: useTransform(scrollYProgress, [0.1, 0.9], [0, 1]),
+                  opacity: useTransform(scrollYProgress, [0.1, 0.15, 0.8, 0.9], [0, 1, 1, 0]),
+                }}
+              />
+              <motion.path
+                d="M 24 0 C 24 100, 48 150, 48 250 C 48 350, 0 400, 0 500 C 0 600, 48 650, 48 750 C 48 850, 24 900, 24 1000"
+                fill="none"
+                stroke="url(#golden-thread-grad)"
+                strokeWidth="4"
+                className="blur-[4px]"
+                style={{
+                  pathLength: useTransform(scrollYProgress, [0.1, 0.9], [0, 1]),
+                  opacity: useTransform(scrollYProgress, [0.1, 0.15, 0.8, 0.9], [0, 0.5, 0.5, 0]),
+                }}
+              />
+              <defs>
+                <linearGradient id="golden-thread-grad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="hsl(var(--gold) / 0.1)" />
+                  <stop offset="20%" stopColor="hsl(var(--gold) / 0.8)" />
+                  <stop offset="80%" stopColor="hsl(var(--gold) / 0.8)" />
+                  <stop offset="100%" stopColor="hsl(var(--gold) / 0.1)" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
 
           {processSteps.map((step, index) => (
             <ScrollReveal key={step.number} delay={index * 0.08}>
