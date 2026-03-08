@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Instagram, Mail, MapPin } from "lucide-react";
 
 const footerLinks = [
   { label: "Services", path: "/services" },
@@ -21,10 +22,29 @@ const Footer = () => {
                 <span className="font-script text-2xl">Rose</span>
               </span>
             </Link>
-            <p className="font-sans-wedding text-sm text-background/50 leading-relaxed">
+            <p className="font-sans-wedding text-sm text-background/50 leading-relaxed mb-6">
               Luxury wedding planning in Edmonton, Alberta. Refined rustic
               elegance with calm, intentional leadership.
             </p>
+            {/* Social Icons */}
+            <div className="flex items-center gap-4">
+              <a
+                href="https://www.instagram.com/hickoryandrose"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-background/40 hover:text-background transition-colors duration-200"
+                aria-label="Follow us on Instagram"
+              >
+                <Instagram size={18} strokeWidth={1.5} />
+              </a>
+              <a
+                href="mailto:hello@hickoryandrose.com"
+                className="text-background/40 hover:text-background transition-colors duration-200"
+                aria-label="Email us"
+              >
+                <Mail size={18} strokeWidth={1.5} />
+              </a>
+            </div>
           </div>
 
           {/* Navigation */}
@@ -51,20 +71,25 @@ const Footer = () => {
             <p className="font-sans-wedding text-label uppercase text-background/40 mb-4">
               Get in Touch
             </p>
-            <div className="space-y-2 font-sans-wedding text-sm text-background/60">
-              <p>Edmonton, Alberta</p>
+            <div className="space-y-3 font-sans-wedding text-sm text-background/60">
+              <div className="flex items-center gap-2">
+                <MapPin size={14} strokeWidth={1.5} className="shrink-0 text-background/40" />
+                <span>Edmonton, Alberta</span>
+              </div>
               <a
                 href="mailto:hello@hickoryandrose.com"
-                className="block hover:text-background transition-colors duration-200"
+                className="flex items-center gap-2 hover:text-background transition-colors duration-200"
               >
+                <Mail size={14} strokeWidth={1.5} className="shrink-0 text-background/40" />
                 hello@hickoryandrose.com
               </a>
               <a
                 href="https://www.instagram.com/hickoryandrose"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block hover:text-background transition-colors duration-200"
+                className="flex items-center gap-2 hover:text-background transition-colors duration-200"
               >
+                <Instagram size={14} strokeWidth={1.5} className="shrink-0 text-background/40" />
                 @hickoryandrose
               </a>
             </div>
