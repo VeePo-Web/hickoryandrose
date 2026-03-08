@@ -98,7 +98,7 @@ const FAQ = () => {
       <Navigation variant="overlay" />
 
       {/* Cinematic Parallax Hero */}
-      <section ref={heroRef} className="relative h-[55vh] md:h-[65vh] overflow-hidden">
+      <section ref={heroRef} className="relative h-[55vh] md:h-[65vh] overflow-hidden grain-overlay vignette">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
           <img
             src={faqHeroImage}

@@ -35,7 +35,7 @@ const NotFound = () => {
 
       <section
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden grain-overlay vignette"
       >
         {/* Parallax editorial background */}
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
