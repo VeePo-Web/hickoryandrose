@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import Footer from "@/components/wedding/Footer";
-import BranchDecoration from "@/components/wedding/BranchDecoration";
+
 import editorialFlorals from "@/assets/editorial-florals.jpg";
 
 const NotFound = () => {
