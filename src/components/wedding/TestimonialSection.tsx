@@ -86,23 +86,33 @@ const TestimonialSection = () => {
                 </AnimatePresence>
               </div>
 
-              {/* Pagination dots */}
-              <div className="flex items-center gap-3 mt-8">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveIndex(index)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      index === activeIndex
-                        ? "bg-primary w-6"
-                        : "bg-primary/30 hover:bg-primary/50 w-2"
-                    }`}
-                    aria-label={`View testimonial ${index + 1}`}
-                  />
-                ))}
-                {/* Counter */}
-                <span className="ml-auto font-sans-wedding text-xs text-muted-foreground/50 tabular-nums">
-                  {String(activeIndex + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
+              {/* Progress indicators */}
+              <div className="flex items-center gap-4 mt-10">
+                <div className="flex gap-1.5 flex-1">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveIndex(index)}
+                      className="h-px flex-1 relative overflow-hidden bg-primary/15"
+                      aria-label={`View testimonial ${index + 1}`}
+                    >
+                      {index === activeIndex && (
+                        <motion.div
+                          className="absolute inset-0 bg-primary origin-left"
+                          initial={{ scaleX: 0 }}
+                          animate={{ scaleX: 1 }}
+                          transition={{ duration: 6, ease: "linear" }}
+                          key={`progress-${activeIndex}`}
+                        />
+                      )}
+                      {index < activeIndex && (
+                        <div className="absolute inset-0 bg-primary" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+                <span className="font-sans-wedding text-[0.625rem] text-muted-foreground/40 tabular-nums tracking-wider">
+                  {String(activeIndex + 1).padStart(2, "0")}—{String(testimonials.length).padStart(2, "0")}
                 </span>
               </div>
             </div>
