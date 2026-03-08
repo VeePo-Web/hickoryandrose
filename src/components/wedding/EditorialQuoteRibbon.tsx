@@ -58,6 +58,15 @@ const EditorialQuoteRibbon = ({
         aria-hidden="true"
       />
 
+      {/* Breathing gold ambient pulse */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[150px] rounded-full pointer-events-none"
+        animate={{ opacity: [0, 0.04, 0], scale: [0.9, 1.1, 0.9] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        style={{ background: "radial-gradient(ellipse, hsl(var(--gold, 38 60% 55%) / 0.4), transparent 65%)" }}
+        aria-hidden="true"
+      />
+
       {/* Film grain texture */}
       <div
         className="absolute inset-0 opacity-[0.008] pointer-events-none mix-blend-overlay"
@@ -77,13 +86,37 @@ const EditorialQuoteRibbon = ({
         <span className="font-script text-6xl text-background leading-none">&</span>
       </motion.div>
 
+      {/* Left floating diamond — breathing */}
+      <motion.div
+        className="absolute left-12 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block"
+        style={{ y: ornamentY }}
+        aria-hidden="true"
+      >
+        <motion.span
+          className="w-2 h-2 rotate-45 block"
+          style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.08))" }}
+          animate={{ opacity: [0.3, 0.7, 0.3], scale: [0.85, 1.15, 0.85] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </motion.div>
+
       {/* Top and bottom ruled lines — scroll-linked */}
       <motion.div
         className="absolute top-0 left-0 right-0 h-px origin-left"
         style={{
           scaleX: borderScale,
           background:
-            "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.15), hsl(var(--gold, 38 60% 55%) / 0.12), transparent)",
+            "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.15), hsl(var(--gold, 38 60% 55%) / 0.18), hsl(var(--primary) / 0.15), transparent)",
+        }}
+        aria-hidden="true"
+      />
+      {/* Top line gold glow trail */}
+      <motion.div
+        className="absolute top-0 left-0 right-0 h-px origin-left blur-[1px]"
+        style={{
+          scaleX: borderScale,
+          background:
+            "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.12), transparent)",
         }}
         aria-hidden="true"
       />
@@ -92,7 +125,7 @@ const EditorialQuoteRibbon = ({
         style={{
           scaleX: borderScale,
           background:
-            "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.12), hsl(var(--primary) / 0.15), transparent)",
+            "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.18), hsl(var(--primary) / 0.15), transparent)",
         }}
         aria-hidden="true"
       />

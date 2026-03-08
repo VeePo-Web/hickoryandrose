@@ -332,25 +332,62 @@ const Approach = () => {
       </section>
 
       {/* Editorial promise */}
-      <section className="py-16 md:py-24 bg-card">
-        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+      <section className="py-16 md:py-24 bg-card relative overflow-hidden">
+        {/* Subtle ambient gold glow */}
+        <motion.div
+          className="absolute right-0 top-1/3 w-[300px] h-[300px] pointer-events-none hidden lg:block"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.04 }}
+          viewport={{ once: true }}
+          transition={{ duration: 2 }}
+          style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.12), transparent 70%)" }}
+          aria-hidden="true"
+        />
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative">
           <ScrollReveal>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-baseline">
               <div className="md:col-span-1">
                 <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">03</span>
                 <p className="font-overline text-muted-foreground/50 mb-3">Our Promise</p>
                 <h3 className="font-serif-wedding text-display-md text-foreground">Every detail, protected.</h3>
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="w-10 h-px mt-4 origin-left"
+                  style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }}
+                />
               </div>
-              <div className="md:col-span-2">
-                <p className="font-sans-wedding text-body text-muted-foreground leading-relaxed font-light mb-4">
-                  We don't just plan logistics — we anticipate emotions. From the
-                  moment your guests arrive to the final dance, we ensure every
-                  transition is seamless, every moment is savored, and you never
-                  have to think about what comes next.
-                </p>
-                <p className="font-sans-wedding text-body-sm text-muted-foreground/60 leading-relaxed font-light">
-                  That's the Hickory & Rose difference: you're not just getting a planner — you're getting a partner who protects the feeling of your day.
-                </p>
+              <div className="md:col-span-2 relative">
+                {/* Gold left-border accent */}
+                <div
+                  className="absolute left-0 top-0 bottom-0 w-[2px] hidden md:block"
+                  style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.25), hsl(var(--gold) / 0.08), transparent)" }}
+                />
+                <div className="md:pl-8">
+                  <p className="font-sans-wedding text-body text-muted-foreground leading-relaxed font-light mb-4">
+                    We don't just plan logistics — we anticipate emotions. From the
+                    moment your guests arrive to the final dance, we ensure every
+                    transition is seamless, every moment is savored, and you never
+                    have to think about what comes next.
+                  </p>
+                  <p className="font-sans-wedding text-body-sm text-muted-foreground/60 leading-relaxed font-light mb-6">
+                    That's the Hickory & Rose difference: you're not just getting a planner — you're getting a partner who protects the feeling of your day.
+                  </p>
+                  {/* Editorial credential pills */}
+                  <div className="flex flex-wrap gap-2">
+                    {["Calm Leadership", "Elevated Design", "Seamless Execution"].map((pill) => (
+                      <span
+                        key={pill}
+                        className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/35 border border-primary/10 px-3 py-1"
+                      >
+                        {pill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </ScrollReveal>
