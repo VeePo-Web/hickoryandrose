@@ -19,7 +19,7 @@ const LocationSection = () => {
   };
 
   const handleEmailClick = () => {
-    window.location.href = "mailto:events@carmineresort.com";
+    window.location.href = "mailto:sales@hickoryandrose.com";
   };
 
   return (
