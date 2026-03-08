@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
@@ -6,6 +7,7 @@ import ScrollReveal from "@/components/wedding/ScrollReveal";
 import ImageReveal from "@/components/wedding/ImageReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import BranchDecoration from "@/components/wedding/BranchDecoration";
+import MagneticButton from "@/components/wedding/MagneticButton";
 import founderImage from "@/assets/founder-portrait.jpg";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 
@@ -95,15 +97,13 @@ const About = () => {
                   <p>
                     Hickory & Rose exists to be that better way. We bring quiet
                     confidence, meticulous planning, and genuine warmth to every
-                    wedding we touch. When you work with us, you're not hiring a
-                    coordinator — you're gaining a partner who cares deeply about
-                    your experience.
+                    wedding we touch.
                   </p>
-                  <p>
-                    Based in Edmonton, Alberta, we serve couples who value
-                    refined design, intentional details, and the freedom to fully
-                    enjoy their celebration.
-                  </p>
+                </div>
+                <div className="mt-8">
+                  <MagneticButton to="/inquire" variant="outline">
+                    Work With Us
+                  </MagneticButton>
                 </div>
               </div>
             </ScrollReveal>
@@ -111,7 +111,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Editorial image break with parallax */}
       <FullWidthImage
         src={bouquetImage}
         alt="Bridal bouquet with white roses and sage eucalyptus"
@@ -134,7 +133,11 @@ const About = () => {
             {values.map((value, index) => (
               <ScrollReveal key={value.title} delay={index * 0.1}>
                 <div className="text-center group">
-                  <div className="w-8 h-px bg-primary mx-auto mb-6 group-hover:w-12 transition-all duration-300" />
+                  <motion.div
+                    className="w-8 h-px bg-primary mx-auto mb-6"
+                    whileHover={{ width: 48 }}
+                    transition={{ duration: 0.3 }}
+                  />
                   <h3 className="font-serif-wedding text-display-md text-foreground mb-3">
                     {value.title}
                   </h3>
@@ -148,7 +151,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Journey Timeline */}
+      {/* Journey Timeline — Cinematic */}
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
           <ScrollReveal>
@@ -162,27 +165,50 @@ const About = () => {
             </div>
           </ScrollReveal>
 
-          <div className="space-y-0">
-            {milestones.map((milestone, index) => (
-              <ScrollReveal key={milestone.year} delay={index * 0.08}>
-                <div className="flex items-start gap-6 md:gap-8 pb-8 last:pb-0">
-                  <div className="flex flex-col items-center shrink-0">
-                    <div className="w-3 h-3 rounded-full bg-primary" />
-                    {index < milestones.length - 1 && (
-                      <div className="w-px flex-1 bg-border mt-1 min-h-[2rem]" />
-                    )}
+          <div className="relative">
+            {/* Animated vertical line */}
+            <motion.div
+              className="absolute left-[5px] top-0 bottom-0 w-px bg-primary/20 origin-top"
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] as const }}
+            />
+
+            <div className="space-y-0">
+              {milestones.map((milestone, index) => (
+                <ScrollReveal key={milestone.year} delay={index * 0.12}>
+                  <div className="flex items-start gap-6 md:gap-8 pb-10 last:pb-0 group">
+                    <div className="flex flex-col items-center shrink-0 relative">
+                      <motion.div
+                        className="w-3 h-3 rounded-full bg-primary relative z-10"
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: 0.1 + index * 0.12, type: "spring", stiffness: 300 }}
+                      >
+                        {/* Pulse ring */}
+                        <motion.div
+                          className="absolute inset-[-4px] rounded-full border border-primary/30"
+                          initial={{ scale: 0.8, opacity: 0 }}
+                          whileInView={{ scale: 1.5, opacity: [0, 0.5, 0] }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.2, delay: 0.3 + index * 0.12 }}
+                        />
+                      </motion.div>
+                    </div>
+                    <div className="pb-2">
+                      <p className="font-serif-wedding text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                        {milestone.year}
+                      </p>
+                      <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed">
+                        {milestone.event}
+                      </p>
+                    </div>
                   </div>
-                  <div className="pb-2">
-                    <p className="font-serif-wedding text-lg font-semibold text-foreground">
-                      {milestone.year}
-                    </p>
-                    <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed">
-                      {milestone.event}
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
