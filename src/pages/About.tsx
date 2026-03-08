@@ -299,7 +299,7 @@ const About = () => {
                   />
 
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-primary/20 group-hover:text-primary/40 transition-colors text-xs">{value.icon}</span>
+                    <span className="w-2 h-2 rotate-45 shrink-0" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.1))" }} />
                     <h3 className="font-serif-wedding text-display-md text-foreground group-hover:text-primary transition-colors duration-500">
                       {value.title}
                     </h3>

@@ -171,9 +171,7 @@ const NotFound = () => {
                       className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none"
                       style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.06) 40%, hsl(var(--gold) / 0.1) 50%, hsl(var(--gold) / 0.06) 60%, transparent 100%)" }}
                     />
-                    <span className="font-serif-wedding text-lg text-white/15 group-hover:text-white/30 transition-colors duration-500 block mb-2">
-                      {page.icon}
-                    </span>
+                    <span className="w-3 h-3 rotate-45 block mb-2 group-hover:scale-110 transition-transform duration-500" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }} />
                     <p className="font-sans-wedding text-sm text-white/75 group-hover:text-white transition-colors duration-300 font-light mb-1">
                       {page.label}
                     </p>
