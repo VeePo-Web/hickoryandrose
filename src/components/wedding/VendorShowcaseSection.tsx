@@ -13,6 +13,7 @@ const vendors = [
 
 const VendorShowcaseSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
