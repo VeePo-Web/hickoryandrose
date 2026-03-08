@@ -28,7 +28,7 @@ const GoldCornerFrame = ({ position }: { position: "top-left" | "bottom-right" }
   const isTop = position === "top-left";
   return (
     <div
-      className={`absolute ${isTop ? "top-3 left-3" : "bottom-3 right-3"} w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
+      className={`absolute ${isTop ? "top-3 left-3" : "bottom-3 right-3"} w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
       aria-hidden="true"
     >
       <span
