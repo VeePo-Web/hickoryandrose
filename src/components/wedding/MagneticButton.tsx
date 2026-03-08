@@ -40,12 +40,14 @@ const MagneticButton = ({ to, children, variant = "primary", className = "" }: M
       onMouseLeave={reset}
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 350, damping: 15, mass: 0.2 }}
-      className="inline-block"
+      className="inline-block group/btn"
     >
       <Link
         to={to}
-        className={`inline-flex items-center font-sans-wedding text-xs tracking-[0.2em] uppercase px-10 py-4 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 ${variants[variant]} ${className}`}
+        className={`relative inline-flex items-center font-sans-wedding text-xs tracking-[0.2em] uppercase px-10 py-4 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 overflow-hidden group-hover/btn:tracking-[0.25em] ${variants[variant]} ${className}`}
       >
+        {/* Hover underline reveal */}
+        <span className="absolute bottom-3 left-10 right-10 h-px bg-current origin-left scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500 ease-out opacity-30" />
         {children}
       </Link>
     </motion.div>
