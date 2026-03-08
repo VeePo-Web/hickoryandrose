@@ -164,10 +164,10 @@ const LoveQuoteSection = () => {
             />
           </div>
 
-          {/* Main quote with editorial quotation marks */}
+          {/* Main quote with gold-gradient editorial quotation marks */}
           <blockquote className="font-serif-wedding text-display-md md:text-display-lg text-primary-foreground leading-relaxed mb-12 relative">
             <motion.span
-              className="absolute -top-8 -left-4 md:-left-8 text-primary-foreground/[0.08] text-[6rem] md:text-[8rem] font-light leading-none select-none"
+              className="absolute -top-8 -left-4 md:-left-8 text-[6rem] md:text-[8rem] font-light leading-none select-none pointer-events-none"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -175,8 +175,9 @@ const LoveQuoteSection = () => {
               aria-hidden="true"
             >
               <motion.span
-                className="inline-block"
-                animate={{ opacity: [0.08, 0.12, 0.08] }}
+                className="inline-block bg-clip-text text-transparent"
+                style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--gold) / 0.25), hsl(var(--primary-foreground) / 0.08))" }}
+                animate={{ opacity: [0.6, 1, 0.6] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
                 "
@@ -186,14 +187,21 @@ const LoveQuoteSection = () => {
             details should serve the moment — never compete with it. That calm
             is not the absence of planning, but the <em className="text-primary-foreground/95">presence</em> of it.
             <motion.span
-              className="absolute -bottom-10 -right-4 md:-right-8 text-primary-foreground/[0.08] text-[6rem] md:text-[8rem] font-light leading-none select-none"
+              className="absolute -bottom-10 -right-4 md:-right-8 text-[6rem] md:text-[8rem] font-light leading-none select-none pointer-events-none"
               initial={{ opacity: 0, y: -12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
               aria-hidden="true"
             >
-              "
+              <motion.span
+                className="inline-block bg-clip-text text-transparent"
+                style={{ backgroundImage: "linear-gradient(135deg, hsl(var(--primary-foreground) / 0.08), hsl(var(--gold) / 0.25))" }}
+                animate={{ opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              >
+                "
+              </motion.span>
             </motion.span>
           </blockquote>
 

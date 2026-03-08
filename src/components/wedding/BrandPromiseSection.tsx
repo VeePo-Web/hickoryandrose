@@ -135,9 +135,21 @@ const BrandPromiseSection = () => {
                     />
                     <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-700" />
                     
-                    {/* Corner accents */}
-                    <div className="absolute top-3 right-3 w-6 h-6 border-t border-r border-white/0 group-hover:border-white/15 transition-all duration-700" />
-                    <div className="absolute bottom-3 left-3 w-6 h-6 border-b border-l border-white/0 group-hover:border-white/15 transition-all duration-700" />
+                    {/* Gold-gradient corner accents */}
+                    <div className="absolute top-3 right-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true">
+                      <span className="absolute top-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                      <span className="absolute top-0 right-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                    </div>
+                    <div className="absolute bottom-3 left-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true">
+                      <span className="absolute bottom-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                      <span className="absolute bottom-0 left-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                    </div>
+                    
+                    {/* Ambient gold glow on hover */}
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                      style={{ background: "radial-gradient(ellipse at 50% 80%, hsl(var(--gold) / 0.06), transparent 60%)" }}
+                    />
                   </div>
                 </ImageReveal>
                 

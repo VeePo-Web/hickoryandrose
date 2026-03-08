@@ -237,12 +237,50 @@ const GallerySection = () => {
             ))}
           </div>
 
-          {/* Bottom ornament */}
+          {/* Bottom ornament with breathing diamond */}
           <ScrollReveal delay={0.3}>
             <div className="flex items-center justify-center gap-4 mt-12 md:mt-16" aria-hidden="true">
-              <span className="w-10 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2))" }} />
-              <span className="w-1.5 h-1.5 rotate-45" style={{ background: "hsl(var(--gold) / 0.2)" }} />
-              <span className="w-10 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.2), transparent)" }} />
+              <motion.span
+                className="w-12 h-px"
+                style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25))" }}
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              />
+              <motion.span
+                className="w-2 h-2 rotate-45"
+                style={{
+                  background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.12))",
+                  boxShadow: "0 0 10px 3px hsl(var(--gold) / 0.1)",
+                }}
+                animate={{ opacity: [0.4, 0.8, 0.4], scale: [0.9, 1.15, 0.9] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.span
+                className="w-12 h-px"
+                style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.25), transparent)" }}
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+              />
+            </div>
+            {/* Editorial credential strip */}
+            <div className="flex items-center justify-center gap-6 mt-6">
+              {["Curated Collection", "Real Weddings", "Edmonton & Rockies"].map((label, i) => (
+                <motion.span
+                  key={label}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 + i * 0.1 }}
+                  className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-muted-foreground/20 flex items-center gap-2"
+                >
+                  {i > 0 && <span className="w-1 h-1 rotate-45" style={{ background: "hsl(var(--gold) / 0.15)" }} />}
+                  {label}
+                </motion.span>
+              ))}
             </div>
           </ScrollReveal>
         </div>
