@@ -26,10 +26,10 @@ const BackToTop = () => {
           exit={{ opacity: 0, y: 16 }}
           transition={{ duration: 0.25 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 w-10 h-10 bg-primary/80 hover:bg-primary text-primary-foreground flex items-center justify-center shadow-medium backdrop-blur-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
+          className="fixed bottom-6 right-6 z-50 w-11 h-11 bg-primary/90 hover:bg-primary text-primary-foreground flex items-center justify-center shadow-medium backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 group"
           aria-label="Back to top"
         >
-          <ArrowUp size={16} strokeWidth={1.5} />
+          <ArrowUp size={16} strokeWidth={1.5} className="group-hover:-translate-y-0.5 transition-transform duration-200" />
         </motion.button>
       )}
     </AnimatePresence>

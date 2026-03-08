@@ -6,6 +6,8 @@ interface FullWidthImageProps {
   alt: string;
   height?: string;
   parallax?: boolean;
+  overlay?: boolean;
+  caption?: string;
 }
 
 const FullWidthImage = ({
@@ -13,6 +15,8 @@ const FullWidthImage = ({
   alt,
   height = "h-[400px] md:h-[600px]",
   parallax = true,
+  overlay = false,
+  caption,
 }: FullWidthImageProps) => {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -23,7 +27,7 @@ const FullWidthImage = ({
   const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
-    <section ref={ref} className={`w-full overflow-hidden ${height}`}>
+    <section ref={ref} className={`w-full overflow-hidden ${height} relative`}>
       {parallax ? (
         <motion.img
           src={src}
@@ -39,6 +43,20 @@ const FullWidthImage = ({
           className="w-full h-full object-cover"
           loading="lazy"
         />
+      )}
+
+      {/* Optional dark overlay for depth */}
+      {overlay && (
+        <div className="absolute inset-0 bg-foreground/15 pointer-events-none" />
+      )}
+
+      {/* Optional editorial caption */}
+      {caption && (
+        <div className="absolute bottom-0 left-0 right-0 py-4 px-6">
+          <p className="font-overline text-white/50 text-center text-[0.6rem] tracking-[0.25em]">
+            {caption}
+          </p>
+        </div>
       )}
     </section>
   );
