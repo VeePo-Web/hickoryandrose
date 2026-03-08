@@ -28,7 +28,7 @@ const GoldCornerFrame = ({ position }: { position: "top-left" | "bottom-right" }
   const isTop = position === "top-left";
   return (
     <div
-      className={`absolute ${isTop ? "top-3 left-3" : "bottom-3 right-3"} w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
+      className={`absolute ${isTop ? "top-3 left-3" : "bottom-3 right-3"} w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
       aria-hidden="true"
     >
       <span
@@ -46,7 +46,12 @@ const GoldCornerFrame = ({ position }: { position: "top-left" | "bottom-right" }
 const ServiceImage = ({ service, direction }: { service: ServiceTier; direction: "left" | "right" }) => (
   <ScrollReveal>
     <ImageReveal direction={direction}>
-      <div className="aspect-[4/5] overflow-hidden sticky top-28 relative group">
+      <div
+        className="aspect-[4/5] overflow-hidden sticky top-28 relative group transition-shadow duration-700"
+        style={{ boxShadow: "0 0 0px transparent" }}
+        onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 0 24px hsl(var(--gold) / 0.1), 0 0 48px hsl(var(--gold) / 0.05)"; }}
+        onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "0 0 0px transparent"; }}
+      >
         <img
           src={service.image}
           alt={service.imageAlt}
@@ -103,7 +108,10 @@ const ServiceTierCard = ({ service, index }: ServiceTierCardProps) => {
           {service.image && isEven && <ServiceImage service={service} direction="left" />}
 
           {/* Content column */}
-          <div>
+          <div
+            className="transition-all duration-700 group-hover/tier:scale-[1.01]"
+            style={{ willChange: "transform, box-shadow" }}
+          >
             <ScrollReveal delay={service.image ? 0.1 : 0}>
               <div className={`${service.image ? "" : "text-center"} mb-10`}>
                 <p className="font-sans-wedding text-label uppercase text-primary/60 mb-3">

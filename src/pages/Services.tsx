@@ -385,7 +385,24 @@ const Services = () => {
               },
             ].map((item, i) => (
               <ScrollReveal key={item.title} delay={i * 0.1}>
-                <div className="py-10 md:py-12 md:px-8 border-t md:border-t-0 md:border-l border-border/40 first:border-t-0 md:first:border-l-0 group">
+                <div
+                  className="relative py-10 md:py-12 md:px-8 first:border-t-0 md:first:border-l-0 group overflow-hidden transition-all duration-700 hover:scale-[1.02]"
+                  style={{ willChange: "transform, box-shadow" }}
+                  onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 0 20px hsl(var(--gold) / 0.08), 0 0 40px hsl(var(--gold) / 0.04)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; }}
+                >
+                  {/* Gold gradient left border (desktop) / top border (mobile) */}
+                  <span
+                    className="absolute top-0 left-0 right-0 h-px md:h-full md:w-px md:right-auto block"
+                    style={{ background: "linear-gradient(to right, hsl(var(--gold) / 0.3), hsl(var(--border) / 0.2)) " }}
+                    aria-hidden="true"
+                  />
+                  {/* Diagonal shimmer sweep on hover */}
+                  <span
+                    className="absolute inset-0 pointer-events-none -translate-x-full group-hover:translate-x-[200%] transition-transform duration-[1s] ease-in-out"
+                    style={{ background: "linear-gradient(135deg, transparent 40%, hsl(var(--gold) / 0.06) 50%, transparent 60%)" }}
+                    aria-hidden="true"
+                  />
                   <span className="font-serif-wedding text-4xl font-light text-primary/10 group-hover:text-primary/20 transition-colors duration-700 block mb-4">
                     {item.icon}
                   </span>
