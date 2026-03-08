@@ -93,6 +93,7 @@ const Index = () => {
         />
         <FounderTeaserSection />
         <StatsSection />
+        <FilmstripSection />
         <CTASection />
         <InstagramSection />
         <Footer />
