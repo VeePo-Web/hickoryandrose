@@ -100,8 +100,17 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="flex items-center gap-1.5 relative"
+                    className="flex items-center gap-1.5 relative overflow-hidden"
                   >
+                    <motion.span
+                      className="absolute inset-0 pointer-events-none z-10"
+                      initial={{ x: "-100%" }}
+                      animate={{ x: "200%" }}
+                      transition={{ duration: 1.0, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                      style={{
+                        background: "linear-gradient(110deg, transparent 20%, hsl(var(--gold) / 0.25) 45%, hsl(var(--gold) / 0.4) 50%, hsl(var(--gold) / 0.25) 55%, transparent 80%)",
+                      }}
+                    />
                     <motion.span
                       className="absolute -inset-3 rounded-full pointer-events-none"
                       animate={{ opacity: [0.03, 0.08, 0.03] }}
