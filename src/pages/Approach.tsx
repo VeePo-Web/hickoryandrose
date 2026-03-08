@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
@@ -14,6 +14,7 @@ import ApproachProcessTimeline from "@/components/wedding/ApproachProcessTimelin
 import ApproachDifferentiators from "@/components/wedding/ApproachDifferentiators";
 import ApproachStatsRibbon from "@/components/wedding/ApproachStatsRibbon";
 import EditorialSplitSection from "@/components/wedding/EditorialSplitSection";
+import MagneticButton from "@/components/wedding/MagneticButton";
 
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import approachDetailsImage from "@/assets/approach-details.jpg";
@@ -23,6 +24,68 @@ import founderImage from "@/assets/founder-portrait.jpg";
 /* Stagger helpers */
 const wordContainer = { hidden: {}, visible: { transition: { staggerChildren: 0.06 } } };
 const wordChild = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const } } };
+
+const MagneticPill = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    setPos({ x: x * 0.2, y: y * 0.2 });
+  };
+  return (
+    <motion.span
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => setPos({ x: 0, y: 0 })}
+      animate={{ x: pos.x, y: pos.y }}
+      transition={{ type: "spring", stiffness: 350, damping: 15, mass: 0.2 }}
+      className={`inline-block ${className}`}
+    >
+      <span className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/35 border border-primary/10 px-3 py-1 relative overflow-hidden group/pill cursor-default block">
+        <span
+          className="absolute inset-0 -translate-x-full group-hover/pill:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
+          style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.08), transparent)" }}
+          aria-hidden="true"
+        />
+        <span className="relative">{children}</span>
+      </span>
+    </motion.span>
+  );
+};
+
+const DocumentaryFilmstrip = ({ src, alt, height, label }: { src: string; alt: string; height: string; label: string }) => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "center center"] });
+  const clipPath = useTransform(scrollYProgress, [0, 1], ["inset(10% 20%)", "inset(0% 0%)"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["20%", "0%"]);
+
+  return (
+    <section ref={ref} className="relative py-10 md:py-16 w-full overflow-hidden bg-background">
+      <motion.div style={{ clipPath }} className="relative w-full h-full">
+        <FullWidthImage src={src} alt={alt} height={height} parallax={true} />
+      </motion.div>
+      <motion.div 
+        style={{ y }} 
+        className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 text-muted-foreground/30 text-[0.4rem] md:text-[0.5rem] tracking-[0.2em] font-sans-wedding uppercase pointer-events-none"
+      >
+        <span className="-rotate-90 whitespace-nowrap mb-6 md:mb-10">{label}</span>
+        <span className="w-px h-8 md:h-12 bg-muted-foreground/20" />
+        <span>FR-01</span>
+      </motion.div>
+      <motion.div 
+        style={{ y }} 
+        className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 text-muted-foreground/30 text-[0.4rem] md:text-[0.5rem] tracking-[0.2em] font-sans-wedding uppercase pointer-events-none"
+      >
+        <span>H&R</span>
+        <span className="w-px h-8 md:h-12 bg-muted-foreground/20" />
+        <span className="-rotate-90 whitespace-nowrap mt-6 md:mt-10">DOCUMENTARY</span>
+      </motion.div>
+    </section>
+  );
+};
 
 const Approach = () => {
   const heroRef = useRef<HTMLElement>(null);
