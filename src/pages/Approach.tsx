@@ -357,6 +357,54 @@ const Approach = () => {
         </div>
       </section>
 
+      {/* Inline testimonial — editorial with gold ornament */}
+      <section className="py-14 md:py-20 bg-background relative overflow-hidden">
+        {/* Radial gold ambient glow */}
+        <motion.div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.06 }}
+          viewport={{ once: true }}
+          transition={{ duration: 2 }}
+          style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.12), transparent 70%)" }}
+          aria-hidden="true"
+        />
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
+          <ScrollReveal>
+            {/* Gold diamond ornament */}
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-8 h-px origin-right"
+                style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3))" }}
+              />
+              <span className="w-2 h-2 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))" }} />
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-8 h-px origin-left"
+                style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }}
+              />
+            </div>
+            <blockquote className="font-serif-wedding text-pull-quote italic text-foreground/60 leading-relaxed mb-5">
+              "From the first call, I felt like I was talking to a friend who just happened to be
+              incredibly organized. They made the entire process feel effortless."
+            </blockquote>
+            <p className="font-sans-wedding text-body-sm font-light text-foreground/40">
+              Emma & James
+            </p>
+            <p className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-muted-foreground/25 mt-1">
+              The Glass House · Autumn 2024
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
       <FullWidthImage
         src={ceremonyImage}
         alt="Outdoor wedding ceremony setup in mountain meadow with floral arch"

@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect, useCallback } from "react";
 import ScrollReveal from "./ScrollReveal";
 import inquireImage from "@/assets/inquire-editorial.jpg";
 
+const seasonSlots = [
+  { season: "Spring 2026", status: "Limited", accent: true },
+  { season: "Summer 2026", status: "2 Spots Left", accent: true },
+  { season: "Autumn 2026", status: "Now Booking", accent: false },
+];
+
 const PreFooterDivider = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [activeSeason, setActiveSeason] = useState(0);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -13,6 +20,15 @@ const PreFooterDivider = () => {
   const watermarkY = useTransform(scrollYProgress, [0, 1], ["20%", "-20%"]);
   const lineScale = useTransform(scrollYProgress, [0.1, 0.5], [0, 1]);
   const imageY = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
+
+  const advanceSeason = useCallback(() => {
+    setActiveSeason((i) => (i + 1) % seasonSlots.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(advanceSeason, 3500);
+    return () => clearInterval(timer);
+  }, [advanceSeason]);
 
   return (
     <section
@@ -106,6 +122,34 @@ const PreFooterDivider = () => {
                 We take on a curated number of couples each season to ensure every
                 wedding receives our full attention and care.
               </p>
+
+              {/* Rotating seasonal availability ticker */}
+              <div className="mb-6 flex items-center justify-center lg:justify-start gap-4">
+                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.7), hsl(var(--gold) / 0.2))" }} />
+                <div className="h-5 overflow-hidden relative">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={activeSeason}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.35 }}
+                      className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-foreground/40 font-light inline-block"
+                    >
+                      {seasonSlots[activeSeason].season} — <span className={seasonSlots[activeSeason].accent ? "text-primary/60" : "text-muted-foreground/40"}>{seasonSlots[activeSeason].status}</span>
+                    </motion.span>
+                  </AnimatePresence>
+                </div>
+                <div className="flex gap-1.5">
+                  {seasonSlots.map((_, i) => (
+                    <span
+                      key={i}
+                      className={`w-4 h-[1.5px] transition-all duration-400 ${i === activeSeason ? "" : "bg-border/30"}`}
+                      style={i === activeSeason ? { background: "linear-gradient(90deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.2))" } : undefined}
+                    />
+                  ))}
+                </div>
+              </div>
 
               {/* Trust signals */}
               <div className="flex items-center justify-center lg:justify-start gap-3 mb-8">
