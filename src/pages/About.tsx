@@ -13,7 +13,7 @@ import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 import AboutMilestones from "@/components/wedding/AboutMilestones";
 import AboutTestimonials from "@/components/wedding/AboutTestimonials";
-import founderImage from "@/assets/founder-portrait.jpg";
+import AboutFounderSection from "@/components/wedding/AboutFounderSection";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import aboutHeroImage from "@/assets/about-hero.jpg";
 import editorialFloralsImage from "@/assets/editorial-florals.jpg";
