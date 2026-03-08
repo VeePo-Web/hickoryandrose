@@ -50,12 +50,16 @@ const About = () => {
       <section className="bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
+            <p className="font-overline text-muted-foreground mb-4">
               About Us
             </p>
-            <h1 className="font-serif-wedding text-display-xl text-foreground">
+            <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
               Meet Hickory & Rose
             </h1>
+            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed max-w-xl mx-auto font-light">
+              Refined rustic elegance, rooted in calm leadership and genuine care
+              for every couple we serve.
+            </p>
           </ScrollReveal>
         </div>
       </section>
@@ -83,8 +87,8 @@ const About = () => {
                 <h2 className="font-serif-wedding text-display-lg text-foreground mb-6">
                   The heart behind every detail.
                 </h2>
-                <div className="space-y-4 font-sans-wedding text-sm text-muted-foreground leading-relaxed">
-                  <p>
+                <div className="space-y-4 font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
+                  <p className="drop-cap">
                     I founded Hickory & Rose with a simple belief: your wedding
                     day should feel as calm as it is beautiful.
                   </p>
@@ -124,6 +128,9 @@ const About = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative">
           <ScrollReveal>
             <div className="text-center mb-12">
+              <p className="font-overline text-muted-foreground mb-4">
+                Our Values
+              </p>
               <h2 className="font-serif-wedding text-display-lg text-foreground">
                 What Guides Us
               </h2>
@@ -133,15 +140,11 @@ const About = () => {
             {values.map((value, index) => (
               <ScrollReveal key={value.title} delay={index * 0.1}>
                 <div className="text-center group">
-                  <motion.div
-                    className="w-8 h-px bg-primary mx-auto mb-6"
-                    whileHover={{ width: 48 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  <hr className="editorial-rule mx-auto mb-6" />
                   <h3 className="font-serif-wedding text-display-md text-foreground mb-3">
                     {value.title}
                   </h3>
-                  <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed">
+                  <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
                     {value.description}
                   </p>
                 </div>
@@ -156,7 +159,7 @@ const About = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
           <ScrollReveal>
             <div className="text-center mb-12 md:mb-16">
-              <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
+              <p className="font-overline text-muted-foreground mb-4">
                 Our Journey
               </p>
               <h2 className="font-serif-wedding text-display-lg text-foreground">
@@ -187,7 +190,6 @@ const About = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.4, delay: 0.1 + index * 0.12, type: "spring", stiffness: 300 }}
                       >
-                        {/* Pulse ring */}
                         <motion.div
                           className="absolute inset-[-4px] rounded-full border border-primary/30"
                           initial={{ scale: 0.8, opacity: 0 }}
@@ -198,10 +200,10 @@ const About = () => {
                       </motion.div>
                     </div>
                     <div className="pb-2">
-                      <p className="font-serif-wedding text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                      <p className="font-serif-wedding text-xl font-light text-foreground group-hover:text-primary transition-colors duration-300">
                         {milestone.year}
                       </p>
-                      <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed">
+                      <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
                         {milestone.event}
                       </p>
                     </div>

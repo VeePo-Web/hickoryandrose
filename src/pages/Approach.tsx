@@ -27,13 +27,13 @@ const Approach = () => {
       <section className="bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
+            <p className="font-overline text-muted-foreground mb-4">
               Our Approach
             </p>
             <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
               How We Plan Your Perfect Day
             </h1>
-            <p className="font-sans-wedding text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
+            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed max-w-xl mx-auto font-light">
               Great weddings don't happen by accident. They're the result of
               thoughtful planning, clear communication, and a deep understanding
               of what matters to you.
@@ -48,7 +48,6 @@ const Approach = () => {
             {processSteps.map((step, index) => (
               <ScrollReveal key={step.number} delay={index * 0.08}>
                 <div className="relative flex gap-6 md:gap-8">
-                  {/* Animated timeline circle */}
                   <div className="flex flex-col items-center shrink-0">
                     <motion.div
                       initial={{ scale: 0 }}
@@ -58,11 +57,10 @@ const Approach = () => {
                       className="relative"
                     >
                       <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                        <span className="font-sans-wedding text-[11px] font-semibold text-primary-foreground">
+                        <span className="font-sans-wedding text-[11px] font-light text-primary-foreground tracking-[0.1em]">
                           {step.number}
                         </span>
                       </div>
-                      {/* Pulse ring on hover */}
                       <motion.div
                         initial={{ opacity: 0, scale: 1 }}
                         whileInView={{ opacity: [0, 0.3, 0], scale: [1, 1.6, 1.6] }}
@@ -82,15 +80,14 @@ const Approach = () => {
                     )}
                   </div>
 
-                  {/* Content */}
                   <div className={`pb-12 md:pb-16 ${index === processSteps.length - 1 ? "pb-0" : ""}`}>
-                    <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-2">
+                    <p className="font-overline text-muted-foreground mb-2">
                       {step.time}
                     </p>
                     <h3 className="font-serif-wedding text-display-md text-foreground mb-3">
                       {step.title}
                     </h3>
-                    <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed">
+                    <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
                       {step.description}
                     </p>
                   </div>
@@ -101,7 +98,6 @@ const Approach = () => {
         </div>
       </section>
 
-      {/* Editorial image break */}
       <FullWidthImage
         src={ceremonyImage}
         alt="Outdoor wedding ceremony setup in mountain meadow with floral arch"
@@ -112,7 +108,7 @@ const Approach = () => {
       <section className="py-section-mobile md:py-section-tablet bg-sage-mist">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <div className="w-12 h-px bg-primary mx-auto mb-10" />
+            <hr className="editorial-rule mx-auto mb-10" />
             <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-8">
               "Our job isn't just to plan your wedding — it's to protect the
               feeling of your day."

@@ -190,6 +190,36 @@ html.lenis, html.lenis body {
     text-transform: uppercase;
     line-height: 1.5;
   }
+
+  /* Editorial drop cap — apply to the first paragraph of a prose section */
+  .drop-cap::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 3.5em;
+    line-height: 0.8;
+    float: left;
+    margin-right: 0.08em;
+    margin-top: 0.05em;
+    color: hsl(var(--foreground));
+  }
+
+  /* Thin editorial rule — horizontal separator */
+  .editorial-rule {
+    width: 3rem;
+    height: 1px;
+    background-color: hsl(var(--primary));
+    border: none;
+    margin: 0;
+  }
+
+  /* Pull-quote with decorative em dash */
+  .pull-quote-dashes::before,
+  .pull-quote-dashes::after {
+    content: '—';
+    display: inline-block;
+    margin: 0 0.35em;
+    opacity: 0.3;
+  }
 }
 
 /* Reduced motion */
