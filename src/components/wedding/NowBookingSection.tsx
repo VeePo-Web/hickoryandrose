@@ -26,13 +26,39 @@ const NowBookingSection = () => {
       className="relative py-14 md:py-20 bg-primary overflow-hidden"
       aria-label="Now booking"
     >
-      {/* Animated top gradient hairline */}
+      {/* Animated gold border trace — top */}
       <motion.div
-        className="absolute top-0 left-0 right-0 h-px origin-center"
+        className="absolute top-0 left-0 right-0 h-px origin-left"
         style={{ 
           scaleX: lineScale,
-          background: "linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.15) 30%, hsl(var(--gold, 38 60% 55%) / 0.25) 50%, hsl(var(--primary-foreground) / 0.15) 70%, transparent)"
+          background: "linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.15) 30%, hsl(var(--gold, 38 60% 55%) / 0.35) 50%, hsl(var(--primary-foreground) / 0.15) 70%, transparent)"
         }}
+      >
+        {/* Traveling gold accent on border */}
+        <motion.span
+          className="absolute top-0 h-full"
+          animate={{ x: ["-10%", "110%"] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
+          style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.5), transparent)", width: "20%" }}
+        />
+      </motion.div>
+      {/* Gold border trace — left side */}
+      <motion.div
+        className="absolute top-0 left-0 bottom-0 w-px origin-top hidden lg:block"
+        initial={{ scaleY: 0 }}
+        whileInView={{ scaleY: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+        style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.2), transparent 60%)" }}
+      />
+      {/* Gold border trace — right side */}
+      <motion.div
+        className="absolute top-0 right-0 bottom-0 w-px origin-top hidden lg:block"
+        initial={{ scaleY: 0 }}
+        whileInView={{ scaleY: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+        style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.2), transparent 60%)" }}
       />
       
       {/* Bottom hairline */}
