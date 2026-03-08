@@ -18,6 +18,7 @@ const ProcessTeaserSection = lazy(() => import("@/components/wedding/ProcessTeas
 const FullWidthImage = lazy(() => import("@/components/wedding/FullWidthImage"));
 const FounderTeaserSection = lazy(() => import("@/components/wedding/FounderTeaserSection"));
 const StatsSection = lazy(() => import("@/components/wedding/StatsSection"));
+const FilmstripSection = lazy(() => import("@/components/wedding/FilmstripSection"));
 const InstagramSection = lazy(() => import("@/components/wedding/InstagramSection"));
 const CTASection = lazy(() => import("@/components/wedding/CTASection"));
 const Footer = lazy(() => import("@/components/wedding/Footer"));
