@@ -85,9 +85,15 @@ const EditorialSplitSection = () => {
           }}
         />
 
-        {/* Corner accents */}
-        <div className="absolute top-6 left-6 w-8 h-8 border-t border-l border-primary-foreground/10" aria-hidden="true" />
-        <div className="absolute bottom-6 right-6 w-8 h-8 border-b border-r border-primary-foreground/10" aria-hidden="true" />
+        {/* Corner accents with gold gradient borders */}
+        <div className="absolute top-6 left-6 w-10 h-10" aria-hidden="true">
+          <div className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.2), transparent)" }} />
+          <div className="absolute top-0 left-0 w-px h-full" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.2), transparent)" }} />
+        </div>
+        <div className="absolute bottom-6 right-6 w-10 h-10" aria-hidden="true">
+          <div className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.2), transparent)" }} />
+          <div className="absolute bottom-0 right-0 w-px h-full" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.2), transparent)" }} />
+        </div>
 
         <ScrollReveal>
           <div className="max-w-md relative">

@@ -191,15 +191,34 @@ const LoveQuoteSection = () => {
             </motion.span>
           </blockquote>
 
-          {/* Gold ornamental serif rule */}
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="w-24 h-px mx-auto mb-12 origin-center"
-            style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.35), transparent)" }}
-          />
+          {/* Gold ornamental serif rule with breathing diamond */}
+          <div className="flex items-center justify-center gap-4 mb-12">
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+              className="w-16 h-px origin-right"
+              style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.35))" }}
+            />
+            <motion.span
+              className="w-2 h-2 rotate-45 shrink-0"
+              style={{
+                background: "hsl(var(--gold) / 0.25)",
+                boxShadow: "0 0 12px 4px hsl(var(--gold) / 0.12)",
+              }}
+              animate={{ opacity: [0.4, 0.8, 0.4], scale: [0.9, 1.1, 0.9] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              className="w-16 h-px origin-left"
+              style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.35), transparent)" }}
+            />
+          </div>
 
           {/* Attribution with vertical accent */}
           <div className="flex flex-col items-center gap-5">

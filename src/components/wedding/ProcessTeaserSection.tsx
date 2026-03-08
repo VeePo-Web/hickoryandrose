@@ -156,12 +156,21 @@ const ProcessTeaserSection = () => {
 
             {/* Steps with animated timeline */}
             <div className="relative">
-              {/* Connecting vertical line — scroll-linked */}
+              {/* Connecting vertical line — scroll-linked gold gradient */}
               <motion.div
                 className="absolute left-[1.25rem] md:left-[2rem] top-14 bottom-14 w-px origin-top hidden md:block"
                 style={{
                   scaleY: timelineProgress,
-                  background: "linear-gradient(180deg, hsl(var(--primary) / 0.25), hsl(var(--primary) / 0.05), transparent)",
+                  background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.15), hsl(var(--primary) / 0.05), transparent)",
+                }}
+              />
+              {/* Gold glow trail alongside timeline */}
+              <motion.div
+                className="absolute left-[1.15rem] md:left-[1.9rem] top-14 bottom-14 w-[3px] origin-top hidden md:block blur-[2px]"
+                style={{
+                  scaleY: timelineProgress,
+                  opacity: 0.3,
+                  background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), transparent)",
                 }}
               />
 
