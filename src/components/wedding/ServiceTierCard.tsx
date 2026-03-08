@@ -71,11 +71,19 @@ const ServiceTierCard = ({ service, index }: ServiceTierCardProps) => {
   return (
     <section
       id={service.id}
-      className={`py-section-mobile md:py-section-tablet lg:py-section-desktop relative overflow-hidden ${
+      className={`py-section-mobile md:py-section-tablet lg:py-section-desktop relative overflow-hidden group/tier ${
         isEven ? "bg-background" : "bg-card"
       }`}
       style={{ contain: "layout style" }}
     >
+      {/* Diagonal gold shimmer sweep on hover */}
+      <span
+        className="absolute inset-0 pointer-events-none z-10 -translate-x-full -translate-y-full group-hover/tier:translate-x-[200%] group-hover/tier:translate-y-[-200%] transition-transform duration-700 ease-out"
+        style={{
+          background: "linear-gradient(135deg, transparent 40%, hsl(var(--gold) / 0.08) 50%, transparent 60%)",
+        }}
+        aria-hidden="true"
+      />
       {/* Per-tier parallax watermark */}
       <motion.div
         className="absolute -right-4 top-1/3 pointer-events-none select-none"
