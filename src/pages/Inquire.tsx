@@ -63,7 +63,7 @@ const Inquire = () => {
         animate={{
           color: focusedField === id ? "hsl(140 25% 35%)" : undefined,
         }}
-        className="block font-sans-wedding text-label uppercase text-muted-foreground mb-2 transition-colors"
+        className="block font-overline text-muted-foreground mb-2.5 transition-colors"
       >
         {label}{required && " *"}
       </motion.label>
