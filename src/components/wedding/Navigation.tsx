@@ -88,7 +88,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className={`relative px-4 py-2 font-sans-wedding text-xs tracking-[0.15em] uppercase transition-all duration-200 hover:opacity-80 group ${
+                    className={`relative px-4 py-2 font-sans-wedding text-[0.6875rem] tracking-[0.18em] uppercase font-light transition-all duration-200 hover:opacity-80 group ${
                       showSolidBg ? "text-foreground" : "text-white"
                     }`}
                   >
