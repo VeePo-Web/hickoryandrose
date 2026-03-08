@@ -65,10 +65,17 @@ const Approach = () => {
           className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
           style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "15%"]) }}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.03 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 2, delay: 0.5 }}
         >
-          <span className="font-serif-wedding text-[14rem] md:text-[22rem] text-white leading-none tracking-tight whitespace-nowrap">
+          <span
+            className="font-serif-wedding text-[14rem] md:text-[22rem] leading-none tracking-tight whitespace-nowrap"
+            style={{
+              background: "linear-gradient(180deg, hsl(var(--gold) / 0.06), hsl(var(--gold) / 0.015))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
             Approach
           </span>
         </motion.div>
