@@ -235,13 +235,22 @@ const Services = () => {
                 {service.image && index % 2 === 0 && (
                   <ScrollReveal>
                     <ImageReveal direction="left">
-                      <div className="aspect-[4/5] overflow-hidden sticky top-28">
+                      <div className="aspect-[4/5] overflow-hidden sticky top-28 relative group">
                         <img
                           src={service.image}
                           alt={service.imageAlt}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
                         />
+                        {/* Gold corner frame accents on hover */}
+                        <div className="absolute top-3 left-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                          <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                          <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                        </div>
+                        <div className="absolute bottom-3 right-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                          <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                          <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                        </div>
                       </div>
                     </ImageReveal>
                   </ScrollReveal>
