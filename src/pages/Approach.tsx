@@ -199,9 +199,7 @@ const Approach = () => {
                     >
                       {step.number}
                     </motion.span>
-                    <span className="text-primary/20 group-hover:text-primary/40 transition-colors duration-500 text-sm md:hidden">
-                      {step.icon}
-                    </span>
+                    <span className="w-2 h-2 rotate-45 shrink-0 md:hidden" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.1))" }} />
                   </div>
 
                   {/* Title + time */}
