@@ -8,6 +8,8 @@ import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import ImageReveal from "@/components/wedding/ImageReveal";
 import MagneticButton from "@/components/wedding/MagneticButton";
+import GoldFrame from "@/components/wedding/GoldFrame";
+import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 import portfolioHeroImage from "@/assets/portfolio-hero.jpg";
 import heroImage from "@/assets/hero-wedding.jpg";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
