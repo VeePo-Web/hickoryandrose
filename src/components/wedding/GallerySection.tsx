@@ -4,35 +4,42 @@ import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
+import heroImage from "@/assets/hero-wedding.jpg";
+import ceremonyImage from "@/assets/ceremony-setup.jpg";
+import detailImage from "@/assets/detail-placecard.jpg";
+import firstDanceImage from "@/assets/first-dance.jpg";
+import editorialImage from "@/assets/editorial-florals.jpg";
+import venueImage from "@/assets/portfolio-venue.jpg";
+
 const photos = [
   {
-    src: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800",
-    alt: "Intimate couple portrait in golden light with natural greenery",
+    src: heroImage,
+    alt: "Elegant garden reception tablescape at golden hour with sage and ivory florals",
     span: "col-span-2 row-span-2",
   },
   {
-    src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800",
-    alt: "Elegant wedding rings on a bed of ivory petals",
+    src: detailImage,
+    alt: "Elegant calligraphy place card with gold cutlery on fine linen",
     span: "col-span-1 row-span-1",
   },
   {
-    src: "https://images.unsplash.com/photo-1529636798458-92182e662485?q=80&w=800",
-    alt: "Sweeping landscape with soft desert tones at sunset",
+    src: editorialImage,
+    alt: "Sage eucalyptus and ivory garden rose floral arrangement detail",
     span: "col-span-1 row-span-1",
   },
   {
-    src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=800",
-    alt: "Joyful couple sharing a laugh during their portrait session",
+    src: ceremonyImage,
+    alt: "Outdoor ceremony with mountain backdrop and floral arch",
     span: "col-span-1 row-span-1",
   },
   {
-    src: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=800",
-    alt: "Rustic wedding venue draped in warm string lights at dusk",
+    src: firstDanceImage,
+    alt: "Couple's first dance under string lights at outdoor reception",
     span: "col-span-1 row-span-1",
   },
   {
-    src: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?q=80&w=800",
-    alt: "Outdoor ceremony framed by mountain views and wildflowers",
+    src: venueImage,
+    alt: "Rustic barn venue at twilight with warm string lights and mountain backdrop",
     span: "col-span-2 row-span-1",
   },
 ];
@@ -48,7 +55,6 @@ const GallerySection = () => {
     [selectedIndex]
   );
 
-  // Keyboard navigation
   useEffect(() => {
     if (selectedIndex === null) return;
     const handler = (e: KeyboardEvent) => {
@@ -108,7 +114,7 @@ const GallerySection = () => {
         </div>
       </section>
 
-      {/* Lightbox with motion */}
+      {/* Lightbox */}
       <AnimatePresence>
         {selectedIndex !== null && (
           <motion.div
@@ -129,7 +135,6 @@ const GallerySection = () => {
               <X size={28} strokeWidth={1} />
             </button>
 
-            {/* Prev / Next */}
             <button
               onClick={(e) => { e.stopPropagation(); navigate(-1); }}
               className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-background/40 hover:text-background transition-colors"
@@ -148,7 +153,7 @@ const GallerySection = () => {
             <AnimatePresence mode="wait">
               <motion.img
                 key={selectedIndex}
-                src={photos[selectedIndex].src.replace("w=800", "w=1600")}
+                src={photos[selectedIndex].src}
                 alt={photos[selectedIndex].alt}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -159,7 +164,6 @@ const GallerySection = () => {
               />
             </AnimatePresence>
 
-            {/* Counter */}
             <p className="absolute bottom-6 left-1/2 -translate-x-1/2 font-sans-wedding text-xs text-background/40 tracking-widest">
               {selectedIndex + 1} / {photos.length}
             </p>

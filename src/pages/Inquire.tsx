@@ -221,9 +221,17 @@ const Inquire = () => {
   return (
     <main id="main-content">
       <Navigation variant="solid" />
-      <section className="bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+      <section className="relative bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]" aria-hidden="true">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
+        </div>
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
           <ScrollReveal>
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <span className="w-10 h-px bg-primary/30" />
+              <span className="font-script text-lg text-primary/40">H & R</span>
+              <span className="w-10 h-px bg-primary/30" />
+            </div>
             <p className="font-overline text-muted-foreground mb-4">
               Start Here
             </p>
