@@ -53,6 +53,24 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
               className="fixed inset-y-0 right-0 w-1/2 z-[101] bg-foreground"
             />
 
+            {/* Gold shimmer line — horizontal wipe during exit */}
+            <motion.div
+              key="gold-wipe"
+              className="fixed top-1/2 left-0 right-0 h-px z-[103] pointer-events-none"
+              initial={{ scaleX: 0, opacity: 0 }}
+              exit={{ scaleX: [0, 1, 1, 0], opacity: [0, 1, 1, 0] }}
+              transition={{
+                duration: 0.8,
+                ease: [0.76, 0, 0.24, 1],
+                times: [0, 0.4, 0.6, 1],
+              }}
+              style={{
+                background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold, 38 60% 55%) / 0.6) 30%, hsl(var(--gold, 38 60% 55%) / 0.9) 50%, hsl(var(--gold, 38 60% 55%) / 0.6) 70%, transparent 100%)",
+                transformOrigin: "center",
+                boxShadow: "0 0 20px 4px hsl(var(--gold, 38 60% 55%) / 0.3)",
+              }}
+            />
+
             {/* Content layer (above curtains) */}
             <motion.div
               key="loader-content"
