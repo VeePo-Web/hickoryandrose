@@ -88,7 +88,10 @@ const TestimonialSection = () => {
         aria-hidden="true"
       >
         <span className="w-12 md:w-20 h-px bg-gradient-to-r from-transparent to-primary/15" />
-        <span className="font-serif-wedding text-xs text-primary/15 italic">❖</span>
+        <span
+          className="w-2 h-2 rotate-45"
+          style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))" }}
+        />
         <span className="w-12 md:w-20 h-px bg-gradient-to-l from-transparent to-primary/15" />
       </motion.div>
 
