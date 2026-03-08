@@ -49,16 +49,17 @@ const NotFound = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/10" />
         </motion.div>
 
-        {/* Large decorative 404 with scroll parallax */}
+        {/* Large decorative 404 with scroll parallax + breathing glow */}
         <motion.div
           className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
           style={{ y: contentY }}
         >
           <motion.p
             initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 0.04 }}
-            transition={{ duration: 2 }}
+            animate={{ opacity: [0.03, 0.05, 0.03] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className="font-serif-wedding text-[16rem] md:text-[24rem] font-light text-white tracking-tight"
+            style={{ textShadow: "0 0 120px hsl(var(--gold) / 0.08)" }}
             aria-hidden="true"
           >
             404
