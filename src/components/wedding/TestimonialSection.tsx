@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
+import ImageReveal from "./ImageReveal";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import detailImage from "@/assets/detail-placecard.jpg";
 import firstDanceImage from "@/assets/first-dance.jpg";
@@ -97,37 +98,43 @@ const TestimonialSection = () => {
           {/* Mini Gallery */}
           <ScrollReveal delay={0.15}>
             <div className="grid grid-cols-2 gap-3">
-              <div className="aspect-[3/4] overflow-hidden">
-                <img
-                  src={ceremonyImage}
-                  alt="Outdoor wedding ceremony with mountain backdrop and floral arch"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
-                  width={512}
-                  height={683}
-                />
-              </div>
+              <ImageReveal direction="up" delay={0.1}>
+                <div className="aspect-[3/4] overflow-hidden">
+                  <img
+                    src={ceremonyImage}
+                    alt="Outdoor wedding ceremony with mountain backdrop and floral arch"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                    width={512}
+                    height={683}
+                  />
+                </div>
+              </ImageReveal>
               <div className="space-y-3">
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={detailImage}
-                    alt="Elegant calligraphy place card with gold cutlery on linen"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                    width={512}
-                    height={512}
-                  />
-                </div>
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={firstDanceImage}
-                    alt="Couple's first dance under string lights at outdoor reception"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                    width={512}
-                    height={512}
-                  />
-                </div>
+                <ImageReveal direction="left" delay={0.2}>
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={detailImage}
+                      alt="Elegant calligraphy place card with gold cutlery on linen"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                      width={512}
+                      height={512}
+                    />
+                  </div>
+                </ImageReveal>
+                <ImageReveal direction="left" delay={0.3}>
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={firstDanceImage}
+                      alt="Couple's first dance under string lights at outdoor reception"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                      width={512}
+                      height={512}
+                    />
+                  </div>
+                </ImageReveal>
               </div>
             </div>
           </ScrollReveal>

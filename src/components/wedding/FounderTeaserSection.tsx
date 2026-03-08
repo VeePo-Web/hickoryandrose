@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import ScrollReveal from "./ScrollReveal";
+import ImageReveal from "./ImageReveal";
 import founderImage from "@/assets/founder-portrait.jpg";
 
 const FounderTeaserSection = () => {
@@ -21,17 +22,19 @@ const FounderTeaserSection = () => {
         >
           {/* Portrait with subtle parallax */}
           <ScrollReveal className="lg:col-span-3">
-            <div className="aspect-[4/5] max-w-md mx-auto lg:max-w-none overflow-hidden">
-              <motion.img
-                src={founderImage}
-                alt="Founder of Hickory & Rose, smiling warmly in a garden setting"
-                className="w-full h-[110%] object-cover"
-                style={{ y: imageY }}
-                loading="lazy"
-                width={1024}
-                height={1024}
-              />
-            </div>
+            <ImageReveal direction="left" delay={0.1}>
+              <div className="aspect-[4/5] max-w-md mx-auto lg:max-w-none overflow-hidden">
+                <motion.img
+                  src={founderImage}
+                  alt="Founder of Hickory & Rose, smiling warmly in a garden setting"
+                  className="w-full h-[110%] object-cover"
+                  style={{ y: imageY }}
+                  loading="lazy"
+                  width={1024}
+                  height={1024}
+                />
+              </div>
+            </ImageReveal>
           </ScrollReveal>
 
           {/* Story */}
