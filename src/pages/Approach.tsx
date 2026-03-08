@@ -183,7 +183,8 @@ const Approach = () => {
                   {/* Step number with timeline dot */}
                   <div className="md:col-span-2 relative flex items-baseline gap-3">
                     <motion.div
-                      className="hidden md:block absolute left-[3.25rem] top-3 w-2 h-2 rounded-full bg-primary/30 -translate-x-1/2 group-hover:bg-primary/60 transition-colors duration-500"
+                      className="hidden md:block absolute left-[3.25rem] top-3 w-2.5 h-2.5 rounded-full -translate-x-1/2 transition-all duration-500 group-hover:shadow-[0_0_8px_hsl(var(--gold)/0.5)]"
+                      style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.6), hsl(var(--gold) / 0.2))" }}
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}
                       viewport={{ once: true }}
