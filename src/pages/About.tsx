@@ -120,6 +120,24 @@ const About = () => {
         </div>
       </section>
 
+      {/* Signature Quote */}
+      <section className="py-16 md:py-24 bg-sage-mist">
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+          <ScrollReveal>
+            <hr className="editorial-rule mx-auto mb-10" />
+            <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-6">
+              "We don't just plan weddings — we protect the feeling of your day."
+            </blockquote>
+            <div className="flex items-center justify-center gap-4">
+              <span className="w-8 h-px bg-primary/30" />
+              <span className="font-script text-xl text-primary/60">Hickory & Rose</span>
+              <span className="w-8 h-px bg-primary/30" />
+            </div>
+            <hr className="editorial-rule mx-auto mt-10" />
+          </ScrollReveal>
+        </div>
+      </section>
+
       <FullWidthImage
         src={bouquetImage}
         alt="Bridal bouquet with white roses and sage eucalyptus"

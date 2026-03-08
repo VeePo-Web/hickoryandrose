@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import MagneticButton from "@/components/wedding/MagneticButton";
 import servicePlanningImage from "@/assets/service-planning.jpg";
 import serviceStationeryImage from "@/assets/service-stationery.jpg";
+import serviceFullserviceImage from "@/assets/service-fullservice.jpg";
 
 const serviceTiers = [
   {
@@ -75,8 +76,8 @@ const serviceTiers = [
     ],
     idealFor:
       "Couples who want a truly hands-free, elevated experience from start to finish.",
-    image: null,
-    imageAlt: "",
+    image: serviceFullserviceImage,
+    imageAlt: "Wedding planner styling an elegant reception table with sage florals and crystal glassware",
   },
 ];
 

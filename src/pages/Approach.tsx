@@ -7,6 +7,7 @@ import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
+import approachDetailsImage from "@/assets/approach-details.jpg";
 
 const processSteps = [
   { number: "01", title: "Discovery Call", time: "Week 1", description: "We start with a relaxed conversation. Tell us about your vision, your story, and how you want to feel on your wedding day. No pressure, no sales pitch — just genuine connection." },
@@ -100,6 +101,34 @@ const Approach = () => {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      <FullWidthImage
+        src={approachDetailsImage}
+        alt="Wedding vow booklets with gold rings and eucalyptus on marble"
+        height="h-[35vh] md:h-[45vh]"
+      />
+
+      {/* Second editorial break */}
+      <section className="py-12 md:py-16 bg-card">
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+          <ScrollReveal>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+              <div className="md:col-span-1">
+                <p className="font-overline text-muted-foreground mb-3">Our Promise</p>
+                <h3 className="font-serif-wedding text-display-md text-foreground">Every detail, protected.</h3>
+              </div>
+              <div className="md:col-span-2">
+                <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
+                  We don't just plan logistics — we anticipate emotions. From the
+                  moment your guests arrive to the final dance, we ensure every
+                  transition is seamless, every moment is savored, and you never
+                  have to think about what comes next.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
