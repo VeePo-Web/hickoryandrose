@@ -199,17 +199,13 @@ const Approach = () => {
                     >
                       {step.number}
                     </motion.span>
-                    <span className="text-primary/20 group-hover:text-primary/40 transition-colors duration-500 text-sm md:hidden">
-                      {step.icon}
-                    </span>
+                    <span className="w-2 h-2 rotate-45 shrink-0 md:hidden" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.1))" }} />
                   </div>
 
                   {/* Title + time */}
                   <div className="md:col-span-3">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-primary/15 group-hover:text-primary/35 transition-colors duration-500 text-xs hidden md:inline">
-                        {step.icon}
-                      </span>
+                      <span className="w-1.5 h-1.5 rotate-45 shrink-0 hidden md:inline-block" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }} />
                       <h3 className="font-serif-wedding text-display-md text-foreground group-hover:text-primary transition-colors duration-500">
                         {step.title}
                       </h3>
