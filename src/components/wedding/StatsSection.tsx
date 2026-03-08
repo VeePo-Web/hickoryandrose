@@ -56,6 +56,7 @@ const StatsSection = () => {
   });
   const monogramY = useTransform(scrollYProgress, [0, 1], [30, -30]);
   const horizontalRuleScale = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);
+  const bgOpacity = useTransform(scrollYProgress, [0.1, 0.5, 0.9], [0.97, 1, 0.97]);
 
   return (
     <section
@@ -63,10 +64,20 @@ const StatsSection = () => {
       className="py-section-mobile md:py-section-tablet bg-foreground relative overflow-hidden"
       aria-label="Our impact"
     >
+      {/* Subtle grain texture */}
+      <div
+        className="absolute inset-0 opacity-[0.02] pointer-events-none mix-blend-overlay"
+        style={{
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          backgroundSize: "150px 150px",
+        }}
+        aria-hidden="true"
+      />
+
       {/* Parallax monogram */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
-        style={{ y: monogramY }}
+        style={{ y: monogramY, opacity: bgOpacity }}
       >
         <span className="font-script text-[14rem] md:text-[22rem] text-background/[0.02] select-none leading-none" aria-hidden="true">
           &
@@ -116,7 +127,7 @@ const StatsSection = () => {
           </div>
         </ScrollReveal>
 
-        {/* Scroll-linked horizontal divider between header and stats */}
+        {/* Scroll-linked horizontal divider */}
         <motion.div
           className="h-px mb-12 md:mb-16 origin-center"
           style={{
@@ -150,9 +161,13 @@ const StatsSection = () => {
                   <span className="font-serif-wedding text-xs text-background/10 tabular-nums">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-primary/20 text-xs group-hover:text-primary/40 transition-colors duration-500">
+                  <motion.span
+                    className="text-primary/20 text-xs group-hover:text-primary/40 transition-colors duration-500"
+                    whileHover={{ rotate: 45 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     {stat.icon}
-                  </span>
+                  </motion.span>
                 </div>
 
                 {/* Big number */}
@@ -162,7 +177,7 @@ const StatsSection = () => {
                   </p>
                 </div>
 
-                {/* Label + Detail — editorial right column */}
+                {/* Label + Detail */}
                 <div className="col-span-5 md:col-span-7 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                   <div>
                     <div className="flex items-center gap-3 mb-1">
@@ -194,9 +209,32 @@ const StatsSection = () => {
           <div className="h-px bg-background/[0.06]" />
         </div>
 
-        {/* Bottom tagline */}
+        {/* Editorial footnote row */}
         <ScrollReveal delay={0.4}>
-          <div className="flex items-center justify-center gap-4 mt-14 md:mt-20" aria-hidden="true">
+          <div className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {[
+              { label: "Edmonton & Area", note: "Primary Service Region" },
+              { label: "Canadian Rockies", note: "Jasper · Banff · Lake Louise" },
+              { label: "Since 2018", note: "Seven Seasons of Celebrations" },
+            ].map((item, i) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
+                className="text-center border-t border-background/[0.04] pt-6"
+              >
+                <p className="font-serif-wedding text-sm text-background/25 italic">{item.label}</p>
+                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-background/12 mt-1">{item.note}</p>
+              </motion.div>
+            ))}
+          </div>
+        </ScrollReveal>
+
+        {/* Bottom tagline */}
+        <ScrollReveal delay={0.5}>
+          <div className="flex items-center justify-center gap-4 mt-10 md:mt-14" aria-hidden="true">
             <span className="w-10 h-px bg-background/[0.06]" />
             <p className="font-serif-wedding text-xs italic text-background/10">
               Quality over quantity — always.

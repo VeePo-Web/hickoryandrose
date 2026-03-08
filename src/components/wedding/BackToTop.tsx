@@ -1,30 +1,30 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUp } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 
 const RADIUS = 18;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
 const BackToTop = () => {
   const [visible, setVisible] = useState(false);
-  const [scrollPercent, setScrollPercent] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const scrollPercent = useMotionValue(0);
+  const dashOffset = useTransform(scrollPercent, (v) => CIRCUMFERENCE * (1 - v));
+  const ringOpacity = useTransform(scrollPercent, [0, 0.05, 1], [0, 0.6, 1]);
 
   useEffect(() => {
     const handleScroll = () => {
       const winHeight = document.documentElement.scrollHeight - window.innerHeight;
       const pct = winHeight > 0 ? Math.min(window.scrollY / winHeight, 1) : 0;
-      setScrollPercent(pct);
+      scrollPercent.set(pct);
       setVisible(window.scrollY > window.innerHeight);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [scrollPercent]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
-  const dashOffset = CIRCUMFERENCE * (1 - scrollPercent);
 
   return (
     <AnimatePresence>
@@ -33,44 +33,67 @@ const BackToTop = () => {
           initial={{ opacity: 0, scale: 0.8, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 10 }}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 w-11 h-11 flex items-center justify-center bg-foreground/90 backdrop-blur-sm hover:bg-primary group transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 relative"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 flex items-center justify-center bg-foreground/90 backdrop-blur-sm hover:bg-sage-deep group transition-colors duration-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 relative"
           aria-label="Back to top"
         >
           {/* SVG progress ring */}
           <svg
             className="absolute inset-0 w-full h-full -rotate-90"
-            viewBox="0 0 44 44"
+            viewBox="0 0 48 48"
             aria-hidden="true"
           >
+            {/* Track */}
             <circle
-              cx="22"
-              cy="22"
+              cx="24"
+              cy="24"
               r={RADIUS}
               fill="none"
-              stroke="hsl(var(--background) / 0.08)"
+              stroke="hsl(var(--background) / 0.06)"
               strokeWidth="1"
             />
-            <circle
-              cx="22"
-              cy="22"
+            {/* Progress */}
+            <motion.circle
+              cx="24"
+              cy="24"
               r={RADIUS}
               fill="none"
               stroke="hsl(var(--gold))"
               strokeWidth="1.5"
               strokeDasharray={CIRCUMFERENCE}
-              strokeDashoffset={dashOffset}
+              style={{ strokeDashoffset: dashOffset, opacity: ringOpacity }}
               strokeLinecap="round"
-              className="transition-[stroke-dashoffset] duration-100 ease-out"
             />
           </svg>
 
-          <ArrowUp
-            size={13}
-            strokeWidth={1.5}
-            className="relative z-10 text-background/70 group-hover:text-primary-foreground group-hover:-translate-y-0.5 transition-all duration-200"
-          />
+          {/* H&R monogram instead of arrow */}
+          <motion.span
+            className="relative z-10 font-script text-sm text-background/60 group-hover:text-primary-foreground transition-colors duration-300 select-none"
+            animate={{ y: isHovered ? -1 : 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            H&R
+          </motion.span>
+
+          {/* Hover tooltip */}
+          <AnimatePresence>
+            {isHovered && (
+              <motion.span
+                initial={{ opacity: 0, x: 8, scale: 0.9 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: 8, scale: 0.9 }}
+                transition={{ duration: 0.2 }}
+                className="absolute right-full mr-3 whitespace-nowrap font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-foreground/40 bg-background/90 backdrop-blur-sm px-3 py-1.5 border border-border/30 pointer-events-none"
+              >
+                Back to Top
+              </motion.span>
+            )}
+          </AnimatePresence>
         </motion.button>
       )}
     </AnimatePresence>
