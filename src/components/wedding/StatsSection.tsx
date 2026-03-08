@@ -3,10 +3,10 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
 const stats = [
-  { value: 75, suffix: "+", label: "Weddings Planned", detail: "and counting", icon: "✦" },
-  { value: 7, suffix: "", label: "Years of Experience", detail: "since 2018", icon: "❖" },
-  { value: 100, suffix: "%", label: "Five-Star Reviews", detail: "every single one", icon: "✧" },
-  { value: 15, suffix: "–20", label: "Weddings Per Year", detail: "intentionally limited", icon: "◆" },
+  { value: 75, suffix: "+", label: "Weddings Planned", detail: "and counting" },
+  { value: 7, suffix: "", label: "Years of Experience", detail: "since 2018" },
+  { value: 100, suffix: "%", label: "Five-Star Reviews", detail: "every single one" },
+  { value: 15, suffix: "–20", label: "Weddings Per Year", detail: "intentionally limited" },
 ];
 
 const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
@@ -180,13 +180,12 @@ const StatsSection = () => {
                   <span className="font-serif-wedding text-xs text-background/10 tabular-nums">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <motion.span
-                    className="text-primary/20 text-xs group-hover:text-primary/40 transition-colors duration-500"
-                    whileHover={{ rotate: 45 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {stat.icon}
-                  </motion.span>
+                  <span
+                    className="w-2 h-2 rotate-45 group-hover:scale-125 transition-transform duration-500"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.1))",
+                    }}
+                  />
                 </div>
 
                 {/* Big number */}

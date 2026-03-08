@@ -62,7 +62,7 @@ const CountdownSection = () => {
               transition={{ duration: 0.8 }}
               className="w-8 h-px bg-primary/20 origin-right"
             />
-            <span className="font-serif-wedding text-xs text-primary/30 tracking-widest">❖</span>
+            <span className="w-2 h-2 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.15))" }} />
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}

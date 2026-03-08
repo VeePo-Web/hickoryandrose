@@ -130,7 +130,7 @@ const JournalTeaserSection = () => {
                 transition={{ duration: 0.6 }}
                 className="w-10 h-px bg-border/30 origin-right"
               />
-              <span className="font-serif-wedding text-xs text-primary/15 italic">❖</span>
+              <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.1))" }} />
               <motion.span
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}

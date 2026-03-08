@@ -100,9 +100,15 @@ const ProcessTeaserSection = () => {
                   />
                   <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-700" />
                   
-                  {/* Corner accents */}
-                  <div className="absolute top-3 left-3 w-6 h-6 border-t border-l border-foreground/0 group-hover:border-foreground/10 transition-all duration-700" />
-                  <div className="absolute bottom-3 right-3 w-6 h-6 border-b border-r border-foreground/0 group-hover:border-foreground/10 transition-all duration-700" />
+                  {/* Gold-gradient corner accents */}
+                  <div className="absolute top-3 left-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    <div className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.25), transparent)" }} />
+                    <div className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.25), transparent)" }} />
+                  </div>
+                  <div className="absolute bottom-3 right-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    <div className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.25), transparent)" }} />
+                    <div className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.25), transparent)" }} />
+                  </div>
                 </div>
               </ImageReveal>
               
@@ -119,7 +125,10 @@ const ProcessTeaserSection = () => {
                 <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-muted-foreground/20 font-light">
                   Every detail, curated with care
                 </p>
-                <span className="font-serif-wedding text-xs text-primary/10 italic">❖</span>
+                <span
+                  className="w-1.5 h-1.5 rotate-45"
+                  style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.1))" }}
+                />
               </div>
             </div>
           </div>

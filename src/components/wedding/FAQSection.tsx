@@ -132,7 +132,7 @@ const FAQSection = () => {
         <ScrollReveal delay={0.2}>
           <div className="flex items-center justify-center gap-4 mt-14">
             <span className="w-6 h-px bg-border/25" />
-            <span className="font-serif-wedding text-xs text-primary/15 tracking-widest">❖</span>
+            <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.1))" }} />
             <span className="w-6 h-px bg-border/25" />
           </div>
           <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-muted-foreground/20 text-center mt-4">

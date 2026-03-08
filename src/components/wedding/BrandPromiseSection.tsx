@@ -217,11 +217,11 @@ const BrandPromiseSection = () => {
               className="w-10 h-px origin-right hidden md:block"
               style={{ background: "linear-gradient(90deg, transparent, hsl(var(--border) / 0.3))" }}
             />
-            <span className="font-serif-wedding text-xs text-primary/10">❖</span>
+            <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.25), hsl(var(--gold) / 0.08))" }} />
             <p className="font-serif-wedding text-sm italic text-muted-foreground/30">
               Refined rustic elegance — run with quiet luxury precision.
             </p>
-            <span className="font-serif-wedding text-xs text-primary/10">❖</span>
+            <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.25), hsl(var(--gold) / 0.08))" }} />
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}

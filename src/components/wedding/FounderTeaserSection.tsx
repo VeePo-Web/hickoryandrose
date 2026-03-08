@@ -152,9 +152,15 @@ const FounderTeaserSection = () => {
                   transition={{ duration: 0.5 }}
                 />
                 
-                {/* Corner frame accents */}
-                <div className="absolute top-4 left-4 w-8 h-8 border-t border-l border-foreground/0 group-hover:border-foreground/15 transition-all duration-700" />
-                <div className="absolute bottom-4 right-4 w-8 h-8 border-b border-r border-foreground/0 group-hover:border-foreground/15 transition-all duration-700" />
+                {/* Gold-gradient corner accents */}
+                <div className="absolute top-4 left-4 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <div className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                  <div className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                </div>
+                <div className="absolute bottom-4 right-4 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <div className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                  <div className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                </div>
                 
                 {/* Founder caption — reveals on hover */}
                 <AnimatePresence>

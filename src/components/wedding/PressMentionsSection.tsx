@@ -58,11 +58,11 @@ const PressMentionsSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             />
-            <span className="font-serif-wedding text-xs text-primary/15">❖</span>
+            <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.1))" }} />
             <p className="font-sans-wedding text-[0.6rem] tracking-[0.3em] uppercase text-muted-foreground/25 font-light">
               As Featured In
             </p>
-            <span className="font-serif-wedding text-xs text-primary/15">❖</span>
+            <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.1))" }} />
             <motion.span
               className="w-10 h-px origin-left hidden md:block"
               style={{ background: "linear-gradient(90deg, hsl(var(--border) / 0.4), transparent)" }}
