@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
+import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
@@ -159,6 +160,7 @@ const Approach = () => {
       </section>
 
       <CTASection />
+      <PreFooterDivider />
       <Footer />
     </main>
   );

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion } from "framer-motion";
+import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
@@ -238,7 +239,42 @@ const About = () => {
         </div>
       </section>
 
+      {/* Press & Recognition */}
+      <section className="py-12 md:py-16 bg-card border-t border-border">
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+          <ScrollReveal>
+            <p className="font-overline text-muted-foreground text-center mb-8">
+              Press & Recognition
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { publication: "Edmonton Bridal Magazine", note: "Featured Planner, 2024" },
+                { publication: "The Knot", note: "Best of Weddings" },
+                { publication: "Style Me Pretty", note: "Real Wedding Feature" },
+                { publication: "Alberta Weddings", note: "Top 10 Planners" },
+              ].map((press, i) => (
+                <motion.div
+                  key={press.publication}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08, duration: 0.5 }}
+                >
+                  <p className="font-serif-wedding text-base text-foreground mb-1">
+                    {press.publication}
+                  </p>
+                  <p className="font-sans-wedding text-[0.625rem] tracking-[0.12em] uppercase text-muted-foreground/60">
+                    {press.note}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       <CTASection />
+      <PreFooterDivider />
       <Footer />
     </main>
   );

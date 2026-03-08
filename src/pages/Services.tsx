@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion } from "framer-motion";
+import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
@@ -264,6 +265,7 @@ const Services = () => {
       </section>
 
       <CTASection />
+      <PreFooterDivider />
       <Footer />
     </main>
   );

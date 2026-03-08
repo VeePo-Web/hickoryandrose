@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import { useRef } from "react";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
@@ -166,6 +167,7 @@ const Portfolio = () => {
       </section>
 
       <CTASection />
+      <PreFooterDivider />
       <Footer />
     </main>
   );

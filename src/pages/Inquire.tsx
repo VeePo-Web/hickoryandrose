@@ -154,22 +154,63 @@ const Inquire = () => {
     return (
       <main id="main-content">
         <Navigation variant="solid" />
-        <section className="min-h-[80vh] flex items-center justify-center bg-background px-6">
+        <section className="min-h-[80vh] flex items-center justify-center bg-background px-6 py-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-md"
+            className="text-center max-w-lg"
           >
-            <Heart size={40} strokeWidth={1} className="text-primary mx-auto mb-6" />
+            {/* Botanical pulse */}
+            <div className="relative inline-block mb-8">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: [0, 0.2, 0], scale: [0.5, 1.5, 2] }}
+                transition={{ duration: 2.5, ease: "easeOut" }}
+                className="absolute inset-0 m-auto w-16 h-16 rounded-full border border-primary"
+              />
+              <Heart size={40} strokeWidth={1} className="text-primary relative z-10" />
+            </div>
+
             <h1 className="font-serif-wedding text-display-lg text-foreground mb-4">
-              Thank you.
+              Thank you, beautiful.
             </h1>
-            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light mb-8">
-              Your inquiry has been received. We'll be in touch within 48 hours
-              to schedule your complimentary discovery call.
+            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light mb-12">
+              Your inquiry has been received. Here's what happens next:
             </p>
-            <hr className="editorial-rule mx-auto" />
+
+            {/* Next steps timeline */}
+            <div className="text-left max-w-sm mx-auto space-y-6 mb-12">
+              {[
+                { step: "01", text: "We'll review your details and respond within 48 hours." },
+                { step: "02", text: "We'll schedule a complimentary discovery call." },
+                { step: "03", text: "If we're a fit, you'll receive a custom proposal." },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.step}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 + i * 0.15, duration: 0.5 }}
+                  className="flex gap-4 items-start"
+                >
+                  <span className="font-serif-wedding text-lg text-primary/40 shrink-0">{item.step}</span>
+                  <p className="font-sans-wedding text-body-sm text-muted-foreground font-light leading-relaxed">{item.text}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <hr className="editorial-rule mx-auto mb-8" />
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 0.5 }}
+              className="font-sans-wedding text-xs text-muted-foreground/60 font-light"
+            >
+              In the meantime, explore our{" "}
+              <a href="/portfolio" className="underline underline-offset-4 hover:text-primary transition-colors">portfolio</a>
+              {" "}or learn more about our{" "}
+              <a href="/approach" className="underline underline-offset-4 hover:text-primary transition-colors">approach</a>.
+            </motion.p>
           </motion.div>
         </section>
         <Footer />
