@@ -72,7 +72,7 @@ const About = () => {
       <Navigation variant="overlay" />
 
       {/* Cinematic Parallax Hero */}
-      <section ref={heroRef} className="relative h-[60vh] md:h-[70vh] overflow-hidden">
+      <section ref={heroRef} className="relative h-[60vh] md:h-[70vh] overflow-hidden grain-overlay vignette">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
           <img
             src={aboutHeroImage}

@@ -56,7 +56,7 @@ const Portfolio = () => {
       <Navigation variant="overlay" />
 
       {/* Cinematic Hero */}
-      <section ref={heroRef} className="relative h-[70vh] md:h-[80vh] overflow-hidden">
+      <section ref={heroRef} className="relative h-[70vh] md:h-[80vh] overflow-hidden grain-overlay vignette">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
           <img
             src={portfolioHeroImage}

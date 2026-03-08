@@ -42,7 +42,7 @@ const Approach = () => {
       <Navigation variant="overlay" />
 
       {/* Cinematic Parallax Hero */}
-      <section ref={heroRef} className="relative h-[65vh] md:h-[75vh] overflow-hidden">
+      <section ref={heroRef} className="relative h-[65vh] md:h-[75vh] overflow-hidden grain-overlay vignette">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
           <img
             src={approachHeroImage}

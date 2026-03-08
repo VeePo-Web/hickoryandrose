@@ -64,7 +64,7 @@ const HeroSection = () => {
   const line2 = "effortlessly beautiful.";
 
   return (
-    <section ref={ref} className="relative h-screen w-full overflow-hidden" aria-label="Hero">
+    <section ref={ref} className="relative h-screen w-full overflow-hidden grain-overlay vignette" aria-label="Hero">
       {/* Background Image with Ken Burns zoom + parallax */}
       <div className="absolute inset-0">
         <motion.img
