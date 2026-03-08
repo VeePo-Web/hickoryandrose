@@ -14,8 +14,9 @@ const processSteps = [
 const Approach = () => {
   return (
     <main id="main-content">
+      <Navigation variant="solid" />
+
       <section className="bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet">
-        <Navigation variant="solid" />
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
             <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
@@ -35,23 +36,38 @@ const Approach = () => {
 
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
-          {processSteps.map((step, index) => (
-            <ScrollReveal key={step.number} delay={index * 0.08}>
-              <div className={`flex gap-6 md:gap-10 ${index < processSteps.length - 1 ? "pb-12 md:pb-16 border-l border-border ml-6 md:ml-8 pl-8 md:pl-12" : "pl-14 md:pl-20"}`}>
-                <div className="absolute -ml-14 md:-ml-20 w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
-                  <span className="font-sans-wedding text-xs font-semibold text-primary-foreground">{step.number}</span>
-                </div>
-                <div className="relative">
-                  <div className="absolute -left-[3.7rem] md:-left-[5.3rem] w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
-                    <span className="font-sans-wedding text-[10px] font-semibold text-primary-foreground">{step.number}</span>
+          <div className="space-y-0">
+            {processSteps.map((step, index) => (
+              <ScrollReveal key={step.number} delay={index * 0.08}>
+                <div className="relative flex gap-6 md:gap-8">
+                  {/* Timeline line + circle */}
+                  <div className="flex flex-col items-center shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                      <span className="font-sans-wedding text-[11px] font-semibold text-primary-foreground">
+                        {step.number}
+                      </span>
+                    </div>
+                    {index < processSteps.length - 1 && (
+                      <div className="w-px flex-1 bg-border mt-2" />
+                    )}
                   </div>
-                  <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-2">{step.time}</p>
-                  <h3 className="font-serif-wedding text-display-md text-foreground mb-3">{step.title}</h3>
-                  <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+
+                  {/* Content */}
+                  <div className={`pb-12 md:pb-16 ${index === processSteps.length - 1 ? "pb-0" : ""}`}>
+                    <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-2">
+                      {step.time}
+                    </p>
+                    <h3 className="font-serif-wedding text-display-md text-foreground mb-3">
+                      {step.title}
+                    </h3>
+                    <p className="font-sans-wedding text-sm text-muted-foreground leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </ScrollReveal>
-          ))}
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
