@@ -1,0 +1,115 @@
+import { motion, AnimatePresence } from "framer-motion";
+import ImageReveal from "./ImageReveal";
+import ScrollReveal from "./ScrollReveal";
+import MagneticButton from "./MagneticButton";
+
+interface Story {
+  src: string;
+  alt: string;
+  couple: string;
+  venue: string;
+  season: string;
+  category: string;
+  aspect: string;
+}
+
+interface PortfolioMasonryGridProps {
+  stories: Story[];
+}
+
+const PortfolioMasonryGrid = ({ stories }: PortfolioMasonryGridProps) => (
+  <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden">
+    {/* Parallax watermark */}
+    <motion.div
+      className="absolute -left-4 top-1/4 pointer-events-none select-none"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1.5 }}
+    >
+      <span className="font-serif-wedding text-[8rem] md:text-[14rem] font-light text-foreground/[0.015] whitespace-nowrap tracking-tight italic leading-none">
+        Stories
+      </span>
+    </motion.div>
+
+    <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative">
+      <motion.div layout className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
+        <AnimatePresence mode="popLayout">
+          {stories.map((story, index) => (
+            <motion.div
+              key={story.couple}
+              layout
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] as const }}
+              className="break-inside-avoid"
+            >
+              <ImageReveal delay={index * 0.04} direction={index % 3 === 0 ? "up" : index % 3 === 1 ? "left" : "right"}>
+                <div className={`${story.aspect} overflow-hidden relative group cursor-pointer`}>
+                  <img
+                    src={story.src}
+                    alt={story.alt}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  {/* Gold gradient corner frame accents */}
+                  <div className="absolute top-3 left-3 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.4), transparent)" }} />
+                    <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), transparent)" }} />
+                  </div>
+                  <div className="absolute bottom-3 right-3 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.4), transparent)" }} />
+                    <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.4), transparent)" }} />
+                  </div>
+
+                  {/* Category badge */}
+                  <span className="absolute top-3 left-3 mt-6 font-sans-wedding text-[0.45rem] tracking-[0.18em] uppercase text-white/0 group-hover:text-white/50 transition-colors duration-500 bg-white/0 group-hover:bg-white/10 backdrop-blur-sm px-2 py-0.5">
+                    {story.category}
+                  </span>
+
+                  {/* Frame index */}
+                  <span className="absolute top-3 right-3 font-serif-wedding text-[0.5rem] text-white/0 group-hover:text-white/25 transition-colors duration-500 tabular-nums">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <p className="font-serif-wedding text-lg md:text-xl text-white mb-0.5">
+                      {story.couple}
+                    </p>
+                    <p className="font-sans-wedding text-[0.625rem] tracking-[0.15em] uppercase text-white/60 mb-3">
+                      {story.venue} · {story.season}
+                    </p>
+                    <span className="inline-flex items-center gap-2 font-sans-wedding text-[0.55rem] tracking-[0.18em] uppercase text-white/70 group-hover:text-white transition-colors duration-300">
+                      <span
+                        className="w-0 group-hover:w-5 h-px transition-all duration-500 ease-out"
+                        style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.6), transparent)" }}
+                      />
+                      View Story
+                    </span>
+                  </div>
+                </div>
+              </ImageReveal>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+
+      {/* Bottom CTA */}
+      <ScrollReveal delay={0.2}>
+        <div className="text-center mt-16 md:mt-24">
+          <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-8 font-light max-w-md mx-auto">
+            Every wedding begins with a conversation. Let's talk about yours.
+          </p>
+          <MagneticButton to="/inquire" variant="primary">
+            Begin Your Story
+          </MagneticButton>
+        </div>
+      </ScrollReveal>
+    </div>
+  </section>
+);
+
+export default PortfolioMasonryGrid;
