@@ -13,14 +13,26 @@ const credentials = [
 
 const FounderTeaserSection = () => {
   const ref = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
   const imageY = useTransform(scrollYProgress, [0, 1], ["4%", "-4%"]);
 
+  const { scrollYProgress: sectionProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const verticalLineH = useTransform(sectionProgress, [0.1, 0.6], ["0%", "100%"]);
+  const watermarkY = useTransform(sectionProgress, [0, 1], [40, -40]);
+
   return (
-    <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card relative overflow-hidden" aria-label="About the founder">
+    <section
+      ref={sectionRef}
+      className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card relative overflow-hidden"
+      aria-label="About the founder"
+    >
       {/* Large decorative section index */}
       <motion.div
         className="absolute left-6 md:left-12 top-12 md:top-16 pointer-events-none select-none"
@@ -34,6 +46,24 @@ const FounderTeaserSection = () => {
         </span>
       </motion.div>
 
+      {/* Parallax "About" watermark */}
+      <motion.div
+        className="absolute -right-10 top-1/3 pointer-events-none select-none"
+        style={{ y: watermarkY }}
+        aria-hidden="true"
+      >
+        <span className="font-serif-wedding text-[8rem] md:text-[14rem] font-light text-foreground/[0.015] whitespace-nowrap tracking-tight italic">
+          The Heart
+        </span>
+      </motion.div>
+
+      {/* Scroll-linked vertical accent line */}
+      <motion.div
+        className="absolute left-1/2 top-0 w-px bg-gradient-to-b from-transparent via-primary/10 to-transparent origin-top hidden lg:block"
+        style={{ height: verticalLineH }}
+        aria-hidden="true"
+      />
+
       <div className="container mx-auto px-6 lg:px-8">
         <div
           ref={ref}
@@ -45,7 +75,7 @@ const FounderTeaserSection = () => {
               <div className="aspect-[4/5] max-w-md mx-auto lg:max-w-none overflow-hidden relative group">
                 <motion.img
                   src={founderImage}
-                  alt="Founder of Hickory & Rose, smiling warmly in a garden setting"
+                  alt="Founder of Hickory & Rose, smiling warmly in a garden setting with sage eucalyptus and ivory roses"
                   className="w-full h-[110%] object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.02]"
                   style={{ y: imageY }}
                   loading="lazy"
@@ -54,22 +84,47 @@ const FounderTeaserSection = () => {
                 />
                 {/* Subtle overlay on hover */}
                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/[0.03] transition-colors duration-700" />
+                {/* Corner caption */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.8, duration: 0.5 }}
+                  className="absolute bottom-4 right-4 hidden md:block"
+                >
+                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/30">
+                    Founder · Hickory & Rose
+                  </span>
+                </motion.div>
               </div>
             </ImageReveal>
 
-            {/* Credential row below image — ruled dividers */}
+            {/* Credential row below image — ruled dividers with animated reveals */}
             <div className="grid grid-cols-3 gap-0 mt-8 border-t border-border/40">
               {credentials.map((cred, i) => (
                 <motion.div
                   key={cred.label}
-                  className={`text-center py-5 ${i < 2 ? "border-r border-border/40" : ""}`}
+                  className={`text-center py-6 group cursor-default hover:bg-primary/[0.02] transition-colors duration-500 ${
+                    i < 2 ? "border-r border-border/40" : ""
+                  }`}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.3 + i * 0.1 }}
+                  transition={{ delay: 0.3 + i * 0.12, duration: 0.5 }}
                 >
-                  <p className="font-serif-wedding text-xl md:text-2xl font-light text-primary/60">{cred.value}</p>
-                  <p className="font-overline text-[0.5rem] text-muted-foreground/40 mt-1">{cred.label}</p>
+                  <p className="font-serif-wedding text-xl md:text-2xl font-light text-primary/60 group-hover:text-primary transition-colors duration-500">
+                    {cred.value}
+                  </p>
+                  <motion.div
+                    className="w-4 h-px bg-primary/20 mx-auto my-2 origin-center"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
+                  />
+                  <p className="font-overline text-[0.5rem] text-muted-foreground/40 group-hover:text-muted-foreground/60 transition-colors duration-500">
+                    {cred.label}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -115,11 +170,20 @@ const FounderTeaserSection = () => {
                 </p>
               </div>
 
-              {/* Signature */}
-              <p className="font-script text-2xl text-primary/30 mb-2">Hickory & Rose</p>
-              <p className="font-overline text-[0.5rem] text-muted-foreground/30 mb-6">
-                Est. 2018 · Edmonton, Alberta
-              </p>
+              {/* Signature flourish */}
+              <div className="mb-6">
+                <p className="font-script text-2xl text-primary/30 mb-1">Hickory & Rose</p>
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, delay: 0.4 }}
+                  className="w-16 h-px bg-gradient-to-r from-primary/30 via-primary/15 to-transparent origin-left"
+                />
+                <p className="font-overline text-[0.5rem] text-muted-foreground/30 mt-3">
+                  Est. 2018 · Edmonton, Alberta
+                </p>
+              </div>
 
               <Link
                 to="/about"

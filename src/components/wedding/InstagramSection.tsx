@@ -11,7 +11,7 @@ import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import editorialImage from "@/assets/editorial-florals.jpg";
 
 const photos = [
-  { src: heroImage, alt: "Elegant wedding tablescape", caption: "The tablescape that started it all", span: "col-span-2 row-span-2" },
+  { src: heroImage, alt: "Elegant wedding tablescape at golden hour", caption: "The tablescape that started it all", span: "col-span-2 row-span-2" },
   { src: ceremonyImage, alt: "Mountain ceremony setup", caption: "Jasper morning light", span: "col-span-1 row-span-1" },
   { src: detailImage, alt: "Calligraphy place card detail", caption: "Every name, hand-lettered", span: "col-span-1 row-span-1" },
   { src: firstDanceImage, alt: "First dance under lights", caption: "That first dance feeling", span: "col-span-1 row-span-2" },
@@ -26,6 +26,7 @@ const InstagramSection = () => {
     offset: ["start end", "end start"],
   });
   const watermarkY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+  const gridRotate = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 0, -0.3]);
 
   return (
     <section
@@ -43,6 +44,11 @@ const InstagramSection = () => {
           Follow
         </span>
       </motion.div>
+
+      {/* Decorative corner ornaments */}
+      <div className="absolute top-8 left-8 pointer-events-none select-none hidden lg:block" aria-hidden="true">
+        <span className="font-serif-wedding text-7xl font-light text-foreground/[0.02]">09</span>
+      </div>
 
       <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative">
         <ScrollReveal>
@@ -69,64 +75,100 @@ const InstagramSection = () => {
                   className="text-muted-foreground/30 group-hover:text-primary transition-colors duration-300"
                 />
               </a>
+              {/* Animated underline */}
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="w-20 h-px bg-primary/20 origin-left mt-3"
+              />
             </div>
-            <div className="md:text-right">
-              <p className="font-sans-wedding text-body-sm text-muted-foreground font-light max-w-xs leading-relaxed">
+            <div className="md:text-right max-w-xs">
+              <p className="font-sans-wedding text-body-sm text-muted-foreground font-light leading-relaxed">
                 Behind the scenes, real weddings, and the details that make it all come together.
               </p>
-              <span className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/25 mt-2 inline-block">
+              <span className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/25 mt-2 inline-flex items-center gap-2">
+                <span className="w-1 h-1 rounded-full bg-primary/30 animate-pulse" />
                 Updated weekly
               </span>
             </div>
           </div>
         </ScrollReveal>
 
-        {/* Asymmetric editorial grid */}
-        <div className="grid grid-cols-3 md:grid-cols-4 auto-rows-[140px] md:auto-rows-[200px] gap-2 md:gap-3">
-          {photos.map((photo, index) => (
-            <ImageReveal
-              key={index}
-              delay={index * 0.06}
-              direction={index % 2 === 0 ? "up" : "left"}
-              className={photo.span}
-            >
-              <a
-                href="https://www.instagram.com/hickoryandrose"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full h-full overflow-hidden relative group"
+        {/* Asymmetric editorial grid with subtle scroll tilt */}
+        <motion.div
+          style={{ rotateX: gridRotate }}
+          className="perspective-[2000px]"
+        >
+          <div className="grid grid-cols-3 md:grid-cols-4 auto-rows-[140px] md:auto-rows-[200px] gap-2 md:gap-3">
+            {photos.map((photo, index) => (
+              <ImageReveal
+                key={index}
+                delay={index * 0.08}
+                direction={index % 2 === 0 ? "up" : "left"}
+                className={photo.span}
               >
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-                {/* Editorial hover overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-3 md:p-4">
-                  <p className="font-serif-wedding text-xs md:text-sm text-white/80 italic leading-snug">
-                    {photo.caption}
-                  </p>
-                  <div className="flex items-center gap-1.5 mt-2">
-                    <Instagram size={10} strokeWidth={1.5} className="text-white/40" />
-                    <span className="font-sans-wedding text-[0.5rem] tracking-[0.1em] uppercase text-white/40">
-                      View on Instagram
+                <a
+                  href="https://www.instagram.com/hickoryandrose"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full h-full overflow-hidden relative group"
+                >
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-90"
+                    loading="lazy"
+                  />
+                  {/* Cinematic hover overlay with editorial caption */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-3 md:p-4">
+                    {/* Corner index */}
+                    <span className="absolute top-3 left-3 font-serif-wedding text-[0.5rem] text-white/20 tabular-nums">
+                      {String(index + 1).padStart(2, "0")}
                     </span>
+                    <p className="font-serif-wedding text-xs md:text-sm text-white/80 italic leading-snug">
+                      {photo.caption}
+                    </p>
+                    <div className="flex items-center gap-1.5 mt-2">
+                      <Instagram size={10} strokeWidth={1.5} className="text-white/40" />
+                      <span className="font-sans-wedding text-[0.5rem] tracking-[0.1em] uppercase text-white/40">
+                        View on Instagram
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </a>
-            </ImageReveal>
-          ))}
-        </div>
 
-        {/* Bottom hashtag attribution */}
+                  {/* Subtle border accent on hover */}
+                  <div className="absolute inset-0 border border-white/0 group-hover:border-white/10 transition-all duration-500 pointer-events-none" />
+                </a>
+              </ImageReveal>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Bottom hashtag attribution with ornament */}
         <ScrollReveal delay={0.3}>
-          <div className="flex items-center justify-center gap-4 mt-10 md:mt-14">
-            <span className="w-10 h-px bg-border/30" />
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.18em] uppercase text-muted-foreground/25">
+          <div className="mt-10 md:mt-14">
+            <div className="flex items-center justify-center gap-4">
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="w-10 h-px bg-border/30 origin-right"
+              />
+              <span className="font-serif-wedding text-xs text-primary/15 italic">❖</span>
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="w-10 h-px bg-border/30 origin-left"
+              />
+            </div>
+            <p className="font-sans-wedding text-[0.6rem] tracking-[0.18em] uppercase text-muted-foreground/25 text-center mt-4">
               #HickoryAndRose · #RefinedRusticElegance
             </p>
-            <span className="w-10 h-px bg-border/30" />
           </div>
         </ScrollReveal>
       </div>
