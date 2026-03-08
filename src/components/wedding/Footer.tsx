@@ -230,7 +230,10 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="lg:col-span-7"
           >
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-12">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-12 relative">
+              {/* Editorial column separators (desktop) */}
+              <div className="absolute top-0 bottom-0 left-1/3 w-px hidden md:block" style={{ background: "linear-gradient(180deg, transparent, hsl(var(--background) / 0.06), transparent)" }} />
+              <div className="absolute top-0 bottom-0 left-2/3 w-px hidden md:block" style={{ background: "linear-gradient(180deg, transparent, hsl(var(--background) / 0.06), transparent)" }} />
               {/* Navigation */}
               <div>
                 <p className="font-overline text-background/20 mb-5 text-[0.6rem]">
