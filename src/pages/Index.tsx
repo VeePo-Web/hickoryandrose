@@ -22,6 +22,33 @@ const InstagramSection = lazy(() => import("@/components/wedding/InstagramSectio
 const CTASection = lazy(() => import("@/components/wedding/CTASection"));
 const Footer = lazy(() => import("@/components/wedding/Footer"));
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Hickory & Rose Wedding and Event Planning",
+  "description": "Edmonton's luxury wedding planner specializing in refined rustic elegance. Day-of coordination, partial & full-service planning.",
+  "url": "https://hickoryandrose.com",
+  "telephone": "",
+  "email": "sales@hickoryandrose.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Edmonton",
+    "addressRegion": "Alberta",
+    "addressCountry": "CA"
+  },
+  "areaServed": [
+    "Edmonton", "Jasper", "Banff", "Lake Louise", "Calgary", "Canadian Rockies"
+  ],
+  "priceRange": "$$$$",
+  "foundingDate": "2018",
+  "sameAs": ["https://www.instagram.com/hickoryandrose"],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "75"
+  }
+};
+
 const Index = () => {
   useEffect(() => {
     setPageMeta({
@@ -29,6 +56,16 @@ const Index = () => {
       description: "Edmonton's luxury wedding planner specializing in refined rustic elegance. Day-of coordination, partial & full-service planning. Calm leadership, elevated design.",
       path: "/",
     });
+
+    // Inject JSON-LD
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(jsonLd);
+    script.id = "jsonld-local-business";
+    const existing = document.getElementById("jsonld-local-business");
+    if (existing) existing.remove();
+    document.head.appendChild(script);
+    return () => { script.remove(); };
   }, []);
 
   return (

@@ -48,6 +48,8 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
   }, [isOpen]);
 
   const showSolidBg = !isOverlay || scrolled;
+  // Show condensed monogram when scrolled past hero
+  const showMonogram = isOverlay && scrolled;
 
   return (
     <>
@@ -62,7 +64,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1.0] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           showSolidBg
             ? "bg-warm-white/95 backdrop-blur-md shadow-subtle"
             : "bg-transparent"
@@ -72,51 +74,95 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
       >
         <div className="container mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
+            {/* Logo with condensed monogram transition */}
             <Link
               to="/"
-              className={`font-serif-wedding text-xl md:text-2xl font-light tracking-tight transition-colors duration-300 ${
+              className={`relative transition-colors duration-300 ${
                 showSolidBg ? "text-foreground" : "text-white"
               }`}
             >
-              Hickory <span className="font-normal">&</span>{" "}
-              <span className="font-script text-2xl md:text-3xl">Rose</span>
+              <AnimatePresence mode="wait">
+                {showMonogram ? (
+                  <motion.span
+                    key="monogram"
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="flex items-center gap-1.5"
+                  >
+                    <span className="font-serif-wedding text-lg font-light tracking-tight">H</span>
+                    <span className="font-script text-xl text-primary/60">&</span>
+                    <span className="font-script text-2xl">R</span>
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="full"
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="font-serif-wedding text-xl md:text-2xl font-light tracking-tight"
+                  >
+                    Hickory <span className="font-normal">&</span>{" "}
+                    <span className="font-script text-2xl md:text-3xl">Rose</span>
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </Link>
 
+            {/* Desktop links with editorial hover */}
             <ul className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className={`relative px-4 py-2 font-sans-wedding text-[0.6875rem] tracking-[0.18em] uppercase font-light transition-all duration-200 hover:opacity-80 group ${
-                      showSolidBg ? "text-foreground" : "text-white"
-                    }`}
-                  >
-                    {link.name}
-                    <span
-                      className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-px bg-primary transition-all duration-300 ${
-                        location.pathname === link.path
-                          ? "w-6"
-                          : "w-0 group-hover:w-4"
+              {navLinks.map((link) => {
+                const isActive = location.pathname === link.path;
+                return (
+                  <li key={link.path}>
+                    <Link
+                      to={link.path}
+                      className={`relative px-4 py-2 font-sans-wedding text-[0.6875rem] tracking-[0.18em] uppercase font-light transition-all duration-200 hover:opacity-80 group ${
+                        showSolidBg ? "text-foreground" : "text-white"
                       }`}
-                    />
-                  </Link>
-                </li>
-              ))}
+                    >
+                      {link.name}
+                      {/* Active dot indicator */}
+                      {isActive && (
+                        <motion.span
+                          layoutId="nav-active-dot"
+                          className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
+                          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                        />
+                      )}
+                      {/* Hover underline */}
+                      <span
+                        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-px bg-current transition-all duration-300 ${
+                          isActive ? "w-0" : "w-0 group-hover:w-4"
+                        }`}
+                      />
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
 
+            {/* CTA button */}
             <div className="hidden lg:block">
               <Link
                 to="/inquire"
-                className={`inline-flex items-center px-6 py-2.5 text-[0.6875rem] tracking-[0.18em] uppercase font-sans-wedding font-light border transition-all duration-200 ${
+                className={`relative inline-flex items-center px-6 py-2.5 text-[0.6875rem] tracking-[0.18em] uppercase font-sans-wedding font-light border transition-all duration-300 overflow-hidden group ${
                   showSolidBg
                     ? "border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                     : "border-white/60 text-white hover:bg-white/10 hover:border-white"
                 }`}
               >
-                Inquire
+                {/* Fill sweep on hover */}
+                <span className={`absolute inset-0 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out ${
+                  showSolidBg ? "bg-primary" : "bg-white/10"
+                }`} />
+                <span className="relative z-10">Inquire</span>
               </Link>
             </div>
 
+            {/* Mobile hamburger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`lg:hidden relative z-[60] p-2 transition-colors duration-200 ${
@@ -168,6 +214,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
               transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0] }}
               className="fixed inset-0 bg-warm-white z-40 lg:hidden flex flex-col"
             >
+              {/* Top decorative line */}
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
@@ -176,6 +223,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
               />
 
               <div className="flex-1 flex flex-col items-center justify-center pb-24">
+                {/* Mobile brand mark */}
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -194,6 +242,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                   />
                 </motion.div>
 
+                {/* Links */}
                 <ul className="flex flex-col items-center gap-1">
                   {navLinks.map((link, index) => (
                     <motion.li
@@ -216,11 +265,16 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                         }`}
                       >
                         {link.name}
+                        {/* Active dot on mobile */}
+                        {location.pathname === link.path && (
+                          <span className="inline-block w-1 h-1 rounded-full bg-primary ml-2 -translate-y-1" />
+                        )}
                       </Link>
                     </motion.li>
                   ))}
                 </ul>
 
+                {/* Mobile CTA */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -237,6 +291,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                 </motion.div>
               </div>
 
+              {/* Bottom location */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
