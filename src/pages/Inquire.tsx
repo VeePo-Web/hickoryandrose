@@ -31,7 +31,6 @@ const Inquire = () => {
       path: "/inquire",
     });
   }, []);
-  }, []);
 
   const [formData, setFormData] = useState({
     name: "", email: "", partner: "", date: "", venue: "",

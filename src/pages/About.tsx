@@ -46,7 +46,6 @@ const About = () => {
       path: "/about",
     });
   }, []);
-  }, []);
 
   return (
     <main id="main-content">
