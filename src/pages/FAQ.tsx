@@ -4,7 +4,9 @@ import Navigation from "@/components/wedding/Navigation";
 import Footer from "@/components/wedding/Footer";
 import CTASection from "@/components/wedding/CTASection";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
+import FullWidthImage from "@/components/wedding/FullWidthImage";
 import MagneticButton from "@/components/wedding/MagneticButton";
+import faqEditorialImage from "@/assets/faq-editorial.jpg";
 import {
   Accordion,
   AccordionContent,
@@ -125,20 +127,49 @@ const FAQ = () => {
               </div>
             </ScrollReveal>
           ))}
+        </div>
+      </section>
 
-          <ScrollReveal delay={0.2}>
-            <div className="mt-16 pt-16 border-t border-border text-center">
-              <h3 className="font-serif-wedding text-display-md text-foreground mb-4">
-                Still have questions?
-              </h3>
-              <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto font-light">
-                We'd love to hear from you. Reach out and we'll get back to you
-                within 48 hours.
-              </p>
-              <MagneticButton to="/inquire" variant="primary">
-                Get in Touch
-              </MagneticButton>
+      {/* Editorial image break */}
+      <FullWidthImage
+        src={faqEditorialImage}
+        alt="Gold wedding rings on handwritten calligraphy vows with eucalyptus and candlelight"
+        height="h-[35vh] md:h-[45vh]"
+      />
+
+      {/* Brand-aligned quote + CTA */}
+      <section className="py-section-mobile md:py-section-tablet bg-sage-mist">
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+          <ScrollReveal>
+            <hr className="editorial-rule mx-auto mb-10" />
+            <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-6">
+              "No question is too small. We're here to make every part of
+              the process feel clear, calm, and cared for."
+            </blockquote>
+            <div className="flex items-center justify-center gap-4 mb-10">
+              <span className="w-8 h-px bg-primary/30" />
+              <span className="font-script text-xl text-primary/60">Hickory & Rose</span>
+              <span className="w-8 h-px bg-primary/30" />
             </div>
+            <hr className="editorial-rule mx-auto" />
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Still have questions */}
+      <section className="py-section-mobile md:py-section-tablet bg-background">
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+          <ScrollReveal>
+            <h3 className="font-serif-wedding text-display-md text-foreground mb-4">
+              Still have questions?
+            </h3>
+            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto font-light">
+              We'd love to hear from you. Reach out and we'll get back to you
+              within 48 hours.
+            </p>
+            <MagneticButton to="/inquire" variant="primary">
+              Get in Touch
+            </MagneticButton>
           </ScrollReveal>
         </div>
       </section>

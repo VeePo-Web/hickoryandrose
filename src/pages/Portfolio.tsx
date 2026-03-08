@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { setPageMeta } from "@/lib/seo";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import ImageReveal from "@/components/wedding/ImageReveal";
+import portfolioHeroImage from "@/assets/portfolio-hero.jpg";
 import heroImage from "@/assets/hero-wedding.jpg";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import detailImage from "@/assets/detail-placecard.jpg";
@@ -30,6 +32,13 @@ const filters = ["All", "Full Planning", "Partial Planning", "Day-Of"] as const;
 
 const Portfolio = () => {
   const [active, setActive] = useState<string>("All");
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
     setPageMeta({
@@ -43,24 +52,38 @@ const Portfolio = () => {
 
   return (
     <main id="main-content">
-      <Navigation variant="solid" />
+      <Navigation variant="overlay" />
 
-      {/* Hero */}
-      <section className="bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+      {/* Cinematic Hero with parallax */}
+      <section ref={heroRef} className="relative h-[70vh] md:h-[80vh] overflow-hidden">
+        <motion.div className="absolute inset-0" style={{ y: heroY }}>
+          <img
+            src={portfolioHeroImage}
+            alt="Wedding ceremony with mountain backdrop at golden hour"
+            className="w-full h-[120%] object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/50" />
+        </motion.div>
+
+        <motion.div
+          className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6"
+          style={{ opacity: heroOpacity }}
+        >
           <ScrollReveal>
-            <p className="font-overline text-muted-foreground mb-4">
+            <p className="font-overline text-white/60 mb-4">
               Our Work
             </p>
-            <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
+            <h1 className="font-serif-wedding text-display-xl text-white mb-6">
               Real Weddings
             </h1>
-            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed max-w-xl mx-auto font-light">
+            <p className="font-sans-wedding text-body-sm text-white/70 leading-relaxed max-w-xl mx-auto font-light">
               Every wedding tells a unique story. Here are some of the moments
               we've had the privilege of helping create.
             </p>
           </ScrollReveal>
-        </div>
+        </motion.div>
       </section>
 
       {/* Filter Tabs */}

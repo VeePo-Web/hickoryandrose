@@ -7,6 +7,8 @@ import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import { toast } from "@/hooks/use-toast";
 import { MessageSquare, Calendar, FileText, Heart } from "lucide-react";
+import ImageReveal from "@/components/wedding/ImageReveal";
+import inquireEditorialImage from "@/assets/inquire-editorial.jpg";
 
 const inquirySchema = z.object({
   name: z.string().min(2, "Please enter your full name."),
