@@ -179,7 +179,16 @@ html.lenis, html.lenis body {
   }
   
   .font-sans-wedding {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
+  }
+
+  .font-overline {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    line-height: 1.5;
   }
 }
 
