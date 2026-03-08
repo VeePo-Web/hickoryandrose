@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
@@ -14,20 +15,26 @@ import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import venueImage from "@/assets/portfolio-venue.jpg";
 
 const weddingStories = [
-  { src: heroImage, alt: "Elegant garden reception tablescape at golden hour", couple: "Sarah & Michael", venue: "Fairmont Hotel Macdonald", season: "Summer", aspect: "aspect-[3/4]" },
-  { src: receptionImage, alt: "Rustic farmhouse reception with eucalyptus and candlelight", couple: "Emma & James", venue: "The Glass House", season: "Autumn", aspect: "aspect-square" },
-  { src: ceremonyImage, alt: "Mountain ceremony with floral arch and white draping", couple: "Olivia & Noah", venue: "Jasper Park Lodge", season: "Summer", aspect: "aspect-[4/5]" },
-  { src: bouquetImage, alt: "Bridal bouquet with white roses and sage eucalyptus", couple: "Alyssa & Daniel", venue: "Art Gallery of Alberta", season: "Spring", aspect: "aspect-[3/4]" },
-  { src: venueImage, alt: "Rustic barn venue at twilight with string lights", couple: "Lauren & Ethan", venue: "Willow Creek Barn", season: "Autumn", aspect: "aspect-[16/10]" },
-  { src: editorialImage, alt: "Sage and ivory floral arrangement detail", couple: "Hannah & Liam", venue: "Muttart Conservatory", season: "Winter", aspect: "aspect-square" },
-  { src: firstDanceImage, alt: "First dance under string lights at outdoor reception", couple: "Rachel & Marcus", venue: "River Valley Estate", season: "Summer", aspect: "aspect-[3/4]" },
-  { src: detailImage, alt: "Calligraphy place card with gold cutlery detail", couple: "Claire & Jonathan", venue: "The Enjoy Centre", season: "Spring", aspect: "aspect-square" },
+  { src: heroImage, alt: "Elegant garden reception tablescape at golden hour", couple: "Sarah & Michael", venue: "Fairmont Hotel Macdonald", season: "Summer", category: "Full Planning", aspect: "aspect-[3/4]" },
+  { src: receptionImage, alt: "Rustic farmhouse reception with eucalyptus and candlelight", couple: "Emma & James", venue: "The Glass House", season: "Autumn", category: "Full Planning", aspect: "aspect-square" },
+  { src: ceremonyImage, alt: "Mountain ceremony with floral arch and white draping", couple: "Olivia & Noah", venue: "Jasper Park Lodge", season: "Summer", category: "Partial Planning", aspect: "aspect-[4/5]" },
+  { src: bouquetImage, alt: "Bridal bouquet with white roses and sage eucalyptus", couple: "Alyssa & Daniel", venue: "Art Gallery of Alberta", season: "Spring", category: "Day-Of", aspect: "aspect-[3/4]" },
+  { src: venueImage, alt: "Rustic barn venue at twilight with string lights", couple: "Lauren & Ethan", venue: "Willow Creek Barn", season: "Autumn", category: "Full Planning", aspect: "aspect-[16/10]" },
+  { src: editorialImage, alt: "Sage and ivory floral arrangement detail", couple: "Hannah & Liam", venue: "Muttart Conservatory", season: "Winter", category: "Day-Of", aspect: "aspect-square" },
+  { src: firstDanceImage, alt: "First dance under string lights at outdoor reception", couple: "Rachel & Marcus", venue: "River Valley Estate", season: "Summer", category: "Partial Planning", aspect: "aspect-[3/4]" },
+  { src: detailImage, alt: "Calligraphy place card with gold cutlery detail", couple: "Claire & Jonathan", venue: "The Enjoy Centre", season: "Spring", category: "Full Planning", aspect: "aspect-square" },
 ];
 
+const filters = ["All", "Full Planning", "Partial Planning", "Day-Of"] as const;
+
 const Portfolio = () => {
+  const [active, setActive] = useState<string>("All");
+
   useEffect(() => {
     document.title = "Portfolio | Hickory & Rose — Real Weddings Edmonton";
   }, []);
+
+  const filtered = active === "All" ? weddingStories : weddingStories.filter((s) => s.category === active);
 
   return (
     <main id="main-content">
@@ -51,37 +58,62 @@ const Portfolio = () => {
         </div>
       </section>
 
+      {/* Filter Tabs */}
+      <section className="py-8 bg-background border-b border-border sticky top-[72px] z-30">
+        <div className="container mx-auto px-6 lg:px-8 flex justify-center gap-2 flex-wrap">
+          {filters.map((f) => (
+            <button
+              key={f}
+              onClick={() => setActive(f)}
+              className={`font-sans-wedding text-xs tracking-[0.15em] uppercase px-6 py-2.5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 ${
+                active === f
+                  ? "bg-primary text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              }`}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
+      </section>
+
       {/* Gallery */}
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
         <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
-            {weddingStories.map((story, index) => (
-              <ImageReveal
-                key={index}
-                delay={index * 0.06}
-                direction={index % 3 === 0 ? "up" : index % 3 === 1 ? "left" : "right"}
-              >
-                <div
-                  className={`${story.aspect} overflow-hidden break-inside-avoid relative group cursor-pointer`}
+          <motion.div layout className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
+            <AnimatePresence mode="popLayout">
+              {filtered.map((story, index) => (
+                <motion.div
+                  key={story.couple}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] as const }}
+                  className="break-inside-avoid"
                 >
-                  <img
-                    src={story.src}
-                    alt={story.alt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/40 transition-all duration-500 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100">
-                    <p className="font-serif-wedding text-xl md:text-2xl text-white mb-1 translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
-                      {story.couple}
-                    </p>
-                    <p className="font-sans-wedding text-xs tracking-[0.15em] uppercase text-white/70 translate-y-3 group-hover:translate-y-0 transition-transform duration-500 delay-75">
-                      {story.venue}
-                    </p>
-                  </div>
-                </div>
-              </ImageReveal>
-            ))}
-          </div>
+                  <ImageReveal delay={index * 0.04} direction={index % 3 === 0 ? "up" : index % 3 === 1 ? "left" : "right"}>
+                    <div className={`${story.aspect} overflow-hidden relative group cursor-pointer`}>
+                      <img
+                        src={story.src}
+                        alt={story.alt}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/40 transition-all duration-500 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100">
+                        <p className="font-serif-wedding text-xl md:text-2xl text-white mb-1 translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
+                          {story.couple}
+                        </p>
+                        <p className="font-sans-wedding text-xs tracking-[0.15em] uppercase text-white/70 translate-y-3 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                          {story.venue}
+                        </p>
+                      </div>
+                    </div>
+                  </ImageReveal>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </section>
 
