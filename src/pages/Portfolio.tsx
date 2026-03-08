@@ -50,7 +50,7 @@ const Portfolio = () => {
             <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
               Real Weddings
             </h1>
-            <p className="font-sans-wedding text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
+            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed max-w-xl mx-auto font-light">
               Every wedding tells a unique story. Here are some of the moments
               we've had the privilege of helping create.
             </p>
