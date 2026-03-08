@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
 const BrandPromiseSection = () => {
@@ -6,7 +5,6 @@ const BrandPromiseSection = () => {
     <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
       <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
         <ScrollReveal>
-          {/* Decorative line */}
           <div className="w-12 h-px bg-primary mx-auto mb-10" />
 
           <p className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-10">

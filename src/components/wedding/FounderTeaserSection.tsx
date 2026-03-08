@@ -40,7 +40,7 @@ const FounderTeaserSection = () => {
           {/* Story */}
           <ScrollReveal delay={0.15} className="lg:col-span-2">
             <div>
-              <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
+              <p className="font-overline text-muted-foreground mb-4">
                 Meet the Planner
               </p>
               <h2 className="font-serif-wedding text-display-lg text-foreground mb-6">
