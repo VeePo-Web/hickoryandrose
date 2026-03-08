@@ -8,6 +8,8 @@ import CTASection from "@/components/wedding/CTASection";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import MagneticButton from "@/components/wedding/MagneticButton";
+import GoldFrame from "@/components/wedding/GoldFrame";
+import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 import faqEditorialImage from "@/assets/faq-editorial.jpg";
 import faqHeroImage from "@/assets/faq-hero.jpg";
 import {
