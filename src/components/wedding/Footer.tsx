@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Mail, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
 
 const footerLinks = [
   { label: "Services", path: "/services" },
@@ -17,10 +18,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16">
           {/* Brand */}
           <div>
-            <Link to="/" className="inline-block mb-4">
+            <Link to="/" className="inline-block mb-4 group">
               <span className="font-serif-wedding text-xl font-semibold tracking-tight text-background">
                 Hickory <span className="font-normal">&</span>{" "}
-                <span className="font-script text-2xl">Rose</span>
+                <span className="font-script text-2xl group-hover:text-primary transition-colors duration-300">Rose</span>
               </span>
             </Link>
             <p className="font-sans-wedding text-sm text-background/50 leading-relaxed mb-6">
@@ -33,14 +34,14 @@ const Footer = () => {
                 href="https://www.instagram.com/hickoryandrose"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-background/40 hover:text-background transition-colors duration-200"
+                className="text-background/40 hover:text-background hover:scale-110 transition-all duration-200"
                 aria-label="Follow us on Instagram"
               >
                 <Instagram size={18} strokeWidth={1.5} />
               </a>
               <a
                 href="mailto:hello@hickoryandrose.com"
-                className="text-background/40 hover:text-background transition-colors duration-200"
+                className="text-background/40 hover:text-background hover:scale-110 transition-all duration-200"
                 aria-label="Email us"
               >
                 <Mail size={18} strokeWidth={1.5} />
@@ -58,7 +59,7 @@ const Footer = () => {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="font-sans-wedding text-sm text-background/60 hover:text-background transition-colors duration-200"
+                    className="font-sans-wedding text-sm text-background/60 hover:text-background transition-colors duration-200 inline-block hover:translate-x-0.5 transform"
                   >
                     {link.label}
                   </Link>
@@ -98,7 +99,13 @@ const Footer = () => {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
           <p className="font-sans-wedding text-xs text-background/30">
             © {new Date().getFullYear()} Hickory & Rose. All rights reserved.
           </p>
@@ -116,7 +123,7 @@ const Footer = () => {
               Terms
             </Link>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

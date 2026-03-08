@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import detailImage from "@/assets/detail-placecard.jpg";
@@ -27,6 +28,17 @@ const testimonials = [
 
 const TestimonialSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // Auto-advance every 6s
+  const advance = useCallback(() => {
+    setActiveIndex((i) => (i + 1) % testimonials.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(advance, 6000);
+    return () => clearInterval(timer);
+  }, [advance]);
+
   const active = testimonials[activeIndex];
 
   return (
@@ -36,32 +48,44 @@ const TestimonialSection = () => {
     >
       <div className="container mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
-          {/* Testimonial with navigation */}
+          {/* Testimonial with crossfade */}
           <ScrollReveal>
             <div>
               <div className="w-8 h-px bg-primary mb-8" />
-              <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-8 min-h-[120px]">
-                "{active.quote}"
-              </blockquote>
-              <div className="font-sans-wedding mb-8">
-                <p className="text-sm font-semibold text-foreground">
-                  {active.couple}
-                </p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  {active.venue}
-                </p>
+              <div className="min-h-[180px] md:min-h-[160px] relative">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeIndex}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                    transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1.0] }}
+                  >
+                    <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-8">
+                      "{active.quote}"
+                    </blockquote>
+                    <div className="font-sans-wedding">
+                      <p className="text-sm font-semibold text-foreground">
+                        {active.couple}
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {active.venue}
+                      </p>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
               </div>
 
               {/* Pagination dots */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 mt-8">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setActiveIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    className={`h-2 rounded-full transition-all duration-300 ${
                       index === activeIndex
                         ? "bg-primary w-6"
-                        : "bg-primary/30 hover:bg-primary/50"
+                        : "bg-primary/30 hover:bg-primary/50 w-2"
                     }`}
                     aria-label={`View testimonial ${index + 1}`}
                   />
