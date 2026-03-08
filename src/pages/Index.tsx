@@ -9,6 +9,7 @@ import FullWidthImage from "@/components/wedding/FullWidthImage";
 import FounderTeaserSection from "@/components/wedding/FounderTeaserSection";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
+import venueImage from "@/assets/portfolio-venue.jpg";
 
 const Index = () => {
   return (
@@ -20,7 +21,11 @@ const Index = () => {
       <TestimonialSection />
       <LoveQuoteSection />
       <ProcessTeaserSection />
-      <FullWidthImage />
+      <FullWidthImage
+        src={venueImage}
+        alt="Rustic barn wedding venue at twilight with warm string lights and mountain backdrop"
+        height="h-[50vh] md:h-[60vh]"
+      />
       <FounderTeaserSection />
       <CTASection />
       <Footer />
