@@ -231,7 +231,8 @@ const FAQ = () => {
                       whileInView={{ scaleX: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.8, delay: 0.2 }}
-                      className="h-px bg-border/60 mt-4 origin-left"
+                      className="h-px mt-4 origin-left"
+                      style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08), transparent)" }}
                     />
                   </div>
                 </div>
@@ -246,9 +247,9 @@ const FAQ = () => {
                           value={`${catIndex}-${index}`}
                           className="border-border/30 group"
                         >
-                          <AccordionTrigger className="font-sans-wedding text-body text-foreground text-left hover:text-primary hover:no-underline py-6 font-light gap-4">
+                          <AccordionTrigger className="font-sans-wedding text-body text-foreground text-left hover:text-primary hover:no-underline py-6 font-light gap-4 group/trigger">
                             <span className="flex items-baseline gap-4">
-                              <span className="font-serif-wedding text-xs text-muted-foreground/30 shrink-0 tabular-nums">
+                              <span className="font-serif-wedding text-xs shrink-0 tabular-nums transition-colors duration-300" style={{ color: "hsl(var(--gold) / 0.25)" }}>
                                 {category.index}.{String(index + 1).padStart(2, "0")}
                               </span>
                               <span>{faq.q}</span>
