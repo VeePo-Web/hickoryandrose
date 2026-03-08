@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
 const pillars = [
-  { label: "Calm Leadership", detail: "Quiet confidence under pressure, so you never have to wonder what happens next." },
-  { label: "Elevated Design", detail: "Cohesive, intentional aesthetics that feel like you — never cookie-cutter." },
-  { label: "Protected Presence", detail: "Your day, fully felt. We handle the logistics so you can hold the moments." },
+  { label: "Calm Leadership", detail: "Quiet confidence under pressure, so you never have to wonder what happens next.", icon: "◆" },
+  { label: "Elevated Design", detail: "Cohesive, intentional aesthetics that feel like you — never cookie-cutter.", icon: "◇" },
+  { label: "Protected Presence", detail: "Your day, fully felt. We handle the logistics so you can hold the moments.", icon: "○" },
 ];
 
 const BrandPromiseSection = () => {
@@ -23,7 +23,7 @@ const BrandPromiseSection = () => {
         </span>
       </motion.div>
 
-      <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative">
+      <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
         <ScrollReveal>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-20 md:mb-28">
             {/* Left: Overline + editorial drop-cap quote */}
@@ -59,23 +59,30 @@ const BrandPromiseSection = () => {
           </div>
         </ScrollReveal>
 
-        {/* Brand pillars — editorial ruled rows */}
+        {/* Brand pillars — editorial ruled rows with hover expansion */}
         <div className="border-t border-border/40">
           {pillars.map((pillar, index) => (
             <ScrollReveal key={pillar.label} delay={index * 0.08}>
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-8 items-baseline py-8 md:py-10 border-b border-border/40 group cursor-default">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-8 items-baseline py-8 md:py-12 border-b border-border/40 group cursor-default">
                 <div className="md:col-span-1">
                   <span className="font-serif-wedding text-3xl font-light text-primary/15 group-hover:text-primary/30 transition-colors duration-500">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <div className="md:col-span-3">
+                <div className="md:col-span-3 relative">
                   <p className="font-overline text-primary text-[0.6rem] group-hover:tracking-[0.22em] transition-all duration-500">
                     {pillar.label}
                   </p>
+                  <motion.div
+                    className="h-px bg-primary/30 mt-2 origin-left"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
+                  />
                 </div>
                 <div className="md:col-span-8">
-                  <p className="font-sans-wedding text-body-sm text-muted-foreground/60 font-light leading-relaxed">
+                  <p className="font-sans-wedding text-body-sm text-muted-foreground/60 font-light leading-relaxed group-hover:text-muted-foreground transition-colors duration-500">
                     {pillar.detail}
                   </p>
                 </div>
@@ -83,6 +90,15 @@ const BrandPromiseSection = () => {
             </ScrollReveal>
           ))}
         </div>
+
+        {/* Editorial manifesto micro-line */}
+        <ScrollReveal delay={0.3}>
+          <div className="mt-14 md:mt-20 text-center">
+            <p className="font-serif-wedding text-sm italic text-muted-foreground/40">
+              Refined rustic elegance — run with quiet luxury precision.
+            </p>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

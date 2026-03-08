@@ -5,6 +5,12 @@ import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
 import founderImage from "@/assets/founder-portrait.jpg";
 
+const credentials = [
+  { value: "150+", label: "Weddings Coordinated" },
+  { value: "8", label: "Years of Experience" },
+  { value: "100%", label: "Client Satisfaction" },
+];
+
 const FounderTeaserSection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -35,6 +41,23 @@ const FounderTeaserSection = () => {
                 />
               </div>
             </ImageReveal>
+
+            {/* Credential row below image */}
+            <div className="grid grid-cols-3 gap-4 mt-6">
+              {credentials.map((cred, i) => (
+                <motion.div
+                  key={cred.label}
+                  className="text-center"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + i * 0.1 }}
+                >
+                  <p className="font-serif-wedding text-xl md:text-2xl font-light text-primary/60">{cred.value}</p>
+                  <p className="font-overline text-[0.5rem] text-muted-foreground/40 mt-1">{cred.label}</p>
+                </motion.div>
+              ))}
+            </div>
           </ScrollReveal>
 
           {/* Story */}
@@ -71,6 +94,9 @@ const FounderTeaserSection = () => {
                   "Calm is not the absence of planning — it's the presence of it."
                 </p>
               </div>
+
+              {/* Signature */}
+              <p className="font-script text-2xl text-primary/30 mb-6">Hickory & Rose</p>
 
               <Link
                 to="/about"
