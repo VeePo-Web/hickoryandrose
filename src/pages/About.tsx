@@ -43,7 +43,6 @@ const values = [
 
 const About = () => {
   const heroRef = useRef<HTMLElement>(null);
-  const founderRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -51,12 +50,6 @@ const About = () => {
   });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
-  const { scrollYProgress: founderScroll } = useScroll({
-    target: founderRef,
-    offset: ["start end", "end start"],
-  });
-  const founderImgY = useTransform(founderScroll, [0, 1], ["4%", "-4%"]);
 
   useEffect(() => {
     setPageMeta({
