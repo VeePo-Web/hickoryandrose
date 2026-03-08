@@ -3,11 +3,11 @@ import { useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 
 const mentions = [
-  { name: "Wedding Bells", type: "Magazine", year: "2024", detail: "Featured: Top Wedding Planners to Watch" },
-  { name: "Style Me Pretty", type: "Editorial", year: "2023", detail: "Editor's Pick — Refined Rustic Weddings" },
-  { name: "Rocky Mountain Bride", type: "Feature", year: "2024", detail: "Cover Feature — Mountain Celebrations" },
-  { name: "Junebug Weddings", type: "Spotlight", year: "2023", detail: "Spotlight: Alberta's Finest" },
-  { name: "Edmonton Journal", type: "Profile", year: "2022", detail: "Rising Stars in Wedding Planning" },
+  { name: "Wedding Bells", type: "Magazine", year: "2024", detail: "Featured: Top Wedding Planners to Watch", displayFont: "font-serif-wedding tracking-tight" },
+  { name: "Style Me Pretty", type: "Editorial", year: "2023", detail: "Editor's Pick — Refined Rustic Weddings", displayFont: "font-script" },
+  { name: "Rocky Mountain Bride", type: "Feature", year: "2024", detail: "Cover Feature — Mountain Celebrations", displayFont: "font-serif-wedding italic" },
+  { name: "Junebug Weddings", type: "Spotlight", year: "2023", detail: "Spotlight: Alberta's Finest", displayFont: "font-sans-wedding tracking-[0.1em] uppercase text-base" },
+  { name: "Edmonton Journal", type: "Profile", year: "2022", detail: "Rising Stars in Wedding Planning", displayFont: "font-serif-wedding" },
 ];
 
 const PressMentionsSection = () => {
