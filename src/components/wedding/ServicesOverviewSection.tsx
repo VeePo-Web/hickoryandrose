@@ -233,7 +233,10 @@ const ServicesOverviewSection = () => {
         <ScrollReveal delay={0.2}>
           <div className="mt-12 md:mt-16 border border-border/30 p-6 md:p-8 hidden md:block">
             <div className="flex items-center gap-3 mb-6">
-              <span className="font-serif-wedding text-xs text-primary/20">❖</span>
+              <span
+                className="w-2 h-2 rotate-45"
+                style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.15))" }}
+              />
               <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-muted-foreground/30 font-light">
                 Quick Comparison
               </p>

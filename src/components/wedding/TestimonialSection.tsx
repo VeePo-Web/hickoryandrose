@@ -88,7 +88,10 @@ const TestimonialSection = () => {
         aria-hidden="true"
       >
         <span className="w-12 md:w-20 h-px bg-gradient-to-r from-transparent to-primary/15" />
-        <span className="font-serif-wedding text-xs text-primary/15 italic">❖</span>
+        <span
+          className="w-2 h-2 rotate-45"
+          style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))" }}
+        />
         <span className="w-12 md:w-20 h-px bg-gradient-to-l from-transparent to-primary/15" />
       </motion.div>
 
@@ -251,7 +254,10 @@ const TestimonialSection = () => {
                   Real Hickory & Rose Weddings
                 </span>
                 <div className="flex items-center gap-2">
-                  <span className="font-serif-wedding text-xs text-primary/10 italic">❖</span>
+                  <span
+                    className="w-1.5 h-1.5 rotate-45"
+                    style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.1))" }}
+                  />
                   <span className="w-8 h-px bg-border/40" />
                 </div>
               </div>
