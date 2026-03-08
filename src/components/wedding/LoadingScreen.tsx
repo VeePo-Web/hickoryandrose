@@ -179,6 +179,32 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               />
 
+              {/* Orbiting diamond particles */}
+              {active && [0, 1, 2].map((i) => (
+                <motion.span
+                  key={`orbit-${i}`}
+                  className="absolute w-1 h-1 rotate-45 pointer-events-none"
+                  style={{
+                    background: `linear-gradient(135deg, hsl(var(--gold) / ${0.4 - i * 0.1}), hsl(var(--gold) / 0.05))`,
+                  }}
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: [0, 0.8, 0],
+                    rotate: [45 + i * 120, 45 + i * 120 + 360],
+                    x: [0, Math.cos((i * 2 * Math.PI) / 3) * 80],
+                    y: [0, Math.sin((i * 2 * Math.PI) / 3) * 80],
+                  }}
+                  transition={{
+                    duration: 3,
+                    delay: 0.3 + i * 0.4,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }}
+                  aria-hidden="true"
+                />
+              ))}
+
               <div className="text-center relative">
                 {/* Top ornamental line */}
                 <motion.div

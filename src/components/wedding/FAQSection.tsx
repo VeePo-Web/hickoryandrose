@@ -109,17 +109,27 @@ const FAQSection = () => {
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="border-border/30 group"
+                  className="border-border/30 group relative"
                 >
-                  <AccordionTrigger className="font-sans-wedding text-body text-foreground text-left hover:text-primary hover:no-underline py-6 font-light gap-4">
+                  {/* Gold left accent bar — visible on open via group-data state */}
+                  <div
+                    className="absolute left-0 top-0 bottom-0 w-px opacity-0 group-data-[state=open]:opacity-100 transition-opacity duration-500"
+                    style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08), transparent)" }}
+                  />
+                  {/* Gold shimmer sweep on hover */}
+                  <div
+                    className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"
+                    style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.02) 40%, hsl(var(--gold) / 0.04) 50%, hsl(var(--gold) / 0.02) 60%, transparent 100%)" }}
+                  />
+                  <AccordionTrigger className="font-sans-wedding text-body text-foreground text-left hover:text-primary hover:no-underline py-6 font-light gap-4 pl-3">
                     <span className="flex items-baseline gap-4">
-                      <span className="font-serif-wedding text-xs text-muted-foreground/25 shrink-0 tabular-nums">
+                      <span className="font-serif-wedding text-xs text-muted-foreground/25 shrink-0 tabular-nums group-data-[state=open]:text-primary/40 transition-colors duration-300">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <span>{faq.question}</span>
                     </span>
                   </AccordionTrigger>
-                  <AccordionContent className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed pb-6 pl-12 font-light">
+                  <AccordionContent className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed pb-6 pl-[3.25rem] font-light">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
