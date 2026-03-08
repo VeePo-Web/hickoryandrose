@@ -124,9 +124,15 @@ const CTASection = () => {
                   )}
                 </AnimatePresence>
                 
-                {/* Corner accent */}
-                <div className="absolute top-3 right-3 w-8 h-8 border-t border-r border-white/10" />
-                <div className="absolute bottom-3 left-3 w-8 h-8 border-b border-l border-white/10" />
+                {/* Gold-gradient corner accents */}
+                <div className="absolute top-3 right-3 w-8 h-8">
+                  <div className="absolute top-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                  <div className="absolute top-0 right-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                </div>
+                <div className="absolute bottom-3 left-3 w-8 h-8">
+                  <div className="absolute bottom-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                  <div className="absolute bottom-0 left-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                </div>
               </div>
               
               {/* Image attribution */}
