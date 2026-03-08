@@ -170,6 +170,20 @@ const Approach = () => {
                 <p className="font-overline text-muted-foreground/50 mb-3">Philosophy</p>
                 <h2 className="font-serif-wedding text-display-md text-foreground">Planning with intention.</h2>
 
+                {/* Editorial image inset — mobile */}
+                <div className="md:hidden mt-6 mb-2">
+                  <ImageReveal direction="up" delay={0.15}>
+                    <div className="aspect-[16/9] overflow-hidden relative">
+                      <img
+                        src={approachDetailsImage}
+                        alt="Wedding planning details with gold accents"
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  </ImageReveal>
+                </div>
+
                 {/* Editorial image inset — desktop */}
                 <div className="hidden md:block mt-8">
                   <ImageReveal direction="up" delay={0.2}>
