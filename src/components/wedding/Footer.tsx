@@ -293,10 +293,17 @@ const Footer = () => {
                   href="https://www.instagram.com/hickoryandrose"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 font-sans-wedding text-sm text-background/40 hover:text-background transition-colors duration-200 font-light"
+                  className="flex items-center gap-2.5 font-sans-wedding text-sm text-background/40 hover:text-background transition-colors duration-200 font-light group/social relative overflow-hidden"
                 >
-                  <Instagram size={14} strokeWidth={1.5} className="text-background/20" />
-                  @hickoryandrose
+                  <Instagram size={14} strokeWidth={1.5} className="text-background/20 group-hover/social:text-background/50 transition-colors duration-300" />
+                  <span className="relative">
+                    @hickoryandrose
+                    {/* Gold shimmer sweep on hover */}
+                    <span
+                      className="absolute inset-0 -translate-x-full group-hover/social:translate-x-[200%] transition-transform duration-700 ease-out pointer-events-none"
+                      style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2), transparent)", width: "60%" }}
+                    />
+                  </span>
                 </a>
 
                 <div className="mt-8">

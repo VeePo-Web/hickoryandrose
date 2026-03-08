@@ -272,21 +272,38 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                 aria-hidden="true"
               />
 
-              {/* Corner accents */}
+              {/* Gold-gradient corner accents */}
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="absolute top-20 left-6 w-8 h-8 border-t border-l border-foreground/5 pointer-events-none"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="absolute top-20 left-6 w-10 h-10 pointer-events-none"
                 aria-hidden="true"
-              />
+              >
+                <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), transparent)" }} />
+              </motion.div>
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="absolute bottom-24 right-6 w-8 h-8 border-b border-r border-foreground/5 pointer-events-none"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="absolute bottom-24 right-6 w-10 h-10 pointer-events-none"
                 aria-hidden="true"
-              />
+              >
+                <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
+              </motion.div>
+              
+              {/* Center breathing diamond */}
+              <motion.div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0.05, 0.12, 0.05], scale: [0.95, 1.05, 0.95] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+                aria-hidden="true"
+              >
+                <div className="w-40 h-40 rounded-full" style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.08), transparent 70%)" }} />
+              </motion.div>
 
               {/* Top decorative line */}
               <motion.div
