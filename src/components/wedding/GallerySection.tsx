@@ -99,7 +99,7 @@ const GallerySection = () => {
                 <button
                   onClick={() => setSelectedIndex(index)}
                   className="w-full h-full overflow-hidden cursor-pointer group block"
-                  data-cursor-hover
+                  data-cursor-hover data-cursor-label="View"
                 >
                   <img
                     src={photo.src}
