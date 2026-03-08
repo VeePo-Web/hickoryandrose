@@ -189,9 +189,15 @@ const GallerySection = () => {
                   {/* Cinematic gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                  {/* Corner frame accents */}
-                  <div className="absolute top-3 left-3 w-4 h-4 border-t border-l border-white/0 group-hover:border-white/20 transition-colors duration-500" />
-                  <div className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-white/0 group-hover:border-white/20 transition-colors duration-500" />
+                  {/* Corner frame accents — gold gradient */}
+                  <div className="absolute top-3 left-3 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true">
+                    <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                    <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                  </div>
+                  <div className="absolute bottom-3 right-3 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true">
+                    <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                    <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                  </div>
 
                   {/* Hover editorial overlay */}
                   <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -233,10 +239,10 @@ const GallerySection = () => {
 
           {/* Bottom ornament */}
           <ScrollReveal delay={0.3}>
-            <div className="flex items-center justify-center gap-3 mt-12 md:mt-16" aria-hidden="true">
-              <span className="w-8 h-px bg-border/30" />
-              <span className="font-serif-wedding text-xs text-primary/10 italic">❖</span>
-              <span className="w-8 h-px bg-border/30" />
+            <div className="flex items-center justify-center gap-4 mt-12 md:mt-16" aria-hidden="true">
+              <span className="w-10 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2))" }} />
+              <span className="w-1.5 h-1.5 rotate-45" style={{ background: "hsl(var(--gold) / 0.2)" }} />
+              <span className="w-10 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.2), transparent)" }} />
             </div>
           </ScrollReveal>
         </div>
