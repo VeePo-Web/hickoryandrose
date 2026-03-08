@@ -8,10 +8,13 @@ const LoveQuoteSection = () => {
     target: ref,
     offset: ["start end", "end start"],
   });
+  
   const decorScale = useTransform(scrollYProgress, [0, 0.5], [0.85, 1]);
-  const decorOpacity = useTransform(scrollYProgress, [0, 0.4], [0, 0.035]);
-  const watermarkY = useTransform(scrollYProgress, [0, 1], [30, -30]);
-  const secondaryQuoteOpacity = useTransform(scrollYProgress, [0.2, 0.5], [0, 0.15]);
+  const decorOpacity = useTransform(scrollYProgress, [0, 0.4], [0, 0.04]);
+  const watermarkY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const secondaryQuoteOpacity = useTransform(scrollYProgress, [0.2, 0.5], [0, 0.2]);
+  const cornerRotate = useTransform(scrollYProgress, [0, 1], [-2, 2]);
+  const floatingOrnamentY = useTransform(scrollYProgress, [0, 1], [15, -15]);
 
   return (
     <section
@@ -19,25 +22,58 @@ const LoveQuoteSection = () => {
       className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-sage-deep relative overflow-hidden"
       aria-label="Brand manifesto"
     >
-      {/* Background ampersand */}
+      {/* Subtle film grain texture overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.015] pointer-events-none mix-blend-overlay"
+        style={{ 
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E\")",
+          backgroundSize: "150px 150px"
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Background ampersand with scroll-linked motion */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
-        style={{ scale: decorScale, opacity: decorOpacity }}
+        style={{ scale: decorScale, opacity: decorOpacity, rotate: cornerRotate }}
       >
-        <span className="font-script text-[20rem] md:text-[30rem] text-primary-foreground select-none leading-none" aria-hidden="true">
+        <span className="font-script text-[22rem] md:text-[32rem] text-primary-foreground select-none leading-none" aria-hidden="true">
           &
         </span>
       </motion.div>
 
+      {/* Floating corner ornaments */}
+      <motion.div
+        className="absolute top-12 left-12 hidden lg:block pointer-events-none"
+        style={{ y: floatingOrnamentY }}
+        aria-hidden="true"
+      >
+        <div className="w-12 h-12 border-t border-l border-primary-foreground/8" />
+      </motion.div>
+      <motion.div
+        className="absolute bottom-12 right-12 hidden lg:block pointer-events-none"
+        style={{ y: floatingOrnamentY }}
+        aria-hidden="true"
+      >
+        <div className="w-12 h-12 border-b border-r border-primary-foreground/8" />
+      </motion.div>
+
       {/* Scroll-linked secondary quote layer */}
       <motion.div
-        className="absolute bottom-12 right-8 md:right-16 pointer-events-none select-none hidden lg:block"
+        className="absolute bottom-16 right-12 md:right-20 pointer-events-none select-none hidden lg:block"
         style={{ y: watermarkY, opacity: secondaryQuoteOpacity }}
         aria-hidden="true"
       >
-        <p className="font-serif-wedding text-xl italic text-primary-foreground/40 max-w-xs text-right leading-relaxed">
+        <p className="font-serif-wedding text-lg italic text-primary-foreground/50 max-w-[200px] text-right leading-relaxed">
           Every detail in service of the moment.
         </p>
+        <motion.div
+          className="w-8 h-px bg-primary-foreground/15 mt-3 ml-auto"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        />
       </motion.div>
 
       {/* Section index watermark */}
@@ -46,7 +82,7 @@ const LoveQuoteSection = () => {
         style={{ y: watermarkY }}
         aria-hidden="true"
       >
-        <span className="font-serif-wedding text-7xl md:text-8xl font-light text-primary-foreground/[0.04]">
+        <span className="font-serif-wedding text-7xl md:text-9xl font-light text-primary-foreground/[0.03]">
           05
         </span>
       </motion.div>
@@ -54,38 +90,52 @@ const LoveQuoteSection = () => {
       <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
         <ScrollReveal>
           {/* Refined overline with flanking lines */}
-          <div className="flex items-center justify-center gap-4 mb-10">
-            <span className="w-10 h-px bg-primary-foreground/15 hidden md:block" />
-            <p className="font-overline text-primary-foreground/40">
+          <div className="flex items-center justify-center gap-5 mb-12">
+            <motion.span 
+              className="w-12 h-px hidden md:block origin-right"
+              style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.2))" }}
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            />
+            <p className="font-overline text-primary-foreground/45 tracking-[0.25em]">
               Our Promise
             </p>
-            <span className="w-10 h-px bg-primary-foreground/15 hidden md:block" />
+            <motion.span 
+              className="w-12 h-px hidden md:block origin-left"
+              style={{ background: "linear-gradient(90deg, hsl(var(--primary-foreground) / 0.2), transparent)" }}
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+            />
           </div>
 
           {/* Pull-quote ornament */}
-          <div className="flex items-center justify-center gap-4 mb-8">
+          <div className="flex items-center justify-center gap-4 mb-10">
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="w-8 h-px bg-primary-foreground/20 origin-right"
+              className="w-10 h-px bg-primary-foreground/20 origin-right"
             />
-            <span className="font-serif-wedding text-sm text-primary-foreground/25 tracking-widest">❖</span>
+            <span className="font-serif-wedding text-sm text-primary-foreground/30 tracking-widest">❖</span>
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="w-8 h-px bg-primary-foreground/20 origin-left"
+              className="w-10 h-px bg-primary-foreground/20 origin-left"
             />
           </div>
 
           {/* Main quote with editorial quotation marks */}
-          <blockquote className="font-serif-wedding text-display-md md:text-display-lg text-primary-foreground leading-relaxed mb-10 relative">
+          <blockquote className="font-serif-wedding text-display-md md:text-display-lg text-primary-foreground leading-relaxed mb-12 relative">
             <motion.span
-              className="absolute -top-6 -left-2 md:-left-6 text-primary-foreground/[0.08] text-[5rem] md:text-[7rem] font-light leading-none select-none"
-              initial={{ opacity: 0, y: 10 }}
+              className="absolute -top-8 -left-4 md:-left-8 text-primary-foreground/[0.08] text-[6rem] md:text-[8rem] font-light leading-none select-none"
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
@@ -93,12 +143,12 @@ const LoveQuoteSection = () => {
             >
               "
             </motion.span>
-            We believe your wedding day should be felt, not managed. That the
+            We believe your wedding day should be <em className="text-primary-foreground/95">felt</em>, not managed. That the
             details should serve the moment — never compete with it. That calm
-            is not the absence of planning, but the presence of it.
+            is not the absence of planning, but the <em className="text-primary-foreground/95">presence</em> of it.
             <motion.span
-              className="absolute -bottom-8 -right-2 md:-right-6 text-primary-foreground/[0.08] text-[5rem] md:text-[7rem] font-light leading-none select-none"
-              initial={{ opacity: 0, y: -10 }}
+              className="absolute -bottom-10 -right-4 md:-right-8 text-primary-foreground/[0.08] text-[6rem] md:text-[8rem] font-light leading-none select-none"
+              initial={{ opacity: 0, y: -12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -109,20 +159,24 @@ const LoveQuoteSection = () => {
           </blockquote>
 
           {/* Attribution with vertical accent */}
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-5">
             <motion.div
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-px h-8 bg-primary-foreground/20 origin-top"
+              className="w-px h-10 bg-gradient-to-b from-primary-foreground/25 to-transparent origin-top"
             />
-            <span className="font-script text-xl text-primary-foreground/35">
+            <span className="font-script text-2xl text-primary-foreground/40">
               Hickory & Rose
             </span>
-            <span className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-primary-foreground/20">
-              Edmonton · Alberta · Est. 2018
-            </span>
+            <div className="flex items-center gap-3">
+              <span className="w-4 h-px bg-primary-foreground/15" />
+              <span className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-primary-foreground/25">
+                Edmonton · Alberta · Est. 2018
+              </span>
+              <span className="w-4 h-px bg-primary-foreground/15" />
+            </div>
           </div>
         </ScrollReveal>
       </div>
