@@ -7,6 +7,7 @@ import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import ImageReveal from "@/components/wedding/ImageReveal";
+import MagneticButton from "@/components/wedding/MagneticButton";
 import portfolioHeroImage from "@/assets/portfolio-hero.jpg";
 import heroImage from "@/assets/hero-wedding.jpg";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
@@ -90,24 +91,49 @@ const Portfolio = () => {
         </motion.div>
       </section>
 
-      {/* Filter Tabs */}
-      <section className="py-6 md:py-8 bg-background border-b border-border/60 sticky top-[72px] z-30">
-        <div className="container mx-auto px-6 lg:px-8 flex justify-center gap-1 flex-wrap">
+      {/* Editorial Intro */}
+      <section className="py-12 md:py-16 bg-card border-b border-border/40">
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+          <ScrollReveal>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-baseline">
+              <div className="md:col-span-4">
+                <p className="font-serif-wedding text-display-sm text-foreground/70 italic">
+                  From intimate garden ceremonies to grand ballroom receptions — each one as unique as the couple.
+                </p>
+              </div>
+              <div className="md:col-span-5 md:col-start-6">
+                <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
+                  We believe the best weddings feel like the couple — not a template. Browse our portfolio and imagine what yours could look like.
+                </p>
+              </div>
+              <div className="md:col-span-3 md:col-start-12 hidden md:flex items-center justify-end">
+                <span className="font-sans-wedding text-label uppercase text-muted-foreground/30">
+                  {weddingStories.length} Stories
+                </span>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Filter Tabs — refined editorial */}
+      <section className="py-5 md:py-6 bg-background border-b border-border/30 sticky top-[72px] z-30">
+        <div className="container mx-auto px-6 lg:px-8 flex justify-center gap-0">
           {filters.map((f) => (
             <button
               key={f}
               onClick={() => setActive(f)}
-              className={`relative font-sans-wedding text-xs tracking-[0.15em] uppercase px-5 py-2.5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 ${
+              className={`relative font-sans-wedding text-xs tracking-[0.15em] uppercase px-5 md:px-7 py-2.5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 ${
                 active === f
                   ? "text-foreground"
-                  : "text-muted-foreground/50 hover:text-foreground"
+                  : "text-muted-foreground/40 hover:text-muted-foreground"
               }`}
             >
               {f}
               {active === f && (
                 <motion.div
                   layoutId="portfolio-filter"
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-px bg-primary"
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-primary/40"
                   transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                 />
               )}
@@ -139,7 +165,7 @@ const Portfolio = () => {
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy"
                       />
-                      {/* Cinematic gradient reveal from bottom */}
+                      {/* Cinematic gradient reveal */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                         <p className="font-serif-wedding text-lg md:text-xl text-white mb-0.5">
@@ -155,6 +181,18 @@ const Portfolio = () => {
               ))}
             </AnimatePresence>
           </motion.div>
+
+          {/* Bottom CTA */}
+          <ScrollReveal delay={0.2}>
+            <div className="text-center mt-16 md:mt-24">
+              <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-8 font-light max-w-md mx-auto">
+                Every wedding begins with a conversation. Let's talk about yours.
+              </p>
+              <MagneticButton to="/inquire" variant="primary">
+                Begin Your Story
+              </MagneticButton>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
