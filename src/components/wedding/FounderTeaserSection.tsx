@@ -316,8 +316,9 @@ const FounderTeaserSection = () => {
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 1, delay: 0.4 }}
-                  className="w-16 h-px bg-gradient-to-r from-primary/30 via-primary/15 to-transparent origin-left"
+                  transition={{ duration: 1.2, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="w-20 h-[2px] origin-left"
+                  style={{ background: "linear-gradient(90deg, hsl(var(--gold)), hsl(var(--primary) / 0.15), transparent)" }}
                 />
                 <p className="font-overline text-[0.5rem] text-muted-foreground/30 mt-3">
                   Est. 2018 · Edmonton, Alberta

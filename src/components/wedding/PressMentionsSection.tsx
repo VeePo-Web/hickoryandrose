@@ -87,7 +87,15 @@ const PressMentionsSection = () => {
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="grid grid-cols-12 gap-4 items-center py-5 md:py-6 px-2">
+              <div className="grid grid-cols-12 gap-4 items-center py-5 md:py-6 px-2 relative">
+                {/* Gold left-border reveal on hover */}
+                <motion.div
+                  className="absolute left-0 top-0 bottom-0 w-[2px] origin-top"
+                  style={{ background: "linear-gradient(180deg, hsl(var(--gold)), hsl(var(--primary) / 0.3))" }}
+                  initial={{ scaleY: 0 }}
+                  animate={{ scaleY: hoveredIndex === i ? 1 : 0 }}
+                  transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                />
                 {/* Index */}
                 <div className="col-span-1 hidden md:block">
                   <span className="font-serif-wedding text-sm text-foreground/8 group-hover:text-foreground/20 transition-colors duration-500 tabular-nums">

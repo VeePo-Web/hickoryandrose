@@ -166,7 +166,8 @@ const TestimonialSection = () => {
                     >
                       {index === activeIndex && (
                         <motion.div
-                          className="absolute inset-0 bg-primary origin-left"
+                          className="absolute inset-0 origin-left"
+                          style={{ background: "linear-gradient(90deg, hsl(var(--gold)), hsl(var(--primary)))" }}
                           initial={{ scaleX: 0 }}
                           animate={{ scaleX: 1 }}
                           transition={{ duration: 6, ease: "linear" }}

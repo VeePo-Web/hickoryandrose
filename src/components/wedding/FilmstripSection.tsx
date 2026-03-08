@@ -217,7 +217,14 @@ const FilmstripSection = () => {
         aria-hidden="true"
       >
         {Array.from({ length: 24 }).map((_, i) => (
-          <div key={`bot-${i}`} className="w-3 h-2 rounded-sm bg-foreground/[0.03] shrink-0" />
+          <motion.div
+            key={`bot-${i}`}
+            className="w-3 h-2 rounded-sm shrink-0"
+            style={{ background: "hsl(var(--foreground) / 0.03)" }}
+            whileInView={{ boxShadow: i % 3 === 0 ? "0 0 6px 1px hsl(var(--gold) / 0.08)" : "none" }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.03 }}
+          />
         ))}
       </motion.div>
 
