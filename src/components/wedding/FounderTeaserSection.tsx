@@ -250,13 +250,20 @@ const FounderTeaserSection = () => {
                   onMouseEnter={() => setActivePillar(i)}
                   onMouseLeave={() => setActivePillar(null)}
                 >
-                  {/* Gold-gradient diamond */}
+                  {/* Gold-gradient diamond with breathing glow */}
                   <motion.span
-                    className="w-2 h-2 rotate-45 block mb-2 mx-auto"
+                    className="w-2 h-2 rotate-45 block mb-2 mx-auto relative"
                     style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }}
                     animate={{ rotate: activePillar === i ? 225 : 45 }}
                     transition={{ duration: 0.4 }}
-                  />
+                  >
+                    <motion.span
+                      className="absolute -inset-2 rounded-full pointer-events-none"
+                      style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.15), transparent 70%)" }}
+                      animate={{ opacity: activePillar === i ? [0.3, 0.7, 0.3] : 0 }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                  </motion.span>
                   <p className="font-serif-wedding text-xl md:text-2xl font-light text-primary/60 group-hover:text-primary transition-colors duration-500">
                     {cred.value}
                   </p>
