@@ -138,8 +138,17 @@ const FAQ = () => {
       </section>
 
       {/* FAQ Categories */}
-      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
-        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+      <section ref={categoriesRef} className="relative py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card overflow-hidden">
+        {/* Parallax watermark */}
+        <motion.span
+          className="absolute left-1/2 -translate-x-1/2 font-serif-wedding text-[10rem] md:text-[16rem] lg:text-[20rem] text-foreground/[0.018] pointer-events-none select-none whitespace-nowrap leading-none"
+          style={{ y: watermarkY, top: "20%" }}
+          aria-hidden="true"
+        >
+          Answers
+        </motion.span>
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative z-10">
           {faqCategories.map((category, catIndex) => (
             <ScrollReveal key={category.category} delay={catIndex * 0.08}>
               <div className={catIndex > 0 ? "mt-16 md:mt-24" : ""}>
@@ -164,7 +173,7 @@ const FAQ = () => {
                   <div className="md:col-span-10">
                     <Accordion type="single" collapsible className="w-full">
                       {category.questions.map((faq, index) => (
-                        <AccordionItem key={index} value={`${catIndex}-${index}`} className="border-border/30 group relative overflow-hidden">
+                        <AccordionItem key={index} value={`${catIndex}-${index}`} className="border-border/30 group relative overflow-hidden transition-colors duration-500 data-[state=open]:bg-foreground/[0.015]">
                           <div className="absolute left-0 top-0 bottom-0 w-[2px] opacity-0 group-data-[state=open]:opacity-100 transition-all duration-500 origin-top group-data-[state=open]:scale-y-100 scale-y-0" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15), transparent)" }} />
                           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none" style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.03) 40%, hsl(var(--gold) / 0.06) 50%, hsl(var(--gold) / 0.03) 60%, transparent 100%)" }} />
                           <AccordionTrigger className="font-sans-wedding text-body text-foreground text-left hover:text-primary hover:no-underline py-6 font-light gap-4 group/trigger pl-3">
@@ -180,6 +189,48 @@ const FAQ = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Editorial image break after category 0 */}
+              {catIndex === 0 && (
+                <ScrollReveal delay={0.15}>
+                  <div className="mt-16 md:mt-24 relative overflow-hidden rounded-sm">
+                    <div className="aspect-[21/9] relative group">
+                      <img src={faqEditorialImage} alt="Gold wedding rings on handwritten calligraphy vows with eucalyptus" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-black/20" />
+                      {/* Gold corner frames */}
+                      <span className="absolute top-4 left-4 w-8 h-8 border-t border-l pointer-events-none" style={{ borderColor: "hsl(var(--gold) / 0.3)" }} />
+                      <span className="absolute top-4 right-4 w-8 h-8 border-t border-r pointer-events-none" style={{ borderColor: "hsl(var(--gold) / 0.3)" }} />
+                      <span className="absolute bottom-4 left-4 w-8 h-8 border-b border-l pointer-events-none" style={{ borderColor: "hsl(var(--gold) / 0.3)" }} />
+                      <span className="absolute bottom-4 right-4 w-8 h-8 border-b border-r pointer-events-none" style={{ borderColor: "hsl(var(--gold) / 0.3)" }} />
+                      {/* Pull-quote overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center px-8">
+                        <p className="font-serif-wedding text-lg md:text-2xl text-white/80 text-center max-w-lg leading-relaxed font-light italic">"Every detail is intentional — because your day deserves nothing less."</p>
+                      </div>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              )}
+
+              {/* Editorial image break after category 1 */}
+              {catIndex === 1 && (
+                <ScrollReveal delay={0.15}>
+                  <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+                    <div className="md:col-span-7 relative overflow-hidden rounded-sm group">
+                      <div className="aspect-[16/10]">
+                        <img src={faqHeroImage} alt="Luxury wedding stationery with sage envelope, gold wax seal, and calligraphy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/10" />
+                      </div>
+                    </div>
+                    <div className="md:col-span-5 flex items-center">
+                      <div className="py-6 md:py-0 md:pl-4">
+                        <span className="font-overline text-muted-foreground/40 mb-3 block">Our Approach</span>
+                        <p className="font-serif-wedding text-display-sm text-foreground leading-relaxed mb-4">Clarity at every step.</p>
+                        <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">We believe transparency builds trust. That's why we answer every question before you even think to ask it.</p>
+                      </div>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              )}
             </ScrollReveal>
           ))}
         </div>
