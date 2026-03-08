@@ -6,7 +6,7 @@ import Navigation from "@/components/wedding/Navigation";
 import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import { toast } from "@/hooks/use-toast";
-import { MessageSquare, Calendar, FileText, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 import ImageReveal from "@/components/wedding/ImageReveal";
 import inquireEditorialImage from "@/assets/inquire-editorial.jpg";
 
@@ -32,13 +32,6 @@ const serviceOptions = [
 ];
 
 const guestRanges = ["Under 50", "50 – 100", "100 – 150", "150 – 200", "200+"];
-
-const nextSteps = [
-  { icon: MessageSquare, step: "01", text: "We'll respond within 48 hours to learn more about your day." },
-  { icon: Calendar, step: "02", text: "We'll schedule a complimentary discovery call — relaxed, no pressure." },
-  { icon: FileText, step: "03", text: "If we're a fit, we'll send a custom proposal tailored to you." },
-  { icon: Heart, step: "04", text: "We begin planning your beautiful, stress-free wedding day." },
-];
 
 const Inquire = () => {
   useEffect(() => {
@@ -72,7 +65,6 @@ const Inquire = () => {
         }
       });
       setErrors(fieldErrors);
-      // Focus first error field
       const firstErrorField = result.error.issues[0]?.path[0] as string;
       if (firstErrorField) {
         document.getElementById(firstErrorField)?.focus();
@@ -93,7 +85,6 @@ const Inquire = () => {
   ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    // Clear error on change
     if (errors[name as keyof InquiryForm]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -161,7 +152,6 @@ const Inquire = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-lg"
           >
-            {/* Botanical pulse */}
             <div className="relative inline-block mb-8">
               <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
@@ -179,7 +169,6 @@ const Inquire = () => {
               Your inquiry has been received. Here's what happens next:
             </p>
 
-            {/* Next steps timeline */}
             <div className="text-left max-w-sm mx-auto space-y-6 mb-12">
               {[
                 { step: "01", text: "We'll review your details and respond within 48 hours." },
@@ -193,18 +182,23 @@ const Inquire = () => {
                   transition={{ delay: 0.4 + i * 0.15, duration: 0.5 }}
                   className="flex gap-4 items-start"
                 >
-                  <span className="font-serif-wedding text-lg text-primary/40 shrink-0">{item.step}</span>
+                  <span className="font-serif-wedding text-lg text-primary/30 shrink-0">{item.step}</span>
                   <p className="font-sans-wedding text-body-sm text-muted-foreground font-light leading-relaxed">{item.text}</p>
                 </motion.div>
               ))}
             </div>
 
-            <hr className="editorial-rule mx-auto mb-8" />
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              className="w-12 h-px bg-primary/30 mx-auto mb-8 origin-center"
+            />
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 0.5 }}
-              className="font-sans-wedding text-xs text-muted-foreground/60 font-light"
+              className="font-sans-wedding text-xs text-muted-foreground/50 font-light"
             >
               In the meantime, explore our{" "}
               <a href="/portfolio" className="underline underline-offset-4 hover:text-primary transition-colors">portfolio</a>
@@ -221,18 +215,12 @@ const Inquire = () => {
   return (
     <main id="main-content">
       <Navigation variant="solid" />
-      <section className="relative bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]" aria-hidden="true">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
-        </div>
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
+
+      {/* Hero — clean */}
+      <section className="bg-background pt-32 pb-20 md:pb-28">
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-10 h-px bg-primary/30" />
-              <span className="font-script text-lg text-primary/40">H & R</span>
-              <span className="w-10 h-px bg-primary/30" />
-            </div>
-            <p className="font-overline text-muted-foreground mb-4">
+            <p className="font-overline text-muted-foreground/50 mb-4">
               Start Here
             </p>
             <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
@@ -242,29 +230,42 @@ const Inquire = () => {
               Tell us about your vision. There's no commitment — just a warm
               conversation about your wedding day and how we can help.
             </p>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="w-16 h-px bg-primary/30 mx-auto mt-10 origin-center"
+            />
           </ScrollReveal>
         </div>
       </section>
 
-      {/* What to Expect */}
-      <section className="py-12 md:py-16 bg-card border-b border-border">
-        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
+      {/* What to Expect — horizontal ruled rows instead of icon grid */}
+      <section className="py-12 md:py-16 bg-card border-b border-border/60">
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
           <ScrollReveal>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-              {nextSteps.map((item, index) => (
+            <p className="font-overline text-muted-foreground/40 mb-8 text-center">What to Expect</p>
+            <div className="space-y-0">
+              {[
+                { num: "01", text: "We'll respond within 48 hours to learn more about your day." },
+                { num: "02", text: "We'll schedule a complimentary discovery call — relaxed, no pressure." },
+                { num: "03", text: "If we're a fit, we'll send a custom proposal tailored to you." },
+                { num: "04", text: "We begin planning your beautiful, stress-free wedding day." },
+              ].map((item, i) => (
                 <motion.div
-                  key={item.step}
-                  initial={{ opacity: 0, y: 16 }}
+                  key={item.num}
+                  initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  className="text-center"
+                  transition={{ delay: i * 0.08, duration: 0.5 }}
+                  className="flex items-baseline gap-4 md:gap-6 py-4 border-t border-border/40"
                 >
-                  <item.icon size={24} strokeWidth={1} className="text-primary mx-auto mb-3" />
-                  <p className="font-serif-wedding text-2xl font-light text-primary/30 mb-1">{item.step}</p>
-                  <p className="font-sans-wedding text-xs text-muted-foreground leading-relaxed">{item.text}</p>
+                  <span className="font-serif-wedding text-lg text-primary/25 shrink-0">{item.num}</span>
+                  <p className="font-sans-wedding text-body-sm text-muted-foreground font-light">{item.text}</p>
                 </motion.div>
               ))}
+              <div className="border-t border-border/40" />
             </div>
           </ScrollReveal>
         </div>
@@ -287,8 +288,14 @@ const Inquire = () => {
                   </div>
                 </ImageReveal>
                 <div className="mt-6">
-                  <hr className="editorial-rule mb-4" />
-                  <p className="font-serif-wedding text-lg italic text-muted-foreground leading-relaxed">
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="w-10 h-px bg-primary/20 mb-4 origin-left"
+                  />
+                  <p className="font-serif-wedding text-lg italic text-muted-foreground/60 leading-relaxed">
                     "Every great wedding starts with a simple conversation."
                   </p>
                 </div>
@@ -297,7 +304,6 @@ const Inquire = () => {
 
             {/* Form column */}
             <div className="lg:col-span-3">
-          {/* Accessible error summary */}
           <div ref={errorSummaryRef} aria-live="polite" className="sr-only">
             {Object.keys(errors).length > 0 && (
               <p>
@@ -382,7 +388,7 @@ const Inquire = () => {
                 >
                   Send Inquiry
                 </motion.button>
-                <p className="font-sans-wedding text-xs text-muted-foreground mt-4">
+                <p className="font-sans-wedding text-xs text-muted-foreground/50 mt-4">
                   We respond to every inquiry within 48 hours.
                 </p>
               </div>
@@ -392,7 +398,6 @@ const Inquire = () => {
           </div>
         </div>
       </section>
-
       <Footer />
     </main>
   );

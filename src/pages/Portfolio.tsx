@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import PreFooterDivider from "@/components/wedding/PreFooterDivider";
-import { useRef } from "react";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
@@ -55,7 +54,7 @@ const Portfolio = () => {
     <main id="main-content">
       <Navigation variant="overlay" />
 
-      {/* Cinematic Hero with parallax */}
+      {/* Cinematic Hero */}
       <section ref={heroRef} className="relative h-[70vh] md:h-[80vh] overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
           <img
@@ -73,13 +72,13 @@ const Portfolio = () => {
           style={{ opacity: heroOpacity }}
         >
           <ScrollReveal>
-            <p className="font-overline text-white/60 mb-4">
+            <p className="font-overline text-white/50 mb-4">
               Our Work
             </p>
             <h1 className="font-serif-wedding text-display-xl text-white mb-6">
               Real Weddings
             </h1>
-            <p className="font-sans-wedding text-body-sm text-white/70 leading-relaxed max-w-xl mx-auto font-light">
+            <p className="font-sans-wedding text-body-sm text-white/60 leading-relaxed max-w-xl mx-auto font-light">
               Every wedding tells a unique story. Here are some of the moments
               we've had the privilege of helping create.
             </p>
@@ -87,20 +86,27 @@ const Portfolio = () => {
         </motion.div>
       </section>
 
-      {/* Filter Tabs */}
-      <section className="py-8 bg-background border-b border-border sticky top-[72px] z-30">
-        <div className="container mx-auto px-6 lg:px-8 flex justify-center gap-2 flex-wrap">
+      {/* Filter Tabs — refined */}
+      <section className="py-6 md:py-8 bg-background border-b border-border/60 sticky top-[72px] z-30">
+        <div className="container mx-auto px-6 lg:px-8 flex justify-center gap-1 flex-wrap">
           {filters.map((f) => (
             <button
               key={f}
               onClick={() => setActive(f)}
-              className={`font-sans-wedding text-xs tracking-[0.15em] uppercase px-6 py-2.5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 ${
+              className={`relative font-sans-wedding text-xs tracking-[0.15em] uppercase px-5 py-2.5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 ${
                 active === f
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  ? "text-foreground"
+                  : "text-muted-foreground/50 hover:text-foreground"
               }`}
             >
               {f}
+              {active === f && (
+                <motion.div
+                  layoutId="portfolio-filter"
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-px bg-primary"
+                  transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                />
+              )}
             </button>
           ))}
         </div>
@@ -146,22 +152,27 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Testimonial pull-quote */}
-      <section className="py-section-mobile md:py-section-tablet bg-sage-mist">
+      {/* Testimonial */}
+      <section className="py-20 md:py-28 bg-sage-deep">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <hr className="editorial-rule mx-auto mb-10" />
-            <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-8">
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="w-12 h-px bg-primary-foreground/20 mx-auto mb-10 origin-center"
+            />
+            <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">
               "Working with Hickory & Rose was the best decision we made. Every
               detail felt intentional, every moment felt protected."
             </blockquote>
-            <p className="font-sans-wedding text-body-sm font-light text-foreground">
+            <p className="font-sans-wedding text-body-sm font-light text-primary-foreground/60">
               Emma & James
             </p>
-            <p className="font-sans-wedding text-xs text-muted-foreground mt-1">
+            <p className="font-sans-wedding text-xs text-primary-foreground/30 mt-1">
               The Glass House, Autumn 2024
             </p>
-            <hr className="editorial-rule mx-auto mt-10" />
           </ScrollReveal>
         </div>
       </section>

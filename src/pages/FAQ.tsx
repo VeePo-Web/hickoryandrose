@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { setPageMeta } from "@/lib/seo";
+import { motion } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Footer from "@/components/wedding/Footer";
@@ -84,18 +85,11 @@ const FAQ = () => {
     <main id="main-content">
       <Navigation variant="solid" />
 
-      <section className="relative bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]" aria-hidden="true">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
-        </div>
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
+      {/* Hero — clean, no dot pattern */}
+      <section className="bg-background pt-32 pb-20 md:pb-28">
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-10 h-px bg-primary/30" />
-              <span className="font-script text-lg text-primary/40">H & R</span>
-              <span className="w-10 h-px bg-primary/30" />
-            </div>
-            <p className="font-overline text-muted-foreground mb-4">
+            <p className="font-overline text-muted-foreground/50 mb-4">
               Common Questions
             </p>
             <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
@@ -105,11 +99,18 @@ const FAQ = () => {
               We know choosing a wedding planner is a big decision. Here are
               answers to the questions we hear most often.
             </p>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="w-16 h-px bg-primary/30 mx-auto mt-10 origin-center"
+            />
           </ScrollReveal>
         </div>
       </section>
 
-      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
           {faqCategories.map((category, catIndex) => (
             <ScrollReveal key={category.category} delay={catIndex * 0.08}>
@@ -122,7 +123,7 @@ const FAQ = () => {
                     <AccordionItem
                       key={index}
                       value={`${catIndex}-${index}`}
-                      className="border-border"
+                      className="border-border/60"
                     >
                       <AccordionTrigger className="font-sans-wedding text-body-sm text-foreground text-left hover:text-primary hover:no-underline py-5 font-light">
                         {faq.q}
@@ -146,30 +147,33 @@ const FAQ = () => {
         height="h-[35vh] md:h-[45vh]"
       />
 
-      {/* Brand-aligned quote + CTA */}
-      <section className="py-section-mobile md:py-section-tablet bg-sage-mist">
+      {/* Quote */}
+      <section className="py-20 md:py-28 bg-sage-deep">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <hr className="editorial-rule mx-auto mb-10" />
-            <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-6">
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="w-12 h-px bg-primary-foreground/20 mx-auto mb-10 origin-center"
+            />
+            <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">
               "No question is too small. We're here to make every part of
               the process feel clear, calm, and cared for."
             </blockquote>
-            <div className="flex items-center justify-center gap-4 mb-10">
-              <span className="w-8 h-px bg-primary/30" />
-              <span className="font-script text-xl text-primary/60">Hickory & Rose</span>
-              <span className="w-8 h-px bg-primary/30" />
-            </div>
-            <hr className="editorial-rule mx-auto" />
+            <span className="font-script text-xl text-primary-foreground/35">
+              Hickory & Rose
+            </span>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Still have questions — merged CTA */}
-      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
+      {/* Still have questions */}
+      <section className="py-section-mobile md:py-section-tablet bg-background">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <p className="font-overline text-muted-foreground mb-4">Still Curious?</p>
+            <p className="font-overline text-muted-foreground/50 mb-4">Still Curious?</p>
             <h3 className="font-serif-wedding text-display-lg text-foreground mb-4">
               We'd love to hear from you.
             </h3>

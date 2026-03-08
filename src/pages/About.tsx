@@ -8,7 +8,6 @@ import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import ImageReveal from "@/components/wedding/ImageReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
-import BranchDecoration from "@/components/wedding/BranchDecoration";
 import MagneticButton from "@/components/wedding/MagneticButton";
 import founderImage from "@/assets/founder-portrait.jpg";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
@@ -52,21 +51,11 @@ const About = () => {
     <main id="main-content">
       <Navigation variant="solid" />
 
-      {/* Editorial Hero with image */}
-      <section className="relative bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet overflow-hidden">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" aria-hidden="true">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
-        </div>
-
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
+      {/* Hero — unique editorial treatment */}
+      <section className="bg-background pt-32 pb-20 md:pb-28">
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-10 h-px bg-primary/30" />
-              <span className="font-script text-lg text-primary/40">H & R</span>
-              <span className="w-10 h-px bg-primary/30" />
-            </div>
-            <p className="font-overline text-muted-foreground mb-4">
+            <p className="font-overline text-muted-foreground/50 mb-4">
               About Us
             </p>
             <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
@@ -76,15 +65,20 @@ const About = () => {
               Refined rustic elegance, rooted in calm leadership and genuine care
               for every couple we serve.
             </p>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="w-16 h-px bg-primary/30 mx-auto mt-10 origin-center"
+            />
           </ScrollReveal>
         </div>
       </section>
 
       {/* Founder Story */}
-      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden">
-        <BranchDecoration className="absolute -right-8 top-12 hidden lg:block" />
-
-        <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <ScrollReveal>
               <ImageReveal direction="left" delay={0.1}>
@@ -132,19 +126,22 @@ const About = () => {
       </section>
 
       {/* Signature Quote */}
-      <section className="py-16 md:py-24 bg-sage-mist">
+      <section className="py-20 md:py-28 bg-sage-deep">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <hr className="editorial-rule mx-auto mb-10" />
-            <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-6">
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="w-12 h-px bg-primary-foreground/20 mx-auto mb-10 origin-center"
+            />
+            <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">
               "We don't just plan weddings — we protect the feeling of your day."
             </blockquote>
-            <div className="flex items-center justify-center gap-4">
-              <span className="w-8 h-px bg-primary/30" />
-              <span className="font-script text-xl text-primary/60">Hickory & Rose</span>
-              <span className="w-8 h-px bg-primary/30" />
-            </div>
-            <hr className="editorial-rule mx-auto mt-10" />
+            <span className="font-script text-xl text-primary-foreground/35">
+              Hickory & Rose
+            </span>
           </ScrollReveal>
         </div>
       </section>
@@ -155,14 +152,12 @@ const About = () => {
         height="h-[35vh] md:h-[45vh]"
       />
 
-      {/* Values */}
-      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card relative overflow-hidden">
-        <BranchDecoration className="absolute -left-8 bottom-8 hidden lg:block" flip />
-
-        <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative">
+      {/* Values — horizontal ruled rows */}
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           <ScrollReveal>
-            <div className="text-center mb-12">
-              <p className="font-overline text-muted-foreground mb-4">
+            <div className="text-center mb-16">
+              <p className="font-overline text-muted-foreground/50 mb-4">
                 Our Values
               </p>
               <h2 className="font-serif-wedding text-display-lg text-foreground">
@@ -170,30 +165,39 @@ const About = () => {
               </h2>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="space-y-0">
             {values.map((value, index) => (
-              <ScrollReveal key={value.title} delay={index * 0.1}>
-                <div className="text-center group">
-                  <hr className="editorial-rule mx-auto mb-6" />
-                  <h3 className="font-serif-wedding text-display-md text-foreground mb-3">
-                    {value.title}
-                  </h3>
-                  <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
-                    {value.description}
-                  </p>
+              <ScrollReveal key={value.title} delay={index * 0.08}>
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline py-10 border-t border-border/60 group">
+                  <div className="md:col-span-1">
+                    <span className="font-serif-wedding text-4xl font-light text-primary/15 group-hover:text-primary/30 transition-colors duration-700">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="md:col-span-4">
+                    <h3 className="font-serif-wedding text-display-md text-foreground group-hover:text-primary transition-colors duration-500">
+                      {value.title}
+                    </h3>
+                  </div>
+                  <div className="md:col-span-7">
+                    <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
+                      {value.description}
+                    </p>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
+            <div className="border-t border-border/60" />
           </div>
         </div>
       </section>
 
-      {/* Journey Timeline — Cinematic */}
-      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
+      {/* Journey — horizontal ruled rows instead of timeline dots */}
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           <ScrollReveal>
-            <div className="text-center mb-12 md:mb-16">
-              <p className="font-overline text-muted-foreground mb-4">
+            <div className="text-center mb-16">
+              <p className="font-overline text-muted-foreground/50 mb-4">
                 Our Journey
               </p>
               <h2 className="font-serif-wedding text-display-lg text-foreground">
@@ -202,67 +206,38 @@ const About = () => {
             </div>
           </ScrollReveal>
 
-          <div className="relative">
-            {/* Animated vertical line */}
-            <motion.div
-              className="absolute left-[5px] top-0 bottom-0 w-px bg-primary/20 origin-top"
-              initial={{ scaleY: 0 }}
-              whileInView={{ scaleY: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] as const }}
-            />
-
-            <div className="space-y-0">
-              {milestones.map((milestone, index) => (
-                <ScrollReveal key={milestone.year} delay={index * 0.12}>
-                  <div className="flex items-start gap-6 md:gap-8 pb-10 last:pb-0 group">
-                    <div className="flex flex-col items-center shrink-0 relative">
-                      <motion.div
-                        className="w-3 h-3 rounded-full bg-primary relative z-10"
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: 0.1 + index * 0.12, type: "spring", stiffness: 300 }}
-                      >
-                        <motion.div
-                          className="absolute inset-[-4px] rounded-full border border-primary/30"
-                          initial={{ scale: 0.8, opacity: 0 }}
-                          whileInView={{ scale: 1.5, opacity: [0, 0.5, 0] }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1.2, delay: 0.3 + index * 0.12 }}
-                        />
-                      </motion.div>
-                    </div>
-                    <div className="pb-2">
-                      <p className="font-serif-wedding text-xl font-light text-foreground group-hover:text-primary transition-colors duration-300">
-                        {milestone.year}
-                      </p>
-                      <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
-                        {milestone.event}
-                      </p>
-                    </div>
+          <div className="space-y-0">
+            {milestones.map((milestone, index) => (
+              <ScrollReveal key={milestone.year} delay={index * 0.08}>
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline py-8 border-t border-border/60 group">
+                  <div className="md:col-span-2">
+                    <span className="font-serif-wedding text-2xl font-light text-foreground group-hover:text-primary transition-colors duration-500">
+                      {milestone.year}
+                    </span>
                   </div>
-                </ScrollReveal>
-              ))}
-            </div>
+                  <div className="md:col-span-10">
+                    <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
+                      {milestone.event}
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+            <div className="border-t border-border/60" />
           </div>
         </div>
       </section>
 
       {/* Press & Recognition */}
-      <section className="py-12 md:py-16 bg-card border-t border-border relative overflow-hidden">
-        {/* Subtle dot texture */}
-        <div className="absolute inset-0 opacity-[0.02]" aria-hidden="true">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
-        </div>
-        <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative">
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
           <ScrollReveal>
-            <p className="font-overline text-muted-foreground text-center mb-8">
+            <p className="font-overline text-muted-foreground/40 text-center mb-12">
               Press & Recognition
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div className="flex flex-wrap items-baseline justify-center gap-x-10 md:gap-x-16 gap-y-6">
               {[
-                { publication: "Edmonton Bridal Magazine", note: "Featured Planner, 2024" },
+                { publication: "Edmonton Bridal", note: "Featured Planner, 2024" },
                 { publication: "The Knot", note: "Best of Weddings" },
                 { publication: "Style Me Pretty", note: "Real Wedding Feature" },
                 { publication: "Alberta Weddings", note: "Top 10 Planners" },
@@ -273,11 +248,12 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08, duration: 0.5 }}
+                  className="text-center"
                 >
-                  <p className="font-serif-wedding text-base text-foreground mb-1">
+                  <p className="font-serif-wedding text-xl md:text-2xl font-light text-foreground/25 mb-1">
                     {press.publication}
                   </p>
-                  <p className="font-sans-wedding text-[0.625rem] tracking-[0.12em] uppercase text-muted-foreground/60">
+                  <p className="font-sans-wedding text-[0.625rem] tracking-[0.12em] uppercase text-muted-foreground/40">
                     {press.note}
                   </p>
                 </motion.div>
