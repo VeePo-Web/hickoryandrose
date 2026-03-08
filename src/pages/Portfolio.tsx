@@ -121,7 +121,7 @@ const Portfolio = () => {
       <section className="py-section-mobile md:py-section-tablet bg-sage-mist">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <div className="w-12 h-px bg-primary mx-auto mb-10" />
+            <hr className="editorial-rule mx-auto mb-10" />
             <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-8">
               "Working with Hickory & Rose was the best decision we made. Every
               detail felt intentional, every moment felt protected."
