@@ -44,25 +44,28 @@ const ProcessTeaserSection = () => {
         <div className="space-y-0">
           {steps.map((step, index) => (
             <ScrollReveal key={step.number} delay={index * 0.1}>
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline py-10 md:py-14 border-t border-border/60 group">
-                {/* Number */}
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline py-10 md:py-14 border-t border-border/60 group cursor-default">
+                {/* Number — slides left on hover */}
                 <div className="md:col-span-2">
                   <motion.span
-                    className="font-serif-wedding text-5xl md:text-6xl font-light text-primary/15 group-hover:text-primary/30 transition-colors duration-700"
+                    className="font-serif-wedding text-5xl md:text-6xl font-light text-primary/15 group-hover:text-primary/30 transition-colors duration-700 inline-block group-hover:-translate-x-1.5 transform-gpu"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.1 + index * 0.1 }}
+                    style={{ transition: "color 700ms, transform 500ms cubic-bezier(0.25, 0.1, 0.25, 1)" }}
                   >
                     {step.number}
                   </motion.span>
                 </div>
 
-                {/* Title */}
-                <div className="md:col-span-3">
+                {/* Title with expanding accent line */}
+                <div className="md:col-span-3 relative">
                   <h3 className="font-serif-wedding text-display-md text-foreground group-hover:text-primary transition-colors duration-500">
                     {step.title}
                   </h3>
+                  {/* Expanding accent line on hover */}
+                  <div className="mt-2 h-px bg-primary/40 w-0 group-hover:w-full transition-all duration-700 ease-out origin-left" />
                 </div>
 
                 {/* Description */}

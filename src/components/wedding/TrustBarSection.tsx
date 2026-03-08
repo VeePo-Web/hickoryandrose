@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 
 const publications = [
-  { name: "Edmonton Bridal", emphasis: "Bridal" },
-  { name: "Wedding Bells", emphasis: "Bells" },
-  { name: "Style Me Pretty", emphasis: "Pretty" },
-  { name: "Alberta Weddings", emphasis: "Weddings" },
-  { name: "The Knot", emphasis: "Knot" },
+  "Edmonton Bridal",
+  "Wedding Bells",
+  "Style Me Pretty",
+  "Alberta Weddings",
+  "The Knot",
 ];
 
 const TrustBarSection = () => {
@@ -22,10 +22,11 @@ const TrustBarSection = () => {
           As Featured In
         </motion.p>
 
-        <div className="flex flex-wrap items-baseline justify-center gap-x-10 md:gap-x-16 gap-y-6">
+        {/* Editorial ruled list */}
+        <div className="max-w-3xl mx-auto">
           {publications.map((pub, index) => (
             <motion.div
-              key={pub.name}
+              key={pub}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -34,24 +35,20 @@ const TrustBarSection = () => {
                 delay: index * 0.08,
                 ease: [0.25, 0.1, 0.25, 1],
               }}
-              className="group cursor-default"
+              className="group"
             >
-              <span className="font-serif-wedding text-xl md:text-2xl lg:text-3xl font-light text-foreground/20 group-hover:text-foreground/40 transition-colors duration-500 tracking-tight">
-                {pub.name.split(pub.emphasis).map((part, i, arr) =>
-                  i < arr.length - 1 ? (
-                    <span key={i}>
-                      {part}
-                      <span className="font-script text-2xl md:text-3xl lg:text-4xl">
-                        {pub.emphasis}
-                      </span>
-                    </span>
-                  ) : (
-                    <span key={i}>{part}</span>
-                  )
-                )}
-              </span>
+              <div className="border-t border-border/40 group-first:border-t-0" />
+              <div className="flex items-center justify-between py-5 md:py-6 cursor-default">
+                <span className="font-serif-wedding text-lg md:text-xl lg:text-2xl font-light text-foreground/25 group-hover:text-foreground/50 transition-colors duration-500 tracking-tight">
+                  {pub}
+                </span>
+                <span className="font-overline text-muted-foreground/20 text-[0.6rem]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+              </div>
             </motion.div>
           ))}
+          <div className="border-t border-border/40" />
         </div>
 
         {/* Subtle divider */}
