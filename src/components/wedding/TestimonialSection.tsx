@@ -108,7 +108,16 @@ const TestimonialSection = () => {
                 </p>
               </div>
 
-              <div className="min-h-[260px] md:min-h-[240px] relative">
+              <div className="min-h-[280px] md:min-h-[260px] relative">
+                {/* Ambient gold glow behind quote */}
+                <motion.div
+                  className="absolute -top-8 -left-8 w-40 h-40 pointer-events-none"
+                  style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.06), transparent 70%)" }}
+                  animate={{ opacity: [0.4, 0.8, 0.4], scale: [0.95, 1.05, 0.95] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  aria-hidden="true"
+                />
+
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeIndex}
@@ -118,22 +127,49 @@ const TestimonialSection = () => {
                     transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] }}
                   >
                      <motion.span
-                       className="font-serif-wedding text-6xl text-gold/[0.12] leading-none block -mb-6"
+                       className="font-serif-wedding text-6xl leading-none block -mb-6 relative"
+                       style={{ color: "hsl(var(--gold) / 0.12)" }}
                        aria-hidden="true"
                        animate={{ opacity: [0.08, 0.15, 0.08] }}
                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                      >"</motion.span>
                     
-                    <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-8">
+                    <blockquote className="font-serif-wedding text-pull-quote italic text-foreground leading-relaxed mb-6">
                       {active.quote}
                     </blockquote>
+
+                    {/* Diamond ornament separator */}
+                    <div className="flex items-center gap-3 mb-6">
+                      <motion.span
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ duration: 0.6, delay: 0.15 }}
+                        className="w-8 h-px origin-left"
+                        style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.25), transparent)" }}
+                      />
+                      <motion.span
+                        initial={{ scale: 0, rotate: 0 }}
+                        animate={{ scale: 1, rotate: 45 }}
+                        transition={{ duration: 0.3, delay: 0.3 }}
+                        className="w-1.5 h-1.5 shrink-0"
+                        style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.45), hsl(var(--gold) / 0.1))" }}
+                      />
+                      <motion.span
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ duration: 0.6, delay: 0.15 }}
+                        className="w-8 h-px origin-right"
+                        style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.25), transparent)" }}
+                      />
+                    </div>
 
                     <div className="flex items-start gap-4">
                       <motion.div
                         initial={{ scaleY: 0 }}
                         animate={{ scaleY: 1 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="w-px h-12 bg-primary/25 origin-top mt-1"
+                        className="w-px h-12 origin-top mt-1"
+                        style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), hsl(var(--primary) / 0.1))" }}
                       />
                       <div className="font-sans-wedding">
                         <p className="text-body-sm font-medium text-foreground tracking-wide">
