@@ -21,6 +21,7 @@ const FullWidthImage = ({
   index,
 }: FullWidthImageProps) => {
   const ref = useRef<HTMLElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -31,7 +32,24 @@ const FullWidthImage = ({
   const captionOpacity = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [0, 1, 0.6]);
 
   return (
-    <section ref={ref} className={`w-full overflow-hidden ${height} relative group`}>
+    <section
+      ref={ref}
+      className={`w-full overflow-hidden ${height} relative group`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Cinematic letterbox bars on hover */}
+      <motion.div
+        className="absolute top-0 left-0 right-0 bg-foreground z-30 pointer-events-none"
+        animate={{ height: isHovered ? "5%" : "0%" }}
+        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+      />
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 bg-foreground z-30 pointer-events-none"
+        animate={{ height: isHovered ? "5%" : "0%" }}
+        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+      />
+
       {/* Top and bottom fade blending edges */}
       <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
       <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
@@ -41,7 +59,12 @@ const FullWidthImage = ({
           src={src}
           alt={alt}
           style={{ y }}
-          className="w-full h-[120%] object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-[1.02]"
+          className="w-full h-[120%] object-cover"
+          animate={{
+            scale: isHovered ? 1.04 : 1,
+            filter: isHovered ? "brightness(0.92) saturate(1.1)" : "brightness(1) saturate(1)",
+          }}
+          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
           loading="lazy"
           decoding="async"
           width={1920}
