@@ -255,6 +255,33 @@ const Journal = () => {
         />
       </div>
 
+      {/* Category Filter Tabs — editorial gold accent */}
+      <section className="py-5 md:py-6 bg-background border-b border-border/30 sticky top-[72px] z-30">
+        <div className="container mx-auto px-6 lg:px-8 flex justify-center gap-0 overflow-x-auto">
+          {journalFilters.map((f) => (
+            <button
+              key={f}
+              onClick={() => setActiveFilter(f)}
+              className={`relative font-sans-wedding text-xs tracking-[0.15em] uppercase px-4 md:px-6 py-2.5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 whitespace-nowrap ${
+                activeFilter === f
+                  ? "text-foreground"
+                  : "text-muted-foreground/40 hover:text-muted-foreground"
+              }`}
+            >
+              {f}
+              {activeFilter === f && (
+                <motion.div
+                  layoutId="journal-filter"
+                  className="absolute bottom-0 left-0 w-full h-px origin-left"
+                  style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold)), transparent)" }}
+                  transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                />
+              )}
+            </button>
+          ))}
+        </div>
+      </section>
+
       {/* Article Grid */}
       <section className="py-section-mobile md:py-section-tablet bg-background relative overflow-hidden">
         {/* Watermark */}
