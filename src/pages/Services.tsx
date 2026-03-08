@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import MagneticButton from "@/components/wedding/MagneticButton";
 import servicePlanningImage from "@/assets/service-planning.jpg";
 import serviceStationeryImage from "@/assets/service-stationery.jpg";
+import serviceFullserviceImage from "@/assets/service-fullservice.jpg";
 
 const serviceTiers = [
   {
