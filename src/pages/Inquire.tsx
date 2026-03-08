@@ -460,15 +460,17 @@ const Inquire = () => {
         <label htmlFor="message" className="font-overline text-muted-foreground mb-2 block">
           Tell Us About Your Vision
         </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={5}
-          value={formData.message}
-          onChange={(e) => set("message", e.target.value)}
-          className={`${inputCls("message")} resize-none border rounded-none`}
-          placeholder="What does your dream wedding look like? What's most important to you?"
-        />
+        <InputWrapper>
+          <textarea
+            id="message"
+            name="message"
+            rows={5}
+            value={formData.message}
+            onChange={(e) => set("message", e.target.value)}
+            className={`${inputCls("message")} resize-none border rounded-none`}
+            placeholder="What does your dream wedding look like? What's most important to you?"
+          />
+        </InputWrapper>
       </div>
 
       {/* Summary preview */}
