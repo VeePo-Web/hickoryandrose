@@ -82,9 +82,15 @@ const PreFooterDivider = () => {
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 via-transparent to-transparent" />
-              {/* Corner accents */}
-              <div className="absolute top-3 left-3 w-5 h-5 border-t border-l border-primary/15" />
-              <div className="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-primary/15" />
+              {/* Gold gradient corner accents */}
+              <div className="absolute top-3 left-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), transparent)" }} />
+              </div>
+              <div className="absolute bottom-3 right-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
+              </div>
             </div>
           </motion.div>
 
@@ -100,15 +106,24 @@ const PreFooterDivider = () => {
                 }}
               />
 
-              {/* Section ornament */}
-              <motion.span
-                className="w-4 h-4 rotate-45 block mb-4 mx-auto"
-                style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              />
+              {/* Section ornament with ambient gold glow */}
+              <div className="relative inline-block mb-4 mx-auto">
+                <motion.div
+                  className="absolute -inset-6 pointer-events-none"
+                  style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.08), transparent 70%)" }}
+                  animate={{ opacity: [0.3, 0.7, 0.3], scale: [0.9, 1.1, 0.9] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  aria-hidden="true"
+                />
+                <motion.span
+                  className="w-4 h-4 rotate-45 block relative"
+                  style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))" }}
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                />
+              </div>
 
               <p className="font-overline text-muted-foreground/35 mb-6">
                 Limited Availability

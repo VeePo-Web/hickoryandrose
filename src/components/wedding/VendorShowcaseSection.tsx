@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
@@ -13,6 +13,7 @@ const vendors = [
 
 const VendorShowcaseSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -87,13 +88,23 @@ const VendorShowcaseSection = () => {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
               className="group cursor-default"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Top rule with gold shimmer */}
               <div className="h-px bg-border/30 relative overflow-hidden">
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(var(--gold)_/_0.15)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
               </div>
 
-              <div className="grid grid-cols-12 items-center py-7 md:py-10 hover:bg-primary/[0.015] transition-colors duration-500 -mx-3 px-3">
+              <div className="grid grid-cols-12 items-center py-7 md:py-10 hover:bg-primary/[0.015] transition-colors duration-500 -mx-3 px-3 relative">
+                {/* Gold left-border reveal on hover */}
+                <motion.div
+                  className="absolute left-0 top-0 bottom-0 w-[2px] origin-top"
+                  style={{ background: "linear-gradient(180deg, hsl(var(--gold)), hsl(var(--primary) / 0.3))" }}
+                  initial={{ scaleY: 0 }}
+                  animate={{ scaleY: hoveredIndex === index ? 1 : 0 }}
+                  transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                />
                 {/* Index */}
                 <div className="col-span-2 md:col-span-1">
                   <span className="font-serif-wedding text-xs text-primary/15 tabular-nums group-hover:text-primary/30 transition-colors duration-500">
@@ -126,7 +137,16 @@ const VendorShowcaseSection = () => {
 
                 {/* Note + arrow */}
                 <div className="col-span-5 md:col-span-4 flex items-center justify-end gap-4">
-                  <span className="font-serif-wedding text-xs italic text-primary/20 group-hover:text-primary/40 transition-colors duration-500 hidden md:inline">
+                  <span
+                    className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/0 group-hover:text-primary/50 transition-all duration-500 hidden md:inline-flex items-center gap-1.5 backdrop-blur-sm px-2.5 py-1 border border-transparent group-hover:border-primary/10"
+                    style={hoveredIndex === index ? { background: "linear-gradient(135deg, hsl(var(--gold) / 0.06), hsl(var(--primary) / 0.04))" } : undefined}
+                  >
+                    <motion.span
+                      className="w-1 h-1 rounded-full shrink-0"
+                      style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.6), hsl(var(--gold) / 0.15))" }}
+                      animate={hoveredIndex === index ? { opacity: [0.4, 1, 0.4] } : { opacity: 0 }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    />
                     {vendor.note}
                   </span>
                   <span className="font-sans-wedding text-sm text-muted-foreground/0 group-hover:text-muted-foreground/25 transition-all duration-500 translate-x-0 group-hover:translate-x-1">
