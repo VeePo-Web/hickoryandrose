@@ -47,11 +47,23 @@ const Footer = () => {
             background: "radial-gradient(circle, hsl(var(--gold, 38 60% 55%) / 0.04), transparent 70%)",
           }}
         />
-        <span className="font-serif-wedding text-[12rem] xl:text-[16rem] font-light text-background/[0.02] leading-none tracking-tight relative">
-          H
-        </span>
-        <span className="font-script text-[10rem] xl:text-[14rem] text-background/[0.015] leading-none -ml-8 relative">
-          R
+        <span className="relative overflow-hidden inline-block">
+          <span className="font-serif-wedding text-[12rem] xl:text-[16rem] font-light text-background/[0.02] leading-none tracking-tight relative">
+            H
+          </span>
+          <span className="font-script text-[10rem] xl:text-[14rem] text-background/[0.015] leading-none -ml-8 relative">
+            R
+          </span>
+          <motion.span
+            className="absolute inset-0 pointer-events-none"
+            initial={{ x: "-100%" }}
+            whileInView={{ x: "200%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.4, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{
+              background: "linear-gradient(110deg, transparent 20%, hsl(var(--gold) / 0.15) 45%, hsl(var(--gold) / 0.3) 50%, hsl(var(--gold) / 0.15) 55%, transparent 80%)",
+            }}
+          />
         </span>
       </motion.div>
 
