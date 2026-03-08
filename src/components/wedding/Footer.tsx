@@ -87,7 +87,7 @@ const Footer = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <p className="font-sans-wedding text-label uppercase text-background/40 mb-4">
+            <p className="font-overline text-background/40 mb-5">
               Explore
             </p>
             <ul className="space-y-2">
