@@ -239,6 +239,26 @@ html.lenis, html.lenis body {
     -webkit-text-fill-color: transparent;
     animation: shimmer-gold 4s ease-in-out infinite;
   }
+
+  /* Gold underline focus effect for Inquire form inputs */
+  .input-gold-focus {
+    position: relative;
+  }
+  .input-gold-focus::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--gold)), hsl(var(--primary)));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .input-gold-focus:focus-within::after {
+    transform: scaleX(1);
+  }
 }
 
 /* Reduced motion */

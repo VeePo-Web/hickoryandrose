@@ -34,8 +34,8 @@ const serviceTiers = [
     ],
     idealFor:
       "Couples who enjoy planning but want a professional to execute flawlessly.",
-    image: servicePlanningImage,
-    imageAlt: "Wedding planner reviewing a detailed timeline at her desk with a floral mood board",
+    image: serviceDayofImage,
+    imageAlt: "Wedding planner leading a ceremony rehearsal at golden hour with an ivory floral arch",
   },
   {
     id: "partial",
