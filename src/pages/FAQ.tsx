@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Footer from "@/components/wedding/Footer";
@@ -10,6 +10,8 @@ import FullWidthImage from "@/components/wedding/FullWidthImage";
 import MagneticButton from "@/components/wedding/MagneticButton";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
+import FAQImageMosaic from "@/components/wedding/FAQImageMosaic";
+import FAQTestimonialCarousel from "@/components/wedding/FAQTestimonialCarousel";
 import faqEditorialImage from "@/assets/faq-editorial.jpg";
 import faqHeroImage from "@/assets/faq-hero.jpg";
 import {
@@ -21,8 +23,7 @@ import {
 
 const faqCategories = [
   {
-    category: "Services & Planning",
-    index: "01",
+    category: "Services & Planning", index: "01",
     questions: [
       { q: "What's the difference between Day-Of Coordination and Full-Service Planning?", a: "Day-Of Coordination is designed for couples who have done the planning themselves and need a professional to execute their vision flawlessly on the wedding day. Full-Service Planning means we're with you from the very beginning — handling design, vendor sourcing, budgeting, logistics, and everything in between, so you can simply enjoy the journey." },
       { q: "How far in advance should I book?", a: "We recommend reaching out 10-14 months before your wedding for Full-Service Planning, and at least 3-4 months for Day-Of Coordination. That said, we're always happy to chat — even if your timeline is tighter, we may be able to help." },
@@ -31,8 +32,7 @@ const faqCategories = [
     ],
   },
   {
-    category: "Process & Communication",
-    index: "02",
+    category: "Process & Communication", index: "02",
     questions: [
       { q: "What does the discovery call look like?", a: "It's a relaxed, 30-minute video or phone call where we learn about your vision, your priorities, and how you want to feel on your wedding day. There's absolutely no pressure — it's simply a conversation to see if we're the right fit." },
       { q: "How do you communicate throughout the planning process?", a: "We use a combination of email, a shared planning portal, and scheduled check-in calls. You'll always know what's happening, what's coming next, and what needs your attention — without ever feeling overwhelmed." },
@@ -40,8 +40,7 @@ const faqCategories = [
     ],
   },
   {
-    category: "Investment & Logistics",
-    index: "03",
+    category: "Investment & Logistics", index: "03",
     questions: [
       { q: "What is the investment range for your services?", a: "Day-Of Coordination starts at $2,500, Partial Planning at $5,000, and Full-Service Planning at $8,500. Every proposal is customized based on your unique needs, guest count, and event complexity." },
       { q: "Do you offer payment plans?", a: "Yes, we offer flexible payment plans spread across the planning timeline. A retainer is required upon booking, with remaining payments due at agreed-upon milestones." },
@@ -58,58 +57,24 @@ const testimonials = [
 ];
 
 const faqSchemaItems = faqCategories.flatMap((cat) =>
-  cat.questions.map((faq) => ({
-    "@type": "Question" as const,
-    name: faq.q,
-    acceptedAnswer: {
-      "@type": "Answer" as const,
-      text: faq.a,
-    },
-  }))
+  cat.questions.map((faq) => ({ "@type": "Question" as const, name: faq.q, acceptedAnswer: { "@type": "Answer" as const, text: faq.a } }))
 );
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqSchemaItems,
-};
+const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqSchemaItems };
 
 const FAQ = () => {
   const heroRef = useRef<HTMLElement>(null);
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  const advanceTestimonial = useCallback(() => {
-    setActiveTestimonial((i) => (i + 1) % testimonials.length);
-  }, []);
-
   useEffect(() => {
-    const timer = setInterval(advanceTestimonial, 5000);
-    return () => clearInterval(timer);
-  }, [advanceTestimonial]);
-
-  useEffect(() => {
-    setPageMeta({
-      title: "FAQ — Frequently Asked Questions | Hickory & Rose Wedding Planner",
-      description: "Answers to common questions about Hickory & Rose wedding planning services, pricing, process, and coverage areas. Serving Edmonton, the Alberta Rockies, and beyond.",
-      path: "/faq",
-    });
-
+    setPageMeta({ title: "FAQ — Frequently Asked Questions | Hickory & Rose Wedding Planner", description: "Answers to common questions about Hickory & Rose wedding planning services, pricing, process, and coverage areas. Serving Edmonton, the Alberta Rockies, and beyond.", path: "/faq" });
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.textContent = JSON.stringify(faqSchema);
     script.id = "faq-schema";
     document.head.appendChild(script);
-    return () => {
-      const el = document.getElementById("faq-schema");
-      if (el) el.remove();
-    };
+    return () => { const el = document.getElementById("faq-schema"); if (el) el.remove(); };
   }, []);
 
   return (
@@ -119,69 +84,28 @@ const FAQ = () => {
       {/* Cinematic Parallax Hero */}
       <section ref={heroRef} className="relative h-[55vh] md:h-[65vh] overflow-hidden grain-overlay vignette">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <img
-            src={faqHeroImage}
-            alt="Luxury wedding stationery with sage envelope, gold wax seal, and calligraphy on linen"
-            className="w-full h-[120%] object-cover"
-            loading="eager"
-            fetchPriority="high"
-          />
+          <img src={faqHeroImage} alt="Luxury wedding stationery with sage envelope, gold wax seal, and calligraphy on linen" className="w-full h-[120%] object-cover" loading="eager" fetchPriority="high" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/15 to-black/55" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/10" />
         </motion.div>
-
-        <motion.div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
-          style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "15%"]) }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.03 }}
-          transition={{ duration: 2, delay: 0.5 }}
-        >
-          <span className="font-serif-wedding text-[14rem] md:text-[22rem] text-white leading-none tracking-tight whitespace-nowrap">
-            FAQ
-          </span>
+        <motion.div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "15%"]) }} initial={{ opacity: 0 }} animate={{ opacity: 0.03 }} transition={{ duration: 2, delay: 0.5 }}>
+          <span className="font-serif-wedding text-[14rem] md:text-[22rem] text-white leading-none tracking-tight whitespace-nowrap">FAQ</span>
         </motion.div>
-
-        <motion.div
-          className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6"
-          style={{ opacity: heroOpacity }}
-        >
+        <motion.div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6" style={{ opacity: heroOpacity }}>
           <ScrollReveal>
             <p className="font-sans-wedding text-label uppercase text-white/50 mb-4">
               <span className="inline-flex items-center gap-3">
-                <motion.span
-                  className="w-8 h-px bg-white/30 origin-right"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                />
+                <motion.span className="w-8 h-px bg-white/30 origin-right" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.8, delay: 0.5 }} />
                 Common Questions
-                <motion.span
-                  className="w-8 h-px bg-white/30 origin-left"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                />
+                <motion.span className="w-8 h-px bg-white/30 origin-left" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.8, delay: 0.5 }} />
               </span>
             </p>
-            <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">
-              Frequently Asked Questions
-            </h1>
-            <p className="font-sans-wedding text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto font-light">
-              We know choosing a wedding planner is a big decision. Here are
-              answers to the questions we hear most often.
-            </p>
+            <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">Frequently Asked Questions</h1>
+            <p className="font-sans-wedding text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto font-light">We know choosing a wedding planner is a big decision. Here are answers to the questions we hear most often.</p>
           </ScrollReveal>
         </motion.div>
-
         <GoldFrame inset="20px" delay={1} />
-
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-4 py-3 pointer-events-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.6, duration: 0.8 }}
-        >
+        <motion.div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-4 py-3 pointer-events-none" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6, duration: 0.8 }}>
           {["Transparent Pricing", "Custom Packages", "15–20 Weddings/Year"].map((t, i) => (
             <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/30 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
@@ -189,196 +113,63 @@ const FAQ = () => {
             </span>
           ))}
         </motion.div>
-
-        <motion.span
-          className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/15 tracking-widest z-20"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-        >
-          05
-        </motion.span>
+        <motion.span className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/15 tracking-widest z-20" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 0.6 }}>05</motion.span>
       </section>
 
-      {/* Editorial image mosaic — asymmetric 3-panel break */}
-      <section className="py-10 md:py-14 bg-card">
-        <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
-          <ScrollReveal>
-            <div className="grid grid-cols-12 gap-3 md:gap-4">
-              {/* Large left panel */}
-              <div className="col-span-12 md:col-span-7 relative group overflow-hidden">
-                <div className="aspect-[16/10]">
-                  <img
-                    src={faqEditorialImage}
-                    alt="Gold wedding rings on handwritten calligraphy vows with eucalyptus"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  {/* Gold corner frames */}
-                  <div className="absolute top-3 left-3 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                    <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.35), transparent)" }} />
-                    <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.35), transparent)" }} />
-                  </div>
-                  <div className="absolute bottom-3 right-3 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                    <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.35), transparent)" }} />
-                    <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.35), transparent)" }} />
-                  </div>
-                </div>
-              </div>
-              {/* Right stacked panels */}
-              <div className="col-span-12 md:col-span-5 grid grid-rows-2 gap-3 md:gap-4">
-                <div className="relative group overflow-hidden">
-                  <div className="aspect-[16/9]">
-                    <img
-                      src={faqHeroImage}
-                      alt="Luxury wedding stationery with sage envelope and gold wax seal"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute top-3 left-3 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                      <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
-                      <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), transparent)" }} />
-                    </div>
-                  </div>
-                </div>
-                {/* Quote panel instead of third image */}
-                <div className="relative flex items-center justify-center bg-sage-deep p-6">
-                  <div className="text-center">
-                    <span className="w-1.5 h-1.5 rotate-45 inline-block mb-3" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))" }} />
-                    <p className="font-serif-wedding text-sm md:text-base italic text-primary-foreground/50 leading-relaxed">
-                      "Every detail answered with warmth."
-                    </p>
-                    <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-primary-foreground/20 mt-2">
-                      — Our Promise
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      {/* Editorial image mosaic */}
+      <FAQImageMosaic mainImage={faqEditorialImage} mainAlt="Gold wedding rings on handwritten calligraphy vows with eucalyptus" secondaryImage={faqHeroImage} secondaryAlt="Luxury wedding stationery with sage envelope and gold wax seal" />
 
-      {/* Quick stats bar — trust signal */}
+      {/* Quick stats bar */}
       <section className="py-6 md:py-8 bg-sage-deep border-b border-primary-foreground/[0.06]">
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           <div className="grid grid-cols-3 gap-4 text-center">
-            {[
-              { value: "48hr", label: "Response Time" },
-              { value: "15–20", label: "Weddings Per Year" },
-              { value: "100%", label: "Client Satisfaction" },
-            ].map((stat) => (
+            {[{ value: "48hr", label: "Response Time" }, { value: "15–20", label: "Weddings Per Year" }, { value: "100%", label: "Client Satisfaction" }].map((stat) => (
               <div key={stat.label}>
-                <p className="font-serif-wedding text-lg md:text-xl text-primary-foreground/60 font-light">
-                  {stat.value}
-                </p>
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-primary-foreground/25 mt-1">
-                  {stat.label}
-                </p>
+                <p className="font-serif-wedding text-lg md:text-xl text-primary-foreground/60 font-light">{stat.value}</p>
+                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-primary-foreground/25 mt-1">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ Categories — editorial ruled layout with index numbers */}
+      {/* FAQ Categories */}
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           {faqCategories.map((category, catIndex) => (
             <ScrollReveal key={category.category} delay={catIndex * 0.08}>
               <div className={catIndex > 0 ? "mt-16 md:mt-24" : ""}>
-                {/* Breathing diamond category divider */}
                 {catIndex > 0 && (
                   <div className="flex items-center justify-center gap-4 mb-12 md:mb-16" aria-hidden="true">
-                    <motion.span
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8 }}
-                      className="w-16 h-px origin-right"
-                      style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2))" }}
-                    />
-                    <motion.span
-                      className="w-2 h-2 rotate-45 relative"
-                      style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))" }}
-                      animate={{ opacity: [0.4, 0.8, 0.4], scale: [0.9, 1.15, 0.9] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <span
-                        className="absolute -inset-3 rounded-full pointer-events-none"
-                        style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.15), transparent 70%)" }}
-                      />
-                    </motion.span>
-                    <motion.span
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: 0.1 }}
-                      className="w-16 h-px origin-left"
-                      style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.2), transparent)" }}
-                    />
+                    <motion.span initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-16 h-px origin-right" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2))" }} />
+                    <BreathingDiamond size={8} />
+                    <motion.span initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1 }} className="w-16 h-px origin-left" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.2), transparent)" }} />
                   </div>
                 )}
-
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline mb-8 md:mb-10">
                   <div className="md:col-span-2">
-                    <motion.span
-                      className="font-serif-wedding text-5xl md:text-6xl font-light text-primary/10"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.1 }}
-                    >
-                      {category.index}
-                    </motion.span>
+                    <motion.span className="font-serif-wedding text-5xl md:text-6xl font-light text-primary/10" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>{category.index}</motion.span>
                   </div>
                   <div className="md:col-span-10">
-                    <h2 className="font-serif-wedding text-display-md text-foreground">
-                      {category.category}
-                    </h2>
-                    <motion.div
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: 0.2 }}
-                      className="h-px mt-4 origin-left"
-                      style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08), transparent)" }}
-                    />
+                    <h2 className="font-serif-wedding text-display-md text-foreground">{category.category}</h2>
+                    <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="h-px mt-4 origin-left" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08), transparent)" }} />
                   </div>
                 </div>
-
                 <div className="md:grid md:grid-cols-12 md:gap-8">
                   <div className="md:col-span-2" />
                   <div className="md:col-span-10">
                     <Accordion type="single" collapsible className="w-full">
                       {category.questions.map((faq, index) => (
-                        <AccordionItem
-                          key={index}
-                          value={`${catIndex}-${index}`}
-                          className="border-border/30 group relative overflow-hidden"
-                        >
-                          {/* Gold gradient left-border reveal on expand */}
-                          <div
-                            className="absolute left-0 top-0 bottom-0 w-[2px] opacity-0 group-data-[state=open]:opacity-100 transition-all duration-500 origin-top group-data-[state=open]:scale-y-100 scale-y-0"
-                            style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15), transparent)" }}
-                          />
-                          {/* Gold shimmer sweep on hover */}
-                          <div
-                            className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"
-                            style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.03) 40%, hsl(var(--gold) / 0.06) 50%, hsl(var(--gold) / 0.03) 60%, transparent 100%)" }}
-                          />
+                        <AccordionItem key={index} value={`${catIndex}-${index}`} className="border-border/30 group relative overflow-hidden">
+                          <div className="absolute left-0 top-0 bottom-0 w-[2px] opacity-0 group-data-[state=open]:opacity-100 transition-all duration-500 origin-top group-data-[state=open]:scale-y-100 scale-y-0" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15), transparent)" }} />
+                          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none" style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.03) 40%, hsl(var(--gold) / 0.06) 50%, hsl(var(--gold) / 0.03) 60%, transparent 100%)" }} />
                           <AccordionTrigger className="font-sans-wedding text-body text-foreground text-left hover:text-primary hover:no-underline py-6 font-light gap-4 group/trigger pl-3">
                             <span className="flex items-baseline gap-4">
-                              <span className="font-serif-wedding text-xs shrink-0 tabular-nums transition-colors duration-300 group-data-[state=open]:text-primary/40" style={{ color: "hsl(var(--gold) / 0.25)" }}>
-                                {category.index}.{String(index + 1).padStart(2, "0")}
-                              </span>
+                              <span className="font-serif-wedding text-xs shrink-0 tabular-nums transition-colors duration-300 group-data-[state=open]:text-primary/40" style={{ color: "hsl(var(--gold) / 0.25)" }}>{category.index}.{String(index + 1).padStart(2, "0")}</span>
                               <span>{faq.q}</span>
                             </span>
                           </AccordionTrigger>
-                          <AccordionContent className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed pb-6 pl-[3.25rem] font-light">
-                            {faq.a}
-                          </AccordionContent>
+                          <AccordionContent className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed pb-6 pl-[3.25rem] font-light">{faq.a}</AccordionContent>
                         </AccordionItem>
                       ))}
                     </Accordion>
@@ -390,77 +181,19 @@ const FAQ = () => {
         </div>
       </section>
 
-      {/* Inline testimonial carousel — NEW */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
-          <ScrollReveal>
-            <p className="font-overline text-muted-foreground/40 mb-8">What Couples Say</p>
-            <div className="min-h-[120px] relative">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTestimonial}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                >
-                  <blockquote className="font-serif-wedding text-pull-quote italic text-foreground/70 leading-relaxed mb-6">
-                    "{testimonials[activeTestimonial].quote}"
-                  </blockquote>
-                  <p className="font-sans-wedding text-body-sm font-light text-foreground/50">
-                    {testimonials[activeTestimonial].couple}
-                  </p>
-                  <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/30 mt-1">
-                    {testimonials[activeTestimonial].venue}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-            {/* Progress dots */}
-            <div className="flex justify-center gap-3 mt-8">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveTestimonial(i)}
-                  className="w-8 h-[2px] transition-all duration-500 relative overflow-hidden"
-                  style={{
-                    background: i === activeTestimonial
-                      ? "linear-gradient(90deg, hsl(var(--gold) / 0.6), hsl(var(--gold) / 0.3))"
-                      : "hsl(var(--border) / 0.4)",
-                  }}
-                  aria-label={`View testimonial ${i + 1}`}
-                />
-              ))}
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      {/* Inline testimonial carousel */}
+      <FAQTestimonialCarousel testimonials={testimonials} />
 
       {/* Editorial image break */}
-      <FullWidthImage
-        src={faqEditorialImage}
-        alt="Gold wedding rings on handwritten calligraphy vows with eucalyptus and candlelight"
-        height="h-[35vh] md:h-[45vh]"
-      />
+      <FullWidthImage src={faqEditorialImage} alt="Gold wedding rings on handwritten calligraphy vows with eucalyptus and candlelight" height="h-[35vh] md:h-[45vh]" />
 
       {/* Quote */}
       <section className="py-20 md:py-28 bg-sage-deep">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="w-12 h-px bg-primary-foreground/20 mx-auto mb-10 origin-center"
-            />
-            <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">
-              "No question is too small. We're here to make every part of
-              the process feel clear, calm, and cared for."
-            </blockquote>
-            <span className="font-script text-xl text-primary-foreground/35">
-              Hickory & Rose
-            </span>
+            <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="w-12 h-px bg-primary-foreground/20 mx-auto mb-10 origin-center" />
+            <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">"No question is too small. We're here to make every part of the process feel clear, calm, and cared for."</blockquote>
+            <span className="font-script text-xl text-primary-foreground/35">Hickory & Rose</span>
           </ScrollReveal>
         </div>
       </section>
@@ -470,20 +203,11 @@ const FAQ = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
             <p className="font-overline text-muted-foreground/50 mb-4">Still Curious?</p>
-            <h3 className="font-serif-wedding text-display-lg text-foreground mb-4">
-              We'd love to hear from you.
-            </h3>
-            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-10 max-w-md mx-auto font-light">
-              No question is too small. Reach out and we'll get back to you
-              within 48 hours — or schedule a discovery call to chat in person.
-            </p>
+            <h3 className="font-serif-wedding text-display-lg text-foreground mb-4">We'd love to hear from you.</h3>
+            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-10 max-w-md mx-auto font-light">No question is too small. Reach out and we'll get back to you within 48 hours — or schedule a discovery call to chat in person.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <MagneticButton to="/inquire" variant="primary">
-                Start a Conversation
-              </MagneticButton>
-              <MagneticButton to="/services" variant="outline">
-                Explore Services
-              </MagneticButton>
+              <MagneticButton to="/inquire" variant="primary">Start a Conversation</MagneticButton>
+              <MagneticButton to="/services" variant="outline">Explore Services</MagneticButton>
             </div>
           </ScrollReveal>
         </div>

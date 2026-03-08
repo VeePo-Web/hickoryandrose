@@ -47,6 +47,7 @@ const EditorialQuoteRibbon = ({
       ref={ref}
       className="py-10 md:py-14 bg-foreground overflow-hidden relative"
       aria-label="Editorial quote"
+      style={{ contain: "layout style" }}
     >
       {/* Radial gold glow at center — scroll-linked */}
       <motion.div

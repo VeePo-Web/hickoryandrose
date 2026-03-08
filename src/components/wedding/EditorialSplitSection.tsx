@@ -25,6 +25,7 @@ const EditorialSplitSection = () => {
       ref={ref}
       className="grid grid-cols-1 lg:grid-cols-2 min-h-[70vh] overflow-hidden relative"
       aria-label="Editorial quote"
+      style={{ contain: "layout style" }}
     >
       {/* Scroll-linked gold center divider — desktop only */}
       <motion.div

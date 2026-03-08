@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
+import BreathingDiamond from "./BreathingDiamond";
 import editorialImage from "@/assets/editorial-candlelight.jpg";
 
 const EditorialImageBreak = () => {
@@ -28,6 +29,7 @@ const EditorialImageBreak = () => {
       ref={ref}
       className="w-full overflow-hidden relative"
       aria-label="Editorial wedding detail"
+      style={{ contain: "layout style" }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -109,6 +111,11 @@ const EditorialImageBreak = () => {
 
       {/* Bottom blending gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
+
+      {/* Breathing diamond at center bottom */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+        <BreathingDiamond size={8} />
+      </div>
 
       {/* Corner frame accents — gold gradient */}
       <div className="absolute top-10 left-8 w-10 h-10 z-20 pointer-events-none hidden md:block" aria-hidden="true">
