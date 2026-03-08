@@ -679,17 +679,55 @@ const About = () => {
       </section>
 
       {/* Press & Recognition */}
-      <section className="py-16 md:py-20 bg-card">
-        <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+      <section className="py-16 md:py-20 bg-card relative overflow-hidden">
+        {/* Ambient gold glow */}
+        <motion.div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.05 }}
+          viewport={{ once: true }}
+          transition={{ duration: 2 }}
+          style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.1), transparent 70%)" }}
+          aria-hidden="true"
+        />
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
           <ScrollReveal>
-            <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 text-center mb-12">
+            <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 text-center mb-4">
               <span className="inline-flex items-center gap-3">
-                <span className="w-5 h-px bg-border" />
+                <motion.span
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="w-8 h-px origin-right"
+                  style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25))" }}
+                />
                 Press & Recognition
-                <span className="w-5 h-px bg-border" />
+                <motion.span
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="w-8 h-px origin-left"
+                  style={{ background: "linear-gradient(270deg, transparent, hsl(var(--gold) / 0.25))" }}
+                />
               </span>
             </p>
-            <div className="flex flex-wrap items-baseline justify-center gap-x-10 md:gap-x-16 gap-y-6">
+
+            {/* Central diamond ornament */}
+            <div className="flex justify-center mb-12">
+              <motion.span
+                className="w-2 h-2 rotate-45"
+                style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))" }}
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.3 }}
+              />
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               {[
                 { publication: "Edmonton Bridal", note: "Featured Planner, 2024" },
                 { publication: "The Knot", note: "Best of Weddings" },
@@ -702,14 +740,24 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08, duration: 0.5 }}
-                  className="text-center"
+                  className="text-center group relative py-6 overflow-hidden"
                 >
-                  <p className="font-serif-wedding text-xl md:text-2xl italic font-light text-foreground/20 mb-1">
+                  {/* Gold shimmer sweep on hover */}
+                  <div
+                    className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"
+                    style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.04) 40%, hsl(var(--gold) / 0.08) 50%, hsl(var(--gold) / 0.04) 60%, transparent 100%)" }}
+                  />
+                  <p className="font-serif-wedding text-xl md:text-2xl italic font-light text-foreground/20 group-hover:text-foreground/35 transition-colors duration-500 mb-1">
                     {press.publication}
                   </p>
                   <p className="font-sans-wedding text-[0.625rem] tracking-[0.12em] uppercase text-muted-foreground/40">
                     {press.note}
                   </p>
+                  {/* Bottom gold accent on hover */}
+                  <div
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-8 h-px transition-all duration-700 ease-out"
+                    style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }}
+                  />
                 </motion.div>
               ))}
             </div>

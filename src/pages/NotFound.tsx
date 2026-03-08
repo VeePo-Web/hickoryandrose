@@ -49,16 +49,17 @@ const NotFound = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/10" />
         </motion.div>
 
-        {/* Large decorative 404 with scroll parallax */}
+        {/* Large decorative 404 with scroll parallax + breathing glow */}
         <motion.div
           className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
           style={{ y: contentY }}
         >
           <motion.p
             initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 0.04 }}
-            transition={{ duration: 2 }}
+            animate={{ opacity: [0.03, 0.05, 0.03] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className="font-serif-wedding text-[16rem] md:text-[24rem] font-light text-white tracking-tight"
+            style={{ textShadow: "0 0 120px hsl(var(--gold) / 0.08)" }}
             aria-hidden="true"
           >
             404
@@ -150,7 +151,25 @@ const NotFound = () => {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 1.1 }}
-              className="w-16 h-px bg-white/12 mx-auto mb-8 origin-center"
+              className="w-16 h-px mx-auto mb-4 origin-center"
+              style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2), transparent)" }}
+            />
+            {/* Connecting diamond */}
+            <div className="flex justify-center mb-4">
+              <motion.span
+                initial={{ scale: 0, rotate: 0 }}
+                animate={{ scale: 1, rotate: 45 }}
+                transition={{ duration: 0.4, delay: 1.3 }}
+                className="w-1.5 h-1.5"
+                style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15))" }}
+              />
+            </div>
+            <motion.div
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 1 }}
+              transition={{ duration: 0.5, delay: 1.4 }}
+              className="w-px h-6 mx-auto mb-4 origin-top"
+              style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.2), transparent)" }}
             />
             <p className="font-overline text-white/25 mb-8">Or explore</p>
 
