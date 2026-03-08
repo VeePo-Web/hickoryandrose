@@ -1,5 +1,5 @@
 /**
- * ROYAL MECHANICAL — Configuration & Decision Framework Index
+ * HICKORY & ROSE — Configuration & Decision Framework Index
  * 
  * Central export for all brand, style, and persona references.
  * These are DECISION-MAKING REFERENCES ONLY — they do not render anything.

@@ -1,11 +1,12 @@
 /**
- * ROYAL MECHANICAL — Persona & Decision Framework Index
+ * HICKORY & ROSE — Persona & Decision Framework Index
  * 
  * Central export for all decision-making reference files.
  * Import from here when referencing any persona or framework.
  * 
  * These files are REFERENCE ONLY — they do not render anything.
- * They encode the depth of expertise that guides every UI/UX decision.
+ * They encode the depth of expertise that guides every UI/UX decision
+ * for Hickory & Rose Wedding and Event Planning.
  */
 
 export { DISCOVERY_FRAMEWORK } from './discovery-framework';
