@@ -469,7 +469,16 @@ const Approach = () => {
               { quote: "On the day, we never once worried. Every moment flowed naturally and every detail was exactly as we dreamed. I can't imagine doing it without them.", couple: "Nicole & Ryan", venue: "Fairmont Jasper", season: "Summer 2023", service: "Month-Of Coordination" },
             ].map((t, i) => (
               <ScrollReveal key={t.couple} delay={i * 0.15}>
-                <div className="text-center">
+                <div 
+                  className="text-center transition-all duration-700 ease-out"
+                  onMouseEnter={() => setHoveredTestimonial(i)}
+                  onMouseLeave={() => setHoveredTestimonial(null)}
+                  style={{
+                    opacity: hoveredTestimonial !== null && hoveredTestimonial !== i ? 0.3 : 1,
+                    filter: hoveredTestimonial !== null && hoveredTestimonial !== i ? "blur(3px)" : "blur(0px)",
+                    transform: hoveredTestimonial !== null && hoveredTestimonial !== i ? "scale(0.98)" : "scale(1)"
+                  }}
+                >
                   <motion.span
                     className="block font-serif-wedding text-7xl leading-none mb-2 select-none"
                     style={{
