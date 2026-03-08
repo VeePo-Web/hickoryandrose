@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
+import BreathingDiamond from "./BreathingDiamond";
 
 const processSteps = [
   { number: "01", title: "Discovery Call", time: "Week 1", description: "We start with a relaxed conversation. Tell us about your vision, your story, and how you want to feel on your wedding day. No pressure, no sales pitch — just genuine connection.", pullQuote: "Every great wedding begins with listening." },
@@ -10,7 +11,7 @@ const processSteps = [
 ];
 
 const ApproachProcessTimeline = () => (
-  <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
+  <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card" aria-label="Our Process">
     <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
       <ScrollReveal>
         <div className="text-center mb-16 md:mb-24">
@@ -44,6 +45,17 @@ const ApproachProcessTimeline = () => (
         {processSteps.map((step, index) => (
           <ScrollReveal key={step.number} delay={index * 0.08}>
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-10 md:py-14 group relative">
+              {/* Hover shimmer sweep */}
+              <div
+                className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 overflow-hidden"
+                aria-hidden="true"
+              >
+                <div
+                  className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"
+                  style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.03), hsl(var(--gold) / 0.05), hsl(var(--gold) / 0.03), transparent)" }}
+                />
+              </div>
+
               {/* Step number with timeline dot */}
               <div className="md:col-span-2 relative flex items-baseline gap-3">
                 <motion.div
@@ -54,8 +66,14 @@ const ApproachProcessTimeline = () => (
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + index * 0.1 }}
                 />
+                {/* Ambient glow behind number on hover */}
+                <div
+                  className="absolute -left-4 -top-4 w-24 h-24 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                  style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.06), transparent 70%)" }}
+                  aria-hidden="true"
+                />
                 <motion.span
-                  className="font-serif-wedding text-5xl md:text-6xl font-light text-primary/15 group-hover:text-primary/30 transition-colors duration-700"
+                  className="font-serif-wedding text-5xl md:text-6xl font-light text-primary/15 group-hover:text-primary/30 transition-colors duration-700 relative"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -86,29 +104,42 @@ const ApproachProcessTimeline = () => (
                 </p>
                 {step.pullQuote && (
                   <motion.p
-                    className="font-serif-wedding text-lg italic text-primary/40 mt-4 pl-4 border-l border-primary/15"
+                    className="font-serif-wedding text-lg italic text-primary/40 mt-4 pl-4 relative"
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3, duration: 0.5 }}
                   >
+                    {/* Gold gradient border-left */}
+                    <span
+                      className="absolute left-0 top-0 bottom-0 w-[2px]"
+                      style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.08))" }}
+                      aria-hidden="true"
+                    />
                     {step.pullQuote}
                   </motion.p>
                 )}
               </div>
 
+              {/* Gold gradient divider */}
               <div className="md:col-span-12">
                 <motion.div
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  className="h-px bg-border/40 mt-6 origin-left"
+                  className="h-px mt-6 origin-left"
+                  style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.15), hsl(var(--gold) / 0.06), transparent)" }}
                 />
               </div>
             </div>
           </ScrollReveal>
         ))}
+
+        {/* Breathing diamond at end of timeline */}
+        <div className="flex justify-center pt-8">
+          <BreathingDiamond size={8} />
+        </div>
       </div>
     </div>
   </section>
