@@ -124,6 +124,16 @@ const InstagramSection = () => {
           </div>
         </ScrollReveal>
 
+        {/* Gold horizontal rule before grid */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+          className="h-px mb-10 md:mb-14 origin-left"
+          style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08), transparent)" }}
+        />
+
         {/* Staggered mosaic grid with parallax */}
         <motion.div 
           className="grid grid-cols-2 md:grid-cols-12 gap-2 md:gap-3"
