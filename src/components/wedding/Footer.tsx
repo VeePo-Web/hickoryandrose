@@ -31,6 +31,49 @@ const Footer = () => {
         }}
       />
 
+      {/* Pre-footer email capture teaser */}
+      <div className="border-b border-background/[0.06]">
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl py-16 md:py-20">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
+          >
+            <div className="md:col-span-5">
+              <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-background/20 mb-3">
+                Stay Inspired
+              </p>
+              <h3 className="font-serif-wedding text-2xl md:text-3xl text-background/70 font-light leading-tight">
+                Planning wisdom, delivered with care.
+              </h3>
+              <p className="font-sans-wedding text-xs text-background/25 font-light mt-3 leading-relaxed max-w-xs">
+                Curated inspiration, vendor insights, and planning tips — never spam, always intentional.
+              </p>
+            </div>
+            <div className="md:col-span-7 md:flex md:justify-end">
+              <div className="flex flex-col sm:flex-row gap-3 max-w-md w-full md:w-auto">
+                <div className="relative flex-1">
+                  <input
+                    type="email"
+                    placeholder="Your email address"
+                    className="w-full bg-transparent border-b border-background/15 focus:border-background/40 py-3 px-0 text-sm text-background/60 placeholder:text-background/20 font-sans-wedding font-light outline-none transition-colors duration-300"
+                    aria-label="Email address for newsletter"
+                  />
+                </div>
+                <button
+                  type="button"
+                  className="inline-flex items-center justify-center px-8 py-3 text-[0.6rem] tracking-[0.2em] uppercase font-sans-wedding font-light border border-background/15 text-background/40 hover:text-background/80 hover:border-background/40 transition-all duration-300 shrink-0"
+                >
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
       <div className="container mx-auto px-6 lg:px-8 max-w-6xl pt-24 md:pt-32 pb-10 md:pb-14">
         {/* Top: Large editorial monogram + tagline */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-20 md:mb-28">
@@ -127,7 +170,7 @@ const Footer = () => {
                 </div>
 
                 {/* Response time */}
-                <div className="mt-6 border-t border-background/6 pt-4">
+                <div className="mt-6 border-t border-background/[0.06] pt-4">
                   <p className="font-sans-wedding text-[0.55rem] tracking-[0.1em] uppercase text-background/15 font-light">
                     Typically responds within 48 hours
                   </p>
@@ -169,7 +212,7 @@ const Footer = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <div className="border-t border-background/8" />
+          <div className="border-t border-background/[0.08]" />
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8">
             <p className="font-sans-wedding text-[0.65rem] text-background/15 font-light">
               © {new Date().getFullYear()} Hickory & Rose. All rights reserved.
