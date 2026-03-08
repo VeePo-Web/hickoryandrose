@@ -123,10 +123,16 @@ const PreFooterDivider = () => {
 
               <Link
                 to="/inquire"
-                className="inline-flex items-center font-overline text-primary/60 hover:text-primary transition-colors duration-300 group"
+                className="inline-flex items-center font-overline transition-colors duration-300 group relative"
+                style={{
+                  background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--gold)))",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
               >
                 Check Availability
-                <span className="ml-2 group-hover:translate-x-1.5 transition-transform duration-300">
+                <span className="ml-2 group-hover:translate-x-1.5 transition-transform duration-300" style={{ WebkitTextFillColor: "hsl(var(--gold))" }}>
                   →
                 </span>
               </Link>
