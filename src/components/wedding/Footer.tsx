@@ -288,9 +288,36 @@ const Footer = () => {
                   <p className="font-overline text-background/20 mb-3 text-[0.6rem]">
                     Serving
                   </p>
-                  <p className="font-sans-wedding text-[0.7rem] text-background/20 font-light leading-relaxed">
-                    {serviceAreas.join(" · ")}
-                  </p>
+                  <div className="flex flex-wrap gap-x-1.5 gap-y-1">
+                    {serviceAreas.map((area, i) => (
+                      <span
+                        key={area.name}
+                        className="inline-flex items-center gap-1 group/area cursor-default"
+                        onMouseEnter={() => setHoveredArea(i)}
+                        onMouseLeave={() => setHoveredArea(null)}
+                      >
+                        <span className="font-sans-wedding text-[0.7rem] text-background/20 font-light group-hover/area:text-background/50 transition-colors duration-300">
+                          {area.name}
+                        </span>
+                        <AnimatePresence>
+                          {hoveredArea === i && (
+                            <motion.span
+                              initial={{ opacity: 0, width: 0 }}
+                              animate={{ opacity: 1, width: "auto" }}
+                              exit={{ opacity: 0, width: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="font-serif-wedding text-[0.55rem] italic text-background/15 overflow-hidden whitespace-nowrap"
+                            >
+                              ({area.venues} venues)
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
+                        {i < serviceAreas.length - 1 && (
+                          <span className="text-background/10 mx-0.5">·</span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
