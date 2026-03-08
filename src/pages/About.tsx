@@ -177,14 +177,23 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <ScrollReveal>
               <ImageReveal direction="left" delay={0.1}>
-                <div className="aspect-[3/4] overflow-hidden sticky top-28">
+                <div className="aspect-[3/4] overflow-hidden sticky top-28 relative group">
                   <motion.img
                     src={founderImage}
                     alt="Founder of Hickory & Rose"
-                    className="w-full h-[110%] object-cover"
+                    className="w-full h-[110%] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     style={{ y: founderImgY }}
                     loading="lazy"
                   />
+                  {/* Gold corner frame accents on hover */}
+                  <div className="absolute top-3 left-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                    <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                    <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                  </div>
+                  <div className="absolute bottom-3 right-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                    <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                    <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                  </div>
                 </div>
               </ImageReveal>
             </ScrollReveal>
