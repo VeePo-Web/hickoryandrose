@@ -488,6 +488,73 @@ const Services = () => {
         </div>
       </section>
 
+      {/* Trusted Vendor Partners */}
+      <section className="py-section-mobile md:py-section-tablet bg-background relative overflow-hidden">
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <ScrollReveal>
+              <ImageReveal direction="left">
+                <div className="aspect-square overflow-hidden">
+                  <img
+                    src={vendorDetailImage}
+                    alt="Luxury wedding stationery flatlay with gold scissors, calligraphy, sage eucalyptus, and wax seal on marble"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </ImageReveal>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.15}>
+              <div>
+                <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
+                  <span className="inline-flex items-center gap-3">
+                    <span className="w-5 h-px bg-primary/30" />
+                    Our Network
+                  </span>
+                </p>
+                <h2 className="font-serif-wedding text-display-lg text-foreground mb-4">
+                  Trusted Partners
+                </h2>
+                <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light mb-10">
+                  Over seven years, we've built deep relationships with Edmonton and the Rockies' finest vendors. These partnerships mean preferred availability, seamless collaboration, and an elevated experience for every couple.
+                </p>
+
+                <div className="space-y-0 border-t border-border/40">
+                  {[
+                    { category: "Florals & Styling", names: "Bloomsbury House · Wild North Florals" },
+                    { category: "Photography", names: "Everly Studio · Sage & Cedar" },
+                    { category: "Catering", names: "The Butternut Tree · RGE RD" },
+                    { category: "Venues", names: "Fairmont Macdonald · Jasper Park Lodge" },
+                    { category: "Stationery", names: "Quill & Oak · Foiled Calligraphy" },
+                  ].map((partner, i) => (
+                    <motion.div
+                      key={partner.category}
+                      className="grid grid-cols-12 gap-4 py-5 border-b border-border/30 group cursor-default"
+                      initial={{ opacity: 0, x: -8 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: 0.1 + i * 0.06 }}
+                    >
+                      <div className="col-span-4">
+                        <p className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-primary/50 group-hover:text-primary transition-colors duration-500">
+                          {partner.category}
+                        </p>
+                      </div>
+                      <div className="col-span-8">
+                        <p className="font-sans-wedding text-body-sm text-muted-foreground/60 font-light group-hover:text-foreground transition-colors duration-500">
+                          {partner.names}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       <CTASection />
       <PreFooterDivider />
       <Footer />
