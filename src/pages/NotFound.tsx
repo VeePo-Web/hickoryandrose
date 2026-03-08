@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import Footer from "@/components/wedding/Footer";
-import BranchDecoration from "@/components/wedding/BranchDecoration";
+
 import editorialFlorals from "@/assets/editorial-florals.jpg";
 
 const NotFound = () => {
@@ -54,7 +54,12 @@ const NotFound = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1.0] }}
           >
-            <BranchDecoration className="mx-auto mb-6" />
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1 }}
+              className="w-12 h-px bg-primary/30 mx-auto mb-6 origin-center"
+            />
             <p className="font-overline text-muted-foreground mb-6">
               Page Not Found
             </p>
@@ -94,11 +99,12 @@ const NotFound = () => {
             className="mt-12"
           >
             {/* Brand flourish */}
-            <div className="flex items-center justify-center gap-3 mb-3">
-              <span className="w-6 h-px bg-border" />
-              <span className="font-script text-sm text-muted-foreground/30">H & R</span>
-              <span className="w-6 h-px bg-border" />
-            </div>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="w-10 h-px bg-border mx-auto mb-3 origin-center"
+            />
             <p className="font-sans-wedding text-xs text-muted-foreground/50 font-light">
               Or{" "}
               <Link to="/inquire" className="underline underline-offset-4 hover:text-primary transition-colors">

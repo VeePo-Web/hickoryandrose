@@ -39,18 +39,15 @@ const CountdownSection = () => {
 
   return (
     <section className="bg-sage-mist py-section-mobile md:py-section-tablet relative overflow-hidden">
-      {/* Subtle dot pattern */}
-      <div className="absolute inset-0 opacity-[0.02]" aria-hidden="true">
-        <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
-      </div>
-
       <div className="container mx-auto px-6 relative">
         <ScrollReveal>
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="w-10 h-px bg-primary/30" />
-            <span className="text-primary/30 text-xs">✦</span>
-            <span className="w-10 h-px bg-primary/30" />
-          </div>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="w-12 h-px bg-primary/30 mx-auto mb-6 origin-center"
+          />
           <p className="font-overline text-muted-foreground text-center mb-4">
             We can't wait to see you
           </p>
@@ -86,12 +83,13 @@ const CountdownSection = () => {
           </div>
         </ScrollReveal>
 
-        {/* Bottom flourish */}
-        <div className="flex items-center justify-center gap-3 mt-12">
-          <span className="w-8 h-px bg-primary/20" />
-          <span className="font-script text-sm text-primary/25">H & R</span>
-          <span className="w-8 h-px bg-primary/20" />
-        </div>
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="w-12 h-px bg-primary/20 mx-auto mt-12 origin-center"
+        />
       </div>
     </section>
   );
