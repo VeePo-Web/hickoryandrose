@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
+import BreathingDiamond from "./BreathingDiamond";
 
 const stats = [
   { value: 75, suffix: "+", label: "Weddings Planned", detail: "and counting" },
