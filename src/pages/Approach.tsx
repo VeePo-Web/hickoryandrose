@@ -12,11 +12,17 @@ import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 import ImageReveal from "@/components/wedding/ImageReveal";
 import ApproachProcessTimeline from "@/components/wedding/ApproachProcessTimeline";
 import ApproachDifferentiators from "@/components/wedding/ApproachDifferentiators";
+import ApproachStatsRibbon from "@/components/wedding/ApproachStatsRibbon";
 import EditorialSplitSection from "@/components/wedding/EditorialSplitSection";
 
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import approachDetailsImage from "@/assets/approach-details.jpg";
 import approachHeroImage from "@/assets/approach-hero.jpg";
+import founderImage from "@/assets/founder-portrait.jpg";
+
+/* Stagger helpers */
+const wordContainer = { hidden: {}, visible: { transition: { staggerChildren: 0.06 } } };
+const wordChild = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } } };
 
 const Approach = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -47,7 +53,7 @@ const Approach = () => {
     <main id="main-content">
       <Navigation variant="overlay" />
 
-      {/* Cinematic Parallax Hero */}
+      {/* ──────────────── Cinematic Parallax Hero ──────────────── */}
       <section ref={heroRef} className="relative h-[65vh] md:h-[75vh] overflow-hidden grain-overlay vignette" aria-label="Hero">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
           <img
@@ -84,23 +90,38 @@ const Approach = () => {
           className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6"
           style={{ opacity: heroOpacity }}
         >
-          <ScrollReveal>
-            <p className="font-sans-wedding text-label uppercase text-white/50 mb-4">
-              <span className="inline-flex items-center gap-3">
-                <motion.span className="w-8 h-px bg-white/30 origin-right" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.8, delay: 0.5 }} />
-                Our Approach
-                <motion.span className="w-8 h-px bg-white/30 origin-left" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.8, delay: 0.5 }} />
-              </span>
-            </p>
-            <h1 className="font-serif-wedding text-display-xl text-white mb-6">
-              How We Plan Your Perfect Day
-            </h1>
-            <p className="font-sans-wedding text-body-sm text-white/60 leading-relaxed max-w-xl mx-auto font-light">
-              Great weddings don't happen by accident. They're the result of
-              thoughtful planning, clear communication, and a deep understanding
-              of what matters to you.
-            </p>
-          </ScrollReveal>
+          {/* Overline */}
+          <p className="font-sans-wedding text-label uppercase text-white/50 mb-4">
+            <span className="inline-flex items-center gap-3">
+              <motion.span className="w-8 h-px bg-white/30 origin-right" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.8, delay: 0.5 }} />
+              Our Approach
+              <motion.span className="w-8 h-px bg-white/30 origin-left" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.8, delay: 0.5 }} />
+            </span>
+          </p>
+
+          {/* Staggered word-by-word headline */}
+          <motion.h1
+            className="font-serif-wedding text-display-xl text-white mb-6 flex flex-wrap justify-center gap-x-[0.35em]"
+            variants={wordContainer}
+            initial="hidden"
+            animate="visible"
+          >
+            {"How We Plan Your Perfect Day".split(" ").map((word, i) => (
+              <motion.span key={i} variants={wordChild} className="inline-block">
+                {word}
+              </motion.span>
+            ))}
+          </motion.h1>
+
+          {/* Subtitle with delayed entrance */}
+          <motion.p
+            className="font-sans-wedding text-body-sm text-white/60 leading-relaxed max-w-xl mx-auto font-light"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            Great weddings don't happen by accident. They're the result of thoughtful planning, clear communication, and a deep understanding of what matters to you.
+          </motion.p>
         </motion.div>
 
         <GoldFrame inset="20px" delay={1} />
@@ -145,8 +166,8 @@ const Approach = () => {
         </motion.span>
       </section>
 
-      {/* Philosophy intro — upgraded with editorial image inset + gold accents */}
-      <section className="py-16 md:py-24 bg-background relative overflow-hidden" aria-label="Philosophy">
+      {/* ──────────────── Philosophy Section (Upgraded) ──────────────── */}
+      <section className="py-20 md:py-32 bg-background relative overflow-hidden" aria-label="Philosophy">
         {/* Ambient gold glow */}
         <div
           className="absolute -left-20 top-1/3 w-[300px] h-[300px] pointer-events-none hidden lg:block"
@@ -157,7 +178,8 @@ const Approach = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
           <ScrollReveal>
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-start">
-              <div className="md:col-span-4">
+              {/* Left column — now col-span-5 with portrait crop */}
+              <div className="md:col-span-5">
                 {/* Gold-glowed section index */}
                 <div className="relative inline-block mb-3">
                   <span className="font-serif-wedding text-5xl font-light text-primary/10 block relative z-10">01</span>
@@ -170,8 +192,14 @@ const Approach = () => {
                 <p className="font-overline text-muted-foreground/50 mb-3">Philosophy</p>
                 <h2 className="font-serif-wedding text-display-md text-foreground">Planning with intention.</h2>
 
+                {/* Est. date chip */}
+                <div className="flex items-center gap-2 mt-3 mb-6">
+                  <span className="w-4 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.25), transparent)" }} />
+                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-muted-foreground/30">Est. 2018</span>
+                </div>
+
                 {/* Editorial image inset — mobile */}
-                <div className="md:hidden mt-6 mb-2">
+                <div className="md:hidden mt-4 mb-2">
                   <ImageReveal direction="up" delay={0.15}>
                     <div className="aspect-[16/9] overflow-hidden relative">
                       <img
@@ -184,14 +212,15 @@ const Approach = () => {
                   </ImageReveal>
                 </div>
 
-                {/* Editorial image inset — desktop */}
-                <div className="hidden md:block mt-8">
+                {/* Editorial image inset — desktop: portrait crop with GoldFrame */}
+                <div className="hidden md:block mt-4">
                   <ImageReveal direction="up" delay={0.2}>
-                    <div className="aspect-[4/3] overflow-hidden relative group">
+                    <div className="aspect-[3/4] overflow-hidden relative group">
+                      <GoldFrame inset="10px" delay={0.8} />
                       <img
                         src={approachDetailsImage}
                         alt="Wedding planning details with gold accents"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy"
                       />
                       {/* Gold corner reveals */}
@@ -210,8 +239,8 @@ const Approach = () => {
                 </div>
               </div>
 
-              <div className="md:col-span-8 relative">
-                {/* Breathing diamond between columns — desktop */}
+              {/* Right column — text + pull-quote */}
+              <div className="md:col-span-7 relative">
                 <div className="hidden md:flex justify-start mb-6">
                   <BreathingDiamond size={6} />
                 </div>
@@ -219,6 +248,26 @@ const Approach = () => {
                 <p className="font-sans-wedding text-body text-muted-foreground leading-relaxed font-light mb-4 drop-cap">
                   We believe the planning process should feel as beautiful as the wedding day itself. Our approach is grounded in calm leadership, creative partnership, and an obsessive attention to the details that make your celebration uniquely yours.
                 </p>
+
+                {/* Script pull-quote */}
+                <div className="my-6 pl-6 relative">
+                  <span
+                    className="absolute left-0 top-0 bottom-0 w-[2px]"
+                    style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.08))" }}
+                    aria-hidden="true"
+                  />
+                  <p
+                    className="font-script text-xl md:text-2xl leading-relaxed"
+                    style={{
+                      background: "linear-gradient(135deg, hsl(var(--gold) / 0.6), hsl(var(--gold) / 0.25))",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    "Your wedding day should be a feeling, not a checklist."
+                  </p>
+                </div>
+
                 <p className="font-sans-wedding text-body-sm text-muted-foreground/70 leading-relaxed font-light">
                   From the first discovery call to the final dance, every touchpoint is designed to reduce your stress, protect your presence, and ensure nothing falls through the cracks.
                 </p>
@@ -228,7 +277,7 @@ const Approach = () => {
 
           {/* Gold gradient horizontal rule */}
           <motion.div
-            className="h-px mt-12 origin-left"
+            className="h-px mt-14 origin-left"
             style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.2), hsl(var(--gold) / 0.06), transparent)" }}
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
@@ -237,6 +286,9 @@ const Approach = () => {
           />
         </div>
       </section>
+
+      {/* ──────────────── Stats Ribbon ──────────────── */}
+      <ApproachStatsRibbon />
 
       <ApproachProcessTimeline />
 
@@ -251,9 +303,8 @@ const Approach = () => {
 
       <ApproachDifferentiators />
 
-      {/* Editorial promise — upgraded with watermark + breathing diamond + scroll-linked line */}
+      {/* ──────────────── Promise Section ──────────────── */}
       <section ref={promiseRef} className="py-16 md:py-24 bg-card relative overflow-hidden" aria-label="Our Promise">
-        {/* Parallax watermark */}
         <motion.div
           className="absolute right-0 top-0 bottom-0 flex items-center pointer-events-none select-none hidden lg:flex"
           style={{ y: promiseWatermarkY }}
@@ -264,7 +315,6 @@ const Approach = () => {
           </span>
         </motion.div>
 
-        {/* Ambient glow */}
         <motion.div
           className="absolute right-0 top-1/3 w-[300px] h-[300px] pointer-events-none hidden lg:block"
           initial={{ opacity: 0 }}
@@ -294,7 +344,6 @@ const Approach = () => {
                 </div>
               </div>
               <div className="md:col-span-2 relative">
-                {/* Scroll-linked vertical gold accent */}
                 <motion.div
                   className="absolute left-0 top-0 w-[2px] hidden md:block origin-top"
                   style={{
@@ -313,7 +362,6 @@ const Approach = () => {
                   <div className="flex flex-wrap gap-2">
                     {["Calm Leadership", "Elevated Design", "Seamless Execution"].map((pill) => (
                       <span key={pill} className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/35 border border-primary/10 px-3 py-1 relative overflow-hidden group/pill cursor-default">
-                        {/* Pill shimmer sweep */}
                         <span
                           className="absolute inset-0 -translate-x-full group-hover/pill:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
                           style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.08), transparent)" }}
@@ -330,57 +378,92 @@ const Approach = () => {
         </div>
       </section>
 
-      {/* Inline testimonial — upgraded with gold quotation mark + diamond separator + scroll accent */}
-      <section className="py-14 md:py-20 bg-background relative overflow-hidden grain-overlay" aria-label="Testimonial">
+      {/* ──────────────── Dual Testimonial ──────────────── */}
+      <section className="py-14 md:py-20 bg-background relative overflow-hidden grain-overlay" aria-label="Testimonials">
         <motion.div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] pointer-events-none" initial={{ opacity: 0 }} whileInView={{ opacity: 0.06 }} viewport={{ once: true }} transition={{ duration: 2 }} style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.12), transparent 70%)" }} aria-hidden="true" />
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+            {[
+              { quote: "From the first call, I felt like I was talking to a friend who just happened to be incredibly organized. They made the entire process feel effortless.", couple: "Emma & James", venue: "The Glass House", season: "Autumn 2024", service: "Full-Service Planning" },
+              { quote: "On the day, we never once worried. Every moment flowed naturally and every detail was exactly as we dreamed. I can't imagine doing it without them.", couple: "Nicole & Ryan", venue: "Fairmont Jasper", season: "Summer 2023", service: "Month-Of Coordination" },
+            ].map((t, i) => (
+              <ScrollReveal key={t.couple} delay={i * 0.15}>
+                <div className="text-center">
+                  <motion.span
+                    className="block font-serif-wedding text-7xl leading-none mb-2 select-none"
+                    style={{
+                      background: "linear-gradient(180deg, hsl(var(--gold) / 0.25), hsl(var(--gold) / 0.05))",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    aria-hidden="true"
+                  >
+                    &ldquo;
+                  </motion.span>
+
+                  <div className="flex items-center justify-center gap-3 mb-5">
+                    <motion.span initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-8 h-px origin-right" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3))" }} />
+                    <BreathingDiamond size={5} />
+                    <motion.span initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-8 h-px origin-left" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
+                  </div>
+
+                  <blockquote className="font-serif-wedding text-lg md:text-xl italic text-foreground/60 leading-relaxed mb-5">
+                    {t.quote}
+                  </blockquote>
+
+                  <motion.div
+                    className="w-10 h-px mx-auto mb-4 origin-center"
+                    style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.35), transparent)" }}
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                  />
+
+                  <p className="font-sans-wedding text-body-sm font-light text-foreground/40">{t.couple}</p>
+                  <p className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-muted-foreground/25 mt-1">{t.venue} · {t.season}</p>
+                  <div className="mt-3">
+                    <span className="font-sans-wedding text-[0.45rem] tracking-[0.15em] uppercase text-primary/25 border border-primary/8 px-3 py-1">
+                      {t.service}
+                    </span>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ──────────────── "Your Next Step" Bridge ──────────────── */}
+      <section className="py-14 md:py-20 bg-card relative overflow-hidden" aria-label="Your Next Step">
+        <div className="container mx-auto px-6 lg:px-8 max-w-2xl text-center">
           <ScrollReveal>
-            {/* Large gold gradient quotation mark */}
-            <motion.span
-              className="block font-serif-wedding text-8xl leading-none mb-2 select-none"
-              style={{
-                background: "linear-gradient(180deg, hsl(var(--gold) / 0.25), hsl(var(--gold) / 0.05))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              aria-hidden="true"
-            >
-              &ldquo;
-            </motion.span>
-
-            {/* Diamond ornament */}
             <div className="flex items-center justify-center gap-3 mb-6">
-              <motion.span initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-10 h-px origin-right" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3))" }} />
+              <span className="w-8 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25))" }} />
               <BreathingDiamond size={6} />
-              <motion.span initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-10 h-px origin-left" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
+              <span className="w-8 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.25), transparent)" }} />
             </div>
-
-            <blockquote className="font-serif-wedding text-pull-quote italic text-foreground/60 leading-relaxed mb-5">
-              From the first call, I felt like I was talking to a friend who just happened to be incredibly organized. They made the entire process feel effortless.
-            </blockquote>
-
-            {/* Scroll-linked gold accent line */}
-            <motion.div
-              className="w-12 h-px mx-auto mb-5 origin-center"
-              style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.35), transparent)" }}
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            />
-
-            <p className="font-sans-wedding text-body-sm font-light text-foreground/40">Emma & James</p>
-            <p className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-muted-foreground/25 mt-1">The Glass House · Autumn 2024</p>
-
-            {/* Service tag pill */}
-            <div className="mt-4">
-              <span className="font-sans-wedding text-[0.45rem] tracking-[0.15em] uppercase text-primary/25 border border-primary/8 px-3 py-1">
-                Full-Service Planning
-              </span>
+            <h3 className="font-serif-wedding text-display-md text-foreground mb-4">
+              Ready to see if we're the right fit?
+            </h3>
+            <p className="font-sans-wedding text-body-sm text-muted-foreground/60 leading-relaxed font-light mb-8 max-w-lg mx-auto">
+              Every great partnership starts with a conversation. Tell us about your vision and we'll share honestly how we can help bring it to life.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {["No commitment required", "Complimentary call", "Responds within 48hrs"].map((chip) => (
+                <span key={chip} className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/35 border border-primary/10 px-4 py-1.5 relative overflow-hidden group/chip cursor-default">
+                  <span
+                    className="absolute inset-0 -translate-x-full group-hover/chip:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
+                    style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.06), transparent)" }}
+                    aria-hidden="true"
+                  />
+                  <span className="relative">{chip}</span>
+                </span>
+              ))}
             </div>
           </ScrollReveal>
         </div>
@@ -388,7 +471,7 @@ const Approach = () => {
 
       <FullWidthImage src={ceremonyImage} alt="Outdoor wedding ceremony setup in mountain meadow with floral arch" height="h-[35vh] md:h-[45vh]" />
 
-      {/* Promise quote */}
+      {/* ──────────────── Brand Promise Quote ──────────────── */}
       <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden grain-overlay vignette" aria-label="Brand Promise">
         <motion.div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] pointer-events-none" initial={{ opacity: 0 }} whileInView={{ opacity: 0.06 }} viewport={{ once: true }} transition={{ duration: 2 }} style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.15), transparent 70%)" }} aria-hidden="true" />
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
@@ -411,6 +494,20 @@ const Approach = () => {
                 WebkitTextFillColor: "transparent",
               }}
             >Hickory & Rose</span>
+
+            {/* Founder attribution */}
+            <div className="flex items-center justify-center gap-3 mt-4">
+              <img
+                src={founderImage}
+                alt="Sarah, Founder of Hickory & Rose"
+                className="w-8 h-8 rounded-full object-cover border border-primary-foreground/10"
+                loading="lazy"
+              />
+              <span className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-primary-foreground/30">
+                — Sarah, Founder
+              </span>
+            </div>
+
             <div className="flex items-center justify-center gap-3 mt-3">
               <span className="w-4 h-px bg-primary-foreground/10" />
               <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-primary-foreground/20">Est. 2018</span>
