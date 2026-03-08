@@ -3,6 +3,7 @@ import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
+import ImageReveal from "@/components/wedding/ImageReveal";
 import heroImage from "@/assets/hero-wedding.jpg";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import detailImage from "@/assets/detail-placecard.jpg";
@@ -55,7 +56,11 @@ const Portfolio = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
           <div className="columns-1 md:columns-2 lg:columns-3 gap-5 space-y-5">
             {weddingStories.map((story, index) => (
-              <ScrollReveal key={index} delay={index * 0.05}>
+              <ImageReveal
+                key={index}
+                delay={index * 0.06}
+                direction={index % 3 === 0 ? "up" : index % 3 === 1 ? "left" : "right"}
+              >
                 <div
                   className={`${story.aspect} overflow-hidden break-inside-avoid relative group cursor-pointer`}
                 >
@@ -74,7 +79,7 @@ const Portfolio = () => {
                     </p>
                   </div>
                 </div>
-              </ScrollReveal>
+              </ImageReveal>
             ))}
           </div>
         </div>
