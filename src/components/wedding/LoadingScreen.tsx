@@ -153,13 +153,15 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                     initial={{ scaleY: 0 }}
                     animate={active ? { scaleY: 1 } : {}}
                     transition={{ duration: 0.5, delay: 0.45, ease }}
-                    className="w-px h-8 md:h-12 bg-background/8 origin-bottom"
+                    className="w-px h-8 md:h-12 origin-bottom"
+                    style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.2), transparent)" }}
                   />
                   <motion.div
                     initial={{ scaleX: 0 }}
                     animate={active ? { scaleX: 1 } : {}}
                     transition={{ duration: 0.5, delay: 0.4, ease }}
-                    className="w-8 md:w-12 h-px bg-background/8 origin-right"
+                    className="w-8 md:w-12 h-px origin-right"
+                    style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.2), transparent)" }}
                   />
                 </div>
               </motion.div>

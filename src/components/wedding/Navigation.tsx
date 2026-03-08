@@ -138,7 +138,8 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                       {isActive && (
                         <motion.span
                           layoutId="nav-active-dot"
-                          className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
+                          className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full"
+                          style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.8), hsl(var(--gold) / 0.3))", boxShadow: "0 0 6px hsl(var(--gold) / 0.3)" }}
                           transition={{ type: "spring", stiffness: 380, damping: 30 }}
                         />
                       )}
