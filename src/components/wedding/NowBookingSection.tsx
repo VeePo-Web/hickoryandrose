@@ -3,10 +3,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const seasonDetails = [
-  { label: "Spring", status: "Limited" },
-  { label: "Summer", status: "2 Dates Left" },
-  { label: "Autumn", status: "Accepting" },
-  { label: "Winter", status: "Open" },
+  { label: "Spring", status: "Limited", accent: true },
+  { label: "Summer", status: "2 Dates Left", accent: true },
+  { label: "Autumn", status: "Accepting", accent: false },
+  { label: "Winter", status: "Open", accent: false },
 ];
 
 const NowBookingSection = () => {
@@ -15,109 +15,178 @@ const NowBookingSection = () => {
     target: sectionRef,
     offset: ["start end", "end start"],
   });
-  const watermarkX = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
+  const watermarkX = useTransform(scrollYProgress, [0, 1], ["8%", "-8%"]);
+  const lineScale = useTransform(scrollYProgress, [0.1, 0.5], [0, 1]);
+  const ornamentY = useTransform(scrollYProgress, [0, 1], [10, -10]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative py-12 md:py-16 bg-primary overflow-hidden"
+      className="relative py-14 md:py-20 bg-primary overflow-hidden"
       aria-label="Now booking"
     >
-      {/* Top & bottom hairlines */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-foreground/10 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-foreground/10 to-transparent" />
+      {/* Animated top gradient hairline */}
+      <motion.div
+        className="absolute top-0 left-0 right-0 h-px origin-center"
+        style={{ 
+          scaleX: lineScale,
+          background: "linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.15) 30%, hsl(var(--gold, 38 60% 55%) / 0.25) 50%, hsl(var(--primary-foreground) / 0.15) 70%, transparent)"
+        }}
+      />
+      
+      {/* Bottom hairline */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-foreground/8 to-transparent" />
 
       {/* Parallax year watermark */}
       <motion.div
-        className="absolute inset-0 flex items-center justify-end pointer-events-none select-none pr-8 md:pr-16"
+        className="absolute inset-0 flex items-center justify-end pointer-events-none select-none pr-8 md:pr-20"
         style={{ x: watermarkX }}
         aria-hidden="true"
       >
-        <span className="font-serif-wedding text-[8rem] md:text-[14rem] font-light text-primary-foreground/[0.03] leading-none tracking-tight">
+        <span className="font-serif-wedding text-[10rem] md:text-[16rem] font-light text-primary-foreground/[0.025] leading-none tracking-tight">
           2026
         </span>
       </motion.div>
 
+      {/* Floating decorative ornament */}
+      <motion.div
+        className="absolute left-8 md:left-16 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block"
+        style={{ y: ornamentY }}
+        aria-hidden="true"
+      >
+        <span className="font-serif-wedding text-4xl text-primary-foreground/[0.05]">❖</span>
+      </motion.div>
+
       <Link to="/inquire" className="block group relative" aria-label="Inquire about booking">
         <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center">
             {/* Left: Status indicator + dates */}
-            <div className="md:col-span-3">
-              <div className="flex items-center gap-2.5 mb-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-foreground/30" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-foreground/50" />
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="md:col-span-3"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-foreground/25" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-foreground/40" />
                 </span>
-                <p className="font-overline text-primary-foreground/35 text-[0.55rem]">
+                <p className="font-overline text-primary-foreground/30 text-[0.55rem]">
                   Currently Booking
                 </p>
               </div>
-              <p className="font-serif-wedding text-xl md:text-2xl text-primary-foreground/70 font-light tracking-tight">
-                2025 <span className="opacity-30">·</span> 2026
+              <p className="font-serif-wedding text-2xl md:text-3xl text-primary-foreground/60 font-light tracking-tight">
+                2025 <span className="opacity-20 mx-1">·</span> 2026
               </p>
-            </div>
+              
+              {/* Decorative line */}
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="w-12 h-px bg-primary-foreground/10 mt-4 origin-left hidden md:block"
+              />
+            </motion.div>
 
             {/* Center: Main headline + season availability */}
-            <div className="md:col-span-6 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="md:col-span-6 text-center"
+            >
+              {/* Top ornamental line */}
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="w-8 h-px bg-primary-foreground/15 mx-auto mb-4 origin-center hidden md:block"
+                className="w-10 h-px mx-auto mb-5 origin-center hidden md:block"
+                style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.15), transparent)" }}
               />
-              <h2 className="font-serif-wedding text-2xl md:text-3xl text-primary-foreground tracking-tight group-hover:tracking-wide transition-all duration-700 leading-tight mb-3">
+              
+              <h2 className="font-serif-wedding text-2xl md:text-4xl text-primary-foreground tracking-tight group-hover:tracking-wide transition-all duration-700 leading-tight mb-4">
                 Now Accepting Inquiries
               </h2>
 
-              {/* Season availability grid */}
-              <div className="hidden md:flex items-center justify-center gap-6 mt-4">
+              {/* Season availability grid - upgraded with accent indicators */}
+              <div className="hidden md:flex items-center justify-center gap-8 mt-5">
                 {seasonDetails.map((season, i) => (
                   <motion.div
                     key={season.label}
-                    initial={{ opacity: 0, y: 6 }}
+                    initial={{ opacity: 0, y: 8 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.3 + i * 0.08, duration: 0.4 }}
-                    className="text-center"
+                    transition={{ delay: 0.3 + i * 0.1, duration: 0.4 }}
+                    className="text-center relative"
                   >
-                    <p className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-primary-foreground/25 mb-0.5">
+                    {/* Accent indicator for limited availability */}
+                    {season.accent && (
+                      <span className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full bg-primary-foreground/30" />
+                    )}
+                    <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-primary-foreground/20 mb-1">
                       {season.label}
                     </p>
-                    <p className="font-serif-wedding text-[0.65rem] italic text-primary-foreground/40">
+                    <p className={`font-serif-wedding text-[0.7rem] italic ${season.accent ? 'text-primary-foreground/50' : 'text-primary-foreground/30'}`}>
                       {season.status}
                     </p>
                   </motion.div>
                 ))}
               </div>
 
+              {/* Bottom ornamental line */}
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.1 }}
-                className="w-8 h-px bg-primary-foreground/15 mx-auto mt-4 origin-center hidden md:block"
+                transition={{ duration: 0.8, delay: 0.15 }}
+                className="w-10 h-px mx-auto mt-5 origin-center hidden md:block"
+                style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.15), transparent)" }}
               />
-            </div>
+            </motion.div>
 
             {/* Right: CTA hint */}
-            <div className="md:col-span-3 md:text-right">
-              <span className="font-sans-wedding text-[0.6875rem] tracking-[0.2em] uppercase text-primary-foreground/35 group-hover:text-primary-foreground/70 transition-colors duration-300 inline-flex items-center gap-2">
+            <motion.div
+              initial={{ opacity: 0, x: 16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="md:col-span-3 md:text-right"
+            >
+              <span className="font-sans-wedding text-[0.7rem] tracking-[0.2em] uppercase text-primary-foreground/30 group-hover:text-primary-foreground/60 transition-colors duration-300 inline-flex items-center gap-2.5">
                 Begin Your Story
                 <motion.span
                   className="inline-block"
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                 >
                   →
                 </motion.span>
               </span>
-              <p className="font-serif-wedding text-xs italic text-primary-foreground/20 mt-1.5 hidden md:block">
+              <p className="font-serif-wedding text-xs italic text-primary-foreground/15 mt-2 hidden md:block">
                 Complimentary discovery call
               </p>
-            </div>
+              
+              {/* Trust element */}
+              <div className="hidden md:flex items-center justify-end gap-2 mt-4">
+                <span className="w-4 h-px bg-primary-foreground/10" />
+                <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-primary-foreground/10">
+                  48hr Response
+                </span>
+              </div>
+            </motion.div>
           </div>
         </div>
+        
+        {/* Full-width hover accent line */}
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-[2px] origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-700"
+          style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.4), transparent)" }}
+        />
       </Link>
     </section>
   );
