@@ -377,7 +377,66 @@ const About = () => {
         </div>
       </section>
 
-      {/* NEW: Cinematic Parallax Testimonial Carousel */}
+      {/* Editorial Image Mosaic — asymmetric 3-image grid */}
+      <section className="py-12 md:py-16 bg-card overflow-hidden">
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
+          <div className="grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-4">
+            {/* Large left image */}
+            <ScrollReveal delay={0} className="col-span-2 md:col-span-7">
+              <div className="aspect-[4/3] overflow-hidden relative group">
+                <img
+                  src={bouquetImage}
+                  alt="Bridal bouquet detail with ivory roses and sage greenery"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute top-3 left-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                  <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                  <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                </div>
+                <div className="absolute bottom-3 right-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                  <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                  <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Right stacked pair */}
+            <div className="col-span-2 md:col-span-5 flex flex-col gap-3 md:gap-4">
+              <ScrollReveal delay={0.1}>
+                <div className="aspect-[3/2] overflow-hidden relative group">
+                  <img
+                    src={editorialFloralsImage}
+                    alt="Sage eucalyptus and ivory floral arrangement on ceremony table"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-3 left-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                    <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                    <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                  </div>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal delay={0.2}>
+                <div className="aspect-[3/2] overflow-hidden relative group">
+                  <img
+                    src={aboutHeroImage}
+                    alt="Wedding planner coordinating details in sunlit garden"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute bottom-3 right-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
+                    <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                    <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.35), transparent)" }} />
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Cinematic Parallax Testimonial Carousel */}
       <section className="py-section-mobile md:py-section-tablet bg-card relative overflow-hidden">
         {/* Parallax watermark */}
         <motion.div
