@@ -430,15 +430,17 @@ const Inquire = () => {
         <label htmlFor="referral" className="font-overline text-muted-foreground mb-2 block">
           How Did You Find Us?
         </label>
-        <input
-          type="text"
-          id="referral"
-          name="referral"
-          value={formData.referral}
-          onChange={(e) => set("referral", e.target.value)}
-          className={inputCls("referral")}
-          placeholder="Instagram, referral, Google…"
-        />
+        <InputWrapper>
+          <input
+            type="text"
+            id="referral"
+            name="referral"
+            value={formData.referral}
+            onChange={(e) => set("referral", e.target.value)}
+            className={inputCls("referral")}
+            placeholder="Instagram, referral, Google…"
+          />
+        </InputWrapper>
       </div>
     </div>,
 
