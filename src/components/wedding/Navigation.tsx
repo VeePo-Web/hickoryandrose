@@ -141,10 +141,14 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                           transition={{ type: "spring", stiffness: 380, damping: 30 }}
                         />
                       )}
+                      {/* Gold shimmer underline on hover */}
                       <span
-                        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-px bg-current transition-all duration-300 ${
-                          isActive ? "w-0" : "w-0 group-hover:w-4"
-                        }`}
+                        className="absolute bottom-0 left-1/2 -translate-x-1/2 h-px w-0 group-hover:w-6 transition-all duration-500 ease-out"
+                        style={{
+                          background: isActive
+                            ? "transparent"
+                            : "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.6), transparent)",
+                        }}
                       />
                     </Link>
                   </li>
