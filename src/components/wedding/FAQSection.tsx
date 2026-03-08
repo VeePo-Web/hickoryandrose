@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import {
   Accordion,
@@ -9,73 +10,93 @@ import {
 
 const faqs = [
   {
-    question: "What should I wear?",
-    answer: "Formal attire works well—cocktail dresses, suits, or something you feel good in. The desert can get cool in the evening, so a light layer is a good idea. Comfortable shoes recommended for walking outdoors.",
+    question: "What's the difference between your planning tiers?",
+    answer: "Day-Of Coordination is for couples who've handled planning and need a professional to execute. Partial Planning offers design guidance and vendor support while you stay involved. Full-Service Planning means we handle everything — from first concept to final send-off.",
   },
   {
-    question: "Are children welcome?",
-    answer: "We've made this an adults-only evening so everyone can relax. We're happy to share childcare recommendations if that would help.",
+    question: "How far in advance should we reach out?",
+    answer: "We recommend 10–14 months for Full-Service Planning and 3–4 months for Day-Of Coordination. That said, we're always happy to chat — even on tighter timelines, we may be able to help.",
   },
   {
-    question: "Can I bring a plus one?",
-    answer: "If your invitation includes 'and guest,' absolutely. Otherwise, we're keeping the guest list to those named on the invite due to space.",
+    question: "What areas do you serve?",
+    answer: "We're based in Edmonton, Alberta and serve couples throughout the greater Edmonton area, the Alberta Rockies (Jasper, Banff, Lake Louise), and surrounding communities. Travel fees may apply for destinations beyond our home region.",
   },
   {
-    question: "What time should I arrive?",
-    answer: "We'd suggest arriving around 3:30 PM so you have time to settle in before the ceremony starts at 4:00 PM.",
+    question: "Can I customize my service package?",
+    answer: "Absolutely. Every couple is unique — after our discovery call, we craft a custom proposal tailored to your specific needs, priorities, and budget. Our tiers are starting points, not limitations.",
   },
   {
-    question: "Is there parking?",
-    answer: "Yes—free parking is available at the venue, and valet will be offered as well.",
+    question: "Will the same planner be with us throughout?",
+    answer: "Yes. The planner you meet on your discovery call is the same person leading your wedding day. We believe in personal continuity — no hand-offs, no unfamiliar faces.",
   },
   {
-    question: "Will it be outdoors?",
-    answer: "The ceremony will be outside with views of the desert. If the weather turns, we have an indoor backup ready.",
-  },
-  {
-    question: "Can I take photos during the ceremony?",
-    answer: "We'd love for you to be fully present, so we're asking for an unplugged ceremony—phones and cameras away. We'll share all the professional photos afterward.",
-  },
-  {
-    question: "What about dietary restrictions?",
-    answer: "Just let us know when you RSVP. Our caterer can accommodate most needs.",
+    question: "What does the discovery call look like?",
+    answer: "It's a relaxed, 30-minute video or phone call where we learn about your vision, your priorities, and how you want to feel on your wedding day. No pressure, no sales pitch — just genuine connection.",
   },
 ];
 
 const FAQSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const watermarkY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+  const accentScale = useTransform(scrollYProgress, [0.1, 0.5], [0, 1]);
+
   return (
-    <section className="bg-background py-section-mobile md:py-section-tablet lg:py-section-desktop relative overflow-hidden">
-      {/* Decorative background text */}
+    <section
+      ref={sectionRef}
+      className="bg-background py-section-mobile md:py-section-tablet lg:py-section-desktop relative overflow-hidden"
+      aria-label="Frequently asked questions"
+    >
+      {/* Parallax watermark */}
       <motion.div
-        className="absolute -right-10 top-1/4 pointer-events-none select-none"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 0.02 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5 }}
+        className="absolute -right-10 top-1/3 pointer-events-none select-none"
+        style={{ y: watermarkY }}
+        aria-hidden="true"
       >
-        <span className="font-serif-wedding text-[12rem] md:text-[18rem] font-light text-foreground leading-none whitespace-nowrap">
-          FAQ
+        <span className="font-serif-wedding text-[10rem] md:text-[16rem] font-light text-foreground/[0.015] leading-none whitespace-nowrap italic">
+          Answers
         </span>
       </motion.div>
+
+      {/* Scroll-linked accent line */}
+      <motion.div
+        className="absolute right-0 top-1/2 -translate-y-1/2 w-px h-40 hidden lg:block origin-center"
+        style={{
+          scaleY: accentScale,
+          background: "linear-gradient(180deg, transparent, hsl(var(--primary) / 0.15), transparent)",
+        }}
+        aria-hidden="true"
+      />
 
       <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative">
         <ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-14 md:mb-20 items-baseline">
             <div className="md:col-span-4">
-              <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
-                <span className="inline-flex items-center gap-3">
-                  <span className="w-5 h-px bg-border" />
-                  Questions & Answers
-                </span>
+              <div className="flex items-center gap-4 mb-4">
+                <span className="font-serif-wedding text-sm text-primary/20 font-light">07</span>
+                <motion.span
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="w-8 h-px bg-primary/15 origin-left"
+                />
+              </div>
+              <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em] mb-4">
+                Questions & Answers
               </p>
               <h2 className="font-serif-wedding text-display-lg text-foreground">
-                FAQ
+                Common Questions
               </h2>
             </div>
             <div className="md:col-span-8 md:pt-8">
               <p className="font-sans-wedding text-body-sm text-muted-foreground font-light leading-relaxed">
-                A few things that might be helpful to know. If you have other questions,
-                just reach out—we're happy to help.
+                Choosing a wedding planner is a meaningful decision. Here are answers
+                to the questions we hear most — and we're always happy to answer more
+                on a discovery call.
               </p>
             </div>
           </div>
@@ -92,7 +113,7 @@ const FAQSection = () => {
                 >
                   <AccordionTrigger className="font-sans-wedding text-body text-foreground text-left hover:text-primary hover:no-underline py-6 font-light gap-4">
                     <span className="flex items-baseline gap-4">
-                      <span className="font-serif-wedding text-xs text-muted-foreground/30 shrink-0 tabular-nums">
+                      <span className="font-serif-wedding text-xs text-muted-foreground/25 shrink-0 tabular-nums">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <span>{faq.question}</span>
@@ -105,6 +126,18 @@ const FAQSection = () => {
               ))}
             </Accordion>
           </div>
+        </ScrollReveal>
+
+        {/* Bottom editorial ornament */}
+        <ScrollReveal delay={0.2}>
+          <div className="flex items-center justify-center gap-4 mt-14">
+            <span className="w-6 h-px bg-border/25" />
+            <span className="font-serif-wedding text-xs text-primary/15 tracking-widest">❖</span>
+            <span className="w-6 h-px bg-border/25" />
+          </div>
+          <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-muted-foreground/20 text-center mt-4">
+            More answers on our <a href="/faq" className="underline underline-offset-4 hover:text-primary transition-colors">FAQ page</a>
+          </p>
         </ScrollReveal>
       </div>
     </section>

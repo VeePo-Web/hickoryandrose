@@ -7,6 +7,7 @@ import NowBookingSection from "@/components/wedding/NowBookingSection";
 import ScrollProgress from "@/components/wedding/ScrollProgress";
 import BackToTop from "@/components/wedding/BackToTop";
 import venueImage from "@/assets/portfolio-venue.jpg";
+import rockiesImage from "@/assets/service-area-rockies.jpg";
 
 // Lazy-load below-fold sections
 const ServicesOverviewSection = lazy(() => import("@/components/wedding/ServicesOverviewSection"));
@@ -108,6 +109,13 @@ const Index = () => {
           direction="right"
         />
         <PressMentionsSection />
+        <FullWidthImage
+          src={rockiesImage}
+          alt="Cinematic aerial view of the Canadian Rocky Mountains at golden hour with alpine lake and evergreen forests"
+          height="h-[45vh] md:h-[55vh]"
+          overlay
+          caption="Serving Edmonton · Jasper · Banff · Lake Louise · The Canadian Rockies"
+        />
         <FilmstripSection />
         <CTASection />
         <InstagramSection />
