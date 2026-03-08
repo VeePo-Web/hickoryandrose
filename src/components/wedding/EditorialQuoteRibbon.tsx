@@ -120,8 +120,8 @@ const EditorialQuoteRibbon = ({
               — {attribution}
             </span>
           )}
-          <span className="text-background/[0.04] mx-12">·</span>
-          <span className="text-background/[0.06] mr-4">❖</span>
+          <span className="inline-block mx-8 w-6 h-px bg-gold/10" aria-hidden="true" />
+          <span className="inline-block mx-4 w-1 h-1 rotate-45 bg-gold/20" aria-hidden="true" />
           {quote}
           {attribution && (
             <span className="font-script text-2xl md:text-4xl text-background/[0.06] ml-8">

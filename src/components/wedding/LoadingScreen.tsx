@@ -210,7 +210,8 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                       &
                     </motion.span>
                     <motion.span
-                      className="font-script text-5xl md:text-6xl text-background/80"
+                      className="font-script text-5xl md:text-6xl"
+                      style={{ color: "hsl(var(--gold) / 0.7)" }}
                       initial={{ opacity: 0 }}
                       animate={active ? { opacity: 1 } : {}}
                       transition={{ delay: 0.35, duration: 0.4 }}
