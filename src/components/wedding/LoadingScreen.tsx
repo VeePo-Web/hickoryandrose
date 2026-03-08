@@ -190,7 +190,8 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                     className="flex items-baseline justify-center gap-3"
                   >
                     <motion.span
-                      className="font-serif-wedding text-5xl md:text-6xl font-light tracking-[0.1em] text-background/80"
+                      className="font-serif-wedding text-5xl md:text-6xl font-light tracking-[0.1em]"
+                      style={{ color: "hsl(var(--gold) / 0.7)" }}
                       initial={{ opacity: 0 }}
                       animate={active ? { opacity: 1 } : {}}
                       transition={{ delay: 0.15, duration: 0.4 }}
