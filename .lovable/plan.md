@@ -1,52 +1,191 @@
 
+# Wedding Website - Multi-Page Implementation Plan
 
-# Approach Page -- Premium Editorial Upgrade
+## Overview
+Creating a complete multi-page wedding website for "Alicia & Andres" with faithful recreation of the design, including 5 main pages matching the navigation structure.
 
-## Audit Summary
-The Approach page (430 lines) has solid bones: parallax hero, 5-step timeline, editorial split, differentiators, promise section, testimonial, brand quote, and CTA. However several sections read as "content blocks with gold accents" rather than a curated editorial narrative. The gaps:
+## Page Structure
 
-- **No quantitative proof layer** -- no stats/numbers anywhere on the page to build trust
-- **Single static testimonial** -- one quote with no rotation or visual weight feels thin
-- **Philosophy section is lightweight** -- small image, basic 2-column text, no editorial drama
-- **No interactive scroll progress** for the 5-step timeline -- the user can't see where they are in the journey
-- **Missing "What Happens Next" bridge** between Promise and CTA -- the conversion path lacks a warm final nudge
-- **Hero subtitle animation** is basic fade -- no staggered word reveal
+Based on the navigation in the design image, we'll create these pages:
 
-## Plan (8 changes, 3 files)
+| Route | Page | Content |
+|-------|------|---------|
+| `/` | Home | Hero section with full navigation |
+| `/our-story` | Our Story | Couple's story with photos |
+| `/details` | Details | Location, Wedding Party, Accommodations |
+| `/schedule` | Schedule | Itinerary/Timeline for wedding weekend |
+| `/registry` | Registry | Gift registry information and links |
 
-### 1. Hero -- Staggered Word Reveal (Approach.tsx, lines 95-101)
-Replace the static h1/p fade with a word-by-word stagger animation on the headline. Each word fades up with 60ms delay. The subtitle gets a separate delayed entrance. Adds cinematic weight without new dependencies -- just framer-motion variants already in use.
+## Design System
 
-### 2. Add "By the Numbers" Stats Ribbon (new component: `ApproachStatsRibbon.tsx`)
-Insert between the Philosophy section and the Process Timeline. A horizontal strip with 3-4 key stats: "150+ Weddings Planned", "98% Vendor Satisfaction", "7+ Years Experience", "48hr Response Time". Each number uses `font-serif-wedding text-display-lg` with a gold gradient fill, staggered count-up on scroll. Separated by breathing diamonds. Background: `bg-card` with grain overlay.
+### Color Palette (to add to CSS variables)
+```text
+--wedding-sage: 65 12% 45%        (Olive/sage for hero overlay, location section)
+--wedding-cream: 40 30% 97%       (Off-white background sections)
+--wedding-text: 0 0% 20%          (Dark text color)
+--wedding-teal: 175 50% 35%       (Accent for buttons, day labels)
+```
 
-### 3. Upgrade Philosophy Section (Approach.tsx, lines 148-239)
-- Make the image column larger (col-span-5 instead of 4) with `aspect-[3/4]` portrait crop and GoldFrame overlay
-- Add a pull-quote in script font between the two body paragraphs
-- Add a small "Est. 2018" date chip below the section index
-- Increase vertical padding to match section rhythm
+### Typography (Google Fonts to import)
+- **Great Vibes**: Script font for "Alicia & Andres" title
+- **Cormorant Garamond**: Elegant serif for section headings
+- **Open Sans**: Clean sans-serif for body text and navigation
 
-### 4. Timeline Scroll Progress Indicator (ApproachProcessTimeline.tsx)
-Add a fixed-position (sticky within the timeline section) horizontal progress bar at the top of the timeline that fills as the user scrolls through the 5 steps. Uses `useScroll` targeting the timeline container. A small label shows the current step name. Gold gradient fill with glow. Disappears when scrolling past the section.
+## Files to Create
 
-### 5. Upgrade Testimonial to Dual-Quote (Approach.tsx, lines 333-387)
-Replace the single testimonial with two side-by-side quotes in a 2-column grid (stacked on mobile). Each gets its own gold quotation mark, client name, venue, and service tag. This doubles social proof and fills the visual space.
+### Shared Components
+```text
+src/components/wedding/
+├── Navigation.tsx         - Persistent navigation header
+├── Footer.tsx             - RSVP footer section
+├── BranchDecoration.tsx   - Reusable SVG branch illustration
+```
 
-### 6. Add "Your Next Step" Bridge Section (new content in Approach.tsx)
-Insert between the Promise section and the ceremony FullWidthImage. A minimal centered section with: "Ready to see if we're the right fit?" headline, a short reassuring paragraph, and three small icon-less trust chips ("No commitment required", "Complimentary call", "Responds within 48hrs"). This warms the conversion path before the CTA.
+### Page Components
+```text
+src/pages/
+├── Index.tsx              - Home page (Hero + overview)
+├── OurStory.tsx           - Our Story page
+├── Details.tsx            - Details page (Location, Party, Hotels)
+├── Schedule.tsx           - Schedule/Itinerary page
+├── Registry.tsx           - Registry page
+```
 
-### 7. Differentiators -- Add Expandable Detail (ApproachDifferentiators.tsx)
-Add a `useState` accordion behavior: clicking a differentiator row expands to reveal a longer detail paragraph with a smooth height animation. The expanded state shows a small gold accent line growing from left. Collapsed rows show the current short text; expanded rows reveal 2-3 more sentences of depth.
+### Section Components
+```text
+src/components/wedding/
+├── HeroSection.tsx        - Full-height hero with overlay
+├── StorySection.tsx       - Story content with photo
+├── WeddingPartySection.tsx - Groomsmen/Bridesmaids tabs
+├── LocationSection.tsx    - Venue information
+├── AccommodationsSection.tsx - Hotel cards
+├── ItinerarySection.tsx   - Timeline with day tabs
+├── RegistrySection.tsx    - Registry logos and info
+```
 
-### 8. Brand Quote Section -- Add Founder Attribution (Approach.tsx, lines 391-421)
-Below the Hickory & Rose script name, add a small founder photo thumbnail (32x32 rounded) with "— Sarah, Founder" text. This personalizes the brand promise and adds human connection.
+## Files to Modify
 
-## Files Modified
-- `src/pages/Approach.tsx` -- Hero stagger, philosophy upgrade, dual testimonial, bridge section, founder attribution
-- `src/components/wedding/ApproachProcessTimeline.tsx` -- Sticky scroll progress indicator
-- `src/components/wedding/ApproachDifferentiators.tsx` -- Expandable accordion rows
-- `src/components/wedding/ApproachStatsRibbon.tsx` -- New component
+### 1. src/index.css
+Add wedding-specific CSS variables and Google Fonts import:
+- Import Great Vibes, Cormorant Garamond, Open Sans from Google Fonts
+- Add wedding color variables
+- Add custom font-family classes
 
-## No New Dependencies
-All changes use existing framer-motion, Tailwind, and React state. Zero new packages.
+### 2. tailwind.config.ts
+Extend theme with:
+- Wedding color palette using CSS variables
+- Font family definitions for script, serif, sans
 
+### 3. src/App.tsx
+Add routes:
+- `/` - Home
+- `/our-story` - Our Story
+- `/details` - Details
+- `/schedule` - Schedule
+- `/registry` - Registry
+
+## Detailed Component Specifications
+
+### Navigation Component
+- Fixed/sticky header on all pages
+- Links: Home, Our Story, Details, Schedule, Registry
+- Active state with underline accent
+- On hero: transparent overlay style
+- On other pages: solid cream background
+
+### Hero Section (Home Page)
+- Full viewport height (100vh)
+- Background: Placeholder couple photo with sage overlay
+- Centered script title "Alicia & Andres"
+- Date line: "February 15, 2025 | Joshua Tree, California"
+- Scroll indicator arrow at bottom
+
+### Our Story Page
+- Branch decoration SVG at top
+- "Our Story" heading in serif
+- Two-column layout: text left, photo right
+- Cream background
+- Story paragraphs with date highlights
+
+### Details Page
+Contains 3 sections:
+
+**Wedding Party Section:**
+- Tab switcher: Groomsmen | Bridesmaids
+- 4 circular avatar photos per tab
+- Names beneath each photo
+- Groomsmen: Julian Bernard, Damien Huber, Mark Pavone, David Blaine
+- Bridesmaids: Similar structure with female names
+
+**Location Section:**
+- Sage/olive background color
+- "The Location" label
+- "Joshua Tree Carmine Resort" large heading
+- Description paragraph
+- Full-width venue/couple photo
+
+**Accommodations Section:**
+- White background
+- 3-column grid of hotel cards
+- Each card: Name, description, "Reserve" button
+- Hotels: Joshua Tree Inn, Desert Sage Lodge, Carmine Resort
+
+### Schedule Page
+- "Itinerary" heading
+- 3 date tabs: Feb 14, Feb 15 (Wedding Day), Feb 16
+- Each day has timeline entries:
+  - Time marker
+  - Event name
+  - Location/venue
+  - Brief description
+
+### Registry Page
+- Branch decoration SVG
+- "Registry" heading
+- Paragraph about gifts
+- 3 registry badges/logos as styled text blocks:
+  - Crate & Barrel
+  - Target
+  - Williams Sonoma
+
+### Footer Component
+- Simple cream background
+- Centered "RSVP" text or button
+- Optional: Copyright line
+
+## Responsive Breakpoints
+
+### Desktop (default)
+- Full layouts as designed
+- 3-column grids for accommodations
+- 4 avatars in row for wedding party
+
+### Tablet (md: 768px)
+- 2-column grids where applicable
+- Slightly reduced padding
+
+### Mobile (sm: 640px)
+- Single column layouts
+- Hamburger menu for navigation
+- Stacked sections
+- 2x2 grid for wedding party avatars
+
+## Image Strategy
+Using placeholder images from Unsplash or similar:
+- Hero: Desert/couple themed landscape
+- Story: Couple portrait
+- Location: Joshua Tree landscape
+- Accommodations: Hotel exterior placeholders
+- Wedding Party: Generic avatar placeholders
+
+## Implementation Order
+
+1. **Foundation** - Update design system (CSS, Tailwind config)
+2. **Shared Components** - Navigation, Footer, Branch decoration
+3. **Home Page** - Hero section with navigation overlay
+4. **Our Story Page** - Story content and layout
+5. **Details Page** - Location, Wedding Party, Accommodations
+6. **Schedule Page** - Itinerary with tabs
+7. **Registry Page** - Registry section
+8. **App Routes** - Wire up all routes in App.tsx
+9. **Polish** - Responsive adjustments, smooth scroll, hover states
