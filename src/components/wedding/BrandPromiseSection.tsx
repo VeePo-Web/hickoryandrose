@@ -172,12 +172,11 @@ const BrandPromiseSection = () => {
                 </div>
                 <div className="md:col-span-1 flex items-center">
                   <motion.span
-                    className="text-primary/15 group-hover:text-primary/35 transition-colors duration-500 text-lg"
-                    animate={activePillar === index ? { rotate: 45 } : { rotate: 0 }}
+                    className="w-2.5 h-2.5 rotate-45 block"
+                    style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }}
+                    animate={activePillar === index ? { scale: 1.3 } : { scale: 1 }}
                     transition={{ duration: 0.3 }}
-                  >
-                    {pillar.icon}
-                  </motion.span>
+                  />
                 </div>
                 <div className="md:col-span-3 relative">
                   <p className="font-overline text-primary/70 text-[0.6rem] group-hover:tracking-[0.25em] transition-all duration-500">
