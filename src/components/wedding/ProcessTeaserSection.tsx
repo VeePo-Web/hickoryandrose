@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
+import BranchDecoration from "./BranchDecoration";
 
 const steps = [
   {
@@ -28,7 +29,8 @@ const ProcessTeaserSection = () => {
     <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background" aria-label="Our approach">
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
         <ScrollReveal>
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-14 md:mb-20">
+            <BranchDecoration className="mx-auto mb-6" />
             <p className="font-overline text-muted-foreground mb-4">
               How We Work
             </p>
@@ -38,7 +40,7 @@ const ProcessTeaserSection = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-0 mb-12 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-0 mb-14 relative">
           {/* Connecting line (desktop only) */}
           <motion.div
             className="hidden md:block absolute top-8 left-[16.67%] right-[16.67%] h-px bg-border"

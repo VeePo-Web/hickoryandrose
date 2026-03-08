@@ -49,17 +49,26 @@ const AnimatedCounter = ({
 const StatsSection = () => {
   return (
     <section
-      className="py-section-mobile md:py-section-tablet bg-foreground"
+      className="py-section-mobile md:py-section-tablet bg-foreground relative overflow-hidden"
       aria-label="Our impact"
     >
-      <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+      {/* Subtle radial accent */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: "radial-gradient(circle at 50% 50%, hsl(var(--primary-foreground)) 1px, transparent 1px)",
+        backgroundSize: "40px 40px",
+      }} />
+
+      <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
         <ScrollReveal>
-          <p className="font-overline text-background/30 text-center mb-12 md:mb-16">
-            By the Numbers
-          </p>
+          <div className="text-center mb-12 md:mb-16">
+            <p className="font-overline text-background/30 mb-4">
+              By the Numbers
+            </p>
+            <div className="w-10 h-px bg-background/15 mx-auto" />
+          </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -71,7 +80,11 @@ const StatsSection = () => {
                 delay: index * 0.1,
                 ease: [0.25, 0.1, 0.25, 1],
               }}
-              className="text-center"
+              className={`text-center relative ${
+                index < stats.length - 1
+                  ? "md:border-r md:border-background/10"
+                  : ""
+              }`}
             >
               <p className="font-serif-wedding text-display-xl text-background mb-2">
                 <AnimatedCounter
@@ -83,6 +96,15 @@ const StatsSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Bottom flourish */}
+        <ScrollReveal delay={0.4}>
+          <div className="flex items-center justify-center gap-3 mt-14 md:mt-20">
+            <span className="w-8 h-px bg-background/15" />
+            <span className="font-script text-lg text-background/20">H & R</span>
+            <span className="w-8 h-px bg-background/15" />
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
