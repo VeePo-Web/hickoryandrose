@@ -18,6 +18,7 @@ const NowBookingSection = () => {
   const watermarkX = useTransform(scrollYProgress, [0, 1], ["8%", "-8%"]);
   const lineScale = useTransform(scrollYProgress, [0.1, 0.5], [0, 1]);
   const ornamentY = useTransform(scrollYProgress, [0, 1], [10, -10]);
+  const glowOpacity = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [0, 0.1, 0]);
 
   return (
     <section
@@ -36,6 +37,16 @@ const NowBookingSection = () => {
       
       {/* Bottom hairline */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-foreground/8 to-transparent" />
+
+      {/* Radial gold glow — scroll-linked, centered */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full pointer-events-none"
+        style={{
+          opacity: glowOpacity,
+          background: "radial-gradient(ellipse, hsl(var(--gold, 38 60% 55%) / 0.2), transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
 
       {/* Parallax year watermark */}
       <motion.div
@@ -83,7 +94,10 @@ const NowBookingSection = () => {
               <div className="flex items-center gap-3 mb-3">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-foreground/25" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-foreground/40" />
+                  <span
+                    className="relative inline-flex rounded-full h-2.5 w-2.5"
+                    style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.6), hsl(var(--primary-foreground) / 0.4))" }}
+                  />
                 </span>
                 <p className="font-overline text-primary-foreground/30 text-[0.55rem]">
                   Currently Booking
@@ -93,13 +107,14 @@ const NowBookingSection = () => {
                 2025 <span className="opacity-20 mx-1">·</span> 2026
               </p>
               
-              {/* Decorative line */}
+              {/* Decorative line — gold gradient */}
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="w-12 h-px bg-primary-foreground/10 mt-4 origin-left hidden md:block"
+                className="w-12 h-px mt-4 origin-left hidden md:block"
+                style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.25), transparent)" }}
               />
             </motion.div>
 
@@ -111,21 +126,21 @@ const NowBookingSection = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="md:col-span-6 text-center"
             >
-              {/* Top ornamental line */}
+              {/* Top ornamental line — gold */}
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
                 className="w-10 h-px mx-auto mb-5 origin-center hidden md:block"
-                style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.15), transparent)" }}
+                style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.2), transparent)" }}
               />
               
               <h2 className="font-serif-wedding text-2xl md:text-4xl text-primary-foreground tracking-tight group-hover:tracking-wide transition-all duration-700 leading-tight mb-4">
                 Now Accepting Inquiries
               </h2>
 
-              {/* Season availability with fill bars */}
+              {/* Season availability with fill bars — gold accents */}
               <div className="hidden md:flex items-center justify-center gap-6 lg:gap-8 mt-5">
                 {seasonDetails.map((season, i) => (
                   <motion.div
@@ -134,20 +149,35 @@ const NowBookingSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 + i * 0.1, duration: 0.4 }}
-                    className="text-center relative min-w-[72px]"
+                    className="text-center relative min-w-[72px] group/season"
                   >
-                    <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-primary-foreground/20 mb-1.5">
+                    <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-primary-foreground/20 mb-1.5 group-hover/season:text-primary-foreground/35 transition-colors duration-300">
                       {season.label}
                     </p>
-                    {/* Availability fill bar */}
-                    <div className="w-full h-[2px] bg-primary-foreground/8 overflow-hidden mb-1.5">
+                    {/* Availability fill bar — gold gradient for accent items */}
+                    <div className="w-full h-[2px] bg-primary-foreground/8 overflow-hidden mb-1.5 relative">
                       <motion.div
-                        className={`h-full origin-left ${season.accent ? 'bg-primary-foreground/35' : 'bg-primary-foreground/15'}`}
+                        className="h-full origin-left"
+                        style={{
+                          background: season.accent
+                            ? "linear-gradient(90deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.3))"
+                            : "hsl(var(--primary-foreground) / 0.15)",
+                        }}
                         initial={{ scaleX: 0 }}
                         whileInView={{ scaleX: season.fill / 100 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.5 + i * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
                       />
+                      {/* Shimmer effect on accent bars */}
+                      {season.accent && (
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                          initial={{ x: "-100%" }}
+                          whileInView={{ x: "200%" }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.2, delay: 1.3 + i * 0.1, ease: "easeInOut" }}
+                        />
+                      )}
                     </div>
                     <p className={`font-serif-wedding text-[0.65rem] italic ${season.accent ? 'text-primary-foreground/50' : 'text-primary-foreground/25'}`}>
                       {season.status}
@@ -163,7 +193,7 @@ const NowBookingSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.15 }}
                 className="w-10 h-px mx-auto mt-5 origin-center hidden md:block"
-                style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.15), transparent)" }}
+                style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.2), transparent)" }}
               />
             </motion.div>
 
@@ -191,7 +221,7 @@ const NowBookingSection = () => {
               
               {/* Trust element */}
               <div className="hidden md:flex items-center justify-end gap-2 mt-4">
-                <span className="w-4 h-px bg-primary-foreground/10" />
+                <span className="w-4 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.15))" }} />
                 <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-primary-foreground/10">
                   48hr Response
                 </span>
@@ -200,7 +230,7 @@ const NowBookingSection = () => {
           </div>
         </div>
         
-        {/* Full-width hover accent line */}
+        {/* Full-width hover accent line — gold gradient */}
         <motion.div
           className="absolute bottom-0 left-0 right-0 h-[2px] origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-700"
           style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.4), transparent)" }}

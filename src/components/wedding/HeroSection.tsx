@@ -1,5 +1,5 @@
 import { ChevronDown } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Navigation from "./Navigation";
 import MagneticButton from "./MagneticButton";
@@ -43,9 +43,16 @@ const trustCredentials = [
   "Est. 2018",
 ];
 
+const seasonAvailability = [
+  { label: "Spring '26", status: "Limited" },
+  { label: "Summer '26", status: "2 Left" },
+  { label: "Autumn '26", status: "Open" },
+];
+
 const HeroSection = () => {
   const ref = useRef<HTMLElement>(null);
   const [isInsetHovered, setIsInsetHovered] = useState(false);
+  const [activeSeasonIdx, setActiveSeasonIdx] = useState(0);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -59,6 +66,14 @@ const HeroSection = () => {
 
   useEffect(() => {
     document.title = "Hickory & Rose | Edmonton's Luxury Wedding Planner";
+  }, []);
+
+  // Rotate season availability
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSeasonIdx((i) => (i + 1) % seasonAvailability.length);
+    }, 3000);
+    return () => clearInterval(timer);
   }, []);
 
   const scrollToContent = () => {
@@ -146,17 +161,50 @@ const HeroSection = () => {
         />
       </motion.div>
 
-      {/* Right sidebar — Year + Season */}
+      {/* Right sidebar — Animated season availability ticker */}
       <motion.div
-        className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 z-20 hidden lg:flex flex-col items-center gap-3 pointer-events-none"
+        className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 z-20 hidden lg:flex flex-col items-center gap-4 pointer-events-none"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 3.5, duration: 0.8 }}
         aria-hidden="true"
       >
-        <span className="font-serif-wedding text-xs text-white/15 tracking-widest" style={{ writingMode: "vertical-rl" }}>
-          2025 · 2026
+        <span className="font-sans-wedding text-[0.4rem] tracking-[0.25em] uppercase text-white/15" style={{ writingMode: "vertical-rl" }}>
+          Now Booking
         </span>
+        <motion.div
+          className="w-px h-6 origin-top"
+          style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.25), transparent)" }}
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+          transition={{ delay: 3.7, duration: 0.5 }}
+        />
+        <div className="h-10 overflow-hidden relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeSeasonIdx}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.4 }}
+              className="text-center"
+            >
+              <span className="font-serif-wedding text-[0.6rem] text-white/25 block" style={{ writingMode: "vertical-rl" }}>
+                {seasonAvailability[activeSeasonIdx].label}
+              </span>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        <div className="flex flex-col items-center gap-1">
+          {seasonAvailability.map((_, i) => (
+            <span
+              key={i}
+              className={`w-1 h-1 rounded-full transition-all duration-300 ${
+                i === activeSeasonIdx ? "bg-gold/50 scale-125" : "bg-white/10"
+              }`}
+            />
+          ))}
+        </div>
       </motion.div>
 
       <Navigation variant="overlay" />
@@ -175,14 +223,16 @@ const HeroSection = () => {
         >
           <span className="inline-flex items-center gap-3">
             <motion.span
-              className="w-8 h-px bg-white/30 origin-right"
+              className="w-8 h-px origin-right"
+              style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.4))" }}
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             />
             Edmonton's Luxury Wedding Planner
             <motion.span
-              className="w-8 h-px bg-white/30 origin-left"
+              className="w-8 h-px origin-left"
+              style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.4), transparent)" }}
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -264,9 +314,15 @@ const HeroSection = () => {
               animate={{ opacity: isInsetHovered ? 1 : 0 }}
               transition={{ duration: 0.4 }}
             />
-            {/* Corner frame accents */}
-            <div className="absolute top-2 left-2 w-5 h-5 border-t border-l border-white/0 group-hover:border-white/20 transition-all duration-700" />
-            <div className="absolute bottom-2 right-2 w-5 h-5 border-b border-r border-white/0 group-hover:border-white/20 transition-all duration-700" />
+            {/* Corner frame accents — gold gradient */}
+            <div className="absolute top-2 left-2 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true">
+              <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
+              <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), transparent)" }} />
+            </div>
+            <div className="absolute bottom-2 right-2 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true">
+              <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.3), transparent)" }} />
+              <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
+            </div>
             {/* Hover caption */}
             <motion.div
               className="absolute bottom-3 left-3 right-3"
@@ -286,7 +342,7 @@ const HeroSection = () => {
             transition={{ delay: 3.2, duration: 0.6 }}
             className="flex items-center justify-end gap-2 mt-3"
           >
-            <span className="w-4 h-px bg-white/15" />
+            <span className="w-4 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2))" }} />
             <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/30">
               Jasper · Alberta
             </span>
