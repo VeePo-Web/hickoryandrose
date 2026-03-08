@@ -22,7 +22,7 @@ import founderImage from "@/assets/founder-portrait.jpg";
 
 /* Stagger helpers */
 const wordContainer = { hidden: {}, visible: { transition: { staggerChildren: 0.06 } } };
-const wordChild = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } } };
+const wordChild = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const } } };
 
 const Approach = () => {
   const heroRef = useRef<HTMLElement>(null);
