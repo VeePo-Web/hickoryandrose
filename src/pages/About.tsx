@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
@@ -11,6 +11,8 @@ import FullWidthImage from "@/components/wedding/FullWidthImage";
 import MagneticButton from "@/components/wedding/MagneticButton";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
+import AboutMilestones from "@/components/wedding/AboutMilestones";
+import AboutTestimonials from "@/components/wedding/AboutTestimonials";
 import founderImage from "@/assets/founder-portrait.jpg";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import aboutHeroImage from "@/assets/about-hero.jpg";
