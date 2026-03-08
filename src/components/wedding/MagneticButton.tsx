@@ -12,6 +12,7 @@ interface MagneticButtonProps {
 const MagneticButton = ({ to, children, variant = "primary", className = "" }: MagneticButtonProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = ref.current;
@@ -22,7 +23,10 @@ const MagneticButton = ({ to, children, variant = "primary", className = "" }: M
     setPosition({ x: x * 0.15, y: y * 0.15 });
   };
 
-  const reset = () => setPosition({ x: 0, y: 0 });
+  const reset = () => {
+    setPosition({ x: 0, y: 0 });
+    setIsHovered(false);
+  };
 
   const variants = {
     primary:
@@ -37,6 +41,7 @@ const MagneticButton = ({ to, children, variant = "primary", className = "" }: M
     <motion.div
       ref={ref}
       onMouseMove={handleMouse}
+      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={reset}
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 350, damping: 15, mass: 0.2 }}
@@ -60,6 +65,29 @@ const MagneticButton = ({ to, children, variant = "primary", className = "" }: M
           }}
           aria-hidden="true"
         />
+
+        {/* Gold shimmer sweep — travels across on hover */}
+        <motion.span
+          className="absolute inset-0 pointer-events-none"
+          initial={false}
+          animate={isHovered ? { x: ["100%", "-100%"] } : { x: "-100%" }}
+          transition={isHovered ? { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } : { duration: 0 }}
+          style={{
+            background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.12) 40%, hsl(var(--gold) / 0.2) 50%, hsl(var(--gold) / 0.12) 60%, transparent 100%)",
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Subtle border glow on primary variant */}
+        {variant === "primary" && (
+          <motion.span
+            className="absolute inset-0 pointer-events-none rounded-[inherit]"
+            animate={isHovered ? { boxShadow: "inset 0 0 12px hsl(var(--gold) / 0.15)" } : { boxShadow: "inset 0 0 0px transparent" }}
+            transition={{ duration: 0.4 }}
+            aria-hidden="true"
+          />
+        )}
+
         {/* Hover underline reveal */}
         <span className="absolute bottom-3 left-10 right-10 h-px bg-current origin-left scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500 ease-out opacity-30" />
         <span className="relative z-10">{children}</span>
