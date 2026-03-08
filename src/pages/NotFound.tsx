@@ -54,7 +54,12 @@ const NotFound = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1.0] }}
           >
-            <BranchDecoration className="mx-auto mb-6" />
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1 }}
+              className="w-12 h-px bg-primary/30 mx-auto mb-6 origin-center"
+            />
             <p className="font-overline text-muted-foreground mb-6">
               Page Not Found
             </p>
