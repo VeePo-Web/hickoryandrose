@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
 const stats = [
@@ -47,21 +47,40 @@ const AnimatedCounter = ({
 };
 
 const StatsSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const monogramY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+
   return (
     <section
+      ref={sectionRef}
       className="py-section-mobile md:py-section-tablet bg-foreground relative overflow-hidden"
       aria-label="Our impact"
     >
-      {/* Decorative background monogram */}
+      {/* Parallax monogram */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        style={{ y: monogramY }}
+      >
+        <span className="font-script text-[14rem] md:text-[22rem] text-background/[0.02] select-none leading-none" aria-hidden="true">
+          &
+        </span>
+      </motion.div>
+
+      {/* Section index watermark */}
+      <motion.div
+        className="absolute top-8 left-8 md:left-16 pointer-events-none select-none"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1.5 }}
+        transition={{ duration: 1 }}
+        aria-hidden="true"
       >
-        <span className="font-script text-[16rem] md:text-[24rem] text-background/[0.02] select-none leading-none" aria-hidden="true">
-          H&R
+        <span className="font-serif-wedding text-7xl md:text-8xl font-light text-background/[0.03]">
+          07
         </span>
       </motion.div>
 
@@ -69,12 +88,12 @@ const StatsSection = () => {
         <ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-end mb-16 md:mb-24">
             <div className="md:col-span-5">
-              <p className="font-sans-wedding text-label uppercase text-background/25 tracking-[0.2em] mb-4">
-                <span className="inline-flex items-center gap-3">
-                  <span className="w-5 h-px bg-background/15" />
+              <div className="flex items-center gap-4 mb-4">
+                <span className="w-5 h-px bg-background/15" />
+                <p className="font-sans-wedding text-label uppercase text-background/25 tracking-[0.2em]">
                   By the Numbers
-                </span>
-              </p>
+                </p>
+              </div>
               <h2 className="font-serif-wedding text-display-md text-background/60 font-light">
                 The Story So Far
               </h2>
@@ -87,7 +106,7 @@ const StatsSection = () => {
           </div>
         </ScrollReveal>
 
-        {/* 2x2 grid with ruled dividers */}
+        {/* 2x2 grid with hover states */}
         <div className="grid grid-cols-1 md:grid-cols-2">
           {stats.map((stat, index) => (
             <motion.div
@@ -100,45 +119,46 @@ const StatsSection = () => {
                 delay: index * 0.1,
                 ease: [0.25, 0.1, 0.25, 1],
               }}
-              className={`py-12 md:py-16 px-4 md:px-8 group ${
-                index >= 2 ? "border-t border-background/8" : ""
+              className={`py-12 md:py-16 px-4 md:px-8 group cursor-default hover:bg-background/[0.02] transition-colors duration-700 ${
+                index >= 2 ? "border-t border-background/[0.06]" : ""
               } ${
-                index % 2 === 1 ? "md:border-l md:border-background/8" : ""
+                index % 2 === 1 ? "md:border-l md:border-background/[0.06]" : ""
               }`}
             >
-              {/* Index number */}
-              <span className="font-serif-wedding text-sm text-background/10 block mb-3">
+              {/* Index */}
+              <span className="font-serif-wedding text-xs text-background/10 block mb-4 tabular-nums">
                 {String(index + 1).padStart(2, "0")}
               </span>
 
-              <p className="font-serif-wedding text-7xl md:text-8xl font-light text-background/90 mb-3 leading-none tracking-tight">
+              <p className="font-serif-wedding text-7xl md:text-8xl font-light text-background/90 mb-4 leading-none tracking-tight group-hover:text-background transition-colors duration-500">
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
               </p>
               <div className="flex items-center gap-3 mb-2">
                 <motion.span
-                  className="w-6 h-px bg-primary/50 origin-left"
+                  className="w-6 h-px bg-primary/40 origin-left group-hover:w-10 transition-all duration-500"
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
                 />
-                <p className="font-sans-wedding text-label uppercase text-background/40">{stat.label}</p>
+                <p className="font-sans-wedding text-label uppercase text-background/40 group-hover:text-background/60 transition-colors duration-500">
+                  {stat.label}
+                </p>
               </div>
-              <p className="font-sans-wedding text-xs text-background/20 font-light italic pl-9">
+              <p className="font-sans-wedding text-xs text-background/20 font-light italic pl-9 group-hover:text-background/30 transition-colors duration-500">
                 {stat.detail}
               </p>
             </motion.div>
           ))}
         </div>
 
+        {/* Bottom ornament */}
         <ScrollReveal delay={0.4}>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="w-16 h-px bg-background/10 mx-auto mt-12 md:mt-16 origin-center"
-          />
+          <div className="flex items-center justify-center gap-3 mt-12 md:mt-16" aria-hidden="true">
+            <span className="w-8 h-px bg-background/8" />
+            <span className="font-serif-wedding text-xs text-background/8 italic">❖</span>
+            <span className="w-8 h-px bg-background/8" />
+          </div>
         </ScrollReveal>
       </div>
     </section>

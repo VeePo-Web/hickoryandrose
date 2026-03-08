@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Instagram } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
@@ -19,18 +20,26 @@ const photos = [
 ];
 
 const InstagramSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const watermarkY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+
   return (
-    <section className="bg-card py-section-mobile md:py-section-tablet relative overflow-hidden" aria-label="Instagram gallery">
-      {/* Decorative background text */}
+    <section
+      ref={sectionRef}
+      className="bg-card py-section-mobile md:py-section-tablet relative overflow-hidden"
+      aria-label="Instagram gallery"
+    >
+      {/* Parallax watermark */}
       <motion.div
-        className="absolute -left-4 bottom-8 pointer-events-none select-none"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5 }}
+        className="absolute -right-8 top-1/2 -translate-y-1/2 pointer-events-none select-none"
+        style={{ y: watermarkY }}
         aria-hidden="true"
       >
-        <span className="font-script text-[8rem] md:text-[12rem] text-foreground/[0.015] leading-none">
+        <span className="font-script text-[6rem] md:text-[10rem] text-foreground/[0.015] leading-none rotate-90 inline-block">
           Follow
         </span>
       </motion.div>
@@ -39,29 +48,36 @@ const InstagramSection = () => {
         <ScrollReveal>
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 md:mb-16 gap-6">
             <div>
-              <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 mb-3">
-                <span className="inline-flex items-center gap-3">
-                  <span className="w-5 h-px bg-border" />
+              {/* Section index + label */}
+              <div className="flex items-center gap-4 mb-4">
+                <span className="font-serif-wedding text-sm text-primary/20 font-light">09</span>
+                <span className="w-8 h-px bg-primary/15" />
+                <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em]">
                   Follow Along
-                </span>
-              </p>
+                </p>
+              </div>
               <a
                 href="https://www.instagram.com/hickoryandrose"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-serif-wedding text-display-md text-foreground hover:text-primary transition-colors duration-300 group inline-flex items-center gap-3"
+                className="font-serif-wedding text-display-md text-foreground hover:text-primary transition-colors duration-300 group inline-flex items-baseline gap-3"
               >
                 @hickoryandrose
                 <Instagram
-                  size={20}
+                  size={18}
                   strokeWidth={1.5}
-                  className="text-muted-foreground/40 group-hover:text-primary transition-colors duration-300"
+                  className="text-muted-foreground/30 group-hover:text-primary transition-colors duration-300"
                 />
               </a>
             </div>
-            <p className="font-sans-wedding text-body-sm text-muted-foreground font-light max-w-xs md:text-right leading-relaxed">
-              Behind the scenes, real weddings, and the details that make it all come together.
-            </p>
+            <div className="md:text-right">
+              <p className="font-sans-wedding text-body-sm text-muted-foreground font-light max-w-xs leading-relaxed">
+                Behind the scenes, real weddings, and the details that make it all come together.
+              </p>
+              <span className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/25 mt-2 inline-block">
+                Updated weekly
+              </span>
+            </div>
           </div>
         </ScrollReveal>
 
@@ -86,8 +102,8 @@ const InstagramSection = () => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
-                {/* Editorial caption overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-3 md:p-4">
+                {/* Editorial hover overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-3 md:p-4">
                   <p className="font-serif-wedding text-xs md:text-sm text-white/80 italic leading-snug">
                     {photo.caption}
                   </p>
@@ -103,19 +119,14 @@ const InstagramSection = () => {
           ))}
         </div>
 
-        {/* Bottom attribution */}
+        {/* Bottom hashtag attribution */}
         <ScrollReveal delay={0.3}>
-          <div className="text-center mt-10 md:mt-14">
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="w-10 h-px bg-border mx-auto mb-4 origin-center"
-            />
-            <p className="font-sans-wedding text-[0.625rem] tracking-[0.15em] uppercase text-muted-foreground/30">
-              #HickoryAndRose
+          <div className="flex items-center justify-center gap-4 mt-10 md:mt-14">
+            <span className="w-10 h-px bg-border/30" />
+            <p className="font-sans-wedding text-[0.6rem] tracking-[0.18em] uppercase text-muted-foreground/25">
+              #HickoryAndRose · #RefinedRusticElegance
             </p>
+            <span className="w-10 h-px bg-border/30" />
           </div>
         </ScrollReveal>
       </div>

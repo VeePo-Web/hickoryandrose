@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
@@ -29,26 +30,47 @@ const steps = [
 ];
 
 const ProcessTeaserSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const watermarkY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+
   return (
     <section
-      className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background"
+      ref={sectionRef}
+      className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden"
       aria-label="Our approach"
     >
+      {/* Parallax watermark */}
+      <motion.div
+        className="absolute right-0 top-1/3 pointer-events-none select-none"
+        style={{ y: watermarkY }}
+        aria-hidden="true"
+      >
+        <span className="font-serif-wedding text-[6rem] md:text-[10rem] lg:text-[14rem] font-light text-foreground/[0.02] whitespace-nowrap tracking-tight italic">
+          Process
+        </span>
+      </motion.div>
+
       <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
           {/* Left: Editorial image column */}
           <div className="lg:col-span-4 hidden lg:block">
             <div className="sticky top-32">
               <ImageReveal direction="up" delay={0.15}>
-                <div className="aspect-[3/4] overflow-hidden">
+                <div className="aspect-[3/4] overflow-hidden relative group">
                   <img
                     src={bouquetImage}
                     alt="Elegant bridal bouquet with sage eucalyptus and ivory garden roses"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                     loading="lazy"
                     width={512}
                     height={683}
                   />
+                  {/* Subtle overlay on hover */}
+                  <div className="absolute inset-0 bg-foreground/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 </div>
               </ImageReveal>
               <motion.div
@@ -58,7 +80,7 @@ const ProcessTeaserSection = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="w-full h-px bg-border/40 mt-6 origin-left"
               />
-              <p className="font-sans-wedding text-[0.6rem] tracking-[0.2em] uppercase text-muted-foreground/30 mt-4 font-light">
+              <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-muted-foreground/25 mt-4 font-light">
                 Every detail, curated with care
               </p>
             </div>
@@ -68,13 +90,14 @@ const ProcessTeaserSection = () => {
           <div className="lg:col-span-8">
             <ScrollReveal>
               <div className="mb-16 md:mb-24">
-                <p className="font-overline text-muted-foreground/50 mb-4">
-                  <span className="inline-flex items-center gap-3">
-                    <span className="w-6 h-px bg-muted-foreground/20" />
+                {/* Section index + label */}
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="font-serif-wedding text-sm text-primary/20 font-light">06</span>
+                  <span className="w-8 h-px bg-primary/15" />
+                  <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em]">
                     How We Work
-                    <span className="w-6 h-px bg-muted-foreground/20" />
-                  </span>
-                </p>
+                  </p>
+                </div>
                 <h2 className="font-serif-wedding text-display-lg text-foreground">
                   A Process Built on Trust
                 </h2>
@@ -86,7 +109,7 @@ const ProcessTeaserSection = () => {
               </div>
             </ScrollReveal>
 
-            {/* Steps with connecting vertical line */}
+            {/* Steps with animated timeline */}
             <div className="relative">
               {/* Connecting vertical line */}
               <motion.div
@@ -100,11 +123,10 @@ const ProcessTeaserSection = () => {
 
               {steps.map((step, index) => (
                 <ScrollReveal key={step.number} delay={index * 0.12}>
-                  <div className="relative py-10 md:py-14 border-t border-border/40 group cursor-default">
+                  <div className="relative py-10 md:py-14 border-t border-border/40 group cursor-default hover:bg-muted/20 transition-colors duration-500 -mx-4 px-4 md:-mx-6 md:px-6">
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
-                      {/* Number with dot on timeline */}
+                      {/* Number */}
                       <div className="md:col-span-2 relative">
-                        {/* Timeline dot */}
                         <motion.div
                           className="absolute left-[1.25rem] md:left-[2rem] top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary/30 hidden md:block"
                           initial={{ scale: 0 }}
@@ -113,7 +135,7 @@ const ProcessTeaserSection = () => {
                           transition={{ duration: 0.4, delay: 0.4 + index * 0.12 }}
                         />
                         <motion.span
-                          className="font-serif-wedding text-5xl md:text-6xl font-light text-primary/10 group-hover:text-primary/25 transition-colors duration-700 inline-block"
+                          className="font-serif-wedding text-5xl md:text-6xl font-light text-primary/10 group-hover:text-primary/30 transition-colors duration-700 inline-block"
                           initial={{ opacity: 0, x: -20 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           viewport={{ once: true }}
@@ -128,11 +150,11 @@ const ProcessTeaserSection = () => {
                         <h3 className="font-serif-wedding text-display-md text-foreground group-hover:text-primary transition-colors duration-500">
                           {step.title}
                         </h3>
-                        <p className="font-sans-wedding text-[0.6rem] tracking-[0.18em] uppercase text-primary/40 mt-1.5">
+                        <p className="font-sans-wedding text-[0.55rem] tracking-[0.18em] uppercase text-primary/40 mt-1.5">
                           {step.subtitle}
                         </p>
                         <motion.div
-                          className="mt-3 h-px bg-primary/30 origin-left"
+                          className="mt-3 h-px bg-primary/20 origin-left group-hover:bg-primary/40 transition-colors duration-500"
                           initial={{ scaleX: 0 }}
                           whileInView={{ scaleX: 1 }}
                           viewport={{ once: true }}
@@ -156,9 +178,12 @@ const ProcessTeaserSection = () => {
             {/* Bottom pull quote */}
             <ScrollReveal delay={0.3}>
               <div className="mt-14 md:mt-20 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-                <p className="font-serif-wedding text-sm italic text-foreground/40 max-w-sm leading-relaxed">
-                  "We don't just coordinate — we protect the feeling of your day."
-                </p>
+                <div className="flex items-start gap-3">
+                  <span className="w-px h-8 bg-primary/20 mt-1 shrink-0" />
+                  <p className="font-serif-wedding text-sm italic text-foreground/40 max-w-sm leading-relaxed">
+                    "We don't just coordinate — we protect the feeling of your day."
+                  </p>
+                </div>
                 <Link
                   to="/approach"
                   className="inline-flex items-center font-overline text-accent hover:text-primary transition-colors duration-200 group shrink-0"
