@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Navigation from "./Navigation";
 import MagneticButton from "./MagneticButton";
-import heroImage from "@/assets/hero-wedding.jpg";
+import heroImage from "@/assets/hero-wedding-premium.jpg";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 
 const charVariants = {
