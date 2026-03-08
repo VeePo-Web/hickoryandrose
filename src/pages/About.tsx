@@ -13,8 +13,8 @@ const values = [
 const About = () => {
   return (
     <main id="main-content">
+      <Navigation variant="solid" />
       <section className="bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet">
-        <Navigation variant="solid" />
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
             <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-4">
