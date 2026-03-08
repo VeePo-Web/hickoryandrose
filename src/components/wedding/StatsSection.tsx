@@ -91,14 +91,19 @@ const StatsSection = () => {
         aria-hidden="true"
       />
 
-      {/* Parallax monogram */}
+      {/* Parallax monogram with breathing gold glow */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
         style={{ y: monogramY, opacity: bgOpacity }}
       >
-        <span className="font-script text-[14rem] md:text-[22rem] text-background/[0.02] select-none leading-none" aria-hidden="true">
+        <motion.span
+          className="font-script text-[14rem] md:text-[22rem] text-background/[0.02] select-none leading-none relative"
+          aria-hidden="true"
+          animate={{ textShadow: ["0 0 60px hsl(var(--gold) / 0.02)", "0 0 120px hsl(var(--gold) / 0.05)", "0 0 60px hsl(var(--gold) / 0.02)"] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        >
           &
-        </span>
+        </motion.span>
       </motion.div>
 
       {/* Section index watermark */}
