@@ -69,6 +69,7 @@ const FilmstripSection = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["5%", "-30%"]);
   const watermarkX = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
   const sprocketX = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
+  const frameCounterOpacity = useTransform(scrollYProgress, [0.1, 0.3, 0.8, 0.95], [0, 1, 1, 0]);
 
   return (
     <section

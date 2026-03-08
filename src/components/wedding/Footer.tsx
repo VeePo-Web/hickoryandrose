@@ -53,19 +53,26 @@ const Footer = () => {
         }}
       />
 
-      {/* Floating H&R monogram watermark */}
+      {/* Floating H&R monogram watermark with gold glow */}
       <motion.div
         className="absolute right-8 md:right-16 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 2 }}
+        transition={{ duration: 2, ease: [0.25, 0.1, 0.25, 1] }}
         aria-hidden="true"
       >
-        <span className="font-serif-wedding text-[12rem] xl:text-[16rem] font-light text-background/[0.015] leading-none tracking-tight">
+        {/* Radial gold glow behind monogram */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 xl:w-96 xl:h-96 rounded-full"
+          style={{
+            background: "radial-gradient(circle, hsl(var(--gold, 38 60% 55%) / 0.04), transparent 70%)",
+          }}
+        />
+        <span className="font-serif-wedding text-[12rem] xl:text-[16rem] font-light text-background/[0.02] leading-none tracking-tight relative">
           H
         </span>
-        <span className="font-script text-[10rem] xl:text-[14rem] text-background/[0.01] leading-none -ml-8">
+        <span className="font-script text-[10rem] xl:text-[14rem] text-background/[0.015] leading-none -ml-8 relative">
           R
         </span>
       </motion.div>

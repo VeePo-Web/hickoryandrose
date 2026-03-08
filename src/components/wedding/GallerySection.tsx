@@ -249,30 +249,62 @@ const GallerySection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[80] bg-foreground/95 backdrop-blur-sm flex items-center justify-center p-4"
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 z-[80] bg-foreground/97 backdrop-blur-md flex items-center justify-center"
             onClick={() => setSelectedIndex(null)}
             role="dialog"
             aria-label="Image lightbox"
           >
+            {/* Cinematic letterbox bars */}
+            <motion.div
+              className="absolute top-0 left-0 right-0 bg-black z-20"
+              initial={{ height: "50%" }}
+              animate={{ height: "8%" }}
+              exit={{ height: "50%" }}
+              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            />
+            <motion.div
+              className="absolute bottom-0 left-0 right-0 bg-black z-20"
+              initial={{ height: "50%" }}
+              animate={{ height: "8%" }}
+              exit={{ height: "50%" }}
+              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            />
+
+            {/* Gold accent line at top letterbox edge */}
+            <motion.div
+              className="absolute top-[8%] left-0 right-0 h-px z-30"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.25), transparent)" }}
+            />
+            <motion.div
+              className="absolute bottom-[8%] left-0 right-0 h-px z-30"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.25), transparent)" }}
+            />
+
             <button
               onClick={() => setSelectedIndex(null)}
-              className="absolute top-6 right-6 text-background/50 hover:text-background transition-colors z-10"
+              className="absolute top-10 right-6 text-background/40 hover:text-background/80 transition-colors z-30"
               aria-label="Close lightbox"
             >
-              <X size={24} strokeWidth={1} />
+              <X size={20} strokeWidth={1} />
             </button>
 
             <button
               onClick={(e) => { e.stopPropagation(); navigate(-1); }}
-              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-background/30 hover:text-background/70 transition-colors"
+              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-background/20 hover:text-background/60 transition-colors z-30"
               aria-label="Previous image"
             >
               <ChevronLeft size={28} strokeWidth={1} />
             </button>
             <button
               onClick={(e) => { e.stopPropagation(); navigate(1); }}
-              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-background/30 hover:text-background/70 transition-colors"
+              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-background/20 hover:text-background/60 transition-colors z-30"
               aria-label="Next image"
             >
               <ChevronRight size={28} strokeWidth={1} />
@@ -281,11 +313,11 @@ const GallerySection = () => {
             <AnimatePresence mode="wait">
               <motion.div
                 key={selectedIndex}
-                initial={{ opacity: 0, scale: 0.96 }}
+                initial={{ opacity: 0, scale: 0.94 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] }}
-                className="flex flex-col items-center max-w-4xl"
+                exit={{ opacity: 0, scale: 0.94 }}
+                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0] }}
+                className="flex flex-col items-center max-w-4xl relative z-10"
                 onClick={(e) => e.stopPropagation()}
               >
                 <img
@@ -295,34 +327,48 @@ const GallerySection = () => {
                 />
 
                 {/* Lightbox editorial metadata */}
-                <div className="mt-6 text-center">
-                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-background/20 block mb-1">
+                <motion.div
+                  className="mt-8 text-center"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.5 }}
+                >
+                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-background/20 block mb-2">
                     {photos[selectedIndex].category} · {photos[selectedIndex].season}
                   </span>
-                  <p className="font-serif-wedding text-lg text-background/70">
+                  <p className="font-serif-wedding text-xl text-background/70">
                     {photos[selectedIndex].title}
                   </p>
-                  <p className="font-serif-wedding text-xs italic text-background/30 mt-2 max-w-sm">
+                  <p className="font-serif-wedding text-xs italic text-background/25 mt-3 max-w-sm">
                     "{photos[selectedIndex].story}"
                   </p>
-                  <div className="flex items-center justify-center gap-2 mt-3">
-                    <span className="w-4 h-px bg-background/10" />
-                    <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-background/20">
+                  <div className="flex items-center justify-center gap-3 mt-4">
+                    <span className="w-6 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.2))" }} />
+                    <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-background/15">
                       {photos[selectedIndex].location}
                     </span>
-                    <span className="w-4 h-px bg-background/10" />
+                    <span className="w-6 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold, 38 60% 55%) / 0.2), transparent)" }} />
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             </AnimatePresence>
 
-            {/* Bottom counter */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4">
-              <span className="font-sans-wedding text-[0.6rem] text-background/30 tracking-[0.15em] tabular-nums">
-                {String(selectedIndex + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
-              </span>
-              <span className="w-4 h-px bg-background/15" />
-              <span className="font-script text-xs text-background/15">H&R</span>
+            {/* Bottom counter with progress dots */}
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-5 z-30">
+              <div className="flex items-center gap-2">
+                {photos.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={(e) => { e.stopPropagation(); setSelectedIndex(i); }}
+                    className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                      i === selectedIndex ? "bg-background/50 scale-125" : "bg-background/15 hover:bg-background/30"
+                    }`}
+                    aria-label={`Go to image ${i + 1}`}
+                  />
+                ))}
+              </div>
+              <span className="w-px h-3 bg-background/10" />
+              <span className="font-script text-xs text-background/10">H&R</span>
             </div>
           </motion.div>
         )}
