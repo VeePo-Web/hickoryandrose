@@ -9,10 +9,13 @@ const stats = [
   { value: 15, suffix: "–20", label: "Weddings Per Year", detail: "intentionally limited" },
 ];
 
+/* Eased counter with deceleration curve */
+const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
+
 const AnimatedCounter = ({
   target,
   suffix,
-  duration = 2,
+  duration = 2.4,
 }: {
   target: number;
   suffix: string;
@@ -24,18 +27,18 @@ const AnimatedCounter = ({
 
   useEffect(() => {
     if (!isInView) return;
-    let start = 0;
-    const increment = target / (duration * 60);
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 1000 / 60);
-    return () => clearInterval(timer);
+    const startTime = performance.now();
+    const durationMs = duration * 1000;
+
+    const animate = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / durationMs, 1);
+      const eased = easeOutQuart(progress);
+      setCount(Math.round(eased * target));
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+
+    requestAnimationFrame(animate);
   }, [isInView, target, duration]);
 
   return (
@@ -53,6 +56,7 @@ const StatsSection = () => {
     offset: ["start end", "end start"],
   });
   const monogramY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+  const verticalRuleHeight = useTransform(scrollYProgress, [0.1, 0.5], ["0%", "100%"]);
 
   return (
     <section
@@ -69,6 +73,13 @@ const StatsSection = () => {
           &
         </span>
       </motion.div>
+
+      {/* Vertical center rule — cinematic divider */}
+      <motion.div
+        className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-background/[0.06] to-transparent hidden md:block pointer-events-none"
+        style={{ height: verticalRuleHeight }}
+        aria-hidden="true"
+      />
 
       {/* Section index watermark */}
       <motion.div
@@ -152,12 +163,14 @@ const StatsSection = () => {
           ))}
         </div>
 
-        {/* Bottom ornament */}
+        {/* Bottom tagline */}
         <ScrollReveal delay={0.4}>
-          <div className="flex items-center justify-center gap-3 mt-12 md:mt-16" aria-hidden="true">
-            <span className="w-8 h-px bg-background/8" />
-            <span className="font-serif-wedding text-xs text-background/8 italic">❖</span>
-            <span className="w-8 h-px bg-background/8" />
+          <div className="flex items-center justify-center gap-4 mt-14 md:mt-20" aria-hidden="true">
+            <span className="w-10 h-px bg-background/[0.06]" />
+            <p className="font-serif-wedding text-xs italic text-background/10">
+              Quality over quantity — always.
+            </p>
+            <span className="w-10 h-px bg-background/[0.06]" />
           </div>
         </ScrollReveal>
       </div>

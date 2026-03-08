@@ -11,6 +11,7 @@ const LoveQuoteSection = () => {
   const decorScale = useTransform(scrollYProgress, [0, 0.5], [0.85, 1]);
   const decorOpacity = useTransform(scrollYProgress, [0, 0.4], [0, 0.035]);
   const watermarkY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+  const secondaryQuoteOpacity = useTransform(scrollYProgress, [0.2, 0.5], [0, 0.15]);
 
   return (
     <section
@@ -26,6 +27,17 @@ const LoveQuoteSection = () => {
         <span className="font-script text-[20rem] md:text-[30rem] text-primary-foreground select-none leading-none" aria-hidden="true">
           &
         </span>
+      </motion.div>
+
+      {/* Scroll-linked secondary quote layer */}
+      <motion.div
+        className="absolute bottom-12 right-8 md:right-16 pointer-events-none select-none hidden lg:block"
+        style={{ y: watermarkY, opacity: secondaryQuoteOpacity }}
+        aria-hidden="true"
+      >
+        <p className="font-serif-wedding text-xl italic text-primary-foreground/40 max-w-xs text-right leading-relaxed">
+          Every detail in service of the moment.
+        </p>
       </motion.div>
 
       {/* Section index watermark */}
@@ -69,13 +81,31 @@ const LoveQuoteSection = () => {
             />
           </div>
 
-          {/* Main quote with drop cap effect */}
-          <blockquote className="font-serif-wedding text-display-md md:text-display-lg text-primary-foreground leading-relaxed mb-10">
-            <span className="text-primary-foreground/60 text-[1.5em] leading-none">"</span>
+          {/* Main quote with editorial quotation marks */}
+          <blockquote className="font-serif-wedding text-display-md md:text-display-lg text-primary-foreground leading-relaxed mb-10 relative">
+            <motion.span
+              className="absolute -top-6 -left-2 md:-left-6 text-primary-foreground/[0.08] text-[5rem] md:text-[7rem] font-light leading-none select-none"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              aria-hidden="true"
+            >
+              "
+            </motion.span>
             We believe your wedding day should be felt, not managed. That the
             details should serve the moment — never compete with it. That calm
             is not the absence of planning, but the presence of it.
-            <span className="text-primary-foreground/60 text-[1.5em] leading-none">"</span>
+            <motion.span
+              className="absolute -bottom-8 -right-2 md:-right-6 text-primary-foreground/[0.08] text-[5rem] md:text-[7rem] font-light leading-none select-none"
+              initial={{ opacity: 0, y: -10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              aria-hidden="true"
+            >
+              "
+            </motion.span>
           </blockquote>
 
           {/* Attribution with vertical accent */}
