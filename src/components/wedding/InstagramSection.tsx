@@ -285,8 +285,8 @@ const MosaicItem = ({
         </AnimatePresence>
         
         {/* Corner accent frames */}
-        <div className="absolute top-2 left-2 w-5 h-5 border-t border-l border-white/0 group-hover:border-white/15 transition-all duration-500 pointer-events-none" />
-        <div className="absolute bottom-2 right-2 w-5 h-5 border-b border-r border-white/0 group-hover:border-white/15 transition-all duration-500 pointer-events-none" />
+        <div className="absolute top-2 left-2 w-5 h-5 border-t border-l border-white/0 group-hover:border-[hsl(var(--gold)_/_0.2)] transition-all duration-500 pointer-events-none" />
+        <div className="absolute bottom-2 right-2 w-5 h-5 border-b border-r border-white/0 group-hover:border-[hsl(var(--gold)_/_0.2)] transition-all duration-500 pointer-events-none" />
         
         {/* Film contact sheet frame number */}
         <div className="absolute top-2 right-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">

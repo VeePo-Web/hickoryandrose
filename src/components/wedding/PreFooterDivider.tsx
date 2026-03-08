@@ -142,7 +142,7 @@ const PreFooterDivider = () => {
                 className="w-24 h-px mx-auto lg:mx-0 mt-10 origin-center lg:origin-left"
                 style={{
                   scaleX: lineScale,
-                  background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.3), transparent)",
+                  background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.35), transparent)",
                 }}
               />
 
