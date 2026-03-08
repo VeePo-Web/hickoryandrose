@@ -176,12 +176,11 @@ const ApproachDifferentiators = () => {
                           >
                             <div className="pl-12 pt-4 relative">
                               <motion.span
-                                className="absolute left-12 top-4 w-[2px] bottom-0"
+                                className="origin-top absolute left-12 top-4 w-[2px] bottom-0"
                                 style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.35), hsl(var(--gold) / 0.05))" }}
                                 initial={{ scaleY: 0 }}
                                 animate={{ scaleY: 1 }}
                                 transition={{ duration: 0.6, delay: 0.1 }}
-                                className="origin-top absolute left-12 top-4 w-[2px] bottom-0"
                               />
                               <p className="font-sans-wedding text-body-sm text-muted-foreground/50 leading-relaxed font-light pl-4">
                                 {diff.expanded}
