@@ -237,12 +237,28 @@ const ServicesOverviewSection = () => {
 
         {/* Quick comparison row */}
         <ScrollReveal delay={0.2}>
-          <div className="mt-12 md:mt-16 border border-border/30 hidden md:block overflow-hidden">
-            {/* Gold gradient header bar */}
-            <div
-              className="h-px w-full"
-              style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25), hsl(var(--gold) / 0.1), transparent)" }}
+          <div className="mt-12 md:mt-16 border border-border/30 hidden md:block overflow-hidden relative">
+            {/* Ambient gold glow behind comparison table */}
+            <motion.div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] pointer-events-none"
+              animate={{ opacity: [0.02, 0.06, 0.02] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.2), transparent 70%)" }}
+              aria-hidden="true"
             />
+            {/* Gold gradient header bar with shimmer sweep */}
+            <div className="h-px w-full relative overflow-hidden">
+              <div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25), hsl(var(--gold) / 0.1), transparent)" }}
+              />
+              <motion.div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.4) 45%, hsl(var(--gold) / 0.6) 50%, hsl(var(--gold) / 0.4) 55%, transparent 100%)" }}
+                animate={{ x: ["-100%", "200%"] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
+              />
+            </div>
             <div className="p-6 md:p-8">
               <div className="flex items-center gap-3 mb-6">
                 <span
