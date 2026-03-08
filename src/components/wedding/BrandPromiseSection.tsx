@@ -1,35 +1,23 @@
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-import BranchDecoration from "./BranchDecoration";
 
 const BrandPromiseSection = () => {
   return (
     <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden">
-      <BranchDecoration className="absolute -right-6 top-8 hidden lg:block opacity-30" />
-      <BranchDecoration className="absolute -left-6 bottom-8 hidden lg:block opacity-30" flip />
+      {/* Large decorative ampersand — very subtle background element */}
+      <motion.div
+        className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.025 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5 }}
+      >
+        <span className="font-script text-[28rem] leading-none text-foreground">&</span>
+      </motion.div>
 
       <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
         <ScrollReveal>
-          {/* Decorative top flourish */}
-          <div className="flex items-center justify-center gap-3 mb-10">
-            <motion.span
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="w-12 h-px bg-primary/40 origin-right"
-            />
-            <span className="font-script text-lg text-primary/40">✦</span>
-            <motion.span
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="w-12 h-px bg-primary/40 origin-left"
-            />
-          </div>
-
-          <p className="font-overline text-muted-foreground/60 mb-6">
+          <p className="font-overline text-muted-foreground/50 mb-8">
             Our Philosophy
           </p>
 
@@ -39,24 +27,14 @@ const BrandPromiseSection = () => {
             feel it.
           </p>
 
-          {/* Bottom flourish */}
-          <div className="flex items-center justify-center gap-3">
-            <motion.span
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="w-12 h-px bg-primary/40 origin-right"
-            />
-            <span className="font-script text-lg text-primary/40">✦</span>
-            <motion.span
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="w-12 h-px bg-primary/40 origin-left"
-            />
-          </div>
+          {/* Minimal accent line — no generic symbols */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="w-16 h-px bg-primary/30 mx-auto origin-center"
+          />
         </ScrollReveal>
       </div>
     </section>

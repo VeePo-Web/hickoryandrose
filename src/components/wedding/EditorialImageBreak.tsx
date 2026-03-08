@@ -1,6 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import ScrollReveal from "./ScrollReveal";
 import editorialImage from "@/assets/editorial-florals.jpg";
 
 const EditorialImageBreak = () => {
@@ -11,7 +10,8 @@ const EditorialImageBreak = () => {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
-  const textOpacity = useTransform(scrollYProgress, [0.2, 0.4, 0.6, 0.8], [0, 1, 1, 0]);
+  const textY = useTransform(scrollYProgress, [0.2, 0.5], [30, 0]);
+  const textOpacity = useTransform(scrollYProgress, [0.15, 0.35, 0.65, 0.85], [0, 1, 1, 0]);
 
   return (
     <section
@@ -31,18 +31,23 @@ const EditorialImageBreak = () => {
         />
       </div>
 
-      {/* Editorial overlay with brand quote */}
+      {/* Refined editorial overlay — no blur box, just floating typography */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
         style={{ opacity: textOpacity }}
       >
-        <div className="bg-foreground/40 backdrop-blur-sm px-8 py-6 md:px-14 md:py-10 text-center max-w-xl">
-          <div className="w-8 h-px bg-white/40 mx-auto mb-5" />
-          <p className="font-serif-wedding text-lg md:text-2xl text-white leading-relaxed italic">
+        <motion.div className="text-center" style={{ y: textY }}>
+          <p className="font-serif-wedding text-xl md:text-3xl lg:text-4xl text-white italic leading-relaxed tracking-wide drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
             Every detail, placed with intention.
           </p>
-          <div className="w-8 h-px bg-white/40 mx-auto mt-5" />
-        </div>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="w-16 h-px bg-white/50 mx-auto mt-6 origin-center"
+          />
+        </motion.div>
       </motion.div>
     </section>
   );

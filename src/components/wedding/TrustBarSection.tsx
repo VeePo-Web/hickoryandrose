@@ -1,76 +1,67 @@
 import { motion } from "framer-motion";
 
-const trustLogos = [
-  "Edmonton Bridal Magazine",
-  "Wedding Bells",
-  "Style Me Pretty",
-  "Alberta Weddings",
-  "The Knot",
+const publications = [
+  { name: "Edmonton Bridal", emphasis: "Bridal" },
+  { name: "Wedding Bells", emphasis: "Bells" },
+  { name: "Style Me Pretty", emphasis: "Pretty" },
+  { name: "Alberta Weddings", emphasis: "Weddings" },
+  { name: "The Knot", emphasis: "Knot" },
 ];
-
-const container = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.08, delayChildren: 0.2 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 8 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const } },
-};
 
 const TrustBarSection = () => {
   return (
-    <section className="py-12 md:py-16 bg-card border-y border-border" aria-label="Featured in">
-      <div className="container mx-auto px-6 lg:px-8">
-        <motion.div
+    <section className="py-16 md:py-20 bg-background" aria-label="Featured in">
+      <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+        <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center justify-center gap-3 mb-8"
+          transition={{ duration: 0.6 }}
+          className="font-overline text-muted-foreground/40 text-center mb-10 md:mb-14"
         >
-          <motion.span
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-10 h-px bg-border origin-right"
-          />
-          <p className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.2em]">
-            As Seen In
-          </p>
-          <motion.span
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-10 h-px bg-border origin-left"
-          />
-        </motion.div>
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="flex flex-wrap items-center justify-center gap-8 md:gap-14"
-        >
-          {trustLogos.map((name, index) => (
-            <motion.span
-              key={name}
-              variants={item}
-              className="font-serif-wedding text-base md:text-lg text-muted-foreground/50 whitespace-nowrap relative group cursor-default"
+          As Featured In
+        </motion.p>
+
+        <div className="flex flex-wrap items-baseline justify-center gap-x-10 md:gap-x-16 gap-y-6">
+          {publications.map((pub, index) => (
+            <motion.div
+              key={pub.name}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.08,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
+              className="group cursor-default"
             >
-              <span className="group-hover:text-muted-foreground transition-colors duration-300">
-                {name}
+              <span className="font-serif-wedding text-xl md:text-2xl lg:text-3xl font-light text-foreground/20 group-hover:text-foreground/40 transition-colors duration-500 tracking-tight">
+                {pub.name.split(pub.emphasis).map((part, i, arr) =>
+                  i < arr.length - 1 ? (
+                    <span key={i}>
+                      {part}
+                      <span className="font-script text-2xl md:text-3xl lg:text-4xl">
+                        {pub.emphasis}
+                      </span>
+                    </span>
+                  ) : (
+                    <span key={i}>{part}</span>
+                  )
+                )}
               </span>
-              {index < trustLogos.length - 1 && (
-                <span className="hidden md:inline absolute -right-7 top-1/2 -translate-y-1/2 text-primary/20 text-[0.5rem]">✦</span>
-              )}
-            </motion.span>
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
+
+        {/* Subtle divider */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+          className="w-full max-w-xs h-px bg-gradient-to-r from-transparent via-border to-transparent mx-auto mt-14 md:mt-18"
+        />
       </div>
     </section>
   );
