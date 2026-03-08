@@ -58,6 +58,7 @@ const jsonLd = {
   }
 };
 
+// Force rebuild v2
 const Index = () => {
   useEffect(() => {
     setPageMeta({
