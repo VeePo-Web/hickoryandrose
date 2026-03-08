@@ -135,29 +135,55 @@ const InstagramSection = () => {
         />
 
         {/* Staggered mosaic grid with film-strip reveal */}
-        <motion.div 
-          className="grid grid-cols-2 md:grid-cols-12 gap-2 md:gap-3"
-          style={{ y: gridY }}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-          }}
-        >
-          {/* Large feature — spans 7 cols */}
-          <MosaicItem photo={photos[0]} index={0} className="col-span-2 md:col-span-7 aspect-[16/10]" featured />
+        <div className="relative">
+          {/* Ambient gold glow behind mosaic */}
+          <motion.div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] pointer-events-none"
+            animate={{ opacity: [0.03, 0.07, 0.03] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.25), transparent 70%)" }}
+            aria-hidden="true"
+          />
 
-          {/* Right stack — 5 cols, 2 rows */}
-          <MosaicItem photo={photos[1]} index={1} className="col-span-1 md:col-span-5 aspect-[4/3]" />
-          <MosaicItem photo={photos[2]} index={2} className="col-span-1 md:col-span-5 aspect-[4/3]" />
+          {/* Breathing diamond center ornament */}
+          <motion.div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none hidden md:flex items-center justify-center"
+            animate={{ opacity: [0.3, 0.7, 0.3], scale: [0.9, 1.15, 0.9] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            aria-hidden="true"
+          >
+            <span className="w-3 h-3 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15))" }} />
+            {/* Glow halo */}
+            <span
+              className="absolute w-8 h-8 rounded-full"
+              style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.15), transparent 70%)" }}
+            />
+          </motion.div>
 
-          {/* Bottom row — 3 equal items */}
-          <MosaicItem photo={photos[3]} index={3} className="col-span-1 md:col-span-4 aspect-[3/4] md:aspect-[4/5]" />
-          <MosaicItem photo={photos[4]} index={4} className="col-span-1 md:col-span-4 aspect-[3/4] md:aspect-[4/5]" />
-          <MosaicItem photo={photos[5]} index={5} className="col-span-2 md:col-span-4 aspect-[16/10] md:aspect-[4/5]" />
-        </motion.div>
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-12 gap-2 md:gap-3"
+            style={{ y: gridY }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+            }}
+          >
+            {/* Large feature — spans 7 cols */}
+            <MosaicItem photo={photos[0]} index={0} className="col-span-2 md:col-span-7 aspect-[16/10]" featured />
+
+            {/* Right stack — 5 cols, 2 rows */}
+            <MosaicItem photo={photos[1]} index={1} className="col-span-1 md:col-span-5 aspect-[4/3]" />
+            <MosaicItem photo={photos[2]} index={2} className="col-span-1 md:col-span-5 aspect-[4/3]" />
+
+            {/* Bottom row — 3 equal items */}
+            <MosaicItem photo={photos[3]} index={3} className="col-span-1 md:col-span-4 aspect-[3/4] md:aspect-[4/5]" />
+            <MosaicItem photo={photos[4]} index={4} className="col-span-1 md:col-span-4 aspect-[3/4] md:aspect-[4/5]" />
+            <MosaicItem photo={photos[5]} index={5} className="col-span-2 md:col-span-4 aspect-[16/10] md:aspect-[4/5]" />
+          </motion.div>
+        </div>
 
         {/* Bottom attribution */}
         <ScrollReveal delay={0.3}>

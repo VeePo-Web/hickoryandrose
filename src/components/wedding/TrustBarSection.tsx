@@ -118,8 +118,21 @@ const TrustBarSection = () => {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="border-t border-border/40 group-first:border-t-0" />
+              <div className="border-t border-border/40 group-first:border-t-0 relative overflow-hidden">
+                {/* Gold shimmer sweep on hover */}
+                <span
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(var(--gold)_/_0.04)] to-transparent -translate-x-full group-hover:translate-x-[200%] transition-transform duration-[1.2s] ease-out pointer-events-none"
+                />
+              </div>
               <div className="flex items-center justify-between py-7 md:py-10 cursor-default relative">
+                {/* Gold gradient left-border reveal on hover */}
+                <motion.div
+                  className="absolute left-0 top-0 bottom-0 w-[2px] origin-top"
+                  style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15), transparent)" }}
+                  initial={{ scaleY: 0 }}
+                  animate={{ scaleY: hoveredIndex === index ? 1 : 0 }}
+                  transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                />
                 {/* Hover background fill */}
                 <motion.div
                   className="absolute inset-0 bg-muted/30 -mx-4 md:-mx-6 px-4 md:px-6"
