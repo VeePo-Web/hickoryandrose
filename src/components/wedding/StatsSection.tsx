@@ -21,6 +21,7 @@ const AnimatedCounter = ({
   duration?: number;
 }) => {
   const [count, setCount] = useState(0);
+  const [finished, setFinished] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -34,16 +35,32 @@ const AnimatedCounter = ({
       const progress = Math.min(elapsed / durationMs, 1);
       const eased = easeOutQuart(progress);
       setCount(Math.round(eased * target));
-      if (progress < 1) requestAnimationFrame(animate);
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setFinished(true);
+      }
     };
 
     requestAnimationFrame(animate);
   }, [isInView, target, duration]);
 
   return (
-    <span ref={ref} className="tabular-nums">
+    <span ref={ref} className="tabular-nums relative inline-block">
       {count}
       {suffix}
+      {/* Gold flash on completion */}
+      {finished && (
+        <motion.span
+          className="absolute inset-0 pointer-events-none"
+          initial={{ opacity: 0.4 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          style={{
+            background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2), transparent)",
+          }}
+        />
+      )}
     </span>
   );
 };
@@ -152,8 +169,10 @@ const StatsSection = () => {
               }}
               className="group cursor-default"
             >
-              {/* Top rule */}
-              <div className="h-px bg-background/[0.06]" />
+              {/* Top rule with gold accent on hover */}
+              <div className="h-px bg-background/[0.06] group-hover:bg-background/[0.1] transition-colors duration-500 relative overflow-hidden">
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(var(--gold)_/_0.15)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+              </div>
 
               <div className="grid grid-cols-12 items-center py-10 md:py-14 hover:bg-background/[0.015] transition-colors duration-700">
                 {/* Icon + Index */}
