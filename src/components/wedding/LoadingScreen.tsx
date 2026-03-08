@@ -29,6 +29,16 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
             transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] }}
             className="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center"
           >
+            {/* Subtle radial glow behind wordmark */}
+            <motion.div
+              className="absolute inset-0 pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={phase !== "reveal" ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-primary/[0.02] blur-3xl" />
+            </motion.div>
+
             {/* Clip-path wordmark reveal */}
             <div className="text-center relative">
               {/* Staggered letter reveal */}
@@ -67,7 +77,7 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                 </h1>
               </div>
 
-              {/* Expanding center line */}
+              {/* Expanding center line with shimmer */}
               <motion.div
                 initial={{ scaleX: 0, opacity: 0 }}
                 animate={
@@ -76,8 +86,15 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                     : { scaleX: 0, opacity: 0 }
                 }
                 transition={{ duration: 0.6, delay: 0.35, ease: [0.25, 0.1, 0.25, 1.0] }}
-                className="w-16 h-px bg-primary/30 mx-auto mt-6 origin-center"
-              />
+                className="w-16 h-px mx-auto mt-6 origin-center overflow-hidden relative"
+              >
+                <div className="absolute inset-0 bg-primary/30" />
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/60 to-transparent"
+                  animate={{ x: ["-100%", "100%"] }}
+                  transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
+                />
+              </motion.div>
 
               {/* Subtitle */}
               <motion.p
@@ -91,6 +108,20 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                 className="font-sans-wedding text-[0.5625rem] tracking-[0.3em] uppercase text-muted-foreground/35 mt-5 font-light"
               >
                 Luxury Wedding Planning
+              </motion.p>
+
+              {/* Tagline fade */}
+              <motion.p
+                initial={{ opacity: 0, y: 4 }}
+                animate={
+                  phase !== "reveal"
+                    ? { opacity: 1, y: 0 }
+                    : { opacity: 0, y: 4 }
+                }
+                transition={{ duration: 0.4, delay: 0.7 }}
+                className="font-serif-wedding text-xs italic text-muted-foreground/20 mt-3"
+              >
+                Refined rustic elegance
               </motion.p>
             </div>
 

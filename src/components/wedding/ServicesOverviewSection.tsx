@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import ScrollReveal from "./ScrollReveal";
 
 const services = [
@@ -36,23 +37,53 @@ const services = [
 ];
 
 const ServicesOverviewSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const bgTextY = useTransform(scrollYProgress, [0, 1], ["15%", "-15%"]);
+
   return (
     <section
-      className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card"
+      ref={sectionRef}
+      className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card relative overflow-hidden"
       aria-label="Our services"
     >
-      <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+      {/* Large decorative "Services" watermark */}
+      <motion.div
+        className="absolute -left-8 top-1/3 pointer-events-none select-none"
+        style={{ y: bgTextY }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.02 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5 }}
+      >
+        <span className="font-serif-wedding text-[10rem] md:text-[16rem] font-light text-foreground leading-none tracking-tight whitespace-nowrap">
+          Services
+        </span>
+      </motion.div>
+
+      <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
         <ScrollReveal>
-          <div className="text-center mb-16 md:mb-24">
-            <p className="font-overline text-muted-foreground mb-4">
-              What We Offer
-            </p>
-            <h2 className="font-serif-wedding text-display-lg text-foreground mb-4">
-              Services Tailored to You
-            </h2>
-            <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light max-w-lg mx-auto leading-relaxed">
-              Every couple is different. Our services flex to meet you exactly where you are in your planning journey.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-16 md:mb-24 items-baseline">
+            <div className="md:col-span-5">
+              {/* Section index */}
+              <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-4">
+                03
+              </span>
+              <p className="font-overline text-muted-foreground mb-4">
+                What We Offer
+              </p>
+              <h2 className="font-serif-wedding text-display-lg text-foreground">
+                Services Tailored to You
+              </h2>
+            </div>
+            <div className="md:col-span-7 md:pt-12">
+              <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light leading-relaxed">
+                Every couple is different. Our services flex to meet you exactly where you are in your planning journey — whether you need a steady hand on the day or a creative partner from the very beginning.
+              </p>
+            </div>
           </div>
         </ScrollReveal>
 
@@ -63,18 +94,21 @@ const ServicesOverviewSection = () => {
                 to={service.link}
                 className="group block"
               >
-                <div className={`grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline py-10 md:py-14 border-t border-border/60 relative ${service.featured ? "bg-primary/[0.02]" : ""}`}>
+                <div className={`grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline py-10 md:py-14 border-t border-border/60 relative transition-colors duration-500 ${service.featured ? "bg-primary/[0.02] hover:bg-primary/[0.04]" : "hover:bg-primary/[0.01]"}`}>
                   {/* Featured badge */}
                   {service.featured && (
-                    <motion.span
+                    <motion.div
                       initial={{ opacity: 0, y: -8 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.4 }}
-                      className="absolute top-3 right-4 font-overline text-[0.5rem] text-primary/60 tracking-[0.25em]"
+                      className="absolute top-3 right-4 flex items-center gap-2"
                     >
-                      Most Popular
-                    </motion.span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
+                      <span className="font-overline text-[0.5rem] text-primary/60 tracking-[0.25em]">
+                        Most Popular
+                      </span>
+                    </motion.div>
                   )}
 
                   {/* Number */}
@@ -114,9 +148,12 @@ const ServicesOverviewSection = () => {
                     <span className="font-overline text-primary text-[0.625rem]">
                       {service.investment}
                     </span>
-                    <span className="font-sans-wedding text-xs text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300">
+                    <motion.span
+                      className="font-sans-wedding text-sm text-muted-foreground/40 group-hover:text-primary transition-all duration-300"
+                      whileHover={{ x: 4 }}
+                    >
                       →
-                    </span>
+                    </motion.span>
                   </div>
                 </div>
               </Link>
