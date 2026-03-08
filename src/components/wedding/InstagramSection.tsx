@@ -288,14 +288,21 @@ const MosaicItem = ({
         <div className="absolute top-2 left-2 w-5 h-5 border-t border-l border-white/0 group-hover:border-[hsl(var(--gold)_/_0.2)] transition-all duration-500 pointer-events-none" />
         <div className="absolute bottom-2 right-2 w-5 h-5 border-b border-r border-white/0 group-hover:border-[hsl(var(--gold)_/_0.2)] transition-all duration-500 pointer-events-none" />
         
-        {/* Film contact sheet frame number */}
+        {/* Gold frame number badge with pulse on hover */}
         <div className="absolute top-2 right-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <span
-            className="font-sans-wedding text-[0.4rem] tracking-[0.15em] tabular-nums text-white/30 px-1.5 py-0.5"
-            style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.1), transparent)" }}
+          <motion.span
+            className="font-sans-wedding text-[0.4rem] tracking-[0.15em] tabular-nums text-white/40 px-2 py-1 inline-flex items-center gap-1.5 backdrop-blur-sm"
+            style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.15), hsl(var(--gold) / 0.05))", border: "1px solid hsl(var(--gold) / 0.1)" }}
+            whileHover={{ scale: 1.05 }}
           >
+            <motion.span
+              className="w-1 h-1 rounded-full"
+              style={{ background: "hsl(var(--gold) / 0.6)" }}
+              animate={{ opacity: [0.4, 1, 0.4] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
             FR{String(index + 1).padStart(2, "0")}
-          </span>
+          </motion.span>
         </div>
         
         {/* Featured badge */}
