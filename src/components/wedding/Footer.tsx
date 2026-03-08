@@ -11,6 +11,10 @@ const footerLinks = [
   { label: "Inquire", path: "/inquire" },
 ];
 
+const serviceAreas = [
+  "Edmonton", "Jasper", "Banff", "Lake Louise", "Calgary", "The Canadian Rockies",
+];
+
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -60,6 +64,14 @@ const Footer = () => {
               design, and the belief that your day should be felt — not
               managed.
             </p>
+
+            {/* Credential badge */}
+            <div className="mt-8 flex items-center gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
+              <p className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-background/20 font-light">
+                Est. 2018 · Edmonton, Alberta
+              </p>
+            </div>
           </motion.div>
 
           {/* Navigation + Contact columns */}
@@ -78,12 +90,15 @@ const Footer = () => {
                 </p>
                 <nav aria-label="Footer navigation">
                   <ul className="space-y-3">
-                    {footerLinks.map((link) => (
+                    {footerLinks.map((link, i) => (
                       <li key={link.path}>
                         <Link
                           to={link.path}
-                          className="font-sans-wedding text-sm text-background/40 hover:text-background transition-colors duration-200 font-light block"
+                          className="font-sans-wedding text-sm text-background/40 hover:text-background transition-colors duration-200 font-light inline-flex items-center gap-2 group"
                         >
+                          <span className="text-background/10 font-serif-wedding text-[0.6rem] group-hover:text-background/25 transition-colors">
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
                           {link.label}
                         </Link>
                       </li>
@@ -110,6 +125,13 @@ const Footer = () => {
                     <span>Edmonton, Alberta</span>
                   </div>
                 </div>
+
+                {/* Response time */}
+                <div className="mt-6 border-t border-background/6 pt-4">
+                  <p className="font-sans-wedding text-[0.55rem] tracking-[0.1em] uppercase text-background/15 font-light">
+                    Typically responds within 48 hours
+                  </p>
+                </div>
               </div>
 
               {/* Social + Service area */}
@@ -132,11 +154,7 @@ const Footer = () => {
                     Serving
                   </p>
                   <p className="font-sans-wedding text-[0.7rem] text-background/20 font-light leading-relaxed">
-                    Edmonton · Jasper · Banff
-                    <br />
-                    Lake Louise · Calgary
-                    <br />
-                    The Canadian Rockies
+                    {serviceAreas.join(" · ")}
                   </p>
                 </div>
               </div>
