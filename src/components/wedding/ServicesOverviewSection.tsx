@@ -149,17 +149,29 @@ const ServicesOverviewSection = () => {
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <div className={`grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline py-10 md:py-14 border-t border-border/60 relative transition-colors duration-500 ${service.featured ? "bg-primary/[0.02] hover:bg-primary/[0.04]" : "hover:bg-primary/[0.01]"}`}>
+                  {/* Gold accent left border on hover */}
+                  <motion.div
+                    className="absolute left-0 top-0 bottom-0 w-[2px] origin-top"
+                    style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.1), transparent)" }}
+                    initial={{ scaleY: 0 }}
+                    animate={{ scaleY: hoveredIndex === index ? 1 : 0 }}
+                    transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                  />
                   {service.featured && (
                     <motion.div
                       initial={{ opacity: 0, y: -8 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.4 }}
-                      className="absolute top-3 right-4 flex items-center gap-2"
+                      className="absolute top-3 right-4 flex items-center gap-2 overflow-hidden"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
-                      <span className="font-overline text-[0.5rem] text-primary/60 tracking-[0.25em]">
+                      <span className="w-1.5 h-1.5 rotate-45 bg-primary/40" />
+                      <span className="font-overline text-[0.5rem] text-primary/60 tracking-[0.25em] relative">
                         Most Popular
+                        {/* Gold shimmer sweep */}
+                        <span
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(var(--gold)_/_0.15)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"
+                        />
                       </span>
                     </motion.div>
                   )}
