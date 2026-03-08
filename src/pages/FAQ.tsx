@@ -40,9 +40,38 @@ const faqCategories = [
   },
 ];
 
+// Build FAQ schema
+const faqSchemaItems = faqCategories.flatMap((cat) =>
+  cat.questions.map((faq) => ({
+    "@type": "Question" as const,
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer" as const,
+      text: faq.a,
+    },
+  }))
+);
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqSchemaItems,
+};
+
 const FAQ = () => {
   useEffect(() => {
     document.title = "FAQ | Hickory & Rose — Edmonton Wedding Planner";
+
+    // Inject FAQ schema
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(faqSchema);
+    script.id = "faq-schema";
+    document.head.appendChild(script);
+    return () => {
+      const el = document.getElementById("faq-schema");
+      if (el) el.remove();
+    };
   }, []);
 
   return (
