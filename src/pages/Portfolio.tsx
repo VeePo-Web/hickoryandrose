@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { setPageMeta } from "@/lib/seo";
 import { motion, AnimatePresence } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
