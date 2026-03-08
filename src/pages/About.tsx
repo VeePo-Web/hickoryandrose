@@ -20,21 +20,18 @@ const values = [
     pullQuote: "Presence over panic.",
     description:
       "We lead with quiet confidence so you never feel rushed, pressured, or anxious. Our composed presence on the day means you can exhale and simply be in the moment.",
-    icon: "◇",
   },
   {
     title: "Intentional Design",
     pullQuote: "Nothing accidental.",
     description:
       "Every detail is considered — from the arc of your ceremony to the way light falls across your tablescape. We design with purpose so every element tells your story.",
-    icon: "◆",
   },
   {
     title: "Genuine Care",
     pullQuote: "Not a project — a privilege.",
     description:
       "Your wedding isn't a line item to us. It's a responsibility we take personally. We invest emotionally because we believe that's the only way to create something truly meaningful.",
-    icon: "○",
   },
 ];
 
