@@ -2,7 +2,7 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import { memo } from "react";
 
 const gradientStyle = {
-  background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--gold)), hsl(var(--primary)))",
+  background: "linear-gradient(90deg, hsl(var(--sage-deep)), hsl(var(--gold)), hsl(var(--primary)))",
 };
 
 const ScrollProgress = memo(() => {
@@ -14,10 +14,18 @@ const ScrollProgress = memo(() => {
   });
 
   return (
-    <motion.div
-      className="fixed top-0 left-0 right-0 h-[2px] z-[60] origin-left"
-      style={{ scaleX, ...gradientStyle }}
-    />
+    <>
+      {/* Primary progress line */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-[2px] z-[60] origin-left"
+        style={{ scaleX, ...gradientStyle }}
+      />
+      {/* Subtle glow underneath */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-[6px] z-[59] origin-left opacity-30 blur-[3px]"
+        style={{ scaleX, ...gradientStyle }}
+      />
+    </>
   );
 });
 

@@ -16,6 +16,7 @@ const EditorialImageBreak = () => {
     [0.15, 0.35, 0.65, 0.85],
     [0, 1, 1, 0]
   );
+  const lineWidth = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
 
   return (
     <section
@@ -47,36 +48,39 @@ const EditorialImageBreak = () => {
         style={{ opacity: textOpacity }}
       >
         <motion.div className="text-center" style={{ y: textY }}>
-          {/* Flanking lines around the quote */}
+          {/* Flanking lines with animated width */}
           <div className="flex items-center justify-center gap-4 mb-4">
             <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="w-10 h-px bg-white/40 origin-right"
+              className="h-px bg-white/40 origin-right"
+              style={{ scaleX: lineWidth, width: 40 }}
             />
             <span className="font-script text-white/50 text-lg">&</span>
             <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="w-10 h-px bg-white/40 origin-left"
+              className="h-px bg-white/40 origin-left"
+              style={{ scaleX: lineWidth, width: 40 }}
             />
           </div>
           <p className="font-serif-wedding text-xl md:text-3xl lg:text-4xl text-white italic leading-relaxed tracking-wide drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
             Every detail, placed with intention.
           </p>
           <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.3 }}
             className="w-16 h-px bg-white/50 mx-auto mt-6 origin-center"
+            style={{ scaleX: lineWidth }}
           />
+          {/* Editorial metadata */}
+          <p className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/30 mt-4">
+            Hickory & Rose · Refined Rustic Elegance
+          </p>
         </motion.div>
       </motion.div>
+
+      {/* Corner index marks */}
+      <div className="absolute bottom-6 left-6 z-20 pointer-events-none hidden md:block" aria-hidden="true">
+        <span className="font-serif-wedding text-xs text-white/15 font-light">04</span>
+      </div>
+      <div className="absolute bottom-6 right-6 z-20 pointer-events-none hidden md:block" aria-hidden="true">
+        <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/15">Editorial</span>
+      </div>
     </section>
   );
 };
