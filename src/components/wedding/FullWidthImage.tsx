@@ -93,9 +93,15 @@ const FullWidthImage = ({
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/10 via-transparent to-foreground/15 pointer-events-none" />
       )}
 
-      {/* Corner accent frames */}
-      <div className="absolute top-6 left-6 w-10 h-10 border-t border-l border-white/0 group-hover:border-white/15 transition-all duration-700 pointer-events-none z-20" />
-      <div className="absolute bottom-6 right-6 w-10 h-10 border-b border-r border-white/0 group-hover:border-white/15 transition-all duration-700 pointer-events-none z-20" />
+      {/* Corner accent frames — gold gradient on hover */}
+      <div className="absolute top-6 left-6 w-10 h-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-20" aria-hidden="true">
+        <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
+        <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), transparent)" }} />
+      </div>
+      <div className="absolute bottom-6 right-6 w-10 h-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-20" aria-hidden="true">
+        <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.3), transparent)" }} />
+        <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
+      </div>
 
       {/* Corner section index */}
       {index && (
@@ -140,9 +146,9 @@ const FullWidthImage = ({
         </motion.div>
       )}
 
-      {/* Flanking decorative lines on hover */}
-      <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-white/8 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-      <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-white/8 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      {/* Flanking decorative lines on hover — gold tint */}
+      <div className="absolute top-0 left-0 w-px h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: "linear-gradient(180deg, transparent, hsl(var(--gold) / 0.1), transparent)" }} />
+      <div className="absolute top-0 right-0 w-px h-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: "linear-gradient(180deg, transparent, hsl(var(--gold) / 0.1), transparent)" }} />
     </section>
   );
 };

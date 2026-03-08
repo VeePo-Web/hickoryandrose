@@ -178,9 +178,15 @@ const EditorialSplitSection = () => {
         {/* Subtle gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
         
-        {/* Corner accent frames on hover */}
-        <div className="absolute top-4 left-4 w-10 h-10 border-t border-l border-white/0 group-hover:border-white/20 transition-all duration-500" />
-        <div className="absolute bottom-4 right-4 w-10 h-10 border-b border-r border-white/0 group-hover:border-white/20 transition-all duration-500" />
+        {/* Corner accent frames on hover — gold gradient */}
+        <div className="absolute top-4 left-4 w-10 h-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true">
+          <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
+          <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), transparent)" }} />
+        </div>
+        <div className="absolute bottom-4 right-4 w-10 h-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true">
+          <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.3), transparent)" }} />
+          <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
+        </div>
         
         {/* Floating inset detail image - reveals on hover */}
         <AnimatePresence>
