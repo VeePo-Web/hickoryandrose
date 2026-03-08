@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { setPageMeta } from "@/lib/seo";
 import HeroSection from "@/components/wedding/HeroSection";
 import BrandPromiseSection from "@/components/wedding/BrandPromiseSection";
 import TrustBarSection from "@/components/wedding/TrustBarSection";
