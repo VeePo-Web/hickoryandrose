@@ -8,7 +8,6 @@ import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import ImageReveal from "@/components/wedding/ImageReveal";
-import { Calendar, Flower2, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
 import MagneticButton from "@/components/wedding/MagneticButton";
 import servicePlanningImage from "@/assets/service-planning.jpg";
@@ -18,7 +17,6 @@ import serviceFullserviceImage from "@/assets/service-fullservice.jpg";
 const serviceTiers = [
   {
     id: "day-of",
-    icon: Calendar,
     title: "Day-Of Coordination",
     tagline: "You planned it. We perfect it.",
     investment: "Starting at $2,500",
@@ -39,7 +37,6 @@ const serviceTiers = [
   },
   {
     id: "partial",
-    icon: Flower2,
     title: "Partial Planning",
     tagline: "Collaboration at every turn.",
     investment: "Starting at $5,000",
@@ -60,7 +57,6 @@ const serviceTiers = [
   },
   {
     id: "full",
-    icon: Crown,
     title: "Full-Service Planning",
     tagline: "From vision to celebration.",
     investment: "Starting at $8,500",
@@ -104,19 +100,11 @@ const Services = () => {
     <main id="main-content">
       <Navigation variant="solid" />
 
-      {/* Hero */}
-      <section className="relative bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]" aria-hidden="true">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
-        </div>
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center relative">
+      {/* Hero — clean editorial, no dot pattern */}
+      <section className="bg-background pt-32 pb-20 md:pb-28">
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-10 h-px bg-primary/30" />
-              <span className="font-script text-lg text-primary/40">H & R</span>
-              <span className="w-10 h-px bg-primary/30" />
-            </div>
-            <p className="font-overline text-muted-foreground mb-4">
+            <p className="font-overline text-muted-foreground/50 mb-4">
               Our Services
             </p>
             <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
@@ -127,6 +115,13 @@ const Services = () => {
               where you are — whether you need a steady hand on the day or a
               trusted partner from the very beginning.
             </p>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="w-16 h-px bg-primary/30 mx-auto mt-10 origin-center"
+            />
           </ScrollReveal>
         </div>
       </section>
@@ -137,7 +132,7 @@ const Services = () => {
           <section
             id={service.id}
             className={`py-section-mobile md:py-section-tablet lg:py-section-desktop ${
-              index % 2 === 0 ? "bg-background" : "bg-card"
+              index % 2 === 0 ? "bg-card" : "bg-background"
             }`}
           >
             <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
@@ -162,11 +157,9 @@ const Services = () => {
                 <div>
                   <ScrollReveal delay={service.image ? 0.1 : 0}>
                     <div className={`${service.image ? "" : "text-center"} mb-10`}>
-                      <service.icon
-                        size={36}
-                        strokeWidth={1}
-                        className={`text-primary mb-4 ${service.image ? "" : "mx-auto"}`}
-                      />
+                      <p className="font-overline text-primary/60 mb-3">
+                        {String(index + 1).padStart(2, "0")}
+                      </p>
                       <h2 className="font-serif-wedding text-display-lg text-foreground mb-2">
                         {service.title}
                       </h2>
@@ -182,8 +175,8 @@ const Services = () => {
                     <p className={`font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light ${service.image ? "" : "text-center max-w-2xl mx-auto"} mb-10`}>
                       {service.description}
                     </p>
-                    <div className="bg-sage-mist p-8 md:p-10 mb-8">
-                      <p className="font-overline text-muted-foreground mb-4">
+                    <div className="border-t border-border pt-8 mb-8">
+                      <p className="font-overline text-muted-foreground mb-5">
                         What's Included
                       </p>
                       <motion.ul
@@ -199,7 +192,7 @@ const Services = () => {
                             variants={listItem}
                             className="flex items-start gap-3"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                            <span className="w-1 h-1 rounded-full bg-primary mt-2.5 shrink-0" />
                             <span className="font-sans-wedding text-body-sm text-foreground font-light">
                               {item}
                             </span>
@@ -207,7 +200,7 @@ const Services = () => {
                         ))}
                       </motion.ul>
                     </div>
-                    <p className={`font-sans-wedding text-caption text-muted-foreground ${service.image ? "" : "text-center"} italic font-light`}>
+                    <p className={`font-sans-wedding text-caption text-muted-foreground/60 ${service.image ? "" : "text-center"} italic font-light`}>
                       Ideal for: {service.idealFor}
                     </p>
                   </ScrollReveal>
@@ -235,61 +228,71 @@ const Services = () => {
       ))}
 
       {/* Testimonial break */}
-      <section className="py-section-mobile md:py-section-tablet bg-sage-deep">
+      <section className="py-20 md:py-28 bg-sage-deep">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <div className="w-10 h-px bg-primary-foreground/30 mx-auto mb-8" />
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="w-12 h-px bg-primary-foreground/20 mx-auto mb-10 origin-center"
+            />
             <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">
               "They handled every detail with such grace — we were completely
               free to enjoy our day. It was everything we dreamed of and more."
             </blockquote>
-            <p className="font-sans-wedding text-body-sm font-light text-primary-foreground/80">
+            <p className="font-sans-wedding text-body-sm font-light text-primary-foreground/70">
               Olivia & Noah
             </p>
-            <p className="font-sans-wedding text-xs text-primary-foreground/50 mt-1">
+            <p className="font-sans-wedding text-xs text-primary-foreground/40 mt-1">
               Jasper Park Lodge, Summer 2024
             </p>
-            <div className="w-10 h-px bg-primary-foreground/30 mx-auto mt-8" />
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Comparison summary — elevated */}
-      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-sage-mist">
-        <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+      {/* Comparison — horizontal ruled layout */}
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
+        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           <ScrollReveal>
-            <div className="text-center mb-12">
-              <p className="font-overline text-muted-foreground mb-4">Find Your Fit</p>
-              <h2 className="font-serif-wedding text-display-lg text-foreground mb-6">
-                Not sure which service is right for you?
+            <div className="text-center mb-16">
+              <p className="font-overline text-muted-foreground/50 mb-4">Find Your Fit</p>
+              <h2 className="font-serif-wedding text-display-lg text-foreground">
+                Not sure which service is right?
               </h2>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="space-y-0">
             {[
-              { tier: "Day-Of", Icon: Calendar, desc: "You've planned it all — we perfect and lead the day.", price: "From $2,500" },
-              { tier: "Partial", Icon: Flower2, desc: "Collaborate on design and vendors with expert guidance.", price: "From $5,000" },
-              { tier: "Full-Service", Icon: Crown, desc: "We handle everything from vision to final send-off.", price: "From $8,500" },
+              { tier: "Day-Of", desc: "You've planned it all — we perfect and lead the day.", price: "From $2,500" },
+              { tier: "Partial", desc: "Collaborate on design and vendors with expert guidance.", price: "From $5,000" },
+              { tier: "Full-Service", desc: "We handle everything from vision to final send-off.", price: "From $8,500" },
             ].map((item, i) => (
-              <ScrollReveal key={item.tier} delay={i * 0.1}>
-                <div className="bg-background p-8 text-center group hover:shadow-lg transition-shadow duration-500 border border-transparent hover:border-primary/10">
-                  <item.Icon size={28} strokeWidth={1} className="text-primary mx-auto mb-4" />
-                  <hr className="editorial-rule mx-auto mb-4" />
-                  <h3 className="font-serif-wedding text-display-md text-foreground mb-2">
-                    {item.tier}
-                  </h3>
-                  <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light mb-4">
-                    {item.desc}
-                  </p>
-                  <p className="font-overline text-primary">{item.price}</p>
+              <ScrollReveal key={item.tier} delay={i * 0.08}>
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline py-8 md:py-10 border-t border-border/60 group">
+                  <div className="md:col-span-3">
+                    <h3 className="font-serif-wedding text-display-md text-foreground group-hover:text-primary transition-colors duration-500">
+                      {item.tier}
+                    </h3>
+                  </div>
+                  <div className="md:col-span-6">
+                    <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
+                      {item.desc}
+                    </p>
+                  </div>
+                  <div className="md:col-span-3 md:text-right">
+                    <p className="font-overline text-primary">{item.price}</p>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
+            <div className="border-t border-border/60" />
           </div>
 
           <ScrollReveal delay={0.3}>
-            <div className="text-center">
+            <div className="text-center mt-16">
               <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-8 font-light max-w-lg mx-auto">
                 Every wedding is unique. We'd love to learn about your vision
                 and recommend the perfect fit.
