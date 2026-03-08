@@ -3,11 +3,11 @@ import { useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 
 const mentions = [
-  { name: "Wedding Bells", type: "Magazine", year: "2024" },
-  { name: "Style Me Pretty", type: "Editorial", year: "2023" },
-  { name: "Rocky Mountain Bride", type: "Feature", year: "2024" },
-  { name: "Junebug Weddings", type: "Spotlight", year: "2023" },
-  { name: "Edmonton Journal", type: "Profile", year: "2022" },
+  { name: "Wedding Bells", type: "Magazine", year: "2024", detail: "Featured: Top Wedding Planners to Watch" },
+  { name: "Style Me Pretty", type: "Editorial", year: "2023", detail: "Editor's Pick — Refined Rustic Weddings" },
+  { name: "Rocky Mountain Bride", type: "Feature", year: "2024", detail: "Cover Feature — Mountain Celebrations" },
+  { name: "Junebug Weddings", type: "Spotlight", year: "2023", detail: "Spotlight: Alberta's Finest" },
+  { name: "Edmonton Journal", type: "Profile", year: "2022", detail: "Rising Stars in Wedding Planning" },
 ];
 
 const PressMentionsSection = () => {
@@ -74,7 +74,7 @@ const PressMentionsSection = () => {
           </div>
         </ScrollReveal>
 
-        {/* Editorial ruled list layout instead of simple flex */}
+        {/* Editorial ruled list layout */}
         <div className="max-w-3xl mx-auto">
           {mentions.map((mention, i) => (
             <motion.div
@@ -100,6 +100,13 @@ const PressMentionsSection = () => {
                   <p className="font-serif-wedding text-lg md:text-xl text-foreground/20 group-hover:text-foreground/50 transition-colors duration-500 tracking-tight">
                     {mention.name}
                   </p>
+                  {/* Hover-reveal detail line */}
+                  <motion.p
+                    className="font-serif-wedding text-[0.6rem] italic text-primary/0 group-hover:text-primary/30 transition-all duration-500 mt-0.5 overflow-hidden"
+                    style={{ maxHeight: hoveredIndex === i ? 20 : 0 }}
+                  >
+                    {mention.detail}
+                  </motion.p>
                 </div>
                 
                 {/* Type badge */}

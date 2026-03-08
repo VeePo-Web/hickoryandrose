@@ -3,10 +3,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const seasonDetails = [
-  { label: "Spring", status: "Limited", accent: true },
-  { label: "Summer", status: "2 Dates Left", accent: true },
-  { label: "Autumn", status: "Accepting", accent: false },
-  { label: "Winter", status: "Open", accent: false },
+  { label: "Spring", status: "Limited", fill: 85, accent: true },
+  { label: "Summer", status: "2 Dates Left", fill: 90, accent: true },
+  { label: "Autumn", status: "Accepting", fill: 45, accent: false },
+  { label: "Winter", status: "Open", fill: 20, accent: false },
 ];
 
 const NowBookingSection = () => {
@@ -113,8 +113,8 @@ const NowBookingSection = () => {
                 Now Accepting Inquiries
               </h2>
 
-              {/* Season availability grid - upgraded with accent indicators */}
-              <div className="hidden md:flex items-center justify-center gap-8 mt-5">
+              {/* Season availability with fill bars */}
+              <div className="hidden md:flex items-center justify-center gap-6 lg:gap-8 mt-5">
                 {seasonDetails.map((season, i) => (
                   <motion.div
                     key={season.label}
@@ -122,16 +122,22 @@ const NowBookingSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 + i * 0.1, duration: 0.4 }}
-                    className="text-center relative"
+                    className="text-center relative min-w-[72px]"
                   >
-                    {/* Accent indicator for limited availability */}
-                    {season.accent && (
-                      <span className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full bg-primary-foreground/30" />
-                    )}
-                    <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-primary-foreground/20 mb-1">
+                    <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-primary-foreground/20 mb-1.5">
                       {season.label}
                     </p>
-                    <p className={`font-serif-wedding text-[0.7rem] italic ${season.accent ? 'text-primary-foreground/50' : 'text-primary-foreground/30'}`}>
+                    {/* Availability fill bar */}
+                    <div className="w-full h-[2px] bg-primary-foreground/8 overflow-hidden mb-1.5">
+                      <motion.div
+                        className={`h-full origin-left ${season.accent ? 'bg-primary-foreground/35' : 'bg-primary-foreground/15'}`}
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: season.fill / 100 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.5 + i * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                      />
+                    </div>
+                    <p className={`font-serif-wedding text-[0.65rem] italic ${season.accent ? 'text-primary-foreground/50' : 'text-primary-foreground/25'}`}>
                       {season.status}
                     </p>
                   </motion.div>
