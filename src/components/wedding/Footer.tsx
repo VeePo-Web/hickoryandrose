@@ -6,6 +6,7 @@ const footerLinks = [
   { label: "Portfolio", path: "/portfolio" },
   { label: "About", path: "/about" },
   { label: "Approach", path: "/approach" },
+  { label: "FAQ", path: "/faq" },
   { label: "Inquire", path: "/inquire" },
 ];
 

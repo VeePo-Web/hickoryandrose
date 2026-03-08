@@ -21,6 +21,74 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Hickory & Rose Wedding and Event Planning",
+      "description": "Edmonton's luxury wedding planner specializing in refined rustic elegance. Day-of coordination, partial & full-service planning.",
+      "url": "https://hickoryandrose.com",
+      "telephone": "",
+      "email": "hello@hickoryandrose.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Edmonton",
+        "addressRegion": "Alberta",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "53.5461",
+        "longitude": "-113.4938"
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "53.5461",
+          "longitude": "-113.4938"
+        },
+        "geoRadius": "200 km"
+      },
+      "priceRange": "$$$$",
+      "image": "https://hickoryandrose.com/og-image.jpg",
+      "sameAs": [
+        "https://www.instagram.com/hickoryandrose"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Wedding Planning Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Day-Of Coordination",
+              "description": "Professional day-of wedding coordination and timeline management"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Partial Planning",
+              "description": "Collaborative wedding planning with design guidance and vendor coordination"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Full-Service Planning",
+              "description": "Complete wedding planning from vision to celebration"
+            }
+          }
+        ]
+      }
+    }
+    </script>
   </head>
 
   <body>
