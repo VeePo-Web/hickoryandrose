@@ -99,6 +99,7 @@ const Index = () => {
         <FilmstripSection />
         <CTASection />
         <InstagramSection />
+        <JournalTeaserSection />
         <Footer />
       </Suspense>
     </main>
