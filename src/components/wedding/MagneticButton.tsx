@@ -44,11 +44,25 @@ const MagneticButton = ({ to, children, variant = "primary", className = "" }: M
     >
       <Link
         to={to}
-        className={`relative inline-flex items-center font-sans-wedding text-xs tracking-[0.2em] uppercase px-10 py-4 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 overflow-hidden group-hover/btn:tracking-[0.25em] ${variants[variant]} ${className}`}
+        className={`magnetic-btn relative inline-flex items-center font-sans-wedding text-xs tracking-[0.2em] uppercase px-10 py-4 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 overflow-hidden group-hover/btn:tracking-[0.25em] ${variants[variant]} ${className}`}
       >
+        {/* Diagonal fill sweep on hover */}
+        <span
+          className="absolute inset-0 origin-bottom-left scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+          style={{
+            background:
+              variant === "primary"
+                ? "linear-gradient(135deg, hsl(var(--gold) / 0.25), transparent)"
+                : variant === "outline-light"
+                ? "linear-gradient(135deg, rgba(255,255,255,0.08), transparent)"
+                : "linear-gradient(135deg, hsl(var(--primary) / 0.06), transparent)",
+            transformOrigin: "left center",
+          }}
+          aria-hidden="true"
+        />
         {/* Hover underline reveal */}
         <span className="absolute bottom-3 left-10 right-10 h-px bg-current origin-left scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500 ease-out opacity-30" />
-        {children}
+        <span className="relative z-10">{children}</span>
       </Link>
     </motion.div>
   );

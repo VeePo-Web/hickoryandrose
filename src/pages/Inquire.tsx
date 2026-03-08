@@ -125,9 +125,14 @@ const Inquire = () => {
 
   /* ─── Shared input styles ─── */
   const inputCls = (field: keyof InquiryForm) =>
-    `w-full px-0 py-3 bg-transparent border-0 border-b font-sans-wedding text-base md:text-lg text-foreground font-light placeholder:text-muted-foreground/40 focus:outline-none focus:ring-0 transition-colors duration-200 ${
-      errors[field] ? "border-destructive" : "border-border/60 focus:border-primary"
+    `w-full px-0 py-3 bg-transparent border-0 border-b font-sans-wedding text-base md:text-lg text-foreground font-light placeholder:text-muted-foreground/40 focus:outline-none focus:ring-0 transition-colors duration-300 ${
+      errors[field] ? "border-destructive" : "border-border/60 focus:border-transparent"
     }`;
+
+  /** Wraps an input to add the gold underline focus effect */
+  const InputWrapper = ({ children }: { children: React.ReactNode }) => (
+    <div className="input-gold-focus relative">{children}</div>
+  );
 
   /* ─── Pill selector ─── */
   const PillSelect = ({
@@ -263,18 +268,20 @@ const Inquire = () => {
           <label htmlFor="name" className="font-overline text-muted-foreground mb-2 block">
             Your Name *
           </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={(e) => set("name", e.target.value)}
-            className={inputCls("name")}
-            placeholder="First & last name"
-            autoFocus
-            aria-invalid={!!errors.name}
-            aria-describedby={errors.name ? "name-error" : undefined}
-          />
+          <InputWrapper>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={(e) => set("name", e.target.value)}
+              className={inputCls("name")}
+              placeholder="First & last name"
+              autoFocus
+              aria-invalid={!!errors.name}
+              aria-describedby={errors.name ? "name-error" : undefined}
+            />
+          </InputWrapper>
           {errors.name && (
             <p id="name-error" className="mt-1.5 font-sans-wedding text-xs text-destructive" role="alert">
               {errors.name}
@@ -286,32 +293,36 @@ const Inquire = () => {
           <label htmlFor="partner" className="font-overline text-muted-foreground mb-2 block">
             Partner's Name
           </label>
-          <input
-            type="text"
-            id="partner"
-            name="partner"
-            value={formData.partner}
-            onChange={(e) => set("partner", e.target.value)}
-            className={inputCls("partner")}
-            placeholder="First & last name"
-          />
+          <InputWrapper>
+            <input
+              type="text"
+              id="partner"
+              name="partner"
+              value={formData.partner}
+              onChange={(e) => set("partner", e.target.value)}
+              className={inputCls("partner")}
+              placeholder="First & last name"
+            />
+          </InputWrapper>
         </div>
 
         <div>
           <label htmlFor="email" className="font-overline text-muted-foreground mb-2 block">
             Email Address *
           </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={(e) => set("email", e.target.value)}
-            className={inputCls("email")}
-            placeholder="your@email.com"
-            aria-invalid={!!errors.email}
-            aria-describedby={errors.email ? "email-error" : undefined}
-          />
+          <InputWrapper>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={(e) => set("email", e.target.value)}
+              className={inputCls("email")}
+              placeholder="your@email.com"
+              aria-invalid={!!errors.email}
+              aria-describedby={errors.email ? "email-error" : undefined}
+            />
+          </InputWrapper>
           {errors.email && (
             <p id="email-error" className="mt-1.5 font-sans-wedding text-xs text-destructive" role="alert">
               {errors.email}
@@ -339,29 +350,33 @@ const Inquire = () => {
             <label htmlFor="date" className="font-overline text-muted-foreground mb-2 block">
               Wedding Date
             </label>
-            <input
-              type="text"
-              id="date"
-              name="date"
-              value={formData.date}
-              onChange={(e) => set("date", e.target.value)}
-              className={inputCls("date")}
-              placeholder="Month / Year or TBD"
-            />
+            <InputWrapper>
+              <input
+                type="text"
+                id="date"
+                name="date"
+                value={formData.date}
+                onChange={(e) => set("date", e.target.value)}
+                className={inputCls("date")}
+                placeholder="Month / Year or TBD"
+              />
+            </InputWrapper>
           </div>
           <div>
             <label htmlFor="venue" className="font-overline text-muted-foreground mb-2 block">
               Venue
             </label>
-            <input
-              type="text"
-              id="venue"
-              name="venue"
-              value={formData.venue}
-              onChange={(e) => set("venue", e.target.value)}
-              className={inputCls("venue")}
-              placeholder="Venue name or TBD"
-            />
+            <InputWrapper>
+              <input
+                type="text"
+                id="venue"
+                name="venue"
+                value={formData.venue}
+                onChange={(e) => set("venue", e.target.value)}
+                className={inputCls("venue")}
+                placeholder="Venue name or TBD"
+              />
+            </InputWrapper>
           </div>
         </div>
 
@@ -415,15 +430,17 @@ const Inquire = () => {
         <label htmlFor="referral" className="font-overline text-muted-foreground mb-2 block">
           How Did You Find Us?
         </label>
-        <input
-          type="text"
-          id="referral"
-          name="referral"
-          value={formData.referral}
-          onChange={(e) => set("referral", e.target.value)}
-          className={inputCls("referral")}
-          placeholder="Instagram, referral, Google…"
-        />
+        <InputWrapper>
+          <input
+            type="text"
+            id="referral"
+            name="referral"
+            value={formData.referral}
+            onChange={(e) => set("referral", e.target.value)}
+            className={inputCls("referral")}
+            placeholder="Instagram, referral, Google…"
+          />
+        </InputWrapper>
       </div>
     </div>,
 
@@ -443,15 +460,17 @@ const Inquire = () => {
         <label htmlFor="message" className="font-overline text-muted-foreground mb-2 block">
           Tell Us About Your Vision
         </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={5}
-          value={formData.message}
-          onChange={(e) => set("message", e.target.value)}
-          className={`${inputCls("message")} resize-none border rounded-none`}
-          placeholder="What does your dream wedding look like? What's most important to you?"
-        />
+        <InputWrapper>
+          <textarea
+            id="message"
+            name="message"
+            rows={5}
+            value={formData.message}
+            onChange={(e) => set("message", e.target.value)}
+            className={`${inputCls("message")} resize-none border rounded-none`}
+            placeholder="What does your dream wedding look like? What's most important to you?"
+          />
+        </InputWrapper>
       </div>
 
       {/* Summary preview */}
