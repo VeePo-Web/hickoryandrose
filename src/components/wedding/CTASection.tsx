@@ -1,16 +1,30 @@
 import { Link } from "react-router-dom";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import ScrollReveal from "./ScrollReveal";
 import receptionImage from "@/assets/portfolio-reception.jpg";
 
 const CTASection = () => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+
   return (
-    <section className="relative py-section-mobile md:py-section-tablet lg:py-section-desktop overflow-hidden" aria-label="Get in touch">
-      {/* Background image */}
+    <section
+      ref={ref}
+      className="relative py-section-mobile md:py-section-tablet lg:py-section-desktop overflow-hidden"
+      aria-label="Get in touch"
+    >
+      {/* Background image with parallax */}
       <div className="absolute inset-0">
-        <img
+        <motion.img
           src={receptionImage}
           alt=""
-          className="w-full h-full object-cover"
+          className="w-full h-[120%] object-cover"
+          style={{ y }}
           loading="lazy"
           aria-hidden="true"
         />
@@ -28,7 +42,7 @@ const CTASection = () => {
           </p>
           <Link
             to="/inquire"
-            className="inline-flex items-center border border-white/50 hover:border-white hover:bg-white/10 text-white font-sans-wedding text-xs tracking-[0.2em] uppercase px-10 py-4 transition-all duration-200"
+            className="inline-flex items-center border border-white/50 hover:border-white hover:bg-white/10 text-white font-sans-wedding text-xs tracking-[0.2em] uppercase px-10 py-4 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent"
           >
             Let's Talk
           </Link>

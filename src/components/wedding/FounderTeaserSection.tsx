@@ -1,19 +1,32 @@
 import { Link } from "react-router-dom";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import ScrollReveal from "./ScrollReveal";
 import founderImage from "@/assets/founder-portrait.jpg";
 
 const FounderTeaserSection = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["4%", "-4%"]);
+
   return (
     <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card" aria-label="About the founder">
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-center max-w-6xl mx-auto">
-          {/* Portrait — larger column */}
+        <div
+          ref={ref}
+          className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-center max-w-6xl mx-auto"
+        >
+          {/* Portrait with subtle parallax */}
           <ScrollReveal className="lg:col-span-3">
             <div className="aspect-[4/5] max-w-md mx-auto lg:max-w-none overflow-hidden">
-              <img
+              <motion.img
                 src={founderImage}
                 alt="Founder of Hickory & Rose, smiling warmly in a garden setting"
-                className="w-full h-full object-cover"
+                className="w-full h-[110%] object-cover"
+                style={{ y: imageY }}
                 loading="lazy"
                 width={1024}
                 height={1024}
@@ -42,10 +55,10 @@ const FounderTeaserSection = () => {
               </p>
               <Link
                 to="/about"
-                className="inline-flex items-center font-sans-wedding text-xs tracking-[0.15em] uppercase text-accent hover:text-primary transition-colors duration-200"
+                className="inline-flex items-center font-sans-wedding text-xs tracking-[0.15em] uppercase text-accent hover:text-primary transition-colors duration-200 group"
               >
                 Read My Story
-                <span className="ml-2">→</span>
+                <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
               </Link>
             </div>
           </ScrollReveal>

@@ -40,8 +40,8 @@ const ProcessTeaserSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 mb-12">
           {steps.map((step, index) => (
             <ScrollReveal key={step.number} delay={index * 0.1}>
-              <div className="text-center md:text-left">
-                <p className="font-serif-wedding text-4xl md:text-5xl font-light text-primary/30 mb-4">
+              <div className="text-center md:text-left group">
+                <p className="font-serif-wedding text-4xl md:text-5xl font-light text-primary/20 mb-4 group-hover:text-primary/40 transition-colors duration-500">
                   {step.number}
                 </p>
                 <h3 className="font-serif-wedding text-display-md text-foreground mb-3">
@@ -59,10 +59,10 @@ const ProcessTeaserSection = () => {
           <div className="text-center">
             <Link
               to="/approach"
-              className="inline-flex items-center font-sans-wedding text-xs tracking-[0.15em] uppercase text-accent hover:text-primary transition-colors duration-200"
+              className="inline-flex items-center font-sans-wedding text-xs tracking-[0.15em] uppercase text-accent hover:text-primary transition-colors duration-200 group"
             >
               Explore Our Approach
-              <span className="ml-2">→</span>
+              <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
             </Link>
           </div>
         </ScrollReveal>
