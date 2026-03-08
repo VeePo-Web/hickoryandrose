@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ReactNode, memo } from "react";
 
 interface ImageRevealProps {
@@ -24,20 +24,28 @@ const clipVariants = {
 };
 
 const ImageReveal = memo(({ children, className = "", delay = 0, direction = "up" }: ImageRevealProps) => {
+  const prefersReduced = useReducedMotion();
+
+  if (prefersReduced) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
-    <motion.div
-      initial={clipVariants[direction].hidden}
-      whileInView={clipVariants[direction].visible}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{
-        duration: 0.8,
-        delay,
-        ease: [0.25, 0.1, 0.25, 1.0],
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
+    <div className={`relative ${className}`}>
+      {/* Image clip-path reveal */}
+      <motion.div
+        initial={clipVariants[direction].hidden}
+        whileInView={clipVariants[direction].visible}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{
+          duration: 0.8,
+          delay,
+          ease: [0.25, 0.1, 0.25, 1.0],
+        }}
+      >
+        {children}
+      </motion.div>
+    </div>
   );
 });
 

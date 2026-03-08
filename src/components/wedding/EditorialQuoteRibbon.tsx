@@ -39,6 +39,8 @@ const EditorialQuoteRibbon = ({
   const borderScale = useTransform(scrollYProgress, [0.1, 0.5], [0, 1]);
   const ornamentOpacity = useTransform(scrollYProgress, [0.2, 0.5, 0.7], [0, 0.06, 0]);
   const ornamentY = useTransform(scrollYProgress, [0, 1], [10, -10]);
+  // Gold glow pulse at center
+  const glowOpacity = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [0, 0.06, 0]);
 
   return (
     <section
@@ -46,6 +48,16 @@ const EditorialQuoteRibbon = ({
       className="py-10 md:py-14 bg-foreground overflow-hidden relative"
       aria-label="Editorial quote"
     >
+      {/* Radial gold glow at center — scroll-linked */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[200px] rounded-full pointer-events-none"
+        style={{
+          opacity: glowOpacity,
+          background: "radial-gradient(ellipse, hsl(var(--gold, 38 60% 55%) / 0.25) 0%, transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
+
       {/* Film grain texture */}
       <div
         className="absolute inset-0 opacity-[0.008] pointer-events-none mix-blend-overlay"
