@@ -29,7 +29,7 @@ const clipReveal = (i: number) => ({
   visible: {
     clipPath: "inset(0% 0 0 0)",
     opacity: 1,
-    transition: { duration: 0.6, delay: 0.5 + i * 0.18, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.6, delay: 0.5 + i * 0.18, ease: [0.25, 0.1, 0.25, 1] as const },
   },
 });
 
