@@ -246,20 +246,49 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Comparison summary */}
-      <section className="py-section-mobile md:py-section-tablet bg-sage-mist">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+      {/* Comparison summary — elevated */}
+      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-sage-mist">
+        <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
           <ScrollReveal>
-            <h2 className="font-serif-wedding text-display-md text-foreground mb-6">
-              Not sure which service is right for you?
-            </h2>
-            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-8 font-light">
-              Every wedding is unique, and so is every couple's planning journey.
-              We'd love to learn about your vision and recommend the perfect fit.
-            </p>
-            <MagneticButton to="/inquire" variant="primary">
-              Schedule a Discovery Call
-            </MagneticButton>
+            <div className="text-center mb-12">
+              <p className="font-overline text-muted-foreground mb-4">Find Your Fit</p>
+              <h2 className="font-serif-wedding text-display-lg text-foreground mb-6">
+                Not sure which service is right for you?
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            {[
+              { tier: "Day-Of", icon: "🗓", desc: "You've planned it all — we perfect and lead the day.", price: "From $2,500" },
+              { tier: "Partial", icon: "🌿", desc: "Collaborate on design and vendors with expert guidance.", price: "From $5,000" },
+              { tier: "Full-Service", icon: "👑", desc: "We handle everything from vision to final send-off.", price: "From $8,500" },
+            ].map((item, i) => (
+              <ScrollReveal key={item.tier} delay={i * 0.1}>
+                <div className="bg-background p-8 text-center group hover:shadow-lg transition-shadow duration-500">
+                  <span className="text-2xl mb-4 block">{item.icon}</span>
+                  <h3 className="font-serif-wedding text-display-md text-foreground mb-2">
+                    {item.tier}
+                  </h3>
+                  <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light mb-4">
+                    {item.desc}
+                  </p>
+                  <p className="font-overline text-primary">{item.price}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal delay={0.3}>
+            <div className="text-center">
+              <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-8 font-light max-w-lg mx-auto">
+                Every wedding is unique. We'd love to learn about your vision
+                and recommend the perfect fit.
+              </p>
+              <MagneticButton to="/inquire" variant="primary">
+                Schedule a Discovery Call
+              </MagneticButton>
+            </div>
           </ScrollReveal>
         </div>
       </section>

@@ -1,14 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import CTASection from "@/components/wedding/CTASection";
 import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
+import MagneticButton from "@/components/wedding/MagneticButton";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import approachDetailsImage from "@/assets/approach-details.jpg";
+import approachHeroImage from "@/assets/approach-hero.jpg";
 
 const processSteps = [
   { number: "01", title: "Discovery Call", time: "Week 1", description: "We start with a relaxed conversation. Tell us about your vision, your story, and how you want to feel on your wedding day. No pressure, no sales pitch — just genuine connection." },
@@ -19,6 +21,14 @@ const processSteps = [
 ];
 
 const Approach = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   useEffect(() => {
     setPageMeta({
       title: "Our Approach — How We Plan Your Wedding | Hickory & Rose Edmonton",
@@ -29,28 +39,51 @@ const Approach = () => {
 
   return (
     <main id="main-content">
-      <Navigation variant="solid" />
+      <Navigation variant="overlay" />
 
-      <section className="bg-sage-light pt-32 pb-section-mobile md:pb-section-tablet">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+      {/* Cinematic Parallax Hero */}
+      <section ref={heroRef} className="relative h-[65vh] md:h-[75vh] overflow-hidden">
+        <motion.div className="absolute inset-0" style={{ y: heroY }}>
+          <img
+            src={approachHeroImage}
+            alt="Wedding day timeline with calligraphy, gold pen, sage eucalyptus and white roses"
+            className="w-full h-[120%] object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/50" />
+        </motion.div>
+
+        <motion.div
+          className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6"
+          style={{ opacity: heroOpacity }}
+        >
           <ScrollReveal>
-            <p className="font-overline text-muted-foreground mb-4">
-              Our Approach
-            </p>
-            <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
+            <p className="font-overline text-white/60 mb-4">Our Approach</p>
+            <h1 className="font-serif-wedding text-display-xl text-white mb-6">
               How We Plan Your Perfect Day
             </h1>
-            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed max-w-xl mx-auto font-light">
+            <p className="font-sans-wedding text-body-sm text-white/70 leading-relaxed max-w-xl mx-auto font-light">
               Great weddings don't happen by accident. They're the result of
               thoughtful planning, clear communication, and a deep understanding
               of what matters to you.
             </p>
           </ScrollReveal>
-        </div>
+        </motion.div>
       </section>
 
+      {/* Process Steps */}
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
+          <ScrollReveal>
+            <div className="text-center mb-12 md:mb-16">
+              <p className="font-overline text-muted-foreground mb-4">Five Steps</p>
+              <h2 className="font-serif-wedding text-display-lg text-foreground">
+                From First Call to Final Dance
+              </h2>
+            </div>
+          </ScrollReveal>
+
           <div className="space-y-0">
             {processSteps.map((step, index) => (
               <ScrollReveal key={step.number} delay={index * 0.08}>
@@ -111,7 +144,7 @@ const Approach = () => {
         height="h-[35vh] md:h-[45vh]"
       />
 
-      {/* Second editorial break */}
+      {/* Editorial promise break */}
       <section className="py-12 md:py-16 bg-card">
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           <ScrollReveal>
@@ -139,7 +172,7 @@ const Approach = () => {
         height="h-[35vh] md:h-[45vh]"
       />
 
-      {/* Promise section */}
+      {/* Promise quote */}
       <section className="py-section-mobile md:py-section-tablet bg-sage-mist">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
@@ -155,6 +188,25 @@ const Approach = () => {
               </span>
               <span className="w-8 h-px bg-primary/30" />
             </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-section-mobile md:py-section-tablet bg-background">
+        <div className="container mx-auto px-6 lg:px-8 max-w-2xl text-center">
+          <ScrollReveal>
+            <p className="font-overline text-muted-foreground mb-4">Ready?</p>
+            <h2 className="font-serif-wedding text-display-lg text-foreground mb-6">
+              Let's Begin Your Planning Journey
+            </h2>
+            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-10 font-light">
+              Every great wedding starts with a conversation. Tell us about your
+              vision and we'll show you how we can bring it to life.
+            </p>
+            <MagneticButton to="/inquire" variant="primary">
+              Schedule a Discovery Call
+            </MagneticButton>
           </ScrollReveal>
         </div>
       </section>
