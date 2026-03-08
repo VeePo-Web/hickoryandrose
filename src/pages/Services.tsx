@@ -10,6 +10,7 @@ import FullWidthImage from "@/components/wedding/FullWidthImage";
 import ImageReveal from "@/components/wedding/ImageReveal";
 import MagneticButton from "@/components/wedding/MagneticButton";
 import servicesHeroImage from "@/assets/services-hero.jpg";
+import serviceDayofImage from "@/assets/service-dayof.jpg";
 import servicePlanningImage from "@/assets/service-planning.jpg";
 import serviceStationeryImage from "@/assets/service-stationery.jpg";
 import serviceFullserviceImage from "@/assets/service-fullservice.jpg";
