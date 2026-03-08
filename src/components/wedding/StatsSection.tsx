@@ -3,10 +3,10 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
 const stats = [
-  { value: 75, suffix: "+", label: "Weddings Planned", detail: "and counting", icon: "✦" },
-  { value: 7, suffix: "", label: "Years of Experience", detail: "since 2018", icon: "❖" },
-  { value: 100, suffix: "%", label: "Five-Star Reviews", detail: "every single one", icon: "✧" },
-  { value: 15, suffix: "–20", label: "Weddings Per Year", detail: "intentionally limited", icon: "◆" },
+  { value: 75, suffix: "+", label: "Weddings Planned", detail: "and counting" },
+  { value: 7, suffix: "", label: "Years of Experience", detail: "since 2018" },
+  { value: 100, suffix: "%", label: "Five-Star Reviews", detail: "every single one" },
+  { value: 15, suffix: "–20", label: "Weddings Per Year", detail: "intentionally limited" },
 ];
 
 const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
