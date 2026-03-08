@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { setPageMeta } from "@/lib/seo";
 import Navigation from "@/components/wedding/Navigation";
 import Footer from "@/components/wedding/Footer";
 import CTASection from "@/components/wedding/CTASection";
