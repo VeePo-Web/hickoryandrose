@@ -134,10 +134,17 @@ const InstagramSection = () => {
           style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08), transparent)" }}
         />
 
-        {/* Staggered mosaic grid with parallax */}
+        {/* Staggered mosaic grid with film-strip reveal */}
         <motion.div 
           className="grid grid-cols-2 md:grid-cols-12 gap-2 md:gap-3"
           style={{ y: gridY }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+          }}
         >
           {/* Large feature — spans 7 cols */}
           <MosaicItem photo={photos[0]} index={0} className="col-span-2 md:col-span-7 aspect-[16/10]" featured />
