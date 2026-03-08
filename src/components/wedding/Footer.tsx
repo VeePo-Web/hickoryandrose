@@ -38,7 +38,7 @@ const Footer = () => {
               <span className="font-script text-4xl md:text-5xl group-hover:text-primary transition-colors duration-300">Rose</span>
             </span>
           </Link>
-          <p className="font-sans-wedding text-xs text-background/30 tracking-[0.2em] uppercase mt-4">
+          <p className="font-overline text-background/25 mt-5">
             Edmonton's Luxury Wedding Planner
           </p>
         </motion.div>
