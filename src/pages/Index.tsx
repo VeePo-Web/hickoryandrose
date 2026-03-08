@@ -22,6 +22,7 @@ const FullWidthImage = lazy(() => import("@/components/wedding/FullWidthImage"))
 const FounderTeaserSection = lazy(() => import("@/components/wedding/FounderTeaserSection"));
 const StatsSection = lazy(() => import("@/components/wedding/StatsSection"));
 const PressMentionsSection = lazy(() => import("@/components/wedding/PressMentionsSection"));
+const BrandManifestoSection = lazy(() => import("@/components/wedding/BrandManifestoSection"));
 const FilmstripSection = lazy(() => import("@/components/wedding/FilmstripSection"));
 const InstagramSection = lazy(() => import("@/components/wedding/InstagramSection"));
 const JournalTeaserSection = lazy(() => import("@/components/wedding/JournalTeaserSection"));
@@ -109,6 +110,7 @@ const Index = () => {
           direction="right"
         />
         <PressMentionsSection />
+        <BrandManifestoSection />
         <FullWidthImage
           src={rockiesImage}
           alt="Cinematic aerial view of the Canadian Rocky Mountains at golden hour with alpine lake and evergreen forests"
