@@ -89,8 +89,11 @@ const articles = [
   },
 ];
 
+const journalFilters = ["All", "Planning", "Inspiration", "Design", "Florals", "Stationery", "Venues"] as const;
+
 const Journal = () => {
   const heroRef = useRef<HTMLElement>(null);
+  const [activeFilter, setActiveFilter] = useState<string>("All");
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
