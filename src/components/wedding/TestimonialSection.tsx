@@ -5,8 +5,6 @@ import ImageReveal from "./ImageReveal";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import detailImage from "@/assets/detail-placecard.jpg";
 import firstDanceImage from "@/assets/first-dance.jpg";
-import detailImage from "@/assets/detail-placecard.jpg";
-import firstDanceImage from "@/assets/first-dance.jpg";
 
 const testimonials = [
   {
