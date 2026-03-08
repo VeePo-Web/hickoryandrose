@@ -49,6 +49,7 @@ const ProcessTeaserSection = () => {
       ref={sectionRef}
       className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden"
       aria-label="Our approach"
+      style={{ contain: "layout style" }}
     >
       {/* Parallax watermark */}
       <motion.div

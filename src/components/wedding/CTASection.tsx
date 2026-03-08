@@ -25,6 +25,7 @@ const CTASection = () => {
       ref={ref}
       className="relative py-section-mobile md:py-section-tablet lg:py-section-desktop overflow-hidden grain-overlay vignette"
       aria-label="Get in touch"
+      style={{ contain: "layout style" }}
     >
       {/* Cinematic parallax background */}
       <div className="absolute inset-0">

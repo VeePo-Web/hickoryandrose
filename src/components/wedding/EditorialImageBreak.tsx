@@ -28,6 +28,7 @@ const EditorialImageBreak = () => {
       ref={ref}
       className="w-full overflow-hidden relative"
       aria-label="Editorial wedding detail"
+      style={{ contain: "layout style" }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
