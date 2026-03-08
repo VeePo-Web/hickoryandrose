@@ -231,7 +231,8 @@ const FAQ = () => {
                       whileInView={{ scaleX: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.8, delay: 0.2 }}
-                      className="h-px bg-border/60 mt-4 origin-left"
+                      className="h-px mt-4 origin-left"
+                      style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08), transparent)" }}
                     />
                   </div>
                 </div>
