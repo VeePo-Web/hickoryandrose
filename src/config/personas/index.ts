@@ -13,3 +13,4 @@ export { DISCOVERY_FRAMEWORK } from './discovery-framework';
 export { NAV_PERSONA } from './ui-navigation';
 export { VISUAL_PERSONA } from './ui-visual';
 export { FOOTER_PERSONA } from './ui-footer';
+export { POLISHED_PAIGE } from './ideal-customer';
