@@ -15,7 +15,7 @@ const CTASection = () => {
   return (
     <section
       ref={ref}
-      className="relative py-section-mobile md:py-section-tablet lg:py-section-desktop overflow-hidden"
+      className="relative py-section-mobile md:py-section-tablet lg:py-section-desktop overflow-hidden grain-overlay vignette"
       aria-label="Get in touch"
     >
       <div className="absolute inset-0">
