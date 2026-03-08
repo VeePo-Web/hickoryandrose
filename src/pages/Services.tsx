@@ -120,6 +120,20 @@ const Services = () => {
             fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/15 to-black/55" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/10" />
+        </motion.div>
+
+        {/* Large parallax watermark */}
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
+          style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "15%"]) }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.03 }}
+          transition={{ duration: 2, delay: 0.5 }}
+        >
+          <span className="font-serif-wedding text-[14rem] md:text-[22rem] text-white leading-none tracking-tight whitespace-nowrap">
+            Services
+          </span>
         </motion.div>
 
         <motion.div
@@ -129,9 +143,19 @@ const Services = () => {
           <ScrollReveal>
             <p className="font-sans-wedding text-label uppercase text-white/50 mb-4">
               <span className="inline-flex items-center gap-3">
-                <span className="w-6 h-px bg-white/30" />
+                <motion.span
+                  className="w-8 h-px bg-white/30 origin-right"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                />
                 Our Services
-                <span className="w-6 h-px bg-white/30" />
+                <motion.span
+                  className="w-8 h-px bg-white/30 origin-left"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                />
               </span>
             </p>
             <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">
@@ -144,6 +168,16 @@ const Services = () => {
             </p>
           </ScrollReveal>
         </motion.div>
+
+        {/* Section corner index */}
+        <motion.span
+          className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/15 tracking-widest"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
+        >
+          01
+        </motion.span>
       </section>
 
       {/* Editorial Intro — asymmetric layout */}
