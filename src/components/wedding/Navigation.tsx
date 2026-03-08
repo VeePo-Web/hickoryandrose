@@ -92,7 +92,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                 showSolidBg ? "text-foreground" : "text-white"
               }`}
             >
-              <AnimatePresence mode="wait">
+               <AnimatePresence mode="wait">
                 {showMonogram ? (
                   <motion.span
                     key="monogram"
@@ -100,11 +100,22 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="flex items-center gap-1.5"
+                    className="flex items-center gap-1.5 relative"
                   >
-                    <span className="font-serif-wedding text-lg font-light tracking-tight">H</span>
-                    <span className="font-script text-xl text-primary/60">&</span>
-                    <span className="font-script text-2xl">R</span>
+                    {/* Breathing gold glow behind monogram */}
+                    <motion.span
+                      className="absolute -inset-3 rounded-full pointer-events-none"
+                      animate={{ opacity: [0.03, 0.08, 0.03] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.4), transparent 70%)" }}
+                    />
+                    <span className="font-serif-wedding text-lg font-light tracking-tight relative">H</span>
+                    <motion.span
+                      className="font-script text-xl text-primary/60 relative"
+                      animate={{ opacity: [0.6, 0.9, 0.6] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    >&</motion.span>
+                    <span className="font-script text-2xl relative">R</span>
                   </motion.span>
                 ) : (
                   <motion.span
