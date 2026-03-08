@@ -119,6 +119,22 @@ const Approach = () => {
           ))}
         </motion.div>
 
+        {/* Scroll-down indicator */}
+        <motion.div
+          className="absolute bottom-14 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none"
+          initial={{ opacity: 0, y: -6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2, duration: 0.8 }}
+        >
+          <span className="font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-white/25">Scroll</span>
+          <motion.span
+            className="w-px h-6"
+            style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), transparent)" }}
+            animate={{ scaleY: [0, 1, 0], originY: 0 }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.div>
+
         <motion.span
           className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/15 tracking-widest z-20"
           initial={{ opacity: 0 }}
