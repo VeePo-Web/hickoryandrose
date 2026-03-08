@@ -225,6 +225,26 @@ const Services = () => {
         </div>
       ))}
 
+      {/* Testimonial break */}
+      <section className="py-section-mobile md:py-section-tablet bg-sage-deep">
+        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
+          <ScrollReveal>
+            <div className="w-10 h-px bg-primary-foreground/30 mx-auto mb-8" />
+            <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">
+              "They handled every detail with such grace — we were completely
+              free to enjoy our day. It was everything we dreamed of and more."
+            </blockquote>
+            <p className="font-sans-wedding text-body-sm font-light text-primary-foreground/80">
+              Olivia & Noah
+            </p>
+            <p className="font-sans-wedding text-xs text-primary-foreground/50 mt-1">
+              Jasper Park Lodge, Summer 2024
+            </p>
+            <div className="w-10 h-px bg-primary-foreground/30 mx-auto mt-8" />
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Comparison summary */}
       <section className="py-section-mobile md:py-section-tablet bg-sage-mist">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
