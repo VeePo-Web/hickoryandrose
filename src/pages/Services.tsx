@@ -9,6 +9,8 @@ import ScrollReveal from "@/components/wedding/ScrollReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import ImageReveal from "@/components/wedding/ImageReveal";
 import MagneticButton from "@/components/wedding/MagneticButton";
+import ServiceTierCard from "@/components/wedding/ServiceTierCard";
+import ServiceComparison from "@/components/wedding/ServiceComparison";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 import servicesHeroImage from "@/assets/services-hero.jpg";
@@ -83,14 +85,7 @@ const serviceTiers = [
   },
 ];
 
-const listItem = {
-  hidden: { opacity: 0, x: -8 },
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.35, delay: i * 0.06, ease: [0.25, 0.1, 0.25, 1] as const },
-  }),
-};
+// listItem variants moved to ServiceTierCard sub-component
 
 const Services = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -230,159 +225,7 @@ const Services = () => {
       {/* Service Tiers */}
       {serviceTiers.map((service, index) => (
         <div key={service.id}>
-          <section
-            id={service.id}
-            className={`py-section-mobile md:py-section-tablet lg:py-section-desktop relative overflow-hidden ${
-              index % 2 === 0 ? "bg-background" : "bg-card"
-            }`}
-          >
-            {/* Per-tier parallax watermark */}
-            <motion.div
-              className="absolute -right-4 top-1/3 pointer-events-none select-none"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5 }}
-            >
-              <span className="font-serif-wedding text-[8rem] md:text-[12rem] font-light text-foreground/[0.015] whitespace-nowrap tracking-tight italic leading-none">
-                {service.title.split(" ")[0]}
-              </span>
-            </motion.div>
-            <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
-              <div className={`grid grid-cols-1 ${service.image ? "lg:grid-cols-2 gap-12 lg:gap-16 items-start" : "max-w-4xl mx-auto"}`}>
-                {/* Image column (alternating sides) */}
-                {service.image && index % 2 === 0 && (
-                  <ScrollReveal>
-                    <ImageReveal direction="left">
-                      <div className="aspect-[4/5] overflow-hidden sticky top-28 relative group">
-                        <img
-                          src={service.image}
-                          alt={service.imageAlt}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          loading="lazy"
-                        />
-                        {/* Gold corner frame accents on hover */}
-                        <div className="absolute top-3 left-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
-                          <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.35), transparent)" }} />
-                          <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.35), transparent)" }} />
-                        </div>
-                        <div className="absolute bottom-3 right-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
-                          <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.35), transparent)" }} />
-                          <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.35), transparent)" }} />
-                        </div>
-                      </div>
-                    </ImageReveal>
-                  </ScrollReveal>
-                )}
-
-                {/* Content column */}
-                <div>
-                  <ScrollReveal delay={service.image ? 0.1 : 0}>
-                    <div className={`${service.image ? "" : "text-center"} mb-10`}>
-                      <p className="font-sans-wedding text-label uppercase text-primary/60 mb-3">
-                        <span className="inline-flex items-center gap-3">
-                          <span className="w-4 h-px bg-primary/30" />
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                      </p>
-                      <h2 className="font-serif-wedding text-display-lg text-foreground mb-2">
-                        {service.title}
-                      </h2>
-                      <p className="font-serif-wedding text-lg italic text-muted-foreground mb-3">
-                        {service.tagline}
-                      </p>
-                      <p
-                        className="font-sans-wedding text-label uppercase font-light"
-                        style={{
-                          background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--gold)))",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                          backgroundClip: "text",
-                        }}
-                      >
-                        {service.investment}
-                      </p>
-                    </div>
-                  </ScrollReveal>
-                  <ScrollReveal delay={service.image ? 0.15 : 0.1}>
-                    <p className={`font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light ${service.image ? "" : "text-center max-w-2xl mx-auto"} mb-10`}>
-                      {service.description}
-                    </p>
-                    <div className="border-t border-border pt-8 mb-8">
-                      <p className="font-sans-wedding text-label uppercase text-muted-foreground mb-5">
-                        What's Included
-                      </p>
-                      <motion.ul
-                        className="space-y-3"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-50px" }}
-                      >
-                        {service.includes.map((item, i) => (
-                          <motion.li
-                            key={item}
-                            custom={i}
-                            variants={listItem}
-                            className="flex items-start gap-3"
-                          >
-                            <motion.span
-                              className="w-5 h-px bg-primary/40 mt-2.5 shrink-0"
-                              initial={{ scaleX: 0 }}
-                              whileInView={{ scaleX: 1 }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 0.4, delay: i * 0.06 }}
-                              style={{ originX: 0 }}
-                            />
-                            <span className="font-sans-wedding text-body-sm text-foreground font-light">
-                              {item}
-                            </span>
-                          </motion.li>
-                        ))}
-                      </motion.ul>
-                    </div>
-
-                    {/* Ideal-for pull quote */}
-                    <div className="pl-5 mt-8 relative">
-                      <div
-                        className="absolute left-0 top-0 bottom-0 w-[2px]"
-                        style={{
-                          background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), hsl(var(--primary) / 0.15))",
-                        }}
-                      />
-                      <p className="font-serif-wedding text-sm italic text-foreground/60 leading-relaxed">
-                        Ideal for: {service.idealFor}
-                      </p>
-                    </div>
-                  </ScrollReveal>
-                </div>
-
-                {/* Image on right for odd indexes */}
-                {service.image && index % 2 !== 0 && (
-                  <ScrollReveal>
-                    <ImageReveal direction="right">
-                      <div className="aspect-[4/5] overflow-hidden sticky top-28 relative group">
-                        <img
-                          src={service.image}
-                          alt={service.imageAlt}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          loading="lazy"
-                        />
-                        {/* Gold corner frame accents on hover */}
-                        <div className="absolute top-3 left-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
-                          <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.35), transparent)" }} />
-                          <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.35), transparent)" }} />
-                        </div>
-                        <div className="absolute bottom-3 right-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
-                          <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.35), transparent)" }} />
-                          <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.35), transparent)" }} />
-                        </div>
-                      </div>
-                    </ImageReveal>
-                  </ScrollReveal>
-                )}
-              </div>
-            </div>
-          </section>
+          <ServiceTierCard service={service} index={index} />
 
           {/* Editorial image breaks between tiers */}
           {index < serviceTiers.length - 1 && index === 0 && (
@@ -482,95 +325,7 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Comparison — horizontal ruled layout */}
-      <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
-        <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
-                <span className="inline-flex items-center gap-3">
-                  <span className="w-5 h-px bg-border" />
-                  Find Your Fit
-                  <span className="w-5 h-px bg-border" />
-                </span>
-              </p>
-              <h2 className="font-serif-wedding text-display-lg text-foreground">
-                Not sure which service is right?
-              </h2>
-            </div>
-          </ScrollReveal>
-
-          <div className="space-y-0">
-            {[
-              { tier: "Day-Of", desc: "You've planned it all — we perfect and lead the day.", price: "From $2,500", popular: false },
-              { tier: "Partial", desc: "Collaborate on design and vendors with expert guidance.", price: "From $5,000", popular: true },
-              { tier: "Full-Service", desc: "We handle everything from vision to final send-off.", price: "From $8,500", popular: false },
-            ].map((item, i) => (
-              <ScrollReveal key={item.tier} delay={i * 0.08}>
-                <div className="relative group">
-                  {/* Gold shimmer sweep on hover */}
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-                    <div
-                      className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1s] ease-in-out"
-                      style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.04) 40%, hsl(var(--gold) / 0.08) 50%, hsl(var(--gold) / 0.04) 60%, transparent 100%)" }}
-                    />
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-center py-8 md:py-10 border-t border-border/60 relative">
-                    <div className="md:col-span-3 flex items-center gap-3">
-                      <h3 className="font-serif-wedding text-display-md text-foreground group-hover:text-primary transition-colors duration-500">
-                        {item.tier}
-                      </h3>
-                      {item.popular && (
-                        <motion.span
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 0.3, duration: 0.4 }}
-                          className="font-sans-wedding text-[0.45rem] tracking-[0.15em] uppercase px-2.5 py-1 border shimmer-gold"
-                          style={{
-                            borderColor: "hsl(var(--gold) / 0.3)",
-                            color: "hsl(var(--gold))",
-                            background: "linear-gradient(135deg, hsl(var(--gold) / 0.06), transparent)",
-                          }}
-                        >
-                          Popular
-                        </motion.span>
-                      )}
-                    </div>
-                    <div className="md:col-span-6">
-                      <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light group-hover:text-foreground/70 transition-colors duration-500">
-                        {item.desc}
-                      </p>
-                    </div>
-                    <div className="md:col-span-3 md:text-right flex items-center justify-start md:justify-end gap-3">
-                      <p className="font-sans-wedding text-label uppercase text-primary">{item.price}</p>
-                      <span className="font-serif-wedding text-sm text-primary/0 group-hover:text-primary/40 transition-all duration-500 translate-x-0 group-hover:translate-x-1">→</span>
-                    </div>
-                  </div>
-                  {/* Gold bottom accent on hover */}
-                  <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-px origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-700"
-                    style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }}
-                  />
-                </div>
-              </ScrollReveal>
-            ))}
-            <div className="border-t border-border/60" />
-          </div>
-
-          <ScrollReveal delay={0.3}>
-            <div className="text-center mt-16">
-              <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-8 font-light max-w-lg mx-auto">
-                Every wedding is unique. We'd love to learn about your vision
-                and recommend the perfect fit.
-              </p>
-              <MagneticButton to="/inquire" variant="primary">
-                Schedule a Discovery Call
-              </MagneticButton>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      <ServiceComparison />
 
       {/* Why Hickory & Rose — editorial differentiator */}
       <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card relative overflow-hidden">
