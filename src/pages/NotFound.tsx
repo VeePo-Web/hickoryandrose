@@ -1,14 +1,19 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useLocation, Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import Footer from "@/components/wedding/Footer";
-
-import editorialFlorals from "@/assets/editorial-florals.jpg";
+import MagneticButton from "@/components/wedding/MagneticButton";
+import notfoundImage from "@/assets/notfound-editorial.jpg";
 
 const NotFound = () => {
   const location = useLocation();
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   useEffect(() => {
     document.title = "Page Not Found | Hickory & Rose — Edmonton Wedding Planner";
@@ -20,35 +25,36 @@ const NotFound = () => {
 
   return (
     <main id="main-content">
-      <Navigation variant="solid" />
-      <section className="min-h-[90vh] flex flex-col items-center justify-center bg-background px-6 relative overflow-hidden">
-        {/* Large decorative 404 */}
+      <Navigation variant="overlay" />
+
+      <section
+        ref={heroRef}
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      >
+        {/* Parallax editorial background */}
+        <motion.div className="absolute inset-0" style={{ y: heroY }}>
+          <img
+            src={notfoundImage}
+            alt=""
+            className="w-full h-[120%] object-cover"
+            loading="eager"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
+        </motion.div>
+
+        {/* Large decorative 404 — parallax shifted */}
         <motion.p
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 0.03, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1.0] }}
-          className="absolute font-serif-wedding text-[18rem] md:text-[28rem] font-light text-foreground select-none pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.06 }}
+          transition={{ duration: 1.5 }}
+          className="absolute font-serif-wedding text-[16rem] md:text-[24rem] font-light text-white select-none pointer-events-none"
           aria-hidden="true"
         >
           404
         </motion.p>
 
-        {/* Decorative floral image — faded */}
-        <motion.div
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 0.06, scale: 1 }}
-          transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1.0] }}
-          className="absolute inset-0 pointer-events-none"
-          aria-hidden="true"
-        >
-          <img
-            src={editorialFlorals}
-            alt=""
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-
-        <div className="relative z-10 text-center max-w-lg">
+        <div className="relative z-10 text-center max-w-lg px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -58,15 +64,19 @@ const NotFound = () => {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 1 }}
-              className="w-12 h-px bg-primary/30 mx-auto mb-6 origin-center"
+              className="w-12 h-px bg-white/30 mx-auto mb-6 origin-center"
             />
-            <p className="font-overline text-muted-foreground mb-6">
-              Page Not Found
+            <p className="font-sans-wedding text-label uppercase text-white/50 mb-6">
+              <span className="inline-flex items-center gap-3">
+                <span className="w-6 h-px bg-white/30" />
+                Page Not Found
+                <span className="w-6 h-px bg-white/30" />
+              </span>
             </p>
-            <h1 className="font-serif-wedding text-display-lg text-foreground mb-6">
+            <h1 className="font-serif-wedding text-display-xl text-white mb-6">
               This page seems to have wandered off.
             </h1>
-            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-10 font-light max-w-md mx-auto">
+            <p className="font-sans-wedding text-body-sm text-white/60 leading-relaxed mb-10 font-light max-w-md mx-auto">
               The page you're looking for doesn't exist — but your perfect
               wedding planning journey is just a click away.
             </p>
@@ -78,18 +88,12 @@ const NotFound = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Link
-              to="/"
-              className="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.15em] uppercase font-light hover:bg-sage-deep transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
-            >
+            <MagneticButton to="/" variant="outline-light">
               Return Home
-            </Link>
-            <Link
-              to="/portfolio"
-              className="inline-flex items-center justify-center px-8 py-3.5 border border-primary text-primary font-sans-wedding text-xs tracking-[0.15em] uppercase font-light hover:bg-primary hover:text-primary-foreground transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2"
-            >
+            </MagneticButton>
+            <MagneticButton to="/portfolio" variant="outline-light">
               View Our Work
-            </Link>
+            </MagneticButton>
           </motion.div>
 
           <motion.div
@@ -98,16 +102,15 @@ const NotFound = () => {
             transition={{ delay: 0.9, duration: 0.5 }}
             className="mt-12"
           >
-            {/* Brand flourish */}
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 1 }}
-              className="w-10 h-px bg-border mx-auto mb-3 origin-center"
+              className="w-10 h-px bg-white/20 mx-auto mb-3 origin-center"
             />
-            <p className="font-sans-wedding text-xs text-muted-foreground/50 font-light">
+            <p className="font-sans-wedding text-xs text-white/40 font-light">
               Or{" "}
-              <Link to="/inquire" className="underline underline-offset-4 hover:text-primary transition-colors">
+              <Link to="/inquire" className="underline underline-offset-4 hover:text-white transition-colors">
                 reach out directly
               </Link>{" "}
               — we'd love to hear from you.
@@ -115,6 +118,7 @@ const NotFound = () => {
           </motion.div>
         </div>
       </section>
+
       <Footer />
     </main>
   );
