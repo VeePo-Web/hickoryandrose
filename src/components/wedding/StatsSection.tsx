@@ -91,14 +91,19 @@ const StatsSection = () => {
         aria-hidden="true"
       />
 
-      {/* Parallax monogram */}
+      {/* Parallax monogram with breathing gold glow */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center pointer-events-none"
         style={{ y: monogramY, opacity: bgOpacity }}
       >
-        <span className="font-script text-[14rem] md:text-[22rem] text-background/[0.02] select-none leading-none" aria-hidden="true">
+        <motion.span
+          className="font-script text-[14rem] md:text-[22rem] text-background/[0.02] select-none leading-none relative"
+          aria-hidden="true"
+          animate={{ textShadow: ["0 0 60px hsl(var(--gold) / 0.02)", "0 0 120px hsl(var(--gold) / 0.05)", "0 0 60px hsl(var(--gold) / 0.02)"] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        >
           &
-        </span>
+        </motion.span>
       </motion.div>
 
       {/* Section index watermark */}
@@ -229,7 +234,24 @@ const StatsSection = () => {
 
         {/* Editorial footnote row */}
         <ScrollReveal delay={0.4}>
-          <div className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative">
+            {/* Connecting diamond ornaments between columns (desktop) */}
+            {[0, 1].map((i) => (
+              <motion.div
+                key={`connector-${i}`}
+                className="absolute top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center"
+                style={{ left: `${((i + 1) * 100) / 3}%`, transform: "translate(-50%, -50%)" }}
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.7 + i * 0.15 }}
+              >
+                <span
+                  className="w-1.5 h-1.5 rotate-45"
+                  style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }}
+                />
+              </motion.div>
+            ))}
             {[
               { label: "Edmonton & Area", note: "Primary Service Region" },
               { label: "Canadian Rockies", note: "Jasper · Banff · Lake Louise" },
@@ -241,15 +263,22 @@ const StatsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                className="text-center pt-6 group/foot cursor-default relative"
+                className="text-center pt-6 group/foot cursor-default relative overflow-hidden"
               >
                 {/* Gold-gradient top rule */}
-                <div className="h-px mb-0 absolute top-0 left-0 right-0 overflow-hidden">
-                  <div
-                    className="h-full w-full"
-                    style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.12), transparent)" }}
-                  />
-                </div>
+                <motion.div
+                  className="h-px absolute top-0 left-0 right-0 origin-center"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.5 + i * 0.1 }}
+                  style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.15), transparent)" }}
+                />
+                {/* Hover shimmer */}
+                <div
+                  className="absolute inset-0 -translate-x-full group-hover/foot:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"
+                  style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.03) 40%, hsl(var(--gold) / 0.06) 50%, hsl(var(--gold) / 0.03) 60%, transparent 100%)" }}
+                />
                 <p className="font-serif-wedding text-sm text-background/25 italic group-hover/foot:text-background/40 transition-colors duration-500">{item.label}</p>
                 <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-background/12 mt-1 group-hover/foot:text-background/20 transition-colors duration-500">{item.note}</p>
               </motion.div>
