@@ -89,7 +89,7 @@ const Inquire = () => {
             <h1 className="font-serif-wedding text-display-xl text-foreground mb-6">
               Let's Plan Something Beautiful
             </h1>
-            <p className="font-sans-wedding text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
+            <p className="font-sans-wedding text-body text-muted-foreground leading-relaxed max-w-xl mx-auto font-light">
               Tell us about your vision. There's no commitment — just a warm
               conversation about your wedding day and how we can help.
             </p>
