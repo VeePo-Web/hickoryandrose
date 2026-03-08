@@ -71,10 +71,18 @@ const EditorialSplitSection = () => {
           </span>
         </motion.div>
 
-        {/* Scroll-linked vertical accent line */}
+        {/* Scroll-linked vertical accent line with gold tip */}
         <motion.div
           className="absolute left-8 top-0 w-px bg-gradient-to-b from-transparent via-primary-foreground/15 to-transparent origin-top"
           style={{ height: quoteLineH }}
+        />
+        <motion.div
+          className="absolute left-[31px] top-0 w-[3px] origin-top"
+          style={{
+            height: quoteLineH,
+            background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.05), transparent)",
+            scaleY: centerLineScale,
+          }}
         />
 
         {/* Corner accents */}

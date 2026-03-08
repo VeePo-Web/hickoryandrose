@@ -217,8 +217,13 @@ const ArticleCard = ({
           </span>
         </div>
 
-        <h3 className="font-serif-wedding text-display-sm text-foreground group-hover:text-primary transition-colors duration-500 mb-2 leading-tight">
+        <h3 className="font-serif-wedding text-display-sm text-foreground group-hover:text-primary transition-colors duration-500 mb-2 leading-tight relative">
           {article.title}
+          {/* Gold underline reveal on hover */}
+          <span
+            className="absolute bottom-0 left-0 h-px w-0 group-hover:w-full transition-all duration-700 ease-out"
+            style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1), transparent)" }}
+          />
         </h3>
 
         <p className="font-sans-wedding text-body-sm text-muted-foreground/60 font-light leading-relaxed line-clamp-2">

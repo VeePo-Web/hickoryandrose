@@ -191,6 +191,16 @@ const LoveQuoteSection = () => {
             </motion.span>
           </blockquote>
 
+          {/* Gold ornamental serif rule */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            className="w-24 h-px mx-auto mb-12 origin-center"
+            style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.35), transparent)" }}
+          />
+
           {/* Attribution with vertical accent */}
           <div className="flex flex-col items-center gap-5">
             <motion.div
