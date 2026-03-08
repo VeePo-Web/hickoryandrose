@@ -76,8 +76,8 @@ const serviceTiers = [
     ],
     idealFor:
       "Couples who want a truly hands-free, elevated experience from start to finish.",
-    image: null,
-    imageAlt: "",
+    image: serviceFullserviceImage,
+    imageAlt: "Wedding planner styling an elegant reception table with sage florals and crystal glassware",
   },
 ];
 
