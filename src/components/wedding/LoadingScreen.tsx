@@ -29,6 +29,7 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const ease = [0.25, 0.1, 0.25, 1.0] as const;
+  const active = phase !== "enter";
 
   return (
     <>
@@ -69,28 +70,111 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                 }}
               />
 
+              {/* Corner ornaments — cinematic framing */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={active ? { opacity: 1 } : {}}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="absolute inset-0 pointer-events-none"
+                aria-hidden="true"
+              >
+                {/* Top-left */}
+                <div className="absolute top-8 left-8 md:top-12 md:left-12">
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={active ? { scaleX: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.4, ease }}
+                    className="w-8 md:w-12 h-px bg-background/8 origin-left"
+                  />
+                  <motion.div
+                    initial={{ scaleY: 0 }}
+                    animate={active ? { scaleY: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.45, ease }}
+                    className="w-px h-8 md:h-12 bg-background/8 origin-top"
+                  />
+                </div>
+                {/* Top-right */}
+                <div className="absolute top-8 right-8 md:top-12 md:right-12">
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={active ? { scaleX: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.4, ease }}
+                    className="w-8 md:w-12 h-px bg-background/8 origin-right ml-auto"
+                  />
+                  <motion.div
+                    initial={{ scaleY: 0 }}
+                    animate={active ? { scaleY: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.45, ease }}
+                    className="w-px h-8 md:h-12 bg-background/8 origin-top ml-auto"
+                  />
+                </div>
+                {/* Bottom-left */}
+                <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 flex flex-col items-start justify-end">
+                  <motion.div
+                    initial={{ scaleY: 0 }}
+                    animate={active ? { scaleY: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.45, ease }}
+                    className="w-px h-8 md:h-12 bg-background/8 origin-bottom"
+                  />
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={active ? { scaleX: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.4, ease }}
+                    className="w-8 md:w-12 h-px bg-background/8 origin-left"
+                  />
+                </div>
+                {/* Bottom-right */}
+                <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 flex flex-col items-end justify-end">
+                  <motion.div
+                    initial={{ scaleY: 0 }}
+                    animate={active ? { scaleY: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.45, ease }}
+                    className="w-px h-8 md:h-12 bg-background/8 origin-bottom"
+                  />
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={active ? { scaleX: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.4, ease }}
+                    className="w-8 md:w-12 h-px bg-background/8 origin-right"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Breathing background glow */}
+              <motion.div
+                className="absolute w-64 h-64 rounded-full pointer-events-none"
+                style={{
+                  background: "radial-gradient(circle, hsl(var(--gold) / 0.04), transparent 70%)",
+                }}
+                animate={active ? {
+                  scale: [1, 1.3, 1],
+                  opacity: [0.3, 0.6, 0.3],
+                } : {}}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
+
               <div className="text-center relative">
                 {/* Top ornamental line */}
                 <motion.div
                   initial={{ scaleX: 0, opacity: 0 }}
-                  animate={phase !== "enter" ? { scaleX: 1, opacity: 1 } : {}}
+                  animate={active ? { scaleX: 1, opacity: 1 } : {}}
                   transition={{ duration: 0.6, delay: 0.05, ease }}
                   className="w-12 h-px mx-auto mb-10 origin-center"
                   style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.35), transparent)" }}
                 />
 
-                {/* Monogram with staggered reveals */}
+                {/* Monogram with staggered reveals + breathing pulse */}
                 <div className="overflow-hidden">
                   <motion.div
                     initial={{ y: "130%" }}
-                    animate={phase !== "enter" ? { y: "0%" } : {}}
+                    animate={active ? { y: "0%" } : {}}
                     transition={{ duration: 0.7, ease }}
                     className="flex items-baseline justify-center gap-3"
                   >
                     <motion.span
                       className="font-serif-wedding text-5xl md:text-6xl font-light tracking-[0.1em] text-background/80"
                       initial={{ opacity: 0 }}
-                      animate={phase !== "enter" ? { opacity: 1 } : {}}
+                      animate={active ? { opacity: 1 } : {}}
                       transition={{ delay: 0.15, duration: 0.4 }}
                     >
                       H
@@ -98,7 +182,10 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                     <motion.span
                       className="font-script text-4xl md:text-5xl text-background/20"
                       initial={{ opacity: 0, scale: 0.8 }}
-                      animate={phase !== "enter" ? { opacity: 1, scale: 1 } : {}}
+                      animate={active ? {
+                        opacity: [0, 1, 1],
+                        scale: [0.8, 1, 1],
+                      } : {}}
                       transition={{ delay: 0.25, duration: 0.5 }}
                     >
                       &
@@ -106,7 +193,7 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                     <motion.span
                       className="font-script text-5xl md:text-6xl text-background/80"
                       initial={{ opacity: 0 }}
-                      animate={phase !== "enter" ? { opacity: 1 } : {}}
+                      animate={active ? { opacity: 1 } : {}}
                       transition={{ delay: 0.35, duration: 0.4 }}
                     >
                       R
@@ -117,7 +204,7 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                 {/* Gold shimmer progress bar */}
                 <motion.div
                   initial={{ scaleX: 0, opacity: 0 }}
-                  animate={phase !== "enter" ? { scaleX: 1, opacity: 1 } : {}}
+                  animate={active ? { scaleX: 1, opacity: 1 } : {}}
                   transition={{ duration: 0.5, delay: 0.2, ease }}
                   className="w-24 h-px mx-auto mt-8 origin-center overflow-hidden relative"
                 >
@@ -134,11 +221,21 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                   />
                 </motion.div>
 
+                {/* Percentage counter */}
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={active ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.3, delay: 0.5 }}
+                  className="font-sans-wedding text-[0.45rem] tracking-[0.3em] text-background/10 mt-3 tabular-nums"
+                >
+                  {Math.round(progress)}%
+                </motion.p>
+
                 {/* Brand name */}
-                <div className="overflow-hidden mt-6">
+                <div className="overflow-hidden mt-4">
                   <motion.p
                     initial={{ y: "100%", opacity: 0 }}
-                    animate={phase !== "enter" ? { y: "0%", opacity: 1 } : {}}
+                    animate={active ? { y: "0%", opacity: 1 } : {}}
                     transition={{ duration: 0.5, delay: 0.45, ease }}
                     className="font-sans-wedding text-[0.5rem] tracking-[0.4em] uppercase text-background/15 font-light"
                   >
@@ -149,7 +246,7 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                 {/* Tagline */}
                 <motion.p
                   initial={{ opacity: 0 }}
-                  animate={phase !== "enter" ? { opacity: 1 } : {}}
+                  animate={active ? { opacity: 1 } : {}}
                   transition={{ duration: 0.4, delay: 0.65 }}
                   className="font-serif-wedding text-[0.6rem] italic text-background/8 mt-3 tracking-wide"
                 >
@@ -157,16 +254,16 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                 </motion.p>
               </div>
 
-              {/* Bottom location */}
+              {/* Bottom location with year */}
               <motion.div
                 initial={{ opacity: 0 }}
-                animate={phase !== "enter" ? { opacity: 1 } : {}}
+                animate={active ? { opacity: 1 } : {}}
                 transition={{ duration: 0.3, delay: 0.75 }}
                 className="absolute bottom-10 flex items-center gap-3"
               >
                 <span className="w-5 h-px bg-background/6" />
                 <span className="font-sans-wedding text-[0.4rem] tracking-[0.35em] uppercase text-background/8 font-light">
-                  Edmonton · Alberta
+                  Edmonton · Alberta · Est. 2018
                 </span>
                 <span className="w-5 h-px bg-background/6" />
               </motion.div>
