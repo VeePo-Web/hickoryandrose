@@ -169,8 +169,10 @@ const StatsSection = () => {
               }}
               className="group cursor-default"
             >
-              {/* Top rule */}
-              <div className="h-px bg-background/[0.06]" />
+              {/* Top rule with gold accent on hover */}
+              <div className="h-px bg-background/[0.06] group-hover:bg-background/[0.1] transition-colors duration-500 relative overflow-hidden">
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(var(--gold)_/_0.15)] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+              </div>
 
               <div className="grid grid-cols-12 items-center py-10 md:py-14 hover:bg-background/[0.015] transition-colors duration-700">
                 {/* Icon + Index */}
