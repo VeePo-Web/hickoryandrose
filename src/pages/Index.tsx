@@ -13,6 +13,8 @@ const ServicesOverviewSection = lazy(() => import("@/components/wedding/Services
 const EditorialImageBreak = lazy(() => import("@/components/wedding/EditorialImageBreak"));
 const TestimonialSection = lazy(() => import("@/components/wedding/TestimonialSection"));
 const EditorialSplitSection = lazy(() => import("@/components/wedding/EditorialSplitSection"));
+const EditorialQuoteRibbon = lazy(() => import("@/components/wedding/EditorialQuoteRibbon"));
+const GallerySection = lazy(() => import("@/components/wedding/GallerySection"));
 const LoveQuoteSection = lazy(() => import("@/components/wedding/LoveQuoteSection"));
 const ProcessTeaserSection = lazy(() => import("@/components/wedding/ProcessTeaserSection"));
 const FullWidthImage = lazy(() => import("@/components/wedding/FullWidthImage"));
