@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
@@ -14,6 +14,7 @@ import ApproachProcessTimeline from "@/components/wedding/ApproachProcessTimelin
 import ApproachDifferentiators from "@/components/wedding/ApproachDifferentiators";
 import ApproachStatsRibbon from "@/components/wedding/ApproachStatsRibbon";
 import EditorialSplitSection from "@/components/wedding/EditorialSplitSection";
+import MagneticButton from "@/components/wedding/MagneticButton";
 
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import approachDetailsImage from "@/assets/approach-details.jpg";
@@ -23,6 +24,68 @@ import founderImage from "@/assets/founder-portrait.jpg";
 /* Stagger helpers */
 const wordContainer = { hidden: {}, visible: { transition: { staggerChildren: 0.06 } } };
 const wordChild = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const } } };
+
+const MagneticPill = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    setPos({ x: x * 0.2, y: y * 0.2 });
+  };
+  return (
+    <motion.span
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => setPos({ x: 0, y: 0 })}
+      animate={{ x: pos.x, y: pos.y }}
+      transition={{ type: "spring", stiffness: 350, damping: 15, mass: 0.2 }}
+      className={`inline-block ${className}`}
+    >
+      <span className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/35 border border-primary/10 px-3 py-1 relative overflow-hidden group/pill cursor-default block">
+        <span
+          className="absolute inset-0 -translate-x-full group-hover/pill:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
+          style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.08), transparent)" }}
+          aria-hidden="true"
+        />
+        <span className="relative">{children}</span>
+      </span>
+    </motion.span>
+  );
+};
+
+const DocumentaryFilmstrip = ({ src, alt, height, label }: { src: string; alt: string; height: string; label: string }) => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "center center"] });
+  const clipPath = useTransform(scrollYProgress, [0, 1], ["inset(10% 20%)", "inset(0% 0%)"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["20%", "0%"]);
+
+  return (
+    <section ref={ref} className="relative py-10 md:py-16 w-full overflow-hidden bg-background">
+      <motion.div style={{ clipPath }} className="relative w-full h-full">
+        <FullWidthImage src={src} alt={alt} height={height} parallax={true} />
+      </motion.div>
+      <motion.div 
+        style={{ y }} 
+        className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 text-muted-foreground/30 text-[0.4rem] md:text-[0.5rem] tracking-[0.2em] font-sans-wedding uppercase pointer-events-none"
+      >
+        <span className="-rotate-90 whitespace-nowrap mb-6 md:mb-10">{label}</span>
+        <span className="w-px h-8 md:h-12 bg-muted-foreground/20" />
+        <span>FR-01</span>
+      </motion.div>
+      <motion.div 
+        style={{ y }} 
+        className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 text-muted-foreground/30 text-[0.4rem] md:text-[0.5rem] tracking-[0.2em] font-sans-wedding uppercase pointer-events-none"
+      >
+        <span>H&R</span>
+        <span className="w-px h-8 md:h-12 bg-muted-foreground/20" />
+        <span className="-rotate-90 whitespace-nowrap mt-6 md:mt-10">DOCUMENTARY</span>
+      </motion.div>
+    </section>
+  );
+};
 
 const Approach = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -40,6 +103,18 @@ const Approach = () => {
   });
   const promiseLineScale = useTransform(promiseScroll, [0, 0.5], [0, 1]);
   const promiseWatermarkY = useTransform(promiseScroll, [0, 1], ["20%", "-20%"]);
+
+  const [hoveredTestimonial, setHoveredTestimonial] = useState<number | null>(null);
+
+  const philosophyImgRef = useRef<HTMLDivElement>(null);
+  const [maskPos, setMaskPos] = useState({ x: 50, y: 50 });
+  const handlePhilosophyImgMove = (e: React.MouseEvent) => {
+    if (!philosophyImgRef.current) return;
+    const rect = philosophyImgRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setMaskPos({ x, y });
+  };
 
   useEffect(() => {
     setPageMeta({
@@ -215,7 +290,17 @@ const Approach = () => {
                 {/* Editorial image inset — desktop: portrait crop with GoldFrame */}
                 <div className="hidden md:block mt-4">
                   <ImageReveal direction="up" delay={0.2}>
-                    <div className="aspect-[3/4] overflow-hidden relative group">
+                    <div 
+                      ref={philosophyImgRef}
+                      onMouseMove={handlePhilosophyImgMove}
+                      onMouseLeave={() => setMaskPos({ x: 50, y: 50 })}
+                      className="aspect-[3/4] overflow-hidden relative group"
+                      style={{
+                        maskImage: `radial-gradient(circle 200px at ${maskPos.x}% ${maskPos.y}%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.7) 100%)`,
+                        WebkitMaskImage: `radial-gradient(circle 200px at ${maskPos.x}% ${maskPos.y}%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.7) 100%)`,
+                        transition: "mask-image 0.3s ease-out, -webkit-mask-image 0.3s ease-out"
+                      }}
+                    >
                       <GoldFrame inset="10px" delay={0.8} />
                       <img
                         src={approachDetailsImage}
@@ -292,10 +377,11 @@ const Approach = () => {
 
       <ApproachProcessTimeline />
 
-      <FullWidthImage
+      <DocumentaryFilmstrip
         src={approachDetailsImage}
         alt="Wedding vow booklets with gold rings and eucalyptus on marble"
         height="h-[35vh] md:h-[45vh]"
+        label="VOWS & DETAILS"
       />
 
       {/* Editorial Split Section — narrative breathing room */}
@@ -361,14 +447,9 @@ const Approach = () => {
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {["Calm Leadership", "Elevated Design", "Seamless Execution"].map((pill) => (
-                      <span key={pill} className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/35 border border-primary/10 px-3 py-1 relative overflow-hidden group/pill cursor-default">
-                        <span
-                          className="absolute inset-0 -translate-x-full group-hover/pill:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
-                          style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.08), transparent)" }}
-                          aria-hidden="true"
-                        />
-                        <span className="relative">{pill}</span>
-                      </span>
+                      <MagneticPill key={pill}>
+                        {pill}
+                      </MagneticPill>
                     ))}
                   </div>
                 </div>
@@ -388,7 +469,16 @@ const Approach = () => {
               { quote: "On the day, we never once worried. Every moment flowed naturally and every detail was exactly as we dreamed. I can't imagine doing it without them.", couple: "Nicole & Ryan", venue: "Fairmont Jasper", season: "Summer 2023", service: "Month-Of Coordination" },
             ].map((t, i) => (
               <ScrollReveal key={t.couple} delay={i * 0.15}>
-                <div className="text-center">
+                <div 
+                  className="text-center transition-all duration-700 ease-out"
+                  onMouseEnter={() => setHoveredTestimonial(i)}
+                  onMouseLeave={() => setHoveredTestimonial(null)}
+                  style={{
+                    opacity: hoveredTestimonial !== null && hoveredTestimonial !== i ? 0.3 : 1,
+                    filter: hoveredTestimonial !== null && hoveredTestimonial !== i ? "blur(3px)" : "blur(0px)",
+                    transform: hoveredTestimonial !== null && hoveredTestimonial !== i ? "scale(0.98)" : "scale(1)"
+                  }}
+                >
                   <motion.span
                     className="block font-serif-wedding text-7xl leading-none mb-2 select-none"
                     style={{
@@ -453,23 +543,29 @@ const Approach = () => {
             <p className="font-sans-wedding text-body-sm text-muted-foreground/60 leading-relaxed font-light mb-8 max-w-lg mx-auto">
               Every great partnership starts with a conversation. Tell us about your vision and we'll share honestly how we can help bring it to life.
             </p>
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap justify-center gap-3 mb-10">
               {["No commitment required", "Complimentary call", "Responds within 48hrs"].map((chip) => (
-                <span key={chip} className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/35 border border-primary/10 px-4 py-1.5 relative overflow-hidden group/chip cursor-default">
-                  <span
-                    className="absolute inset-0 -translate-x-full group-hover/chip:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
-                    style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.06), transparent)" }}
-                    aria-hidden="true"
-                  />
-                  <span className="relative">{chip}</span>
-                </span>
+                <MagneticPill key={chip}>
+                  {chip}
+                </MagneticPill>
               ))}
             </div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              <MagneticButton to="/inquire" variant="outline">
+                Begin the Conversation
+              </MagneticButton>
+            </motion.div>
           </ScrollReveal>
         </div>
       </section>
 
-      <FullWidthImage src={ceremonyImage} alt="Outdoor wedding ceremony setup in mountain meadow with floral arch" height="h-[35vh] md:h-[45vh]" />
+      <DocumentaryFilmstrip src={ceremonyImage} alt="Outdoor wedding ceremony setup in mountain meadow with floral arch" height="h-[35vh] md:h-[45vh]" label="THE CEREMONY" />
 
       {/* ──────────────── Brand Promise Quote ──────────────── */}
       <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden grain-overlay vignette" aria-label="Brand Promise">
