@@ -126,7 +126,7 @@ const Portfolio = () => {
               "Working with Hickory & Rose was the best decision we made. Every
               detail felt intentional, every moment felt protected."
             </blockquote>
-            <p className="font-sans-wedding text-sm font-semibold text-foreground">
+            <p className="font-sans-wedding text-body-sm font-light text-foreground">
               Emma & James
             </p>
             <p className="font-sans-wedding text-xs text-muted-foreground mt-1">
