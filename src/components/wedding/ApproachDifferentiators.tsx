@@ -162,6 +162,11 @@ const ApproachDifferentiators = () => {
                 </ScrollReveal>
               ))}
             </div>
+
+            {/* Terminal breathing diamond */}
+            <div className="flex justify-center mt-10">
+              <BreathingDiamond size={8} />
+            </div>
           </div>
         </div>
       </div>

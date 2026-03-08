@@ -403,7 +403,14 @@ const Approach = () => {
               "Our job isn't just to plan your wedding — it's to protect the feeling of your day."
             </blockquote>
             <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="w-10 h-px mx-auto mb-5 origin-center" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.35), transparent)" }} />
-            <span className="font-script text-xl text-primary-foreground/35">Hickory & Rose</span>
+            <span
+              className="font-script text-xl"
+              style={{
+                background: "linear-gradient(135deg, hsl(var(--gold) / 0.6), hsl(var(--gold) / 0.25))",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >Hickory & Rose</span>
             <div className="flex items-center justify-center gap-3 mt-3">
               <span className="w-4 h-px bg-primary-foreground/10" />
               <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-primary-foreground/20">Est. 2018</span>
