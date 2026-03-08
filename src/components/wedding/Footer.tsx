@@ -279,23 +279,57 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Powered by VeePo */}
-          <div className="flex items-center justify-center gap-3 pt-6 mt-4 border-t border-background/[0.04]">
+          {/* Powered by VeePo — Premium Agency Credit */}
+          <div className="flex justify-center pt-8 mt-6">
             <a
               href="https://veepo.ca/case-studies"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2.5 group/veepo transition-all duration-300"
-              aria-label="Website powered by VeePo"
+              className="group/veepo relative flex flex-col items-center gap-3 px-8 py-5 md:px-12 md:py-6 rounded-sm bg-[#0a0a0a] border border-white/[0.04] transition-all duration-500 hover:border-white/[0.08] overflow-hidden"
+              style={{
+                boxShadow: "0 0 0 rgba(255,255,255,0)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 30px rgba(255,255,255,0.04)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 0 rgba(255,255,255,0)";
+              }}
+              aria-label="This experience was crafted by VeePo — visit case studies"
             >
-              <span className="font-sans-wedding text-[0.55rem] tracking-[0.1em] uppercase text-background/15 group-hover/veepo:text-background/30 transition-colors duration-300 font-light">
-                The vision for this website is powered by
+              {/* Gold-to-white gradient divider at top */}
+              <div
+                className="absolute top-0 left-0 right-0 h-px"
+                style={{
+                  background: "linear-gradient(90deg, transparent 10%, hsl(var(--gold, 40 50% 55%) / 0.4) 35%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0.15) 85%, transparent 95%)",
+                }}
+              />
+
+              {/* Shimmer sweep on hover */}
+              <span
+                className="absolute inset-0 opacity-0 group-hover/veepo:opacity-100 transition-opacity duration-300 pointer-events-none"
+                style={{
+                  background: "linear-gradient(110deg, transparent 20%, rgba(255,255,255,0.03) 45%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 55%, transparent 80%)",
+                  animation: "shimmer-sweep 1.2s ease-out",
+                }}
+              />
+
+              {/* Micro label */}
+              <span className="relative z-10 font-sans-wedding text-[0.5rem] md:text-[0.55rem] tracking-[0.25em] uppercase text-white/25 group-hover/veepo:text-white/40 transition-colors duration-500 font-light">
+                This experience was crafted by
               </span>
+
+              {/* Logo */}
               <img
                 src={veepoLogo}
                 alt="VeePo"
-                className="h-7 w-auto opacity-20 group-hover/veepo:opacity-40 transition-all duration-300"
+                className="relative z-10 h-7 md:h-8 w-auto opacity-40 group-hover/veepo:opacity-80 transition-all duration-500"
               />
+
+              {/* Tagline */}
+              <span className="relative z-10 font-sans-wedding text-[0.45rem] md:text-[0.5rem] tracking-[0.18em] uppercase text-white/15 group-hover/veepo:text-white/30 transition-colors duration-500 font-light">
+                Where Vision Meets Precision
+              </span>
             </a>
           </div>
         </motion.div>
