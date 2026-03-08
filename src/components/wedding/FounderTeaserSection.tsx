@@ -133,10 +133,19 @@ const FounderTeaserSection = () => {
                 onMouseEnter={() => setIsImageHovered(true)}
                 onMouseLeave={() => setIsImageHovered(false)}
               >
+                {/* Ambient gold radial glow behind portrait */}
+                <motion.div
+                  className="absolute -inset-8 pointer-events-none z-0"
+                  animate={{ opacity: [0.03, 0.08, 0.03], scale: [0.95, 1.05, 0.95] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                  style={{ background: "radial-gradient(ellipse at 50% 40%, hsl(var(--gold) / 0.15), transparent 60%)" }}
+                  aria-hidden="true"
+                />
+
                 <motion.img
                   src={founderImage}
                   alt="Founder of Hickory & Rose, smiling warmly in a garden setting with sage eucalyptus and ivory roses"
-                  className="w-full h-[110%] object-cover"
+                  className="w-full h-[110%] object-cover relative z-[1]"
                   style={{ y: imageY, scale: imageScale }}
                   animate={{ filter: isImageHovered ? "brightness(0.95)" : "brightness(1)" }}
                   transition={{ duration: 0.8 }}
