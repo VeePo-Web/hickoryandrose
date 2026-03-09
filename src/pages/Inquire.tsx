@@ -155,7 +155,7 @@ const Inquire = () => {
                   <span className="font-serif-wedding text-2xl font-light shrink-0 mt-0.5" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.5), hsl(var(--primary) / 0.3))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{item.num}</span>
                   <div>
                     <p className="font-sans-wedding text-sm font-medium text-foreground mb-1">{item.title}</p>
-                    <p className="font-sans-wedding text-xs text-muted-foreground/60 font-light leading-relaxed">{item.desc}</p>
+                    <p className="font-sans-wedding text-xs text-brand-text-secondary font-light leading-relaxed">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
