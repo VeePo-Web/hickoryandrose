@@ -68,7 +68,7 @@ const AboutFounderSection = () => {
                 {/* Caption reveal */}
                 <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 z-10 pointer-events-none">
                   <span className="block w-6 h-px mb-2" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.5), transparent)" }} />
-                  <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-white/50">Founder, Hickory &amp; Rose</span>
+                  <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-white/70">Founder, Hickory &amp; Rose</span>
                 </div>
               </div>
             </ImageReveal>
