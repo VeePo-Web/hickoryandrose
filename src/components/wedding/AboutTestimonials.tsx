@@ -64,7 +64,7 @@ const AboutTestimonials = () => {
                 transition={{ duration: 0.8 }}
                 className="w-10 h-px bg-primary/25 origin-left mb-4"
               />
-              <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light leading-relaxed">
+              <p className="font-sans-wedding text-body-sm text-brand-text-secondary font-light leading-relaxed">
                 Real words from real couples who trusted us with their most important day.
               </p>
             </div>
