@@ -94,7 +94,7 @@ const Inquire = () => {
   };
 
   const inputCls = (field: keyof InquiryForm) =>
-    `w-full px-0 py-3 bg-transparent border-0 border-b font-sans-wedding text-base md:text-lg text-foreground font-light placeholder:text-muted-foreground/40 focus:outline-none focus:ring-0 transition-colors duration-300 ${errors[field] ? "border-destructive" : "border-border/60 focus:border-transparent"}`;
+    `w-full px-0 py-3 bg-transparent border-0 border-b font-sans-wedding text-base md:text-lg text-foreground font-light placeholder:text-brand-text-tertiary focus:outline-none focus:ring-0 transition-colors duration-300 ${errors[field] ? "border-destructive" : "border-border/60 focus:border-transparent"}`;
 
   const stepLabels = ["About You", "Wedding Details", "Your Needs", "Your Vision"];
 
