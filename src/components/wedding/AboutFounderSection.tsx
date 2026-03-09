@@ -113,7 +113,7 @@ const AboutFounderSection = () => {
               <div className="pl-5 my-10 relative">
                 <div className="absolute left-0 top-0 bottom-0 w-[2px]" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15), transparent)" }} />
                 <motion.p
-                  className="font-serif-wedding text-base text-foreground/70 italic leading-relaxed"
+                  className="font-serif-wedding text-base text-foreground italic leading-relaxed"
                   initial={{ opacity: 0, x: -8 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
