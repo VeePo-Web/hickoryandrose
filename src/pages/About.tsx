@@ -340,7 +340,20 @@ const About = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
           <ScrollReveal>
             {/* Header with full-width ruled lines */}
-            <div className="flex items-center gap-6 mb-16 md:mb-20">
+            <div className="flex items-start gap-6 mb-4">
+              <span className="font-serif-wedding text-5xl font-light text-primary/10">06</span>
+              <div>
+                <p className="font-overline text-brand-text-secondary mb-2">Recognition</p>
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="w-10 h-px bg-primary/25 origin-left"
+                />
+              </div>
+            </div>
+            <div className="flex items-center gap-6 mb-16 md:mb-16">
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
