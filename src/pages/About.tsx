@@ -148,7 +148,7 @@ const About = () => {
       <AboutFounderSection />
 
       {/* Signature Quote — editorial with gold ornaments */}
-      <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden">
+      <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden" style={{ contain: "layout style" }}>
         {/* Radial gold ambient glow */}
         <motion.div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] pointer-events-none"

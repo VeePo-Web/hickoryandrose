@@ -75,7 +75,7 @@ const AboutTestimonials = () => {
             </div>
 
             {/* Right: Testimonial crossfade */}
-            <div className="lg:col-span-9" aria-live="polite" aria-atomic="true">
+            <div className="lg:col-span-9" aria-live="polite" aria-atomic="true" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
               <div className="min-h-[220px] md:min-h-[200px] relative">
                 <AnimatePresence mode="wait">
                   <motion.div

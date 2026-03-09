@@ -42,6 +42,7 @@ const AboutPromises = () => {
       className="relative min-h-[80vh] overflow-hidden"
       role="region"
       aria-label="The Hickory & Rose Standard"
+      style={{ contain: "layout style" }}
     >
       {/* Parallax background image */}
       <motion.img
