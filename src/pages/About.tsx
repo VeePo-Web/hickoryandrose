@@ -13,6 +13,7 @@ import AboutMilestones from "@/components/wedding/AboutMilestones";
 import AboutTestimonials from "@/components/wedding/AboutTestimonials";
 import AboutFounderSection from "@/components/wedding/AboutFounderSection";
 import AboutValuesGrid from "@/components/wedding/AboutValuesGrid";
+import AboutProcessRibbon from "@/components/wedding/AboutProcessRibbon";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import aboutHeroImage from "@/assets/about-hero.jpg";
 import editorialFloralsImage from "@/assets/editorial-florals.jpg";
