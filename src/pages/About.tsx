@@ -91,7 +91,7 @@ const About = () => {
             <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">
               Meet Hickory & Rose
             </h1>
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.2em] uppercase text-white/60 mb-4">
+            <p className="font-sans-wedding text-[0.6rem] tracking-[0.2em] uppercase text-white/75 mb-4">
               For brides who want to be present — not stressed
             </p>
             <p className="font-sans-wedding text-lg md:text-xl text-white/85 leading-relaxed max-w-xl mx-auto font-light tracking-wide">
