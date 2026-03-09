@@ -42,6 +42,7 @@ const Inquire = () => {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const watermarkY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
 
   useEffect(() => {
     setPageMeta({
@@ -113,7 +114,7 @@ const Inquire = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/50" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/10" />
         </motion.div>
-        <motion.div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "15%"]) }} initial={{ opacity: 0 }} animate={{ opacity: 0.03 }} transition={{ duration: 2, delay: 0.5 }}>
+        <motion.div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" style={{ y: watermarkY }} initial={{ opacity: 0 }} animate={{ opacity: 0.03 }} transition={{ duration: 2, delay: 0.5 }}>
           <span className="font-serif-wedding text-[14rem] md:text-[22rem] text-white leading-none tracking-tight whitespace-nowrap">Inquire</span>
         </motion.div>
         <motion.div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6" style={{ opacity: heroOpacity }}>
