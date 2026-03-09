@@ -104,7 +104,7 @@ const About = () => {
 
         {/* Credential strip */}
         <motion.div
-          className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-4 py-3 pointer-events-none"
+          className="absolute bottom-12 left-0 right-0 z-20 flex items-center justify-center gap-4 py-3 pointer-events-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.6, duration: 0.8 }}
