@@ -192,6 +192,11 @@ html.lenis, html.lenis body {
     line-height: 1.5;
   }
 
+  /* Intentional decorative light-weight for large display text or ornamental elements */
+  .font-light-editorial {
+    font-weight: 300;
+  }
+
   /* Editorial drop cap — apply to the first paragraph of a prose section */
   .drop-cap::first-letter {
     font-family: 'Cormorant Garamond', serif;
