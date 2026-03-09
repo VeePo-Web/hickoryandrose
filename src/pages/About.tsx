@@ -329,7 +329,7 @@ const About = () => {
         height="h-[25vh] md:h-[35vh]"
       />
 
-      <AboutMilestones />
+      <AboutPromises />
 
       {/* Press & Recognition — Editorial "As Seen In" Ribbon */}
       <section className="py-20 md:py-28 bg-card relative overflow-hidden">
