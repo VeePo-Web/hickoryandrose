@@ -9,7 +9,7 @@ import ScrollReveal from "@/components/wedding/ScrollReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
-import AboutMilestones from "@/components/wedding/AboutMilestones";
+import AboutPromises from "@/components/wedding/AboutPromises";
 import AboutTestimonials from "@/components/wedding/AboutTestimonials";
 import AboutFounderSection from "@/components/wedding/AboutFounderSection";
 import AboutValuesGrid from "@/components/wedding/AboutValuesGrid";
@@ -329,7 +329,7 @@ const About = () => {
         height="h-[25vh] md:h-[35vh]"
       />
 
-      <AboutMilestones />
+      <AboutPromises />
 
       {/* Press & Recognition — Editorial "As Seen In" Ribbon */}
       <section className="py-20 md:py-28 bg-card relative overflow-hidden">
