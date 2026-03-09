@@ -117,6 +117,24 @@ const About = () => {
           ))}
         </motion.div>
 
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2, duration: 0.8 }}
+        >
+          <span className="font-sans-wedding text-[0.45rem] tracking-[0.25em] uppercase text-white/50">
+            Meet the Founder
+          </span>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="w-1.5 h-1.5 rotate-45"
+            style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.6), hsl(var(--gold) / 0.2))" }}
+          />
+        </motion.div>
+
         <motion.span
           className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/30 tracking-widest z-20"
           initial={{ opacity: 0 }}
