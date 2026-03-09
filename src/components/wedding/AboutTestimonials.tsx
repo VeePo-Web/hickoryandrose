@@ -8,18 +8,21 @@ const testimonials = [
     couple: "Olivia & Noah",
     venue: "Jasper Park Lodge",
     season: "Summer 2024",
+    style: "Rustic-Elegant",
   },
   {
     quote: "The calm energy Hickory & Rose brought to our day was transformative. We actually got to be present for every moment.",
     couple: "Sarah & Michael",
     venue: "Fairmont Hotel Macdonald",
     season: "Winter 2024",
+    style: "Classic-Romantic",
   },
   {
     quote: "Hiring Hickory & Rose was the best decision we made. The attention to detail was beyond anything we imagined.",
     couple: "Emma & James",
     venue: "The Glass House",
     season: "Autumn 2024",
+    style: "Modern-Garden",
   },
 ];
 
@@ -36,7 +39,7 @@ const AboutTestimonials = () => {
   }, [advanceTestimonial]);
 
   return (
-    <section className="py-section-mobile md:py-section-tablet bg-card relative overflow-hidden" style={{ contain: "layout style" }}>
+    <section className="py-section-mobile md:py-section-tablet bg-card relative overflow-hidden" style={{ contain: "layout style" }} role="region" aria-label="Client Testimonials">
       {/* Parallax watermark */}
       <motion.div
         className="absolute -right-8 top-1/2 -translate-y-1/2 pointer-events-none select-none"
@@ -69,10 +72,9 @@ const AboutTestimonials = () => {
               </p>
             </div>
 
-            {/* Right: Testimonial crossfade with gold shimmer */}
-            <div className="lg:col-span-9">
-              <div className="min-h-[200px] md:min-h-[180px] relative">
-                {/* Gold shimmer sweep between transitions */}
+            {/* Right: Testimonial crossfade */}
+            <div className="lg:col-span-9" aria-live="polite" aria-atomic="true">
+              <div className="min-h-[220px] md:min-h-[200px] relative">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeTestimonial}
@@ -111,13 +113,17 @@ const AboutTestimonials = () => {
                         <p className="font-sans-wedding text-body-sm font-medium text-foreground">
                           {testimonials[activeTestimonial].couple}
                         </p>
-                        <div className="flex items-center gap-2 mt-1">
+                        <div className="flex items-center gap-2 mt-1 flex-wrap">
                           <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-brand-text-tertiary">
                             {testimonials[activeTestimonial].venue}
                           </p>
                           <span className="text-brand-text-decorative">·</span>
                           <p className="font-serif-wedding text-xs italic text-brand-text-tertiary">
                             {testimonials[activeTestimonial].season}
+                          </p>
+                          <span className="text-brand-text-decorative">·</span>
+                          <p className="font-sans-wedding text-[0.55rem] tracking-[0.08em] uppercase text-brand-text-tertiary">
+                            {testimonials[activeTestimonial].style}
                           </p>
                         </div>
                       </div>
@@ -133,9 +139,11 @@ const AboutTestimonials = () => {
                     <button
                       key={index}
                       onClick={() => setActiveTestimonial(index)}
-                      className="h-[2px] flex-1 relative overflow-hidden transition-colors"
+                      className="h-[2px] flex-1 relative overflow-hidden transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
                       style={{ background: index < activeTestimonial ? "hsl(var(--gold) / 0.2)" : "hsl(var(--primary) / 0.1)" }}
-                      aria-label={`View testimonial ${index + 1}`}
+                      aria-label={`View testimonial ${index + 1} from ${testimonials[index].couple}`}
+                      role="tab"
+                      aria-selected={index === activeTestimonial}
                     >
                       {index === activeTestimonial && (
                         <motion.div

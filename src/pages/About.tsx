@@ -13,6 +13,7 @@ import AboutMilestones from "@/components/wedding/AboutMilestones";
 import AboutTestimonials from "@/components/wedding/AboutTestimonials";
 import AboutFounderSection from "@/components/wedding/AboutFounderSection";
 import AboutValuesGrid from "@/components/wedding/AboutValuesGrid";
+import AboutProcessRibbon from "@/components/wedding/AboutProcessRibbon";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import aboutHeroImage from "@/assets/about-hero.jpg";
 import editorialFloralsImage from "@/assets/editorial-florals.jpg";
@@ -90,9 +91,11 @@ const About = () => {
             <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">
               Meet Hickory & Rose
             </h1>
-            <p className="font-sans-wedding text-base md:text-lg text-white/85 leading-relaxed max-w-xl mx-auto font-light">
-              Refined rustic elegance, rooted in calm leadership and genuine care
-              for every couple we serve.
+            <p className="font-sans-wedding text-[0.6rem] tracking-[0.2em] uppercase text-white/60 mb-4">
+              For brides who want to be present — not stressed
+            </p>
+            <p className="font-sans-wedding text-lg md:text-xl text-white/85 leading-relaxed max-w-xl mx-auto font-light tracking-wide">
+              Story-driven weddings designed around your calm.
             </p>
           </ScrollReveal>
         </motion.div>
@@ -106,7 +109,7 @@ const About = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.6, duration: 0.8 }}
         >
-          {["Est. 2018", "Edmonton & Rockies", "50+ Weddings"].map((t, i) => (
+          {["50+ Weddings", "WPIC Certified", "Featured in Style Me Pretty"].map((t, i) => (
             <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/55 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
@@ -206,6 +209,8 @@ const About = () => {
       />
 
       <AboutValuesGrid />
+
+      <AboutProcessRibbon />
 
       {/* Editorial Image Mosaic — asymmetric 3-image grid */}
       <section className="py-12 md:py-16 bg-card overflow-hidden">
@@ -370,8 +375,18 @@ const About = () => {
               ))}
             </div>
 
+            {/* Certifications row */}
+            <div className="flex items-center justify-center gap-6 mt-12 mb-10">
+              {["WPIC Member", "Alberta Wedding Network", "Featured Vendor — Jasper Park Lodge"].map((cert, i) => (
+                <span key={cert} className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-brand-text-tertiary flex items-center gap-6">
+                  {i > 0 && <span className="w-1 h-1 rotate-45" style={{ background: "hsl(var(--gold) / 0.25)" }} />}
+                  {cert}
+                </span>
+              ))}
+            </div>
+
             {/* Bottom ornament */}
-            <div className="flex items-center justify-center gap-4 mt-16">
+            <div className="flex items-center justify-center gap-4 mt-8">
               <motion.span
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
