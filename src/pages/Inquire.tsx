@@ -113,8 +113,14 @@ const Inquire = () => {
           <InquireCelebration />
         </motion.div>
       ) : (
-    <main id="main-content">
-      <Navigation variant="overlay" />
+        <motion.main
+          key="form"
+          id="main-content"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <Navigation variant="overlay" />
 
       {/* Cinematic Parallax Hero */}
       <section ref={heroRef} className="relative h-[50vh] md:h-[60vh] overflow-hidden grain-overlay vignette">
