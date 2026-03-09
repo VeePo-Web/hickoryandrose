@@ -352,7 +352,7 @@ const About = () => {
                     <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
                   </div>
                   {/* Content */}
-                  <p className="font-serif-wedding text-xl md:text-2xl italic font-light text-foreground/15 group-hover:text-foreground/35 transition-colors duration-500 mb-2">
+                  <p className="font-serif-wedding text-xl md:text-2xl italic font-light text-brand-text-decorative group-hover:text-brand-text-secondary transition-colors duration-500 mb-2">
                     {press.publication}
                   </p>
                   <motion.div
