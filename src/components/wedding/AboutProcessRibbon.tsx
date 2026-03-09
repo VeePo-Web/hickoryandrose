@@ -58,7 +58,7 @@ const AboutProcessRibbon = () => (
                 transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
               />
               <h3 className="font-serif-wedding text-lg text-primary-foreground mb-2">{step.title}</h3>
-              <p className="font-sans-wedding text-body-sm text-primary-foreground/70 font-light leading-relaxed">
+              <p className="font-sans-wedding text-body-sm text-primary-foreground/80 font-light leading-relaxed">
                 {step.description}
               </p>
             </div>
