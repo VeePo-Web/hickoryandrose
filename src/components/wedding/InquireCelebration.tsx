@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import BreathingDiamond from "./BreathingDiamond";
 import MagneticButton from "./MagneticButton";
-import ScrollReveal from "./ScrollReveal";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 
