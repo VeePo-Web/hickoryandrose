@@ -210,6 +210,8 @@ const About = () => {
 
       <AboutValuesGrid />
 
+      <AboutProcessRibbon />
+
       {/* Editorial Image Mosaic — asymmetric 3-image grid */}
       <section className="py-12 md:py-16 bg-card overflow-hidden">
         <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
