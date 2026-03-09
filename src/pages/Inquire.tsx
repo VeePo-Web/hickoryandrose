@@ -227,7 +227,7 @@ const Inquire = () => {
                     </motion.button>
                   )}
                 </div>
-                <p className="font-sans-wedding text-xs text-muted-foreground/40 mt-4 text-center font-light">We respond to every inquiry within 48 hours.</p>
+                <p className="font-sans-wedding text-xs text-brand-text-tertiary mt-4 text-center font-light">We respond to every inquiry within 48 hours.</p>
               </form>
             </div>
           </div>
