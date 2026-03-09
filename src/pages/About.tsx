@@ -231,7 +231,7 @@ const About = () => {
       <AboutProcessRibbon />
 
       {/* Editorial Image Mosaic — asymmetric 3-image grid */}
-      <section className="py-16 md:py-24 bg-card overflow-hidden relative" role="region" aria-label="Behind the Scenes">
+      <section className="py-16 md:py-24 bg-card overflow-hidden relative" role="region" aria-label="Behind the Scenes" style={{ contain: "layout style" }}>
         {/* Parallax watermark */}
         <motion.div
           className="absolute -right-8 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block"
