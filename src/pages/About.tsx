@@ -322,13 +322,6 @@ const About = () => {
 
       <AboutTestimonials />
 
-      {/* Editorial image break */}
-      <FullWidthImage
-        src={editorialFloralsImage}
-        alt="Sage eucalyptus and ivory garden rose arrangement detail"
-        height="h-[25vh] md:h-[35vh]"
-      />
-
       <AboutPromises />
 
       {/* Press & Recognition — Editorial "As Seen In" Ribbon */}

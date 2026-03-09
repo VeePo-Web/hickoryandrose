@@ -1,147 +1,219 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import ScrollReveal from "./ScrollReveal";
-import BreathingDiamond from "./BreathingDiamond";
+import ceremonyImage from "@/assets/ceremony-setup.jpg";
 
 const promises = [
-  { 
+  {
     promise: "Your call returned same-day",
-    subtext: "Because waiting feels like being forgotten"
+    subtext: "Because waiting feels like being forgotten",
   },
-  { 
+  {
     promise: "Timeline finalized 72 hours before",
-    subtext: "So you can exhale before the big day"
+    subtext: "So you can exhale before the big day",
   },
-  { 
+  {
     promise: "A backup plan for every vendor",
-    subtext: "Peace of mind isn't optional"
+    subtext: "Peace of mind isn't optional",
   },
-  { 
+  {
     promise: "Present from setup to send-off",
-    subtext: "Not just coordinating — caring"
+    subtext: "Not just coordinating — caring",
   },
-  { 
+  {
     promise: "Your vendors, briefed and aligned",
-    subtext: "One vision, executed seamlessly"
+    subtext: "One vision, executed seamlessly",
   },
 ];
 
-const AboutPromises = () => (
-  <section 
-    className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden" 
-    style={{ contain: "layout style" }} 
-    role="region" 
-    aria-label="Our Promises"
-  >
-    {/* Parallax watermark */}
-    <motion.div
-      className="absolute -right-8 top-1/3 pointer-events-none select-none"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 0.015 }}
-      viewport={{ once: true }}
-      transition={{ duration: 1.5 }}
-      style={{ willChange: "transform" }}
+const AboutPromises = () => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const watermarkY = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
+
+  return (
+    <section
+      ref={ref}
+      className="relative min-h-[80vh] overflow-hidden"
+      role="region"
+      aria-label="The Hickory & Rose Standard"
     >
-      <span className="font-serif-wedding text-[10rem] md:text-[16rem] font-light text-foreground leading-none tracking-tight italic whitespace-nowrap">
-        Promise
-      </span>
-    </motion.div>
+      {/* Parallax background image */}
+      <motion.img
+        src={ceremonyImage}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-[120%] object-cover -top-[10%]"
+        style={{ y: imgY, willChange: "transform" }}
+        loading="lazy"
+        decoding="async"
+      />
 
-    <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative">
-      <ScrollReveal>
-        <div className="text-center mb-16 md:mb-24">
-          <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">04</span>
-          <p className="font-sans-wedding text-label uppercase text-brand-text-tertiary mb-4">
-            <span className="inline-flex items-center gap-3">
-              <span className="w-5 h-px bg-border" />
-              What You Can Count On
-              <span className="w-5 h-px bg-border" />
+      {/* Dark overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, hsl(30 10% 8% / 0.75) 0%, hsl(30 10% 6% / 0.82) 50%, hsl(30 10% 8% / 0.78) 100%)",
+        }}
+      />
+
+      {/* Grain + vignette */}
+      <div className="absolute inset-0 grain-overlay" aria-hidden="true" />
+      <div className="absolute inset-0 vignette" aria-hidden="true" />
+
+      {/* Parallax watermark */}
+      <motion.div
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
+        style={{ y: watermarkY, willChange: "transform" }}
+        aria-hidden="true"
+      >
+        <span className="font-serif-wedding text-[8rem] md:text-[14rem] font-light text-white/[0.03] leading-none tracking-tight italic whitespace-nowrap">
+          Standard
+        </span>
+      </motion.div>
+
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-6 lg:px-8 py-24 md:py-32 lg:py-40">
+        {/* Header */}
+        <ScrollReveal>
+          <div className="text-center mb-16 md:mb-20">
+            <span className="font-serif-wedding text-5xl font-light text-white/10 block mb-3">
+              04
             </span>
-          </p>
-          <h2 className="font-serif-wedding text-display-lg text-foreground">
-            Promises We Keep
-          </h2>
-        </div>
-      </ScrollReveal>
+            <p className="font-sans-wedding text-label uppercase text-white/40 mb-4">
+              <span className="inline-flex items-center gap-3">
+                <span className="w-5 h-px bg-white/20" />
+                What You Can Count On
+                <span className="w-5 h-px bg-white/20" />
+              </span>
+            </p>
+            <h2 className="font-serif-wedding text-display-lg text-white/95">
+              The Hickory & Rose Standard
+            </h2>
+          </div>
+        </ScrollReveal>
 
-      <div className="relative">
-        {/* Central spine with gold gradient — Desktop */}
-        <div className="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-px hidden md:block">
-          <motion.div
-            className="w-full h-full origin-top"
-            style={{ background: "linear-gradient(180deg, transparent, hsl(var(--gold) / 0.2), hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.2), transparent)" }}
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
-          />
-        </div>
-        {/* Mobile spine */}
-        <div className="absolute left-6 top-0 bottom-0 w-px md:hidden">
-          <motion.div
-            className="w-full h-full origin-top"
-            style={{ background: "linear-gradient(180deg, transparent, hsl(var(--gold) / 0.2), hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.2), transparent)" }}
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
-          />
+        {/* Glass card grid */}
+        <div className="max-w-5xl mx-auto">
+          {/* Top row: 3 cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-4 md:mb-5">
+            {promises.slice(0, 3).map((item, index) => (
+              <PromiseCard key={item.promise} item={item} index={index} />
+            ))}
+          </div>
+          {/* Bottom row: 2 cards centered */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 max-w-3xl mx-auto">
+            {promises.slice(3).map((item, index) => (
+              <PromiseCard key={item.promise} item={item} index={index + 3} />
+            ))}
+          </div>
         </div>
 
-        <div className="space-y-0">
-          {promises.map((item, index) => {
-            const isEven = index % 2 === 0;
-            return (
-              <motion.div
-                key={item.promise}
-                initial={{ opacity: 0, x: isEven ? -20 : 20, y: 12 }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: index * 0.12, ease: [0.25, 0.1, 0.25, 1] }}
-                className="relative group"
-              >
-                {/* Breathing diamond node */}
-                <div className="absolute left-6 md:left-1/2 top-8 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 z-10">
-                  <BreathingDiamond size={8} />
-                </div>
-
-                {/* Content card */}
-                <div className={`pl-16 md:pl-0 md:grid md:grid-cols-2 md:gap-16 py-8 md:py-12`}>
-                  <div className={`${isEven ? "md:text-right md:pr-12" : "md:col-start-2 md:pl-12"}`}>
-                    {/* Promise number */}
-                    <span className="font-serif-wedding text-sm font-light text-primary/20 group-hover:text-primary/50 transition-colors duration-500 block mb-2">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    {/* Gold underline accent */}
-                    <motion.div
-                      className={`w-8 h-px mb-3 ${isEven ? "md:ml-auto" : ""}`}
-                      style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), hsl(var(--primary) / 0.1))" }}
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                    />
-                    {/* Promise text */}
-                    <p className="font-serif-wedding text-body-lg md:text-xl text-foreground leading-relaxed font-light group-hover:text-foreground/90 transition-colors duration-500">
-                      {item.promise}
-                    </p>
-                    {/* Subtext — reveals on hover */}
-                    <p className="font-sans-wedding text-sm italic text-brand-text-tertiary mt-2 opacity-60 group-hover:opacity-100 transition-opacity duration-500">
-                      {item.subtext}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Timeline end ornament */}
-        <div className="flex justify-center mt-8">
-          <BreathingDiamond size={6} />
-        </div>
+        {/* Pull-quote */}
+        <ScrollReveal delay={0.3}>
+          <div className="text-center mt-16 md:mt-24">
+            <div
+              className="w-10 h-px mx-auto mb-6"
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.4), transparent)",
+              }}
+            />
+            <p className="font-serif-wedding text-xl md:text-2xl text-white/70 italic font-light max-w-md mx-auto leading-relaxed">
+              "We don't make promises lightly — we make them because you deserve certainty."
+            </p>
+            <p className="font-script text-lg text-white/30 mt-4">
+              Hickory & Rose
+            </p>
+          </div>
+        </ScrollReveal>
       </div>
-    </div>
-  </section>
+    </section>
+  );
+};
+
+/* Glass-morphism commitment card */
+const PromiseCard = ({
+  item,
+  index,
+}: {
+  item: { promise: string; subtext: string };
+  index: number;
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-40px" }}
+    transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+    className="group relative p-6 md:p-8 rounded-sm overflow-hidden backdrop-blur-sm transition-colors duration-500"
+    style={{
+      background: "hsla(0, 0%, 100%, 0.04)",
+      border: "1px solid hsl(var(--gold) / 0.08)",
+    }}
+  >
+    {/* Hover shimmer sweep */}
+    <div
+      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+      style={{
+        background:
+          "linear-gradient(135deg, transparent 30%, hsl(var(--gold) / 0.06) 50%, transparent 70%)",
+      }}
+    />
+
+    {/* Corner accents on hover */}
+    <span
+      className="absolute top-0 left-0 w-4 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      style={{ background: "hsl(var(--gold) / 0.3)" }}
+    />
+    <span
+      className="absolute top-0 left-0 w-px h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      style={{ background: "hsl(var(--gold) / 0.3)" }}
+    />
+    <span
+      className="absolute bottom-0 right-0 w-4 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      style={{ background: "hsl(var(--gold) / 0.3)" }}
+    />
+    <span
+      className="absolute bottom-0 right-0 w-px h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      style={{ background: "hsl(var(--gold) / 0.3)" }}
+    />
+
+    {/* Gold number */}
+    <span className="font-serif-wedding text-sm font-light block mb-3 transition-colors duration-500"
+      style={{ color: "hsl(var(--gold) / 0.35)" }}
+    >
+      {String(index + 1).padStart(2, "0")}
+    </span>
+
+    {/* Gold underline accent */}
+    <motion.div
+      className="w-6 h-px mb-4"
+      style={{
+        background:
+          "linear-gradient(90deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))",
+      }}
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.3 + index * 0.08 }}
+    />
+
+    {/* Promise title */}
+    <p className="font-serif-wedding text-lg md:text-xl text-white/90 font-light leading-snug mb-2 group-hover:text-white transition-colors duration-500">
+      {item.promise}
+    </p>
+
+    {/* Subtext */}
+    <p className="font-sans-wedding text-sm text-white/40 italic leading-relaxed group-hover:text-white/60 transition-colors duration-500">
+      {item.subtext}
+    </p>
+  </motion.div>
 );
 
 export default AboutPromises;
