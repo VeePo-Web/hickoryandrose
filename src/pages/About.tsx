@@ -70,17 +70,17 @@ const About = () => {
           style={{ opacity: heroOpacity }}
         >
           <ScrollReveal>
-            <p className="font-sans-wedding text-label uppercase text-white/50 mb-4">
+            <p className="font-sans-wedding text-label uppercase text-white/75 mb-4">
               <span className="inline-flex items-center gap-3">
                 <motion.span
-                  className="w-8 h-px bg-white/30 origin-right"
+                  className="w-8 h-px bg-white/50 origin-right"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
                 />
                 About Us
                 <motion.span
-                  className="w-8 h-px bg-white/30 origin-left"
+                  className="w-8 h-px bg-white/50 origin-left"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
@@ -90,7 +90,7 @@ const About = () => {
             <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">
               Meet Hickory & Rose
             </h1>
-            <p className="font-sans-wedding text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto font-light">
+            <p className="font-sans-wedding text-base md:text-lg text-white/85 leading-relaxed max-w-xl mx-auto font-light">
               Refined rustic elegance, rooted in calm leadership and genuine care
               for every couple we serve.
             </p>
@@ -107,7 +107,7 @@ const About = () => {
           transition={{ delay: 1.6, duration: 0.8 }}
         >
           {["Est. 2018", "Edmonton & Rockies", "50+ Weddings"].map((t, i) => (
-            <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/30 flex items-center gap-4">
+            <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/55 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
             </span>
@@ -115,7 +115,7 @@ const About = () => {
         </motion.div>
 
         <motion.span
-          className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/15 tracking-widest z-20"
+          className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/30 tracking-widest z-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.6 }}
@@ -192,7 +192,7 @@ const About = () => {
               className="w-8 h-px mx-auto mb-4 origin-center"
               style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }}
             />
-            <span className="font-script text-xl text-primary-foreground/35">
+            <span className="font-script text-xl text-primary-foreground/65">
               Hickory & Rose
             </span>
           </ScrollReveal>
@@ -303,7 +303,7 @@ const About = () => {
                 style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2))" }}
               />
               <div className="text-center shrink-0">
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.3em] uppercase text-muted-foreground/30 mb-2">
+                <p className="font-sans-wedding text-[0.5rem] tracking-[0.3em] uppercase text-brand-text-tertiary mb-2">
                   As Seen In
                 </p>
                 <span
@@ -352,7 +352,7 @@ const About = () => {
                     <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
                   </div>
                   {/* Content */}
-                  <p className="font-serif-wedding text-xl md:text-2xl italic font-light text-foreground/15 group-hover:text-foreground/35 transition-colors duration-500 mb-2">
+                  <p className="font-serif-wedding text-xl md:text-2xl italic font-light text-brand-text-decorative group-hover:text-brand-text-secondary transition-colors duration-500 mb-2">
                     {press.publication}
                   </p>
                   <motion.div
@@ -363,7 +363,7 @@ const About = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.3 + i * 0.1 }}
                   />
-                  <p className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/30 group-hover:text-muted-foreground/50 transition-colors duration-500">
+                  <p className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-brand-text-tertiary group-hover:text-brand-text-secondary transition-colors duration-500">
                     {press.note}
                   </p>
                 </motion.div>

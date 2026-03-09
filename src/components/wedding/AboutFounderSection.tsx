@@ -62,13 +62,13 @@ const AboutFounderSection = () => {
 
                 {/* Frame index mark */}
                 <div className="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/40">FR01</span>
+                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/60">FR01</span>
                 </div>
 
                 {/* Caption reveal */}
                 <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 z-10 pointer-events-none">
                   <span className="block w-6 h-px mb-2" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.5), transparent)" }} />
-                  <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-white/50">Founder, Hickory &amp; Rose</span>
+                  <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-white/70">Founder, Hickory &amp; Rose</span>
                 </div>
               </div>
             </ImageReveal>
@@ -83,7 +83,7 @@ const AboutFounderSection = () => {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
               >01</motion.span>
-              <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-3">
+              <p className="font-sans-wedding text-label uppercase text-brand-text-tertiary mb-3">
                 <span className="inline-flex items-center gap-3">
                   <span className="w-5 h-px bg-primary/30" />
                   The Founder
@@ -113,7 +113,7 @@ const AboutFounderSection = () => {
               <div className="pl-5 my-10 relative">
                 <div className="absolute left-0 top-0 bottom-0 w-[2px]" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15), transparent)" }} />
                 <motion.p
-                  className="font-serif-wedding text-base text-foreground/70 italic leading-relaxed"
+                  className="font-serif-wedding text-base text-foreground italic leading-relaxed"
                   initial={{ opacity: 0, x: -8 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
@@ -123,7 +123,7 @@ const AboutFounderSection = () => {
                 </motion.p>
                 <motion.span
                   className="block mt-3 font-script-wedding text-sm tracking-wide"
-                  style={{ color: "hsl(var(--gold) / 0.45)" }}
+                  style={{ color: "hsl(var(--gold) / 0.65)" }}
                   initial={{ opacity: 0, y: 6 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}

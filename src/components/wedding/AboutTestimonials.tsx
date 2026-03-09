@@ -56,7 +56,7 @@ const AboutTestimonials = () => {
             {/* Left: Label */}
             <div className="lg:col-span-3">
               <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">03</span>
-              <p className="font-overline text-muted-foreground/50 mb-3">Kind Words</p>
+              <p className="font-overline text-brand-text-secondary mb-3">Kind Words</p>
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
@@ -64,7 +64,7 @@ const AboutTestimonials = () => {
                 transition={{ duration: 0.8 }}
                 className="w-10 h-px bg-primary/25 origin-left mb-4"
               />
-              <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light leading-relaxed">
+              <p className="font-sans-wedding text-body-sm text-brand-text-secondary font-light leading-relaxed">
                 Real words from real couples who trusted us with their most important day.
               </p>
             </div>
@@ -108,15 +108,15 @@ const AboutTestimonials = () => {
                         style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), hsl(var(--primary) / 0.1))" }}
                       />
                       <div>
-                        <p className="font-sans-wedding text-body-sm font-medium text-foreground/70">
+                        <p className="font-sans-wedding text-body-sm font-medium text-foreground">
                           {testimonials[activeTestimonial].couple}
                         </p>
                         <div className="flex items-center gap-2 mt-1">
-                          <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/40">
+                          <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-brand-text-tertiary">
                             {testimonials[activeTestimonial].venue}
                           </p>
-                          <span className="text-muted-foreground/20">·</span>
-                          <p className="font-serif-wedding text-xs italic text-muted-foreground/30">
+                          <span className="text-brand-text-decorative">·</span>
+                          <p className="font-serif-wedding text-xs italic text-brand-text-tertiary">
                             {testimonials[activeTestimonial].season}
                           </p>
                         </div>
@@ -153,7 +153,7 @@ const AboutTestimonials = () => {
                     </button>
                   ))}
                 </div>
-                <span className="font-sans-wedding text-[0.6rem] text-muted-foreground/40 tabular-nums tracking-[0.15em]">
+                <span className="font-sans-wedding text-[0.6rem] text-brand-text-tertiary tabular-nums tracking-[0.15em]">
                   {String(activeTestimonial + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
                 </span>
               </div>
