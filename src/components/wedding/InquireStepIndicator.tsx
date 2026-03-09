@@ -15,10 +15,10 @@ const InquireStepIndicator = memo(({ currentStep, totalSteps, stepLabels }: Inqu
     <div className="mb-10">
       {/* Step labels row */}
       <div className="flex items-center justify-between mb-4">
-        <p className="font-sans-wedding text-xs text-muted-foreground/40 tracking-widest uppercase font-light">
+        <p className="font-sans-wedding text-xs text-brand-text-tertiary tracking-widest uppercase font-light">
           Step {currentStep + 1} of {totalSteps}
         </p>
-        <p className="font-sans-wedding text-xs text-muted-foreground/40 font-light">
+        <p className="font-sans-wedding text-xs text-brand-text-tertiary font-light">
           {stepLabels[currentStep]}
         </p>
       </div>

@@ -64,8 +64,9 @@ html.lenis, html.lenis body {
     --warm-white: 40 20% 98%;
     --text-primary: 30 15% 20%;
     --text-secondary: 30 12% 32%;
-    --text-light: 30 10% 42%;
-    --text-decorative: 30 10% 65%;
+    --text-tertiary: 30 10% 42%;
+    --text-decorative: 30 10% 55%;
+    --text-ghost: 30 8% 68%;
     --teal: 180 25% 35%;
     --teal-light: 180 20% 90%;
     --gold: 40 50% 55%;
@@ -118,8 +119,10 @@ html.lenis, html.lenis body {
     --cream-dark: 35 10% 22%;
     --warm-white: 30 10% 10%;
     --text-primary: 40 20% 92%;
-    --text-secondary: 30 10% 60%;
-    --text-light: 30 10% 45%;
+    --text-secondary: 30 10% 72%;
+    --text-tertiary: 30 10% 58%;
+    --text-decorative: 30 8% 48%;
+    --text-ghost: 30 6% 38%;
     --teal: 180 20% 45%;
     --teal-light: 180 10% 18%;
     --gold: 40 40% 50%;

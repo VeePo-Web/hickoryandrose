@@ -94,7 +94,7 @@ const Inquire = () => {
   };
 
   const inputCls = (field: keyof InquiryForm) =>
-    `w-full px-0 py-3 bg-transparent border-0 border-b font-sans-wedding text-base md:text-lg text-foreground font-light placeholder:text-muted-foreground/40 focus:outline-none focus:ring-0 transition-colors duration-300 ${errors[field] ? "border-destructive" : "border-border/60 focus:border-transparent"}`;
+    `w-full px-0 py-3 bg-transparent border-0 border-b font-sans-wedding text-base md:text-lg text-foreground font-light placeholder:text-brand-text-tertiary focus:outline-none focus:ring-0 transition-colors duration-300 ${errors[field] ? "border-destructive" : "border-border/60 focus:border-transparent"}`;
 
   const stepLabels = ["About You", "Wedding Details", "Your Needs", "Your Vision"];
 
@@ -126,7 +126,7 @@ const Inquire = () => {
               </span>
             </p>
             <h1 className="font-serif-wedding text-display-xl text-white mb-6">Let's Plan Something Beautiful</h1>
-            <p className="font-sans-wedding text-body-sm text-white/60 leading-relaxed max-w-xl mx-auto font-light">No commitment — just a warm conversation about your wedding day.</p>
+            <p className="font-sans-wedding text-body-sm text-white/70 leading-relaxed max-w-xl mx-auto font-light">No commitment — just a warm conversation about your wedding day.</p>
           </ScrollReveal>
         </motion.div>
         <GoldFrame inset="20px" delay={1} />
@@ -155,7 +155,7 @@ const Inquire = () => {
                   <span className="font-serif-wedding text-2xl font-light shrink-0 mt-0.5" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.5), hsl(var(--primary) / 0.3))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{item.num}</span>
                   <div>
                     <p className="font-sans-wedding text-sm font-medium text-foreground mb-1">{item.title}</p>
-                    <p className="font-sans-wedding text-xs text-muted-foreground/60 font-light leading-relaxed">{item.desc}</p>
+                    <p className="font-sans-wedding text-xs text-brand-text-secondary font-light leading-relaxed">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -191,8 +191,8 @@ const Inquire = () => {
               </div>
               <div className="mt-8 relative">
                 <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }} className="w-10 h-px mb-4 origin-left" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), hsl(var(--primary) / 0.1))" }} />
-                <p className="font-serif-wedding text-lg italic text-muted-foreground/60 leading-relaxed">"Every great wedding starts with a simple conversation."</p>
-                <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/25 mt-3">— Hickory & Rose</p>
+                <p className="font-serif-wedding text-lg italic text-brand-text-secondary leading-relaxed">"Every great wedding starts with a simple conversation."</p>
+                <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-brand-text-decorative mt-3">— Hickory & Rose</p>
               </div>
             </div>
 
@@ -227,7 +227,7 @@ const Inquire = () => {
                     </motion.button>
                   )}
                 </div>
-                <p className="font-sans-wedding text-xs text-muted-foreground/40 mt-4 text-center font-light">We respond to every inquiry within 48 hours.</p>
+                <p className="font-sans-wedding text-xs text-brand-text-tertiary mt-4 text-center font-light">We respond to every inquiry within 48 hours.</p>
               </form>
             </div>
           </div>
@@ -248,7 +248,7 @@ const Inquire = () => {
                 {i > 0 && <span className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 rotate-45 hidden md:block" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }} />}
                 <p className="font-serif-wedding text-lg md:text-xl text-foreground/50 font-light">{stat.value}</p>
                 <motion.div className="w-4 h-px mx-auto my-1.5 origin-center" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }} style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25), transparent)" }} />
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-muted-foreground/30 mt-1">{stat.label}</p>
+                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-brand-text-decorative mt-1">{stat.label}</p>
               </div>
             ))}
           </div>

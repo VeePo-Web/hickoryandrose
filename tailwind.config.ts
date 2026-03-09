@@ -89,7 +89,9 @@ export default {
         "brand-text": {
           DEFAULT: "hsl(var(--text-primary))",
           secondary: "hsl(var(--text-secondary))",
-          light: "hsl(var(--text-light))",
+          tertiary: "hsl(var(--text-tertiary))",
+          decorative: "hsl(var(--text-decorative))",
+          ghost: "hsl(var(--text-ghost))",
         },
         teal: {
           DEFAULT: "hsl(var(--teal))",

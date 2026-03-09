@@ -51,7 +51,7 @@ const PillSelect = ({
         className={`px-5 py-2.5 font-sans-wedding text-xs tracking-[0.12em] uppercase font-light border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/30 ${
           value === opt
             ? "bg-primary text-primary-foreground border-primary"
-            : "bg-transparent text-muted-foreground border-border/60 hover:border-primary/40 hover:text-foreground"
+            : "bg-transparent text-brand-text-secondary border-border/60 hover:border-primary/40 hover:text-foreground"
         }`}
       >
         {opt}
@@ -98,7 +98,7 @@ const buildSteps = ({ formData, set, errors, inputCls }: InquireFormStepsProps):
     <div>
       <p className="font-overline text-primary/60 mb-1">Wedding Details</p>
       <h2 className="font-serif-wedding text-2xl md:text-3xl text-foreground font-light">Tell us about your day.</h2>
-      <p className="font-sans-wedding text-sm text-muted-foreground/60 font-light mt-2">All optional — share what you know so far.</p>
+      <p className="font-sans-wedding text-sm text-brand-text-secondary font-light mt-2">All optional — share what you know so far.</p>
     </div>
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -135,7 +135,7 @@ const buildSteps = ({ formData, set, errors, inputCls }: InquireFormStepsProps):
           }`}
         >
           <p className={`font-sans-wedding text-sm font-light tracking-wide mb-1 transition-colors ${formData.service === svc.label ? "text-foreground" : "text-foreground/80"}`}>{svc.label}</p>
-          <p className="font-sans-wedding text-xs text-muted-foreground/60 font-light leading-relaxed">{svc.desc}</p>
+          <p className="font-sans-wedding text-xs text-brand-text-secondary font-light leading-relaxed">{svc.desc}</p>
         </button>
       ))}
     </div>
@@ -150,7 +150,7 @@ const buildSteps = ({ formData, set, errors, inputCls }: InquireFormStepsProps):
     <div>
       <p className="font-overline text-primary/60 mb-1">Your Vision</p>
       <h2 className="font-serif-wedding text-2xl md:text-3xl text-foreground font-light">Anything else you'd like us to know?</h2>
-      <p className="font-sans-wedding text-sm text-muted-foreground/60 font-light mt-2">Totally optional — we'll cover everything on our discovery call.</p>
+      <p className="font-sans-wedding text-sm text-brand-text-secondary font-light mt-2">Totally optional — we'll cover everything on our discovery call.</p>
     </div>
     <div>
       <label htmlFor="message" className="font-overline text-muted-foreground mb-2 block">Tell Us About Your Vision</label>
@@ -160,15 +160,15 @@ const buildSteps = ({ formData, set, errors, inputCls }: InquireFormStepsProps):
     </div>
     {/* Summary preview */}
     <div className="border-t border-border/40 pt-6">
-      <p className="font-overline text-muted-foreground/40 mb-3">Quick Summary</p>
-      <div className="grid grid-cols-2 gap-x-6 gap-y-2 font-sans-wedding text-sm text-muted-foreground font-light">
-        <span className="text-muted-foreground/50">Name</span>
+      <p className="font-overline text-brand-text-tertiary mb-3">Quick Summary</p>
+      <div className="grid grid-cols-2 gap-x-6 gap-y-2 font-sans-wedding text-sm text-brand-text-secondary font-light">
+        <span className="text-brand-text-tertiary">Name</span>
         <span className="text-foreground">{formData.name || "—"}</span>
-        <span className="text-muted-foreground/50">Email</span>
+        <span className="text-brand-text-tertiary">Email</span>
         <span className="text-foreground">{formData.email || "—"}</span>
-        {formData.date && (<><span className="text-muted-foreground/50">Date</span><span className="text-foreground">{formData.date}</span></>)}
-        {formData.service && (<><span className="text-muted-foreground/50">Service</span><span className="text-foreground">{formData.service}</span></>)}
-        {formData.guests && (<><span className="text-muted-foreground/50">Guests</span><span className="text-foreground">{formData.guests}</span></>)}
+        {formData.date && (<><span className="text-brand-text-tertiary">Date</span><span className="text-foreground">{formData.date}</span></>)}
+        {formData.service && (<><span className="text-brand-text-tertiary">Service</span><span className="text-foreground">{formData.service}</span></>)}
+        {formData.guests && (<><span className="text-brand-text-tertiary">Guests</span><span className="text-foreground">{formData.guests}</span></>)}
       </div>
     </div>
   </div>,
