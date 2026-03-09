@@ -109,7 +109,7 @@ const About = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.6, duration: 0.8 }}
         >
-          {["Est. 2018", "Edmonton & Rockies", "50+ Weddings"].map((t, i) => (
+          {["50+ Weddings", "WPIC Certified", "Featured in Style Me Pretty"].map((t, i) => (
             <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/55 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
