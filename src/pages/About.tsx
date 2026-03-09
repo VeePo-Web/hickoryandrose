@@ -325,7 +325,7 @@ const About = () => {
       <AboutPromises />
 
       {/* Press & Recognition — Editorial "As Seen In" Ribbon */}
-      <section className="py-20 md:py-28 bg-card relative overflow-hidden">
+      <section className="py-20 md:py-28 bg-card relative overflow-hidden" style={{ contain: "layout style" }}>
         {/* Ambient gold glow */}
         <motion.div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] pointer-events-none"
