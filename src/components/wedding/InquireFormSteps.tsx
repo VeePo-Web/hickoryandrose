@@ -160,9 +160,9 @@ const buildSteps = ({ formData, set, errors, inputCls }: InquireFormStepsProps):
     </div>
     {/* Summary preview */}
     <div className="border-t border-border/40 pt-6">
-      <p className="font-overline text-muted-foreground/40 mb-3">Quick Summary</p>
-      <div className="grid grid-cols-2 gap-x-6 gap-y-2 font-sans-wedding text-sm text-muted-foreground font-light">
-        <span className="text-muted-foreground/50">Name</span>
+      <p className="font-overline text-brand-text-tertiary mb-3">Quick Summary</p>
+      <div className="grid grid-cols-2 gap-x-6 gap-y-2 font-sans-wedding text-sm text-brand-text-secondary font-light">
+        <span className="text-brand-text-tertiary">Name</span>
         <span className="text-foreground">{formData.name || "—"}</span>
         <span className="text-muted-foreground/50">Email</span>
         <span className="text-foreground">{formData.email || "—"}</span>
