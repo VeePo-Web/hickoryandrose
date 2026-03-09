@@ -41,7 +41,7 @@ const About = () => {
       <Navigation variant="overlay" />
 
       {/* Cinematic Parallax Hero */}
-      <section ref={heroRef} className="relative h-[60vh] md:h-[70vh] overflow-hidden grain-overlay vignette">
+      <section ref={heroRef} className="relative h-[60vh] md:h-[70vh] overflow-hidden grain-overlay vignette" style={{ contain: "layout style" }}>
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
           <img
             src={aboutHeroImage}
@@ -104,7 +104,7 @@ const About = () => {
 
         {/* Credential strip */}
         <motion.div
-          className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-4 py-3 pointer-events-none"
+          className="absolute bottom-12 left-0 right-0 z-20 flex items-center justify-center gap-4 py-3 pointer-events-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.6, duration: 0.8 }}
@@ -119,7 +119,7 @@ const About = () => {
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+          className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2, duration: 0.8 }}
@@ -141,14 +141,14 @@ const About = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.6 }}
         >
-          03
+          &
         </motion.span>
       </section>
 
       <AboutFounderSection />
 
       {/* Signature Quote — editorial with gold ornaments */}
-      <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden">
+      <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden" style={{ contain: "layout style" }}>
         {/* Radial gold ambient glow */}
         <motion.div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] pointer-events-none"
@@ -231,7 +231,7 @@ const About = () => {
       <AboutProcessRibbon />
 
       {/* Editorial Image Mosaic — asymmetric 3-image grid */}
-      <section className="py-16 md:py-24 bg-card overflow-hidden relative" role="region" aria-label="Behind the Scenes">
+      <section className="py-16 md:py-24 bg-card overflow-hidden relative" role="region" aria-label="Behind the Scenes" style={{ contain: "layout style" }}>
         {/* Parallax watermark */}
         <motion.div
           className="absolute -right-8 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block"
@@ -325,7 +325,7 @@ const About = () => {
       <AboutPromises />
 
       {/* Press & Recognition — Editorial "As Seen In" Ribbon */}
-      <section className="py-20 md:py-28 bg-card relative overflow-hidden">
+      <section className="py-20 md:py-28 bg-card relative overflow-hidden" style={{ contain: "layout style" }}>
         {/* Ambient gold glow */}
         <motion.div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] pointer-events-none"
@@ -340,7 +340,20 @@ const About = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
           <ScrollReveal>
             {/* Header with full-width ruled lines */}
-            <div className="flex items-center gap-6 mb-16 md:mb-20">
+            <div className="flex items-start gap-6 mb-4">
+              <span className="font-serif-wedding text-5xl font-light text-primary/10">06</span>
+              <div>
+                <p className="font-overline text-brand-text-secondary mb-2">Recognition</p>
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="w-10 h-px bg-primary/25 origin-left"
+                />
+              </div>
+            </div>
+            <div className="flex items-center gap-6 mb-16 md:mb-16">
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
