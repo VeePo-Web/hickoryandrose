@@ -123,7 +123,7 @@ const AboutFounderSection = () => {
                 </motion.p>
                 <motion.span
                   className="block mt-3 font-script-wedding text-sm tracking-wide"
-                  style={{ color: "hsl(var(--gold) / 0.45)" }}
+                  style={{ color: "hsl(var(--gold) / 0.65)" }}
                   initial={{ opacity: 0, y: 6 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}

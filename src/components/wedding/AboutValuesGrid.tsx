@@ -64,7 +64,7 @@ const AboutValuesGrid = () => (
                 </h3>
               </div>
 
-              <p className="font-serif-wedding text-sm italic text-primary/50 mb-4">
+              <p className="font-serif-wedding text-sm italic text-primary mb-4">
                 {value.pullQuote}
               </p>
 

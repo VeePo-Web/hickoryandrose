@@ -153,7 +153,7 @@ const AboutTestimonials = () => {
                     </button>
                   ))}
                 </div>
-                <span className="font-sans-wedding text-[0.6rem] text-muted-foreground/40 tabular-nums tracking-[0.15em]">
+                <span className="font-sans-wedding text-[0.6rem] text-brand-text-tertiary tabular-nums tracking-[0.15em]">
                   {String(activeTestimonial + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
                 </span>
               </div>

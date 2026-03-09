@@ -363,7 +363,7 @@ const About = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.3 + i * 0.1 }}
                   />
-                  <p className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/30 group-hover:text-muted-foreground/50 transition-colors duration-500">
+                  <p className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-brand-text-tertiary group-hover:text-brand-text-secondary transition-colors duration-500">
                     {press.note}
                   </p>
                 </motion.div>
