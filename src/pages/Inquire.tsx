@@ -99,13 +99,28 @@ const Inquire = () => {
 
   const stepLabels = ["About You", "Wedding Details", "Your Needs", "Your Vision"];
 
-  if (submitted) return <InquireCelebration />;
-
   const steps = buildSteps({ formData, set, errors, inputCls });
 
   return (
-    <main id="main-content">
-      <Navigation variant="overlay" />
+    <AnimatePresence mode="wait">
+      {submitted ? (
+        <motion.div
+          key="celebration"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <InquireCelebration />
+        </motion.div>
+      ) : (
+        <motion.main
+          key="form"
+          id="main-content"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <Navigation variant="overlay" />
 
       {/* Cinematic Parallax Hero */}
       <section ref={heroRef} className="relative h-[50vh] md:h-[60vh] overflow-hidden grain-overlay vignette">
@@ -258,7 +273,9 @@ const Inquire = () => {
 
       <PreFooterDivider />
       <Footer />
-    </main>
+    </motion.main>
+      )}
+    </AnimatePresence>
   );
 };
 
