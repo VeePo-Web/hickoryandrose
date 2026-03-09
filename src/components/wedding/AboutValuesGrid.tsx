@@ -28,7 +28,7 @@ const AboutValuesGrid = () => (
       <ScrollReveal>
         <div className="text-center mb-16 md:mb-24">
           <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">02</span>
-          <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
+          <p className="font-sans-wedding text-label uppercase text-brand-text-tertiary mb-4">
             <span className="inline-flex items-center gap-3">
               <span className="w-5 h-px bg-border" />
               Our Values
