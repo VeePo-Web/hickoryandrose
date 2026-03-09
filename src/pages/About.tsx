@@ -70,17 +70,17 @@ const About = () => {
           style={{ opacity: heroOpacity }}
         >
           <ScrollReveal>
-            <p className="font-sans-wedding text-label uppercase text-white/50 mb-4">
+            <p className="font-sans-wedding text-label uppercase text-white/75 mb-4">
               <span className="inline-flex items-center gap-3">
                 <motion.span
-                  className="w-8 h-px bg-white/30 origin-right"
+                  className="w-8 h-px bg-white/50 origin-right"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
                 />
                 About Us
                 <motion.span
-                  className="w-8 h-px bg-white/30 origin-left"
+                  className="w-8 h-px bg-white/50 origin-left"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
@@ -90,7 +90,7 @@ const About = () => {
             <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">
               Meet Hickory & Rose
             </h1>
-            <p className="font-sans-wedding text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto font-light">
+            <p className="font-sans-wedding text-base md:text-lg text-white/85 leading-relaxed max-w-xl mx-auto font-light">
               Refined rustic elegance, rooted in calm leadership and genuine care
               for every couple we serve.
             </p>
