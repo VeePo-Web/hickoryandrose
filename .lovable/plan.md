@@ -1,99 +1,113 @@
 
-## Situation Assessment
 
-The token foundation is already correct from previous work. The problem is **658 remaining instances** across 47 files where opacity modifiers on text still cause failures. I've now read every key file on the `/about` page and mapped the exact problem patterns.
+# About Page — Fantasy.co Style Guide & File-by-File Specification
 
-### What needs fixing — categorized by context
+## Overview
 
-**On dark backgrounds (sage, hero images, dark sections):**
-- `text-white/20`, `/25`, `/30` — opacity-modded white is 1.5–2:1 contrast on dark → still unreadable
-- `text-primary-foreground/30`, `/35`, `/50` — same problem on sage-deep backgrounds
-- These need replacing with solid white variants or intentional decorative tokens
+This is a comprehensive typography and contrast style guide for `/about`, delivering **WCAG AA compliance** (4.5:1 minimum for body text, 3:1 for UI components) while preserving Hickory & Rose's refined editorial aesthetic.
 
-**On light backgrounds (card, background, cream):**
-- `text-muted-foreground/50`, `/40`, `/30` — the core "grey on white" complaint
-- `text-foreground/50`, `/40`, `/30` — body and pull-quote text at failing contrast
-- These need solid `text-brand-text-secondary` (`--text-secondary` at 32% lightness = 6.8:1) or `text-brand-text-tertiary` (42% = 5.1:1)
+---
 
-**Genuinely decorative (watermarks, frame numbers, ornamental indices):**
-- `text-primary/10`, `/15`, `/20` — large-scale watermarks. Fine — these are non-informational background texture
-- `text-white/15` on frame index "FR01" hover-reveal — fine, it's an on-hover ornament
-- `opacity: 0.025` on parallax "Journey" watermark — fine, purely visual
+## Token Reference (Already Available)
 
-### The Two-Pass Migration Strategy
+| Token | CSS Variable | Tailwind Class | Contrast | Usage |
+|-------|-------------|----------------|----------|-------|
+| Primary | `--foreground` | `text-foreground` | 11:1+ | Headlines, body copy |
+| Secondary | `--text-secondary` | `text-brand-text-secondary` | 6.8:1 | Descriptions, paragraphs |
+| Tertiary | `--text-tertiary` | `text-brand-text-tertiary` | 5.1:1 | Labels, captions |
+| Decorative | `--text-decorative` | `text-brand-text-decorative` | 3.5:1 | Non-critical ornaments |
+| Ghost | `--text-ghost` | `text-brand-text-ghost` | 2.2:1 | Pure watermarks |
 
-**Pass 1 — Light Background Components** (the "grey on white" core complaint):
-Files where light text fails on cream/white backgrounds. Replace opacity patterns with solid semantic tokens.
+---
 
-Key files:
-1. `src/components/wedding/AboutMilestones.tsx` — `text-muted-foreground/50` on labels
-2. `src/components/wedding/AboutTestimonials.tsx` — `text-muted-foreground/50`, `/40`, `/30` on venue/season/counter
-3. `src/components/wedding/AboutFounderSection.tsx` — `text-muted-foreground/50` on section label
-4. `src/pages/About.tsx` — `text-white/70`, `text-muted-foreground/30` on light sections, `text-primary-foreground/35` on signature
+## File-by-File Specification
 
-**Pass 2 — Dark/Sage Background Components** (white opacity text on dark):
-These are separate — white text *on* dark sage or hero imagery backgrounds. The issue is opacity reducing white text below 4.5:1 even on dark backgrounds.
+### 1. `src/pages/About.tsx`
 
-Key pattern:
-- `text-white/50` on hero/dark → replace with `text-white/80` or `text-white/90` (still elegant, now readable)
-- `text-primary-foreground/50` on sage-deep → replace with `text-primary-foreground/75` minimum
-- `text-white/30` body descriptions on dark → replace with `text-white/65` minimum
+| Line | Current Pattern | Replace With | Rationale |
+|------|----------------|--------------|-----------|
+| 73 | `text-white/50` | `text-white/75` | Hero overline label — AA on dark |
+| 76,83 | `bg-white/30` | `bg-white/50` | Overline hairlines — visible |
+| 93 | `text-white/70` | `text-white/85` | Hero subtitle — AA on dark |
+| 110 | `text-white/30` | `text-white/55` | Credential strip — decorative, improved |
+| 118 | `text-white/15` | `text-white/30` | Frame index "03" — decorative, improved |
+| 181 | `text-primary-foreground/[0.06]` | Keep as-is | Decorative giant quote mark |
+| 195 | `text-primary-foreground/35` | `text-primary-foreground/65` | Signature attribution — readable |
+| 306 | `text-muted-foreground/30` | `text-brand-text-tertiary` | "As Seen In" label — AA |
+| 355 | `text-foreground/15` | `text-brand-text-decorative` | Publication names default — improved |
+| 355 (hover) | `text-foreground/35` | `text-brand-text-secondary` | Publication names hover — AA |
+| 366 | `text-muted-foreground/30` → `/50` | `text-brand-text-tertiary` | Press note — AA |
 
-### The Rule System (Hickory & Rose Typography Style Guide)
+### 2. `src/components/wedding/AboutFounderSection.tsx`
 
-**On light backgrounds (warm-white, cream, card):**
-```
-Purpose → Token → Min opacity or solid
-Body copy → text-foreground → solid (11:1)
-Secondary/descriptions → text-brand-text-secondary → solid (6.8:1)
-Captions/labels → text-brand-text-tertiary → solid (5.1:1)
-Decorative only → text-brand-text-decorative/ghost → only for non-readable ornaments
-```
+| Line | Current Pattern | Replace With | Rationale |
+|------|----------------|--------------|-----------|
+| 65 | `text-white/40` | `text-white/60` | "FR01" frame index — decorative |
+| 71 | `text-white/50` | `text-white/70` | Founder caption — improved readability |
+| 86 | `text-muted-foreground/50` | `text-brand-text-tertiary` | "The Founder" label — AA |
+| 95 | `text-muted-foreground` | Keep (solid) | Paragraph body — already AA |
+| 116 | `text-foreground/70` | `text-foreground` | Pull quote — full contrast |
+| 126 | `hsl(var(--gold) / 0.45)` | `hsl(var(--gold) / 0.65)` | Signature attribution — improved |
 
-**On dark/image backgrounds (sage-deep, hero):**
-```
-Purpose → Token → Min opacity
-Primary text → text-white or text-primary-foreground → solid (AA+)
-Secondary/descriptions → text-white/80 or text-primary-foreground/80 → min /75
-Captions/labels → text-white/65 → min /60
-Decorative (frame indices, ornamental) → text-white/25 → fine (hover-reveal, non-informational)
-```
+### 3. `src/components/wedding/AboutValuesGrid.tsx`
 
-### Exact Files to Edit
+| Line | Current Pattern | Replace With | Rationale |
+|------|----------------|--------------|-----------|
+| 31 | Already `text-brand-text-tertiary` | Keep | Label — AA ✓ |
+| 48 | `text-primary/10` | Keep | Decorative large index |
+| 67 | `text-primary/50` | `text-primary` | Pull quote — full sage |
+| 71 | `text-muted-foreground` | Keep (solid) | Description — AA ✓ |
 
-Based on my audit of the `/about` page and its components:
+### 4. `src/components/wedding/AboutTestimonials.tsx`
 
-1. **`src/components/wedding/AboutMilestones.tsx`**
-   - `text-muted-foreground/50` (section label) → `text-brand-text-tertiary`
+| Line | Current Pattern | Replace With | Rationale |
+|------|----------------|--------------|-----------|
+| 59 | `text-muted-foreground/50` | `text-brand-text-secondary` | "Kind Words" label — AA |
+| 67 | `text-muted-foreground/50` | `text-brand-text-secondary` | Description paragraph — AA |
+| 111 | `text-foreground/70` | `text-foreground` | Couple name — full contrast |
+| 115 | `text-muted-foreground/40` | `text-brand-text-tertiary` | Venue — AA |
+| 118 | `text-muted-foreground/20` | `text-brand-text-decorative` | Dot separator — decorative |
+| 119 | `text-muted-foreground/30` | `text-brand-text-tertiary` | Season — AA |
+| 156 | `text-muted-foreground/40` | `text-brand-text-tertiary` | Progress counter — AA |
 
-2. **`src/components/wedding/AboutTestimonials.tsx`**
-   - `text-muted-foreground/50` (label + description) → `text-brand-text-secondary`
-   - `text-muted-foreground/40` (venue) → `text-brand-text-tertiary`
-   - `text-muted-foreground/30` (season) → `text-brand-text-tertiary`
-   - `text-muted-foreground/20` (dot separator) → `text-brand-text-decorative`
-   - `text-foreground/70` (couple name) → `text-foreground` (solid)
-   - `text-muted-foreground/40` (counter) → `text-brand-text-tertiary`
+### 5. `src/components/wedding/AboutMilestones.tsx`
 
-3. **`src/components/wedding/AboutFounderSection.tsx`**
-   - `text-muted-foreground/50` (section label) → `text-brand-text-tertiary`
-   - `text-foreground/70` (pull quote) → `text-foreground` (solid, italic style carries elegance)
+| Line | Current Pattern | Replace With | Rationale |
+|------|----------------|--------------|-----------|
+| 31 | `text-primary/10` | Keep | Large decorative "04" index |
+| 32 | `text-muted-foreground/50` | `text-brand-text-tertiary` | "Our Journey" label — AA |
+| 89 | `text-primary/20` | Keep | Year numbers — decorative |
+| 100 | `text-muted-foreground` | Keep (solid) | Event text — AA ✓ |
 
-4. **`src/pages/About.tsx`**
-   - `text-white/70` (hero subtitle) → `text-white/85`
-   - `text-white/50` (overline label) → `text-white/75`
-   - `text-white/30` (credential strip) → `text-white/55` (decorative, but improve)
-   - `text-primary-foreground/35` (script attribution on sage bg) → `text-primary-foreground/65`
-   - `text-muted-foreground/30` (press "As Seen In" label) → `text-brand-text-tertiary`
-   - `text-foreground/15` / `/35` (press publication names) → `text-brand-text-secondary` / `text-foreground`
+---
 
-5. **`src/components/wedding/AboutValuesGrid.tsx`**
-   - `text-primary/50` (pull quote) → `text-primary` (solid sage, elegant)
+## Visual Rules Summary
 
-### What NOT to touch (intentionally decorative)
-- `text-primary/10` — large watermark indices like "01", "02" (oversized, purely textural)
-- `text-white/15` — hover-reveal frame index "FR01" (non-informational, on-hover only)
-- `opacity: 0.025` / `opacity: 0.015` — parallax watermark text behind content
-- `text-foreground/90` — letterbox bars on image hover (visual effect, not text)
+**On Light Backgrounds (bg-background, bg-card, bg-cream):**
+- Body copy: `text-foreground` or `text-muted-foreground` — solid only
+- Secondary descriptions: `text-brand-text-secondary` — never below 6:1
+- Labels/captions: `text-brand-text-tertiary` — minimum 5:1
+- Decorative indices (large "01", "02"): `text-primary/10` — permitted
 
-### Files to edit: 5 files total
-All surgical replacements, no structural changes, zero new dependencies.
+**On Dark Backgrounds (bg-sage-deep, hero images):**
+- Primary: `text-white` or `text-primary-foreground` — solid
+- Secondary: minimum `text-white/80` or `/85`
+- Captions/labels: minimum `text-white/70` or `/75`
+- Decorative frame indices: minimum `text-white/30` (increased from /15)
+
+**Gold Accents:**
+- Gold text (signatures, attributions): minimum `hsl(var(--gold) / 0.55)` on light, `/ 0.65` on dark
+- Gold ornaments (hairlines, diamonds): `/0.25` – `/0.4` range permitted
+
+---
+
+## Implementation Checklist
+
+1. [ ] `src/pages/About.tsx` — 11 replacements
+2. [ ] `src/components/wedding/AboutFounderSection.tsx` — 6 replacements
+3. [ ] `src/components/wedding/AboutValuesGrid.tsx` — 1 replacement
+4. [ ] `src/components/wedding/AboutTestimonials.tsx` — 7 replacements
+5. [ ] `src/components/wedding/AboutMilestones.tsx` — 1 replacement
+
+**Total: 26 targeted replacements** across 5 files — no structural changes, zero new dependencies.
+
