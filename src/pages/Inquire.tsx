@@ -191,8 +191,8 @@ const Inquire = () => {
               </div>
               <div className="mt-8 relative">
                 <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }} className="w-10 h-px mb-4 origin-left" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), hsl(var(--primary) / 0.1))" }} />
-                <p className="font-serif-wedding text-lg italic text-muted-foreground/60 leading-relaxed">"Every great wedding starts with a simple conversation."</p>
-                <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/25 mt-3">— Hickory & Rose</p>
+                <p className="font-serif-wedding text-lg italic text-brand-text-secondary leading-relaxed">"Every great wedding starts with a simple conversation."</p>
+                <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-brand-text-decorative mt-3">— Hickory & Rose</p>
               </div>
             </div>
 
