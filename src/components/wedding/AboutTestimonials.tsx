@@ -56,7 +56,7 @@ const AboutTestimonials = () => {
             {/* Left: Label */}
             <div className="lg:col-span-3">
               <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">03</span>
-              <p className="font-overline text-muted-foreground/50 mb-3">Kind Words</p>
+              <p className="font-overline text-brand-text-secondary mb-3">Kind Words</p>
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
