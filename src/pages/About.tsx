@@ -373,8 +373,18 @@ const About = () => {
               ))}
             </div>
 
+            {/* Certifications row */}
+            <div className="flex items-center justify-center gap-6 mt-12 mb-10">
+              {["WPIC Member", "Alberta Wedding Network", "Featured Vendor — Jasper Park Lodge"].map((cert, i) => (
+                <span key={cert} className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-brand-text-tertiary flex items-center gap-6">
+                  {i > 0 && <span className="w-1 h-1 rotate-45" style={{ background: "hsl(var(--gold) / 0.25)" }} />}
+                  {cert}
+                </span>
+              ))}
+            </div>
+
             {/* Bottom ornament */}
-            <div className="flex items-center justify-center gap-4 mt-16">
+            <div className="flex items-center justify-center gap-4 mt-8">
               <motion.span
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
