@@ -150,7 +150,7 @@ const buildSteps = ({ formData, set, errors, inputCls }: InquireFormStepsProps):
     <div>
       <p className="font-overline text-primary/60 mb-1">Your Vision</p>
       <h2 className="font-serif-wedding text-2xl md:text-3xl text-foreground font-light">Anything else you'd like us to know?</h2>
-      <p className="font-sans-wedding text-sm text-muted-foreground/60 font-light mt-2">Totally optional — we'll cover everything on our discovery call.</p>
+      <p className="font-sans-wedding text-sm text-brand-text-secondary font-light mt-2">Totally optional — we'll cover everything on our discovery call.</p>
     </div>
     <div>
       <label htmlFor="message" className="font-overline text-muted-foreground mb-2 block">Tell Us About Your Vision</label>
