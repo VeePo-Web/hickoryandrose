@@ -1,191 +1,99 @@
 
-# Wedding Website - Multi-Page Implementation Plan
+## Situation Assessment
 
-## Overview
-Creating a complete multi-page wedding website for "Alicia & Andres" with faithful recreation of the design, including 5 main pages matching the navigation structure.
+The token foundation is already correct from previous work. The problem is **658 remaining instances** across 47 files where opacity modifiers on text still cause failures. I've now read every key file on the `/about` page and mapped the exact problem patterns.
 
-## Page Structure
+### What needs fixing — categorized by context
 
-Based on the navigation in the design image, we'll create these pages:
+**On dark backgrounds (sage, hero images, dark sections):**
+- `text-white/20`, `/25`, `/30` — opacity-modded white is 1.5–2:1 contrast on dark → still unreadable
+- `text-primary-foreground/30`, `/35`, `/50` — same problem on sage-deep backgrounds
+- These need replacing with solid white variants or intentional decorative tokens
 
-| Route | Page | Content |
-|-------|------|---------|
-| `/` | Home | Hero section with full navigation |
-| `/our-story` | Our Story | Couple's story with photos |
-| `/details` | Details | Location, Wedding Party, Accommodations |
-| `/schedule` | Schedule | Itinerary/Timeline for wedding weekend |
-| `/registry` | Registry | Gift registry information and links |
+**On light backgrounds (card, background, cream):**
+- `text-muted-foreground/50`, `/40`, `/30` — the core "grey on white" complaint
+- `text-foreground/50`, `/40`, `/30` — body and pull-quote text at failing contrast
+- These need solid `text-brand-text-secondary` (`--text-secondary` at 32% lightness = 6.8:1) or `text-brand-text-tertiary` (42% = 5.1:1)
 
-## Design System
+**Genuinely decorative (watermarks, frame numbers, ornamental indices):**
+- `text-primary/10`, `/15`, `/20` — large-scale watermarks. Fine — these are non-informational background texture
+- `text-white/15` on frame index "FR01" hover-reveal — fine, it's an on-hover ornament
+- `opacity: 0.025` on parallax "Journey" watermark — fine, purely visual
 
-### Color Palette (to add to CSS variables)
-```text
---wedding-sage: 65 12% 45%        (Olive/sage for hero overlay, location section)
---wedding-cream: 40 30% 97%       (Off-white background sections)
---wedding-text: 0 0% 20%          (Dark text color)
---wedding-teal: 175 50% 35%       (Accent for buttons, day labels)
+### The Two-Pass Migration Strategy
+
+**Pass 1 — Light Background Components** (the "grey on white" core complaint):
+Files where light text fails on cream/white backgrounds. Replace opacity patterns with solid semantic tokens.
+
+Key files:
+1. `src/components/wedding/AboutMilestones.tsx` — `text-muted-foreground/50` on labels
+2. `src/components/wedding/AboutTestimonials.tsx` — `text-muted-foreground/50`, `/40`, `/30` on venue/season/counter
+3. `src/components/wedding/AboutFounderSection.tsx` — `text-muted-foreground/50` on section label
+4. `src/pages/About.tsx` — `text-white/70`, `text-muted-foreground/30` on light sections, `text-primary-foreground/35` on signature
+
+**Pass 2 — Dark/Sage Background Components** (white opacity text on dark):
+These are separate — white text *on* dark sage or hero imagery backgrounds. The issue is opacity reducing white text below 4.5:1 even on dark backgrounds.
+
+Key pattern:
+- `text-white/50` on hero/dark → replace with `text-white/80` or `text-white/90` (still elegant, now readable)
+- `text-primary-foreground/50` on sage-deep → replace with `text-primary-foreground/75` minimum
+- `text-white/30` body descriptions on dark → replace with `text-white/65` minimum
+
+### The Rule System (Hickory & Rose Typography Style Guide)
+
+**On light backgrounds (warm-white, cream, card):**
+```
+Purpose → Token → Min opacity or solid
+Body copy → text-foreground → solid (11:1)
+Secondary/descriptions → text-brand-text-secondary → solid (6.8:1)
+Captions/labels → text-brand-text-tertiary → solid (5.1:1)
+Decorative only → text-brand-text-decorative/ghost → only for non-readable ornaments
 ```
 
-### Typography (Google Fonts to import)
-- **Great Vibes**: Script font for "Alicia & Andres" title
-- **Cormorant Garamond**: Elegant serif for section headings
-- **Open Sans**: Clean sans-serif for body text and navigation
-
-## Files to Create
-
-### Shared Components
-```text
-src/components/wedding/
-├── Navigation.tsx         - Persistent navigation header
-├── Footer.tsx             - RSVP footer section
-├── BranchDecoration.tsx   - Reusable SVG branch illustration
+**On dark/image backgrounds (sage-deep, hero):**
+```
+Purpose → Token → Min opacity
+Primary text → text-white or text-primary-foreground → solid (AA+)
+Secondary/descriptions → text-white/80 or text-primary-foreground/80 → min /75
+Captions/labels → text-white/65 → min /60
+Decorative (frame indices, ornamental) → text-white/25 → fine (hover-reveal, non-informational)
 ```
 
-### Page Components
-```text
-src/pages/
-├── Index.tsx              - Home page (Hero + overview)
-├── OurStory.tsx           - Our Story page
-├── Details.tsx            - Details page (Location, Party, Hotels)
-├── Schedule.tsx           - Schedule/Itinerary page
-├── Registry.tsx           - Registry page
-```
+### Exact Files to Edit
 
-### Section Components
-```text
-src/components/wedding/
-├── HeroSection.tsx        - Full-height hero with overlay
-├── StorySection.tsx       - Story content with photo
-├── WeddingPartySection.tsx - Groomsmen/Bridesmaids tabs
-├── LocationSection.tsx    - Venue information
-├── AccommodationsSection.tsx - Hotel cards
-├── ItinerarySection.tsx   - Timeline with day tabs
-├── RegistrySection.tsx    - Registry logos and info
-```
+Based on my audit of the `/about` page and its components:
 
-## Files to Modify
+1. **`src/components/wedding/AboutMilestones.tsx`**
+   - `text-muted-foreground/50` (section label) → `text-brand-text-tertiary`
 
-### 1. src/index.css
-Add wedding-specific CSS variables and Google Fonts import:
-- Import Great Vibes, Cormorant Garamond, Open Sans from Google Fonts
-- Add wedding color variables
-- Add custom font-family classes
+2. **`src/components/wedding/AboutTestimonials.tsx`**
+   - `text-muted-foreground/50` (label + description) → `text-brand-text-secondary`
+   - `text-muted-foreground/40` (venue) → `text-brand-text-tertiary`
+   - `text-muted-foreground/30` (season) → `text-brand-text-tertiary`
+   - `text-muted-foreground/20` (dot separator) → `text-brand-text-decorative`
+   - `text-foreground/70` (couple name) → `text-foreground` (solid)
+   - `text-muted-foreground/40` (counter) → `text-brand-text-tertiary`
 
-### 2. tailwind.config.ts
-Extend theme with:
-- Wedding color palette using CSS variables
-- Font family definitions for script, serif, sans
+3. **`src/components/wedding/AboutFounderSection.tsx`**
+   - `text-muted-foreground/50` (section label) → `text-brand-text-tertiary`
+   - `text-foreground/70` (pull quote) → `text-foreground` (solid, italic style carries elegance)
 
-### 3. src/App.tsx
-Add routes:
-- `/` - Home
-- `/our-story` - Our Story
-- `/details` - Details
-- `/schedule` - Schedule
-- `/registry` - Registry
+4. **`src/pages/About.tsx`**
+   - `text-white/70` (hero subtitle) → `text-white/85`
+   - `text-white/50` (overline label) → `text-white/75`
+   - `text-white/30` (credential strip) → `text-white/55` (decorative, but improve)
+   - `text-primary-foreground/35` (script attribution on sage bg) → `text-primary-foreground/65`
+   - `text-muted-foreground/30` (press "As Seen In" label) → `text-brand-text-tertiary`
+   - `text-foreground/15` / `/35` (press publication names) → `text-brand-text-secondary` / `text-foreground`
 
-## Detailed Component Specifications
+5. **`src/components/wedding/AboutValuesGrid.tsx`**
+   - `text-primary/50` (pull quote) → `text-primary` (solid sage, elegant)
 
-### Navigation Component
-- Fixed/sticky header on all pages
-- Links: Home, Our Story, Details, Schedule, Registry
-- Active state with underline accent
-- On hero: transparent overlay style
-- On other pages: solid cream background
+### What NOT to touch (intentionally decorative)
+- `text-primary/10` — large watermark indices like "01", "02" (oversized, purely textural)
+- `text-white/15` — hover-reveal frame index "FR01" (non-informational, on-hover only)
+- `opacity: 0.025` / `opacity: 0.015` — parallax watermark text behind content
+- `text-foreground/90` — letterbox bars on image hover (visual effect, not text)
 
-### Hero Section (Home Page)
-- Full viewport height (100vh)
-- Background: Placeholder couple photo with sage overlay
-- Centered script title "Alicia & Andres"
-- Date line: "February 15, 2025 | Joshua Tree, California"
-- Scroll indicator arrow at bottom
-
-### Our Story Page
-- Branch decoration SVG at top
-- "Our Story" heading in serif
-- Two-column layout: text left, photo right
-- Cream background
-- Story paragraphs with date highlights
-
-### Details Page
-Contains 3 sections:
-
-**Wedding Party Section:**
-- Tab switcher: Groomsmen | Bridesmaids
-- 4 circular avatar photos per tab
-- Names beneath each photo
-- Groomsmen: Julian Bernard, Damien Huber, Mark Pavone, David Blaine
-- Bridesmaids: Similar structure with female names
-
-**Location Section:**
-- Sage/olive background color
-- "The Location" label
-- "Joshua Tree Carmine Resort" large heading
-- Description paragraph
-- Full-width venue/couple photo
-
-**Accommodations Section:**
-- White background
-- 3-column grid of hotel cards
-- Each card: Name, description, "Reserve" button
-- Hotels: Joshua Tree Inn, Desert Sage Lodge, Carmine Resort
-
-### Schedule Page
-- "Itinerary" heading
-- 3 date tabs: Feb 14, Feb 15 (Wedding Day), Feb 16
-- Each day has timeline entries:
-  - Time marker
-  - Event name
-  - Location/venue
-  - Brief description
-
-### Registry Page
-- Branch decoration SVG
-- "Registry" heading
-- Paragraph about gifts
-- 3 registry badges/logos as styled text blocks:
-  - Crate & Barrel
-  - Target
-  - Williams Sonoma
-
-### Footer Component
-- Simple cream background
-- Centered "RSVP" text or button
-- Optional: Copyright line
-
-## Responsive Breakpoints
-
-### Desktop (default)
-- Full layouts as designed
-- 3-column grids for accommodations
-- 4 avatars in row for wedding party
-
-### Tablet (md: 768px)
-- 2-column grids where applicable
-- Slightly reduced padding
-
-### Mobile (sm: 640px)
-- Single column layouts
-- Hamburger menu for navigation
-- Stacked sections
-- 2x2 grid for wedding party avatars
-
-## Image Strategy
-Using placeholder images from Unsplash or similar:
-- Hero: Desert/couple themed landscape
-- Story: Couple portrait
-- Location: Joshua Tree landscape
-- Accommodations: Hotel exterior placeholders
-- Wedding Party: Generic avatar placeholders
-
-## Implementation Order
-
-1. **Foundation** - Update design system (CSS, Tailwind config)
-2. **Shared Components** - Navigation, Footer, Branch decoration
-3. **Home Page** - Hero section with navigation overlay
-4. **Our Story Page** - Story content and layout
-5. **Details Page** - Location, Wedding Party, Accommodations
-6. **Schedule Page** - Itinerary with tabs
-7. **Registry Page** - Registry section
-8. **App Routes** - Wire up all routes in App.tsx
-9. **Polish** - Responsive adjustments, smooth scroll, hover states
+### Files to edit: 5 files total
+All surgical replacements, no structural changes, zero new dependencies.
