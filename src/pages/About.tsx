@@ -91,9 +91,11 @@ const About = () => {
             <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">
               Meet Hickory & Rose
             </h1>
-            <p className="font-sans-wedding text-base md:text-lg text-white/85 leading-relaxed max-w-xl mx-auto font-light">
-              Refined rustic elegance, rooted in calm leadership and genuine care
-              for every couple we serve.
+            <p className="font-sans-wedding text-[0.6rem] tracking-[0.2em] uppercase text-white/60 mb-4">
+              For brides who want to be present — not stressed
+            </p>
+            <p className="font-sans-wedding text-lg md:text-xl text-white/85 leading-relaxed max-w-xl mx-auto font-light tracking-wide">
+              Story-driven weddings designed around your calm.
             </p>
           </ScrollReveal>
         </motion.div>
