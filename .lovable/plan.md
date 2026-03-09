@@ -1,191 +1,34 @@
 
-# Wedding Website - Multi-Page Implementation Plan
+# Phase 3 "Igloo.inc" Sensory Layer Upgrade: Approach Page
 
-## Overview
-Creating a complete multi-page wedding website for "Alicia & Andres" with faithful recreation of the design, including 5 main pages matching the navigation structure.
+## Strategic Audit & Vision
+The structural layout and initial kinetic behaviors are in place, but true luxury is multi-sensory. To achieve the absolute pinnacle of "Fantasy.co" and "Igloo.inc" quality, we must introduce depth, atmospheric typography, and physical resistance. We will replace standard fades with cinematic optical effects, add deep Z-axis layers, and introduce tactile 3D physics to static elements. 
 
-## Page Structure
+**Zero new dependencies.**
 
-Based on the navigation in the design image, we'll create these pages:
+## Execution Plan (5 Master Craft Upgrades)
 
-| Route | Page | Content |
-|-------|------|---------|
-| `/` | Home | Hero section with full navigation |
-| `/our-story` | Our Story | Couple's story with photos |
-| `/details` | Details | Location, Wedding Party, Accommodations |
-| `/schedule` | Schedule | Itinerary/Timeline for wedding weekend |
-| `/registry` | Registry | Gift registry information and links |
+### 1. Cinematic "Smoke" Typography Reveal
+**Target:** `src/pages/Approach.tsx` (Hero Section)
+*   **The Concept:** Standard fade-and-slide animations feel digital. High-end editorial sites use optical "lens focus" effects for typography.
+*   **The Execution:** Update the staggered word-by-word headline reveal (`wordChild` variant) to include `filter: blur(12px)` animating to `blur(0px)`. This creates a sophisticated, atmospheric "smoke" or "lens pull" effect as the headline materializes.
 
-## Design System
+### 2. Deep Parallax Marquee 
+**Target:** `src/pages/Approach.tsx` (Promise Section)
+*   **The Concept:** The Promise section lacks volumetric depth. We need a background layer that moves independently of the content.
+*   **The Execution:** Implement an ultra-light, oversized typography marquee (`text-[15rem] opacity-[0.02] whitespace-nowrap`) positioned in the background. Bind its `x` translation to a `useTransform` hooked into the section's `scrollYProgress`, so it slowly crawls horizontally as the user scrolls down, reinforcing the brand pillars.
 
-### Color Palette (to add to CSS variables)
-```text
---wedding-sage: 65 12% 45%        (Olive/sage for hero overlay, location section)
---wedding-cream: 40 30% 97%       (Off-white background sections)
---wedding-text: 0 0% 20%          (Dark text color)
---wedding-teal: 175 50% 35%       (Accent for buttons, day labels)
-```
+### 3. 3D Magnetic "Tactile Photograph"
+**Target:** `src/components/wedding/ApproachDifferentiators.tsx` (Founder Image)
+*   **The Concept:** The sticky founder portrait is currently a flat element. Luxury agencies treat images as physical objects.
+*   **The Execution:** Wrap the image container in a 3D perspective context. Use `useMotionValue` to track the cursor's `x/y` relative to the center of the image, mapping it via `useSpring` to `rotateX` and `rotateY` (-5deg to 5deg). This makes the image softly tilt and respond to the cursor like a physical photograph.
 
-### Typography (Google Fonts to import)
-- **Great Vibes**: Script font for "Alicia & Andres" title
-- **Cormorant Garamond**: Elegant serif for section headings
-- **Open Sans**: Clean sans-serif for body text and navigation
+### 4. Interactive "Glass Glare" Spotlight
+**Target:** `src/components/wedding/ApproachDifferentiators.tsx` (Accordion Rows)
+*   **The Concept:** Interactive elements should "catch the light" to feel expensive.
+*   **The Execution:** Add a localized mouse tracking system (`onMouseMove`) to each accordion row. Map the cursor's coordinates to a subtle radial gradient mask that acts as a specular highlight, washing a soft gold glare over the text and borders dynamically as the user moves their mouse.
 
-## Files to Create
-
-### Shared Components
-```text
-src/components/wedding/
-├── Navigation.tsx         - Persistent navigation header
-├── Footer.tsx             - RSVP footer section
-├── BranchDecoration.tsx   - Reusable SVG branch illustration
-```
-
-### Page Components
-```text
-src/pages/
-├── Index.tsx              - Home page (Hero + overview)
-├── OurStory.tsx           - Our Story page
-├── Details.tsx            - Details page (Location, Party, Hotels)
-├── Schedule.tsx           - Schedule/Itinerary page
-├── Registry.tsx           - Registry page
-```
-
-### Section Components
-```text
-src/components/wedding/
-├── HeroSection.tsx        - Full-height hero with overlay
-├── StorySection.tsx       - Story content with photo
-├── WeddingPartySection.tsx - Groomsmen/Bridesmaids tabs
-├── LocationSection.tsx    - Venue information
-├── AccommodationsSection.tsx - Hotel cards
-├── ItinerarySection.tsx   - Timeline with day tabs
-├── RegistrySection.tsx    - Registry logos and info
-```
-
-## Files to Modify
-
-### 1. src/index.css
-Add wedding-specific CSS variables and Google Fonts import:
-- Import Great Vibes, Cormorant Garamond, Open Sans from Google Fonts
-- Add wedding color variables
-- Add custom font-family classes
-
-### 2. tailwind.config.ts
-Extend theme with:
-- Wedding color palette using CSS variables
-- Font family definitions for script, serif, sans
-
-### 3. src/App.tsx
-Add routes:
-- `/` - Home
-- `/our-story` - Our Story
-- `/details` - Details
-- `/schedule` - Schedule
-- `/registry` - Registry
-
-## Detailed Component Specifications
-
-### Navigation Component
-- Fixed/sticky header on all pages
-- Links: Home, Our Story, Details, Schedule, Registry
-- Active state with underline accent
-- On hero: transparent overlay style
-- On other pages: solid cream background
-
-### Hero Section (Home Page)
-- Full viewport height (100vh)
-- Background: Placeholder couple photo with sage overlay
-- Centered script title "Alicia & Andres"
-- Date line: "February 15, 2025 | Joshua Tree, California"
-- Scroll indicator arrow at bottom
-
-### Our Story Page
-- Branch decoration SVG at top
-- "Our Story" heading in serif
-- Two-column layout: text left, photo right
-- Cream background
-- Story paragraphs with date highlights
-
-### Details Page
-Contains 3 sections:
-
-**Wedding Party Section:**
-- Tab switcher: Groomsmen | Bridesmaids
-- 4 circular avatar photos per tab
-- Names beneath each photo
-- Groomsmen: Julian Bernard, Damien Huber, Mark Pavone, David Blaine
-- Bridesmaids: Similar structure with female names
-
-**Location Section:**
-- Sage/olive background color
-- "The Location" label
-- "Joshua Tree Carmine Resort" large heading
-- Description paragraph
-- Full-width venue/couple photo
-
-**Accommodations Section:**
-- White background
-- 3-column grid of hotel cards
-- Each card: Name, description, "Reserve" button
-- Hotels: Joshua Tree Inn, Desert Sage Lodge, Carmine Resort
-
-### Schedule Page
-- "Itinerary" heading
-- 3 date tabs: Feb 14, Feb 15 (Wedding Day), Feb 16
-- Each day has timeline entries:
-  - Time marker
-  - Event name
-  - Location/venue
-  - Brief description
-
-### Registry Page
-- Branch decoration SVG
-- "Registry" heading
-- Paragraph about gifts
-- 3 registry badges/logos as styled text blocks:
-  - Crate & Barrel
-  - Target
-  - Williams Sonoma
-
-### Footer Component
-- Simple cream background
-- Centered "RSVP" text or button
-- Optional: Copyright line
-
-## Responsive Breakpoints
-
-### Desktop (default)
-- Full layouts as designed
-- 3-column grids for accommodations
-- 4 avatars in row for wedding party
-
-### Tablet (md: 768px)
-- 2-column grids where applicable
-- Slightly reduced padding
-
-### Mobile (sm: 640px)
-- Single column layouts
-- Hamburger menu for navigation
-- Stacked sections
-- 2x2 grid for wedding party avatars
-
-## Image Strategy
-Using placeholder images from Unsplash or similar:
-- Hero: Desert/couple themed landscape
-- Story: Couple portrait
-- Location: Joshua Tree landscape
-- Accommodations: Hotel exterior placeholders
-- Wedding Party: Generic avatar placeholders
-
-## Implementation Order
-
-1. **Foundation** - Update design system (CSS, Tailwind config)
-2. **Shared Components** - Navigation, Footer, Branch decoration
-3. **Home Page** - Hero section with navigation overlay
-4. **Our Story Page** - Story content and layout
-5. **Details Page** - Location, Wedding Party, Accommodations
-6. **Schedule Page** - Itinerary with tabs
-7. **Registry Page** - Registry section
-8. **App Routes** - Wire up all routes in App.tsx
-9. **Polish** - Responsive adjustments, smooth scroll, hover states
+### 5. Staggered Cascade Sequence
+**Target:** `src/components/wedding/ApproachStatsRibbon.tsx`
+*   **The Concept:** The four statistics counters currently trigger their animations simultaneously, missing an opportunity for editorial rhythm.
+*   **The Execution:** Implement a true cascading delay system. Pass a `delay={i * 200}` prop into `AnimatedCounter`. Inside the component, wrap the start of the `requestAnimationFrame` loop in a timeout based on the delay, creating a satisfying, sequential "ripple" of numbers counting up from left to right.
