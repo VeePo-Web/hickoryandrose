@@ -135,7 +135,7 @@ const buildSteps = ({ formData, set, errors, inputCls }: InquireFormStepsProps):
           }`}
         >
           <p className={`font-sans-wedding text-sm font-light tracking-wide mb-1 transition-colors ${formData.service === svc.label ? "text-foreground" : "text-foreground/80"}`}>{svc.label}</p>
-          <p className="font-sans-wedding text-xs text-muted-foreground/60 font-light leading-relaxed">{svc.desc}</p>
+          <p className="font-sans-wedding text-xs text-brand-text-secondary font-light leading-relaxed">{svc.desc}</p>
         </button>
       ))}
     </div>
