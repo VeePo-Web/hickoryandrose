@@ -108,15 +108,15 @@ const AboutTestimonials = () => {
                         style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), hsl(var(--primary) / 0.1))" }}
                       />
                       <div>
-                        <p className="font-sans-wedding text-body-sm font-medium text-foreground/70">
+                        <p className="font-sans-wedding text-body-sm font-medium text-foreground">
                           {testimonials[activeTestimonial].couple}
                         </p>
                         <div className="flex items-center gap-2 mt-1">
-                          <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/40">
+                          <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-brand-text-tertiary">
                             {testimonials[activeTestimonial].venue}
                           </p>
-                          <span className="text-muted-foreground/20">·</span>
-                          <p className="font-serif-wedding text-xs italic text-muted-foreground/30">
+                          <span className="text-brand-text-decorative">·</span>
+                          <p className="font-serif-wedding text-xs italic text-brand-text-tertiary">
                             {testimonials[activeTestimonial].season}
                           </p>
                         </div>
