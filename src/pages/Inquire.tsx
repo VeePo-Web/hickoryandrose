@@ -99,11 +99,20 @@ const Inquire = () => {
 
   const stepLabels = ["About You", "Wedding Details", "Your Needs", "Your Vision"];
 
-  if (submitted) return <InquireCelebration />;
-
   const steps = buildSteps({ formData, set, errors, inputCls });
 
   return (
+    <AnimatePresence mode="wait">
+      {submitted ? (
+        <motion.div
+          key="celebration"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <InquireCelebration />
+        </motion.div>
+      ) : (
     <main id="main-content">
       <Navigation variant="overlay" />
 
