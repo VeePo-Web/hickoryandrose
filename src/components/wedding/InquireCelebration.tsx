@@ -221,19 +221,22 @@ const InquireCelebration = () => (
         />
 
         {/* CTA */}
-        <ScrollReveal delay={1}>
-          <div className="flex flex-col items-center gap-4">
-            <MagneticButton to="/portfolio" variant="primary">
-              Explore Our Portfolio
-            </MagneticButton>
-            <a
-              href="/approach"
-              className="font-sans-wedding text-xs text-muted-foreground/50 underline underline-offset-4 hover:text-primary transition-colors"
-            >
-              Learn about our approach
-            </a>
-          </div>
-        </ScrollReveal>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: BEAT3 + 1.4, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+          className="flex flex-col items-center gap-4"
+        >
+          <MagneticButton to="/portfolio" variant="primary">
+            Explore Our Portfolio
+          </MagneticButton>
+          <a
+            href="/approach"
+            className="font-sans-wedding text-xs text-muted-foreground/50 underline underline-offset-4 hover:text-primary transition-colors"
+          >
+            Learn about our approach
+          </a>
+        </motion.div>
       </motion.div>
     </section>
     <Footer />

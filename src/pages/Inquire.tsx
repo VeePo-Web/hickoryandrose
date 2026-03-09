@@ -267,7 +267,9 @@ const Inquire = () => {
 
       <PreFooterDivider />
       <Footer />
-    </main>
+    </motion.main>
+      )}
+    </AnimatePresence>
   );
 };
 
