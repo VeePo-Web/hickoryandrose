@@ -303,7 +303,7 @@ const About = () => {
                 style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2))" }}
               />
               <div className="text-center shrink-0">
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.3em] uppercase text-muted-foreground/30 mb-2">
+                <p className="font-sans-wedding text-[0.5rem] tracking-[0.3em] uppercase text-brand-text-tertiary mb-2">
                   As Seen In
                 </p>
                 <span
