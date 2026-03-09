@@ -192,7 +192,7 @@ const About = () => {
               className="w-8 h-px mx-auto mb-4 origin-center"
               style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }}
             />
-            <span className="font-script text-xl text-primary-foreground/35">
+            <span className="font-script text-xl text-primary-foreground/65">
               Hickory & Rose
             </span>
           </ScrollReveal>
