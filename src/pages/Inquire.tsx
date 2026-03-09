@@ -248,7 +248,7 @@ const Inquire = () => {
                 {i > 0 && <span className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 rotate-45 hidden md:block" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }} />}
                 <p className="font-serif-wedding text-lg md:text-xl text-foreground/50 font-light">{stat.value}</p>
                 <motion.div className="w-4 h-px mx-auto my-1.5 origin-center" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }} style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25), transparent)" }} />
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-muted-foreground/30 mt-1">{stat.label}</p>
+                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-brand-text-decorative mt-1">{stat.label}</p>
               </div>
             ))}
           </div>
