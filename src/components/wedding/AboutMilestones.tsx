@@ -3,15 +3,15 @@ import ScrollReveal from "./ScrollReveal";
 import BreathingDiamond from "./BreathingDiamond";
 
 const milestones = [
-  { year: "2018", event: "Hickory & Rose founded in Edmonton, Alberta" },
-  { year: "2019", event: "First feature in Edmonton Bridal Magazine" },
-  { year: "2020", event: "Expanded to full-service planning & virtual coordination" },
-  { year: "2022", event: "50th wedding milestone — Jasper Park Lodge" },
-  { year: "2024", event: "Named Top 10 Edmonton Wedding Planners" },
+  { year: "2018", event: "Hickory & Rose founded in Edmonton, Alberta", note: "Where it all began" },
+  { year: "2019", event: "First feature in Edmonton Bridal Magazine", note: "Our story reached new audiences" },
+  { year: "2020", event: "Expanded to full-service planning & virtual coordination", note: "Adapting with resilience" },
+  { year: "2022", event: "50th wedding milestone — Jasper Park Lodge", note: "'Still remember every detail'" },
+  { year: "2024", event: "Named Top 10 Edmonton Wedding Planners", note: "Recognized by the community we love" },
 ];
 
 const AboutMilestones = () => (
-  <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden" style={{ contain: "layout style" }}>
+  <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden" style={{ contain: "layout style" }} role="region" aria-label="Our Milestones">
     {/* Parallax watermark */}
     <motion.div
       className="absolute -right-8 top-1/3 pointer-events-none select-none"
@@ -19,9 +19,10 @@ const AboutMilestones = () => (
       whileInView={{ opacity: 0.015 }}
       viewport={{ once: true }}
       transition={{ duration: 1.5 }}
+      style={{ willChange: "transform" }}
     >
       <span className="font-serif-wedding text-[10rem] md:text-[16rem] font-light text-foreground leading-none tracking-tight italic whitespace-nowrap">
-        Journey
+        Our Story
       </span>
     </motion.div>
 
@@ -97,8 +98,11 @@ const AboutMilestones = () => (
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                     />
-                    <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light group-hover:text-foreground/70 transition-colors duration-500">
+                    <p className="font-sans-wedding text-body text-muted-foreground leading-relaxed font-light group-hover:text-foreground/70 transition-colors duration-500">
                       {milestone.event}
+                    </p>
+                    <p className="font-serif-wedding text-xs italic text-brand-text-tertiary mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      {milestone.note}
                     </p>
                   </div>
                 </div>

@@ -5,6 +5,18 @@ import ImageReveal from "./ImageReveal";
 import MagneticButton from "./MagneticButton";
 import founderImage from "@/assets/founder-portrait.jpg";
 
+const credentials = [
+  { value: "WPIC", label: "Certified" },
+  { value: "7+", label: "Years" },
+  { value: "80+", label: "Vendor Partners" },
+];
+
+const philosophy = [
+  "Your calm is my responsibility — not yours.",
+  "Every detail serves the story, or it doesn't belong.",
+  "The best planning is invisible on the day.",
+];
+
 const AboutFounderSection = () => {
   const founderRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: founderScroll } = useScroll({
@@ -15,7 +27,7 @@ const AboutFounderSection = () => {
   const founderImgScale = useTransform(founderScroll, [0, 0.5, 1], [1.05, 1, 0.98]);
 
   return (
-    <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card">
+    <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-card" role="region" aria-label="Meet the Founder">
       <div ref={founderRef} className="container mx-auto px-6 lg:px-8 max-w-5xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           <ScrollReveal>
@@ -33,7 +45,7 @@ const AboutFounderSection = () => {
 
                 <motion.img
                   src={founderImage}
-                  alt="Founder of Hickory & Rose"
+                  alt="Alexandra Rose, founder of Hickory & Rose, in an editorial portrait"
                   className="w-full h-[110%] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   style={{ y: founderImgY, scale: founderImgScale }}
                   loading="lazy"
@@ -68,7 +80,7 @@ const AboutFounderSection = () => {
                 {/* Caption reveal */}
                 <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 z-10 pointer-events-none">
                   <span className="block w-6 h-px mb-2" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.5), transparent)" }} />
-                  <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-white/70">Founder, Hickory &amp; Rose</span>
+                  <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-white/70">Alexandra Rose, Founder</span>
                 </div>
               </div>
             </ImageReveal>
@@ -89,17 +101,21 @@ const AboutFounderSection = () => {
                   The Founder
                 </span>
               </p>
-              <h2 className="font-serif-wedding text-display-lg text-foreground mb-8">
-                The heart behind every detail.
+              <h2 className="font-serif-wedding text-display-lg text-foreground mb-4">
+                Alexandra Rose
               </h2>
-              <div className="space-y-5 font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
+              <p className="font-sans-wedding text-body-sm text-brand-text-secondary mb-8 font-light italic">
+                WPIC Certified Wedding Planner
+              </p>
+
+              <div className="space-y-5 font-sans-wedding text-body-sm text-muted-foreground leading-[1.85] font-light">
                 <p className="drop-cap">
-                  I founded Hickory & Rose with a simple belief: your wedding
-                  day should feel as calm as it is beautiful.
+                  I started Hickory & Rose because too many brides told me the same thing:
+                  "I was so stressed I barely remember my own wedding." That shouldn't happen to you.
                 </p>
                 <p>
                   After years in the events industry, I noticed something
-                  troubling — too many couples were stressed and exhausted on
+                  troubling — too many couples were exhausted on
                   what should have been their most joyful day. I knew there had
                   to be a better way.
                 </p>
@@ -110,6 +126,22 @@ const AboutFounderSection = () => {
                 </p>
               </div>
 
+              {/* Credential row */}
+              <div className="flex items-center gap-6 mt-8 mb-10">
+                {credentials.map((cred, i) => (
+                  <div key={cred.label} className="flex items-center gap-6">
+                    {i > 0 && (
+                      <span className="w-px h-8" style={{ background: "linear-gradient(180deg, transparent, hsl(var(--gold) / 0.25), transparent)" }} />
+                    )}
+                    <div className="text-center">
+                      <span className="font-serif-wedding text-xl text-foreground block leading-tight">{cred.value}</span>
+                      <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-brand-text-tertiary">{cred.label}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Pull quote */}
               <div className="pl-5 my-10 relative">
                 <div className="absolute left-0 top-0 bottom-0 w-[2px]" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15), transparent)" }} />
                 <motion.p
@@ -129,8 +161,33 @@ const AboutFounderSection = () => {
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.5, delay: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  — The Founder
+                  — Alexandra Rose
                 </motion.span>
+              </div>
+
+              {/* Personal Philosophy */}
+              <div className="mb-10">
+                <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-brand-text-tertiary mb-4">
+                  Personal Philosophy
+                </p>
+                <ul className="space-y-3">
+                  {philosophy.map((item, i) => (
+                    <motion.li
+                      key={i}
+                      className="flex items-start gap-3 font-sans-wedding text-body-sm text-muted-foreground font-light leading-relaxed"
+                      initial={{ opacity: 0, x: -8 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.1 * i }}
+                    >
+                      <span
+                        className="w-1.5 h-1.5 rotate-45 shrink-0 mt-2"
+                        style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))" }}
+                      />
+                      {item}
+                    </motion.li>
+                  ))}
+                </ul>
               </div>
 
               <MagneticButton to="/inquire" variant="outline">

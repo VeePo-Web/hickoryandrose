@@ -4,26 +4,26 @@ import ScrollReveal from "./ScrollReveal";
 const values = [
   {
     title: "Calm Leadership",
-    pullQuote: "Presence over panic.",
+    pullQuote: "So you can exhale.",
     description:
-      "We lead with quiet confidence so you never feel rushed, pressured, or anxious. Our composed presence on the day means you can exhale and simply be in the moment.",
+      "We lead with quiet confidence so you never feel rushed or anxious. Be fully present — we handle everything else.",
   },
   {
     title: "Intentional Design",
-    pullQuote: "Nothing accidental.",
+    pullQuote: "Your vision, perfected.",
     description:
-      "Every detail is considered — from the arc of your ceremony to the way light falls across your tablescape. We design with purpose so every element tells your story.",
+      "Every detail is considered — from ceremony arc to how light falls across your tablescape. Nothing accidental.",
   },
   {
     title: "Genuine Care",
-    pullQuote: "Not a project — a privilege.",
+    pullQuote: "You're not just a client.",
     description:
-      "Your wedding isn't a line item to us. It's a responsibility we take personally. We invest emotionally because we believe that's the only way to create something truly meaningful.",
+      "Your wedding is a responsibility we take personally. We invest emotionally because that's how meaning is made.",
   },
 ];
 
 const AboutValuesGrid = () => (
-  <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background">
+  <section className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background" role="region" aria-label="Our Values">
     <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
       <ScrollReveal>
         <div className="text-center mb-16 md:mb-24">
@@ -44,7 +44,7 @@ const AboutValuesGrid = () => (
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
         {values.map((value, index) => (
           <ScrollReveal key={value.title} delay={index * 0.1}>
-            <div className="group">
+            <div className="group hover:-translate-y-1 transition-transform duration-500 ease-out">
               <span className="font-serif-wedding text-5xl font-light text-primary/10 group-hover:text-primary/20 transition-colors duration-700 block mb-4">
                 {String(index + 1).padStart(2, "0")}
               </span>
@@ -68,7 +68,7 @@ const AboutValuesGrid = () => (
                 {value.pullQuote}
               </p>
 
-              <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">
+              <p className="font-sans-wedding text-body-sm text-muted-foreground leading-[1.75] font-light">
                 {value.description}
               </p>
             </div>
