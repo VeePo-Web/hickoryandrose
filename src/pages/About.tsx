@@ -107,7 +107,7 @@ const About = () => {
           transition={{ delay: 1.6, duration: 0.8 }}
         >
           {["Est. 2018", "Edmonton & Rockies", "50+ Weddings"].map((t, i) => (
-            <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/30 flex items-center gap-4">
+            <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/55 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
             </span>
@@ -115,7 +115,7 @@ const About = () => {
         </motion.div>
 
         <motion.span
-          className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/15 tracking-widest z-20"
+          className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/30 tracking-widest z-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.6 }}
