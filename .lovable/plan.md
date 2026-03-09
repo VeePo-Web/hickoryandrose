@@ -1,34 +1,191 @@
 
-# Phase 5 "Fantasy.co" Cinematic Immersion: Portfolio Page
+# Wedding Website - Multi-Page Implementation Plan
 
-## Strategic Vision
-The Portfolio page is the visual proof of Hickory & Rose's "Calm Luxury" promise. Currently, the masonry grid and featured stories are structurally sound but lack the volumetric depth and optical weight expected of a world-class agency. We will transform this page into a living, tactile film reel by introducing fluid physics, deep parallax windows, and optical focusing effects.
+## Overview
+Creating a complete multi-page wedding website for "Alicia & Andres" with faithful recreation of the design, including 5 main pages matching the navigation structure.
 
-**Zero new dependencies. Pure React + Framer Motion craft.**
+## Page Structure
 
-## Execution Plan (5 Master Craft Upgrades)
+Based on the navigation in the design image, we'll create these pages:
 
-### 1. Liquid Spring Filter Navigation
-**Target:** `src/pages/Portfolio.tsx` (Category Filters)
-*   **The Concept:** Standard text-change or underline filters feel brittle and digital. High-end editorial sites use fluid, physical indicators that glide with mass.
-*   **The Execution:** We will rebuild the category filter row. Instead of static active states, we will use Framer Motion's `layoutId="portfolio-active-filter"` to create a soft, ivory/gold-tinted background pill that physically slides and stretches between the filter words when clicked, using a high-damping spring (`type: "spring", stiffness: 300, damping: 30`).
+| Route | Page | Content |
+|-------|------|---------|
+| `/` | Home | Hero section with full navigation |
+| `/our-story` | Our Story | Couple's story with photos |
+| `/details` | Details | Location, Wedding Party, Accommodations |
+| `/schedule` | Schedule | Itinerary/Timeline for wedding weekend |
+| `/registry` | Registry | Gift registry information and links |
 
-### 2. Deep Parallax "Window" Masking
-**Target:** `src/components/wedding/PortfolioFeaturedStory.tsx`
-*   **The Concept:** The featured image currently sits flat on the page. Luxury web design treats image containers as physical windows into a 3D space behind the screen.
-*   **The Execution:** We will decouple the `<img>` from its `aspect-[4/5]` container. We will bind a `useScroll` hook to the section, mapping `scrollYProgress` to the image's `y` axis (e.g., scaling it to 1.2 and shifting it from `-10%` to `10%`). As the user scrolls down the page, the image will slowly pan inside its frame, creating a profound, cinematic parallax depth.
+## Design System
 
-### 3. "Slide Projector" Optical Focus Reveal
-**Target:** `src/components/wedding/PortfolioFeaturedStory.tsx` (Typography)
-*   **The Concept:** Fading in the couple's name is too standard. We want to mimic the physical, mechanical nature of looking at film slides.
-*   **The Execution:** We will shatter the featured couple's name into individual characters or words. The reveal animation will start with the text slightly over-scaled (`scale: 1.1`), skewed (`skewX: -5deg`), and heavily blurred (`filter: blur(10px)`). It will snap into perfect focus with a harsh cubic-bezier curve, simulating the physical "clack" and optical alignment of a vintage slide projector.
+### Color Palette (to add to CSS variables)
+```text
+--wedding-sage: 65 12% 45%        (Olive/sage for hero overlay, location section)
+--wedding-cream: 40 30% 97%       (Off-white background sections)
+--wedding-text: 0 0% 20%          (Dark text color)
+--wedding-teal: 175 50% 35%       (Accent for buttons, day labels)
+```
 
-### 4. Reactive Spotlight Wash
-**Target:** `src/components/wedding/PortfolioMasonryGrid.tsx`
-*   **The Concept:** Hovering over a masonry item currently just darkens it. We want it to feel like shining a warm, physical light onto a memory.
-*   **The Execution:** We will add an `onMouseMove` tracker to the grid container that captures local cursor coordinates. We will inject these as CSS variables (`--mouse-x`, `--mouse-y`) into the grid items. An absolute, pointer-ignoring overlay on each image will use these variables to render a dynamic `radial-gradient` spotlight (a soft, gold-tinted wash). This light will physically follow the user's cursor across the grid.
+### Typography (Google Fonts to import)
+- **Great Vibes**: Script font for "Alicia & Andres" title
+- **Cormorant Garamond**: Elegant serif for section headings
+- **Open Sans**: Clean sans-serif for body text and navigation
 
-### 5. High-Friction Masonry Reflow
-**Target:** `src/components/wedding/PortfolioMasonryGrid.tsx`
-*   **The Concept:** When the user clicks a filter, the images simply pop in and out. They need physical weight.
-*   **The Execution:** We will overhaul the `AnimatePresence` configuration. The exit animation will drop down and fade (`y: 20, opacity: 0`). The enter animation will use a staggered delay based on the index, and a high-friction spring (`stiffness: 100, damping: 15`). When changing categories, the grid won't just appear—it will physically "settle" into place piece by piece with tangible momentum.
+## Files to Create
+
+### Shared Components
+```text
+src/components/wedding/
+├── Navigation.tsx         - Persistent navigation header
+├── Footer.tsx             - RSVP footer section
+├── BranchDecoration.tsx   - Reusable SVG branch illustration
+```
+
+### Page Components
+```text
+src/pages/
+├── Index.tsx              - Home page (Hero + overview)
+├── OurStory.tsx           - Our Story page
+├── Details.tsx            - Details page (Location, Party, Hotels)
+├── Schedule.tsx           - Schedule/Itinerary page
+├── Registry.tsx           - Registry page
+```
+
+### Section Components
+```text
+src/components/wedding/
+├── HeroSection.tsx        - Full-height hero with overlay
+├── StorySection.tsx       - Story content with photo
+├── WeddingPartySection.tsx - Groomsmen/Bridesmaids tabs
+├── LocationSection.tsx    - Venue information
+├── AccommodationsSection.tsx - Hotel cards
+├── ItinerarySection.tsx   - Timeline with day tabs
+├── RegistrySection.tsx    - Registry logos and info
+```
+
+## Files to Modify
+
+### 1. src/index.css
+Add wedding-specific CSS variables and Google Fonts import:
+- Import Great Vibes, Cormorant Garamond, Open Sans from Google Fonts
+- Add wedding color variables
+- Add custom font-family classes
+
+### 2. tailwind.config.ts
+Extend theme with:
+- Wedding color palette using CSS variables
+- Font family definitions for script, serif, sans
+
+### 3. src/App.tsx
+Add routes:
+- `/` - Home
+- `/our-story` - Our Story
+- `/details` - Details
+- `/schedule` - Schedule
+- `/registry` - Registry
+
+## Detailed Component Specifications
+
+### Navigation Component
+- Fixed/sticky header on all pages
+- Links: Home, Our Story, Details, Schedule, Registry
+- Active state with underline accent
+- On hero: transparent overlay style
+- On other pages: solid cream background
+
+### Hero Section (Home Page)
+- Full viewport height (100vh)
+- Background: Placeholder couple photo with sage overlay
+- Centered script title "Alicia & Andres"
+- Date line: "February 15, 2025 | Joshua Tree, California"
+- Scroll indicator arrow at bottom
+
+### Our Story Page
+- Branch decoration SVG at top
+- "Our Story" heading in serif
+- Two-column layout: text left, photo right
+- Cream background
+- Story paragraphs with date highlights
+
+### Details Page
+Contains 3 sections:
+
+**Wedding Party Section:**
+- Tab switcher: Groomsmen | Bridesmaids
+- 4 circular avatar photos per tab
+- Names beneath each photo
+- Groomsmen: Julian Bernard, Damien Huber, Mark Pavone, David Blaine
+- Bridesmaids: Similar structure with female names
+
+**Location Section:**
+- Sage/olive background color
+- "The Location" label
+- "Joshua Tree Carmine Resort" large heading
+- Description paragraph
+- Full-width venue/couple photo
+
+**Accommodations Section:**
+- White background
+- 3-column grid of hotel cards
+- Each card: Name, description, "Reserve" button
+- Hotels: Joshua Tree Inn, Desert Sage Lodge, Carmine Resort
+
+### Schedule Page
+- "Itinerary" heading
+- 3 date tabs: Feb 14, Feb 15 (Wedding Day), Feb 16
+- Each day has timeline entries:
+  - Time marker
+  - Event name
+  - Location/venue
+  - Brief description
+
+### Registry Page
+- Branch decoration SVG
+- "Registry" heading
+- Paragraph about gifts
+- 3 registry badges/logos as styled text blocks:
+  - Crate & Barrel
+  - Target
+  - Williams Sonoma
+
+### Footer Component
+- Simple cream background
+- Centered "RSVP" text or button
+- Optional: Copyright line
+
+## Responsive Breakpoints
+
+### Desktop (default)
+- Full layouts as designed
+- 3-column grids for accommodations
+- 4 avatars in row for wedding party
+
+### Tablet (md: 768px)
+- 2-column grids where applicable
+- Slightly reduced padding
+
+### Mobile (sm: 640px)
+- Single column layouts
+- Hamburger menu for navigation
+- Stacked sections
+- 2x2 grid for wedding party avatars
+
+## Image Strategy
+Using placeholder images from Unsplash or similar:
+- Hero: Desert/couple themed landscape
+- Story: Couple portrait
+- Location: Joshua Tree landscape
+- Accommodations: Hotel exterior placeholders
+- Wedding Party: Generic avatar placeholders
+
+## Implementation Order
+
+1. **Foundation** - Update design system (CSS, Tailwind config)
+2. **Shared Components** - Navigation, Footer, Branch decoration
+3. **Home Page** - Hero section with navigation overlay
+4. **Our Story Page** - Story content and layout
+5. **Details Page** - Location, Wedding Party, Accommodations
+6. **Schedule Page** - Itinerary with tabs
+7. **Registry Page** - Registry section
+8. **App Routes** - Wire up all routes in App.tsx
+9. **Polish** - Responsive adjustments, smooth scroll, hover states
