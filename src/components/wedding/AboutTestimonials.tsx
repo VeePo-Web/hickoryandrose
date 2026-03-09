@@ -28,15 +28,17 @@ const testimonials = [
 
 const AboutTestimonials = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const advanceTestimonial = useCallback(() => {
     setActiveTestimonial((i) => (i + 1) % testimonials.length);
   }, []);
 
   useEffect(() => {
+    if (isPaused) return;
     const timer = setInterval(advanceTestimonial, 6000);
     return () => clearInterval(timer);
-  }, [advanceTestimonial]);
+  }, [advanceTestimonial, isPaused]);
 
   return (
     <section className="py-section-mobile md:py-section-tablet bg-card relative overflow-hidden" style={{ contain: "layout style" }} role="region" aria-label="Client Testimonials">
