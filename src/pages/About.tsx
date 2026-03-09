@@ -9,7 +9,7 @@ import ScrollReveal from "@/components/wedding/ScrollReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
-import AboutMilestones from "@/components/wedding/AboutMilestones";
+import AboutPromises from "@/components/wedding/AboutPromises";
 import AboutTestimonials from "@/components/wedding/AboutTestimonials";
 import AboutFounderSection from "@/components/wedding/AboutFounderSection";
 import AboutValuesGrid from "@/components/wedding/AboutValuesGrid";
