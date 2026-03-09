@@ -83,7 +83,7 @@ const AboutFounderSection = () => {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
               >01</motion.span>
-              <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-3">
+              <p className="font-sans-wedding text-label uppercase text-brand-text-tertiary mb-3">
                 <span className="inline-flex items-center gap-3">
                   <span className="w-5 h-px bg-primary/30" />
                   The Founder
