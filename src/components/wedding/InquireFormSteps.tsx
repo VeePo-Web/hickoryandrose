@@ -164,11 +164,11 @@ const buildSteps = ({ formData, set, errors, inputCls }: InquireFormStepsProps):
       <div className="grid grid-cols-2 gap-x-6 gap-y-2 font-sans-wedding text-sm text-brand-text-secondary font-light">
         <span className="text-brand-text-tertiary">Name</span>
         <span className="text-foreground">{formData.name || "—"}</span>
-        <span className="text-muted-foreground/50">Email</span>
+        <span className="text-brand-text-tertiary">Email</span>
         <span className="text-foreground">{formData.email || "—"}</span>
-        {formData.date && (<><span className="text-muted-foreground/50">Date</span><span className="text-foreground">{formData.date}</span></>)}
-        {formData.service && (<><span className="text-muted-foreground/50">Service</span><span className="text-foreground">{formData.service}</span></>)}
-        {formData.guests && (<><span className="text-muted-foreground/50">Guests</span><span className="text-foreground">{formData.guests}</span></>)}
+        {formData.date && (<><span className="text-brand-text-tertiary">Date</span><span className="text-foreground">{formData.date}</span></>)}
+        {formData.service && (<><span className="text-brand-text-tertiary">Service</span><span className="text-foreground">{formData.service}</span></>)}
+        {formData.guests && (<><span className="text-brand-text-tertiary">Guests</span><span className="text-foreground">{formData.guests}</span></>)}
       </div>
     </div>
   </div>,
