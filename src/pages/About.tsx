@@ -91,7 +91,7 @@ const About = () => {
             <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">
               Meet Hickory & Rose
             </h1>
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.2em] uppercase text-white/60 mb-4">
+            <p className="font-sans-wedding text-[0.6rem] tracking-[0.2em] uppercase text-white/75 mb-4">
               For brides who want to be present — not stressed
             </p>
             <p className="font-sans-wedding text-lg md:text-xl text-white/85 leading-relaxed max-w-xl mx-auto font-light tracking-wide">
@@ -115,6 +115,24 @@ const About = () => {
               {t}
             </span>
           ))}
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2, duration: 0.8 }}
+        >
+          <span className="font-sans-wedding text-[0.45rem] tracking-[0.25em] uppercase text-white/50">
+            Meet the Founder
+          </span>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="w-1.5 h-1.5 rotate-45"
+            style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.6), hsl(var(--gold) / 0.2))" }}
+          />
         </motion.div>
 
         <motion.span
@@ -213,15 +231,46 @@ const About = () => {
       <AboutProcessRibbon />
 
       {/* Editorial Image Mosaic — asymmetric 3-image grid */}
-      <section className="py-12 md:py-16 bg-card overflow-hidden">
-        <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
+      <section className="py-16 md:py-24 bg-card overflow-hidden relative" role="region" aria-label="Behind the Scenes">
+        {/* Parallax watermark */}
+        <motion.div
+          className="absolute -right-8 top-1/2 -translate-y-1/2 pointer-events-none select-none hidden lg:block"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.02 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+          style={{ willChange: "transform" }}
+        >
+          <span className="font-serif-wedding text-[10rem] text-foreground leading-none tracking-tight italic whitespace-nowrap">
+            Moments
+          </span>
+        </motion.div>
+
+        <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative">
+          {/* Editorial header */}
+          <ScrollReveal>
+            <div className="flex items-start gap-6 mb-10 md:mb-14">
+              <span className="font-serif-wedding text-5xl font-light text-primary/10">05</span>
+              <div>
+                <p className="font-overline text-brand-text-secondary mb-2">Behind the Scenes</p>
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="w-10 h-px bg-primary/25 origin-left"
+                />
+              </div>
+            </div>
+          </ScrollReveal>
+
           <div className="grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-4">
             {/* Large left image */}
             <ScrollReveal delay={0} className="col-span-2 md:col-span-7">
               <div className="aspect-[4/3] overflow-hidden relative group">
                 <img
                   src={bouquetImage}
-                  alt="Bridal bouquet detail with ivory roses and sage greenery"
+                  alt="Hand-tied bridal bouquet with ivory garden roses, ranunculus, and sage eucalyptus held by wedding planner during final styling"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
@@ -242,7 +291,7 @@ const About = () => {
                 <div className="aspect-[3/2] overflow-hidden relative group">
                   <img
                     src={editorialFloralsImage}
-                    alt="Sage eucalyptus and ivory floral arrangement on ceremony table"
+                    alt="Ceremony table centerpiece featuring cascading eucalyptus and white florals being arranged by wedding planner"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
@@ -256,7 +305,7 @@ const About = () => {
                 <div className="aspect-[3/2] overflow-hidden relative group">
                   <img
                     src={aboutHeroImage}
-                    alt="Wedding planner coordinating details in sunlit garden"
+                    alt="Wedding planner Alexandra reviewing day-of timeline with vendors in sunlit garden conservatory"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
@@ -376,10 +425,10 @@ const About = () => {
             </div>
 
             {/* Certifications row */}
-            <div className="flex items-center justify-center gap-6 mt-12 mb-10">
+            <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6 mt-12 mb-10">
               {["WPIC Member", "Alberta Wedding Network", "Featured Vendor — Jasper Park Lodge"].map((cert, i) => (
-                <span key={cert} className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-brand-text-tertiary flex items-center gap-6">
-                  {i > 0 && <span className="w-1 h-1 rotate-45" style={{ background: "hsl(var(--gold) / 0.25)" }} />}
+                <span key={cert} className="font-sans-wedding text-[0.45rem] md:text-[0.5rem] tracking-[0.15em] uppercase text-brand-text-tertiary flex items-center gap-3 md:gap-6">
+                  {i > 0 && <span className="w-1 h-1 rotate-45 hidden md:block" style={{ background: "hsl(var(--gold) / 0.25)" }} />}
                   {cert}
                 </span>
               ))}

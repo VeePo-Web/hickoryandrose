@@ -1,49 +1,191 @@
 
+# Wedding Website - Multi-Page Implementation Plan
 
-# About Page — Phase 2 Polish & Remaining Upgrades
+## Overview
+Creating a complete multi-page wedding website for "Alicia & Andres" with faithful recreation of the design, including 5 main pages matching the navigation structure.
 
-## Audit Findings
+## Page Structure
 
-After reviewing all 6 About page files post-Phase 1, here are the remaining issues:
+Based on the navigation in the design image, we'll create these pages:
 
-### A. Contrast Regressions in New Components
+| Route | Page | Content |
+|-------|------|---------|
+| `/` | Home | Hero section with full navigation |
+| `/our-story` | Our Story | Couple's story with photos |
+| `/details` | Details | Location, Wedding Party, Accommodations |
+| `/schedule` | Schedule | Itinerary/Timeline for wedding weekend |
+| `/registry` | Registry | Gift registry information and links |
 
-The `AboutProcessRibbon.tsx` created in Phase 1 introduced new contrast issues:
-- Line 30: `text-primary-foreground/60` — fails AA on sage-deep (needs `/75`)
-- Line 61: `text-primary-foreground/70` — borderline on sage-deep (needs `/80`)
-- Line 83: `text-primary-foreground/60` — pull quote fails (needs `/75`)
-- Line 85: `text-primary-foreground/40` — attribution fails (needs `/65`)
+## Design System
 
-### B. Hero Micro-Copy Contrast
+### Color Palette (to add to CSS variables)
+```text
+--wedding-sage: 65 12% 45%        (Olive/sage for hero overlay, location section)
+--wedding-cream: 40 30% 97%       (Off-white background sections)
+--wedding-text: 0 0% 20%          (Dark text color)
+--wedding-teal: 175 50% 35%       (Accent for buttons, day labels)
+```
 
-- Line 94 in `About.tsx`: `text-white/60` on the "For brides who want to be present" line — fails AA on dark hero (needs `/75`)
+### Typography (Google Fonts to import)
+- **Great Vibes**: Script font for "Alicia & Andres" title
+- **Cormorant Garamond**: Elegant serif for section headings
+- **Open Sans**: Clean sans-serif for body text and navigation
 
-### C. Mosaic Section (About.tsx lines 216-271)
+## Files to Create
 
-Currently an anonymous inline section with no editorial label, no section index, no brand storytelling. Feels like a generic image grid compared to every other section which has a serif index number, overline label, and heading.
+### Shared Components
+```text
+src/components/wedding/
+├── Navigation.tsx         - Persistent navigation header
+├── Footer.tsx             - RSVP footer section
+├── BranchDecoration.tsx   - Reusable SVG branch illustration
+```
 
-### D. Press Section Mobile Responsiveness
+### Page Components
+```text
+src/pages/
+├── Index.tsx              - Home page (Hero + overview)
+├── OurStory.tsx           - Our Story page
+├── Details.tsx            - Details page (Location, Party, Hotels)
+├── Schedule.tsx           - Schedule/Itinerary page
+├── Registry.tsx           - Registry page
+```
 
-The certifications row (line 379-386) uses `flex` with `gap-6` which will overflow on small screens. Needs `flex-wrap` and responsive gap.
+### Section Components
+```text
+src/components/wedding/
+├── HeroSection.tsx        - Full-height hero with overlay
+├── StorySection.tsx       - Story content with photo
+├── WeddingPartySection.tsx - Groomsmen/Bridesmaids tabs
+├── LocationSection.tsx    - Venue information
+├── AccommodationsSection.tsx - Hotel cards
+├── ItinerarySection.tsx   - Timeline with day tabs
+├── RegistrySection.tsx    - Registry logos and info
+```
 
-### E. Testimonial "View Gallery" Link (Phase 2 item)
+## Files to Modify
 
-Plan called for a subtle "View their gallery" link per testimonial — not yet added.
+### 1. src/index.css
+Add wedding-specific CSS variables and Google Fonts import:
+- Import Great Vibes, Cormorant Garamond, Open Sans from Google Fonts
+- Add wedding color variables
+- Add custom font-family classes
 
----
+### 2. tailwind.config.ts
+Extend theme with:
+- Wedding color palette using CSS variables
+- Font family definitions for script, serif, sans
 
-## Implementation Plan (7 targeted edits)
+### 3. src/App.tsx
+Add routes:
+- `/` - Home
+- `/our-story` - Our Story
+- `/details` - Details
+- `/schedule` - Schedule
+- `/registry` - Registry
 
-1. **Fix ProcessRibbon contrast** — bump 4 opacity values to AA-passing levels
-2. **Fix hero micro-copy** — `text-white/60` → `text-white/75` on line 94
-3. **Elevate mosaic section** — add editorial section index "05", overline label "Behind the Scenes", and heading; add `role="region"` + `aria-label`
-4. **Fix press certifications mobile** — add `flex-wrap` and reduce gap on small screens
-5. **Add "View their gallery" link** to testimonials — subtle serif italic link below couple metadata
-6. **Add scroll-indicator to hero** — a subtle animated chevron/diamond at bottom suggesting "Meet the Founder" to improve scroll engagement
-7. **Improve mosaic image alt text** — more descriptive, SEO-aligned alt attributes for all 3 images
+## Detailed Component Specifications
 
-### Files touched: 3
-- `src/components/wedding/AboutProcessRibbon.tsx` (contrast fixes)
-- `src/components/wedding/AboutTestimonials.tsx` (gallery link)
-- `src/pages/About.tsx` (hero fix, mosaic elevation, press mobile fix, scroll indicator)
+### Navigation Component
+- Fixed/sticky header on all pages
+- Links: Home, Our Story, Details, Schedule, Registry
+- Active state with underline accent
+- On hero: transparent overlay style
+- On other pages: solid cream background
 
+### Hero Section (Home Page)
+- Full viewport height (100vh)
+- Background: Placeholder couple photo with sage overlay
+- Centered script title "Alicia & Andres"
+- Date line: "February 15, 2025 | Joshua Tree, California"
+- Scroll indicator arrow at bottom
+
+### Our Story Page
+- Branch decoration SVG at top
+- "Our Story" heading in serif
+- Two-column layout: text left, photo right
+- Cream background
+- Story paragraphs with date highlights
+
+### Details Page
+Contains 3 sections:
+
+**Wedding Party Section:**
+- Tab switcher: Groomsmen | Bridesmaids
+- 4 circular avatar photos per tab
+- Names beneath each photo
+- Groomsmen: Julian Bernard, Damien Huber, Mark Pavone, David Blaine
+- Bridesmaids: Similar structure with female names
+
+**Location Section:**
+- Sage/olive background color
+- "The Location" label
+- "Joshua Tree Carmine Resort" large heading
+- Description paragraph
+- Full-width venue/couple photo
+
+**Accommodations Section:**
+- White background
+- 3-column grid of hotel cards
+- Each card: Name, description, "Reserve" button
+- Hotels: Joshua Tree Inn, Desert Sage Lodge, Carmine Resort
+
+### Schedule Page
+- "Itinerary" heading
+- 3 date tabs: Feb 14, Feb 15 (Wedding Day), Feb 16
+- Each day has timeline entries:
+  - Time marker
+  - Event name
+  - Location/venue
+  - Brief description
+
+### Registry Page
+- Branch decoration SVG
+- "Registry" heading
+- Paragraph about gifts
+- 3 registry badges/logos as styled text blocks:
+  - Crate & Barrel
+  - Target
+  - Williams Sonoma
+
+### Footer Component
+- Simple cream background
+- Centered "RSVP" text or button
+- Optional: Copyright line
+
+## Responsive Breakpoints
+
+### Desktop (default)
+- Full layouts as designed
+- 3-column grids for accommodations
+- 4 avatars in row for wedding party
+
+### Tablet (md: 768px)
+- 2-column grids where applicable
+- Slightly reduced padding
+
+### Mobile (sm: 640px)
+- Single column layouts
+- Hamburger menu for navigation
+- Stacked sections
+- 2x2 grid for wedding party avatars
+
+## Image Strategy
+Using placeholder images from Unsplash or similar:
+- Hero: Desert/couple themed landscape
+- Story: Couple portrait
+- Location: Joshua Tree landscape
+- Accommodations: Hotel exterior placeholders
+- Wedding Party: Generic avatar placeholders
+
+## Implementation Order
+
+1. **Foundation** - Update design system (CSS, Tailwind config)
+2. **Shared Components** - Navigation, Footer, Branch decoration
+3. **Home Page** - Hero section with navigation overlay
+4. **Our Story Page** - Story content and layout
+5. **Details Page** - Location, Wedding Party, Accommodations
+6. **Schedule Page** - Itinerary with tabs
+7. **Registry Page** - Registry section
+8. **App Routes** - Wire up all routes in App.tsx
+9. **Polish** - Responsive adjustments, smooth scroll, hover states

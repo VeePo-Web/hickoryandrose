@@ -27,7 +27,7 @@ const AboutProcessRibbon = () => (
     <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
       <ScrollReveal>
         <div className="text-center mb-12 md:mb-16">
-          <p className="font-sans-wedding text-[0.55rem] tracking-[0.25em] uppercase text-primary-foreground/60 mb-3">
+          <p className="font-sans-wedding text-[0.55rem] tracking-[0.25em] uppercase text-primary-foreground/75 mb-3">
             What Happens Next
           </p>
           <h2 className="font-serif-wedding text-display-md text-primary-foreground">
@@ -58,7 +58,7 @@ const AboutProcessRibbon = () => (
                 transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
               />
               <h3 className="font-serif-wedding text-lg text-primary-foreground mb-2">{step.title}</h3>
-              <p className="font-sans-wedding text-body-sm text-primary-foreground/70 font-light leading-relaxed">
+              <p className="font-sans-wedding text-body-sm text-primary-foreground/80 font-light leading-relaxed">
                 {step.description}
               </p>
             </div>
@@ -80,9 +80,9 @@ const AboutProcessRibbon = () => (
 
       <ScrollReveal delay={0.3}>
         <div className="text-center">
-          <p className="font-serif-wedding text-sm italic text-primary-foreground/60 mb-6">
+          <p className="font-serif-wedding text-sm italic text-primary-foreground/75 mb-6">
             "It felt like relief from the first call."
-            <span className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase not-italic ml-2 text-primary-foreground/40">— Olivia & Noah</span>
+            <span className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase not-italic ml-2 text-primary-foreground/65">— Olivia & Noah</span>
           </p>
           <MagneticButton to="/inquire" variant="outline-light">
             Book a Calm Consult

@@ -126,6 +126,13 @@ const AboutTestimonials = () => {
                             {testimonials[activeTestimonial].style}
                           </p>
                         </div>
+                        <a
+                          href="/portfolio"
+                          className="font-serif-wedding text-xs italic text-brand-text-tertiary hover:text-gold transition-colors duration-300 mt-2 inline-block group"
+                        >
+                          View their gallery
+                          <span className="inline-block ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
+                        </a>
                       </div>
                     </div>
                   </motion.div>
