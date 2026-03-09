@@ -62,7 +62,7 @@ const AboutFounderSection = () => {
 
                 {/* Frame index mark */}
                 <div className="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/40">FR01</span>
+                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/60">FR01</span>
                 </div>
 
                 {/* Caption reveal */}
