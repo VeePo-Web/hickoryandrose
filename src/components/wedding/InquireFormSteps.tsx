@@ -51,7 +51,7 @@ const PillSelect = ({
         className={`px-5 py-2.5 font-sans-wedding text-xs tracking-[0.12em] uppercase font-light border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/30 ${
           value === opt
             ? "bg-primary text-primary-foreground border-primary"
-            : "bg-transparent text-muted-foreground border-border/60 hover:border-primary/40 hover:text-foreground"
+            : "bg-transparent text-brand-text-secondary border-border/60 hover:border-primary/40 hover:text-foreground"
         }`}
       >
         {opt}
