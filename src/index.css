@@ -25,7 +25,7 @@ html.lenis, html.lenis body {
   :root {
     /* Hickory & Rose — Refined Rustic Elegance */
     --background: 40 20% 98%;
-    --foreground: 30 15% 20%;
+    --foreground: 30 18% 16%;
 
     --card: 40 30% 95%;
     --card-foreground: 30 15% 20%;
@@ -40,7 +40,7 @@ html.lenis, html.lenis body {
     --secondary-foreground: 140 25% 35%;
 
     --muted: 140 15% 96%;
-    --muted-foreground: 30 10% 45%;
+    --muted-foreground: 30 12% 32%;
 
     --accent: 180 25% 35%;
     --accent-foreground: 40 20% 98%;
@@ -63,8 +63,9 @@ html.lenis, html.lenis body {
     --cream-dark: 35 20% 88%;
     --warm-white: 40 20% 98%;
     --text-primary: 30 15% 20%;
-    --text-secondary: 30 10% 45%;
-    --text-light: 30 10% 60%;
+    --text-secondary: 30 12% 32%;
+    --text-light: 30 10% 42%;
+    --text-decorative: 30 10% 65%;
     --teal: 180 25% 35%;
     --teal-light: 180 20% 90%;
     --gold: 40 50% 55%;
@@ -97,7 +98,7 @@ html.lenis, html.lenis body {
     --secondary-foreground: 140 25% 80%;
 
     --muted: 30 10% 18%;
-    --muted-foreground: 30 10% 60%;
+    --muted-foreground: 30 12% 68%;
 
     --accent: 180 20% 45%;
     --accent-foreground: 30 10% 10%;
@@ -147,7 +148,7 @@ html.lenis, html.lenis body {
   body {
     @apply bg-background text-foreground;
     font-family: 'Jost', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 15px;
     line-height: 1.7;
   }
@@ -189,6 +190,11 @@ html.lenis, html.lenis body {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     line-height: 1.5;
+  }
+
+  /* Intentional decorative light-weight for large display text or ornamental elements */
+  .font-light-editorial {
+    font-weight: 300;
   }
 
   /* Editorial drop cap — apply to the first paragraph of a prose section */

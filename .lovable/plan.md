@@ -1,91 +1,191 @@
 
-## Diagnosis: The Exact Contrast Failures
+# Wedding Website - Multi-Page Implementation Plan
 
-**The root problem is two-fold:**
+## Overview
+Creating a complete multi-page wedding website for "Alicia & Andres" with faithful recreation of the design, including 5 main pages matching the navigation structure.
 
-1. **Token values are too light at their base.** `--muted-foreground` is `hsl(30 10% 45%)` on a background of `hsl(40 20% 98%)`. That is already borderline at ~4.2:1. Add opacity modifiers like `/45`, `/40`, `/35`, `/30`, `/20` — commonly used for body copy — and contrast drops to ~1.5–2:1, which is catastrophically illegible.
+## Page Structure
 
-2. **Body weight is `font-weight: 300` globally.** Light-weight type at low contrast is the worst combination for readability. Luxury brands like Vogue.com and Net-a-Porter maintain `font-weight: 400` at minimum for body text, even with restrained palettes.
+Based on the navigation in the design image, we'll create these pages:
 
-**Specific failures found:**
-- `text-muted-foreground/45` on body copy (~2.0:1) — fails WCAG AA (required 4.5:1)
-- `text-muted-foreground/35` on labels (~1.6:1) — critically fails
-- `text-muted-foreground/55` on step descriptions (~2.4:1) — fails
-- `text-foreground/50` on pull quotes (~2.8:1) — fails
-- `text-foreground/70` on secondary body (~3.9:1) — borderline fails on cream backgrounds
+| Route | Page | Content |
+|-------|------|---------|
+| `/` | Home | Hero section with full navigation |
+| `/our-story` | Our Story | Couple's story with photos |
+| `/details` | Details | Location, Wedding Party, Accommodations |
+| `/schedule` | Schedule | Itinerary/Timeline for wedding weekend |
+| `/registry` | Registry | Gift registry information and links |
 
-**The Fantasy.co solution is NOT to make things darker and blunter — it is to redesign the contrast system so legibility is achieved through deliberate token architecture, not brute-force darkness.** Luxury sites like Bottega Veneta and A-P.com achieve exquisite restraint while passing WCAG AA through careful pairing of slightly deeper background tones against purposefully set foreground values.
+## Design System
 
----
-
-## Plan: Hickory & Rose — Fantasy.co Typography Contrast System
-
-### What we change and why
-
-**File 1: `src/index.css`** — The single source of truth. Fix the token values here and 741 components instantly inherit the fix.
-
-**File 2: `src/index.css` body styles** — Lift body weight from `300` to `400` for readable body text. Headings stay at `300/400` for elegance.
-
-No component files need touching because we fix the token architecture at the root.
-
----
-
-### The 5 surgical token corrections
-
-**1. `--muted-foreground`: `30 10% 45%` → `30 12% 32%`**
-- Current: ~4.2:1 against warm-white (before any opacity modifier). After `/45` = ~1.9:1.
-- Fixed base: ~6.8:1 against warm-white. After `/45` = ~3.1:1. After `/60` = ~4.1:1. After `/70` = ~4.8:1 (AA pass).
-- Effect: Body copy using `text-muted-foreground` (no modifier) now reads at 6.8:1. Secondary text at `/70` hits AA.
-
-**2. `--text-secondary`: `30 10% 45%` → `30 12% 32%`**
-- Mirrors the muted-foreground fix for semantic consistency.
-
-**3. `--text-light`: `30 10% 60%` → `30 10% 42%`**
-- Current: ~3.0:1. Fixed: ~5.1:1. Now passes AA without opacity.
-
-**4. `--foreground` (body copy base): `30 15% 20%` → `30 18% 16%`**
-- Deepens the primary text by a perceptible notch. Richer ink tone, more editorial gravitas, like Vogue's near-black body text. Passes AAA.
-
-**5. Body `font-weight: 300` → `font-weight: 400`**
-- Weight 300 at low opacity is invisible. 400 (Regular) is the correct luxury baseline. Headings and display text can still use `300` weight via their custom size tokens (they are large enough to remain legible at lighter weights).
-- We add a `.font-light-editorial` utility for intentional decorative use of weight 300.
-
----
-
-### Additional micro-refinements (in same CSS edit)
-
-- Add a `--text-decorative` token at `30 10% 65%` — for intentionally decorative, non-readable elements (watermarks, ornamental labels). This makes the distinction between "decorative opacity text" and "readable secondary text" explicit and intentional.
-- Tighten the dark-mode `--muted-foreground`: `30 10% 60%` → `30 12% 68%` — slight lift to pass AA in dark contexts.
-
----
-
-### Files to edit
-
-**Only 1 file:** `src/index.css`
-- Update 5 CSS custom property values in `:root`
-- Update 1 CSS custom property in `.dark`
-- Change body `font-weight: 300` to `font-weight: 400`
-- Add `--text-decorative` token
-- Add `.font-light-editorial` utility class
-
-**Optionally, 1 additional file:** `src/index.css` body typography — add a note that `font-weight: 300` should only be used via explicit `.font-light-editorial` class, not as the global default.
-
-**Zero component files touched.** All 741 instances of `text-muted-foreground` and related classes inherit the fix automatically.
-
----
-
-### Contrast targets after fix (WCAG AA = 4.5:1 for normal text)
-
+### Color Palette (to add to CSS variables)
 ```text
-Token                         Before    After
---muted-foreground (base)     4.2:1     6.8:1  [AAA]
---muted-foreground /70        2.9:1     4.8:1  [AA pass]
---muted-foreground /60        2.5:1     4.1:1  [borderline - decorative acceptable]
---muted-foreground /45        1.9:1     3.1:1  [decorative only - now used intentionally]
---text-secondary (base)       4.2:1     6.8:1  [AAA]
---text-light (base)           3.0:1     5.1:1  [AA pass]
---foreground (body)           9.1:1    11.2:1  [AAA - deeper ink]
-body font-weight              300→400   (legibility: +40%)
+--wedding-sage: 65 12% 45%        (Olive/sage for hero overlay, location section)
+--wedding-cream: 40 30% 97%       (Off-white background sections)
+--wedding-text: 0 0% 20%          (Dark text color)
+--wedding-teal: 175 50% 35%       (Accent for buttons, day labels)
 ```
 
-The key insight: instances like `text-muted-foreground/20` and `/30` are **intentionally decorative** (watermarks, ornamental indices, grain overlays). They will remain at ultra-low opacity — but now the user sees them as deliberately ethereal decoration, not failed body copy. The fix ensures that **readable text** (body copy, descriptions, captions) is now using tokens at sufficient opacity, and the new `--text-decorative` token makes this intent explicit in the system.
+### Typography (Google Fonts to import)
+- **Great Vibes**: Script font for "Alicia & Andres" title
+- **Cormorant Garamond**: Elegant serif for section headings
+- **Open Sans**: Clean sans-serif for body text and navigation
+
+## Files to Create
+
+### Shared Components
+```text
+src/components/wedding/
+├── Navigation.tsx         - Persistent navigation header
+├── Footer.tsx             - RSVP footer section
+├── BranchDecoration.tsx   - Reusable SVG branch illustration
+```
+
+### Page Components
+```text
+src/pages/
+├── Index.tsx              - Home page (Hero + overview)
+├── OurStory.tsx           - Our Story page
+├── Details.tsx            - Details page (Location, Party, Hotels)
+├── Schedule.tsx           - Schedule/Itinerary page
+├── Registry.tsx           - Registry page
+```
+
+### Section Components
+```text
+src/components/wedding/
+├── HeroSection.tsx        - Full-height hero with overlay
+├── StorySection.tsx       - Story content with photo
+├── WeddingPartySection.tsx - Groomsmen/Bridesmaids tabs
+├── LocationSection.tsx    - Venue information
+├── AccommodationsSection.tsx - Hotel cards
+├── ItinerarySection.tsx   - Timeline with day tabs
+├── RegistrySection.tsx    - Registry logos and info
+```
+
+## Files to Modify
+
+### 1. src/index.css
+Add wedding-specific CSS variables and Google Fonts import:
+- Import Great Vibes, Cormorant Garamond, Open Sans from Google Fonts
+- Add wedding color variables
+- Add custom font-family classes
+
+### 2. tailwind.config.ts
+Extend theme with:
+- Wedding color palette using CSS variables
+- Font family definitions for script, serif, sans
+
+### 3. src/App.tsx
+Add routes:
+- `/` - Home
+- `/our-story` - Our Story
+- `/details` - Details
+- `/schedule` - Schedule
+- `/registry` - Registry
+
+## Detailed Component Specifications
+
+### Navigation Component
+- Fixed/sticky header on all pages
+- Links: Home, Our Story, Details, Schedule, Registry
+- Active state with underline accent
+- On hero: transparent overlay style
+- On other pages: solid cream background
+
+### Hero Section (Home Page)
+- Full viewport height (100vh)
+- Background: Placeholder couple photo with sage overlay
+- Centered script title "Alicia & Andres"
+- Date line: "February 15, 2025 | Joshua Tree, California"
+- Scroll indicator arrow at bottom
+
+### Our Story Page
+- Branch decoration SVG at top
+- "Our Story" heading in serif
+- Two-column layout: text left, photo right
+- Cream background
+- Story paragraphs with date highlights
+
+### Details Page
+Contains 3 sections:
+
+**Wedding Party Section:**
+- Tab switcher: Groomsmen | Bridesmaids
+- 4 circular avatar photos per tab
+- Names beneath each photo
+- Groomsmen: Julian Bernard, Damien Huber, Mark Pavone, David Blaine
+- Bridesmaids: Similar structure with female names
+
+**Location Section:**
+- Sage/olive background color
+- "The Location" label
+- "Joshua Tree Carmine Resort" large heading
+- Description paragraph
+- Full-width venue/couple photo
+
+**Accommodations Section:**
+- White background
+- 3-column grid of hotel cards
+- Each card: Name, description, "Reserve" button
+- Hotels: Joshua Tree Inn, Desert Sage Lodge, Carmine Resort
+
+### Schedule Page
+- "Itinerary" heading
+- 3 date tabs: Feb 14, Feb 15 (Wedding Day), Feb 16
+- Each day has timeline entries:
+  - Time marker
+  - Event name
+  - Location/venue
+  - Brief description
+
+### Registry Page
+- Branch decoration SVG
+- "Registry" heading
+- Paragraph about gifts
+- 3 registry badges/logos as styled text blocks:
+  - Crate & Barrel
+  - Target
+  - Williams Sonoma
+
+### Footer Component
+- Simple cream background
+- Centered "RSVP" text or button
+- Optional: Copyright line
+
+## Responsive Breakpoints
+
+### Desktop (default)
+- Full layouts as designed
+- 3-column grids for accommodations
+- 4 avatars in row for wedding party
+
+### Tablet (md: 768px)
+- 2-column grids where applicable
+- Slightly reduced padding
+
+### Mobile (sm: 640px)
+- Single column layouts
+- Hamburger menu for navigation
+- Stacked sections
+- 2x2 grid for wedding party avatars
+
+## Image Strategy
+Using placeholder images from Unsplash or similar:
+- Hero: Desert/couple themed landscape
+- Story: Couple portrait
+- Location: Joshua Tree landscape
+- Accommodations: Hotel exterior placeholders
+- Wedding Party: Generic avatar placeholders
+
+## Implementation Order
+
+1. **Foundation** - Update design system (CSS, Tailwind config)
+2. **Shared Components** - Navigation, Footer, Branch decoration
+3. **Home Page** - Hero section with navigation overlay
+4. **Our Story Page** - Story content and layout
+5. **Details Page** - Location, Wedding Party, Accommodations
+6. **Schedule Page** - Itinerary with tabs
+7. **Registry Page** - Registry section
+8. **App Routes** - Wire up all routes in App.tsx
+9. **Polish** - Responsive adjustments, smooth scroll, hover states
