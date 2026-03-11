@@ -132,7 +132,7 @@ const Portfolio = () => {
                   layoutId="portfolio-active-pill"
                   className="absolute inset-0 rounded-full -z-10"
                   style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.08), hsl(var(--gold) / 0.04))", boxShadow: "0 0 0 1px hsl(var(--gold) / 0.12)" }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  transition={{ type: "tween", duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
                 />
               )}
               {f}
