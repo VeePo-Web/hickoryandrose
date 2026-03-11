@@ -123,7 +123,7 @@ const Portfolio = () => {
       </section>
 
       {/* Liquid Spring Filter Navigation */}
-      <section className="py-5 md:py-6 bg-background border-b border-border/30 sticky top-[72px] z-30">
+      <section className="py-5 md:py-6 bg-background border-b border-border/30 sticky top-16 md:top-20 z-30">
         <div className="container mx-auto px-6 lg:px-8 flex justify-center gap-0">
           {filters.map((f) => (
             <button key={f} onClick={() => setActive(f)} className={`relative font-sans-wedding text-xs tracking-[0.15em] uppercase px-5 md:px-7 py-2.5 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 z-10 ${active === f ? "text-foreground" : "text-muted-foreground/40 hover:text-muted-foreground"}`}>
@@ -132,7 +132,7 @@ const Portfolio = () => {
                   layoutId="portfolio-active-pill"
                   className="absolute inset-0 rounded-full -z-10"
                   style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.08), hsl(var(--gold) / 0.04))", boxShadow: "0 0 0 1px hsl(var(--gold) / 0.12)" }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  transition={{ type: "tween", duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
                 />
               )}
               {f}
