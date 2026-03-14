@@ -121,7 +121,7 @@ const BrandManifestoSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           />
-          <span className="font-sans-wedding text-[0.5rem] tracking-[0.3em] uppercase text-white/25 font-light">
+          <span className="font-sans-wedding text-caption tracking-[0.3em] uppercase text-white/60 font-light">
             Our Manifesto
           </span>
           <motion.span
