@@ -220,7 +220,7 @@ const BrandPromiseSection = () => {
                   />
                 </div>
                 <div className="md:col-span-7">
-                  <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light leading-relaxed group-hover:text-muted-foreground/80 transition-colors duration-500">
+                  <p className="font-sans-wedding text-body-sm text-muted-foreground font-light leading-relaxed group-hover:text-muted-foreground transition-colors duration-500">
                     {pillar.detail}
                   </p>
                   {/* Hover keyword emphasis */}
