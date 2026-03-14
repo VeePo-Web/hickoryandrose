@@ -204,7 +204,7 @@ const TestimonialSection = () => {
                             {active.season}
                           </p>
                         </div>
-                        <span className="inline-block mt-2 font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-primary/40 border border-primary/15 px-2 py-0.5">
+                        <span className="inline-block mt-2 font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary/60 border border-primary/25 px-2 py-0.5">
                           {active.service}
                         </span>
                       </div>
