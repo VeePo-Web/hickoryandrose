@@ -147,7 +147,7 @@ const TrustBarSection = () => {
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   {/* Publication name */}
-                  <span className="font-serif-wedding text-2xl md:text-3xl lg:text-4xl font-light text-foreground/15 group-hover:text-foreground/70 transition-colors duration-500 tracking-tight italic">
+                  <span className="font-serif-wedding text-2xl md:text-3xl lg:text-4xl font-light text-foreground/40 group-hover:text-foreground/70 transition-colors duration-500 tracking-tight italic">
                     {pub.name}
                   </span>
                   {/* Badge - reveals on hover */}
