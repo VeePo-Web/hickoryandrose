@@ -398,7 +398,7 @@ const GallerySection = () => {
                   </p>
                   <div className="flex items-center justify-center gap-3 mt-4">
                     <span className="w-6 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.2))" }} />
-                    <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-background/15">
+                    <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-background/50">
                       {photos[selectedIndex].location}
                     </span>
                     <span className="w-6 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold, 38 60% 55%) / 0.2), transparent)" }} />
