@@ -275,7 +275,7 @@ const GallerySection = () => {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 + i * 0.1 }}
-                  className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-muted-foreground/20 flex items-center gap-2"
+                  className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground flex items-center gap-2"
                 >
                   {i > 0 && <span className="w-1 h-1 rotate-45" style={{ background: "hsl(var(--gold) / 0.15)" }} />}
                   {label}
