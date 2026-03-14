@@ -164,7 +164,7 @@ const NavigationMobileMenu = ({ isOpen, setIsOpen, navLinks, locationPathname }:
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className="font-serif-wedding text-[0.65rem] italic text-muted-foreground/15 mt-6"
+            className="font-serif-wedding text-caption italic text-muted-foreground/60 mt-6"
           >
             Complimentary discovery call · 48hr response
           </motion.p>
