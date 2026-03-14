@@ -100,7 +100,7 @@ const FooterNewsletter = () => {
                   </div>
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center px-8 py-3 text-[0.6rem] tracking-[0.2em] uppercase font-sans-wedding font-light border border-background/15 text-background/40 hover:text-background/80 hover:border-background/40 transition-all duration-300 shrink-0 relative overflow-hidden group"
+                    className="inline-flex items-center justify-center px-8 py-3 text-caption tracking-[0.2em] uppercase font-sans-wedding font-light border border-background/15 text-background/60 hover:text-background/80 hover:border-background/40 transition-all duration-300 shrink-0 relative overflow-hidden group"
                   >
                     <span className="absolute inset-0 bg-background/5 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
                     <span className="relative z-10">Subscribe</span>
