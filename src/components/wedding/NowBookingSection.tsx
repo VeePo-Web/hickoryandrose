@@ -182,7 +182,7 @@ const NowBookingSection = () => {
                     transition={{ delay: 0.3 + i * 0.1, duration: 0.4 }}
                     className="text-center relative min-w-[72px] group/season"
                   >
-                    <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-primary-foreground/20 mb-1.5 group-hover/season:text-primary-foreground/35 transition-colors duration-300">
+                    <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-primary-foreground/50 mb-1.5 group-hover/season:text-primary-foreground/70 transition-colors duration-300">
                       {season.label}
                     </p>
                     {/* Availability fill bar — gold gradient for accent items */}
