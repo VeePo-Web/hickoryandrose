@@ -227,11 +227,11 @@ const FilmstripSection = () => {
                 <p className="font-serif-wedding text-lg text-foreground/70 group-hover:text-foreground transition-colors duration-500">
                   {slide.couple}
                 </p>
-                <p className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/30 mt-0.5">
+                <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground/60 mt-0.5">
                   {slide.venue}
                 </p>
               </div>
-              <span className="font-serif-wedding text-xs text-primary/15 mt-1 tabular-nums">
+              <span className="font-serif-wedding text-xs text-primary/60 mt-1 tabular-nums">
                 {String(i + 1).padStart(2, "0")}
               </span>
             </div>
