@@ -139,7 +139,7 @@ const JournalTeaserSection = () => {
                 className="w-10 h-px bg-border/30 origin-left"
               />
             </div>
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.18em] uppercase text-muted-foreground/25">
+            <p className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-muted-foreground/60">
               More stories coming soon
             </p>
           </div>
