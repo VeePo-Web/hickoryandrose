@@ -177,14 +177,14 @@ const EditorialImageBreak = () => {
             className="flex items-center justify-center gap-6 mt-5"
             style={{ opacity: metadataOpacity }}
           >
-            <span className="font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-white/25">
+            <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60">
               Candlelight
             </span>
             <span
               className="w-1 h-1 rotate-45"
               style={{ background: "hsl(var(--gold) / 0.3)" }}
             />
-            <span className="font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-white/25">
+            <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60">
               Brass & Linen
             </span>
             <span
