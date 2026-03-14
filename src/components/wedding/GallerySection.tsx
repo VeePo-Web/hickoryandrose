@@ -387,7 +387,7 @@ const GallerySection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
                 >
-                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-background/20 block mb-2">
+                  <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-background/50 block mb-2">
                     {photos[selectedIndex].category} · {photos[selectedIndex].season}
                   </span>
                   <p className="font-serif-wedding text-xl text-background/70">
