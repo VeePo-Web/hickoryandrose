@@ -41,7 +41,7 @@ const FAQTestimonialCarousel = ({ testimonials }: FAQTestimonialCarouselProps) =
                 <blockquote className="font-serif-wedding text-pull-quote italic text-foreground/70 leading-relaxed mb-6">
                   "{testimonials[activeTestimonial].quote}"
                 </blockquote>
-                <p className="font-sans-wedding text-body-sm font-light text-foreground/50">
+                <p className="font-sans-wedding text-body-sm font-light text-foreground/60">
                   {testimonials[activeTestimonial].couple}
                 </p>
                 <p className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground mt-1">
