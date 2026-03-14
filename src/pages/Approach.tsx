@@ -599,7 +599,7 @@ const Approach = () => {
                 className="w-8 h-8 rounded-full object-cover border border-primary-foreground/10"
                 loading="lazy"
               />
-              <span className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-primary-foreground/30">
+              <span className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-primary-foreground/60">
                 — Sarah, Founder
               </span>
             </div>
