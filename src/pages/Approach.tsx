@@ -222,7 +222,7 @@ const Approach = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2, duration: 0.8 }}
         >
-          <span className="font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-white/25">Scroll</span>
+          <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60">Scroll</span>
           <motion.span
             className="w-px h-6"
             style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), transparent)" }}
