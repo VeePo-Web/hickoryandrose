@@ -515,9 +515,9 @@ const Approach = () => {
                   />
 
                   <p className="font-sans-wedding text-body-sm font-light text-foreground/40">{t.couple}</p>
-                  <p className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-muted-foreground/25 mt-1">{t.venue} · {t.season}</p>
+                  <p className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60 mt-1">{t.venue} · {t.season}</p>
                   <div className="mt-3">
-                    <span className="font-sans-wedding text-[0.45rem] tracking-[0.15em] uppercase text-primary/25 border border-primary/8 px-3 py-1">
+                    <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary/60 border border-primary/20 px-3 py-1">
                       {t.service}
                     </span>
                   </div>
