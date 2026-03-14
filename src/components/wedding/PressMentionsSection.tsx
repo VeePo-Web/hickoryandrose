@@ -110,7 +110,7 @@ const PressMentionsSection = () => {
                   </p>
                   {/* Hover-reveal detail line */}
                   <motion.p
-                    className="font-serif-wedding text-[0.6rem] italic text-primary/0 group-hover:text-primary/30 transition-all duration-500 mt-0.5 overflow-hidden"
+                    className="font-serif-wedding text-caption italic text-primary/0 group-hover:text-primary/60 transition-all duration-500 mt-0.5 overflow-hidden"
                     style={{ maxHeight: hoveredIndex === i ? 20 : 0 }}
                   >
                     {mention.detail}
