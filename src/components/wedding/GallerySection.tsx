@@ -229,7 +229,7 @@ const GallerySection = () => {
                   </span>
 
                   {/* Season badge — bottom-left */}
-                  <span className="absolute bottom-3 left-3 font-sans-wedding text-[0.45rem] tracking-[0.1em] uppercase text-white/0 group-hover:text-white/20 transition-colors duration-500 delay-200">
+                  <span className="absolute bottom-3 left-3 font-sans-wedding text-caption tracking-[0.1em] uppercase text-white/0 group-hover:text-white/60 transition-colors duration-500 delay-200">
                     {photo.season}
                   </span>
                 </button>
