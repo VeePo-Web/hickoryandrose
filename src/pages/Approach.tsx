@@ -69,7 +69,7 @@ const DocumentaryFilmstrip = ({ src, alt, height, label }: { src: string; alt: s
       </motion.div>
       <motion.div 
         style={{ y }} 
-        className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 text-muted-foreground/30 text-[0.4rem] md:text-[0.5rem] tracking-[0.2em] font-sans-wedding uppercase pointer-events-none"
+        className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 text-muted-foreground/60 text-caption tracking-[0.2em] font-sans-wedding uppercase pointer-events-none"
       >
         <span className="-rotate-90 whitespace-nowrap mb-6 md:mb-10">{label}</span>
         <span className="w-px h-8 md:h-12 bg-muted-foreground/20" />
