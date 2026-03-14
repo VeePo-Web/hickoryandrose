@@ -67,7 +67,7 @@ const BrandPromiseSection = () => {
               </motion.span>
               
               <div className="flex items-center gap-4 mb-6">
-                <p className="font-overline text-muted-foreground/40">
+                <p className="font-overline text-muted-foreground">
                   Our Philosophy
                 </p>
                 <motion.span
