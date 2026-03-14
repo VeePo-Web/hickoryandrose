@@ -127,7 +127,7 @@ const PressMentionsSection = () => {
                 
                 {/* Type badge */}
                 <div className="col-span-4 md:col-span-3 text-right md:text-center">
-                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-muted-foreground/15 group-hover:text-muted-foreground/35 transition-colors duration-500 px-3 py-1 border border-transparent group-hover:border-border/20">
+                  <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground/60 group-hover:text-muted-foreground/80 transition-colors duration-500 px-3 py-1 border border-transparent group-hover:border-border/30">
                     {mention.type}
                   </span>
                 </div>
