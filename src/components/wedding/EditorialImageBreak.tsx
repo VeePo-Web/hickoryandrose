@@ -204,7 +204,7 @@ const EditorialImageBreak = () => {
 
       {/* Corner index marks */}
       <div className="absolute bottom-6 left-6 z-20 pointer-events-none hidden md:block" aria-hidden="true">
-        <span className="font-serif-wedding text-xs text-white/15 font-light">04</span>
+        <span className="font-serif-wedding text-xs text-white/30 font-light">04</span>
       </div>
       <div className="absolute bottom-6 right-6 z-20 pointer-events-none hidden md:block" aria-hidden="true">
         <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/15">Editorial</span>
