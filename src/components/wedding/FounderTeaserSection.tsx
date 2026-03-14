@@ -202,7 +202,7 @@ const FounderTeaserSection = () => {
                   transition={{ delay: 0.8, duration: 0.5 }}
                   className="absolute top-4 right-4 hidden md:block"
                 >
-                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/0 group-hover:text-white/30 transition-colors duration-500">
+                  <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/0 group-hover:text-white/60 transition-colors duration-500">
                     FR04
                   </span>
                 </motion.div>
