@@ -44,7 +44,7 @@ const MagneticPill = ({ children, className = "" }: { children: React.ReactNode;
       transition={{ type: "spring", stiffness: 350, damping: 15, mass: 0.2 }}
       className={`inline-block ${className}`}
     >
-      <span className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/35 border border-primary/10 px-3 py-1 relative overflow-hidden group/pill cursor-default block">
+      <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-primary/60 border border-primary/20 px-3 py-1 relative overflow-hidden group/pill cursor-default block">
         <span
           className="absolute inset-0 -translate-x-full group-hover/pill:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
           style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.08), transparent)" }}
