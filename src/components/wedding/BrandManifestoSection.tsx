@@ -206,7 +206,7 @@ const BrandManifestoSection = () => {
 
       {/* Corner index */}
       <motion.span
-        className="absolute bottom-8 right-8 font-serif-wedding text-xs text-white/10 tracking-widest"
+        className="absolute bottom-8 right-8 font-serif-wedding text-xs text-white/30 tracking-widest"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
