@@ -80,7 +80,7 @@ const InstagramSection = () => {
                   transition={{ duration: 0.8 }}
                   className="w-10 h-px bg-primary/10 origin-left"
                 />
-                <p className="font-sans-wedding text-label uppercase text-muted-foreground/35 tracking-[0.25em]">
+                <p className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.25em]">
                   Follow Along
                 </p>
               </div>
