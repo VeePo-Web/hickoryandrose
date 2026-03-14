@@ -217,7 +217,7 @@ const NotFound = () => {
           transition={{ delay: 1.6, duration: 0.8 }}
         >
           {["Lost?", "We'll Guide You", "Hickory & Rose"].map((t, i) => (
-            <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/30 flex items-center gap-4">
+            <span key={t} className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/60 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
             </span>

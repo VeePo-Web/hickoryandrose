@@ -315,7 +315,7 @@ const StatsSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.7 + i * 0.1, duration: 0.4 }}
-                    className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-background/12 flex items-center gap-2"
+                    className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-background/50 flex items-center gap-2"
                   >
                     <span className="w-1 h-1 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }} />
                     {cred}

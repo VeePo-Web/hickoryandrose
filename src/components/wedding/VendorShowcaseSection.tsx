@@ -213,7 +213,7 @@ const VendorShowcaseSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.8 + i * 0.1 }}
-                className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-muted-foreground/25 px-3 py-1 border border-border/20"
+                className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-muted-foreground/60 px-3 py-1 border border-border/25"
                 style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.02), transparent)" }}
               >
                 {cred}

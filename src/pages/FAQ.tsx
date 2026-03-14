@@ -130,7 +130,7 @@ const FAQ = () => {
             {[{ value: "48hr", label: "Response Time" }, { value: "15–20", label: "Weddings Per Year" }, { value: "100%", label: "Client Satisfaction" }].map((stat) => (
               <div key={stat.label}>
                 <p className="font-serif-wedding text-lg md:text-xl text-primary-foreground/60 font-light">{stat.value}</p>
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-primary-foreground/25 mt-1">{stat.label}</p>
+                <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary-foreground/60 mt-1">{stat.label}</p>
               </div>
             ))}
           </div>
