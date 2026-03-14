@@ -70,11 +70,11 @@ const JournalFeatured = ({ article }: JournalFeaturedProps) => (
           </ImageReveal>
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-primary/60">
+              <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary/60">
                 {article.category}
               </span>
               <span className="w-4 h-px bg-border/40" />
-              <span className="font-sans-wedding text-[0.55rem] tracking-[0.08em] text-muted-foreground/30">
+              <span className="font-sans-wedding text-caption tracking-[0.08em] text-muted-foreground/60">
                 {article.readTime}
               </span>
             </div>
