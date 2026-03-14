@@ -62,7 +62,7 @@ const HeroFloatingInset = ({ secondaryImgY, secondaryImgOpacity }: HeroFloatingI
             animate={{ opacity: isInsetHovered ? 1 : 0, y: isInsetHovered ? 0 : 6 }}
             transition={{ duration: 0.3 }}
           >
-            <p className="font-serif-wedding text-[0.6rem] text-white/60 italic">
+            <p className="font-serif-wedding text-caption text-white/70 italic">
               "A ceremony as calm as the mountains"
             </p>
           </motion.div>
