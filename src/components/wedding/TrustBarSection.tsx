@@ -215,7 +215,7 @@ const TrustBarSection = () => {
                 style={{ background: "linear-gradient(90deg, hsl(var(--border) / 0.4), transparent)" }}
               />
             </div>
-            <p className="font-serif-wedding text-xs italic text-muted-foreground/20">
+            <p className="font-serif-wedding text-xs italic text-muted-foreground">
               Recognized for excellence across Canada and beyond
             </p>
             {/* Trust credentials row */}
