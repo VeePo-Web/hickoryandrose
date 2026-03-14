@@ -123,7 +123,7 @@ const ProcessTeaserSection = () => {
                 style={{ background: "linear-gradient(90deg, hsl(var(--border) / 0.5), transparent)" }}
               />
               <div className="flex items-center justify-between mt-4">
-                <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-muted-foreground/20 font-light">
+                <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground/60 font-light">
                   Every detail, curated with care
                 </p>
                 <span
