@@ -246,7 +246,7 @@ const NowBookingSection = () => {
                   →
                 </motion.span>
               </span>
-              <p className="font-serif-wedding text-xs italic text-primary-foreground/15 mt-2 hidden md:block">
+              <p className="font-serif-wedding text-xs italic text-primary-foreground/50 mt-2 hidden md:block">
                 Complimentary discovery call
               </p>
               
