@@ -113,11 +113,11 @@ const Journal = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative">
           <ScrollReveal>
             <div className="flex items-center gap-4 mb-12 md:mb-16">
-              <span className="font-serif-wedding text-sm text-primary/20 font-light">02</span>
-              <span className="w-8 h-px bg-primary/15" />
-              <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em]">All Articles</p>
+              <span className="font-serif-wedding text-sm text-primary/60 font-light">02</span>
+              <span className="w-8 h-px bg-primary/30" />
+              <p className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.2em]">All Articles</p>
               <span className="flex-1 h-px bg-border/20 hidden md:block" />
-              <span className="font-sans-wedding text-[0.55rem] tracking-[0.12em] text-muted-foreground/20 tabular-nums hidden md:block">{remainingArticles.length} Stories</span>
+              <span className="font-sans-wedding text-caption tracking-[0.12em] text-muted-foreground/60 tabular-nums hidden md:block">{remainingArticles.length} Stories</span>
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
