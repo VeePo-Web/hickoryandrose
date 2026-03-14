@@ -84,11 +84,11 @@ const JournalArticleCard = ({ article, index }: JournalArticleCardProps) => (
       {/* Staggered metadata reveal on hover */}
       <div className="mt-5">
         <div className="flex items-center gap-3 mb-3">
-          <span className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-primary/50 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+          <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-primary/60 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
             {article.category}
           </span>
           <span className="w-3 h-px bg-border/40 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out delay-75" />
-          <span className="font-sans-wedding text-[0.55rem] tracking-[0.08em] text-muted-foreground/30 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out delay-100">
+          <span className="font-sans-wedding text-caption tracking-[0.08em] text-muted-foreground/60 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out delay-100">
             {article.readTime}
           </span>
         </div>
