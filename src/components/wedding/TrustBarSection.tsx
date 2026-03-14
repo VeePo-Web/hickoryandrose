@@ -158,7 +158,7 @@ const TrustBarSection = () => {
                         animate={{ opacity: 1, scale: 1, x: 0 }}
                         exit={{ opacity: 0, scale: 0.9, x: -8 }}
                         transition={{ duration: 0.3 }}
-                        className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/60 bg-primary/5 px-2.5 py-1 hidden md:inline-flex"
+                        className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-primary/60 bg-primary/5 px-2.5 py-1 hidden md:inline-flex"
                       >
                         {pub.badge}
                       </motion.span>
