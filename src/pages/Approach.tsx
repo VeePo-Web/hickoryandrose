@@ -44,7 +44,7 @@ const MagneticPill = ({ children, className = "" }: { children: React.ReactNode;
       transition={{ type: "spring", stiffness: 350, damping: 15, mass: 0.2 }}
       className={`inline-block ${className}`}
     >
-      <span className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/35 border border-primary/10 px-3 py-1 relative overflow-hidden group/pill cursor-default block">
+      <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-primary/60 border border-primary/20 px-3 py-1 relative overflow-hidden group/pill cursor-default block">
         <span
           className="absolute inset-0 -translate-x-full group-hover/pill:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
           style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.08), transparent)" }}
@@ -69,18 +69,18 @@ const DocumentaryFilmstrip = ({ src, alt, height, label }: { src: string; alt: s
       </motion.div>
       <motion.div 
         style={{ y }} 
-        className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 text-muted-foreground/30 text-[0.4rem] md:text-[0.5rem] tracking-[0.2em] font-sans-wedding uppercase pointer-events-none"
+        className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 text-muted-foreground/60 text-caption tracking-[0.2em] font-sans-wedding uppercase pointer-events-none"
       >
         <span className="-rotate-90 whitespace-nowrap mb-6 md:mb-10">{label}</span>
-        <span className="w-px h-8 md:h-12 bg-muted-foreground/20" />
+        <span className="w-px h-8 md:h-12 bg-muted-foreground/30" />
         <span>FR-01</span>
       </motion.div>
       <motion.div 
         style={{ y }} 
-        className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 text-muted-foreground/30 text-[0.4rem] md:text-[0.5rem] tracking-[0.2em] font-sans-wedding uppercase pointer-events-none"
+        className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 text-muted-foreground/60 text-caption tracking-[0.2em] font-sans-wedding uppercase pointer-events-none"
       >
         <span>H&R</span>
-        <span className="w-px h-8 md:h-12 bg-muted-foreground/20" />
+        <span className="w-px h-8 md:h-12 bg-muted-foreground/30" />
         <span className="-rotate-90 whitespace-nowrap mt-6 md:mt-10">DOCUMENTARY</span>
       </motion.div>
     </section>
@@ -208,7 +208,7 @@ const Approach = () => {
           transition={{ delay: 1.6, duration: 0.8 }}
         >
           {["5-Step Process", "Calm Leadership", "Start to Finish"].map((t, i) => (
-            <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/30 flex items-center gap-4">
+            <span key={t} className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/60 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
             </span>
@@ -222,7 +222,7 @@ const Approach = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2, duration: 0.8 }}
         >
-          <span className="font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-white/25">Scroll</span>
+          <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60">Scroll</span>
           <motion.span
             className="w-px h-6"
             style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.4), transparent)" }}
@@ -270,7 +270,7 @@ const Approach = () => {
                 {/* Est. date chip */}
                 <div className="flex items-center gap-2 mt-3 mb-6">
                   <span className="w-4 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.25), transparent)" }} />
-                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-muted-foreground/30">Est. 2018</span>
+                  <span className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-muted-foreground/60">Est. 2018</span>
                 </div>
 
                 {/* Editorial image inset — mobile */}
@@ -515,9 +515,9 @@ const Approach = () => {
                   />
 
                   <p className="font-sans-wedding text-body-sm font-light text-foreground/40">{t.couple}</p>
-                  <p className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-muted-foreground/25 mt-1">{t.venue} · {t.season}</p>
+                  <p className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60 mt-1">{t.venue} · {t.season}</p>
                   <div className="mt-3">
-                    <span className="font-sans-wedding text-[0.45rem] tracking-[0.15em] uppercase text-primary/25 border border-primary/8 px-3 py-1">
+                    <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary/60 border border-primary/20 px-3 py-1">
                       {t.service}
                     </span>
                   </div>
@@ -599,14 +599,14 @@ const Approach = () => {
                 className="w-8 h-8 rounded-full object-cover border border-primary-foreground/10"
                 loading="lazy"
               />
-              <span className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-primary-foreground/30">
+              <span className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-primary-foreground/60">
                 — Sarah, Founder
               </span>
             </div>
 
             <div className="flex items-center justify-center gap-3 mt-3">
               <span className="w-4 h-px bg-primary-foreground/10" />
-              <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-primary-foreground/20">Est. 2018</span>
+              <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-primary-foreground/60">Est. 2018</span>
               <span className="w-4 h-px bg-primary-foreground/10" />
             </div>
           </ScrollReveal>

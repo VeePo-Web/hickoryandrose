@@ -59,7 +59,7 @@ const PressMentionsSection = () => {
               transition={{ duration: 0.6 }}
             />
             <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.1))" }} />
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.3em] uppercase text-muted-foreground/25 font-light">
+            <p className="font-sans-wedding text-caption tracking-[0.3em] uppercase text-muted-foreground/60 font-light">
               As Featured In
             </p>
             <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.1))" }} />
@@ -110,7 +110,7 @@ const PressMentionsSection = () => {
                   </p>
                   {/* Hover-reveal detail line */}
                   <motion.p
-                    className="font-serif-wedding text-[0.6rem] italic text-primary/0 group-hover:text-primary/30 transition-all duration-500 mt-0.5 overflow-hidden"
+                    className="font-serif-wedding text-caption italic text-primary/0 group-hover:text-primary/60 transition-all duration-500 mt-0.5 overflow-hidden"
                     style={{ maxHeight: hoveredIndex === i ? 20 : 0 }}
                   >
                     {mention.detail}
@@ -127,7 +127,7 @@ const PressMentionsSection = () => {
                 
                 {/* Type badge */}
                 <div className="col-span-4 md:col-span-3 text-right md:text-center">
-                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-muted-foreground/15 group-hover:text-muted-foreground/35 transition-colors duration-500 px-3 py-1 border border-transparent group-hover:border-border/20">
+                  <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground/60 group-hover:text-muted-foreground/80 transition-colors duration-500 px-3 py-1 border border-transparent group-hover:border-border/30">
                     {mention.type}
                   </span>
                 </div>
@@ -183,7 +183,7 @@ const PressMentionsSection = () => {
               />
             </div>
             <p className="font-script text-lg text-primary/10">Hickory & Rose</p>
-            <p className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-muted-foreground/15">
+            <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground/60">
               Recognized across Canada & beyond
             </p>
           </div>

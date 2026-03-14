@@ -123,7 +123,7 @@ const NavigationMobileMenu = ({ isOpen, setIsOpen, navLinks, locationPathname }:
                   }`}
                 >
                   <span className="inline-flex items-center gap-3">
-                    <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] text-muted-foreground/20 tabular-nums">
+                    <span className="font-sans-wedding text-caption tracking-[0.15em] text-muted-foreground/60 tabular-nums">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     {link.name}
@@ -164,7 +164,7 @@ const NavigationMobileMenu = ({ isOpen, setIsOpen, navLinks, locationPathname }:
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className="font-serif-wedding text-[0.65rem] italic text-muted-foreground/15 mt-6"
+            className="font-serif-wedding text-caption italic text-muted-foreground/60 mt-6"
           >
             Complimentary discovery call · 48hr response
           </motion.p>
@@ -177,10 +177,10 @@ const NavigationMobileMenu = ({ isOpen, setIsOpen, navLinks, locationPathname }:
           transition={{ delay: 0.6, duration: 0.4 }}
           className="pb-8 text-center"
         >
-          <p className="font-sans-wedding text-[0.625rem] tracking-[0.15em] uppercase text-muted-foreground/50 font-light">
+          <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground font-light">
             Edmonton · Alberta · The Rockies
           </p>
-          <p className="font-sans-wedding text-[0.5rem] tracking-[0.1em] text-muted-foreground/20 mt-1.5">
+          <p className="font-sans-wedding text-caption tracking-[0.1em] text-muted-foreground/60 mt-1.5">
             Now booking 2025 · 2026
           </p>
         </motion.div>

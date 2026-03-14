@@ -186,7 +186,7 @@ const FounderTeaserSection = () => {
                       </p>
                       <div className="flex items-center gap-2 mt-2">
                         <span className="w-4 h-px bg-white/30" />
-                        <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/40">
+                        <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/60">
                           Founder · Hickory & Rose
                         </span>
                       </div>
@@ -202,7 +202,7 @@ const FounderTeaserSection = () => {
                   transition={{ delay: 0.8, duration: 0.5 }}
                   className="absolute top-4 right-4 hidden md:block"
                 >
-                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/0 group-hover:text-white/30 transition-colors duration-500">
+                  <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/0 group-hover:text-white/60 transition-colors duration-500">
                     FR04
                   </span>
                 </motion.div>
@@ -274,7 +274,7 @@ const FounderTeaserSection = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
                   />
-                  <p className="font-overline text-[0.5rem] text-muted-foreground/40 group-hover:text-muted-foreground/60 transition-colors duration-500">
+                  <p className="font-overline text-caption text-muted-foreground/60 group-hover:text-muted-foreground/80 transition-colors duration-500">
                     {cred.label}
                   </p>
                 </motion.div>
@@ -323,7 +323,7 @@ const FounderTeaserSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4 + i * 0.1, duration: 0.4 }}
-                    className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-primary/40 border border-primary/10 px-3 py-1.5"
+                    className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-primary/60 border border-primary/20 px-3 py-1.5"
                   >
                     {pillar}
                   </motion.span>
@@ -349,7 +349,7 @@ const FounderTeaserSection = () => {
                     style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.5), transparent)" }}
                   />
                 </motion.div>
-                <p className="font-overline text-[0.5rem] text-muted-foreground/30 mt-3">
+                <p className="font-overline text-caption text-muted-foreground/60 mt-3">
                   Est. 2018 · Edmonton, Alberta
                 </p>
               </div>

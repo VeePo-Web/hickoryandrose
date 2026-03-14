@@ -290,8 +290,8 @@ const StatsSection = () => {
                   className="absolute inset-0 -translate-x-full group-hover/foot:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"
                   style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.03) 40%, hsl(var(--gold) / 0.06) 50%, hsl(var(--gold) / 0.03) 60%, transparent 100%)" }}
                 />
-                <p className="font-serif-wedding text-sm text-background/25 italic group-hover/foot:text-background/40 transition-colors duration-500">{item.label}</p>
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-background/12 mt-1 group-hover/foot:text-background/20 transition-colors duration-500">{item.note}</p>
+                <p className="font-serif-wedding text-sm text-background/60 italic group-hover/foot:text-background/70 transition-colors duration-500">{item.label}</p>
+                <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-background/50 mt-1 group-hover/foot:text-background/60 transition-colors duration-500">{item.note}</p>
               </motion.div>
             ))}
           </div>
@@ -315,7 +315,7 @@ const StatsSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.7 + i * 0.1, duration: 0.4 }}
-                    className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-background/12 flex items-center gap-2"
+                    className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-background/50 flex items-center gap-2"
                   >
                     <span className="w-1 h-1 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }} />
                     {cred}

@@ -76,7 +76,7 @@ const Portfolio = () => {
         <GoldFrame inset="20px" delay={1} />
         <motion.div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-4 py-3 pointer-events-none" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6, duration: 0.8 }}>
           {["Curated Collection", "Real Weddings", "Edmonton & Rockies"].map((t, i) => (
-            <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/30 flex items-center gap-4">
+            <span key={t} className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/60 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
             </span>
@@ -114,7 +114,7 @@ const Portfolio = () => {
                 <div className="group">
                   <p className="font-serif-wedding text-2xl md:text-3xl text-primary-foreground/50 font-light group-hover:text-primary-foreground/70 transition-colors duration-500">{stat.value}</p>
                   <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }} className="w-6 h-px mx-auto my-2 origin-center" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }} />
-                  <p className="font-sans-wedding text-[0.5rem] md:text-[0.55rem] tracking-[0.18em] uppercase text-primary-foreground/25">{stat.label}</p>
+                  <p className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-primary-foreground/60">{stat.label}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -172,7 +172,7 @@ const Portfolio = () => {
             <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">"Working with Hickory & Rose was the best decision we made. Every detail felt intentional, every moment felt protected."</blockquote>
             <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} className="w-8 h-px mx-auto mb-4 origin-center" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }} />
             <p className="font-sans-wedding text-body-sm font-light text-primary-foreground/60">Emma & James</p>
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.12em] uppercase text-primary-foreground/25 mt-2">The Glass House · Autumn 2024</p>
+            <p className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-primary-foreground/60 mt-2">The Glass House · Autumn 2024</p>
           </ScrollReveal>
         </div>
       </section>

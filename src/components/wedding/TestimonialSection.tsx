@@ -204,7 +204,7 @@ const TestimonialSection = () => {
                             {active.season}
                           </p>
                         </div>
-                        <span className="inline-block mt-2 font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-primary/40 border border-primary/15 px-2 py-0.5">
+                        <span className="inline-block mt-2 font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary/60 border border-primary/25 px-2 py-0.5">
                           {active.service}
                         </span>
                       </div>
@@ -239,7 +239,7 @@ const TestimonialSection = () => {
                     </button>
                   ))}
                 </div>
-                <span className="font-sans-wedding text-[0.6rem] text-muted-foreground/40 tabular-nums tracking-[0.15em]">
+                <span className="font-sans-wedding text-caption text-muted-foreground tabular-nums tracking-[0.15em]">
                   {String(activeIndex + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
                 </span>
               </div>
@@ -278,7 +278,7 @@ const TestimonialSection = () => {
                       <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.4), transparent)" }} />
                     </div>
                     <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 translate-y-2 group-hover/img:translate-y-0">
-                      <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/50 block">
+                      <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/70 block">
                         {galleryImages[0].label}
                       </span>
                       <p className="font-serif-wedding text-xs text-white/80 italic mt-0.5">
@@ -301,10 +301,10 @@ const TestimonialSection = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         <div className="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/50 block">
+                          <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/70 block">
                             {img.label}
                           </span>
-                          <p className="font-serif-wedding text-[0.6rem] text-white/80 italic mt-0.5">
+                          <p className="font-serif-wedding text-caption text-white/80 italic mt-0.5">
                             {img.venue}
                           </p>
                         </div>
@@ -315,7 +315,7 @@ const TestimonialSection = () => {
               </div>
               {/* Gallery caption with ornament */}
               <div className="mt-4 flex items-center justify-between">
-                <span className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/25">
+                <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60">
                   Real Hickory & Rose Weddings
                 </span>
                 <div className="flex items-center gap-2">

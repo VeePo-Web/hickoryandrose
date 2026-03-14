@@ -28,7 +28,7 @@ const FooterNewsletter = () => {
           className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
         >
           <div className="md:col-span-5">
-            <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-background/20 mb-3">
+            <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-background/60 mb-3">
               Stay Inspired
             </p>
             <h3 className="font-serif-wedding text-2xl md:text-3xl text-background/70 font-light leading-tight">
@@ -61,7 +61,7 @@ const FooterNewsletter = () => {
                     <p className="font-serif-wedding text-sm text-background/60 italic">
                       Welcome to the Hickory & Rose community.
                     </p>
-                    <p className="font-sans-wedding text-[0.55rem] text-background/20 mt-1">
+                    <p className="font-sans-wedding text-caption text-background/60 mt-1">
                       Check your inbox for a warm welcome.
                     </p>
                   </div>
@@ -100,7 +100,7 @@ const FooterNewsletter = () => {
                   </div>
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center px-8 py-3 text-[0.6rem] tracking-[0.2em] uppercase font-sans-wedding font-light border border-background/15 text-background/40 hover:text-background/80 hover:border-background/40 transition-all duration-300 shrink-0 relative overflow-hidden group"
+                    className="inline-flex items-center justify-center px-8 py-3 text-caption tracking-[0.2em] uppercase font-sans-wedding font-light border border-background/15 text-background/60 hover:text-background/80 hover:border-background/40 transition-all duration-300 shrink-0 relative overflow-hidden group"
                   >
                     <span className="absolute inset-0 bg-background/5 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
                     <span className="relative z-10">Subscribe</span>

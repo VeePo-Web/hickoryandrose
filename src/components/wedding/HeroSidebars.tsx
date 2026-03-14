@@ -25,7 +25,7 @@ const HeroSidebars = ({ sideTextY, activeSeasonIdx, seasonAvailability }: HeroSi
         transition={{ delay: 3.4, duration: 0.8 }}
       />
       <span
-        className="font-sans-wedding text-[0.45rem] tracking-[0.3em] uppercase text-white/20 font-light"
+        className="font-sans-wedding text-caption tracking-[0.3em] uppercase text-white/60 font-light"
         style={{ writingMode: "vertical-rl" }}
       >
         Scroll to Explore
@@ -47,7 +47,7 @@ const HeroSidebars = ({ sideTextY, activeSeasonIdx, seasonAvailability }: HeroSi
       transition={{ delay: 3.5, duration: 0.8 }}
       aria-hidden="true"
     >
-      <span className="font-sans-wedding text-[0.4rem] tracking-[0.25em] uppercase text-white/15" style={{ writingMode: "vertical-rl" }}>
+      <span className="font-sans-wedding text-caption tracking-[0.25em] uppercase text-white/60" style={{ writingMode: "vertical-rl" }}>
         Now Booking
       </span>
       <motion.div
@@ -67,7 +67,7 @@ const HeroSidebars = ({ sideTextY, activeSeasonIdx, seasonAvailability }: HeroSi
             transition={{ duration: 0.4 }}
             className="text-center"
           >
-            <span className="font-serif-wedding text-[0.6rem] text-white/25 block" style={{ writingMode: "vertical-rl" }}>
+            <span className="font-serif-wedding text-caption text-white/60 block" style={{ writingMode: "vertical-rl" }}>
               {seasonAvailability[activeSeasonIdx].label}
             </span>
           </motion.div>

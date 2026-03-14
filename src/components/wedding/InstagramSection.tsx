@@ -80,7 +80,7 @@ const InstagramSection = () => {
                   transition={{ duration: 0.8 }}
                   className="w-10 h-px bg-primary/10 origin-left"
                 />
-                <p className="font-sans-wedding text-label uppercase text-muted-foreground/35 tracking-[0.25em]">
+                <p className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.25em]">
                   Follow Along
                 </p>
               </div>
@@ -116,7 +116,7 @@ const InstagramSection = () => {
               <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light leading-relaxed">
                 Behind the scenes, real weddings, and the details that make it all come together.
               </p>
-              <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/20 mt-3 inline-flex items-center gap-2">
+              <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground/60 mt-3 inline-flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary/25 animate-pulse" />
                 Updated weekly
               </span>
@@ -210,7 +210,7 @@ const InstagramSection = () => {
             </div>
             
             {/* Hashtags */}
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.2em] uppercase text-muted-foreground/20 text-center mt-5">
+            <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground/60 text-center mt-5">
               #HickoryAndRose · #RefinedRusticElegance
             </p>
           </div>
@@ -278,11 +278,11 @@ const MosaicItem = ({
                   initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/40 px-2 py-1 border border-white/10"
+                  className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60 px-2 py-1 border border-white/20"
                 >
                   {photo.category}
                 </motion.span>
-                <span className="font-serif-wedding text-[0.55rem] text-white/15 tabular-nums">
+                <span className="font-serif-wedding text-caption text-white/60 tabular-nums">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
@@ -303,8 +303,8 @@ const MosaicItem = ({
                   transition={{ delay: 0.2 }}
                   className="flex items-center gap-2"
                 >
-                  <Instagram size={12} strokeWidth={1.5} className="text-white/35" />
-                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/35">
+                  <Instagram size={12} strokeWidth={1.5} className="text-white/60" />
+                  <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/60">
                     View on Instagram
                   </span>
                 </motion.div>
@@ -320,8 +320,8 @@ const MosaicItem = ({
         {/* Gold frame number badge with pulse on hover */}
         <div className="absolute top-2 right-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <motion.span
-            className="font-sans-wedding text-[0.4rem] tracking-[0.15em] tabular-nums text-white/40 px-2 py-1 inline-flex items-center gap-1.5 backdrop-blur-sm"
-            style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.15), hsl(var(--gold) / 0.05))", border: "1px solid hsl(var(--gold) / 0.1)" }}
+            className="font-sans-wedding text-caption tracking-[0.15em] tabular-nums text-white/60 px-2 py-1 inline-flex items-center gap-1.5 backdrop-blur-sm"
+            style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.15), hsl(var(--gold) / 0.05))", border: "1px solid hsl(var(--gold) / 0.15)" }}
             whileHover={{ scale: 1.05 }}
           >
             <motion.span
@@ -337,7 +337,7 @@ const MosaicItem = ({
         {/* Featured badge */}
         {featured && (
           <div className="absolute top-3 right-3 hidden md:block">
-            <span className="font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-white/20 bg-white/5 backdrop-blur-sm px-2 py-1">
+            <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60 bg-white/10 backdrop-blur-sm px-2 py-1">
               Featured
             </span>
           </div>

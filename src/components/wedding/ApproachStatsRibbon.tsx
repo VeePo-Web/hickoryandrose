@@ -72,7 +72,7 @@ const ApproachStatsRibbon = () => (
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
               </span>
               <p className="font-sans-wedding text-body-sm text-foreground/70 font-light">{stat.label}</p>
-              <p className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-muted-foreground/30 mt-1">
+              <p className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60 mt-1">
                 {stat.detail}
               </p>
             </div>

@@ -139,7 +139,7 @@ const JournalTeaserSection = () => {
                 className="w-10 h-px bg-border/30 origin-left"
               />
             </div>
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.18em] uppercase text-muted-foreground/25">
+            <p className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-muted-foreground/60">
               More stories coming soon
             </p>
           </div>
@@ -181,7 +181,7 @@ const ArticleCard = ({
 
           {/* Category tag */}
           <div className="absolute top-4 left-4">
-            <span className="font-sans-wedding text-[0.55rem] tracking-[0.18em] uppercase text-white/70 bg-foreground/30 backdrop-blur-sm px-3 py-1.5">
+            <span className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/70 bg-foreground/30 backdrop-blur-sm px-3 py-1.5">
               {article.category}
             </span>
           </div>
@@ -199,7 +199,7 @@ const ArticleCard = ({
           </div>
 
           {/* Frame number */}
-          <span className="absolute top-4 right-4 font-serif-wedding text-[0.5rem] text-white/20 tabular-nums">
+          <span className="absolute top-4 right-4 font-serif-wedding text-caption text-white/60 tabular-nums">
             {String(index + 1).padStart(2, "0")}
           </span>
         </div>
@@ -208,11 +208,11 @@ const ArticleCard = ({
       {/* Text content below image */}
       <div className="mt-5">
         <div className="flex items-center gap-3 mb-3">
-          <span className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-primary/50">
+          <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-primary/60">
             {article.category}
           </span>
           <span className="w-3 h-px bg-border/40" />
-          <span className="font-sans-wedding text-[0.55rem] tracking-[0.08em] text-muted-foreground/30">
+          <span className="font-sans-wedding text-caption tracking-[0.08em] text-muted-foreground/60">
             {article.readTime}
           </span>
         </div>
@@ -242,12 +242,12 @@ const ArticleCard = ({
             <motion.div
               className="h-px bg-primary/30 w-0 group-hover:w-8 transition-all duration-500 origin-left"
             />
-            <span className="font-sans-wedding text-[0.6rem] tracking-[0.12em] uppercase text-muted-foreground/30 group-hover:text-primary/60 transition-colors duration-500">
+            <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60 group-hover:text-primary/60 transition-colors duration-500">
               {article.date}
             </span>
           </div>
           {/* Read indicator */}
-          <span className="font-sans-wedding text-[0.55rem] tracking-[0.1em] uppercase text-muted-foreground/0 group-hover:text-muted-foreground/30 transition-all duration-500 translate-x-2 group-hover:translate-x-0">
+          <span className="font-sans-wedding text-caption tracking-[0.1em] uppercase text-muted-foreground/0 group-hover:text-muted-foreground/60 transition-all duration-500 translate-x-2 group-hover:translate-x-0">
             Read →
           </span>
         </div>

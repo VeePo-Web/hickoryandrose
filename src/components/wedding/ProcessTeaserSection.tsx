@@ -123,7 +123,7 @@ const ProcessTeaserSection = () => {
                 style={{ background: "linear-gradient(90deg, hsl(var(--border) / 0.5), transparent)" }}
               />
               <div className="flex items-center justify-between mt-4">
-                <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-muted-foreground/20 font-light">
+                <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground/60 font-light">
                   Every detail, curated with care
                 </p>
                 <span
@@ -140,7 +140,7 @@ const ProcessTeaserSection = () => {
               <div className="mb-16 md:mb-24">
                 {/* Section index + label */}
                 <div className="flex items-center gap-4 mb-6">
-                  <span className="font-serif-wedding text-sm text-primary/15 font-light">06</span>
+                  <span className="font-serif-wedding text-sm text-primary/60 font-light">06</span>
                   <motion.span
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
@@ -148,7 +148,7 @@ const ProcessTeaserSection = () => {
                     transition={{ duration: 0.8 }}
                     className="w-10 h-px bg-primary/10 origin-left"
                   />
-                  <p className="font-sans-wedding text-label uppercase text-muted-foreground/35 tracking-[0.25em]">
+                  <p className="font-sans-wedding text-label uppercase text-muted-foreground/60 tracking-[0.25em]">
                     How We Work
                   </p>
                 </div>
@@ -247,7 +247,7 @@ const ProcessTeaserSection = () => {
                         <h3 className="font-serif-wedding text-display-md text-foreground group-hover:text-primary transition-colors duration-500">
                           {step.title}
                         </h3>
-                        <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-primary/35 mt-2">
+                        <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-primary/60 mt-2">
                           {step.subtitle}
                         </p>
                         <motion.div
@@ -298,7 +298,7 @@ const ProcessTeaserSection = () => {
                     <p className="font-serif-wedding text-sm italic text-foreground/35 max-w-sm leading-relaxed">
                       "We don't just coordinate — we protect the feeling of your day."
                     </p>
-                    <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-muted-foreground/20 mt-2">
+                    <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground/60 mt-2">
                       — Hickory & Rose Philosophy
                     </p>
                   </div>

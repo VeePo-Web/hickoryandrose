@@ -27,7 +27,7 @@ const AboutProcessRibbon = () => (
     <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
       <ScrollReveal>
         <div className="text-center mb-12 md:mb-16">
-          <p className="font-sans-wedding text-[0.55rem] tracking-[0.25em] uppercase text-primary-foreground/75 mb-3">
+          <p className="font-sans-wedding text-caption tracking-[0.25em] uppercase text-primary-foreground/75 mb-3">
             What Happens Next
           </p>
           <h2 className="font-serif-wedding text-display-md text-primary-foreground">
@@ -82,7 +82,7 @@ const AboutProcessRibbon = () => (
         <div className="text-center">
           <p className="font-serif-wedding text-sm italic text-primary-foreground/75 mb-6">
             "It felt like relief from the first call."
-            <span className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase not-italic ml-2 text-primary-foreground/65">— Olivia & Noah</span>
+            <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase not-italic ml-2 text-primary-foreground/65">— Olivia & Noah</span>
           </p>
           <MagneticButton to="/inquire" variant="outline-light">
             Book a Calm Consult

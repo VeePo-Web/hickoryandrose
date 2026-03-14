@@ -111,7 +111,7 @@ const FAQ = () => {
         <GoldFrame inset="20px" delay={1} />
         <motion.div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-4 py-3 pointer-events-none" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6, duration: 0.8 }}>
           {["Transparent Pricing", "Custom Packages", "15–20 Weddings/Year"].map((t, i) => (
-            <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/30 flex items-center gap-4">
+            <span key={t} className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/60 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
             </span>
@@ -130,7 +130,7 @@ const FAQ = () => {
             {[{ value: "48hr", label: "Response Time" }, { value: "15–20", label: "Weddings Per Year" }, { value: "100%", label: "Client Satisfaction" }].map((stat) => (
               <div key={stat.label}>
                 <p className="font-serif-wedding text-lg md:text-xl text-primary-foreground/60 font-light">{stat.value}</p>
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-primary-foreground/25 mt-1">{stat.label}</p>
+                <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary-foreground/60 mt-1">{stat.label}</p>
               </div>
             ))}
           </div>

@@ -36,7 +36,7 @@ const JournalFeatured = ({ article }: JournalFeaturedProps) => (
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute top-4 left-4 z-20">
                 <span
-                  className="font-sans-wedding text-[0.55rem] tracking-[0.18em] uppercase text-white/80 backdrop-blur-sm px-3 py-1.5"
+                  className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/80 backdrop-blur-sm px-3 py-1.5"
                   style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--primary) / 0.2))" }}
                 >
                   Featured
@@ -58,7 +58,7 @@ const JournalFeatured = ({ article }: JournalFeaturedProps) => (
                       style={{ filter: "drop-shadow(0 0 3px hsl(var(--gold) / 0.3))" }}
                     />
                   </svg>
-                  <span className="absolute font-sans-wedding text-[0.4rem] text-white/50 tabular-nums font-light">
+                  <span className="absolute font-sans-wedding text-caption text-white/60 tabular-nums font-light">
                     {article.readTime.replace(" read", "").replace(" min", "")}
                   </span>
                 </div>
@@ -70,11 +70,11 @@ const JournalFeatured = ({ article }: JournalFeaturedProps) => (
           </ImageReveal>
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-primary/60">
+              <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary/60">
                 {article.category}
               </span>
               <span className="w-4 h-px bg-border/40" />
-              <span className="font-sans-wedding text-[0.55rem] tracking-[0.08em] text-muted-foreground/30">
+              <span className="font-sans-wedding text-caption tracking-[0.08em] text-muted-foreground/60">
                 {article.readTime}
               </span>
             </div>
@@ -94,7 +94,7 @@ const JournalFeatured = ({ article }: JournalFeaturedProps) => (
               </p>
             </div>
             <div className="flex items-center justify-between">
-              <span className="font-sans-wedding text-[0.6rem] tracking-[0.12em] uppercase text-muted-foreground/30">
+              <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60">
                 {article.date}
               </span>
               {/* CTA with gold underline expand */}

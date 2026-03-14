@@ -144,7 +144,7 @@ const VendorShowcaseSection = () => {
                       transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
                     />
                     <span
-                      className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/30 group-hover:text-muted-foreground/50 transition-all duration-500 px-2 py-0.5 border border-transparent group-hover:border-primary/10"
+                      className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground/60 group-hover:text-muted-foreground/80 transition-all duration-500 px-2 py-0.5 border border-transparent group-hover:border-primary/15"
                       style={hoveredIndex === index ? { background: "linear-gradient(135deg, hsl(var(--gold) / 0.04), transparent)" } : undefined}
                     >
                       {vendor.category}
@@ -155,7 +155,7 @@ const VendorShowcaseSection = () => {
                 {/* Note + arrow */}
                 <div className="col-span-5 md:col-span-4 flex items-center justify-end gap-4">
                   <span
-                    className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/0 group-hover:text-primary/50 transition-all duration-500 hidden md:inline-flex items-center gap-1.5 backdrop-blur-sm px-2.5 py-1 border border-transparent group-hover:border-primary/10"
+                    className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-primary/0 group-hover:text-primary/60 transition-all duration-500 hidden md:inline-flex items-center gap-1.5 backdrop-blur-sm px-2.5 py-1 border border-transparent group-hover:border-primary/15"
                     style={hoveredIndex === index ? { background: "linear-gradient(135deg, hsl(var(--gold) / 0.06), hsl(var(--primary) / 0.04))" } : undefined}
                   >
                     <motion.span
@@ -200,7 +200,7 @@ const VendorShowcaseSection = () => {
               style={{ background: "linear-gradient(90deg, hsl(var(--border) / 0.3), transparent)" }}
             />
           </div>
-          <p className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/20 text-center mt-4">
+          <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground/60 text-center mt-4">
             Partnerships built on trust & shared excellence
           </p>
 
@@ -213,7 +213,7 @@ const VendorShowcaseSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.8 + i * 0.1 }}
-                className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-muted-foreground/25 px-3 py-1 border border-border/20"
+                className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-muted-foreground/60 px-3 py-1 border border-border/25"
                 style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.02), transparent)" }}
               >
                 {cred}

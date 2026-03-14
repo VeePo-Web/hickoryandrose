@@ -90,13 +90,13 @@ const ApproachDifferentiators = () => {
 
                   <div className={`absolute bottom-[6%] left-0 right-0 z-20 flex items-center gap-3 px-5 py-3 transition-all duration-700 ${isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
                     <span className="w-6 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.5), transparent)" }} />
-                    <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/60">Founder, Hickory & Rose</span>
+                    <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/60">Founder, Hickory & Rose</span>
                   </div>
 
-                  <span className={`absolute top-4 right-4 z-20 font-sans-wedding text-[0.45rem] tracking-[0.2em] text-white/40 transition-opacity duration-500 ${isHovered ? "opacity-100" : "opacity-0"}`}>FR01</span>
+                  <span className={`absolute top-4 right-4 z-20 font-sans-wedding text-caption tracking-[0.2em] text-white/60 transition-opacity duration-500 ${isHovered ? "opacity-100" : "opacity-0"}`}>FR01</span>
                 </div>
               </ImageReveal>
-              <p className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/25 mt-4">
+              <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground/60 mt-4">
                 Your planner, from first call to last dance
               </p>
             </div>

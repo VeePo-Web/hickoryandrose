@@ -136,7 +136,7 @@ const PreFooterDivider = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.35 }}
-                      className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-foreground/40 font-light inline-block"
+                      className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-foreground/60 font-light inline-block"
                     >
                       {seasonSlots[activeSeason].season} — <span className={seasonSlots[activeSeason].accent ? "text-primary/60" : "text-muted-foreground/40"}>{seasonSlots[activeSeason].status}</span>
                     </motion.span>
@@ -158,7 +158,7 @@ const PreFooterDivider = () => {
                 {["Complimentary Discovery Call", "No Commitment Required"].map((signal, i) => (
                   <span
                     key={signal}
-                    className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/25"
+                    className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60"
                   >
                     {i > 0 && <span className="mr-3">·</span>}
                     {signal}

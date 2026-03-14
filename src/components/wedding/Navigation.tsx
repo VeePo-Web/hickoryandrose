@@ -147,7 +147,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                             className="w-1 h-1 rounded-full shrink-0"
                             style={{ background: "hsl(var(--gold) / 0.5)" }}
                           />
-                          <span className="font-sans-wedding text-[0.55rem] tracking-[0.18em] uppercase text-muted-foreground/40 font-light">
+                          <span className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-muted-foreground font-light">
                             {label}
                           </span>
                         </motion.span>

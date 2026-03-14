@@ -67,7 +67,7 @@ const EditorialSplitSection = () => {
           style={{ y: floatingTextY }}
           aria-hidden="true"
         >
-          <span className="font-sans-wedding text-[0.45rem] tracking-[0.25em] uppercase text-primary-foreground/10 rotate-90 inline-block origin-top-right">
+          <span className="font-sans-wedding text-caption tracking-[0.25em] uppercase text-primary-foreground/60 rotate-90 inline-block origin-top-right">
             Design Philosophy
           </span>
         </motion.div>
@@ -99,7 +99,7 @@ const EditorialSplitSection = () => {
         <ScrollReveal>
           <div className="max-w-md relative">
             {/* Index marker */}
-            <span className="font-serif-wedding text-sm text-primary-foreground/15 block mb-6">
+            <span className="font-serif-wedding text-sm text-primary-foreground/60 block mb-6">
               03
             </span>
 
@@ -153,7 +153,7 @@ const EditorialSplitSection = () => {
             </div>
 
             {/* Philosophy note */}
-            <p className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-primary-foreground/12 mt-12">
+            <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary-foreground/60 mt-12">
               Our Design Philosophy · Est. 2018
             </p>
           </div>
@@ -283,13 +283,13 @@ const EditorialSplitSection = () => {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="absolute bottom-6 right-6"
         >
-          <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-white/30 group-hover:text-white/50 transition-colors duration-500">
+          <p className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-white/60 group-hover:text-white/70 transition-colors duration-500">
             Detail · Calligraphy & Gold
           </p>
         </motion.div>
         
         {/* Frame number */}
-        <span className="absolute top-4 right-4 font-sans-wedding text-[0.5rem] tracking-[0.2em] text-white/0 group-hover:text-white/25 transition-colors duration-500 tabular-nums">
+        <span className="absolute top-4 right-4 font-sans-wedding text-caption tracking-[0.2em] text-white/0 group-hover:text-white/60 transition-colors duration-500 tabular-nums">
           FR03
         </span>
       </div>

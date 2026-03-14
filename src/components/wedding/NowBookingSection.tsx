@@ -130,7 +130,7 @@ const NowBookingSection = () => {
                     style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.7), hsl(var(--primary-foreground) / 0.4))" }}
                   />
                 </span>
-                <p className="font-overline text-primary-foreground/30 text-[0.55rem]">
+                <p className="font-overline text-primary-foreground/60 text-caption">
                   Currently Booking
                 </p>
               </div>
@@ -182,7 +182,7 @@ const NowBookingSection = () => {
                     transition={{ delay: 0.3 + i * 0.1, duration: 0.4 }}
                     className="text-center relative min-w-[72px] group/season"
                   >
-                    <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-primary-foreground/20 mb-1.5 group-hover/season:text-primary-foreground/35 transition-colors duration-300">
+                    <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-primary-foreground/50 mb-1.5 group-hover/season:text-primary-foreground/70 transition-colors duration-300">
                       {season.label}
                     </p>
                     {/* Availability fill bar — gold gradient for accent items */}
@@ -210,7 +210,7 @@ const NowBookingSection = () => {
                         />
                       )}
                     </div>
-                    <p className={`font-serif-wedding text-[0.65rem] italic ${season.accent ? 'text-primary-foreground/50' : 'text-primary-foreground/25'}`}>
+                    <p className={`font-serif-wedding text-caption italic ${season.accent ? 'text-primary-foreground/60' : 'text-primary-foreground/50'}`}>
                       {season.status}
                     </p>
                   </motion.div>
@@ -246,14 +246,14 @@ const NowBookingSection = () => {
                   →
                 </motion.span>
               </span>
-              <p className="font-serif-wedding text-xs italic text-primary-foreground/15 mt-2 hidden md:block">
+              <p className="font-serif-wedding text-xs italic text-primary-foreground/50 mt-2 hidden md:block">
                 Complimentary discovery call
               </p>
               
               {/* Trust element */}
               <div className="hidden md:flex items-center justify-end gap-2 mt-4">
                 <span className="w-4 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.15))" }} />
-                <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-primary-foreground/10">
+                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary-foreground/50">
                   48hr Response
                 </span>
               </div>

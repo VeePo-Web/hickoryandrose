@@ -104,13 +104,13 @@ const FilmstripSection = () => {
       {/* Section header */}
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl mb-12 md:mb-16 relative">
         <div className="flex items-center gap-4 mb-4">
-          <span className="font-serif-wedding text-sm text-primary/20 font-light">08</span>
-          <span className="w-8 h-px bg-primary/15" />
-          <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em]">
+          <span className="font-serif-wedding text-sm text-primary/60 font-light">08</span>
+          <span className="w-8 h-px bg-primary/30" />
+          <p className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.2em]">
             Selected Moments
           </p>
           <span className="flex-1 h-px bg-border/30 hidden md:block" />
-          <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] text-muted-foreground/20 tabular-nums hidden md:block">
+          <span className="font-sans-wedding text-caption tracking-[0.15em] text-muted-foreground/60 tabular-nums hidden md:block">
             {String(slides.length).padStart(2, "0")} Frames
           </span>
         </div>
@@ -191,13 +191,13 @@ const FilmstripSection = () => {
 
               {/* Film frame number overlay */}
               <span
-                className="absolute top-3 right-3 font-sans-wedding text-[0.5rem] tracking-[0.2em] text-white/0 group-hover:text-white/30 transition-colors duration-500 tabular-nums"
+                className="absolute top-3 right-3 font-sans-wedding text-caption tracking-[0.2em] text-white/0 group-hover:text-white/60 transition-colors duration-500 tabular-nums"
                 aria-hidden="true"
               >
                 FR{String(i + 1).padStart(2, "0")}
               </span>
               {/* Category badge */}
-              <span className="absolute top-3 left-3 font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-white/0 group-hover:text-white/50 transition-colors duration-500 border border-white/0 group-hover:border-white/20 px-2 py-0.5">
+              <span className="absolute top-3 left-3 font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/0 group-hover:text-white/70 transition-colors duration-500 border border-white/0 group-hover:border-white/30 px-2 py-0.5">
                 {slide.category}
               </span>
               {/* Hover caption with story snippet */}
@@ -205,7 +205,7 @@ const FilmstripSection = () => {
                 <p className="font-serif-wedding text-xs text-white/70 italic leading-relaxed mb-2">
                   {slide.snippet}
                 </p>
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/40">
+                <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/60">
                   {slide.season}
                 </p>
               </div>
@@ -227,11 +227,11 @@ const FilmstripSection = () => {
                 <p className="font-serif-wedding text-lg text-foreground/70 group-hover:text-foreground transition-colors duration-500">
                   {slide.couple}
                 </p>
-                <p className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/30 mt-0.5">
+                <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground/60 mt-0.5">
                   {slide.venue}
                 </p>
               </div>
-              <span className="font-serif-wedding text-xs text-primary/15 mt-1 tabular-nums">
+              <span className="font-serif-wedding text-xs text-primary/60 mt-1 tabular-nums">
                 {String(i + 1).padStart(2, "0")}
               </span>
             </div>
@@ -272,7 +272,7 @@ const FilmstripSection = () => {
         style={{ opacity: frameCounterOpacity }}
         aria-hidden="true"
       >
-        <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-muted-foreground/20">
+        <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground/60">
           Scroll to explore
         </span>
         <motion.span
@@ -280,7 +280,7 @@ const FilmstripSection = () => {
           animate={{ x: [0, 6, 0] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <span className="font-serif-wedding text-xs text-muted-foreground/20">→</span>
+          <span className="font-serif-wedding text-xs text-muted-foreground/60">→</span>
         </motion.span>
       </motion.div>
 
@@ -295,7 +295,7 @@ const FilmstripSection = () => {
           style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2), hsl(var(--gold) / 0.08), transparent)" }}
         />
         <div className="flex items-center justify-between">
-          <p className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-muted-foreground/15">
+          <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground/60">
             Hickory & Rose · Selected Works
           </p>
           <div className="flex items-center gap-3">
@@ -306,7 +306,7 @@ const FilmstripSection = () => {
             />
             <span className="w-8 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.15), transparent)" }} />
           </div>
-          <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] text-muted-foreground/15 tabular-nums">
+          <p className="font-sans-wedding text-caption tracking-[0.15em] text-muted-foreground/60 tabular-nums">
             2023 — 2026
           </p>
         </div>

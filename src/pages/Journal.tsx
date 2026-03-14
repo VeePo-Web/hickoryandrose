@@ -72,7 +72,7 @@ const Journal = () => {
         <GoldFrame inset="20px" delay={1} />
         <motion.div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-4 py-3 pointer-events-none" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6, duration: 0.8 }}>
           {["Planning Wisdom", "Real Stories", "Design Details"].map((t, i) => (
-            <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/30 flex items-center gap-4">
+            <span key={t} className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/60 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
             </span>
@@ -113,11 +113,11 @@ const Journal = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative">
           <ScrollReveal>
             <div className="flex items-center gap-4 mb-12 md:mb-16">
-              <span className="font-serif-wedding text-sm text-primary/20 font-light">02</span>
-              <span className="w-8 h-px bg-primary/15" />
-              <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em]">All Articles</p>
+              <span className="font-serif-wedding text-sm text-primary/60 font-light">02</span>
+              <span className="w-8 h-px bg-primary/30" />
+              <p className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.2em]">All Articles</p>
               <span className="flex-1 h-px bg-border/20 hidden md:block" />
-              <span className="font-sans-wedding text-[0.55rem] tracking-[0.12em] text-muted-foreground/20 tabular-nums hidden md:block">{remainingArticles.length} Stories</span>
+              <span className="font-sans-wedding text-caption tracking-[0.12em] text-muted-foreground/60 tabular-nums hidden md:block">{remainingArticles.length} Stories</span>
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
@@ -164,7 +164,7 @@ const Journal = () => {
                         <span className="relative z-10">Subscribe</span>
                       </button>
                     </form>
-                    <p className="font-sans-wedding text-[0.6rem] tracking-[0.08em] text-muted-foreground/30 font-light">One email per month · Unsubscribe anytime</p>
+                    <p className="font-sans-wedding text-caption tracking-[0.08em] text-muted-foreground/60 font-light">One email per month · Unsubscribe anytime</p>
                   </div>
                 </div>
               </div>
@@ -192,7 +192,7 @@ const Journal = () => {
             <span className="font-script text-xl text-primary-foreground/35">Hickory & Rose</span>
             <div className="flex items-center justify-center gap-3 mt-3">
               <span className="w-4 h-px bg-primary-foreground/10" />
-              <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-primary-foreground/20">Est. 2018</span>
+              <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-primary-foreground/60">Est. 2018</span>
               <span className="w-4 h-px bg-primary-foreground/10" />
             </div>
           </ScrollReveal>

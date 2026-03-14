@@ -196,7 +196,7 @@ const NotFound = () => {
                     <p className="font-sans-wedding text-sm text-white/75 group-hover:text-white transition-colors duration-300 font-light mb-1">
                       {page.label}
                     </p>
-                    <p className="font-sans-wedding text-[0.65rem] text-white/25 font-light leading-relaxed">
+                    <p className="font-sans-wedding text-caption text-white/60 font-light leading-relaxed">
                       {page.desc}
                     </p>
                     <div className="mt-3 h-px w-0 group-hover:w-full transition-all duration-700 ease-out origin-left" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
@@ -217,7 +217,7 @@ const NotFound = () => {
           transition={{ delay: 1.6, duration: 0.8 }}
         >
           {["Lost?", "We'll Guide You", "Hickory & Rose"].map((t, i) => (
-            <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/30 flex items-center gap-4">
+            <span key={t} className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/60 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
             </span>

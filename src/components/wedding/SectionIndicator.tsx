@@ -100,7 +100,7 @@ const SectionIndicator = forwardRef<HTMLDivElement>((_, ref) => {
             className="writing-mode-vertical"
             style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
           >
-            <span className="font-sans-wedding text-[0.5rem] tracking-[0.25em] uppercase text-muted-foreground/20 rotate-180 inline-block">
+            <span className="font-sans-wedding text-caption tracking-[0.25em] uppercase text-muted-foreground/60 rotate-180 inline-block">
               {currentSection}
             </span>
           </motion.div>
@@ -109,11 +109,11 @@ const SectionIndicator = forwardRef<HTMLDivElement>((_, ref) => {
         {/* Section counter */}
         {totalSections > 0 && (
           <div className="flex flex-col items-center gap-1">
-            <span className="font-sans-wedding text-[0.4rem] tracking-[0.2em] text-muted-foreground/15 tabular-nums">
+            <span className="font-sans-wedding text-caption tracking-[0.2em] text-muted-foreground/60 tabular-nums">
               {String(sectionIndex + 1).padStart(2, "0")}
             </span>
-            <span className="w-2 h-px bg-muted-foreground/10" />
-            <span className="font-sans-wedding text-[0.4rem] tracking-[0.2em] text-muted-foreground/10 tabular-nums">
+            <span className="w-2 h-px bg-muted-foreground/30" />
+            <span className="font-sans-wedding text-caption tracking-[0.2em] text-muted-foreground/60 tabular-nums">
               {String(totalSections).padStart(2, "0")}
             </span>
           </div>

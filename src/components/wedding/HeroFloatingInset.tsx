@@ -62,7 +62,7 @@ const HeroFloatingInset = ({ secondaryImgY, secondaryImgOpacity }: HeroFloatingI
             animate={{ opacity: isInsetHovered ? 1 : 0, y: isInsetHovered ? 0 : 6 }}
             transition={{ duration: 0.3 }}
           >
-            <p className="font-serif-wedding text-[0.6rem] text-white/60 italic">
+            <p className="font-serif-wedding text-caption text-white/70 italic">
               "A ceremony as calm as the mountains"
             </p>
           </motion.div>
@@ -75,7 +75,7 @@ const HeroFloatingInset = ({ secondaryImgY, secondaryImgOpacity }: HeroFloatingI
           className="flex items-center justify-end gap-2 mt-3"
         >
           <span className="w-4 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2))" }} />
-          <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/30">
+          <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60">
             Jasper · Alberta
           </span>
         </motion.div>

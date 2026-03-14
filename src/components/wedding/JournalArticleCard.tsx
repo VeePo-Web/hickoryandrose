@@ -46,7 +46,7 @@ const JournalArticleCard = ({ article, index }: JournalArticleCardProps) => (
           <div className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-white/0 group-hover:border-white/15 transition-colors duration-500" />
           <div className="absolute top-4 left-4 z-20">
             <span
-              className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/80 backdrop-blur-sm px-2.5 py-1"
+              className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/80 backdrop-blur-sm px-2.5 py-1"
               style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.25), hsl(var(--primary) / 0.2))" }}
             >
               {article.category}
@@ -73,7 +73,7 @@ const JournalArticleCard = ({ article, index }: JournalArticleCardProps) => (
                   style={{ filter: "drop-shadow(0 0 3px hsl(var(--gold) / 0.3))" }}
                 />
               </svg>
-              <span className="absolute font-sans-wedding text-[0.4rem] text-white/50 tabular-nums font-light">
+              <span className="absolute font-sans-wedding text-caption text-white/60 tabular-nums font-light">
                 {article.readTime.replace(" read", "").replace(" min", "")}
               </span>
             </div>
@@ -84,11 +84,11 @@ const JournalArticleCard = ({ article, index }: JournalArticleCardProps) => (
       {/* Staggered metadata reveal on hover */}
       <div className="mt-5">
         <div className="flex items-center gap-3 mb-3">
-          <span className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-primary/50 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+          <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-primary/60 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
             {article.category}
           </span>
           <span className="w-3 h-px bg-border/40 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out delay-75" />
-          <span className="font-sans-wedding text-[0.55rem] tracking-[0.08em] text-muted-foreground/30 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out delay-100">
+          <span className="font-sans-wedding text-caption tracking-[0.08em] text-muted-foreground/60 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out delay-100">
             {article.readTime}
           </span>
         </div>
@@ -103,10 +103,10 @@ const JournalArticleCard = ({ article, index }: JournalArticleCardProps) => (
           {article.excerpt}
         </p>
         <div className="mt-4 flex items-center justify-between">
-          <span className="font-sans-wedding text-[0.6rem] tracking-[0.12em] uppercase text-muted-foreground/30 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out delay-150">
+          <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out delay-150">
             {article.date}
           </span>
-          <span className="font-sans-wedding text-[0.55rem] tracking-[0.1em] uppercase text-muted-foreground/0 group-hover:text-muted-foreground/30 transition-all duration-500 translate-x-2 group-hover:translate-x-0 delay-200">
+          <span className="font-sans-wedding text-caption tracking-[0.1em] uppercase text-muted-foreground/0 group-hover:text-muted-foreground/60 transition-all duration-500 translate-x-2 group-hover:translate-x-0 delay-200">
             Read →
           </span>
         </div>

@@ -159,10 +159,10 @@ const CTASection = () => {
                 transition={{ delay: 0.5, duration: 0.6 }}
                 className="flex items-center justify-between mt-4"
               >
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/20">
+                <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60">
                   Jasper Park Lodge
                 </p>
-                <p className="font-serif-wedding text-[0.55rem] italic text-white/15">
+                <p className="font-serif-wedding text-caption italic text-white/60">
                   Summer 2024
                 </p>
               </motion.div>
@@ -181,7 +181,7 @@ const CTASection = () => {
                   transition={{ duration: 0.8 }}
                   className="w-8 h-px bg-white/15 origin-right hidden lg:block"
                 />
-                <p className="font-sans-wedding text-label uppercase text-white/25 tracking-[0.25em]">
+                <p className="font-sans-wedding text-label uppercase text-white/60 tracking-[0.25em]">
                   Let's Begin
                 </p>
                 <motion.span
@@ -230,7 +230,7 @@ const CTASection = () => {
                 {["Complimentary discovery call", "No obligation", "Responds within 48 hours"].map((signal, i) => (
                   <span
                     key={signal}
-                    className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-white/20 flex items-center gap-2"
+                    className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-white/60 flex items-center gap-2"
                   >
                     {i > 0 && <span className="w-1 h-1 rounded-full bg-white/10" />}
                     {signal}
@@ -252,7 +252,7 @@ const CTASection = () => {
                   animate={{ opacity: [0.5, 1, 0.5], scale: [0.9, 1.1, 0.9] }}
                   transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                 />
-                <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/25">
+                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/60">
                   Currently accepting Spring & Summer 2026
                 </span>
               </motion.div>

@@ -145,7 +145,7 @@ const FAQSection = () => {
             <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.1))" }} />
             <span className="w-6 h-px bg-border/25" />
           </div>
-          <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-muted-foreground/20 text-center mt-4">
+          <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground/60 text-center mt-4">
             More answers on our <a href="/faq" className="underline underline-offset-4 hover:text-primary transition-colors">FAQ page</a>
           </p>
         </ScrollReveal>
