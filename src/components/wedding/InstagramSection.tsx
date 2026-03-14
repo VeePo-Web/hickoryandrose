@@ -210,7 +210,7 @@ const InstagramSection = () => {
             </div>
             
             {/* Hashtags */}
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.2em] uppercase text-muted-foreground/20 text-center mt-5">
+            <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground/60 text-center mt-5">
               #HickoryAndRose · #RefinedRusticElegance
             </p>
           </div>
