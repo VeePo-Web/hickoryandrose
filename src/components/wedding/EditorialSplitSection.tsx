@@ -67,7 +67,7 @@ const EditorialSplitSection = () => {
           style={{ y: floatingTextY }}
           aria-hidden="true"
         >
-          <span className="font-sans-wedding text-[0.45rem] tracking-[0.25em] uppercase text-primary-foreground/10 rotate-90 inline-block origin-top-right">
+          <span className="font-sans-wedding text-caption tracking-[0.25em] uppercase text-primary-foreground/60 rotate-90 inline-block origin-top-right">
             Design Philosophy
           </span>
         </motion.div>
