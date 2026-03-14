@@ -242,12 +242,12 @@ const ArticleCard = ({
             <motion.div
               className="h-px bg-primary/30 w-0 group-hover:w-8 transition-all duration-500 origin-left"
             />
-            <span className="font-sans-wedding text-[0.6rem] tracking-[0.12em] uppercase text-muted-foreground/30 group-hover:text-primary/60 transition-colors duration-500">
+            <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60 group-hover:text-primary/60 transition-colors duration-500">
               {article.date}
             </span>
           </div>
           {/* Read indicator */}
-          <span className="font-sans-wedding text-[0.55rem] tracking-[0.1em] uppercase text-muted-foreground/0 group-hover:text-muted-foreground/30 transition-all duration-500 translate-x-2 group-hover:translate-x-0">
+          <span className="font-sans-wedding text-caption tracking-[0.1em] uppercase text-muted-foreground/0 group-hover:text-muted-foreground/60 transition-all duration-500 translate-x-2 group-hover:translate-x-0">
             Read →
           </span>
         </div>

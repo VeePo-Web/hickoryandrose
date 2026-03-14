@@ -94,7 +94,7 @@ const JournalFeatured = ({ article }: JournalFeaturedProps) => (
               </p>
             </div>
             <div className="flex items-center justify-between">
-              <span className="font-sans-wedding text-[0.6rem] tracking-[0.12em] uppercase text-muted-foreground/30">
+              <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60">
                 {article.date}
               </span>
               {/* CTA with gold underline expand */}

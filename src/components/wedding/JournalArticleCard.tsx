@@ -103,10 +103,10 @@ const JournalArticleCard = ({ article, index }: JournalArticleCardProps) => (
           {article.excerpt}
         </p>
         <div className="mt-4 flex items-center justify-between">
-          <span className="font-sans-wedding text-[0.6rem] tracking-[0.12em] uppercase text-muted-foreground/30 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out delay-150">
+          <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out delay-150">
             {article.date}
           </span>
-          <span className="font-sans-wedding text-[0.55rem] tracking-[0.1em] uppercase text-muted-foreground/0 group-hover:text-muted-foreground/30 transition-all duration-500 translate-x-2 group-hover:translate-x-0 delay-200">
+          <span className="font-sans-wedding text-caption tracking-[0.1em] uppercase text-muted-foreground/0 group-hover:text-muted-foreground/60 transition-all duration-500 translate-x-2 group-hover:translate-x-0 delay-200">
             Read →
           </span>
         </div>

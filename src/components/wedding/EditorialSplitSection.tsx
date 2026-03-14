@@ -289,7 +289,7 @@ const EditorialSplitSection = () => {
         </motion.div>
         
         {/* Frame number */}
-        <span className="absolute top-4 right-4 font-sans-wedding text-[0.5rem] tracking-[0.2em] text-white/0 group-hover:text-white/25 transition-colors duration-500 tabular-nums">
+        <span className="absolute top-4 right-4 font-sans-wedding text-caption tracking-[0.2em] text-white/0 group-hover:text-white/60 transition-colors duration-500 tabular-nums">
           FR03
         </span>
       </div>

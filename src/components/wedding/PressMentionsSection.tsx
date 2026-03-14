@@ -183,7 +183,7 @@ const PressMentionsSection = () => {
               />
             </div>
             <p className="font-script text-lg text-primary/10">Hickory & Rose</p>
-            <p className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-muted-foreground/15">
+            <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground/60">
               Recognized across Canada & beyond
             </p>
           </div>

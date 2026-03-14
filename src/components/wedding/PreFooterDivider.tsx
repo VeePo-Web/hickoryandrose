@@ -158,7 +158,7 @@ const PreFooterDivider = () => {
                 {["Complimentary Discovery Call", "No Commitment Required"].map((signal, i) => (
                   <span
                     key={signal}
-                    className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/25"
+                    className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60"
                   >
                     {i > 0 && <span className="mr-3">·</span>}
                     {signal}

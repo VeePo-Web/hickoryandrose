@@ -47,7 +47,7 @@ const ServiceComparison = () => (
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.3, duration: 0.4 }}
-                      className="font-sans-wedding text-[0.45rem] tracking-[0.15em] uppercase px-2.5 py-1 border shimmer-gold"
+                      className="font-sans-wedding text-caption tracking-[0.15em] uppercase px-2.5 py-1 border shimmer-gold"
                       style={{
                         borderColor: "hsl(var(--gold) / 0.3)",
                         color: "hsl(var(--gold))",

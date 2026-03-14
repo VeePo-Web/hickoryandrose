@@ -82,7 +82,7 @@ const AboutProcessRibbon = () => (
         <div className="text-center">
           <p className="font-serif-wedding text-sm italic text-primary-foreground/75 mb-6">
             "It felt like relief from the first call."
-            <span className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase not-italic ml-2 text-primary-foreground/65">— Olivia & Noah</span>
+            <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase not-italic ml-2 text-primary-foreground/65">— Olivia & Noah</span>
           </p>
           <MagneticButton to="/inquire" variant="outline-light">
             Book a Calm Consult
