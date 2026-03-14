@@ -199,7 +199,7 @@ const ArticleCard = ({
           </div>
 
           {/* Frame number */}
-          <span className="absolute top-4 right-4 font-serif-wedding text-[0.5rem] text-white/20 tabular-nums">
+          <span className="absolute top-4 right-4 font-serif-wedding text-caption text-white/60 tabular-nums">
             {String(index + 1).padStart(2, "0")}
           </span>
         </div>
