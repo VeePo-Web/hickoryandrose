@@ -217,7 +217,7 @@ const GallerySection = () => {
 
                     <div className="flex items-center gap-2 mt-1.5 translate-y-3 group-hover:translate-y-0 transition-transform duration-500 delay-150">
                       <span className="w-3 h-px bg-white/25" />
-                      <span className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-white/35">
+                      <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-white/60">
                         {photo.location}
                       </span>
                     </div>
