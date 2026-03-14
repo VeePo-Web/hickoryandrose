@@ -159,10 +159,10 @@ const CTASection = () => {
                 transition={{ delay: 0.5, duration: 0.6 }}
                 className="flex items-center justify-between mt-4"
               >
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/20">
+                <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60">
                   Jasper Park Lodge
                 </p>
-                <p className="font-serif-wedding text-[0.55rem] italic text-white/15">
+                <p className="font-serif-wedding text-caption italic text-white/60">
                   Summer 2024
                 </p>
               </motion.div>
