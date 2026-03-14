@@ -295,7 +295,7 @@ const FilmstripSection = () => {
           style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2), hsl(var(--gold) / 0.08), transparent)" }}
         />
         <div className="flex items-center justify-between">
-          <p className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-muted-foreground/15">
+          <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground/60">
             Hickory & Rose · Selected Works
           </p>
           <div className="flex items-center gap-3">
@@ -306,7 +306,7 @@ const FilmstripSection = () => {
             />
             <span className="w-8 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.15), transparent)" }} />
           </div>
-          <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] text-muted-foreground/15 tabular-nums">
+          <p className="font-sans-wedding text-caption tracking-[0.15em] text-muted-foreground/60 tabular-nums">
             2023 — 2026
           </p>
         </div>

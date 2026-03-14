@@ -253,7 +253,7 @@ const NowBookingSection = () => {
               {/* Trust element */}
               <div className="hidden md:flex items-center justify-end gap-2 mt-4">
                 <span className="w-4 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.15))" }} />
-                <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-primary-foreground/10">
+                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary-foreground/50">
                   48hr Response
                 </span>
               </div>

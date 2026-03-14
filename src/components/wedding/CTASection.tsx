@@ -252,7 +252,7 @@ const CTASection = () => {
                   animate={{ opacity: [0.5, 1, 0.5], scale: [0.9, 1.1, 0.9] }}
                   transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                 />
-                <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/25">
+                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/60">
                   Currently accepting Spring & Summer 2026
                 </span>
               </motion.div>

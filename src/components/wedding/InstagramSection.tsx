@@ -337,7 +337,7 @@ const MosaicItem = ({
         {/* Featured badge */}
         {featured && (
           <div className="absolute top-3 right-3 hidden md:block">
-            <span className="font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-white/20 bg-white/5 backdrop-blur-sm px-2 py-1">
+            <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60 bg-white/10 backdrop-blur-sm px-2 py-1">
               Featured
             </span>
           </div>

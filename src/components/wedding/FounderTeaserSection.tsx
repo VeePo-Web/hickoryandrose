@@ -349,7 +349,7 @@ const FounderTeaserSection = () => {
                     style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.5), transparent)" }}
                   />
                 </motion.div>
-                <p className="font-overline text-[0.5rem] text-muted-foreground/30 mt-3">
+                <p className="font-overline text-caption text-muted-foreground/60 mt-3">
                   Est. 2018 · Edmonton, Alberta
                 </p>
               </div>

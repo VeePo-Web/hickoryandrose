@@ -298,7 +298,7 @@ const ProcessTeaserSection = () => {
                     <p className="font-serif-wedding text-sm italic text-foreground/35 max-w-sm leading-relaxed">
                       "We don't just coordinate — we protect the feeling of your day."
                     </p>
-                    <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-muted-foreground/20 mt-2">
+                    <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground/60 mt-2">
                       — Hickory & Rose Philosophy
                     </p>
                   </div>

@@ -315,7 +315,7 @@ const TestimonialSection = () => {
               </div>
               {/* Gallery caption with ornament */}
               <div className="mt-4 flex items-center justify-between">
-                <span className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/25">
+                <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60">
                   Real Hickory & Rose Weddings
                 </span>
                 <div className="flex items-center gap-2">
