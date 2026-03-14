@@ -202,7 +202,7 @@ const GallerySection = () => {
                   {/* Hover editorial overlay */}
                   <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     {/* Category badge */}
-                    <span className="absolute top-4 left-4 font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/50 bg-white/10 backdrop-blur-sm px-2.5 py-1 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                    <span className="absolute top-4 left-4 font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/60 bg-white/10 backdrop-blur-sm px-2.5 py-1 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                       {photo.category}
                     </span>
 
