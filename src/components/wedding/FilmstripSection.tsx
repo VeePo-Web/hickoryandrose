@@ -104,13 +104,13 @@ const FilmstripSection = () => {
       {/* Section header */}
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl mb-12 md:mb-16 relative">
         <div className="flex items-center gap-4 mb-4">
-          <span className="font-serif-wedding text-sm text-primary/20 font-light">08</span>
-          <span className="w-8 h-px bg-primary/15" />
-          <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em]">
+          <span className="font-serif-wedding text-sm text-primary/60 font-light">08</span>
+          <span className="w-8 h-px bg-primary/30" />
+          <p className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.2em]">
             Selected Moments
           </p>
           <span className="flex-1 h-px bg-border/30 hidden md:block" />
-          <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] text-muted-foreground/20 tabular-nums hidden md:block">
+          <span className="font-sans-wedding text-caption tracking-[0.15em] text-muted-foreground/60 tabular-nums hidden md:block">
             {String(slides.length).padStart(2, "0")} Frames
           </span>
         </div>
