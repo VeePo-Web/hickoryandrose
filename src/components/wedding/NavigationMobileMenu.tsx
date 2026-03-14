@@ -123,7 +123,7 @@ const NavigationMobileMenu = ({ isOpen, setIsOpen, navLinks, locationPathname }:
                   }`}
                 >
                   <span className="inline-flex items-center gap-3">
-                    <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] text-muted-foreground/20 tabular-nums">
+                    <span className="font-sans-wedding text-caption tracking-[0.15em] text-muted-foreground/60 tabular-nums">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     {link.name}
