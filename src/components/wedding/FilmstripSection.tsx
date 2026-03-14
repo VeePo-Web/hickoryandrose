@@ -197,7 +197,7 @@ const FilmstripSection = () => {
                 FR{String(i + 1).padStart(2, "0")}
               </span>
               {/* Category badge */}
-              <span className="absolute top-3 left-3 font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-white/0 group-hover:text-white/50 transition-colors duration-500 border border-white/0 group-hover:border-white/20 px-2 py-0.5">
+              <span className="absolute top-3 left-3 font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/0 group-hover:text-white/70 transition-colors duration-500 border border-white/0 group-hover:border-white/30 px-2 py-0.5">
                 {slide.category}
               </span>
               {/* Hover caption with story snippet */}
