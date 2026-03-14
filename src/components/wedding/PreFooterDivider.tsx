@@ -136,7 +136,7 @@ const PreFooterDivider = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.35 }}
-                      className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-foreground/40 font-light inline-block"
+                      className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-foreground/60 font-light inline-block"
                     >
                       {seasonSlots[activeSeason].season} — <span className={seasonSlots[activeSeason].accent ? "text-primary/60" : "text-muted-foreground/40"}>{seasonSlots[activeSeason].status}</span>
                     </motion.span>
