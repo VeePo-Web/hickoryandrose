@@ -191,7 +191,7 @@ const EditorialImageBreak = () => {
               className="w-1 h-1 rotate-45"
               style={{ background: "hsl(var(--gold) / 0.3)" }}
             />
-            <span className="font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-white/25">
+            <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60">
               Calligraphy
             </span>
           </motion.div>
