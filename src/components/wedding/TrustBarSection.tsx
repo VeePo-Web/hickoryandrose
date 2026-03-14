@@ -143,7 +143,7 @@ const TrustBarSection = () => {
                 
                 <div className="flex items-baseline gap-4 md:gap-6 relative">
                   {/* Index */}
-                  <span className="font-serif-wedding text-xs text-primary/15 font-light w-5 tabular-nums group-hover:text-primary/40 transition-colors duration-500">
+                  <span className="font-serif-wedding text-xs text-primary/40 font-light w-5 tabular-nums group-hover:text-primary/60 transition-colors duration-500">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   {/* Publication name */}
