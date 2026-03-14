@@ -73,7 +73,7 @@ const JournalArticleCard = ({ article, index }: JournalArticleCardProps) => (
                   style={{ filter: "drop-shadow(0 0 3px hsl(var(--gold) / 0.3))" }}
                 />
               </svg>
-              <span className="absolute font-sans-wedding text-[0.4rem] text-white/50 tabular-nums font-light">
+              <span className="absolute font-sans-wedding text-caption text-white/60 tabular-nums font-light">
                 {article.readTime.replace(" read", "").replace(" min", "")}
               </span>
             </div>
