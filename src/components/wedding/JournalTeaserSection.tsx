@@ -181,7 +181,7 @@ const ArticleCard = ({
 
           {/* Category tag */}
           <div className="absolute top-4 left-4">
-            <span className="font-sans-wedding text-[0.55rem] tracking-[0.18em] uppercase text-white/70 bg-foreground/30 backdrop-blur-sm px-3 py-1.5">
+            <span className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/70 bg-foreground/30 backdrop-blur-sm px-3 py-1.5">
               {article.category}
             </span>
           </div>
