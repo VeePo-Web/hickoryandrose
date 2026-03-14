@@ -97,7 +97,7 @@ const BackToTop = forwardRef<HTMLDivElement>((_, ref) => {
                   animate={{ opacity: 1, x: 0, scale: 1 }}
                   exit={{ opacity: 0, x: 8, scale: 0.9 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute right-full mr-3 whitespace-nowrap font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-foreground/40 bg-background/90 backdrop-blur-sm px-3 py-1.5 border border-border/30 pointer-events-none"
+                  className="absolute right-full mr-3 whitespace-nowrap font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground bg-background/90 backdrop-blur-sm px-3 py-1.5 border border-border/30 pointer-events-none"
                 >
                   Back to Top
                 </motion.span>

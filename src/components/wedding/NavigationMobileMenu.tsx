@@ -177,10 +177,10 @@ const NavigationMobileMenu = ({ isOpen, setIsOpen, navLinks, locationPathname }:
           transition={{ delay: 0.6, duration: 0.4 }}
           className="pb-8 text-center"
         >
-          <p className="font-sans-wedding text-[0.625rem] tracking-[0.15em] uppercase text-muted-foreground/50 font-light">
+          <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground font-light">
             Edmonton · Alberta · The Rockies
           </p>
-          <p className="font-sans-wedding text-[0.5rem] tracking-[0.1em] text-muted-foreground/20 mt-1.5">
+          <p className="font-sans-wedding text-caption tracking-[0.1em] text-muted-foreground/60 mt-1.5">
             Now booking 2025 · 2026
           </p>
         </motion.div>

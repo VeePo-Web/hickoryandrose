@@ -315,11 +315,11 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                 transition={{ duration: 0.3, delay: 0.75 }}
                 className="absolute bottom-10 flex items-center gap-3"
               >
-                <span className="w-5 h-px bg-background/6" />
-                <span className="font-sans-wedding text-[0.4rem] tracking-[0.35em] uppercase text-background/8 font-light">
+                <span className="w-5 h-px bg-background/15" />
+                <span className="font-sans-wedding text-caption tracking-[0.35em] uppercase text-background/50 font-light">
                   Edmonton · Alberta · Est. 2018
                 </span>
-                <span className="w-5 h-px bg-background/6" />
+                <span className="w-5 h-px bg-background/15" />
               </motion.div>
             </motion.div>
           </>

@@ -67,7 +67,7 @@ const HeroSidebars = ({ sideTextY, activeSeasonIdx, seasonAvailability }: HeroSi
             transition={{ duration: 0.4 }}
             className="text-center"
           >
-            <span className="font-serif-wedding text-[0.6rem] text-white/25 block" style={{ writingMode: "vertical-rl" }}>
+            <span className="font-serif-wedding text-caption text-white/60 block" style={{ writingMode: "vertical-rl" }}>
               {seasonAvailability[activeSeasonIdx].label}
             </span>
           </motion.div>
