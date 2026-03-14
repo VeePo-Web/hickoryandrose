@@ -230,7 +230,7 @@ const CTASection = () => {
                 {["Complimentary discovery call", "No obligation", "Responds within 48 hours"].map((signal, i) => (
                   <span
                     key={signal}
-                    className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-white/20 flex items-center gap-2"
+                    className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-white/60 flex items-center gap-2"
                   >
                     {i > 0 && <span className="w-1 h-1 rounded-full bg-white/10" />}
                     {signal}
