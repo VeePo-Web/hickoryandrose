@@ -114,12 +114,12 @@ const PortfolioMasonryGrid = ({ stories }: PortfolioMasonryGridProps) => {
                     </div>
 
                     {/* Category badge */}
-                    <span className="absolute top-3 left-3 mt-6 font-sans-wedding text-[0.45rem] tracking-[0.18em] uppercase text-white/0 group-hover:text-white/50 transition-colors duration-500 bg-white/0 group-hover:bg-white/10 backdrop-blur-sm px-2 py-0.5 z-20">
+                    <span className="absolute top-3 left-3 mt-6 font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/0 group-hover:text-white/70 transition-colors duration-500 bg-white/0 group-hover:bg-white/15 backdrop-blur-sm px-2 py-0.5 z-20">
                       {story.category}
                     </span>
 
                     {/* Frame index */}
-                    <span className="absolute top-3 right-3 font-serif-wedding text-[0.5rem] text-white/0 group-hover:text-white/25 transition-colors duration-500 tabular-nums z-20">
+                    <span className="absolute top-3 right-3 font-serif-wedding text-caption text-white/0 group-hover:text-white/60 transition-colors duration-500 tabular-nums z-20">
                       {String(index + 1).padStart(2, "0")}
                     </span>
 
