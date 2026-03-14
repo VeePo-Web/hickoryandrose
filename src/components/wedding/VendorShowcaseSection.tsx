@@ -200,7 +200,7 @@ const VendorShowcaseSection = () => {
               style={{ background: "linear-gradient(90deg, hsl(var(--border) / 0.3), transparent)" }}
             />
           </div>
-          <p className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/20 text-center mt-4">
+          <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground/60 text-center mt-4">
             Partnerships built on trust & shared excellence
           </p>
 
