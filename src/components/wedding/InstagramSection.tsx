@@ -116,7 +116,7 @@ const InstagramSection = () => {
               <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light leading-relaxed">
                 Behind the scenes, real weddings, and the details that make it all come together.
               </p>
-              <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/20 mt-3 inline-flex items-center gap-2">
+              <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground/60 mt-3 inline-flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary/25 animate-pulse" />
                 Updated weekly
               </span>
