@@ -114,7 +114,7 @@ const Portfolio = () => {
                 <div className="group">
                   <p className="font-serif-wedding text-2xl md:text-3xl text-primary-foreground/50 font-light group-hover:text-primary-foreground/70 transition-colors duration-500">{stat.value}</p>
                   <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }} className="w-6 h-px mx-auto my-2 origin-center" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }} />
-                  <p className="font-sans-wedding text-[0.5rem] md:text-[0.55rem] tracking-[0.18em] uppercase text-primary-foreground/25">{stat.label}</p>
+                  <p className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-primary-foreground/60">{stat.label}</p>
                 </div>
               </ScrollReveal>
             ))}
