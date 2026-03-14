@@ -99,7 +99,7 @@ const EditorialSplitSection = () => {
         <ScrollReveal>
           <div className="max-w-md relative">
             {/* Index marker */}
-            <span className="font-serif-wedding text-sm text-primary-foreground/15 block mb-6">
+            <span className="font-serif-wedding text-sm text-primary-foreground/60 block mb-6">
               03
             </span>
 
