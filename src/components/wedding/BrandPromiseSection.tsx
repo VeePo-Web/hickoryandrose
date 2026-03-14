@@ -207,7 +207,7 @@ const BrandPromiseSection = () => {
                   />
                 </div>
                 <div className="md:col-span-3 relative">
-                  <p className="font-overline text-primary/70 text-[0.6rem] group-hover:tracking-[0.25em] transition-all duration-500">
+                  <p className="font-overline text-primary/70 group-hover:tracking-[0.25em] transition-all duration-500">
                     {pillar.label}
                   </p>
                   <motion.div
