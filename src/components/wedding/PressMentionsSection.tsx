@@ -59,7 +59,7 @@ const PressMentionsSection = () => {
               transition={{ duration: 0.6 }}
             />
             <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.1))" }} />
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.3em] uppercase text-muted-foreground/25 font-light">
+            <p className="font-sans-wedding text-caption tracking-[0.3em] uppercase text-muted-foreground/60 font-light">
               As Featured In
             </p>
             <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.1))" }} />
