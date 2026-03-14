@@ -278,11 +278,11 @@ const MosaicItem = ({
                   initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/40 px-2 py-1 border border-white/10"
+                  className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60 px-2 py-1 border border-white/20"
                 >
                   {photo.category}
                 </motion.span>
-                <span className="font-serif-wedding text-[0.55rem] text-white/15 tabular-nums">
+                <span className="font-serif-wedding text-caption text-white/60 tabular-nums">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
