@@ -164,7 +164,7 @@ const BrandManifestoSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 1.2 }}
-          className="font-sans-wedding text-sm md:text-base text-white/30 font-light leading-relaxed max-w-md mt-10"
+          className="font-sans-wedding text-sm md:text-base text-white/60 font-light leading-relaxed max-w-md mt-10"
         >
           Every detail, placed with intention. Every moment, protected with care.
           This is the Hickory & Rose promise.
