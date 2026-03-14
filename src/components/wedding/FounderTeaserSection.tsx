@@ -186,7 +186,7 @@ const FounderTeaserSection = () => {
                       </p>
                       <div className="flex items-center gap-2 mt-2">
                         <span className="w-4 h-px bg-white/30" />
-                        <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/40">
+                        <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/60">
                           Founder · Hickory & Rose
                         </span>
                       </div>
