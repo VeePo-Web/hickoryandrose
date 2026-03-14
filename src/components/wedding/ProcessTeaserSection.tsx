@@ -140,7 +140,7 @@ const ProcessTeaserSection = () => {
               <div className="mb-16 md:mb-24">
                 {/* Section index + label */}
                 <div className="flex items-center gap-4 mb-6">
-                  <span className="font-serif-wedding text-sm text-primary/15 font-light">06</span>
+                  <span className="font-serif-wedding text-sm text-primary/60 font-light">06</span>
                   <motion.span
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
