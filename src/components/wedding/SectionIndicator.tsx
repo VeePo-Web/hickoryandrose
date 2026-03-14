@@ -100,7 +100,7 @@ const SectionIndicator = forwardRef<HTMLDivElement>((_, ref) => {
             className="writing-mode-vertical"
             style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
           >
-            <span className="font-sans-wedding text-[0.5rem] tracking-[0.25em] uppercase text-muted-foreground/20 rotate-180 inline-block">
+            <span className="font-sans-wedding text-caption tracking-[0.25em] uppercase text-muted-foreground/60 rotate-180 inline-block">
               {currentSection}
             </span>
           </motion.div>
