@@ -181,7 +181,7 @@ const CTASection = () => {
                   transition={{ duration: 0.8 }}
                   className="w-8 h-px bg-white/15 origin-right hidden lg:block"
                 />
-                <p className="font-sans-wedding text-label uppercase text-white/25 tracking-[0.25em]">
+                <p className="font-sans-wedding text-label uppercase text-white/60 tracking-[0.25em]">
                   Let's Begin
                 </p>
                 <motion.span
