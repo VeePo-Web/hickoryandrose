@@ -245,7 +245,7 @@ const BrandPromiseSection = () => {
               style={{ background: "linear-gradient(90deg, transparent, hsl(var(--border) / 0.3))" }}
             />
             <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.25), hsl(var(--gold) / 0.08))" }} />
-            <p className="font-serif-wedding text-sm italic text-muted-foreground/30">
+            <p className="font-serif-wedding text-sm italic text-muted-foreground">
               Refined rustic elegance — run with quiet luxury precision.
             </p>
             <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.25), hsl(var(--gold) / 0.08))" }} />
