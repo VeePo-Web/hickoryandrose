@@ -138,7 +138,7 @@ const GallerySection = () => {
             <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 md:mb-16 gap-6 max-w-5xl mx-auto">
               <div>
                 <div className="flex items-center gap-4 mb-4">
-                  <span className="font-serif-wedding text-sm text-primary/20 font-light">02</span>
+                  <span className="font-serif-wedding text-sm text-primary/60 font-light">02</span>
                   <span className="w-8 h-px bg-primary/15" />
                   <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em]">
                     Some Favorites
