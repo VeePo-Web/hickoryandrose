@@ -15,16 +15,16 @@ const FooterServiceAreas = forwardRef<HTMLDivElement>((_, ref) => {
 
   return (
     <div ref={ref}>
-      <p className="font-overline text-background/20 mb-5 text-[0.6rem]">
+      <p className="font-overline text-background/50 mb-5">
         Follow
       </p>
       <a
         href="https://www.instagram.com/hickoryandrose"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2.5 font-sans-wedding text-sm text-background/40 hover:text-background transition-colors duration-200 font-light group/social relative overflow-hidden"
+        className="flex items-center gap-2.5 font-sans-wedding text-sm text-background/60 hover:text-background transition-colors duration-200 font-light group/social relative overflow-hidden"
       >
-        <Instagram size={14} strokeWidth={1.5} className="text-background/20 group-hover/social:text-background/50 transition-colors duration-300" />
+        <Instagram size={14} strokeWidth={1.5} className="text-background/40 group-hover/social:text-background/60 transition-colors duration-300" />
         <span className="relative">
           @hickoryandrose
           <span
@@ -35,7 +35,7 @@ const FooterServiceAreas = forwardRef<HTMLDivElement>((_, ref) => {
       </a>
 
       <div className="mt-8">
-        <p className="font-overline text-background/20 mb-3 text-[0.6rem]">
+        <p className="font-overline text-background/50 mb-3">
           Serving
         </p>
         <div className="flex flex-wrap gap-x-1.5 gap-y-1">
@@ -46,18 +46,18 @@ const FooterServiceAreas = forwardRef<HTMLDivElement>((_, ref) => {
               onMouseEnter={() => setHoveredArea(i)}
               onMouseLeave={() => setHoveredArea(null)}
             >
-              <span className="font-sans-wedding text-[0.7rem] text-background/20 font-light group-hover/area:text-background/50 transition-colors duration-300">
+              <span className="font-sans-wedding text-caption text-background/50 font-light group-hover/area:text-background/70 transition-colors duration-300">
                 {area.name}
               </span>
               <span
-                className={`font-serif-wedding text-[0.55rem] italic text-background/15 overflow-hidden whitespace-nowrap transition-all duration-200 ${
+                className={`font-serif-wedding text-caption italic text-background/40 overflow-hidden whitespace-nowrap transition-all duration-200 ${
                   hoveredArea === i ? "opacity-100 max-w-[80px]" : "opacity-0 max-w-0"
                 }`}
               >
                 ({area.venues} venues)
               </span>
               {i < serviceAreas.length - 1 && (
-                <span className="text-background/10 mx-0.5">·</span>
+                <span className="text-background/30 mx-0.5">·</span>
               )}
             </span>
           ))}
