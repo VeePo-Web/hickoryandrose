@@ -191,7 +191,7 @@ const FilmstripSection = () => {
 
               {/* Film frame number overlay */}
               <span
-                className="absolute top-3 right-3 font-sans-wedding text-[0.5rem] tracking-[0.2em] text-white/0 group-hover:text-white/30 transition-colors duration-500 tabular-nums"
+                className="absolute top-3 right-3 font-sans-wedding text-caption tracking-[0.2em] text-white/0 group-hover:text-white/60 transition-colors duration-500 tabular-nums"
                 aria-hidden="true"
               >
                 FR{String(i + 1).padStart(2, "0")}
