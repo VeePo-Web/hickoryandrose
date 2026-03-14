@@ -210,7 +210,7 @@ const NowBookingSection = () => {
                         />
                       )}
                     </div>
-                    <p className={`font-serif-wedding text-[0.65rem] italic ${season.accent ? 'text-primary-foreground/50' : 'text-primary-foreground/25'}`}>
+                    <p className={`font-serif-wedding text-caption italic ${season.accent ? 'text-primary-foreground/60' : 'text-primary-foreground/50'}`}>
                       {season.status}
                     </p>
                   </motion.div>
