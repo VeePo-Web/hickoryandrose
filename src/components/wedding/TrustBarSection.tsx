@@ -75,7 +75,7 @@ const TrustBarSection = () => {
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
         <ScrollReveal>
           <div className="flex items-center gap-4 mb-16 md:mb-24">
-            <span className="font-serif-wedding text-sm text-primary/20 font-light">03</span>
+            <span className="font-serif-wedding text-sm text-primary/60 font-light">03</span>
             <span className="w-8 h-px bg-primary/15" />
             <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em]">
               As Featured In
