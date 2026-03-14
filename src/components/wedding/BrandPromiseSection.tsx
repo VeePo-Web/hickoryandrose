@@ -114,8 +114,8 @@ const BrandPromiseSection = () => {
                       />
                     )}
                     <div className="text-center relative">
-                      <p className="font-serif-wedding text-lg text-foreground/15 font-light">{stat.value}</p>
-                      <p className="font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-muted-foreground/20 mt-0.5">{stat.label}</p>
+                      <p className="font-serif-wedding text-lg text-foreground/40 font-light">{stat.value}</p>
+                      <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground mt-0.5">{stat.label}</p>
                     </div>
                   </div>
                 ))}
