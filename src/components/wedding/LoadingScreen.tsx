@@ -302,7 +302,7 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                   initial={{ opacity: 0 }}
                   animate={active ? { opacity: 1 } : {}}
                   transition={{ duration: 0.4, delay: 0.65 }}
-                  className="font-serif-wedding text-[0.6rem] italic text-background/8 mt-3 tracking-wide"
+                  className="font-serif-wedding text-caption italic text-background/50 mt-3 tracking-wide"
                 >
                   Luxury Wedding Planning
                 </motion.p>
