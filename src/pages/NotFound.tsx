@@ -196,7 +196,7 @@ const NotFound = () => {
                     <p className="font-sans-wedding text-sm text-white/75 group-hover:text-white transition-colors duration-300 font-light mb-1">
                       {page.label}
                     </p>
-                    <p className="font-sans-wedding text-[0.65rem] text-white/25 font-light leading-relaxed">
+                    <p className="font-sans-wedding text-caption text-white/60 font-light leading-relaxed">
                       {page.desc}
                     </p>
                     <div className="mt-3 h-px w-0 group-hover:w-full transition-all duration-700 ease-out origin-left" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
