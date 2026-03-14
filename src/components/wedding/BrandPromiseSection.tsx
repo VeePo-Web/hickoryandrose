@@ -168,7 +168,7 @@ const BrandPromiseSection = () => {
                   space for you to be fully present on the most important day of
                   your life."
                 </p>
-                <p className="font-overline text-primary/30 mt-4 text-[0.55rem]">
+                <p className="font-overline text-primary/60 mt-4 text-caption">
                   — Founder, Hickory & Rose
                 </p>
               </motion.div>
