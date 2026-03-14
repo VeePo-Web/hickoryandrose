@@ -274,7 +274,7 @@ const FounderTeaserSection = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
                   />
-                  <p className="font-overline text-[0.5rem] text-muted-foreground/40 group-hover:text-muted-foreground/60 transition-colors duration-500">
+                  <p className="font-overline text-caption text-muted-foreground/60 group-hover:text-muted-foreground/80 transition-colors duration-500">
                     {cred.label}
                   </p>
                 </motion.div>
