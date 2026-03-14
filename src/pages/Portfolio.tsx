@@ -172,7 +172,7 @@ const Portfolio = () => {
             <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">"Working with Hickory & Rose was the best decision we made. Every detail felt intentional, every moment felt protected."</blockquote>
             <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} className="w-8 h-px mx-auto mb-4 origin-center" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }} />
             <p className="font-sans-wedding text-body-sm font-light text-primary-foreground/60">Emma & James</p>
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.12em] uppercase text-primary-foreground/25 mt-2">The Glass House · Autumn 2024</p>
+            <p className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-primary-foreground/60 mt-2">The Glass House · Autumn 2024</p>
           </ScrollReveal>
         </div>
       </section>

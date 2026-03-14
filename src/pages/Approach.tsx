@@ -606,7 +606,7 @@ const Approach = () => {
 
             <div className="flex items-center justify-center gap-3 mt-3">
               <span className="w-4 h-px bg-primary-foreground/10" />
-              <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-primary-foreground/20">Est. 2018</span>
+              <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-primary-foreground/60">Est. 2018</span>
               <span className="w-4 h-px bg-primary-foreground/10" />
             </div>
           </ScrollReveal>
