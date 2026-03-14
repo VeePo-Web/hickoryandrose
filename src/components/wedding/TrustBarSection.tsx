@@ -182,7 +182,7 @@ const TrustBarSection = () => {
                   <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground hidden md:inline group-hover:text-muted-foreground transition-colors duration-500">
                     {pub.category}
                   </span>
-                  <span className="font-serif-wedding text-xs text-muted-foreground/15 font-light tabular-nums group-hover:text-muted-foreground/40 transition-colors duration-500">
+                  <span className="font-serif-wedding text-xs text-muted-foreground font-light tabular-nums group-hover:text-muted-foreground transition-colors duration-500">
                     {pub.year}
                   </span>
                 </div>
