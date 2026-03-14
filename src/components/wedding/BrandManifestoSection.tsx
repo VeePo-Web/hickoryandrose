@@ -188,7 +188,7 @@ const BrandManifestoSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 1.6 }}
-          className="font-script text-xl text-white/10 mt-6"
+          className="font-script text-xl text-white/30 mt-6"
         >
           Hickory & Rose
         </motion.p>
