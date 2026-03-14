@@ -205,7 +205,7 @@ const FilmstripSection = () => {
                 <p className="font-serif-wedding text-xs text-white/70 italic leading-relaxed mb-2">
                   {slide.snippet}
                 </p>
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/40">
+                <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/60">
                   {slide.season}
                 </p>
               </div>
