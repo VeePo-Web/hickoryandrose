@@ -25,7 +25,7 @@ const HeroSidebars = ({ sideTextY, activeSeasonIdx, seasonAvailability }: HeroSi
         transition={{ delay: 3.4, duration: 0.8 }}
       />
       <span
-        className="font-sans-wedding text-[0.45rem] tracking-[0.3em] uppercase text-white/20 font-light"
+        className="font-sans-wedding text-caption tracking-[0.3em] uppercase text-white/60 font-light"
         style={{ writingMode: "vertical-rl" }}
       >
         Scroll to Explore
