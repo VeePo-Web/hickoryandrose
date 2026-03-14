@@ -247,7 +247,7 @@ const ProcessTeaserSection = () => {
                         <h3 className="font-serif-wedding text-display-md text-foreground group-hover:text-primary transition-colors duration-500">
                           {step.title}
                         </h3>
-                        <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-primary/35 mt-2">
+                        <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-primary/60 mt-2">
                           {step.subtitle}
                         </p>
                         <motion.div
