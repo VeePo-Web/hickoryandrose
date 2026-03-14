@@ -226,8 +226,8 @@ const TrustBarSection = () => {
               </div>
               <span className="w-px h-6 bg-border/20" />
               <div className="text-center">
-                <span className="font-serif-wedding text-lg text-primary/20 block">8</span>
-                <span className="font-sans-wedding text-[0.45rem] tracking-[0.15em] uppercase text-muted-foreground/20">Years</span>
+                <span className="font-serif-wedding text-lg text-primary/60 block">8</span>
+                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground">Years</span>
               </div>
               <span className="w-px h-6 bg-border/20" />
               <div className="text-center">
