@@ -280,7 +280,7 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                   initial={{ opacity: 0 }}
                   animate={active ? { opacity: 1 } : {}}
                   transition={{ duration: 0.3, delay: 0.5 }}
-                  className="font-sans-wedding text-[0.45rem] tracking-[0.3em] text-background/10 mt-3 tabular-nums"
+                  className="font-sans-wedding text-caption tracking-[0.3em] text-background/50 mt-3 tabular-nums"
                 >
                   {Math.round(progress)}%
                 </motion.p>
