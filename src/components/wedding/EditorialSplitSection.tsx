@@ -283,7 +283,7 @@ const EditorialSplitSection = () => {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="absolute bottom-6 right-6"
         >
-          <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-white/30 group-hover:text-white/50 transition-colors duration-500">
+          <p className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-white/60 group-hover:text-white/70 transition-colors duration-500">
             Detail · Calligraphy & Gold
           </p>
         </motion.div>
