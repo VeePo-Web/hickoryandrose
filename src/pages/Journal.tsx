@@ -164,7 +164,7 @@ const Journal = () => {
                         <span className="relative z-10">Subscribe</span>
                       </button>
                     </form>
-                    <p className="font-sans-wedding text-[0.6rem] tracking-[0.08em] text-muted-foreground/30 font-light">One email per month · Unsubscribe anytime</p>
+                    <p className="font-sans-wedding text-caption tracking-[0.08em] text-muted-foreground/60 font-light">One email per month · Unsubscribe anytime</p>
                   </div>
                 </div>
               </div>
