@@ -163,7 +163,7 @@ const BrandPromiseSection = () => {
                   style={{ background: "linear-gradient(90deg, hsl(var(--primary) / 0.3), transparent)" }}
                 />
                 
-                <p className="font-sans-wedding text-body-sm text-muted-foreground/50 leading-relaxed font-light italic">
+                <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light italic">
                   "Our approach isn't just about logistics — it's about creating
                   space for you to be fully present on the most important day of
                   your life."
