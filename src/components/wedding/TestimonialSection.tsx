@@ -301,10 +301,10 @@ const TestimonialSection = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         <div className="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/50 block">
+                          <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/70 block">
                             {img.label}
                           </span>
-                          <p className="font-serif-wedding text-[0.6rem] text-white/80 italic mt-0.5">
+                          <p className="font-serif-wedding text-caption text-white/80 italic mt-0.5">
                             {img.venue}
                           </p>
                         </div>
