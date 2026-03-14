@@ -144,7 +144,7 @@ const VendorShowcaseSection = () => {
                       transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
                     />
                     <span
-                      className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/30 group-hover:text-muted-foreground/50 transition-all duration-500 px-2 py-0.5 border border-transparent group-hover:border-primary/10"
+                      className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground/60 group-hover:text-muted-foreground/80 transition-all duration-500 px-2 py-0.5 border border-transparent group-hover:border-primary/15"
                       style={hoveredIndex === index ? { background: "linear-gradient(135deg, hsl(var(--gold) / 0.04), transparent)" } : undefined}
                     >
                       {vendor.category}
