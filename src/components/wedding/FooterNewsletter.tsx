@@ -28,7 +28,7 @@ const FooterNewsletter = () => {
           className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
         >
           <div className="md:col-span-5">
-            <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-background/20 mb-3">
+            <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-background/60 mb-3">
               Stay Inspired
             </p>
             <h3 className="font-serif-wedding text-2xl md:text-3xl text-background/70 font-light leading-tight">
