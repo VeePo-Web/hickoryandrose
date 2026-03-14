@@ -46,7 +46,7 @@ const JournalArticleCard = ({ article, index }: JournalArticleCardProps) => (
           <div className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-white/0 group-hover:border-white/15 transition-colors duration-500" />
           <div className="absolute top-4 left-4 z-20">
             <span
-              className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/80 backdrop-blur-sm px-2.5 py-1"
+              className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/80 backdrop-blur-sm px-2.5 py-1"
               style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.25), hsl(var(--primary) / 0.2))" }}
             >
               {article.category}
