@@ -86,8 +86,8 @@ const TrustBarSection = () => {
               className="hidden md:flex items-center gap-3"
               style={{ scale: counterScale, opacity: counterOpacity }}
             >
-              <span className="font-serif-wedding text-2xl font-light text-primary/20">5+</span>
-              <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-muted-foreground/25">
+              <span className="font-serif-wedding text-2xl font-light text-primary/60">5+</span>
+              <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground">
                 Publications
               </span>
             </motion.div>
