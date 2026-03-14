@@ -130,7 +130,7 @@ const NowBookingSection = () => {
                     style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.7), hsl(var(--primary-foreground) / 0.4))" }}
                   />
                 </span>
-                <p className="font-overline text-primary-foreground/30 text-[0.55rem]">
+                <p className="font-overline text-primary-foreground/60 text-caption">
                   Currently Booking
                 </p>
               </div>
