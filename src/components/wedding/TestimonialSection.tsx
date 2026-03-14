@@ -278,7 +278,7 @@ const TestimonialSection = () => {
                       <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.4), transparent)" }} />
                     </div>
                     <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 translate-y-2 group-hover/img:translate-y-0">
-                      <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/50 block">
+                      <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/70 block">
                         {galleryImages[0].label}
                       </span>
                       <p className="font-serif-wedding text-xs text-white/80 italic mt-0.5">
