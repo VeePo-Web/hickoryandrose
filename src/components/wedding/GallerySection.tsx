@@ -140,7 +140,7 @@ const GallerySection = () => {
                 <div className="flex items-center gap-4 mb-4">
                   <span className="font-serif-wedding text-sm text-primary/60 font-light">02</span>
                   <span className="w-8 h-px bg-primary/15" />
-                  <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em]">
+                  <p className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.2em]">
                     Some Favorites
                   </p>
                 </div>
