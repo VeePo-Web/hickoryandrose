@@ -320,8 +320,8 @@ const MosaicItem = ({
         {/* Gold frame number badge with pulse on hover */}
         <div className="absolute top-2 right-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <motion.span
-            className="font-sans-wedding text-[0.4rem] tracking-[0.15em] tabular-nums text-white/40 px-2 py-1 inline-flex items-center gap-1.5 backdrop-blur-sm"
-            style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.15), hsl(var(--gold) / 0.05))", border: "1px solid hsl(var(--gold) / 0.1)" }}
+            className="font-sans-wedding text-caption tracking-[0.15em] tabular-nums text-white/60 px-2 py-1 inline-flex items-center gap-1.5 backdrop-blur-sm"
+            style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.15), hsl(var(--gold) / 0.05))", border: "1px solid hsl(var(--gold) / 0.15)" }}
             whileHover={{ scale: 1.05 }}
           >
             <motion.span
