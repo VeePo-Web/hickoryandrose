@@ -155,7 +155,7 @@ const VendorShowcaseSection = () => {
                 {/* Note + arrow */}
                 <div className="col-span-5 md:col-span-4 flex items-center justify-end gap-4">
                   <span
-                    className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/0 group-hover:text-primary/50 transition-all duration-500 hidden md:inline-flex items-center gap-1.5 backdrop-blur-sm px-2.5 py-1 border border-transparent group-hover:border-primary/10"
+                    className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-primary/0 group-hover:text-primary/60 transition-all duration-500 hidden md:inline-flex items-center gap-1.5 backdrop-blur-sm px-2.5 py-1 border border-transparent group-hover:border-primary/15"
                     style={hoveredIndex === index ? { background: "linear-gradient(135deg, hsl(var(--gold) / 0.06), hsl(var(--primary) / 0.04))" } : undefined}
                   >
                     <motion.span
