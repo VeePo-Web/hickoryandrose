@@ -291,7 +291,7 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                     initial={{ y: "100%", opacity: 0 }}
                     animate={active ? { y: "0%", opacity: 1 } : {}}
                     transition={{ duration: 0.5, delay: 0.45, ease }}
-                    className="font-sans-wedding text-[0.5rem] tracking-[0.4em] uppercase text-background/15 font-light"
+                    className="font-sans-wedding text-caption tracking-[0.4em] uppercase text-background/50 font-light"
                   >
                     Hickory & Rose
                   </motion.p>
