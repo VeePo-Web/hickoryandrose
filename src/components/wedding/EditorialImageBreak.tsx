@@ -177,26 +177,26 @@ const EditorialImageBreak = () => {
             className="flex items-center justify-center gap-6 mt-5"
             style={{ opacity: metadataOpacity }}
           >
-            <span className="font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-white/25">
+            <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60">
               Candlelight
             </span>
             <span
               className="w-1 h-1 rotate-45"
               style={{ background: "hsl(var(--gold) / 0.3)" }}
             />
-            <span className="font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-white/25">
+            <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60">
               Brass & Linen
             </span>
             <span
               className="w-1 h-1 rotate-45"
               style={{ background: "hsl(var(--gold) / 0.3)" }}
             />
-            <span className="font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-white/25">
+            <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60">
               Calligraphy
             </span>
           </motion.div>
           
-          <p className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/30 mt-4">
+          <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60 mt-4">
             Hickory & Rose · Refined Rustic Elegance
           </p>
         </motion.div>
@@ -204,10 +204,10 @@ const EditorialImageBreak = () => {
 
       {/* Corner index marks */}
       <div className="absolute bottom-6 left-6 z-20 pointer-events-none hidden md:block" aria-hidden="true">
-        <span className="font-serif-wedding text-xs text-white/15 font-light">04</span>
+        <span className="font-serif-wedding text-xs text-white/30 font-light">04</span>
       </div>
       <div className="absolute bottom-6 right-6 z-20 pointer-events-none hidden md:block" aria-hidden="true">
-        <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/15">Editorial</span>
+        <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/30">Editorial</span>
       </div>
     </section>
   );

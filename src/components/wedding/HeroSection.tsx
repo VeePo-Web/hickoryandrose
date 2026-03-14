@@ -247,7 +247,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 3.0 + i * 0.15, duration: 0.4 }}
-                className="font-sans-wedding text-[0.6rem] md:text-[0.65rem] tracking-[0.18em] uppercase text-white/25 font-light inline-flex items-center gap-6 md:gap-10"
+                className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/60 font-light inline-flex items-center gap-6 md:gap-10"
               >
                 {i > 0 && (
                   <span

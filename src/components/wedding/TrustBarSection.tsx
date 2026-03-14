@@ -75,9 +75,9 @@ const TrustBarSection = () => {
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
         <ScrollReveal>
           <div className="flex items-center gap-4 mb-16 md:mb-24">
-            <span className="font-serif-wedding text-sm text-primary/20 font-light">03</span>
+            <span className="font-serif-wedding text-sm text-primary/60 font-light">03</span>
             <span className="w-8 h-px bg-primary/15" />
-            <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em]">
+            <p className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.2em]">
               As Featured In
             </p>
             <span className="flex-1 h-px bg-border/30 hidden md:block" />
@@ -86,8 +86,8 @@ const TrustBarSection = () => {
               className="hidden md:flex items-center gap-3"
               style={{ scale: counterScale, opacity: counterOpacity }}
             >
-              <span className="font-serif-wedding text-2xl font-light text-primary/20">5+</span>
-              <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-muted-foreground/25">
+              <span className="font-serif-wedding text-2xl font-light text-primary/60">5+</span>
+              <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground">
                 Publications
               </span>
             </motion.div>
@@ -143,11 +143,11 @@ const TrustBarSection = () => {
                 
                 <div className="flex items-baseline gap-4 md:gap-6 relative">
                   {/* Index */}
-                  <span className="font-serif-wedding text-xs text-primary/15 font-light w-5 tabular-nums group-hover:text-primary/40 transition-colors duration-500">
+                  <span className="font-serif-wedding text-xs text-primary/40 font-light w-5 tabular-nums group-hover:text-primary/60 transition-colors duration-500">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   {/* Publication name */}
-                  <span className="font-serif-wedding text-2xl md:text-3xl lg:text-4xl font-light text-foreground/15 group-hover:text-foreground/70 transition-colors duration-500 tracking-tight italic">
+                  <span className="font-serif-wedding text-2xl md:text-3xl lg:text-4xl font-light text-foreground/40 group-hover:text-foreground/70 transition-colors duration-500 tracking-tight italic">
                     {pub.name}
                   </span>
                   {/* Badge - reveals on hover */}
@@ -158,7 +158,7 @@ const TrustBarSection = () => {
                         animate={{ opacity: 1, scale: 1, x: 0 }}
                         exit={{ opacity: 0, scale: 0.9, x: -8 }}
                         transition={{ duration: 0.3 }}
-                        className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-primary/60 bg-primary/5 px-2.5 py-1 hidden md:inline-flex"
+                        className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-primary/60 bg-primary/5 px-2.5 py-1 hidden md:inline-flex"
                       >
                         {pub.badge}
                       </motion.span>
@@ -179,10 +179,10 @@ const TrustBarSection = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 + index * 0.08 }}
                   />
-                  <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-muted-foreground/20 hidden md:inline group-hover:text-muted-foreground/40 transition-colors duration-500">
+                  <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground hidden md:inline group-hover:text-muted-foreground transition-colors duration-500">
                     {pub.category}
                   </span>
-                  <span className="font-serif-wedding text-xs text-muted-foreground/15 font-light tabular-nums group-hover:text-muted-foreground/40 transition-colors duration-500">
+                  <span className="font-serif-wedding text-xs text-muted-foreground font-light tabular-nums group-hover:text-muted-foreground transition-colors duration-500">
                     {pub.year}
                   </span>
                 </div>
@@ -215,24 +215,24 @@ const TrustBarSection = () => {
                 style={{ background: "linear-gradient(90deg, hsl(var(--border) / 0.4), transparent)" }}
               />
             </div>
-            <p className="font-serif-wedding text-xs italic text-muted-foreground/20">
+            <p className="font-serif-wedding text-xs italic text-muted-foreground">
               Recognized for excellence across Canada and beyond
             </p>
             {/* Trust credentials row */}
             <div className="flex items-center gap-8 mt-2">
               <div className="text-center">
-                <span className="font-serif-wedding text-lg text-primary/20 block">150+</span>
-                <span className="font-sans-wedding text-[0.45rem] tracking-[0.15em] uppercase text-muted-foreground/20">Weddings</span>
+                <span className="font-serif-wedding text-lg text-primary/60 block">150+</span>
+                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground">Weddings</span>
               </div>
               <span className="w-px h-6 bg-border/20" />
               <div className="text-center">
-                <span className="font-serif-wedding text-lg text-primary/20 block">8</span>
-                <span className="font-sans-wedding text-[0.45rem] tracking-[0.15em] uppercase text-muted-foreground/20">Years</span>
+                <span className="font-serif-wedding text-lg text-primary/60 block">8</span>
+                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground">Years</span>
               </div>
               <span className="w-px h-6 bg-border/20" />
               <div className="text-center">
-                <span className="font-serif-wedding text-lg text-primary/20 block">100%</span>
-                <span className="font-sans-wedding text-[0.45rem] tracking-[0.15em] uppercase text-muted-foreground/20">Satisfaction</span>
+                <span className="font-serif-wedding text-lg text-primary/60 block">100%</span>
+                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground">Satisfaction</span>
               </div>
             </div>
           </div>

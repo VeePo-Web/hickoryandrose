@@ -67,7 +67,7 @@ const BrandPromiseSection = () => {
               </motion.span>
               
               <div className="flex items-center gap-4 mb-6">
-                <p className="font-overline text-muted-foreground/40">
+                <p className="font-overline text-muted-foreground">
                   Our Philosophy
                 </p>
                 <motion.span
@@ -114,8 +114,8 @@ const BrandPromiseSection = () => {
                       />
                     )}
                     <div className="text-center relative">
-                      <p className="font-serif-wedding text-lg text-foreground/15 font-light">{stat.value}</p>
-                      <p className="font-sans-wedding text-[0.45rem] tracking-[0.2em] uppercase text-muted-foreground/20 mt-0.5">{stat.label}</p>
+                      <p className="font-serif-wedding text-lg text-foreground/40 font-light">{stat.value}</p>
+                      <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground mt-0.5">{stat.label}</p>
                     </div>
                   </div>
                 ))}
@@ -163,12 +163,12 @@ const BrandPromiseSection = () => {
                   style={{ background: "linear-gradient(90deg, hsl(var(--primary) / 0.3), transparent)" }}
                 />
                 
-                <p className="font-sans-wedding text-body-sm text-muted-foreground/50 leading-relaxed font-light italic">
+                <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light italic">
                   "Our approach isn't just about logistics — it's about creating
                   space for you to be fully present on the most important day of
                   your life."
                 </p>
-                <p className="font-overline text-primary/30 mt-4 text-[0.55rem]">
+                <p className="font-overline text-primary/60 mt-4 text-caption">
                   — Founder, Hickory & Rose
                 </p>
               </motion.div>
@@ -207,7 +207,7 @@ const BrandPromiseSection = () => {
                   />
                 </div>
                 <div className="md:col-span-3 relative">
-                  <p className="font-overline text-primary/70 text-[0.6rem] group-hover:tracking-[0.25em] transition-all duration-500">
+                  <p className="font-overline text-primary/70 group-hover:tracking-[0.25em] transition-all duration-500">
                     {pillar.label}
                   </p>
                   <motion.div
@@ -220,7 +220,7 @@ const BrandPromiseSection = () => {
                   />
                 </div>
                 <div className="md:col-span-7">
-                  <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light leading-relaxed group-hover:text-muted-foreground/80 transition-colors duration-500">
+                  <p className="font-sans-wedding text-body-sm text-muted-foreground font-light leading-relaxed group-hover:text-muted-foreground transition-colors duration-500">
                     {pillar.detail}
                   </p>
                   {/* Hover keyword emphasis */}
@@ -245,7 +245,7 @@ const BrandPromiseSection = () => {
               style={{ background: "linear-gradient(90deg, transparent, hsl(var(--border) / 0.3))" }}
             />
             <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.25), hsl(var(--gold) / 0.08))" }} />
-            <p className="font-serif-wedding text-sm italic text-muted-foreground/30">
+            <p className="font-serif-wedding text-sm italic text-muted-foreground">
               Refined rustic elegance — run with quiet luxury precision.
             </p>
             <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.25), hsl(var(--gold) / 0.08))" }} />

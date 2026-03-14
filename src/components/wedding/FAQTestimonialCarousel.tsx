@@ -28,7 +28,7 @@ const FAQTestimonialCarousel = ({ testimonials }: FAQTestimonialCarouselProps) =
     <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
         <ScrollReveal>
-          <p className="font-overline text-muted-foreground/40 mb-8">What Couples Say</p>
+          <p className="font-overline text-muted-foreground mb-8">What Couples Say</p>
           <div className="min-h-[120px] relative">
             <AnimatePresence mode="wait">
               <motion.div
@@ -41,10 +41,10 @@ const FAQTestimonialCarousel = ({ testimonials }: FAQTestimonialCarouselProps) =
                 <blockquote className="font-serif-wedding text-pull-quote italic text-foreground/70 leading-relaxed mb-6">
                   "{testimonials[activeTestimonial].quote}"
                 </blockquote>
-                <p className="font-sans-wedding text-body-sm font-light text-foreground/50">
+                <p className="font-sans-wedding text-body-sm font-light text-foreground/60">
                   {testimonials[activeTestimonial].couple}
                 </p>
-                <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/30 mt-1">
+                <p className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground mt-1">
                   {testimonials[activeTestimonial].venue}
                 </p>
               </motion.div>

@@ -121,7 +121,7 @@ const BrandManifestoSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           />
-          <span className="font-sans-wedding text-[0.5rem] tracking-[0.3em] uppercase text-white/25 font-light">
+          <span className="font-sans-wedding text-caption tracking-[0.3em] uppercase text-white/60 font-light">
             Our Manifesto
           </span>
           <motion.span
@@ -164,7 +164,7 @@ const BrandManifestoSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 1.2 }}
-          className="font-sans-wedding text-sm md:text-base text-white/30 font-light leading-relaxed max-w-md mt-10"
+          className="font-sans-wedding text-sm md:text-base text-white/60 font-light leading-relaxed max-w-md mt-10"
         >
           Every detail, placed with intention. Every moment, protected with care.
           This is the Hickory & Rose promise.
@@ -188,7 +188,7 @@ const BrandManifestoSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 1.6 }}
-          className="font-script text-xl text-white/10 mt-6"
+          className="font-script text-xl text-white/30 mt-6"
         >
           Hickory & Rose
         </motion.p>
@@ -206,7 +206,7 @@ const BrandManifestoSection = () => {
 
       {/* Corner index */}
       <motion.span
-        className="absolute bottom-8 right-8 font-serif-wedding text-xs text-white/10 tracking-widest"
+        className="absolute bottom-8 right-8 font-serif-wedding text-xs text-white/30 tracking-widest"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

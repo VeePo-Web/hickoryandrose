@@ -138,9 +138,9 @@ const GallerySection = () => {
             <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 md:mb-16 gap-6 max-w-5xl mx-auto">
               <div>
                 <div className="flex items-center gap-4 mb-4">
-                  <span className="font-serif-wedding text-sm text-primary/20 font-light">02</span>
+                  <span className="font-serif-wedding text-sm text-primary/60 font-light">02</span>
                   <span className="w-8 h-px bg-primary/15" />
-                  <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em]">
+                  <p className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.2em]">
                     Some Favorites
                   </p>
                 </div>
@@ -202,7 +202,7 @@ const GallerySection = () => {
                   {/* Hover editorial overlay */}
                   <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     {/* Category badge */}
-                    <span className="absolute top-4 left-4 font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/50 bg-white/10 backdrop-blur-sm px-2.5 py-1 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                    <span className="absolute top-4 left-4 font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/60 bg-white/10 backdrop-blur-sm px-2.5 py-1 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                       {photo.category}
                     </span>
 
@@ -217,19 +217,19 @@ const GallerySection = () => {
 
                     <div className="flex items-center gap-2 mt-1.5 translate-y-3 group-hover:translate-y-0 transition-transform duration-500 delay-150">
                       <span className="w-3 h-px bg-white/25" />
-                      <span className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-white/35">
+                      <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-white/60">
                         {photo.location}
                       </span>
                     </div>
                   </div>
 
                   {/* Frame index */}
-                  <span className="absolute top-3 right-3 font-serif-wedding text-[0.5rem] text-white/0 group-hover:text-white/25 transition-colors duration-500 tabular-nums">
+                  <span className="absolute top-3 right-3 font-serif-wedding text-caption text-white/0 group-hover:text-white/60 transition-colors duration-500 tabular-nums">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
                   {/* Season badge — bottom-left */}
-                  <span className="absolute bottom-3 left-3 font-sans-wedding text-[0.45rem] tracking-[0.1em] uppercase text-white/0 group-hover:text-white/20 transition-colors duration-500 delay-200">
+                  <span className="absolute bottom-3 left-3 font-sans-wedding text-caption tracking-[0.1em] uppercase text-white/0 group-hover:text-white/60 transition-colors duration-500 delay-200">
                     {photo.season}
                   </span>
                 </button>
@@ -275,7 +275,7 @@ const GallerySection = () => {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 + i * 0.1 }}
-                  className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-muted-foreground/20 flex items-center gap-2"
+                  className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground flex items-center gap-2"
                 >
                   {i > 0 && <span className="w-1 h-1 rotate-45" style={{ background: "hsl(var(--gold) / 0.15)" }} />}
                   {label}
@@ -387,18 +387,18 @@ const GallerySection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
                 >
-                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-background/20 block mb-2">
+                  <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-background/50 block mb-2">
                     {photos[selectedIndex].category} · {photos[selectedIndex].season}
                   </span>
                   <p className="font-serif-wedding text-xl text-background/70">
                     {photos[selectedIndex].title}
                   </p>
-                  <p className="font-serif-wedding text-xs italic text-background/25 mt-3 max-w-sm">
+                  <p className="font-serif-wedding text-xs italic text-background/50 mt-3 max-w-sm">
                     "{photos[selectedIndex].story}"
                   </p>
                   <div className="flex items-center justify-center gap-3 mt-4">
                     <span className="w-6 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.2))" }} />
-                    <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-background/15">
+                    <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-background/50">
                       {photos[selectedIndex].location}
                     </span>
                     <span className="w-6 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold, 38 60% 55%) / 0.2), transparent)" }} />

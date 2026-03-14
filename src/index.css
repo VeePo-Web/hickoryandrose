@@ -65,8 +65,8 @@ html.lenis, html.lenis body {
     --text-primary: 30 15% 20%;
     --text-secondary: 30 12% 32%;
     --text-tertiary: 30 10% 42%;
-    --text-decorative: 30 10% 55%;
-    --text-ghost: 30 8% 68%;
+    --text-decorative: 30 10% 45%;
+    --text-ghost: 30 8% 55%;
     --teal: 180 25% 35%;
     --teal-light: 180 20% 90%;
     --gold: 40 50% 55%;
@@ -121,8 +121,8 @@ html.lenis, html.lenis body {
     --text-primary: 40 20% 92%;
     --text-secondary: 30 10% 72%;
     --text-tertiary: 30 10% 58%;
-    --text-decorative: 30 8% 48%;
-    --text-ghost: 30 6% 38%;
+    --text-decorative: 30 8% 55%;
+    --text-ghost: 30 6% 48%;
     --teal: 180 20% 45%;
     --teal-light: 180 10% 18%;
     --gold: 40 40% 50%;
@@ -188,7 +188,7 @@ html.lenis, html.lenis body {
 
   .font-overline {
     font-family: 'Jost', sans-serif;
-    font-size: 0.6875rem;
+    font-size: 0.8125rem;
     font-weight: 400;
     letter-spacing: 0.2em;
     text-transform: uppercase;

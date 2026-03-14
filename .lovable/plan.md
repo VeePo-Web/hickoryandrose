@@ -1,122 +1,191 @@
 
+# Wedding Website - Multi-Page Implementation Plan
 
-# Full Text Readability Audit — Fix Low-Contrast & Undersized Text
+## Overview
+Creating a complete multi-page wedding website for "Alicia & Andres" with faithful recreation of the design, including 5 main pages matching the navigation structure.
 
-## Problem Scope
+## Page Structure
 
-The codebase has two systemic readability issues across 60+ files:
+Based on the navigation in the design image, we'll create these pages:
 
-### Issue 1: Text smaller than 13px (0.8125rem)
-Hundreds of instances of `text-[0.4rem]`, `text-[0.45rem]`, `text-[0.5rem]`, `text-[0.55rem]`, and `text-[0.6rem]` — these render at 6.4px, 7.2px, 8px, 8.8px, and 9.6px respectively. Even the Tailwind `font-overline` utility is 11px (`0.6875rem`). Many of these are used for functional labels like "Est. 2018", "Full Planning", venue names, stats labels, category badges, and navigation metadata.
+| Route | Page | Content |
+|-------|------|---------|
+| `/` | Home | Hero section with full navigation |
+| `/our-story` | Our Story | Couple's story with photos |
+| `/details` | Details | Location, Wedding Party, Accommodations |
+| `/schedule` | Schedule | Itinerary/Timeline for wedding weekend |
+| `/registry` | Registry | Gift registry information and links |
 
-**Minimum floor:** 13px = `0.8125rem` = Tailwind `text-xs` (12px is close but we'll use `text-[0.8125rem]` or the existing `text-body-sm` / `text-caption` tokens).
+## Design System
 
-The existing design tokens already define:
-- `text-label`: 11px (0.6875rem) — needs bump to 13px
-- `text-caption`: 11px (0.6875rem) — needs bump to 13px  
-- `text-body-sm`: 13px (0.8125rem) — this becomes the floor
+### Color Palette (to add to CSS variables)
+```text
+--wedding-sage: 65 12% 45%        (Olive/sage for hero overlay, location section)
+--wedding-cream: 40 30% 97%       (Off-white background sections)
+--wedding-text: 0 0% 20%          (Dark text color)
+--wedding-teal: 175 50% 35%       (Accent for buttons, day labels)
+```
 
-### Issue 2: Low-contrast text (grey on white/light backgrounds)
-Pervasive use of opacity modifiers that drop contrast below WCAG AA:
-- `text-muted-foreground/20` through `/40` — renders as near-invisible grey
-- `text-foreground/40`, `text-foreground/50` — washed out
-- `text-primary/20`, `text-primary/25`, `text-primary/30` — barely visible sage
-- `text-white/20` through `/35` on dark overlays — ghostly
-- `text-primary-foreground/20` through `/30` — invisible on dark sections
-- `text-brand-text-decorative` and `text-brand-text-ghost` tokens (3.5:1 and 2.2:1 ratio)
+### Typography (Google Fonts to import)
+- **Great Vibes**: Script font for "Alicia & Andres" title
+- **Cormorant Garamond**: Elegant serif for section headings
+- **Open Sans**: Clean sans-serif for body text and navigation
 
-**Minimum contrast:** Functional text must use `text-brand-text-tertiary` (5.1:1) or higher. Decorative/ambient text that is truly non-functional (watermarks, frame numbers) can stay at `text-brand-text-decorative` but must be bumped from ghost-level opacity.
+## Files to Create
 
-## Implementation Plan
+### Shared Components
+```text
+src/components/wedding/
+├── Navigation.tsx         - Persistent navigation header
+├── Footer.tsx             - RSVP footer section
+├── BranchDecoration.tsx   - Reusable SVG branch illustration
+```
 
-### Step 1: Update design tokens (2 files)
+### Page Components
+```text
+src/pages/
+├── Index.tsx              - Home page (Hero + overview)
+├── OurStory.tsx           - Our Story page
+├── Details.tsx            - Details page (Location, Party, Hotels)
+├── Schedule.tsx           - Schedule/Itinerary page
+├── Registry.tsx           - Registry page
+```
 
-**`tailwind.config.ts`** — Bump `text-label` and `text-caption` font sizes from `0.6875rem` to `0.8125rem` (13px).
+### Section Components
+```text
+src/components/wedding/
+├── HeroSection.tsx        - Full-height hero with overlay
+├── StorySection.tsx       - Story content with photo
+├── WeddingPartySection.tsx - Groomsmen/Bridesmaids tabs
+├── LocationSection.tsx    - Venue information
+├── AccommodationsSection.tsx - Hotel cards
+├── ItinerarySection.tsx   - Timeline with day tabs
+├── RegistrySection.tsx    - Registry logos and info
+```
 
-**`src/index.css`** — Update `font-overline` utility from `0.6875rem` to `0.8125rem`. Bump `--text-ghost` from 2.2:1 to at least 3.5:1 contrast. Bump `--text-decorative` from 3.5:1 to at least 4.5:1.
+## Files to Modify
 
-### Step 2: Fix undersized text across all components (~55 files)
+### 1. src/index.css
+Add wedding-specific CSS variables and Google Fonts import:
+- Import Great Vibes, Cormorant Garamond, Open Sans from Google Fonts
+- Add wedding color variables
+- Add custom font-family classes
 
-Replace all arbitrary size classes below 13px:
-- `text-[0.4rem]` / `text-[0.45rem]` / `text-[0.5rem]` / `text-[0.55rem]` → `text-caption` (now 13px)
-- `text-[0.6rem]` → `text-caption` or `text-body-sm`
-- `text-xs` (12px) for functional text → `text-[0.8125rem]`
+### 2. tailwind.config.ts
+Extend theme with:
+- Wedding color palette using CSS variables
+- Font family definitions for script, serif, sans
 
-Files with the heaviest concentration (10+ instances each):
-- `src/pages/Approach.tsx`
-- `src/pages/Services.tsx`
-- `src/pages/Portfolio.tsx`
-- `src/pages/About.tsx`
-- `src/pages/Inquire.tsx`
-- `src/pages/FAQ.tsx`
-- `src/pages/NotFound.tsx`
-- `src/components/wedding/HeroSection.tsx`
-- `src/components/wedding/Footer.tsx`
-- `src/components/wedding/GallerySection.tsx`
-- `src/components/wedding/TrustBarSection.tsx`
-- `src/components/wedding/PreFooterDivider.tsx`
-- `src/components/wedding/BrandPromiseSection.tsx`
-- `src/components/wedding/BrandManifestoSection.tsx`
-- `src/components/wedding/EditorialImageBreak.tsx`
-- `src/components/wedding/FilmstripSection.tsx`
-- `src/components/wedding/ScrollProgress.tsx`
-- `src/components/wedding/LoadingScreen.tsx`
-- `src/components/wedding/BackToTop.tsx`
-- `src/components/wedding/NavigationMobileMenu.tsx`
-- `src/components/wedding/PortfolioFeaturedStory.tsx`
-- `src/components/wedding/PortfolioMasonryGrid.tsx`
-- `src/components/wedding/ApproachProcessTimeline.tsx`
-- `src/components/wedding/ApproachStatsRibbon.tsx`
-- `src/components/wedding/ApproachDifferentiators.tsx`
-- `src/components/wedding/FAQSection.tsx`
-- `src/components/wedding/FAQImageMosaic.tsx`
-- `src/components/wedding/FAQTestimonialCarousel.tsx`
-- `src/components/wedding/AboutFounderSection.tsx`
-- `src/components/wedding/AboutPromises.tsx`
-- `src/components/wedding/AboutProcessRibbon.tsx`
-- `src/components/wedding/AboutTestimonials.tsx`
-- `src/components/wedding/AboutValuesGrid.tsx`
-- `src/components/wedding/ServiceTierCard.tsx`
-- `src/components/wedding/ServiceComparison.tsx`
-- `src/components/wedding/ServicesInvestmentPhilosophy.tsx`
-- `src/components/wedding/ServicesOverviewSection.tsx`
-- `src/components/wedding/ServicesVendorPartners.tsx`
-- `src/components/wedding/CTASection.tsx`
-- `src/components/wedding/EditorialQuoteRibbon.tsx`
-- `src/components/wedding/EditorialSplitSection.tsx`
-- `src/components/wedding/FooterNewsletter.tsx`
-- `src/components/wedding/FooterServiceAreas.tsx`
-- `src/components/wedding/FounderTeaserSection.tsx`
-- `src/components/wedding/HeroFloatingInset.tsx`
-- `src/components/wedding/HeroSidebars.tsx`
-- `src/components/wedding/InstagramSection.tsx`
-- `src/components/wedding/JournalArticleCard.tsx`
-- `src/components/wedding/JournalFeatured.tsx`
-- `src/components/wedding/JournalTeaserSection.tsx`
-- `src/components/wedding/NowBookingSection.tsx`
-- `src/components/wedding/ProcessTeaserSection.tsx`
-- `src/components/wedding/SectionIndicator.tsx`
-- `src/components/wedding/TestimonialSection.tsx`
-- `src/components/wedding/VendorShowcaseSection.tsx`
+### 3. src/App.tsx
+Add routes:
+- `/` - Home
+- `/our-story` - Our Story
+- `/details` - Details
+- `/schedule` - Schedule
+- `/registry` - Registry
 
-### Step 3: Fix low-contrast opacity text across all components (~30 files)
+## Detailed Component Specifications
 
-Replace low-opacity color patterns:
-- `text-muted-foreground/20` → `text-muted-foreground` or `text-brand-text-tertiary`
-- `text-muted-foreground/25` → `text-muted-foreground`
-- `text-muted-foreground/30` → `text-muted-foreground`
-- `text-muted-foreground/35` → `text-muted-foreground`
-- `text-muted-foreground/40` → `text-muted-foreground`
-- `text-foreground/40` → `text-brand-text-tertiary`
-- `text-foreground/50` → `text-brand-text-secondary`
-- `text-primary/20` through `text-primary/35` → `text-primary/60` minimum
-- `text-primary-foreground/20` through `/30` → `text-primary-foreground/60` minimum
-- `text-white/20` through `/35` (on dark overlays) → `text-white/60` minimum
-- `text-background/15` through `/20` → `text-background/50` minimum
+### Navigation Component
+- Fixed/sticky header on all pages
+- Links: Home, Our Story, Details, Schedule, Registry
+- Active state with underline accent
+- On hero: transparent overlay style
+- On other pages: solid cream background
 
-**Exception:** True decorative watermarks (large background text like "Portfolio", "Answers") can remain low-opacity as they are not meant to be read. These are typically in large `text-6xl`+ sizes with `pointer-events-none`.
+### Hero Section (Home Page)
+- Full viewport height (100vh)
+- Background: Placeholder couple photo with sage overlay
+- Centered script title "Alicia & Andres"
+- Date line: "February 15, 2025 | Joshua Tree, California"
+- Scroll indicator arrow at bottom
 
-### Execution approach
+### Our Story Page
+- Branch decoration SVG at top
+- "Our Story" heading in serif
+- Two-column layout: text left, photo right
+- Cream background
+- Story paragraphs with date highlights
 
-This is a large-scale find-and-replace operation. Each file will be updated with contextually appropriate replacements — functional labels get full contrast tokens, decorative ambient text gets moderate contrast, and purely ornamental watermarks are left as-is.
+### Details Page
+Contains 3 sections:
 
+**Wedding Party Section:**
+- Tab switcher: Groomsmen | Bridesmaids
+- 4 circular avatar photos per tab
+- Names beneath each photo
+- Groomsmen: Julian Bernard, Damien Huber, Mark Pavone, David Blaine
+- Bridesmaids: Similar structure with female names
+
+**Location Section:**
+- Sage/olive background color
+- "The Location" label
+- "Joshua Tree Carmine Resort" large heading
+- Description paragraph
+- Full-width venue/couple photo
+
+**Accommodations Section:**
+- White background
+- 3-column grid of hotel cards
+- Each card: Name, description, "Reserve" button
+- Hotels: Joshua Tree Inn, Desert Sage Lodge, Carmine Resort
+
+### Schedule Page
+- "Itinerary" heading
+- 3 date tabs: Feb 14, Feb 15 (Wedding Day), Feb 16
+- Each day has timeline entries:
+  - Time marker
+  - Event name
+  - Location/venue
+  - Brief description
+
+### Registry Page
+- Branch decoration SVG
+- "Registry" heading
+- Paragraph about gifts
+- 3 registry badges/logos as styled text blocks:
+  - Crate & Barrel
+  - Target
+  - Williams Sonoma
+
+### Footer Component
+- Simple cream background
+- Centered "RSVP" text or button
+- Optional: Copyright line
+
+## Responsive Breakpoints
+
+### Desktop (default)
+- Full layouts as designed
+- 3-column grids for accommodations
+- 4 avatars in row for wedding party
+
+### Tablet (md: 768px)
+- 2-column grids where applicable
+- Slightly reduced padding
+
+### Mobile (sm: 640px)
+- Single column layouts
+- Hamburger menu for navigation
+- Stacked sections
+- 2x2 grid for wedding party avatars
+
+## Image Strategy
+Using placeholder images from Unsplash or similar:
+- Hero: Desert/couple themed landscape
+- Story: Couple portrait
+- Location: Joshua Tree landscape
+- Accommodations: Hotel exterior placeholders
+- Wedding Party: Generic avatar placeholders
+
+## Implementation Order
+
+1. **Foundation** - Update design system (CSS, Tailwind config)
+2. **Shared Components** - Navigation, Footer, Branch decoration
+3. **Home Page** - Hero section with navigation overlay
+4. **Our Story Page** - Story content and layout
+5. **Details Page** - Location, Wedding Party, Accommodations
+6. **Schedule Page** - Itinerary with tabs
+7. **Registry Page** - Registry section
+8. **App Routes** - Wire up all routes in App.tsx
+9. **Polish** - Responsive adjustments, smooth scroll, hover states
