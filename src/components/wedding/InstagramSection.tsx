@@ -303,8 +303,8 @@ const MosaicItem = ({
                   transition={{ delay: 0.2 }}
                   className="flex items-center gap-2"
                 >
-                  <Instagram size={12} strokeWidth={1.5} className="text-white/35" />
-                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/35">
+                  <Instagram size={12} strokeWidth={1.5} className="text-white/60" />
+                  <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/60">
                     View on Instagram
                   </span>
                 </motion.div>
