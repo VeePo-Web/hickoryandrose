@@ -47,7 +47,7 @@ const HeroSidebars = ({ sideTextY, activeSeasonIdx, seasonAvailability }: HeroSi
       transition={{ delay: 3.5, duration: 0.8 }}
       aria-hidden="true"
     >
-      <span className="font-sans-wedding text-[0.4rem] tracking-[0.25em] uppercase text-white/15" style={{ writingMode: "vertical-rl" }}>
+      <span className="font-sans-wedding text-caption tracking-[0.25em] uppercase text-white/60" style={{ writingMode: "vertical-rl" }}>
         Now Booking
       </span>
       <motion.div
