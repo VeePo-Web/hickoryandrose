@@ -224,7 +224,7 @@ const GallerySection = () => {
                   </div>
 
                   {/* Frame index */}
-                  <span className="absolute top-3 right-3 font-serif-wedding text-[0.5rem] text-white/0 group-hover:text-white/25 transition-colors duration-500 tabular-nums">
+                  <span className="absolute top-3 right-3 font-serif-wedding text-caption text-white/0 group-hover:text-white/60 transition-colors duration-500 tabular-nums">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
