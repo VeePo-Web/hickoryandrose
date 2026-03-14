@@ -44,7 +44,7 @@ const FAQTestimonialCarousel = ({ testimonials }: FAQTestimonialCarouselProps) =
                 <p className="font-sans-wedding text-body-sm font-light text-foreground/50">
                   {testimonials[activeTestimonial].couple}
                 </p>
-                <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-muted-foreground/30 mt-1">
+                <p className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground mt-1">
                   {testimonials[activeTestimonial].venue}
                 </p>
               </motion.div>
