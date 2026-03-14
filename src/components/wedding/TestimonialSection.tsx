@@ -239,7 +239,7 @@ const TestimonialSection = () => {
                     </button>
                   ))}
                 </div>
-                <span className="font-sans-wedding text-[0.6rem] text-muted-foreground/40 tabular-nums tracking-[0.15em]">
+                <span className="font-sans-wedding text-caption text-muted-foreground tabular-nums tracking-[0.15em]">
                   {String(activeIndex + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
                 </span>
               </div>
