@@ -153,7 +153,7 @@ const EditorialSplitSection = () => {
             </div>
 
             {/* Philosophy note */}
-            <p className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-primary-foreground/12 mt-12">
+            <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary-foreground/60 mt-12">
               Our Design Philosophy · Est. 2018
             </p>
           </div>
