@@ -272,7 +272,7 @@ const FilmstripSection = () => {
         style={{ opacity: frameCounterOpacity }}
         aria-hidden="true"
       >
-        <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-muted-foreground/20">
+        <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground/60">
           Scroll to explore
         </span>
         <motion.span
@@ -280,7 +280,7 @@ const FilmstripSection = () => {
           animate={{ x: [0, 6, 0] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <span className="font-serif-wedding text-xs text-muted-foreground/20">→</span>
+          <span className="font-serif-wedding text-xs text-muted-foreground/60">→</span>
         </motion.span>
       </motion.div>
 
