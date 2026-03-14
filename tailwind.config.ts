@@ -27,8 +27,8 @@ export default {
         "body-lg": ["1.0625rem", { lineHeight: "1.7", fontWeight: "300" }],
         "body": ["0.9375rem", { lineHeight: "1.7", fontWeight: "300" }],
         "body-sm": ["0.8125rem", { lineHeight: "1.6", fontWeight: "400" }],
-        "label": ["0.6875rem", { lineHeight: "1.5", letterSpacing: "0.2em", fontWeight: "400" }],
-        "caption": ["0.6875rem", { lineHeight: "1.5", letterSpacing: "0.05em", fontWeight: "400" }],
+        "label": ["0.8125rem", { lineHeight: "1.5", letterSpacing: "0.18em", fontWeight: "400" }],
+        "caption": ["0.8125rem", { lineHeight: "1.5", letterSpacing: "0.04em", fontWeight: "400" }],
       },
       colors: {
         border: "hsl(var(--border))",
