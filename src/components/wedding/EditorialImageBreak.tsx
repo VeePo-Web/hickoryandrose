@@ -196,7 +196,7 @@ const EditorialImageBreak = () => {
             </span>
           </motion.div>
           
-          <p className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/30 mt-4">
+          <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60 mt-4">
             Hickory & Rose · Refined Rustic Elegance
           </p>
         </motion.div>
