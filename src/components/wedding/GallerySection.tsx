@@ -393,7 +393,7 @@ const GallerySection = () => {
                   <p className="font-serif-wedding text-xl text-background/70">
                     {photos[selectedIndex].title}
                   </p>
-                  <p className="font-serif-wedding text-xs italic text-background/25 mt-3 max-w-sm">
+                  <p className="font-serif-wedding text-xs italic text-background/50 mt-3 max-w-sm">
                     "{photos[selectedIndex].story}"
                   </p>
                   <div className="flex items-center justify-center gap-3 mt-4">
