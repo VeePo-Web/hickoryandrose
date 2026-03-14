@@ -61,7 +61,7 @@ const FooterNewsletter = () => {
                     <p className="font-serif-wedding text-sm text-background/60 italic">
                       Welcome to the Hickory & Rose community.
                     </p>
-                    <p className="font-sans-wedding text-[0.55rem] text-background/20 mt-1">
+                    <p className="font-sans-wedding text-caption text-background/60 mt-1">
                       Check your inbox for a warm welcome.
                     </p>
                   </div>
