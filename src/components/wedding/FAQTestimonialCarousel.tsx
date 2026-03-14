@@ -28,7 +28,7 @@ const FAQTestimonialCarousel = ({ testimonials }: FAQTestimonialCarouselProps) =
     <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
         <ScrollReveal>
-          <p className="font-overline text-muted-foreground/40 mb-8">What Couples Say</p>
+          <p className="font-overline text-muted-foreground mb-8">What Couples Say</p>
           <div className="min-h-[120px] relative">
             <AnimatePresence mode="wait">
               <motion.div
