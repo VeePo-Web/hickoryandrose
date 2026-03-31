@@ -244,6 +244,27 @@ const Inquire = () => {
                   )}
                 </div>
                 <p className="font-sans-wedding text-xs text-brand-text-tertiary mt-4 text-center font-light">We respond to every inquiry within 48 hours.</p>
+                <a
+                  href="https://veepo.ca/case-studies"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-1 mt-3 w-full"
+                >
+                  <span className="text-caption tracking-[0.1em] uppercase text-muted-foreground/40 group-hover:text-muted-foreground/60 transition-colors duration-300">
+                    This website is powered locally by
+                  </span>
+                  <span
+                    className="text-caption tracking-[0.1em] uppercase font-medium transition-colors duration-300"
+                    style={{
+                      background: "linear-gradient(90deg, #2e7d32, #f57c00)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
+                  >
+                    veepo.ca
+                  </span>
+                </a>
               </form>
             </div>
           </div>
