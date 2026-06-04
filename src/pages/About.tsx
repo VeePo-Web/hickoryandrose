@@ -34,6 +34,10 @@ const About = () => {
       description: "Meet Alexandra Rose, founder of Hickory & Rose — calm leadership, intentional design, and refined rustic elegance for Edmonton & Alberta couples.",
       path: "/about",
     });
+    setBreadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "About", path: "/about" },
+    ]);
   }, []);
 
   return (
