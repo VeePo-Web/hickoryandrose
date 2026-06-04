@@ -212,7 +212,7 @@ export const BRAND_IDENTITY = {
 
   founder: {
     // From Section 5
-    name: "Alexandra Rose",
+    name: "Meg Wolodko",
     role: "Founder & Lead Planner",
     personality: ["Organized", "Friendly", "Calming", "Detailed", "Experienced"], // 5.2 — owner's exact words
     story: "", // TBC — 5.1, owner writing her own
