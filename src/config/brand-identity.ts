@@ -270,4 +270,113 @@ export const BRAND_IDENTITY = {
     ctaPrimaryLanguage: "",                                        // 7.23
     ctaPromise: "",                                                // 7.24
   },
+
+  seo: {
+    // From Section 8
+    terminology: "Wedding Day Coordination (industry standard); Day-Of accepted alias", // 8.2
+    localKeywords: [                                                                     // 8.1 / 8.3
+      "Edmonton wedding planner",
+      "Luxury wedding planner Edmonton",
+      "Wedding coordinator Edmonton",
+      "Day-of coordination Edmonton",
+      "Wedding day management Edmonton",
+      "Partial wedding planning Edmonton",
+      "Full-service wedding planning Edmonton",
+      "Alberta wedding planner",
+      "Canadian Rockies wedding planner",
+    ],
+    structuredData: {
+      source: "index.html",                          // single source of truth — no runtime injection
+      aggregateRatingEnabled: false,                  // honest — no fake reviews
+      foundingDateClaimed: false,                     // owner never claimed 2018
+    },
+    sitemapPath: "/sitemap.xml",                      // 8.8 ✅
+    // TBC owner
+    targetKeywords: [] as string[],                   // 8.3
+    contentTopics: [] as string[],                    // 8.4
+    blog: {
+      launchStrategy: "structure-only",               // 8.5 — Journal page exists, 0 posts
+      postCount: 0,                                   // 8.6
+      areaGuides: null as boolean | null,             // 8.7
+    },
+    listings: {
+      googleBusiness: "",                             // 8.9 / 8.10
+      directories: [] as string[],                    // 8.11
+    },
+  },
+
+  designDirection: {
+    // From Section 9 — most already implemented in mem://design/* + index.css + tailwind.config.ts
+    firstFiveSeconds: "calm · warm · refined · in good hands",      // 9.3
+    visualNonNegotiables: [                                          // 9.4
+      "Warm neutrals",
+      "Natural textures",
+      "Candlelight glow",
+      "Refined florals",
+      "Restraint",
+      "Editorial whitespace",
+    ],
+    visualAvoid: [                                                   // 9.5
+      "Clutter",
+      "Trendy display fonts",
+      "Loud saturated colors",
+      "Heavy patterns",
+      "Pinterest-collage stacks",
+    ],
+    balance: {
+      modernVsTimeless: 2,                                            // 9.6 (1=timeless, 5=modern)
+      warmthVsMinimalism: 4,                                          // 9.7 (1=minimal, 5=warm)
+      typographyDirection: "elegant serif-led",                       // 9.8
+      motionLevel: 4,                                                 // 9.14
+    },
+    logo: { status: "in-use" },                                       // 9.9
+    brandGuidelines: { status: "some-basics" },                       // 9.11
+    // TBC owner
+    referenceWebsitesLike: [] as string[],                            // 9.1
+    referenceWebsitesDislike: [] as string[],                         // 9.2
+    accessibilityPreferences: [] as string[],                          // 9.15
+  },
+
+  content: {
+    // From Section 10 — mostly TBC owner
+    launchMustHaves: ["Home", "About", "Services", "Portfolio", "FAQ", "Inquire"], // currently shipped
+    phaseTwo: ["Journal volume", "Venue/area guides", "Additional galleries", "Lead magnet"],
+    existingSources: [] as string[],                                  // 10.1
+    copyStatus: "",                                                   // 10.3
+    urgentPages: [] as string[],                                      // 10.4
+    migration: null as boolean | null,                                // 10.9
+    policiesReady: null as boolean | null,                            // 10.11
+  },
+
+  technical: {
+    // From Section 11
+    domain: "hickoryandrose.com",                                     // 11.2 (final TBC)
+    brandedEmail: true,                                                // sales@hickoryandrose.com in use
+    editableContent: ["portfolio", "testimonials", "journal", "FAQs", "services", "about"], // 11.6
+    crm: { platform: "", autoRoute: null as boolean | null },         // 11.8 / 11.9
+    scheduling: { enabled: null as boolean | null, tool: "" },        // 11.10 / 11.11
+    email: { enabled: null as boolean | null, platform: "" },         // 11.12 / 11.13
+    analytics: [] as string[],                                        // 11.14
+    embeddedTools: [] as string[],                                    // 11.15
+  },
+
+  launch: {
+    // From Section 12 — TBC owner
+    decisionMaker: "Alexandra Rose (owner)",                          // 12.5
+    kpis: [
+      "Inquiry volume",
+      "Inquiry quality/fit",
+      "Conversion rate",
+      "Portfolio engagement",
+      "Edmonton SEO rankings",
+    ],
+    targetDate: "",                                                   // 12.1
+    hardDeadlines: null as boolean | null,                            // 12.2
+    budgetRange: "",                                                  // 12.4
+    feedbackTurnaround: "",                                           // 12.7
+    successThirtyDays: "",                                            // 12.8
+    successSixMonths: "",                                             // 12.9
+    stopDoing: "",                                                    // 12.11
+    oneTruth: "",                                                     // 12.12
+  },
 } as const;
