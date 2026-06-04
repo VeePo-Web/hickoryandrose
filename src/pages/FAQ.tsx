@@ -51,10 +51,11 @@ const faqCategories = [
   },
 ];
 
+// TODO: swap with real testimonials when owner provides (5.7). Editorial brand lines in meantime.
 const testimonials = [
-  { quote: "We had so many questions, and every single one was answered with patience and warmth. Nothing ever felt rushed.", couple: "Alyssa & Daniel", venue: "Art Gallery of Alberta" },
-  { quote: "The transparency around pricing made us feel respected from day one. No hidden fees, no surprises.", couple: "Lauren & Ethan", venue: "Willow Creek Barn" },
-  { quote: "From our very first call, we knew we were in the right hands.", couple: "Olivia & Noah", venue: "Jasper Park Lodge" },
+  { quote: "We had so many questions, and every single one was answered with patience and warmth — nothing ever felt rushed.", couple: "Hickory & Rose", venue: "Client Communication" },
+  { quote: "The transparency around pricing makes the whole conversation feel respectful from day one. No hidden fees, no surprises.", couple: "Hickory & Rose", venue: "Pricing Philosophy" },
+  { quote: "From the very first call, you should feel like you're in the right hands. That's what we plan for.", couple: "Hickory & Rose", venue: "Discovery Calls" },
 ];
 
 const faqSchemaItems = faqCategories.flatMap((cat) =>
@@ -111,7 +112,7 @@ const FAQ = () => {
         </motion.div>
         <GoldFrame inset="20px" delay={1} />
         <motion.div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-4 py-3 pointer-events-none" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6, duration: 0.8 }}>
-          {["Transparent Pricing", "Custom Packages", "15–20 Weddings/Year"].map((t, i) => (
+          {["Transparent Pricing", "Custom Packages", "Now Booking 2027"].map((t, i) => (
             <span key={t} className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/60 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
@@ -128,7 +129,7 @@ const FAQ = () => {
       <section className="py-6 md:py-8 bg-sage-deep border-b border-primary-foreground/[0.06]">
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
           <div className="grid grid-cols-3 gap-4 text-center">
-            {[{ value: "48hr", label: "Response Time" }, { value: "15–20", label: "Weddings Per Year" }, { value: "100%", label: "Client Satisfaction" }].map((stat) => (
+            {[{ value: "48hr", label: "Response Time" }, { value: "Limited", label: "Calendar by Design" }, { value: "2027", label: "Now Booking" }].map((stat) => (
               <div key={stat.label}>
                 <p className="font-serif-wedding text-lg md:text-xl text-primary-foreground/60 font-light">{stat.value}</p>
                 <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary-foreground/60 mt-1">{stat.label}</p>

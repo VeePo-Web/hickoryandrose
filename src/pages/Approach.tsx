@@ -465,8 +465,8 @@ const Approach = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
             {[
-              { quote: "From the first call, I felt like I was talking to a friend who just happened to be incredibly organized. They made the entire process feel effortless.", couple: "Emma & James", venue: "The Glass House", season: "Autumn 2024", service: "Full-Service Planning" },
-              { quote: "On the day, we never once worried. Every moment flowed naturally and every detail was exactly as we dreamed. I can't imagine doing it without them.", couple: "Nicole & Ryan", venue: "Fairmont Jasper", season: "Summer 2023", service: "Month-Of Coordination" },
+              { quote: "From the first conversation, the entire process feels considered — calm, organized, and genuinely warm.", couple: "Hickory & Rose", venue: "Our Approach", season: "", service: "Full-Service Planning" },
+              { quote: "On the day, every moment is meant to flow naturally — every detail held quietly in good hands.", couple: "Hickory & Rose", venue: "Design Philosophy", season: "", service: "Day-Of Coordination" },
             ].map((t, i) => (
               <ScrollReveal key={t.couple} delay={i * 0.15}>
                 <div 
@@ -595,18 +595,18 @@ const Approach = () => {
             <div className="flex items-center justify-center gap-3 mt-4">
               <img
                 src={founderImage}
-                alt="Sarah, Founder of Hickory & Rose"
+                alt="Alexandra Rose, Founder of Hickory & Rose"
                 className="w-8 h-8 rounded-full object-cover border border-primary-foreground/10"
                 loading="lazy"
               />
               <span className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-primary-foreground/60">
-                — Sarah, Founder
+                — Alexandra Rose, Founder
               </span>
             </div>
 
             <div className="flex items-center justify-center gap-3 mt-3">
               <span className="w-4 h-px bg-primary-foreground/10" />
-              <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-primary-foreground/60">Est. 2018</span>
+              <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-primary-foreground/60">Edmonton · Alberta</span>
               <span className="w-4 h-px bg-primary-foreground/10" />
             </div>
           </ScrollReveal>
