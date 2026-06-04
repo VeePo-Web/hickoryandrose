@@ -314,10 +314,10 @@ const Services = () => {
               style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }}
             />
             <p className="font-sans-wedding text-body-sm font-light text-primary-foreground/70">
-              Olivia & Noah
+              Hickory & Rose
             </p>
             <p className="font-sans-wedding text-[0.6rem] tracking-[0.12em] uppercase text-primary-foreground/25 mt-2">
-              Jasper Park Lodge · Summer 2024
+              Design Philosophy
             </p>
           </ScrollReveal>
         </div>

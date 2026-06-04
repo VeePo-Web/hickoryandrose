@@ -12,25 +12,25 @@ const testimonials = [
   {
     quote:
       "We actually got to enjoy our wedding day. Every single moment felt taken care of — we never once worried about what was happening behind the scenes.",
-    couple: "Sarah & Michael",
-    venue: "Fairmont Hotel Macdonald, Edmonton",
-    season: "Winter 2024",
+    couple: "Hickory & Rose",
+    venue: "Design Philosophy",
+    season: "",
     service: "Full-Service Planning",
   },
   {
     quote:
-      "Hiring Hickory & Rose was the best decision we made in our entire planning process. The calm energy, the attention to detail — it was beyond anything we imagined.",
-    couple: "Emma & James",
-    venue: "The Glass House",
-    season: "Autumn 2024",
+      "Hiring a planner can be the best decision of your entire process — the calm energy, the attention to detail, the room to actually be present.",
+    couple: "Hickory & Rose",
+    venue: "Calm Leadership",
+    season: "",
     service: "Partial Planning",
   },
   {
     quote:
-      "From our first call, we knew we were in the right hands. Our wedding felt exactly like us — intimate, elegant, and completely stress-free.",
-    couple: "Olivia & Noah",
-    venue: "Jasper Park Lodge",
-    season: "Summer 2024",
+      "From the first call, you should feel like you're in the right hands — your wedding feeling exactly like you, intimate and elegant and unhurried.",
+    couple: "Hickory & Rose",
+    venue: "Client Communication",
+    season: "",
     service: "Day-of Coordination",
   },
 ];

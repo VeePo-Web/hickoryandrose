@@ -2,12 +2,14 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
+// TODO (5.6): Replace with real press features when owner has them.
+// Current entries reflect honest, owner-confirmed booking + editorial signals.
 const publications = [
-  { name: "Edmonton Bridal", category: "Regional", year: "2024", note: "Top 10 Planners", badge: "★ Top 10" },
-  { name: "Wedding Bells", category: "National", year: "2023", note: "Featured Planner", badge: "Featured" },
-  { name: "Style Me Pretty", category: "International", year: "2024", note: "Editor's Pick", badge: "Editor's Pick" },
-  { name: "Alberta Weddings", category: "Regional", year: "2023", note: "Cover Feature", badge: "Cover" },
-  { name: "The Knot", category: "International", year: "2024", note: "Best of Weddings", badge: "★ Best Of" },
+  { name: "2026 Season", category: "Booking Status", year: "", note: "Summer & Fall Fully Booked", badge: "Booked" },
+  { name: "Aug 2026", category: "Editorial", year: "", note: "Styled Shoot in Production", badge: "Upcoming" },
+  { name: "2027 Season", category: "Now Booking", year: "", note: "Limited Calendar by Design", badge: "Open" },
+  { name: "Edmonton", category: "Studio", year: "", note: "Based in Alberta", badge: "Local" },
+  { name: "Two-Person Team", category: "Standard from 2027", year: "", note: "Quiet leadership, paired support", badge: "New" },
 ];
 
 const TrustBarSection = () => {

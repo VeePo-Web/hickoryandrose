@@ -6,25 +6,25 @@ import ScrollReveal from "./ScrollReveal";
 // Current entries are illustrative placeholders aligned with brand voice.
 const testimonials = [
   {
-    quote: "From our first call, we knew we were in the right hands. Our wedding felt exactly like us — intimate, elegant, and completely stress-free.",
-    couple: "Olivia & Noah",
-    venue: "Jasper Park Lodge",
-    season: "Summer 2024",
-    style: "Rustic-Elegant",
+    quote: "From the first call, you should feel like you're in the right hands — your wedding feeling exactly like you, intimate and elegant and unhurried.",
+    couple: "Hickory & Rose",
+    venue: "Client Communication",
+    season: "",
+    style: "Refined Rustic",
   },
   {
-    quote: "The calm energy Hickory & Rose brought to our day was transformative. We actually got to be present for every moment.",
-    couple: "Sarah & Michael",
-    venue: "Fairmont Hotel Macdonald",
-    season: "Winter 2024",
-    style: "Classic-Romantic",
+    quote: "The calm energy a planner brings to the day can be transformative — couples actually present for every moment, instead of running it.",
+    couple: "Hickory & Rose",
+    venue: "Calm Leadership",
+    season: "",
+    style: "Refined Rustic",
   },
   {
-    quote: "Hiring Hickory & Rose was the best decision we made. The attention to detail was beyond anything we imagined.",
-    couple: "Emma & James",
-    venue: "The Glass House",
-    season: "Autumn 2024",
-    style: "Modern-Garden",
+    quote: "Hiring a planner is the best decision a couple can make — every detail intentional, every moment quietly protected.",
+    couple: "Hickory & Rose",
+    venue: "Design Philosophy",
+    season: "",
+    style: "Refined Rustic",
   },
 ];
 

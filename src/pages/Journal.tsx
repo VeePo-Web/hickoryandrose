@@ -192,7 +192,7 @@ const Journal = () => {
             <span className="font-script text-xl text-primary-foreground/35">Hickory & Rose</span>
             <div className="flex items-center justify-center gap-3 mt-3">
               <span className="w-4 h-px bg-primary-foreground/10" />
-              <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-primary-foreground/60">Est. 2018</span>
+              <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-primary-foreground/60">Edmonton · Alberta</span>
               <span className="w-4 h-px bg-primary-foreground/10" />
             </div>
           </ScrollReveal>

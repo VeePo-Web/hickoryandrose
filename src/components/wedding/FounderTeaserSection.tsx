@@ -351,7 +351,7 @@ const FounderTeaserSection = () => {
                   />
                 </motion.div>
                 <p className="font-overline text-caption text-muted-foreground/60 mt-3">
-                  Est. 2018 · Edmonton, Alberta
+                  Edmonton · Alberta
                 </p>
               </div>
 
