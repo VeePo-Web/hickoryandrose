@@ -122,6 +122,10 @@ const Approach = () => {
       description: "From discovery call to wedding day — Hickory & Rose's calm, intentional planning process. Meticulous coordination and elevated design at every step.",
       path: "/approach",
     });
+    setBreadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Approach", path: "/approach" },
+    ]);
   }, []);
 
   return (
