@@ -81,9 +81,11 @@ export const DISCOVERY_FRAMEWORK = {
       ],
     },
     firstImpressions: {
-      fiveSeconds: "", // TODO: From Section 2.8 — reassurance line for homepage
-      thirtySeconds: "", // TODO: From Section 2.9 — proof elements: full galleries, testimonials naming calm leadership, process clarity
-      byInquiry: "", // TODO: From Section 2.10 — relief, clarity, excitement, "she gets my taste," "I'm safe"
+      fiveSeconds:
+        "Calm, elevated, immediately understood. A single beautiful image, a quiet headline, no noise — her shoulders drop before she reads a word.",
+      thirtySeconds:
+        "Galleries that show real weddings. Professionalism in every detail. Clarity about what we do and how we work.",
+      byInquiry: "Understanding. Excitement. Confidence.",
     },
     objections: {
       purpose: "Address these gently throughout the site — not on a single FAQ page",

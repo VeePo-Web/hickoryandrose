@@ -176,7 +176,7 @@ const InquireCelebration = () => (
 
         {/* Body copy with drop cap */}
         <p className="drop-cap font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light mb-12 max-w-md mx-auto">
-          Your inquiry has been received with care. Here is what happens next on the path to a seamless, thoughtfully planned celebration.
+          Your inquiry has been received with care. Take a breath — you're understood, you're in good hands, and the next steps are already in motion.
         </p>
 
         {/* Steps timeline with vertical gold connector */}
