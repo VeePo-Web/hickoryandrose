@@ -308,8 +308,8 @@ const Inquire = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl relative">
           <div className="grid grid-cols-3 gap-4 text-center">
             {[
-              { value: "48hr", label: "Response Time" },
-              { value: "100%", label: "Response Rate" },
+              { value: "24–48hr", label: "Reply Window" },
+              { value: "By Hand", label: "Personal Reply" },
               { value: "Free", label: "Discovery Call" },
             ].map((stat, i) => (
               <div key={stat.label} className="relative">
