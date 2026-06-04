@@ -166,6 +166,9 @@ const BrandManifestoSection = () => {
           transition={{ duration: 0.6, delay: 1.2 }}
           className="font-sans-wedding text-sm md:text-base text-white/60 font-light leading-relaxed max-w-md mt-10"
         >
+          <span className="block font-serif-wedding italic text-white/75 text-base md:text-lg mb-3">
+            We design for how it feels — not just how it looks.
+          </span>
           Every detail, placed with intention. We handle the planning, logistics,
           and coordination behind the scenes — so you can focus on the moments
           that matter most.

@@ -3,11 +3,12 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import BreathingDiamond from "./BreathingDiamond";
 
+// Stats reflect owner-confirmed 2026 booking status (5.5). Update as the calendar fills and credentials are verified.
 const stats = [
-  { value: 75, suffix: "+", label: "Weddings Planned", detail: "and counting" },
-  { value: 7, suffix: "", label: "Years of Experience", detail: "since 2018" },
-  { value: 100, suffix: "%", label: "Five-Star Reviews", detail: "every single one" },
-  { value: 15, suffix: "–20", label: "Weddings Per Year", detail: "intentionally limited" },
+  { value: 5, suffix: "", label: "Weddings Booked", detail: "2026 calendar" },
+  { value: 2, suffix: "", label: "Seasons Sold Out", detail: "summer & fall 2026" },
+  { value: 1, suffix: "", label: "Editorial Styled Shoot", detail: "August 15, 2026" },
+  { value: 2027, suffix: "", label: "Now Booking", detail: "two-person team standard" },
 ];
 
 const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
@@ -265,8 +266,8 @@ const StatsSection = () => {
             ))}
             {[
               { label: "Edmonton & Area", note: "Primary Service Region" },
-              { label: "Canadian Rockies", note: "Jasper · Banff · Lake Louise" },
-              { label: "Since 2018", note: "Seven Seasons of Celebrations" },
+              { label: "Surrounding Alberta", note: "Travel Fees Apply Outside Greater Edmonton" },
+              { label: "Growing Vendor Network", note: "Trusted Partnerships Across Alberta" },
             ].map((item, i) => (
               <motion.div
                 key={item.label}
@@ -308,7 +309,7 @@ const StatsSection = () => {
                 </p>
               </div>
               <div className="flex items-center gap-6">
-                {["WIPA Certified", "100% Five-Star", "Intentionally Limited"].map((cred, i) => (
+                {["2026 Season Booked", "Editorial Shoot Aug 2026", "Intentionally Limited"].map((cred, i) => (
                   <motion.span
                     key={cred}
                     initial={{ opacity: 0, y: 4 }}

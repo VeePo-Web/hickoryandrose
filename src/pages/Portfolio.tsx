@@ -109,7 +109,7 @@ const Portfolio = () => {
         <motion.div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[200px] pointer-events-none" initial={{ opacity: 0 }} whileInView={{ opacity: 0.05 }} viewport={{ once: true }} transition={{ duration: 2 }} style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.15), transparent 70%)" }} aria-hidden="true" />
         <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
-            {[{ value: "75+", label: "Weddings Planned" }, { value: "8", label: "Years of Experience" }, { value: "100%", label: "Client Satisfaction" }, { value: "15–20", label: "Weddings Per Year" }].map((stat, i) => (
+            {[{ value: "2026", label: "Season Fully Booked" }, { value: "Aug 15", label: "Editorial Styled Shoot" }, { value: "Growing", label: "Vendor Network" }, { value: "2027", label: "Now Booking" }].map((stat, i) => (
               <ScrollReveal key={stat.label} delay={i * 0.08}>
                 <div className="group">
                   <p className="font-serif-wedding text-2xl md:text-3xl text-primary-foreground/50 font-light group-hover:text-primary-foreground/70 transition-colors duration-500">{stat.value}</p>

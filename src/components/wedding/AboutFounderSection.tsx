@@ -5,11 +5,14 @@ import ImageReveal from "./ImageReveal";
 import MagneticButton from "./MagneticButton";
 import founderImage from "@/assets/founder-portrait.jpg";
 
+// TODO: Update credentials when owner confirms certifications and verified metrics (Section 5.5).
 const credentials = [
-  { value: "WPIC", label: "Certified" },
-  { value: "7+", label: "Years" },
-  { value: "80+", label: "Vendor Partners" },
+  { value: "2026", label: "Season Booked" },
+  { value: "Aug 15", label: "Editorial Shoot" },
+  { value: "Growing", label: "Vendor Network" },
 ];
+
+const personality = ["Organized", "Friendly", "Calming", "Detailed", "Experienced"];
 
 const philosophy = [
   "Your calm is my responsibility — not yours.",
@@ -105,25 +108,29 @@ const AboutFounderSection = () => {
                 Alexandra Rose
               </h2>
               <p className="font-sans-wedding text-body-sm text-brand-text-secondary mb-8 font-light italic">
-                WPIC Certified Wedding Planner
+                Founder &amp; Lead Planner
               </p>
 
               <div className="space-y-5 font-sans-wedding text-body-sm text-muted-foreground leading-[1.85] font-light">
                 <p className="drop-cap">
-                  I started Hickory & Rose because too many brides told me the same thing:
-                  "I was so stressed I barely remember my own wedding." That shouldn't happen to you.
+                  I'm Alexandra — the founder of Hickory &amp; Rose. I started this studio because I believe a wedding should feel as beautiful to live inside as it looks in the photos.
                 </p>
                 <p>
-                  After years in the events industry, I noticed something
-                  troubling — too many couples were exhausted on
-                  what should have been their most joyful day. I knew there had
-                  to be a better way.
+                  My couples describe me as organized, calming, and genuinely easy to work with. I run on thoughtful preparation and quiet leadership — the kind that lets you stay present on a day that's only going to happen once.
                 </p>
                 <p>
-                  Hickory & Rose exists to be that better way. We bring quiet
-                  confidence, meticulous planning, and genuine warmth to every
-                  wedding we touch.
+                  Hickory &amp; Rose exists to protect the beauty, intention, and experience behind every celebration. I'd love to do that for yours.
                 </p>
+              </div>
+
+              {/* Personality caption — from owner Section 5.2 */}
+              <div className="mt-6 mb-8 flex flex-wrap items-center gap-x-3 gap-y-1">
+                {personality.map((word, i) => (
+                  <span key={word} className="font-sans-wedding text-[0.6rem] tracking-[0.2em] uppercase text-brand-text-tertiary flex items-center gap-3">
+                    {i > 0 && <span className="w-1 h-1 rotate-45" style={{ background: "hsl(var(--gold) / 0.4)" }} />}
+                    {word}
+                  </span>
+                ))}
               </div>
 
               {/* Credential row */}
