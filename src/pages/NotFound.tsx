@@ -27,8 +27,16 @@ const NotFound = () => {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   useEffect(() => {
-    document.title = "Page Not Found | Hickory & Rose — Edmonton Wedding Planner";
+    setPageMeta({
+      title: "Page Not Found | Hickory & Rose — Edmonton Wedding Planner",
+      description: "The page you're looking for doesn't exist. Explore our wedding planning services, portfolio, and approach.",
+      path: location.pathname,
+    });
+    setRobotsMeta("noindex,follow");
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+    return () => {
+      setRobotsMeta("index,follow");
+    };
   }, [location.pathname]);
 
   return (
