@@ -20,15 +20,17 @@ import receptionImage from "@/assets/portfolio-reception.jpg";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import venueImage from "@/assets/portfolio-venue.jpg";
 
+// SAMPLE STORIES — anonymized aesthetic direction. Swap with real featured weddings
+// when owner provides them (discovery 6.11). Until then, no fabricated couples / venues / dates.
 const weddingStories = [
-  { src: heroImage, alt: "Elegant garden reception tablescape at golden hour", couple: "Sarah & Michael", venue: "Fairmont Hotel Macdonald", season: "Summer 2024", category: "Full Planning", aspect: "aspect-[3/4]" },
-  { src: receptionImage, alt: "Rustic farmhouse reception with eucalyptus and candlelight", couple: "Emma & James", venue: "The Glass House", season: "Autumn 2024", category: "Full Planning", aspect: "aspect-square" },
-  { src: ceremonyImage, alt: "Mountain ceremony with floral arch and white draping", couple: "Olivia & Noah", venue: "Jasper Park Lodge", season: "Summer 2023", category: "Partial Planning", aspect: "aspect-[4/5]" },
-  { src: bouquetImage, alt: "Bridal bouquet with white roses and sage eucalyptus", couple: "Alyssa & Daniel", venue: "Art Gallery of Alberta", season: "Spring 2024", category: "Day-Of", aspect: "aspect-[3/4]" },
-  { src: venueImage, alt: "Rustic barn venue at twilight with string lights", couple: "Lauren & Ethan", venue: "Willow Creek Barn", season: "Autumn 2023", category: "Full Planning", aspect: "aspect-[16/10]" },
-  { src: editorialImage, alt: "Sage and ivory floral arrangement detail", couple: "Hannah & Liam", venue: "Muttart Conservatory", season: "Winter 2024", category: "Day-Of", aspect: "aspect-square" },
-  { src: firstDanceImage, alt: "First dance under string lights at outdoor reception", couple: "Rachel & Marcus", venue: "River Valley Estate", season: "Summer 2023", category: "Partial Planning", aspect: "aspect-[3/4]" },
-  { src: detailImage, alt: "Calligraphy place card with gold cutlery detail", couple: "Claire & Jonathan", venue: "The Enjoy Centre", season: "Spring 2023", category: "Full Planning", aspect: "aspect-square" },
+  { src: heroImage, alt: "Garden reception tablescape at golden hour", couple: "Garden Reception", venue: "Edmonton", season: "Summer", category: "Full Planning", aspect: "aspect-[3/4]" },
+  { src: receptionImage, alt: "Rustic farmhouse reception with eucalyptus and candlelight", couple: "Farmhouse Candlelight", venue: "Alberta", season: "Autumn", category: "Full Planning", aspect: "aspect-square" },
+  { src: ceremonyImage, alt: "Mountain ceremony with floral arch and white draping", couple: "Mountain Ceremony", venue: "Canadian Rockies", season: "Summer", category: "Partial Planning", aspect: "aspect-[4/5]" },
+  { src: bouquetImage, alt: "Bridal bouquet with white roses and sage eucalyptus", couple: "Bridal Florals", venue: "Edmonton", season: "Spring", category: "Day-Of", aspect: "aspect-[3/4]" },
+  { src: venueImage, alt: "Rustic barn venue at twilight with string lights", couple: "Twilight Barn", venue: "Alberta", season: "Autumn", category: "Full Planning", aspect: "aspect-[16/10]" },
+  { src: editorialImage, alt: "Sage and ivory floral arrangement detail", couple: "Floral Detail", venue: "Edmonton", season: "Winter", category: "Day-Of", aspect: "aspect-square" },
+  { src: firstDanceImage, alt: "First dance under string lights at outdoor reception", couple: "First Dance", venue: "River Valley", season: "Summer", category: "Partial Planning", aspect: "aspect-[3/4]" },
+  { src: detailImage, alt: "Calligraphy place card with gold cutlery detail", couple: "Place Setting", venue: "Edmonton", season: "Spring", category: "Full Planning", aspect: "aspect-square" },
 ];
 
 const filters = ["All", "Full Planning", "Partial Planning", "Day-Of"] as const;
@@ -70,7 +72,7 @@ const Portfolio = () => {
               </span>
             </p>
             <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">Real Weddings</h1>
-            <p className="font-sans-wedding text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto font-light">Every wedding tells a unique story. Here are some of the moments we've had the privilege of helping create.</p>
+            <p className="font-sans-wedding text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto font-light">A glimpse into the aesthetic we design around — and the kind of day we plan for our couples.</p>
           </ScrollReveal>
         </motion.div>
         <GoldFrame inset="20px" delay={1} />
@@ -97,7 +99,7 @@ const Portfolio = () => {
                 <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">We believe the best weddings feel like the couple — not a template. Browse our portfolio and imagine what yours could look like.</p>
               </div>
               <div className="md:col-span-3 md:col-start-12 hidden md:flex items-center justify-end">
-                <span className="font-sans-wedding text-label uppercase text-muted-foreground/30">{weddingStories.length} Stories</span>
+                <span className="font-sans-wedding text-label uppercase text-muted-foreground/30">Aesthetic Direction</span>
               </div>
             </div>
           </ScrollReveal>
@@ -141,15 +143,15 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Featured Story Spotlight */}
+      {/* Featured Story Spotlight — SAMPLE direction. Swap with real featured wedding when available (6.11). */}
       <PortfolioFeaturedStory
         image={heroImage}
-        alt="Sarah & Michael's garden reception at golden hour"
-        couple="Sarah & Michael"
-        venue="Fairmont Hotel Macdonald"
-        season="Summer 2024"
-        description="An intimate garden ceremony followed by a candlelit reception overlooking the river valley. Every detail — from the hand-lettered menus to the sage and ivory floral installations — reflected their story of quiet sophistication."
-        quote="Every single moment felt exactly like us. Nothing was rushed, nothing was missed."
+        alt="Garden reception at golden hour — aesthetic direction"
+        couple="Garden Reception"
+        venue="Edmonton"
+        season="Summer"
+        description="A glimpse of the aesthetic Hickory & Rose is built around — soft textures, candlelight, and the quiet sophistication of refined rustic elegance. The kind of day designed for how it feels, not just how it looks."
+        quote="Designed for how it feels — not just how it looks."
       />
 
       {/* Gallery */}
@@ -169,10 +171,11 @@ const Portfolio = () => {
               <motion.span initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-10 h-px origin-left" style={{ background: "linear-gradient(270deg, transparent, hsl(var(--gold) / 0.25))" }} />
             </div>
             <span className="font-serif-wedding text-6xl text-primary-foreground/[0.06] leading-none block -mb-4" aria-hidden="true">"</span>
-            <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">"Working with Hickory & Rose was the best decision we made. Every detail felt intentional, every moment felt protected."</blockquote>
+            {/* TODO: swap with real testimonial when owner provides (5.7). Editorial brand line in meantime. */}
+            <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">"Every detail intentional. Every moment protected. A wedding designed for how it feels — not just how it looks."</blockquote>
             <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} className="w-8 h-px mx-auto mb-4 origin-center" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }} />
-            <p className="font-sans-wedding text-body-sm font-light text-primary-foreground/60">Emma & James</p>
-            <p className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-primary-foreground/60 mt-2">The Glass House · Autumn 2024</p>
+            <p className="font-sans-wedding text-body-sm font-light text-primary-foreground/60">Hickory & Rose</p>
+            <p className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-primary-foreground/60 mt-2">Design Philosophy</p>
           </ScrollReveal>
         </div>
       </section>
