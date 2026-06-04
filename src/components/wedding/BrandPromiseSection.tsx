@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
@@ -127,7 +128,7 @@ const BrandPromiseSection = () => {
               <motion.div style={{ y: floatingImgY }}>
                 <ImageReveal direction="right">
                   <div className="aspect-[4/5] overflow-hidden mb-6 relative group">
-                    <img
+                    <OptimizedImage
                       src={editorialFloralsImage}
                       alt="Sage eucalyptus and ivory garden rose arrangement"
                       className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[1.2s]"

@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
@@ -29,7 +30,7 @@ const CTASection = () => {
     >
       {/* Cinematic parallax background */}
       <div className="absolute inset-0">
-        <motion.img
+        <OptimizedMotionImage
           src={receptionImage}
           alt=""
           className="w-full h-[130%] object-cover"
@@ -97,7 +98,7 @@ const CTASection = () => {
           >
             <ScrollReveal>
               <div className="aspect-[3/4] overflow-hidden relative group">
-                <motion.img
+                <OptimizedMotionImage
                   src={ceremonyImage}
                   alt="Candlelit barn ceremony with mountain backdrop"
                   className="w-full h-full object-cover"

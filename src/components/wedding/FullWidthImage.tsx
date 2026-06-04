@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 
@@ -55,7 +56,7 @@ const FullWidthImage = ({
       <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
 
       {parallax ? (
-        <motion.img
+        <OptimizedMotionImage
           src={src}
           alt={alt}
           style={{ y }}
@@ -71,7 +72,7 @@ const FullWidthImage = ({
           height={1080}
         />
       ) : (
-        <img
+        <OptimizedImage
           src={src}
           alt={alt}
           className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-[1.02]"

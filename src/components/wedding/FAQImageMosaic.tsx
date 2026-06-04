@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import ScrollReveal from "./ScrollReveal";
 
 interface FAQImageMosaicProps {
@@ -15,7 +16,7 @@ const FAQImageMosaic = ({ mainImage, mainAlt, secondaryImage, secondaryAlt }: FA
           {/* Large left panel */}
           <div className="col-span-12 md:col-span-7 relative group overflow-hidden">
             <div className="aspect-[16/10]">
-              <img
+              <OptimizedImage
                 src={mainImage}
                 alt={mainAlt}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -37,7 +38,7 @@ const FAQImageMosaic = ({ mainImage, mainAlt, secondaryImage, secondaryAlt }: FA
           <div className="col-span-12 md:col-span-5 grid grid-rows-2 gap-3 md:gap-4">
             <div className="relative group overflow-hidden">
               <div className="aspect-[16/9]">
-                <img
+                <OptimizedImage
                   src={secondaryImage}
                   alt={secondaryAlt}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

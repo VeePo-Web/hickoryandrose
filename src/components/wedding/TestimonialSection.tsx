@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
@@ -261,7 +262,7 @@ const TestimonialSection = () => {
                <div className="grid grid-cols-2 gap-3">
                 <ImageReveal direction="up" delay={0.1}>
                   <div className="aspect-[3/4] overflow-hidden relative group/img">
-                    <img
+                    <OptimizedImage
                       src={galleryImages[0].src}
                       alt={galleryImages[0].alt}
                       className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700"
@@ -293,7 +294,7 @@ const TestimonialSection = () => {
                   {galleryImages.slice(1).map((img, i) => (
                     <ImageReveal key={i} direction="left" delay={0.2 + i * 0.1}>
                       <div className="aspect-square overflow-hidden relative group">
-                        <img
+                        <OptimizedImage
                           src={img.src}
                           alt={img.alt}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"

@@ -1,9 +1,9 @@
-import { useEffect, useRef, useCallback } from "react";
-import Lenis from "lenis";
+import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import { scheduleIdle } from "@/lib/idle";
 
 const SmoothScrollProvider = ({ children }: { children: React.ReactNode }) => {
-  const lenisRef = useRef<Lenis | null>(null);
+  const lenisRef = useRef<import("lenis").default | null>(null);
   const rafIdRef = useRef<number>(0);
   const { pathname } = useLocation();
 
@@ -11,34 +11,47 @@ const SmoothScrollProvider = ({ children }: { children: React.ReactNode }) => {
     // Skip smooth scroll on touch devices for better native performance
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
-    const lenis = new Lenis({
-      lerp: 0.07,
-      smoothWheel: true,
-      wheelMultiplier: 1.2,
-    });
-    lenisRef.current = lenis;
+    let cancelled = false;
+    let removeVisibilityListener = () => {};
 
-    function raf(time: number) {
-      lenis.raf(time);
-      rafIdRef.current = requestAnimationFrame(raf);
-    }
-    rafIdRef.current = requestAnimationFrame(raf);
+    const cleanupIdle = scheduleIdle(async () => {
+      const { default: Lenis } = await import("lenis");
+      if (cancelled) return;
 
-    const handleVisibility = () => {
-      if (document.hidden) {
-        lenis.stop();
-        cancelAnimationFrame(rafIdRef.current);
-      } else {
-        lenis.start();
+      const lenis = new Lenis({
+        lerp: 0.07,
+        smoothWheel: true,
+        wheelMultiplier: 1.2,
+      });
+      lenisRef.current = lenis;
+
+      function raf(time: number) {
+        lenis.raf(time);
         rafIdRef.current = requestAnimationFrame(raf);
       }
-    };
-    document.addEventListener("visibilitychange", handleVisibility);
+      rafIdRef.current = requestAnimationFrame(raf);
+
+      const handleVisibility = () => {
+        if (document.hidden) {
+          lenis.stop();
+          cancelAnimationFrame(rafIdRef.current);
+        } else {
+          lenis.start();
+          rafIdRef.current = requestAnimationFrame(raf);
+        }
+      };
+
+      document.addEventListener("visibilitychange", handleVisibility);
+      removeVisibilityListener = () => document.removeEventListener("visibilitychange", handleVisibility);
+    }, 4000);
 
     return () => {
-      document.removeEventListener("visibilitychange", handleVisibility);
+      cancelled = true;
+      cleanupIdle();
+      removeVisibilityListener();
       cancelAnimationFrame(rafIdRef.current);
-      lenis.destroy();
+      lenisRef.current?.destroy();
+      lenisRef.current = null;
     };
   }, []);
 

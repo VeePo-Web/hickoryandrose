@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useEffect, useRef, useState } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -50,7 +51,7 @@ const Journal = () => {
       {/* Cinematic Hero */}
       <section ref={heroRef} className="relative h-[55vh] md:h-[65vh] overflow-hidden grain-overlay vignette">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <img src={journalBrideImage} alt="Bride in natural light surrounded by florals — editorial wedding photography" className="w-full h-[120%] object-cover" loading="eager" fetchPriority="high" />
+          <OptimizedImage src={journalBrideImage} alt="Bride in natural light surrounded by florals — editorial wedding photography" className="w-full h-[120%] object-cover" loading="eager" fetchPriority="high" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/15 to-black/55" />
         </motion.div>
         <motion.div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "15%"]) }} initial={{ opacity: 0 }} animate={{ opacity: 0.03 }} transition={{ duration: 2, delay: 0.5 }}>

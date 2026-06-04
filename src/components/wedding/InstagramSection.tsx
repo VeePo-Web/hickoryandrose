@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Instagram } from "lucide-react";
@@ -250,7 +251,7 @@ const MosaicItem = ({
         className="block w-full h-full overflow-hidden relative group"
       >
         {/* Image with Ken Burns effect on hover */}
-        <motion.img
+        <OptimizedMotionImage
           src={photo.src}
           alt={photo.alt}
           className="w-full h-full object-cover"

@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import BreathingDiamond from "./BreathingDiamond";
@@ -37,7 +38,7 @@ const EditorialImageBreak = () => {
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
 
       <div className="aspect-[21/9] md:aspect-[21/9] w-full overflow-hidden grain-overlay">
-        <motion.img
+        <OptimizedMotionImage
           src={editorialImage}
           alt="Brass candlestick holders with warm flickering flames on sage linen runner with ivory rose petals and gold calligraphy place cards in rustic timber barn"
           className="w-full h-[120%] object-cover transition-[filter] duration-700"

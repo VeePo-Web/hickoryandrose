@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
@@ -18,7 +19,7 @@ const ServicesVendorPartners = () => (
         <ScrollReveal>
           <ImageReveal direction="left">
             <div className="aspect-square overflow-hidden">
-              <img
+              <OptimizedImage
                 src={vendorDetailImage}
                 alt="Luxury wedding stationery flatlay with gold scissors, calligraphy, sage eucalyptus, and wax seal on marble"
                 className="w-full h-full object-cover"

@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
@@ -166,7 +167,7 @@ const ArticleCard = ({
             featured ? "aspect-[4/5] lg:aspect-[3/4]" : "aspect-[16/10]"
           }`}
         >
-          <img
+          <OptimizedImage
             src={article.image}
             alt={article.alt}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

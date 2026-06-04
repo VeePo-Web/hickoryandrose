@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import manifestoImage from "@/assets/manifesto-hero.jpg";
@@ -29,7 +30,7 @@ const BrandManifestoSection = () => {
     >
       {/* Parallax cinematic background */}
       <motion.div className="absolute inset-0" style={{ y: imgY }}>
-        <img
+        <OptimizedImage
           src={manifestoImage}
           alt=""
           className="w-full h-[130%] object-cover"

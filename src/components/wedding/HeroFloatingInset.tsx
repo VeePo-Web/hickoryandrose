@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useState } from "react";
 import { motion, MotionValue } from "framer-motion";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
@@ -34,11 +35,12 @@ const HeroFloatingInset = ({ secondaryImgY, secondaryImgOpacity }: HeroFloatingI
               />
             ))}
           </div>
-          <img
+          <OptimizedImage
             src={ceremonyImage}
             alt="Mountain barn ceremony with candlelit aisle and eucalyptus garlands"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading="eager"
+            loading="lazy"
+            sizes="12rem"
           />
           {/* Cinematic gradient on hover */}
           <motion.div

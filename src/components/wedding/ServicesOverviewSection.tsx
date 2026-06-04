@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
@@ -121,7 +122,7 @@ const ServicesOverviewSection = () => {
                   {/* Cinematic letterbox bars */}
                   <div className="absolute top-0 left-0 right-0 h-[6%] bg-black/60 z-10" />
                   <div className="absolute bottom-0 left-0 right-0 h-[6%] bg-black/60 z-10" />
-                  <img
+                  <OptimizedImage
                     src={services[hoveredIndex].image}
                     alt={services[hoveredIndex].imageAlt}
                     className="w-full h-full object-cover"

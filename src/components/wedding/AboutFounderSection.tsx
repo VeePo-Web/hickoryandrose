@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
@@ -47,7 +48,7 @@ const AboutFounderSection = () => {
                   style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.08) 40%, hsl(var(--gold) / 0.12) 50%, hsl(var(--gold) / 0.08) 60%, transparent 100%)" }}
                 />
 
-                <motion.img
+                <OptimizedMotionImage
                   src={founderImage}
                   alt="Alexandra Rose, founder of Hickory & Rose, in an editorial portrait"
                   className="w-full h-[110%] object-cover transition-transform duration-700 group-hover:scale-[1.03]"

@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { ChevronDown } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
@@ -86,7 +87,7 @@ const HeroSection = () => {
     <section ref={ref} className="relative h-screen w-full overflow-hidden grain-overlay vignette" aria-label="Hero">
       {/* Background Image with Ken Burns zoom + parallax */}
       <div className="absolute inset-0">
-        <motion.img
+        <OptimizedMotionImage
           src={heroImage}
           alt="Luxury wedding tablescape in rustic timber barn with sage linen, brass candles, garden roses, and Canadian Rocky Mountain peaks at golden hour"
           className="w-full h-[120%] object-cover"

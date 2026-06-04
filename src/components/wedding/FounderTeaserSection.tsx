@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
@@ -143,7 +144,7 @@ const FounderTeaserSection = () => {
                   aria-hidden="true"
                 />
 
-                <motion.img
+                <OptimizedMotionImage
                   src={founderImage}
                   alt="Founder of Hickory & Rose, smiling warmly in a garden setting with sage eucalyptus and ivory roses"
                   className="w-full h-[110%] object-cover relative z-[1]"

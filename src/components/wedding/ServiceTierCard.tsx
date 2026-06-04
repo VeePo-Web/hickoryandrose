@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
@@ -52,7 +53,7 @@ const ServiceImage = ({ service, direction }: { service: ServiceTier; direction:
         onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 0 24px hsl(var(--gold) / 0.1), 0 0 48px hsl(var(--gold) / 0.05)"; }}
         onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "0 0 0px transparent"; }}
       >
-        <img
+        <OptimizedImage
           src={service.image}
           alt={service.imageAlt}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useEffect, useState, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -55,7 +56,7 @@ const Portfolio = () => {
       {/* Cinematic Hero */}
       <section ref={heroRef} className="relative h-[70vh] md:h-[80vh] overflow-hidden grain-overlay vignette">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <img src={portfolioHeroImage} alt="Wedding ceremony with mountain backdrop at golden hour" className="w-full h-[120%] object-cover" loading="eager" fetchPriority="high" />
+          <OptimizedImage src={portfolioHeroImage} alt="Wedding ceremony with mountain backdrop at golden hour" className="w-full h-[120%] object-cover" loading="eager" fetchPriority="high" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/50" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/10" />
         </motion.div>

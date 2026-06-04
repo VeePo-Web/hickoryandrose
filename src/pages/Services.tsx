@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useEffect, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -109,7 +110,7 @@ const Services = () => {
       {/* Cinematic Parallax Hero */}
       <section ref={heroRef} className="relative h-[60vh] md:h-[70vh] overflow-hidden grain-overlay vignette">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <img
+          <OptimizedImage
             src={servicesHeroImage}
             alt="Luxury wedding planning flatlay with calligraphy timeline, sage eucalyptus, and gold wax seal on marble"
             className="w-full h-[120%] object-cover"

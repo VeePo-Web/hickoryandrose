@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
@@ -75,7 +76,7 @@ const PreFooterDivider = () => {
             transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <div className="aspect-[3/4] overflow-hidden relative group">
-              <motion.img
+              <OptimizedMotionImage
                 src={inquireImage}
                 alt="Elegant wedding stationery detail with florals"
                 className="w-full h-[120%] object-cover transition-transform duration-700 group-hover:scale-[1.03]"

@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import ScrollReveal from "./ScrollReveal";
@@ -45,7 +46,7 @@ const AboutPromises = () => {
       style={{ contain: "layout style" }}
     >
       {/* Parallax background image */}
-      <motion.img
+      <OptimizedMotionImage
         src={ceremonyImage}
         alt=""
         aria-hidden="true"

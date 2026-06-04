@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
@@ -125,7 +126,7 @@ const Inquire = () => {
       {/* Cinematic Parallax Hero */}
       <section ref={heroRef} className="relative h-[50vh] md:h-[60vh] overflow-hidden grain-overlay vignette">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <img src={inquireHeroImage} alt="Calligraphy envelope with sage wax seal, gold pen, eucalyptus, and vintage ring box on cream linen" className="w-full h-[120%] object-cover" loading="eager" fetchPriority="high" />
+          <OptimizedImage src={inquireHeroImage} alt="Calligraphy envelope with sage wax seal, gold pen, eucalyptus, and vintage ring box on cream linen" className="w-full h-[120%] object-cover" loading="eager" fetchPriority="high" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/50" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/10" />
         </motion.div>
@@ -190,7 +191,7 @@ const Inquire = () => {
                 <motion.div className="absolute -inset-6 pointer-events-none" initial={{ opacity: 0 }} whileInView={{ opacity: 0.06 }} viewport={{ once: true }} transition={{ duration: 2, delay: 0.5 }} style={{ background: "radial-gradient(ellipse at center, hsl(var(--gold) / 0.15), transparent 70%)" }} aria-hidden="true" />
                 <motion.div initial={{ opacity: 0, clipPath: "inset(100% 0 0 0)" }} whileInView={{ opacity: 1, clipPath: "inset(0% 0 0 0)" }} viewport={{ once: true }} transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }} className="relative group">
                   <div className="aspect-[4/5] overflow-hidden relative">
-                    <img src={inquireEditorialImage} alt="Wedding planner working with mood boards, sage fabric swatches, and floral samples" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" loading="lazy" decoding="async" width={800} height={1000} />
+                    <OptimizedImage src={inquireEditorialImage} alt="Wedding planner working with mood boards, sage fabric swatches, and floral samples" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" loading="lazy" decoding="async" width={800} height={1000} />
                     <div className="absolute top-3 left-3 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
                       <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.35), transparent)" }} />
                       <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.35), transparent)" }} />

@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
@@ -29,7 +30,7 @@ const PortfolioFeaturedStory = ({ image, alt, couple, venue, season, description
           {/* Deep Parallax Window */}
           <ScrollReveal>
             <div className="aspect-[4/5] overflow-hidden relative">
-              <motion.img
+              <OptimizedMotionImage
                 src={image}
                 alt={alt}
                 className="w-full h-[120%] object-cover absolute inset-0"

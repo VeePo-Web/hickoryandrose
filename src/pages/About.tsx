@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useEffect, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -43,7 +44,7 @@ const About = () => {
       {/* Cinematic Parallax Hero */}
       <section ref={heroRef} className="relative h-[60vh] md:h-[70vh] overflow-hidden grain-overlay vignette" style={{ contain: "layout style" }}>
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <img
+          <OptimizedImage
             src={aboutHeroImage}
             alt="Wedding planner in sunlit garden conservatory surrounded by white florals"
             className="w-full h-[120%] object-cover"
@@ -268,7 +269,7 @@ const About = () => {
             {/* Large left image */}
             <ScrollReveal delay={0} className="col-span-2 md:col-span-7">
               <div className="aspect-[4/3] overflow-hidden relative group">
-                <img
+                <OptimizedImage
                   src={bouquetImage}
                   alt="Hand-tied bridal bouquet with ivory garden roses, ranunculus, and sage eucalyptus held by wedding planner during final styling"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -289,7 +290,7 @@ const About = () => {
             <div className="col-span-2 md:col-span-5 flex flex-col gap-3 md:gap-4">
               <ScrollReveal delay={0.1}>
                 <div className="aspect-[3/2] overflow-hidden relative group">
-                  <img
+                  <OptimizedImage
                     src={editorialFloralsImage}
                     alt="Ceremony table centerpiece featuring cascading eucalyptus and white florals being arranged by wedding planner"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -303,7 +304,7 @@ const About = () => {
               </ScrollReveal>
               <ScrollReveal delay={0.2}>
                 <div className="aspect-[3/2] overflow-hidden relative group">
-                  <img
+                  <OptimizedImage
                     src={aboutHeroImage}
                     alt="Wedding planner Alexandra reviewing day-of timeline with vendors in sunlit garden conservatory"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ImageReveal from "./ImageReveal";
@@ -95,7 +96,7 @@ const PortfolioMasonryGrid = ({ stories }: PortfolioMasonryGridProps) => {
                       }}
                     />
 
-                    <img
+                    <OptimizedImage
                       src={story.src}
                       alt={story.alt}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

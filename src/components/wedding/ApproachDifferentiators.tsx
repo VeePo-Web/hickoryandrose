@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
@@ -81,7 +82,7 @@ const ApproachDifferentiators = () => {
                     </div>
                   ))}
 
-                  <img
+                  <OptimizedImage
                     src={founderImage}
                     alt="Hickory & Rose founder reviewing wedding details"
                     className={`w-full h-full object-cover transition-transform duration-700 ${isHovered ? "scale-105" : "scale-100"}`}

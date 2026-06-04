@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useEffect, useRef, useState } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -131,7 +132,7 @@ const Approach = () => {
       {/* ──────────────── Cinematic Parallax Hero ──────────────── */}
       <section ref={heroRef} className="relative h-[65vh] md:h-[75vh] overflow-hidden grain-overlay vignette" aria-label="Hero">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <img
+          <OptimizedImage
             src={approachHeroImage}
             alt="Wedding day timeline with calligraphy, gold pen, sage eucalyptus and white roses"
             className="w-full h-[120%] object-cover"
@@ -277,7 +278,7 @@ const Approach = () => {
                 <div className="md:hidden mt-4 mb-2">
                   <ImageReveal direction="up" delay={0.15}>
                     <div className="aspect-[16/9] overflow-hidden relative">
-                      <img
+                      <OptimizedImage
                         src={approachDetailsImage}
                         alt="Wedding planning details with gold accents"
                         className="w-full h-full object-cover"
@@ -302,7 +303,7 @@ const Approach = () => {
                       }}
                     >
                       <GoldFrame inset="10px" delay={0.8} />
-                      <img
+                      <OptimizedImage
                         src={approachDetailsImage}
                         alt="Wedding planning details with gold accents"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -593,7 +594,7 @@ const Approach = () => {
 
             {/* Founder attribution */}
             <div className="flex items-center justify-center gap-3 mt-4">
-              <img
+              <OptimizedImage
                 src={founderImage}
                 alt="Alexandra Rose, Founder of Hickory & Rose"
                 className="w-8 h-8 rounded-full object-cover border border-primary-foreground/10"

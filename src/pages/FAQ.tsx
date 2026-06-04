@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import React, { useEffect, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -90,7 +91,7 @@ const FAQ = () => {
       {/* Cinematic Parallax Hero */}
       <section ref={heroRef} className="relative h-[55vh] md:h-[65vh] overflow-hidden grain-overlay vignette">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <img src={faqHeroImage} alt="Luxury wedding stationery with sage envelope, gold wax seal, and calligraphy on linen" className="w-full h-[120%] object-cover" loading="eager" fetchPriority="high" />
+          <OptimizedImage src={faqHeroImage} alt="Luxury wedding stationery with sage envelope, gold wax seal, and calligraphy on linen" className="w-full h-[120%] object-cover" loading="eager" fetchPriority="high" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/15 to-black/55" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/10" />
         </motion.div>
@@ -219,7 +220,7 @@ const FAQ = () => {
                 <ScrollReveal delay={0.15}>
                   <div className="mt-16 md:mt-24 relative overflow-hidden rounded-sm">
                     <div className="aspect-[21/9] relative group">
-                      <img src={faqEditorialImage} alt="Gold wedding rings on handwritten calligraphy vows with eucalyptus" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
+                      <OptimizedImage src={faqEditorialImage} alt="Gold wedding rings on handwritten calligraphy vows with eucalyptus" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-black/20" />
                       {/* Gold corner frames */}
                       <span className="absolute top-4 left-4 w-8 h-8 border-t border-l pointer-events-none" style={{ borderColor: "hsl(var(--gold) / 0.3)" }} />
@@ -241,7 +242,7 @@ const FAQ = () => {
                   <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
                     <div className="md:col-span-7 relative overflow-hidden rounded-sm group">
                       <div className="aspect-[16/10]">
-                        <img src={faqHeroImage} alt="Luxury wedding stationery with sage envelope, gold wax seal, and calligraphy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
+                        <OptimizedImage src={faqHeroImage} alt="Luxury wedding stationery with sage envelope, gold wax seal, and calligraphy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" />
                         <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/10" />
                       </div>
                     </div>

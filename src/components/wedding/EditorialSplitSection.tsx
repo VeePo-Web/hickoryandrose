@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
@@ -166,7 +167,7 @@ const EditorialSplitSection = () => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <motion.img
+        <OptimizedMotionImage
           src={detailImage}
           alt="Elegant calligraphy place card with gold cutlery on fine linen"
           className="absolute inset-0 w-full h-[120%] object-cover"
@@ -260,7 +261,7 @@ const EditorialSplitSection = () => {
                 {/* Letterbox bars */}
                 <div className="absolute top-0 left-0 right-0 h-[6%] bg-black/60 z-10" />
                 <div className="absolute bottom-0 left-0 right-0 h-[6%] bg-black/60 z-10" />
-                <img
+                <OptimizedImage
                   src={vendorImage}
                   alt="Vendor collaboration detail"
                   className="w-full h-full object-cover"

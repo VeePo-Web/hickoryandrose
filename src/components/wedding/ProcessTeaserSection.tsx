@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
@@ -91,7 +92,7 @@ const ProcessTeaserSection = () => {
             <div className="sticky top-32">
               <ImageReveal direction="up" delay={0.15}>
                 <div className="aspect-[3/4] overflow-hidden relative group">
-                  <img
+                  <OptimizedImage
                     src={bouquetImage}
                     alt="Elegant bridal bouquet with sage eucalyptus and ivory garden roses"
                     className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-[1.2s] ease-out"

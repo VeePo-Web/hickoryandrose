@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useLocation, Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -40,7 +41,7 @@ const NotFound = () => {
       >
         {/* Parallax editorial background */}
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <img
+          <OptimizedImage
             src={notfoundImage}
             alt=""
             className="w-full h-[130%] object-cover"

@@ -1,16 +1,18 @@
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect, lazy, Suspense, useState } from "react";
 import { setPageMeta } from "@/lib/seo";
+import { scheduleIdle } from "@/lib/idle";
 import HeroSection from "@/components/wedding/HeroSection";
 import BrandPromiseSection from "@/components/wedding/BrandPromiseSection";
 import TrustBarSection from "@/components/wedding/TrustBarSection";
 import NowBookingSection from "@/components/wedding/NowBookingSection";
-import ScrollProgress from "@/components/wedding/ScrollProgress";
-import BackToTop from "@/components/wedding/BackToTop";
-import SectionIndicator from "@/components/wedding/SectionIndicator";
+import DeferredRender from "@/components/wedding/DeferredRender";
 import venueImage from "@/assets/portfolio-venue.jpg";
 import rockiesImage from "@/assets/service-area-rockies.jpg";
 
 // Lazy-load below-fold sections
+const ScrollProgress = lazy(() => import("@/components/wedding/ScrollProgress"));
+const BackToTop = lazy(() => import("@/components/wedding/BackToTop"));
+const SectionIndicator = lazy(() => import("@/components/wedding/SectionIndicator"));
 const ServicesOverviewSection = lazy(() => import("@/components/wedding/ServicesOverviewSection"));
 const VendorShowcaseSection = lazy(() => import("@/components/wedding/VendorShowcaseSection"));
 const EditorialImageBreak = lazy(() => import("@/components/wedding/EditorialImageBreak"));
@@ -34,6 +36,32 @@ const Footer = lazy(() => import("@/components/wedding/Footer"));
 // LocalBusiness JSON-LD lives in index.html (single source of truth, crawler-safe pre-JS).
 // Do NOT inject a duplicate here. No aggregateRating until real reviews exist (8.x honesty).
 
+const IdleHomeAffordances = () => {
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    let cleanupIdle = () => {};
+    const timeoutId = window.setTimeout(() => {
+      cleanupIdle = scheduleIdle(() => setEnabled(true), 3000);
+    }, 5000);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      cleanupIdle();
+    };
+  }, []);
+
+  if (!enabled) return null;
+
+  return (
+    <Suspense fallback={null}>
+      <ScrollProgress />
+      <BackToTop />
+      <SectionIndicator />
+    </Suspense>
+  );
+};
+
 const Index = () => {
   useEffect(() => {
     setPageMeta({
@@ -45,13 +73,12 @@ const Index = () => {
 
   return (
     <main id="main-content" className="overflow-hidden">
-      <ScrollProgress />
-      <BackToTop />
-      <SectionIndicator />
+      <IdleHomeAffordances />
       <HeroSection />
       <BrandPromiseSection />
       <TrustBarSection />
       <NowBookingSection />
+      <DeferredRender>
       <Suspense fallback={null}>
         <ServicesOverviewSection />
         <EditorialQuoteRibbon
@@ -94,6 +121,7 @@ const Index = () => {
         <JournalTeaserSection />
         <Footer />
       </Suspense>
+      </DeferredRender>
     </main>
   );
 };

@@ -1,3 +1,4 @@
+import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
 import { useState, useCallback, useEffect, useRef } from "react";
@@ -176,7 +177,7 @@ const GallerySection = () => {
                   data-cursor-hover
                   data-cursor-label="View"
                 >
-                  <img
+                  <OptimizedImage
                     src={photo.src}
                     alt={photo.alt}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -373,7 +374,7 @@ const GallerySection = () => {
                       borderImage: "linear-gradient(135deg, hsl(var(--gold) / 0.2), transparent 30%, transparent 70%, hsl(var(--gold) / 0.15)) 1",
                     }}
                   />
-                  <img
+                  <OptimizedImage
                     src={photos[selectedIndex].src}
                     alt={photos[selectedIndex].alt}
                     className="max-w-full max-h-[70vh] object-contain"
