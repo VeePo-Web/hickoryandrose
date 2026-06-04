@@ -75,6 +75,7 @@ const FAQ = () => {
 
   useEffect(() => {
     setPageMeta({ title: "FAQ | Hickory & Rose Edmonton Wedding Planner", description: "Answers on pricing, services, planning timelines, and coverage across Edmonton, the Canadian Rockies, and Alberta — from Hickory & Rose.", path: "/faq" });
+    setBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "FAQ", path: "/faq" }]);
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.textContent = JSON.stringify(faqSchema);
