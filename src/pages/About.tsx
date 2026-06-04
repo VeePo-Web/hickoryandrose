@@ -31,7 +31,7 @@ const About = () => {
   useEffect(() => {
     setPageMeta({
       title: "About | Hickory & Rose Edmonton Wedding Planner",
-      description: "Meet Alexandra Rose, founder of Hickory & Rose — calm leadership, intentional design, and refined rustic elegance for Edmonton & Alberta couples.",
+      description: "Meet Meg Wolodko, founder of Hickory & Rose — calm leadership, intentional design, and refined rustic elegance for Edmonton & Alberta couples.",
       path: "/about",
     });
     setBreadcrumbSchema([
@@ -309,7 +309,7 @@ const About = () => {
                 <div className="aspect-[3/2] overflow-hidden relative group">
                   <img
                     src={aboutHeroImage}
-                    alt="Wedding planner Alexandra reviewing day-of timeline with vendors in sunlit garden conservatory"
+                    alt="Wedding planner Meg reviewing day-of timeline with vendors in sunlit garden conservatory"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />

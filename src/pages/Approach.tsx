@@ -599,12 +599,12 @@ const Approach = () => {
             <div className="flex items-center justify-center gap-3 mt-4">
               <img
                 src={founderImage}
-                alt="Alexandra Rose, Founder of Hickory & Rose"
+                alt="Meg Wolodko, Founder of Hickory & Rose"
                 className="w-8 h-8 rounded-full object-cover border border-primary-foreground/10"
                 loading="lazy"
               />
               <span className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-primary-foreground/60">
-                — Alexandra Rose, Founder
+                — Meg Wolodko, Founder
               </span>
             </div>
 

@@ -49,7 +49,7 @@ const AboutFounderSection = () => {
 
                 <motion.img
                   src={founderImage}
-                  alt="Alexandra Rose, founder of Hickory & Rose, in an editorial portrait"
+                  alt="Meg Wolodko, founder of Hickory & Rose, in an editorial portrait"
                   className="w-full h-[110%] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   style={{ y: founderImgY, scale: founderImgScale }}
                   loading="lazy"
@@ -84,7 +84,7 @@ const AboutFounderSection = () => {
                 {/* Caption reveal */}
                 <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 z-10 pointer-events-none">
                   <span className="block w-6 h-px mb-2" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.5), transparent)" }} />
-                  <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-white/70">Alexandra Rose, Founder</span>
+                  <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-white/70">Meg Wolodko, Founder</span>
                 </div>
               </div>
             </ImageReveal>
@@ -106,7 +106,7 @@ const AboutFounderSection = () => {
                 </span>
               </p>
               <h2 className="font-serif-wedding text-display-lg text-foreground mb-4">
-                Alexandra Rose
+                Meg Wolodko
               </h2>
               <p className="font-sans-wedding text-body-sm text-brand-text-secondary mb-8 font-light italic">
                 Founder &amp; Lead Planner
@@ -114,7 +114,7 @@ const AboutFounderSection = () => {
 
               <div className="space-y-5 font-sans-wedding text-body-sm text-muted-foreground leading-[1.85] font-light">
                 <p className="drop-cap">
-                  I'm Alexandra — the founder of Hickory &amp; Rose. I started this studio because I believe a wedding should feel as beautiful to live inside as it looks in the photos.
+                  I'm Meg — the founder of Hickory &amp; Rose. I started this studio because I believe a wedding should feel as beautiful to live inside as it looks in the photos.
                 </p>
                 <p>
                   My couples describe me as organized, calming, and genuinely easy to work with. I run on thoughtful preparation and quiet leadership — the kind that lets you stay present on a day that's only going to happen once.
@@ -169,7 +169,7 @@ const AboutFounderSection = () => {
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.5, delay: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  — Alexandra Rose
+                  — Meg Wolodko
                 </motion.span>
               </div>
 
