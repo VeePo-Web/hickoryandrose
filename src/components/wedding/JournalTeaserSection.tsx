@@ -13,7 +13,7 @@ const articles = [
     category: "Planning",
     title: "The Art of Being Present on Your Wedding Day",
     excerpt:
-      "How letting go of the details you've obsessed over is the final — and most important — step in your wedding journey.",
+      "How letting go of the details you've labored over is the final — and most important — step in your wedding journey.",
     readTime: "6 min read",
     date: "March 2026",
     pullQuote: "Presence is the final gift you give yourself.",
