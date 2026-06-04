@@ -43,7 +43,7 @@ const Portfolio = () => {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
-    setPageMeta({ title: "Real Weddings — Portfolio | Hickory & Rose Edmonton Wedding Planner", description: "Browse real Edmonton weddings planned by Hickory & Rose. Elegant receptions, mountain ceremonies, and intimate celebrations — see our work in full-service, partial, and day-of coordination.", path: "/portfolio" });
+    setPageMeta({ title: "Portfolio | Hickory & Rose Edmonton Wedding Planner", description: "Aesthetic direction from Hickory & Rose — refined rustic elegance for Edmonton & Alberta weddings. A glimpse of the day we design for our couples.", path: "/portfolio" });
   }, []);
 
   const filtered = active === "All" ? weddingStories : weddingStories.filter((s) => s.category === active);

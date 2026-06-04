@@ -96,8 +96,8 @@ const Services = () => {
 
   useEffect(() => {
     setPageMeta({
-      title: "Wedding Planning Services — Day-Of, Partial & Full-Service | Hickory & Rose",
-      description: "Explore Hickory & Rose wedding planning services in Edmonton — day-of coordination, partial planning, and full-service planning. Custom proposals tailored to every couple.",
+      title: "Services | Hickory & Rose Edmonton Wedding Planner",
+      description: "Day-of coordination, partial planning, and full-service wedding planning in Edmonton & the Canadian Rockies. Tailored proposals, calm execution.",
       path: "/services",
     });
   }, []);

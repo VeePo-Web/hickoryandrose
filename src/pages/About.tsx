@@ -30,8 +30,8 @@ const About = () => {
 
   useEffect(() => {
     setPageMeta({
-      title: "About Hickory & Rose — Edmonton Wedding Planner | Our Story",
-      description: "Meet the heart behind Hickory & Rose. Calm leadership, intentional design, and genuine care — learn why Edmonton couples trust us with their most important day.",
+      title: "About | Hickory & Rose Edmonton Wedding Planner",
+      description: "Meet Alexandra Rose, founder of Hickory & Rose — calm leadership, intentional design, and refined rustic elegance for Edmonton & Alberta couples.",
       path: "/about",
     });
   }, []);

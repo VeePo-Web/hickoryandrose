@@ -31,51 +31,16 @@ const JournalTeaserSection = lazy(() => import("@/components/wedding/JournalTeas
 const CTASection = lazy(() => import("@/components/wedding/CTASection"));
 const Footer = lazy(() => import("@/components/wedding/Footer"));
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Hickory & Rose Wedding and Event Planning",
-  "description": "Edmonton-based luxury wedding planner. Seamless, stress-free execution and thoughtfully personalized planning — day-of coordination, partial, and full-service.",
-  "url": "https://hickoryandrose.com",
-  "telephone": "",
-  "email": "sales@hickoryandrose.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Edmonton",
-    "addressRegion": "Alberta",
-    "addressCountry": "CA"
-  },
-  "areaServed": [
-    "Edmonton", "Jasper", "Banff", "Lake Louise", "Calgary", "Canadian Rockies"
-  ],
-  "priceRange": "$$$$",
-  "foundingDate": "2018",
-  "sameAs": ["https://www.instagram.com/hickoryandrose"],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "reviewCount": "75"
-  }
-};
+// LocalBusiness JSON-LD lives in index.html (single source of truth, crawler-safe pre-JS).
+// Do NOT inject a duplicate here. No aggregateRating until real reviews exist (8.x honesty).
 
-// Force rebuild v2
 const Index = () => {
   useEffect(() => {
     setPageMeta({
-      title: "Hickory & Rose — Luxury Wedding Planner in Edmonton, Alberta",
-      description: "Seamless, stress-free wedding planning in Edmonton and surrounding Alberta. Luxury, personalized day-of coordination, partial, and full-service planning — thoughtfully bringing your vision to life.",
+      title: "Hickory & Rose | Edmonton Luxury Wedding Planner",
+      description: "Refined, calm wedding planning in Edmonton & the Canadian Rockies. Day-of, partial, and full-service planning for the day you'll actually live in.",
       path: "/",
     });
-
-    // Inject JSON-LD
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.textContent = JSON.stringify(jsonLd);
-    script.id = "jsonld-local-business";
-    const existing = document.getElementById("jsonld-local-business");
-    if (existing) existing.remove();
-    document.head.appendChild(script);
-    return () => { script.remove(); };
   }, []);
 
   return (
