@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     question: "Can I customize my service package?",
-    answer: "Absolutely. Every couple is unique — after our discovery call, we craft a custom proposal tailored to your specific needs, priorities, and budget. Our tiers are starting points, not limitations.",
+    answer: "Absolutely. Every couple is unique — after our discovery call, we craft a custom proposal tailored to your specific needs, priorities, and investment level. Our tiers are starting points, not limitations.",
   },
   {
     question: "Will the same planner be with us throughout?",

@@ -88,7 +88,7 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <motion.img
           src={heroImage}
-          alt="Luxury wedding tablescape in rustic timber barn with sage linen, brass candles, garden roses, and Canadian Rocky Mountain peaks at golden hour"
+          alt="Luxury wedding tablescape in a heritage timber venue with sage linen, brass candles, garden roses, and Canadian Rocky Mountain peaks at golden hour"
           className="w-full h-[120%] object-cover"
           loading="eager"
           decoding="async"

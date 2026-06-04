@@ -36,7 +36,7 @@ const HeroFloatingInset = ({ secondaryImgY, secondaryImgOpacity }: HeroFloatingI
           </div>
           <img
             src={ceremonyImage}
-            alt="Mountain barn ceremony with candlelit aisle and eucalyptus garlands"
+            alt="Mountain ceremony with candlelit aisle and eucalyptus garlands"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="eager"
           />

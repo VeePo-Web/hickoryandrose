@@ -20,7 +20,7 @@ const articles = [
   },
   {
     image: journalVowsImage,
-    alt: "Handwritten calligraphy wedding vows with gold pen and eucalyptus on rustic wood",
+    alt: "Handwritten calligraphy wedding vows with gold pen and eucalyptus on warm-toned wood",
     category: "Inspiration",
     title: "Writing Vows That Feel Like You",
     excerpt:
@@ -31,7 +31,7 @@ const articles = [
   },
   {
     image: journalReceptionImage,
-    alt: "Rustic barn reception with sage linen runner, brass candlesticks, and string lights at twilight",
+    alt: "Heritage timber venue reception with sage linen runner, brass candlesticks, and string lights at twilight",
     category: "Design",
     title: "Tablescapes That Tell a Story",
     excerpt:

@@ -24,10 +24,10 @@ import venueImage from "@/assets/portfolio-venue.jpg";
 // when owner provides them (discovery 6.11). Until then, no fabricated couples / venues / dates.
 const weddingStories = [
   { src: heroImage, alt: "Garden reception tablescape at golden hour", couple: "Garden Reception", venue: "Edmonton", season: "Summer", category: "Full Planning", aspect: "aspect-[3/4]" },
-  { src: receptionImage, alt: "Rustic farmhouse reception with eucalyptus and candlelight", couple: "Farmhouse Candlelight", venue: "Alberta", season: "Autumn", category: "Full Planning", aspect: "aspect-square" },
+  { src: receptionImage, alt: "Refined farmhouse reception with eucalyptus and candlelight", couple: "Farmhouse Candlelight", venue: "Alberta", season: "Autumn", category: "Full Planning", aspect: "aspect-square" },
   { src: ceremonyImage, alt: "Mountain ceremony with floral arch and white draping", couple: "Mountain Ceremony", venue: "Canadian Rockies", season: "Summer", category: "Partial Planning", aspect: "aspect-[4/5]" },
   { src: bouquetImage, alt: "Bridal bouquet with white roses and sage eucalyptus", couple: "Bridal Florals", venue: "Edmonton", season: "Spring", category: "Day-Of", aspect: "aspect-[3/4]" },
-  { src: venueImage, alt: "Rustic barn venue at twilight with string lights", couple: "Twilight Barn", venue: "Alberta", season: "Autumn", category: "Full Planning", aspect: "aspect-[16/10]" },
+  { src: venueImage, alt: "Heritage timber venue at twilight with string lights", couple: "Twilight Venue", venue: "Alberta", season: "Autumn", category: "Full Planning", aspect: "aspect-[16/10]" },
   { src: editorialImage, alt: "Sage and ivory floral arrangement detail", couple: "Floral Detail", venue: "Edmonton", season: "Winter", category: "Day-Of", aspect: "aspect-square" },
   { src: firstDanceImage, alt: "First dance under string lights at outdoor reception", couple: "First Dance", venue: "River Valley", season: "Summer", category: "Partial Planning", aspect: "aspect-[3/4]" },
   { src: detailImage, alt: "Calligraphy place card with gold cutlery detail", couple: "Place Setting", venue: "Edmonton", season: "Spring", category: "Full Planning", aspect: "aspect-square" },

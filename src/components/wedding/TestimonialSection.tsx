@@ -35,10 +35,12 @@ const testimonials = [
   },
 ];
 
+// Aesthetic-direction images from styled set — no fabricated venue attributions
+// (brand-identity §6.11 — featured weddings TBC). Swap when real weddings publish.
 const galleryImages = [
-  { src: ceremonyImage, alt: "Outdoor wedding ceremony with mountain backdrop and floral arch", venue: "Jasper Park Lodge", label: "Ceremony" },
-  { src: detailImage, alt: "Elegant calligraphy place card with gold cutlery on linen", venue: "Fairmont Macdonald", label: "Details" },
-  { src: firstDanceImage, alt: "Couple's first dance under string lights at outdoor reception", venue: "The Glass House", label: "Reception" },
+  { src: ceremonyImage, alt: "Outdoor ceremony with mountain backdrop and floral arch", label: "Ceremony" },
+  { src: detailImage, alt: "Elegant calligraphy place card with gold cutlery on linen", label: "Details" },
+  { src: firstDanceImage, alt: "Couple's first dance under string lights at outdoor reception", label: "Reception" },
 ];
 
 const TestimonialSection = () => {
@@ -106,7 +108,7 @@ const TestimonialSection = () => {
                 <span className="font-serif-wedding text-sm text-primary/20 font-light">05</span>
                 <span className="w-8 h-px bg-primary/20" />
                 <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 tracking-[0.2em]">
-                  Kind Words
+                  From the Studio
                 </p>
               </div>
 
@@ -284,7 +286,7 @@ const TestimonialSection = () => {
                         {galleryImages[0].label}
                       </span>
                       <p className="font-serif-wedding text-xs text-white/80 italic mt-0.5">
-                        {galleryImages[0].venue}
+                        Aesthetic direction
                       </p>
                     </div>
                   </div>
@@ -307,7 +309,7 @@ const TestimonialSection = () => {
                             {img.label}
                           </span>
                           <p className="font-serif-wedding text-caption text-white/80 italic mt-0.5">
-                            {img.venue}
+                            Aesthetic direction
                           </p>
                         </div>
                       </div>
@@ -318,7 +320,7 @@ const TestimonialSection = () => {
               {/* Gallery caption with ornament */}
               <div className="mt-4 flex items-center justify-between">
                 <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60">
-                  Real Hickory & Rose Weddings
+                  Aesthetic Direction — Hickory & Rose
                 </span>
                 <div className="flex items-center gap-2">
                   <span

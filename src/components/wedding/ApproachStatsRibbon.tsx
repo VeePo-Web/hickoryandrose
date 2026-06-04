@@ -3,11 +3,13 @@ import { motion, useInView } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import BreathingDiamond from "./BreathingDiamond";
 
+// Honest, owner-confirmed status (brand-identity §5.5 / §3.25). No fabricated
+// wedding counts, vendor metrics, or year founded until verified.
 const stats = [
-  { value: 150, suffix: "+", label: "Weddings Planned", detail: "Since 2018" },
-  { value: 98, suffix: "%", label: "Vendor Satisfaction", detail: "Return partnerships" },
-  { value: 7, suffix: "+", label: "Years Experience", detail: "Edmonton & area" },
-  { value: 48, suffix: "hr", label: "Response Time", detail: "Guaranteed" },
+  { value: 2026, suffix: "", label: "Season Fully Booked", detail: "Summer & fall" },
+  { value: 2027, suffix: "", label: "Now Booking", detail: "Two-person team standard" },
+  { value: 1, suffix: "", label: "Editorial Styled Shoot", detail: "August 15, 2026" },
+  { value: 48, suffix: "hr", label: "Inquiry Response", detail: "Within 24–48 business hours" },
 ];
 
 const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);

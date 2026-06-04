@@ -182,7 +182,7 @@ const Inquire = () => {
         </motion.div>
         <GoldFrame inset="20px" delay={1} />
         <motion.div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-4 py-3 pointer-events-none" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6, duration: 0.8 }}>
-          {["Complimentary Call", "No Commitment", "48hr Response"].map((t, i) => (
+          {["Complimentary Call", "No Commitment", "24–48hr Reply"].map((t, i) => (
             <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/30 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
@@ -278,7 +278,7 @@ const Inquire = () => {
                     </motion.button>
                   )}
                 </div>
-                <p className="font-sans-wedding text-xs text-brand-text-tertiary mt-4 text-center font-light">We respond to every inquiry within 48 hours.</p>
+                <p className="font-sans-wedding text-xs text-brand-text-tertiary mt-4 text-center font-light">We respond to every inquiry within 24–48 business hours.</p>
                 <a
                   href="https://veepo.ca/case-studies"
                   target="_blank"
