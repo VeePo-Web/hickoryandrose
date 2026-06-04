@@ -1,134 +1,192 @@
-# Section 3 (Services, Packages & "Calm Luxury Leadership" Process) — Subtle Refinement Plan
+# Sections 4 (Experience) & 5 (About & Authority) — Subtle Refinement Plan + Critical Credibility Audit
 
-The owner answered Section 3 partially. The key recurring instruction is **prices are not finalized** but she wants "starting at" framing — meaning **no firm dollar amounts should be displayed** until she confirms pricing. The current site has hard prices in three places that contradict this. Plus a couple of factual misalignments (lead time, partial-planning scope) that drifted from her answers.
-
-This plan covers visible site fixes + remaining Section 3 TBC reference fields.
+Two sections handled together because they share the same axis: who Hickory & Rose is, and what experience the bride can trust. While auditing for Section 5 I found a **serious honesty issue** that should be fixed in this pass — the site currently displays multiple unverified statistics the owner never claimed. We need to bring the credentials in line with what she actually said in 5.5.
 
 ---
 
-## A. Visible site corrections — alignment with owner answers
+## ⚠️ Priority issue — Unverified credibility claims
 
-### A1. Lead time — 3.4
-Owner: *"6-8 weeks prior to the wedding, unlimited communication during this time"*
+Owner's only stated credibility signals (5.5):
+- Styled shoot — August 15, 2026
+- Summer 2026 — fully booked (3 weddings)
+- Fall 2026 — fully booked (2 weddings)
+- Growing vendor referral network
+- "Not yet" to professional brand photos (5.11)
 
-| File | Current | Fix |
-|---|---|---|
-| `src/pages/Services.tsx:33` | "we step in **4-6 weeks** before" | "we step in **6–8 weeks** before, with **unlimited communication** through to the day," |
+Current site claims (none verified by owner):
 
-The overview component already says "6–8 weeks" — Services.tsx is the only drift.
+| File | Line | Claim | Status |
+|---|---|---|---|
+| `HeroSection.tsx` | 42 | "150+ Weddings" | ❌ Fabricated |
+| `FounderTeaserSection.tsx` | 9–11 | "150+ Weddings Coordinated", "8 Years of Experience", "100% Client Satisfaction" | ❌ Fabricated |
+| `AboutFounderSection.tsx` | 8–12, 108 | "WPIC Certified", "7+ Years", "80+ Vendor Partners" | ❌ Unverified |
+| `TrustBarSection.tsx` | 224 | "150+" | ❌ Fabricated |
+| `Portfolio.tsx` | 112 | "75+ Weddings Planned", "8 Years of Experience", "100% Client Satisfaction", "15–20 Weddings Per Year" | ❌ Fabricated |
+| `StatsSection.tsx` | 8 | "7 Years of Experience, since 2018" | ❌ Unverified |
+| `About.tsx` | 112 | "50+ Weddings", "WPIC Certified", "Featured in Style Me Pretty" | ❌ Fabricated |
+| `About.tsx` | 435 | "WPIC Member", "Alberta Wedding Network", "Featured Vendor — Jasper Park Lodge" | ❌ Unverified |
 
-### A2. Pricing — 3.22 + 3.23
-Owner: *"I need to finalize prices… Yes — maybe 'starting at' prices so that we can tailor as needed."*
+**The fix**: replace every fabricated metric with the **real, owner-confirmed credibility signals** — framed editorially so they feel like proof, not numbers.
 
-Until she sends final numbers, **remove all hard dollar amounts** site-wide. Replace with `"Starting at — inquire"` (already the pattern used in `ServicesOverviewSection.tsx`).
+**Proposed replacement credentials set** (uses only what the owner actually told us):
 
-| File | Lines | Fix |
-|---|---|---|
-| `src/pages/Services.tsx` | 31, 51, 71 | `investment` → `"Starting at — inquire"` |
-| `src/pages/Services.tsx` | 104 | meta description: drop the three "$X,XXX" amounts; keep edit-safe sentence: *"Explore Hickory & Rose wedding planning services in Edmonton — day-of coordination, partial planning, and full-service planning. Custom proposals tailored to every couple."* |
-| `src/pages/Services.tsx` | 182 | pill list `["Three Curated Tiers", "Custom Proposals", "From $2,500"]` → `["Three Curated Tiers", "Custom Proposals", "Tailored to You"]` |
-| `src/components/wedding/ServiceComparison.tsx` | 6–8 | `price: "From $X,XXX"` → `price: "Starting at — inquire"` for all three rows |
-
-`src/config/personas/market-research.ts:129` is internal-only persona research notes — leave alone, but I'll add a comment noting prices are outdated.
-
-### A3. Partial Planning scope — 3.6
-Owner: *"Exactly as above [day-of], plus remaining vendor sourcing"*
-
-Current `Services.tsx` Partial tier over-promises (mood boards, monthly meetings, budget tracking, décor styling). This contradicts her direct answer. The Overview component is correct (matches her words). Bring Services.tsx in line.
-
-**New Partial `includes` list:**
 ```ts
-includes: [
-  "Everything in Day-Of Coordination",
-  "Remaining vendor sourcing and curation",
-  "Vendor recommendations from our trusted network",
-  "Planning check-ins to round out your team",
-]
+const credentials = [
+  { value: "2026", label: "Summer & Fall Fully Booked" },
+  { value: "Aug 15", label: "Editorial Styled Shoot" },
+  { value: "Growing", label: "Vendor Network" },
+];
 ```
 
-Description shortened to: *"For couples who've started planning but need a trusted partner to complete the vendor team and carry the rest of the load with you."*
+For the hero "trust strip" (currently `["150+ Weddings", ...]`):
 
-(3.7/3.8 are TBC — owner needs to flesh out deliverables. Keeping copy minimal & honest until she does.)
-
-### A4. Full-Service — 3.9
-Owner: *"From the moment they get engaged, so design, vision, vendors etc"*
-
-Current Services.tsx Full tier copy is close but adds "welcome event and post-wedding brunch coordination" — owner hasn't confirmed. Soften to match her words.
-
-**New Full `includes` list:**
 ```ts
-includes: [
-  "Everything in Partial Planning",
-  "Design direction and vision development",
-  "End-to-end vendor sourcing, negotiation, and management",
-  "Comprehensive logistics and production",
-  "Held from engagement through final send-off",
-]
+["Summer 2026 — Fully Booked", "Edmonton & Alberta", "Now Booking 2027"]
 ```
 
-### A5. Vendor collaboration — 3.14
-Owner: *"Exactly as noted in your prompts, we need to work as a team always"* ✅ already reflected in `ServicesVendorPartners.tsx`. No change.
+For the `About.tsx` credential pill row:
 
-### A6. Emergency kit — 3.16
-Owner: *"emergency kit available"* ✅ already in Day-Of includes line. No change.
+```ts
+["2026 Season Fully Booked", "Editorial Shoot — Aug 2026", "Now Booking 2027"]
+```
 
-### A7. 2-person team for 2027 — 3.25
-Owner: *"I think moving forward for 2027 enquiries I want to always offer a 2 person team"*
+For `StatsSection.tsx` and the Portfolio stats grid — remove the year/weddings counters entirely and replace with **editorial proof points** (qualitative, not quantitative):
 
-Already in `brand-identity.ts` (`capacity.twoPersonTeamFrom2027`). Add a single quiet line in `ServicesInvestmentPhilosophy.tsx` (already exists) so visitors looking at 2027 dates understand the team standard: *"For 2027 weddings, every package includes a two-person planning team as standard."*
+| Stat | Replace with |
+|---|---|
+| "8 Years of Experience" | "Edmonton-Based Studio" / "Trusted by Alberta couples" |
+| "150+ / 75+ / 50+ Weddings" | "Limited Calendar — Intentional By Design" |
+| "100% Client Satisfaction" | (remove — unverifiable) |
+| "15–20 Weddings Per Year" | "Two-Person Team — Standard from 2027" |
 
-I'll add it as a subtle note, not a banner.
+This keeps the section visually intact while removing any claim the owner can't back up.
+
+For the `AboutFounderSection.tsx` "WPIC Certified Wedding Planner" line (line 108): soften to **"Founder & Lead Planner"** until the owner confirms certifications.
+
+For `About.tsx:435` (the recognition row): replace with the actual credibility signals — *"Editorial Styled Shoot — August 2026"*, *"Summer & Fall 2026 — Fully Booked"*, *"Now Welcoming 2027 Couples"*.
 
 ---
 
-## B. Brand-identity config — fill remaining Section 3 reference fields
+## Section 4 — Experience plan
 
-Add a `services` block to `brand-identity.ts` for fields not yet captured (3.5, 3.7, 3.10, 3.13, 3.15, 3.17–3.20, 3.24, 3.26, 3.27 are TBC by owner — leave as `// TBC owner` so we don't invent business operations). Only fill what we *can* derive:
+### 4.1 / 4.2 — Feeling words ✅ already in `brand-identity.ts`. No change.
+
+### 4.5 — "Story-driven, personal" + 2.5 — "feel, not just look"
+
+Owner's strongest single insight from the questionnaire (paraphrased): *"create the wedding the way you want it to feel — not just the way it looks."*
+
+This is currently **not stated on the site**. Add it as a quiet pull-quote in the `BrandManifestoSection` — one line, no new layout. Proposed:
+
+> *"We design for how it feels — not just how it looks."*
+
+Placement: existing manifesto block, between current paragraphs. One sentence, italic, editorial. No visual restructuring.
+
+### 4.9 — Venue coordinator vs day-of ✅ FAQ already correct. No change.
+
+### 4.3, 4.4, 4.6, 4.7, 4.8, 4.10, 4.11 — TBC
+
+These are owner-research items (ideal energy, micro-moments, experience failures, hero stories). Mark in `brand-identity.ts` under an `experience` block so we have one source of truth:
 
 ```ts
-services: {
-  dayOf: {
-    leadTime: "6–8 weeks before the wedding",
-    communication: "Unlimited communication from intake through the day",
-    scopeBoundaries: "", // TBC — 3.5
-  },
-  partial: {
-    coreAddition: "Remaining vendor sourcing and curation",
-    deliverables: "", // TBC — 3.7
-    flexibilityRules: "", // TBC — 3.8
-  },
-  fullService: {
-    entryPoint: "From the moment of engagement",
-    scope: "Design, vision, vendor sourcing, end-to-end execution",
-    designLogisticsBalance: "", // TBC — 3.10
-  },
-  pricing: {
-    displayMode: "starting-at-inquire", // 3.23 — owner wants 'starting at' once finalized
-    pricesFinalized: false, // 3.22 — pending owner confirmation
-    privatePricingLanguage: "", // TBC — 3.24
-  },
-  vendorPhilosophy: "We work as a team with every vendor — always.",
-  contingency: "Emergency kit on hand; calm leadership protects the room.",
-  upgrades2027: "Two-person planning team standard for every 2027 wedding.",
+experience: {
+  coupleFeel: ["dream vision", "love", "comfort", "luxury", "calm"],
+  guestFeel: ["structured", "smooth", "calm", "love", "enjoyable"],
+  feelOverLook: "We design for how it feels — not just how it looks.",
+  personalizationPrinciples: [
+    "Story-driven planning",
+    "Their love story made visible",
+    "Personalized elements throughout",
+    "Family and friends woven into the experience",
+  ],
+  venueCoordinatorVsPlanner:
+    "A venue coordinator manages the venue. A wedding day coordinator works for you — managing every vendor, every in-between moment, and the rhythm of the day from start to finish.",
+  // TBC by owner
+  idealEnergyArc: "",       // 4.3
+  luxuryGuestExperience: "", // 4.4
+  microMomentsProtected: [], // 4.6
+  experienceFailures: [],    // 4.7
+  nonNegotiables: [],        // 4.8
+  biggestRiskRemoved: "",    // 4.10
+  proofStoriesToTell: [],    // 4.11
 },
 ```
 
-This locks the parts the owner answered and clearly marks what's still pending — no guessing on her operational details.
+---
+
+## Section 5 — About & Authority plan
+
+### 5.1 — Founder story
+Owner: *"I'll work on this"*. The current `AboutFounderSection.tsx` story is plausibly written but unverified ("started Hickory & Rose because too many brides told me…"). **Soften** to a shorter, honest opening that doesn't put words in her mouth — pending her own version.
+
+**Proposed replacement paragraphs** (uses only her self-described personality from 5.2):
+
+```
+I'm Alexandra — the founder of Hickory & Rose. I started this studio
+because I believe a wedding should feel as beautiful to live inside as
+it looks in the photos.
+
+My couples describe me as organized, calming, and genuinely easy to
+work with. I run on thoughtful preparation and quiet leadership — the
+kind that lets you stay present on a day that's only going to happen
+once.
+
+Hickory & Rose exists to protect the beauty, intention, and experience
+behind every celebration. I'd love to do that for yours.
+```
+
+Pull-quote stays (it's good and on-brand). "Personal Philosophy" list stays.
+
+### 5.2 — Personality ✅
+Add a short "How I Show Up" label list using her exact words. Insert as a quiet caption beneath the founder image or next to the credential row:
+
+```
+Organized · Friendly · Calming · Detailed · Experienced
+```
+
+### 5.3 / 5.4 — TBC, flagged in config.
+
+### 5.5 — Credibility signals
+Covered in the priority section above. Replace fabricated numbers with the owner's actual signals.
+
+### 5.6 — Reviews/press: TBC, flagged.
+
+### 5.7 — Testimonials hero proofs: TBC. **Current site shows hard testimonials with named couples** (`Lauren & Ethan`, etc.) in `AboutTestimonials.tsx` and `TestimonialSection.tsx`. These are placeholders. Mark them clearly as "sample testimonials, pending owner-supplied real ones" — but **don't remove yet** since the layout depends on them. Add a `TODO` comment in the file headers.
+
+### 5.11 — No professional brand photos yet
+Owner explicitly said "Not yet". The site uses placeholder `founder-portrait.jpg`. Add a code comment marking it as placeholder so it's swapped when real photos arrive. No visual change.
+
+### 5.15 — Vendor list pending
+The "80+ Vendor Partners" claim must go (handled above). Use "Growing vendor network" until she sends the real list.
 
 ---
 
-## C. Files touched
+## Files touched
 
-1. `src/pages/Services.tsx` — fix lead time, replace 3× prices, fix meta description, fix pill, rewrite Partial + Full `includes`/descriptions
-2. `src/components/wedding/ServiceComparison.tsx` — replace 3× prices
-3. `src/components/wedding/ServicesInvestmentPhilosophy.tsx` — add quiet 2027 line (read first to find natural placement)
-4. `src/config/brand-identity.ts` — add `services` block (above)
-5. `src/config/personas/market-research.ts` — add 1-line comment marking the priceAnchor as outdated (internal only)
+**Honesty/credibility fixes (high priority):**
+1. `src/components/wedding/HeroSection.tsx` — fix trust strip
+2. `src/components/wedding/FounderTeaserSection.tsx` — replace credentials array
+3. `src/components/wedding/AboutFounderSection.tsx` — replace credentials, soften "WPIC Certified" line, rewrite the 3 founder paragraphs, add personality caption
+4. `src/components/wedding/TrustBarSection.tsx` — replace "150+" stat
+5. `src/components/wedding/StatsSection.tsx` — replace fabricated stats
+6. `src/pages/Portfolio.tsx` — replace stat grid
+7. `src/pages/About.tsx` — replace 2× credential pill rows
 
-## D. What stays untouched
+**Section 4 additions:**
+8. `src/components/wedding/BrandManifestoSection.tsx` — add "we design for how it feels" pull-quote line
+9. `src/config/brand-identity.ts` — add `experience` block
 
-- All layout, imagery, motion, hero, gallery, navigation
-- All copy already correct (Overview component, Vendor Partners, FAQ venue-vs-planner answer)
-- Items the owner explicitly marked "I need to think about" or TBC — flagged in config, not invented
+**Section 5 additions:**
+10. `src/config/brand-identity.ts` — add `founder` block with personality words + flagged TBCs
+11. Code comments in `AboutTestimonials.tsx`, `TestimonialSection.tsx`, and the founder portrait import — mark as placeholder pending owner content
+
+## What stays untouched
+
+All layout, animation, imagery (photo files stay — just the *claims* on top change), navigation, hero motion, the FAQ venue-vs-planner answer, the philosophy pillars, and Alexandra's pull quote.
+
+---
+
+## Why the honesty fix matters
+
+The owner's brand is built on calm, trust, and "Polished Paige" — a discerning bride who'll absolutely Google "WPIC Certified" and "Style Me Pretty feature". One unverified credential, surfaced by a sharp prospect, vaporizes the entire trust-building exercise the rest of the site is doing. Replacing inflated numbers with the owner's real, current, modest-but-true signals is **more credible**, not less — it reads as quietly confident rather than overstated.
 
 Ready to implement on approval.
