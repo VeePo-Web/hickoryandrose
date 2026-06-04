@@ -50,6 +50,10 @@ const Inquire = () => {
       description: "Start your planning conversation with Hickory & Rose. A warm, no-pressure inquiry — replies within 24–48 business hours.",
       path: "/inquire",
     });
+    setBreadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Inquire", path: "/inquire" },
+    ]);
   }, []);
 
   const [step, setStep] = useState(0);
