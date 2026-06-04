@@ -1,39 +1,30 @@
-# Plan: Rename founder Alexandra Rose → Meg Wolodko
+# Plan: Final Alexandra/owner-pronoun sweep
 
-Audit complete. "Alexandra Rose" / "Alexandra" appears in **5 files** (8 hard-coded mentions) plus **1 memory file**. No existing "Meg" or "Wolodko" references — clean swap. Founder portrait image (`founder-portrait.jpg`) stays in place; only alt text and captions change.
+## Findings
 
-## Files to update
+**"Alexandra"** — 0 hits in shipped code. Only remaining matches are in `.lovable/plan.md` (the historical rename plan document — safe to leave as a record, but I can scrub it for cleanliness).
 
-### 1. `src/config/brand-identity.ts` (source of truth)
-- Line 215: `name: "Alexandra Rose"` → `name: "Meg Wolodko"`
-- Line 365: `decisionMaker: "Alexandra Rose (owner)"` → `"Meg Wolodko (owner)"`
+**"she/her" referring to the owner Meg** — only **1 real hit**:
+- `src/config/brand-identity.ts:218` — `story: "", // TBC — 5.1, owner writing her own`
 
-### 2. `src/components/wedding/AboutFounderSection.tsx`
-- Line 52 alt: `"Alexandra Rose, founder of Hickory & Rose..."` → `"Meg Wolodko, founder..."`
-- Line 87 caption: `"Alexandra Rose, Founder"` → `"Meg Wolodko, Founder"`
-- Line 109 H2: `Alexandra Rose` → `Meg Wolodko`
-- Line 117 body: `"I'm Alexandra — the founder..."` → `"I'm Meg — the founder..."`
-- Line 172 quote attribution: `— Alexandra Rose` → `— Meg Wolodko`
+Every other `she/her` match is intentional and correct:
+- ~14 hits about **Polished Paige** (the customer persona) in `ideal-customer.ts`, `design-plan.ts`, `ui-visual.ts`, `ui-navigation.ts`, `discovery-framework.ts`, and `brand-identity.ts` lines 133/141 — these describe the *bride*, not the owner.
+- 1 hit in `discovery-framework.ts:48` is the brand-as-guest metaphor ("If Hickory & Rose were a guest…how would she show up?") — keeps brand femininity intentional.
 
-### 3. `src/pages/About.tsx`
-- Line 34 SEO description: `"Meet Alexandra Rose, founder..."` → `"Meet Meg Wolodko, founder..."`
-- Line 312 image alt: `"Wedding planner Alexandra reviewing day-of timeline..."` → `"Wedding planner Meg reviewing day-of timeline..."`
+## Changes
 
-### 4. `src/pages/Approach.tsx`
-- Line 602 alt: `"Alexandra Rose, Founder of Hickory & Rose"` → `"Meg Wolodko, Founder..."`
-- Line 607 attribution: `— Alexandra Rose, Founder` → `— Meg Wolodko, Founder`
+### 1. `src/config/brand-identity.ts` line 218 (the only ambiguous owner pronoun)
+Make the placeholder unambiguous and signed to Meg:
+- From: `story: "", // TBC — 5.1, owner writing her own`
+- To:   `story: "", // TBC — 5.1, Meg Wolodko to write her own founder story`
 
-### 5. `mem://business/founder-info`
-- Update `description` frontmatter and bullet to reference Meg Wolodko.
-- **Important**: I will ask before keeping the "WPIC Certified (7+ years experience)" credential — that was previously flagged as TBC/unverified in the brand audit and we removed similar fabricated credentials from the live site. Same question for "Presence over panic" philosophy line.
-
-### 6. `mem://index.md`
-- Update the "Founder Information" reference line description to reflect Meg.
+### 2. `.lovable/plan.md` (housekeeping — optional but tidy)
+Add a one-line footer noting the rename was completed and the file is archived, so future searches for "Alexandra" don't surface a confusing active-looking plan. Body stays as historical record.
 
 ## Not changing
-- `founder-portrait.jpg` filename and the TODO comment noting it's a placeholder until real brand photos arrive — the image is generic and the comment still applies.
-- Generic "Founder" labels in `FounderTeaserSection`, `ApproachDifferentiators`, `BrandPromiseSection`, `AboutTestimonials` — they don't name the person, so no change needed.
-- `sales@hickoryandrose.com` contact email — unchanged.
+- Any "she/her" referring to Polished Paige or to the brand metaphor — those are deliberate.
+- Memory files — already updated to Meg.
 
-## One clarifying question before I implement
-Should the bio paragraph keep the exact same voice/content (just swap the name), or do you want me to leave a `TODO` placeholder for Meg's actual bio copy? Same question for any credentials (WPIC, years of experience) — confirm, remove, or mark TBC?
+## Verification after build mode
+`rg -ni "alexandra" src/ public/ index.html` → expect 0 hits.
+`rg -ni "owner.*\bher\b|\bher\b.*owner" src/` → expect 0 hits.
