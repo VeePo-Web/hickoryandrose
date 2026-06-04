@@ -1,4 +1,4 @@
-Sitemap: https://hickoryandrose.com/sitemap.xml
+Sitemap: https://www.hickoryandrose.com/sitemap.xml
 
 User-agent: Googlebot
 Allow: /

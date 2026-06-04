@@ -566,7 +566,7 @@ export const MASTER_DESIGN_PLAN = {
   // ═══════════════════════════════════════════════════════════════════
   seoArchitecture: {
     titleTemplate: "{Page Title} | Hickory & Rose — Edmonton Wedding Planner",
-    canonicalBase: "https://hickoryandrose.com",
+    canonicalBase: "https://www.hickoryandrose.com",
     structuredData: [
       "LocalBusiness (Organization) — site-wide",
       "WebSite with SearchAction — homepage",

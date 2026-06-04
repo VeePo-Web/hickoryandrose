@@ -18,7 +18,7 @@ interface PageMeta {
   ogImageAlt?: string;
 }
 
-const BASE_URL = "https://hickoryandrose.com";
+const BASE_URL = "https://www.hickoryandrose.com";
 const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.jpg`;
 const DEFAULT_OG_ALT =
   "Hickory & Rose — refined rustic elegance wedding planning in Edmonton, Alberta";
