@@ -186,4 +186,42 @@ export const BRAND_IDENTITY = {
     contingency: "Emergency kit on hand; calm leadership protects the room.",
     upgrades2027: "Two-person planning team standard for every 2027 wedding.",
   },
+
+  experience: {
+    // From Section 4
+    coupleFeel: ["dream vision", "love", "comfort", "luxury", "calm"], // 4.1
+    guestFeel: ["structured", "smooth", "calm", "love", "enjoyable"], // 4.2
+    feelOverLook: "We design for how it feels — not just how it looks.", // 2.5 + 4.5
+    personalizationPrinciples: [
+      "Story-driven planning",
+      "Their love story made visible",
+      "Personalized elements throughout",
+      "Family and friends woven into the experience",
+    ], // 4.5
+    venueCoordinatorVsPlanner:
+      "A venue coordinator manages the venue. A wedding day coordinator works for you — managing every vendor, every in-between moment, and the rhythm of the day from start to finish.", // 4.9
+    // TBC by owner
+    idealEnergyArc: "", // 4.3
+    luxuryGuestExperience: "", // 4.4
+    microMomentsProtected: [], // 4.6
+    experienceFailures: [], // 4.7
+    nonNegotiables: [], // 4.8
+    biggestRiskRemoved: "", // 4.10
+    proofStoriesToTell: [], // 4.11
+  },
+
+  founder: {
+    // From Section 5
+    name: "Alexandra Rose",
+    role: "Founder & Lead Planner",
+    personality: ["Organized", "Friendly", "Calming", "Detailed", "Experienced"], // 5.2 — owner's exact words
+    story: "", // TBC — 5.1, owner writing her own
+    personalityOnline: "", // TBC — 5.3
+    neverAssume: "", // TBC — 5.4
+    credentialsVerified: false, // 5.5 — no WPIC or year claims until owner confirms
+    professionalPhotosAvailable: false, // 5.11 — owner: "Not yet"
+    reviewLinks: [], // TBC — 5.6
+    heroTestimonials: [], // TBC — 5.7 — current site testimonials are placeholders
+    vendorListReceived: false, // 5.15 — owner sending separately
+  },
 } as const;
