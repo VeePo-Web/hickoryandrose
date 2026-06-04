@@ -23,9 +23,9 @@ const DIAMONDS = Array.from({ length: 16 }, (_, i) => {
 });
 
 const STEPS = [
-  { text: "We'll review your details with care and respond personally within 48 hours." },
-  { text: "We'll schedule a relaxed, complimentary discovery call to learn about your vision." },
-  { text: "If we're the right fit, you'll receive a tailored proposal built around your day." },
+  { text: "Press send in your mail app — your message is already composed and addressed." },
+  { text: "We'll review your details with care and respond personally within 24–48 business hours." },
+  { text: "If we feel like the right fit, we'll set a calm discovery call and prepare a tailored proposal." },
 ];
 
 const BOKEH = [
@@ -166,9 +166,9 @@ const InquireCelebration = () => (
         <BreathingDiamond size={8} className="mx-auto mb-6" />
 
         {/* Editorial headline with shimmer-gold */}
-        <p className="font-script text-2xl text-primary/70 mb-2">Thank you</p>
+        <p className="font-script text-2xl text-primary/70 mb-2">Almost there</p>
         <h1 className="font-serif-wedding text-display-xl shimmer-gold mb-4">
-          Your story begins here.
+          Your message is ready.
         </h1>
 
         {/* Gold editorial rule */}
@@ -176,7 +176,7 @@ const InquireCelebration = () => (
 
         {/* Body copy with drop cap */}
         <p className="drop-cap font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light mb-12 max-w-md mx-auto">
-          Your inquiry has been received with care. Take a breath — you're understood, you're in good hands, and the next steps are already in motion.
+          Your inquiry is composed and waiting in your email app — addressed to us and ready to send. Take a breath, press send, and the next steps are already in motion.
         </p>
 
         {/* Steps timeline with vertical gold connector */}
