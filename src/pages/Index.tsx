@@ -35,7 +35,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Hickory & Rose Wedding and Event Planning",
-  "description": "Edmonton's luxury wedding planner specializing in refined rustic elegance. Day-of coordination, partial & full-service planning.",
+  "description": "Edmonton-based luxury wedding planner. Seamless, stress-free execution and thoughtfully personalized planning — day-of coordination, partial, and full-service.",
   "url": "https://hickoryandrose.com",
   "telephone": "",
   "email": "sales@hickoryandrose.com",
@@ -63,7 +63,7 @@ const Index = () => {
   useEffect(() => {
     setPageMeta({
       title: "Hickory & Rose — Luxury Wedding Planner in Edmonton, Alberta",
-      description: "Edmonton's luxury wedding planner specializing in refined rustic elegance. Day-of coordination, partial & full-service planning. Calm leadership, elevated design.",
+      description: "Seamless, stress-free wedding planning in Edmonton and surrounding Alberta. Luxury, personalized day-of coordination, partial, and full-service planning — thoughtfully bringing your vision to life.",
       path: "/",
     });
 

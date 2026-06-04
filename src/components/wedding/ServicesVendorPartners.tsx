@@ -39,8 +39,11 @@ const ServicesVendorPartners = () => (
             <h2 className="font-serif-wedding text-display-lg text-foreground mb-4">
               Trusted Partners
             </h2>
-            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light mb-10">
-              Over seven years, we've built deep relationships with Edmonton and the Rockies' finest vendors. These partnerships mean preferred availability, seamless collaboration, and an elevated experience for every couple.
+            <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light mb-4">
+              We've built deep relationships with Edmonton and Alberta's finest vendors. These partnerships mean preferred availability, seamless collaboration, and an elevated experience for every couple.
+            </p>
+            <p className="font-serif-wedding text-sm italic text-primary/70 mb-10">
+              "We work as a team, always."
             </p>
 
             <div className="space-y-0 border-t border-border/40">

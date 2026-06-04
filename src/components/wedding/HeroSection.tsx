@@ -213,7 +213,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 1.8, ease: [0.25, 0.1, 0.25, 1.0] as const }}
           className="font-sans-wedding text-base md:text-lg text-white/70 max-w-xl mb-12 leading-relaxed font-light"
         >
-          Refined planning. Calm leadership. Every detail, intentional.
+          Seamless, stress-free execution. Thoughtfully bringing your vision to life.
         </motion.p>
 
         <motion.div

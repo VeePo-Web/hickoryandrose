@@ -100,9 +100,8 @@ const Footer = () => {
               className="w-16 h-px bg-background/15 origin-left mt-8 mb-6"
             />
             <p className="font-sans-wedding text-sm text-background/60 font-light leading-relaxed max-w-xs">
-              Luxury wedding planning rooted in calm leadership, elevated
-              design, and the belief that your day should be felt — not
-              managed.
+              Seamless, stress-free execution. Luxury, personalized planning.
+              Thoughtfully bringing your vision to life.
             </p>
 
             {/* Credential badge */}
@@ -114,7 +113,7 @@ const Footer = () => {
                 }}
               />
               <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-background/50 font-light">
-                Est. 2018 · Edmonton, Alberta
+                Edmonton, Alberta
               </p>
             </div>
           </motion.div>

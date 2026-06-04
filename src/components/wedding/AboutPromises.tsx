@@ -5,24 +5,24 @@ import ceremonyImage from "@/assets/ceremony-setup.jpg";
 
 const promises = [
   {
-    promise: "Your call returned same-day",
-    subtext: "Because waiting feels like being forgotten",
+    promise: "Unlimited communication, 6–8 weeks out",
+    subtext: "From our first call to the final send-off",
   },
   {
-    promise: "Timeline finalized 72 hours before",
-    subtext: "So you can exhale before the big day",
+    promise: "A clear, considered timeline",
+    subtext: "Built with you, shared with every vendor",
   },
   {
-    promise: "A backup plan for every vendor",
-    subtext: "Peace of mind isn't optional",
+    promise: "Vendors coordinated as a team",
+    subtext: "We work together, always",
+  },
+  {
+    promise: "On-site emergency kit, always",
+    subtext: "Anticipating challenges, before they reach you",
   },
   {
     promise: "Present from setup to send-off",
-    subtext: "Not just coordinating — caring",
-  },
-  {
-    promise: "Your vendors, briefed and aligned",
-    subtext: "One vision, executed seamlessly",
+    subtext: "So you can focus on the moments that matter most",
   },
 ];
 

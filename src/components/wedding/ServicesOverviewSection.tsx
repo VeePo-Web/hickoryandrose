@@ -11,10 +11,10 @@ const services = [
   {
     number: "01",
     title: "Day-Of Coordination",
-    tagline: "You planned it. We perfect it.",
+    tagline: "Fully taken care of.",
     description:
-      "You've planned your wedding with care — we step in to execute it flawlessly. Calm leadership on the day that matters most.",
-    investment: "From $2,500",
+      "We step in 6–8 weeks before your day with unlimited communication, a full timeline build, and vendor coordination — so you arrive present and ready.",
+    investment: "Starting at — inquire",
     link: "/services#day-of",
     featured: false,
     image: dayofImage,
@@ -25,8 +25,8 @@ const services = [
     title: "Partial Planning",
     tagline: "Collaboration at every turn.",
     description:
-      "Collaborative guidance through the details that need a professional touch, from vendor coordination to design refinement.",
-    investment: "From $5,000",
+      "Everything in Day-Of Coordination, plus remaining vendor sourcing and curation to round out your team.",
+    investment: "Starting at — inquire",
     link: "/services#partial",
     featured: false,
     image: planningImage,
@@ -37,8 +37,8 @@ const services = [
     title: "Full-Service Planning",
     tagline: "From vision to celebration.",
     description:
-      "From vision to celebration, we handle every detail. You get to simply be present and enjoy the unfolding of your story.",
-    investment: "From $8,500",
+      "From the moment you're engaged — design, vision, vendor sourcing, and execution. Every element, held end-to-end.",
+    investment: "Starting at — inquire",
     link: "/services#full",
     featured: true,
     image: fullserviceImage,
@@ -99,7 +99,7 @@ const ServicesOverviewSection = () => {
             </div>
             <div className="md:col-span-7 md:pt-12">
               <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light leading-relaxed">
-                Every couple is different. Our services flex to meet you exactly where you are in your planning journey — whether you need a steady hand on the day or a creative partner from the very beginning.
+                Every couple is different. Our services flex to meet you exactly where you are in your planning journey — whether you need a steady hand on the day or a creative partner from the very beginning. Tailored options are also available.
               </p>
             </div>
           </div>

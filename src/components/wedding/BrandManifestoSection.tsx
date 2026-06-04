@@ -166,8 +166,9 @@ const BrandManifestoSection = () => {
           transition={{ duration: 0.6, delay: 1.2 }}
           className="font-sans-wedding text-sm md:text-base text-white/60 font-light leading-relaxed max-w-md mt-10"
         >
-          Every detail, placed with intention. Every moment, protected with care.
-          This is the Hickory & Rose promise.
+          Every detail, placed with intention. We handle the planning, logistics,
+          and coordination behind the scenes — so you can focus on the moments
+          that matter most.
         </motion.p>
 
         {/* Bottom gold rule */}

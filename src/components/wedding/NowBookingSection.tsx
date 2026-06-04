@@ -135,7 +135,7 @@ const NowBookingSection = () => {
                 </p>
               </div>
               <p className="font-serif-wedding text-2xl md:text-3xl text-primary-foreground/60 font-light tracking-tight">
-                2025 <span className="opacity-20 mx-1">·</span> 2026
+                2026 <span className="opacity-20 mx-1">·</span> 2027
               </p>
               
               {/* Decorative line — gold gradient */}

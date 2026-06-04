@@ -2,12 +2,9 @@ import { useState, forwardRef } from "react";
 import { Instagram } from "lucide-react";
 
 const serviceAreas = [
-  { name: "Edmonton", venues: 45 },
-  { name: "Jasper", venues: 12 },
-  { name: "Banff", venues: 18 },
-  { name: "Lake Louise", venues: 8 },
-  { name: "Calgary", venues: 22 },
-  { name: "The Canadian Rockies", venues: 30 },
+  { name: "Edmonton", note: "Home base" },
+  { name: "Greater Edmonton", note: "No travel fees" },
+  { name: "Surrounding Alberta", note: "Travel fees apply" },
 ];
 
 const FooterServiceAreas = forwardRef<HTMLDivElement>((_, ref) => {
@@ -51,10 +48,10 @@ const FooterServiceAreas = forwardRef<HTMLDivElement>((_, ref) => {
               </span>
               <span
                 className={`font-serif-wedding text-caption italic text-background/40 overflow-hidden whitespace-nowrap transition-all duration-200 ${
-                  hoveredArea === i ? "opacity-100 max-w-[80px]" : "opacity-0 max-w-0"
+                  hoveredArea === i ? "opacity-100 max-w-[140px]" : "opacity-0 max-w-0"
                 }`}
               >
-                ({area.venues} venues)
+                ({area.note})
               </span>
               {i < serviceAreas.length - 1 && (
                 <span className="text-background/30 mx-0.5">·</span>
@@ -62,6 +59,9 @@ const FooterServiceAreas = forwardRef<HTMLDivElement>((_, ref) => {
             </span>
           ))}
         </div>
+        <p className="font-sans-wedding text-[0.6rem] text-background/35 font-light italic mt-3 leading-relaxed">
+          Travel fees apply outside Greater Edmonton.
+        </p>
       </div>
     </div>
   );
