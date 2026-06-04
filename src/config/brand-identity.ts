@@ -362,7 +362,7 @@ export const BRAND_IDENTITY = {
 
   launch: {
     // From Section 12 — TBC owner
-    decisionMaker: "Alexandra Rose (owner)",                          // 12.5
+    decisionMaker: "Meg Wolodko (owner)",                             // 12.5
     kpis: [
       "Inquiry volume",
       "Inquiry quality/fit",
