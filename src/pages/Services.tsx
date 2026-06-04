@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { setPageMeta } from "@/lib/seo";
+import { setPageMeta, setBreadcrumbSchema } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
 import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Navigation from "@/components/wedding/Navigation";
