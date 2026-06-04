@@ -17,14 +17,23 @@ import editorialFloralsImage from "@/assets/editorial-florals.jpg";
 import detailImage from "@/assets/detail-placecard.jpg";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 
+// Studio Notebook is structure-only until the first real essay ships
+// (brand-identity §8.5, seo.blog.postCount: 0). The single tile below is a
+// coming-soon placeholder — replace with real, dated articles when published.
 const articles = [
-  { image: journalBrideImage, alt: "Bride in ivory silk gown standing in sunlit conservatory with orchids and ferns", category: "Planning", title: "The Art of Being Present on Your Wedding Day", excerpt: "How letting go of the details you've labored over is the final — and most important — step in your wedding journey.", readTime: "6 min read", date: "March 2026", pullQuote: "Presence is the final gift you give yourself.", featured: true },
-  { image: journalVowsImage, alt: "Handwritten calligraphy wedding vows with gold pen and eucalyptus on rustic wood", category: "Inspiration", title: "Writing Vows That Feel Like You", excerpt: "Forget the templates. Here's how to find words that carry the weight of what you actually feel.", readTime: "4 min read", date: "February 2026", pullQuote: "Your words don't need to be perfect — they need to be yours.", featured: false },
-  { image: journalReceptionImage, alt: "Rustic barn reception with sage linen runner, brass candlesticks, and string lights at twilight", category: "Design", title: "Tablescapes That Tell a Story", excerpt: "Why your reception table is the most underestimated design element — and how to make it unforgettable.", readTime: "5 min read", date: "January 2026", pullQuote: "A table is never just a table — it's the first chapter of your evening.", featured: false },
-  { image: editorialFloralsImage, alt: "Sage eucalyptus and ivory garden rose floral arrangement in editorial lighting", category: "Florals", title: "Seasonal Florals: A Guide to What's In Bloom", excerpt: "Understanding which flowers are at their peak for each season helps you make choices that feel natural, intentional, and beautifully fresh.", readTime: "7 min read", date: "December 2025", pullQuote: "The best bouquets don't fight the season — they celebrate it.", featured: false },
-  { image: detailImage, alt: "Elegant calligraphy place card with gold cutlery on fine linen", category: "Stationery", title: "The Quiet Power of Handwritten Details", excerpt: "In an age of digital everything, calligraphy and hand-lettered elements carry an emotional weight that printed fonts simply can't replicate.", readTime: "4 min read", date: "November 2025", pullQuote: "A hand-lettered name says: you matter enough for us to slow down.", featured: false },
-  { image: ceremonyImage, alt: "Outdoor mountain ceremony with floral arch at golden hour", category: "Venues", title: "Choosing Between Indoor & Outdoor Ceremonies in Alberta", excerpt: "Alberta's weather is unpredictable, but that doesn't mean you have to sacrifice your outdoor dream. Here's how to plan for both.", readTime: "6 min read", date: "October 2025", pullQuote: "The mountains don't care about your timeline — plan accordingly.", featured: false },
+  {
+    image: journalBrideImage,
+    alt: "Bride in ivory silk gown standing in sunlit conservatory with orchids and ferns",
+    category: "Coming Soon",
+    title: "The Studio Notebook — publishing with our 2027 season",
+    excerpt: "Planning thinking, design philosophy, and the small details we believe in. We're writing carefully — and the first essays will live here when we open our 2027 calendar.",
+    readTime: "",
+    date: "Publishing with 2027",
+    pullQuote: "Worth waiting for.",
+    featured: true,
+  },
 ];
+
 
 const journalFilters = ["All", "Planning", "Inspiration", "Design", "Florals", "Stationery", "Venues"] as const;
 

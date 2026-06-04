@@ -99,7 +99,7 @@ const CTASection = () => {
               <div className="aspect-[3/4] overflow-hidden relative group">
                 <motion.img
                   src={ceremonyImage}
-                  alt="Candlelit barn ceremony with mountain backdrop"
+                  alt="Candlelit ceremony with mountain backdrop"
                   className="w-full h-full object-cover"
                   loading="lazy"
                   animate={{ scale: isHovered ? 1.05 : 1 }}

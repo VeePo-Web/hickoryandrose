@@ -59,8 +59,8 @@ const photos = [
   },
   {
     src: venueImage,
-    alt: "Rustic barn venue at twilight with warm string lights and mountain backdrop",
-    title: "Twilight Barn Reception",
+    alt: "Heritage timber venue at twilight with warm string lights and mountain backdrop",
+    title: "Twilight Reception",
     location: "Canadian Rockies",
     category: "Venue",
     story: "Golden hour met candlelight.",
