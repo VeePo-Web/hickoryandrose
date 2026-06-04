@@ -224,4 +224,50 @@ export const BRAND_IDENTITY = {
     heroTestimonials: [], // TBC — 5.7 — current site testimonials are placeholders
     vendorListReceived: false, // 5.15 — owner sending separately
   },
+
+  portfolio: {
+    // From Section 6
+    purpose: "Primary sales engine — proves aesthetic + execution",
+    tenSecondProof: "Refined rustic elegance · cohesive design · elevated execution · calm in the room", // 6.5
+    contentStatus: {
+      realWeddings: 0,                          // 6.3
+      styledShoots: 0,
+      upcomingShoots: ["2026-08-15"],           // 5.5
+      professionalBrandPhotosAvailable: false,  // 5.11
+      namedTestimonialsAvailable: false,        // 5.7
+      pressFeaturesAvailable: false,            // 5.6 — PressMentionsSection hidden on homepage until true
+      sampleDataAnonymized: true,               // Portfolio.tsx couple names replaced with aesthetic labels
+    },
+    // TBC owner
+    galleryStorage: "",        // 6.2
+    curationRule: "",          // 6.4
+    organization: "",          // 6.6 — wedding stories, grid, or both
+    privacyRestrictions: "",   // 6.13
+    vendorCreditFormat: "",    // 6.14
+    editingStyle: "",          // 6.15
+    featuredWeddings: [] as string[], // 6.11
+  },
+
+  websiteStrategy: {
+    // From Section 7
+    primaryAction: "inquire",                                     // 7.1 ✅
+    criticalPath: ["Home", "Services", "Inquire"],                // 7.7
+    pages: ["Home", "About", "Approach", "Services", "Portfolio", "Journal", "FAQ", "Inquire"], // 7.5
+    homepageRhythm: {
+      pressMentionsEnabled: false,            // off until real press (5.6)
+      statsQualitativeOnly: true,             // softened post Section 5
+      testimonialsAttribution: "anonymized",  // sample data; swap on real reviews (5.7)
+    },
+    inquiryTone: ["warm", "clear", "confident"],                  // 7.18 ✅
+    responseSLA: "Replies within 24–48 business hours",           // 7.20 ✅
+    leadMagnet: { enabled: false },                               // 7.21
+    // TBC owner
+    homepageStoryArc: "",                                          // 7.10
+    servicesPageAdvantage: "",                                     // 7.11
+    approachProves: "",                                            // 7.12
+    namedFramework: null as boolean | null,                         // 7.13
+    frameworkName: "",                                             // 7.14
+    ctaPrimaryLanguage: "",                                        // 7.23
+    ctaPromise: "",                                                // 7.24
+  },
 } as const;

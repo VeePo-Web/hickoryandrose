@@ -113,7 +113,7 @@ const Index = () => {
           quote="Every detail, placed with intention. Every moment, protected."
           direction="right"
         />
-        <PressMentionsSection />
+        {/* TODO: re-enable <PressMentionsSection /> when real press features arrive (discovery 5.6). Hidden today to avoid fabricated "As Featured In" claims. */}
         <BrandManifestoSection />
         <FullWidthImage
           src={rockiesImage}
