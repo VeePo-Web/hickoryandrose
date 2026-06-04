@@ -109,7 +109,7 @@ const About = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.6, duration: 0.8 }}
         >
-          {["50+ Weddings", "WPIC Certified", "Featured in Style Me Pretty"].map((t, i) => (
+          {["2026 Season Fully Booked", "Editorial Shoot — Aug 2026", "Now Booking 2027"].map((t, i) => (
             <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/55 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
@@ -432,7 +432,7 @@ const About = () => {
 
             {/* Certifications row */}
             <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6 mt-12 mb-10">
-              {["WPIC Member", "Alberta Wedding Network", "Featured Vendor — Jasper Park Lodge"].map((cert, i) => (
+              {["Editorial Styled Shoot — Aug 2026", "Summer & Fall 2026 — Fully Booked", "Welcoming 2027 Couples"].map((cert, i) => (
                 <span key={cert} className="font-sans-wedding text-[0.45rem] md:text-[0.5rem] tracking-[0.15em] uppercase text-brand-text-tertiary flex items-center gap-3 md:gap-6">
                   {i > 0 && <span className="w-1 h-1 rotate-45 hidden md:block" style={{ background: "hsl(var(--gold) / 0.25)" }} />}
                   {cert}

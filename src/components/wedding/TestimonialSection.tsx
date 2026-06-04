@@ -6,6 +6,8 @@ import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import detailImage from "@/assets/detail-placecard.jpg";
 import firstDanceImage from "@/assets/first-dance.jpg";
 
+// TODO (5.7): Replace with real, owner-supplied testimonials once received.
+// Current entries are illustrative placeholders aligned with brand voice.
 const testimonials = [
   {
     quote:

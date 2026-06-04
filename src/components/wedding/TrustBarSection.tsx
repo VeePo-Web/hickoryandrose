@@ -216,23 +216,23 @@ const TrustBarSection = () => {
               />
             </div>
             <p className="font-serif-wedding text-xs italic text-muted-foreground">
-              Recognized for excellence across Canada and beyond
+              Honoring every couple with calm, intentional planning
             </p>
-            {/* Trust credentials row */}
+            {/* Trust credentials row — owner-confirmed signals only */}
             <div className="flex items-center gap-8 mt-2">
               <div className="text-center">
-                <span className="font-serif-wedding text-lg text-primary/60 block">150+</span>
-                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground">Weddings</span>
+                <span className="font-serif-wedding text-lg text-primary/60 block">2026</span>
+                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground">Fully Booked</span>
               </div>
               <span className="w-px h-6 bg-border/20" />
               <div className="text-center">
-                <span className="font-serif-wedding text-lg text-primary/60 block">8</span>
-                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground">Years</span>
+                <span className="font-serif-wedding text-lg text-primary/60 block">Aug 15</span>
+                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground">Editorial Shoot</span>
               </div>
               <span className="w-px h-6 bg-border/20" />
               <div className="text-center">
-                <span className="font-serif-wedding text-lg text-primary/60 block">100%</span>
-                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground">Satisfaction</span>
+                <span className="font-serif-wedding text-lg text-primary/60 block">2027</span>
+                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground">Now Booking</span>
               </div>
             </div>
           </div>

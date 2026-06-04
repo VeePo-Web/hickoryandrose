@@ -39,9 +39,9 @@ const AnimatedHeadline = ({ text, startIndex = 0 }: { text: string; startIndex?:
 );
 
 const trustCredentials = [
-  "150+ Weddings",
-  "Top 10 Edmonton Planners",
-  "Est. 2018",
+  "Summer 2026 — Fully Booked",
+  "Edmonton & Alberta",
+  "Now Booking 2027",
 ];
 
 const seasonAvailability = [

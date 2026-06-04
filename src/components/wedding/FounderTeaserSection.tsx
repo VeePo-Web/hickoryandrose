@@ -5,10 +5,11 @@ import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
 import founderImage from "@/assets/founder-portrait.jpg";
 
+// TODO: Update with owner-supplied stats. Current values reflect 2026 booking status — kept conservative until further metrics are confirmed.
 const credentials = [
-  { value: "150+", label: "Weddings Coordinated" },
-  { value: "8", label: "Years of Experience" },
-  { value: "100%", label: "Client Satisfaction" },
+  { value: "2026", label: "Season Fully Booked" },
+  { value: "Aug 15", label: "Editorial Styled Shoot" },
+  { value: "Growing", label: "Vendor Network" },
 ];
 
 const philosophyPillars = [
