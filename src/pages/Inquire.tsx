@@ -142,7 +142,7 @@ const Inquire = () => {
               </span>
             </p>
             <h1 className="font-serif-wedding text-display-xl text-white mb-6">Let's Plan Something Beautiful</h1>
-            <p className="font-sans-wedding text-body-sm text-white/70 leading-relaxed max-w-xl mx-auto font-light">No commitment — just a warm conversation about your wedding day.</p>
+            <p className="font-sans-wedding text-body-sm text-white/70 leading-relaxed max-w-xl mx-auto font-light">Understanding. Excitement. Confidence — by the time we meet.</p>
           </ScrollReveal>
         </motion.div>
         <GoldFrame inset="20px" delay={1} />

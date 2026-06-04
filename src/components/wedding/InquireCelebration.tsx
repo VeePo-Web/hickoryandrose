@@ -23,9 +23,9 @@ const DIAMONDS = Array.from({ length: 16 }, (_, i) => {
 });
 
 const STEPS = [
-  { text: "We'll review your details and respond within 48 hours." },
-  { text: "We'll schedule a complimentary discovery call." },
-  { text: "If we're a perfect fit, you'll receive a custom proposal." },
+  { text: "We'll review your details with care and respond personally within 48 hours." },
+  { text: "We'll schedule a relaxed, complimentary discovery call to learn about your vision." },
+  { text: "If we're the right fit, you'll receive a tailored proposal built around your day." },
 ];
 
 const BOKEH = [
@@ -176,7 +176,7 @@ const InquireCelebration = () => (
 
         {/* Body copy with drop cap */}
         <p className="drop-cap font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light mb-12 max-w-md mx-auto">
-          Your inquiry has been received with care. Here is what happens next on the path to your beautifully curated celebration.
+          Your inquiry has been received with care. Here is what happens next on the path to a seamless, thoughtfully planned celebration.
         </p>
 
         {/* Steps timeline with vertical gold connector */}

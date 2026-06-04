@@ -1,66 +1,82 @@
 /**
  * HICKORY & ROSE — Brand Identity Reference
- * 
+ *
  * This file is a DECISION-MAKING REFERENCE ONLY. It does not render anything.
  * All UI/UX decisions (navigation, footer, visuals, layout, copy, interactions)
  * should be filtered through these brand constants.
- * 
- * STATUS: Populated from discovery framework. Update with client responses.
+ *
+ * STATUS: Updated from owner questionnaire responses.
+ * Items marked TBC are still awaiting owner input.
  */
 
 export const BRAND_IDENTITY = {
   name: {
     full: "Hickory & Rose Wedding and Event Planning",
     short: "Hickory & Rose",
-    tagline: "", // TODO: Confirm from discovery form responses (Section 1.5/1.6)
+    tagline: "Seamless, stress-free execution. Luxury, personalized planning. Thoughtfully bringing your vision to life.",
   },
 
   positioning: {
-    oneSentence: "", // TODO: From Section 1.4 — client-friendly one-sentence description
-    namedPromise: "Hickory & Rose exists to protect presence.", // From Section 1.7 framing
+    oneSentence: "", // TBC — Section 1.4
+    namedPromise:
+      "Hickory & Rose exists to protect the beauty, intention, and experience behind every celebration.",
     positioningOptions: [
-      "Refined rustic weddings, run with quiet luxury precision",
-      "Elevated design. Calm execution. A day that feels like you.",
-      "A beautifully personal wedding—protected by expert logistics.",
+      "Seamless, stress-free execution",
+      "Luxury, personalized planning",
+      "Thoughtfully bringing your vision to life",
     ],
     differentiators: [
+      "Seamless, elegant wedding planning",
+      "Friendly, caring planning and coordination",
       "Calm leadership under pressure",
-      "Luxury that still feels personal",
-      "Seamless logistics + elevated design",
-      "Trusted vendor collaboration",
-      "Tailored planning support",
+      "Thoughtful preparation that anticipates challenges",
+      "Trusted vendor collaboration as a team",
     ],
-    knownFor: "", // TODO: From Section 1.13 — what the Edmonton market says verbatim
-    refinedRusticEleganceIs: "", // TODO: From Section 1.10 — textures, palette, mood, restraint
-    refinedRusticEleganceIsNot: "", // TODO: From Section 1.11 — what to avoid (DIY rustic, Pinterest collage, performative luxury)
+    knownFor:
+      "Seamless, elegant wedding planning paired with friendly, caring coordination.",
+    refinedRusticEleganceIs:
+      "The harmony of natural beauty, thoughtful design, and elevated details that feel both effortless and timeless.",
+    refinedRusticEleganceIsNot: "", // TBC — Section 1.11
   },
 
   voice: {
-    tone: ["calm", "editorial", "warm", "refined"], // From Section 1.15 options
-    boundaries: [], // TODO: From Section 1.16 — never snarky, never overly trendy, etc.
-    repeatWords: ["calm", "presence", "intentional", "cohesive", "elevated", "protected", "refined"], // From Section 1.17 examples
-    avoidWords: [], // TODO: From Section 1.18 — cheap, budget, DIY, "just," "simple," "stress-free"
-    manifesto: "", // TODO: From Section 1.19 — brand manifesto in natural voice
-    personaIfGuest: "", // TODO: From Section 1.20 — how Hickory & Rose shows up at a wedding
+    tone: ["luxury", "friendly", "caring", "seamless", "calming"],
+    boundaries: [], // TBC — Section 1.16
+    repeatWords: [
+      "seamless",
+      "calm",
+      "thoughtful",
+      "intentional",
+      "elevated",
+      "presence",
+      "personalized",
+    ],
+    avoidWords: [], // TBC — Section 1.18
+    manifesto: "", // TBC — Section 1.19
+    personaIfGuest: "", // TBC — Section 1.20
   },
 
   visual: {
     palette: {
-      primary: "", // TODO: HSL value from style guide
+      primary: "", // TBC
       secondary: "",
       accent: "",
       background: "",
       text: "",
     },
     typography: {
-      display: "", // TODO: Font for headings from style guide
-      body: "", // TODO: Font for body text
-      accent: "", // TODO: Optional accent font
+      display: "",
+      body: "",
+      accent: "",
     },
-    photographyStyle: ["warm", "true-to-life", "editorial", "polished", "candid documentary", "detail-forward"], // From Section 9.13 options
-    motionLevel: 3, // 1-5 scale: refined motion — from Section 9.14
-    nonNegotiables: [], // TODO: From Section 9.4 — warm neutrals, natural textures, candlelight, refined florals, restraint, editorial whitespace
-    avoid: [], // TODO: From Section 9.5 — clutter, overly trendy fonts, loud colors, heavy patterns, "Pinterest collage"
+    photographyStyle: ["warm", "true-to-life", "editorial", "polished", "candid documentary", "detail-forward"],
+    motionLevel: 3, // From 9.14 — owner answered 3
+    nonNegotiables: [], // TBC — Section 9.4
+    avoid: [], // TBC — Section 9.5
+    balance: {
+      modernVsTimeless: 3, // From 9.6
+      warmthVsMinimalism: 4, // From 9.7
+    },
   },
 
   industry: {
@@ -69,26 +85,41 @@ export const BRAND_IDENTITY = {
       "Day-of coordination",
       "Partial planning",
       "Full-service planning",
+      "Tailored planning options",
       "Event planning (non-wedding)",
-    ], // From Section 3.1
-    serviceArea: "Edmonton and surrounding areas, Alberta, Canada", // From Section 1.3 framing
+    ],
+    serviceArea:
+      "Edmonton-based, serving surrounding areas within Alberta. Travel fees apply outside Greater Edmonton.",
+    terminology: {
+      preferDayOf: "Day-of coordination", // From 8.2
+    },
   },
 
   idealClient: {
     archetype: "Polished Paige",
-    description: "Design-forward, detail-driven, strong taste, wants calm leadership without losing creative involvement",
-    pressures: [
-      "Loss aversion — she'll remember mistakes forever",
-      "Social evaluation pressure — people who know taste",
-      "Decision fatigue — too many choices",
-      "Control paradox — wants involvement but not operational weight",
-      "Family dynamics/opinions",
-      "Budget ambiguity/hidden costs",
-      "Vendor uncertainty — who's actually good?",
-      "Timeline stress — how does a day flow?",
+    description:
+      "Design-forward, detail-driven, strong taste, wants calm leadership without losing creative involvement.",
+    pressures: [], // TBC — Section 2.7
+    firstFiveSeconds: "", // TBC — Section 2.8
+    firstThirtySeconds:
+      "Galleries that show real weddings. Professionalism in every detail. Clarity about what we do and how we work.",
+    byInquiry: "Understanding. Excitement. Confidence.",
+    weddingFeelForCouple: ["dream vision", "love", "comfort", "luxury", "calm"], // From 4.1
+    weddingFeelForGuests: ["structured", "smooth", "calm", "love", "enjoyable"], // From 4.2
+  },
+
+  credibility: {
+    // From Section 5.5
+    signals: [
+      "Styled shoot — August 15, 2026",
+      "Summer 2026 season — fully booked",
+      "Fall 2026 season — fully booked",
+      "Growing vendor referral network",
     ],
-    firstFiveSeconds: "", // TODO: From Section 2.8 — reassurance line for homepage
-    firstThirtySeconds: "", // TODO: From Section 2.9 — proof elements she needs to see
-    byInquiry: "", // TODO: From Section 2.10 — relief, clarity, excitement, safety
+  },
+
+  capacity: {
+    // From 3.25 — owner intends two-person team standard for 2027
+    twoPersonTeamFrom2027: true,
   },
 } as const;

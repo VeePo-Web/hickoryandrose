@@ -5,9 +5,9 @@ import ImageReveal from "./ImageReveal";
 import editorialFloralsImage from "@/assets/editorial-florals.jpg";
 
 const pillars = [
-  { label: "Calm Leadership", detail: "Quiet confidence under pressure, so you never have to wonder what happens next.", emphasis: "Confidence" },
-  { label: "Elevated Design", detail: "Cohesive, intentional aesthetics that feel like you — never cookie-cutter.", emphasis: "Intentional" },
-  { label: "Protected Presence", detail: "Your day, fully felt. We handle the logistics so you can hold the moments.", emphasis: "Presence" },
+  { label: "Calm Leadership", detail: "Thoughtful preparation, clear timelines, and challenges anticipated long before they reach you — so the day feels steady from start to finish.", emphasis: "Calm" },
+  { label: "Seamless Execution", detail: "Every vendor coordinated, every detail managed behind the scenes. Stress-free, by design.", emphasis: "Seamless" },
+  { label: "Protected Presence", detail: "We handle the planning, logistics, and coordination so you can focus on the moments that matter most.", emphasis: "Presence" },
 ];
 
 const BrandPromiseSection = () => {
@@ -80,9 +80,9 @@ const BrandPromiseSection = () => {
               </div>
               
               <p className="font-serif-wedding text-pull-quote text-foreground leading-[1.6] first-letter:font-script first-letter:text-7xl first-letter:float-left first-letter:mr-4 first-letter:mt-1 first-letter:leading-none first-letter:text-primary/50">
-                Calm becomes a luxury. We protect what matters most on your wedding
-                day: your presence, your peace of mind, and the freedom to fully
-                feel every moment as it unfolds around you.
+                Hickory & Rose exists to protect the beauty, intention, and
+                experience behind every celebration — so you can stay fully present
+                and enjoy your wedding day.
               </p>
 
               {/* Trust metric strip with gold separators */}
@@ -246,7 +246,7 @@ const BrandPromiseSection = () => {
             />
             <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.25), hsl(var(--gold) / 0.08))" }} />
             <p className="font-serif-wedding text-sm italic text-muted-foreground">
-              Refined rustic elegance — run with quiet luxury precision.
+              Refined rustic elegance — natural beauty, thoughtful design, effortless and timeless.
             </p>
             <span className="w-1.5 h-1.5 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.25), hsl(var(--gold) / 0.08))" }} />
             <motion.div

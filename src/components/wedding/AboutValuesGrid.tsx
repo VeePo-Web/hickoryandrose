@@ -3,22 +3,22 @@ import ScrollReveal from "./ScrollReveal";
 
 const values = [
   {
-    title: "Calm Leadership",
-    pullQuote: "So you can exhale.",
+    title: "Seamless & Calm",
+    pullQuote: "Stress-free, by design.",
     description:
-      "We lead with quiet confidence so you never feel rushed or anxious. Be fully present — we handle everything else.",
+      "Thoughtful preparation, clear timelines, and challenges anticipated long before they reach you. The day flows so you can stay present.",
   },
   {
-    title: "Intentional Design",
-    pullQuote: "Your vision, perfected.",
+    title: "Friendly & Caring",
+    pullQuote: "Organized, warm, easy to work with.",
     description:
-      "Every detail is considered — from ceremony arc to how light falls across your tablescape. Nothing accidental.",
+      "We show up the way we'd want a planner to show up for us — detailed, experienced, and genuinely invested in your love story.",
   },
   {
-    title: "Genuine Care",
-    pullQuote: "You're not just a client.",
+    title: "Luxury, Personalized",
+    pullQuote: "Your vision, thoughtfully held.",
     description:
-      "Your wedding is a responsibility we take personally. We invest emotionally because that's how meaning is made.",
+      "Refined rustic elegance: the harmony of natural beauty, thoughtful design, and elevated details that feel effortless and timeless.",
   },
 ];
 
