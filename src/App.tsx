@@ -46,18 +46,20 @@ const AnimatedRoutes = () => {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <LoadingScreen>
-          <SmoothScrollProvider>
-            <CursorFollower />
-            <AnimatedRoutes />
-          </SmoothScrollProvider>
-        </LoadingScreen>
-      </BrowserRouter>
-    </TooltipProvider>
+    <MotionConfig reducedMotion="user">
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <LoadingScreen>
+            <SmoothScrollProvider>
+              <CursorFollower />
+              <AnimatedRoutes />
+            </SmoothScrollProvider>
+          </LoadingScreen>
+        </BrowserRouter>
+      </TooltipProvider>
+    </MotionConfig>
   </QueryClientProvider>
 );
 
