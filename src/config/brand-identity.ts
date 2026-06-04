@@ -215,7 +215,7 @@ export const BRAND_IDENTITY = {
     name: "Meg Wolodko",
     role: "Founder & Lead Planner",
     personality: ["Organized", "Friendly", "Calming", "Detailed", "Experienced"], // 5.2 — owner's exact words
-    story: "", // TBC — 5.1, owner writing her own
+    story: "", // TBC — 5.1, Meg Wolodko to write her own founder story
     personalityOnline: "", // TBC — 5.3
     neverAssume: "", // TBC — 5.4
     credentialsVerified: false, // 5.5 — no WPIC or year claims until owner confirms
