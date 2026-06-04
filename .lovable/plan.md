@@ -1,126 +1,83 @@
-# Section 1 (Brand & Identity) — Items 1.4 through 1.20 — Subtle Refinement Plan
+# Section 2 (Ideal Client) — Subtle Refinement Plan
 
-Batched plan for the remaining Section 1 questionnaire items. Each item is either an already-answered owner response that needs to be reflected on-site, or a `TBC` that gets a subtle, on-brand placeholder consistent with the owner's voice (luxury, friendly, caring, seamless, calming).
+The owner's archetype is **"Polished Paige"**: design-forward, detail-driven, strong taste, wants calm leadership without losing creative involvement. Two TBC fields remain (2.7 pressures, 2.8 first-five-seconds). Section 2 also informs visible UX: who the site speaks to, what they feel in the first scroll, what they need to see by inquiry time.
 
-All changes are content-only: brand-identity config + small copy nudges in existing components. No layout, no styling, no logic changes.
+All changes are content-level or micro-copy. No layout, no new sections.
 
 ---
 
-## 1.4 — One Clear Sentence (was TBC)
+## 2.1–2.6 — Archetype & description ✅ already reflected
 
-**Proposed sentence** (synthesized from owner's other answers):
+Used in `Approach.tsx` and persona config files. No change.
 
-> *Hickory & Rose is an Edmonton-based wedding and event planning studio guiding refined couples through seamless, stress-free celebrations with calm leadership and thoughtful design.*
+## 2.7 — Pressures the Ideal Client Faces (was TBC)
 
-**Implementation**
-- `src/config/brand-identity.ts` → fill `positioning.oneSentence`
-- `index.html` meta description currently uses a shorter SEO-tuned line — keep that as-is (under 160 chars).
-- No visible page edit needed; the one-sentence value is for internal reference + future SEO snippets.
+**Proposed list** (synthesized from "Polished Paige" + owner's tone goals):
 
-## 1.5 — Named Promise ✅ already reflected
+```ts
+pressures: [
+  "Pressure to deliver a wedding that lives up to her own design taste",
+  "Pressure from family expectations and competing opinions",
+  "Pressure of a demanding career — limited time and mental bandwidth",
+  "Fear of losing creative control to a planner with a different aesthetic",
+  "Fear of the day feeling rushed, chaotic, or not 'them'",
+  "Fear of being the one fielding vendor questions on the day",
+]
+```
 
-`positioning.namedPromise` is already used as the manifesto pull-quote. No change.
+**Implementation**: `brand-identity.ts` only. Internal reference doc.
 
-## 1.6–1.10 — Positioning, differentiators, known-for ✅ already reflected
-
-Used throughout `BrandPromiseSection`, `AboutValuesGrid`, `ServicesVendorPartners`. No change.
-
-## 1.11 — Refined Rustic Elegance Is *Not* (was TBC)
+## 2.8 — First Five Seconds on the Site (was TBC)
 
 **Proposed**:
 
-> *Not rustic-country, not barnyard, not boho-casual. Never cluttered, themed, or kitsch. Never cold minimalism.*
+> *Calm, elevated, immediately understood. A single beautiful image. A confident, quiet headline. No noise, no popups, no "book now" pressure. She should feel her shoulders drop before she reads a word.*
 
-**Implementation**
-- `src/config/brand-identity.ts` → fill `positioning.refinedRusticEleganceIsNot`
-- Reference-only; not rendered on site.
+**Implementation**: `brand-identity.ts` only. (The hero already executes this — no on-site change required. This field codifies the standard for future hero variants.)
 
-## 1.12–1.15 — Tone words ✅ already reflected
+## 2.9 — First Thirty Seconds ✅ already reflected
 
-`voice.tone` matches owner answers. No change.
+Currently: *"Galleries that show real weddings. Professionalism in every detail. Clarity about what we do and how we work."* — matches the existing scroll order (hero → trust bar → services → gallery teaser). No change.
 
-## 1.16 — Voice Boundaries (was TBC)
+## 2.10 — By Inquiry, She Should Feel ✅ already reflected
 
-**Proposed list** (derived from tone + owner's "calm/caring/luxury" answers):
+Currently: *"Understanding. Excitement. Confidence."* Used as the emotional north-star for `InquireCelebration`. No change.
 
-```ts
-boundaries: [
-  "Never pushy or sales-y",
-  "Never casual to the point of unprofessional",
-  "Never cold, clinical, or corporate",
-  "Never trend-chasing or buzzword-heavy",
-  "Never minimize the couple's vision or feelings",
-]
-```
-
-**Implementation**: `brand-identity.ts` only. Reference document for future copy.
-
-## 1.17 — Repeat words ✅ already reflected.
-
-## 1.18 — Words/Phrases to Avoid (was TBC)
-
-**Proposed list**:
-
-```ts
-avoidWords: [
-  "rustic" (without "refined" modifier),
-  "barn",
-  "boho",
-  "cheap",
-  "budget",
-  "DIY",
-  "stress" (without "stress-free"),
-  "chaos",
-  "drama",
-  "girl boss",
-  "babe",
-  "obsessed",
-  "literally",
-  "vibes",
-]
-```
-
-**Action item**: After landing this list, do a one-pass `rg` audit and quietly soften any matches. Initial scan suggests current copy is already clean — will verify on implement.
-
-## 1.19 — Manifesto (was TBC)
-
-**Proposed manifesto** (5 short lines, written in owner's voice):
-
-> *We believe every celebration deserves presence.*
-> *We believe calm is a form of luxury.*
-> *We believe the most beautiful weddings feel inevitable — never forced.*
-> *We believe in protecting the joy, not just the timeline.*
-> *We believe in showing up, fully, so you can too.*
-
-**Implementation**
-- Save to `brand-identity.ts` (`voice.manifesto`).
-- Optional subtle upgrade: feed the final line into the existing `BrandManifestoSection` as a quiet closing line if the owner approves. For this pass, **keep the section visually identical** — config only.
-
-## 1.20 — Persona If H&R Were a Guest at the Wedding (was TBC)
-
-**Proposed persona**:
-
-> *The trusted older sister who happens to be exquisitely organized. Calm, warm, never flustered. Quietly fixes problems before anyone notices. Genuinely delighted to be there. Knows when to step in and when to step back.*
-
-**Implementation**: `brand-identity.ts` only. Internal reference.
+**Subtle fix**: `src/config/personas/discovery-framework.ts:86` still has `byInquiry: "" // TODO`. Sync it with `brand-identity.ts` so the two sources don't drift.
 
 ---
 
-## Summary of edits
+## Visible site touches (small, persona-aligned)
 
-**Files touched (single file):**
-1. `src/config/brand-identity.ts` — fill 6 TBC fields with the values above (1.4, 1.11, 1.16, 1.18, 1.19, 1.20).
+A pure config update is invisible. To honor the spirit of Section 2 — making sure the site actually speaks to Polished Paige — make two micro-copy nudges in places the current copy is slightly generic:
 
-**On-site copy:** intentionally **no visible changes** in this pass. The Section 1 work is foundation — it locks the internal reference so every future copy pass (Sections 2+, page rewrites, future blog posts, email templates) draws from the same authoritative source.
+### A. `InquireCelebration.tsx` — opening reassurance line
 
-**Verification after implement:**
-- Run `rg` for any `avoidWords` matches in current copy; flag for owner if found.
-- Re-read `brand-identity.ts` to confirm no remaining `TBC` strings in Section 1.
+Currently the post-inquiry copy reads:
+
+> *Your inquiry has been received with care. Here is what happens next on the path to a seamless, thoughtfully planned celebration.*
+
+**Refine to lead with the three feelings the owner named (understanding, excitement, confidence):**
+
+> *Your inquiry has been received with care. Take a breath — you're understood, you're in good hands, and the next steps are already in motion.*
+
+Why: matches the owner's stated "by inquiry, she should feel: understanding, excitement, confidence" without adding marketing language.
+
+### B. `Approach.tsx` ideal-client paragraph
+
+The page currently describes the archetype in slightly generic terms ("design-forward, detail-driven"). Re-read in build, and if it reads as a list of adjectives, soften it into a single sentence that names *what she's carrying* — not just what she's like. Will draft on implement once the exact current copy is read.
 
 ---
 
-## Why no visible page changes?
+## Files touched
 
-Section 1 of the questionnaire is brand foundation — the kind of thing that should govern every future word, not be pasted verbatim into a hero. Touching visible copy here would risk breaking the carefully composed editorial rhythm we already shipped. The high-leverage move is to lock the reference doc; we'll draw from it as we move into Sections 2 (ideal client), 3 (services), 4 (experience), etc., where the changes *should* be visible.
+1. `src/config/brand-identity.ts` — fill `pressures` and `firstFiveSeconds`.
+2. `src/config/personas/discovery-framework.ts` — fill the `byInquiry` TODO so the two configs match.
+3. `src/components/wedding/InquireCelebration.tsx` — one-line softening of the reassurance copy.
+4. *(Conditional)* `src/pages/Approach.tsx` — re-read on implement; if the ideal-client paragraph reads as adjective-soup, smooth it into one sentence.
 
-Ready to implement on approval, then move to Section 2.
+## What stays untouched
+
+Every layout, every image, every animation, every heading hierarchy, the hero, the trust bar, the gallery — all unchanged. Section 2 is about *who we're talking to*, not *what the page looks like*.
+
+Ready to implement on approval.

@@ -129,8 +129,16 @@ export const BRAND_IDENTITY = {
     archetype: "Polished Paige",
     description:
       "Design-forward, detail-driven, strong taste, wants calm leadership without losing creative involvement.",
-    pressures: [], // TBC — Section 2.7
-    firstFiveSeconds: "", // TBC — Section 2.8
+    pressures: [
+      "Pressure to deliver a wedding that lives up to her own design taste",
+      "Pressure from family expectations and competing opinions",
+      "Pressure of a demanding career — limited time and mental bandwidth",
+      "Fear of losing creative control to a planner with a different aesthetic",
+      "Fear of the day feeling rushed, chaotic, or not 'them'",
+      "Fear of being the one fielding vendor questions on the day",
+    ],
+    firstFiveSeconds:
+      "Calm, elevated, immediately understood. A single beautiful image. A confident, quiet headline. No noise, no popups, no 'book now' pressure. She should feel her shoulders drop before she reads a word.",
     firstThirtySeconds:
       "Galleries that show real weddings. Professionalism in every detail. Clarity about what we do and how we work.",
     byInquiry: "Understanding. Excitement. Confidence.",
