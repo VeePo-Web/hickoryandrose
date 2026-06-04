@@ -25,10 +25,11 @@ const faqCategories = [
   {
     category: "Services & Planning", index: "01",
     questions: [
-      { q: "What's the difference between Day-Of Coordination and Full-Service Planning?", a: "Day-Of Coordination is designed for couples who have done the planning themselves and need a professional to execute their vision flawlessly on the wedding day. Full-Service Planning means we're with you from the very beginning — handling design, vendor sourcing, budgeting, logistics, and everything in between, so you can simply enjoy the journey." },
-      { q: "How far in advance should I book?", a: "We recommend reaching out 10-14 months before your wedding for Full-Service Planning, and at least 3-4 months for Day-Of Coordination. That said, we're always happy to chat — even if your timeline is tighter, we may be able to help." },
-      { q: "Do you plan non-wedding events?", a: "Yes! While weddings are our specialty, we also coordinate milestone celebrations, corporate events, and intimate gatherings. If it involves intentional design and calm logistics, we'd love to be part of it." },
-      { q: "Can I customize my package?", a: "Absolutely. Every couple is unique, and our services are designed to be flexible. After our discovery call, we'll craft a custom proposal that matches your specific needs, priorities, and budget." },
+      { q: "My venue has a coordinator — do I still need a wedding planner?", a: "A venue coordinator manages the venue. A wedding day coordinator works for you — managing all of your vendors, every in-between moment, and the rhythm of your day from start to finish. They're different roles, and most weddings benefit from both." },
+      { q: "What's the difference between Day-Of Coordination and Full-Service Planning?", a: "Day-Of Coordination is designed for couples who have done the planning themselves and need a professional to step in 6–8 weeks before to execute the day flawlessly. Full-Service Planning means we're with you from the moment you're engaged — design, vision, vendor sourcing, and execution, every element held end-to-end." },
+      { q: "How far in advance should I book?", a: "We recommend reaching out 10–14 months before your wedding for Full-Service Planning, and at least 3–4 months for Day-Of Coordination. That said, we're always happy to chat — even if your timeline is tighter, we may be able to help." },
+      { q: "Do you plan non-wedding events?", a: "Yes. While weddings are our specialty, we also coordinate milestone celebrations, corporate events, and intimate gatherings. If it involves intentional design and calm logistics, we'd love to be part of it." },
+      { q: "Can I customize my package?", a: "Absolutely. Every couple is unique, and our services are designed to be flexible. After our discovery call, we'll craft a tailored proposal that matches your specific needs, priorities, and vision." },
     ],
   },
   {
@@ -42,10 +43,10 @@ const faqCategories = [
   {
     category: "Investment & Logistics", index: "03",
     questions: [
-      { q: "What is the investment range for your services?", a: "Day-Of Coordination starts at $2,500, Partial Planning at $5,000, and Full-Service Planning at $8,500. Every proposal is customized based on your unique needs, guest count, and event complexity." },
-      { q: "Do you offer payment plans?", a: "Yes, we offer flexible payment plans spread across the planning timeline. A retainer is required upon booking, with remaining payments due at agreed-upon milestones." },
-      { q: "What areas do you serve?", a: "We're based in Edmonton, Alberta, and serve couples throughout the greater Edmonton area, the Alberta Rockies (Jasper, Banff, Lake Louise), and surrounding communities. Travel fees may apply for destination weddings." },
-      { q: "How many weddings do you take on per year?", a: "We intentionally limit our calendar to ensure every couple receives our full attention and care. We typically take on 15-20 weddings per year, which means we never feel stretched thin on your day." },
+      { q: "What is the investment for your services?", a: "Each proposal is tailored to your guest count, complexity, and the level of support you need. Reach out and we'll share starting points and a custom proposal built around your day." },
+      { q: "Do you offer payment plans?", a: "Yes — we offer flexible payment plans spread across the planning timeline. A retainer is required upon booking, with remaining payments due at agreed-upon milestones." },
+      { q: "What areas do you serve?", a: "We're Edmonton-based and serve couples throughout Greater Edmonton and surrounding areas within Alberta. Travel fees apply outside of Greater Edmonton." },
+      { q: "How many weddings do you take on per year?", a: "We intentionally limit our calendar so every couple gets our full attention and care — never stretched thin on your day." },
     ],
   },
 ];
