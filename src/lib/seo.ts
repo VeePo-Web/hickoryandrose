@@ -82,3 +82,44 @@ function setLinkTag(rel: string, href: string) {
   }
   el.href = href;
 }
+
+/**
+ * Set or update the robots meta tag (e.g. "noindex,follow" on a 404).
+ * Pages that call this should reset to "index,follow" on unmount so other
+ * routes remain indexable.
+ */
+export function setRobotsMeta(content: string) {
+  setMetaTag("name", "robots", content);
+}
+
+interface BreadcrumbItem {
+  name: string;
+  path: string;
+}
+
+/**
+ * Inject a single BreadcrumbList JSON-LD script (id="breadcrumb-schema").
+ * Replaces any prior breadcrumb schema so route changes stay in sync.
+ */
+export function setBreadcrumbSchema(items: BreadcrumbItem[]) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: `${BASE_URL}${item.path}`,
+    })),
+  };
+
+  let el = document.getElementById("breadcrumb-schema") as HTMLScriptElement | null;
+  if (!el) {
+    el = document.createElement("script");
+    el.type = "application/ld+json";
+    el.id = "breadcrumb-schema";
+    document.head.appendChild(el);
+  }
+  el.textContent = JSON.stringify(data);
+}
+
