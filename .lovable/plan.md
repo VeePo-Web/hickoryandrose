@@ -1,192 +1,222 @@
-# Sections 4 (Experience) & 5 (About & Authority) — Subtle Refinement Plan + Critical Credibility Audit
+# Sections 6 (Portfolio & Galleries) & 7 (Website Strategy) — Plan + Honesty Audit
 
-Two sections handled together because they share the same axis: who Hickory & Rose is, and what experience the bride can trust. While auditing for Section 5 I found a **serious honesty issue** that should be fixed in this pass — the site currently displays multiple unverified statistics the owner never claimed. We need to bring the credentials in line with what she actually said in 5.5.
+Doing both together because they share the same constraint: most of Section 6 is owner-pending (5/7 questions TBC), and Section 7's structural answers are already implicit in the existing IA — what's missing is **honesty about what content the site is actually allowed to show today**. While auditing for Section 6 I found a third major credibility leak (after Sections 5's testimonials and stats): the portfolio + homepage display **fabricated couples, venues, and press features** the owner has never had.
 
 ---
 
-## ⚠️ Priority issue — Unverified credibility claims
+## ⚠️ Priority issue — Fabricated portfolio + press content
 
-Owner's only stated credibility signals (5.5):
-- Styled shoot — August 15, 2026
-- Summer 2026 — fully booked (3 weddings)
-- Fall 2026 — fully booked (2 weddings)
-- Growing vendor referral network
-- "Not yet" to professional brand photos (5.11)
+Owner's actual portfolio/press status:
+- **6.11 — featured weddings**: TBC (none provided)
+- **5.11 — professional brand photos**: "Not yet"
+- **5.5 — credibility signals**: only the Aug 15 2026 styled shoot, Summer/Fall 2026 fully booked, growing vendor network
+- **Press/editorial features**: never mentioned by owner
 
-Current site claims (none verified by owner):
+Current site content that violates this:
 
-| File | Line | Claim | Status |
+| File | Line(s) | Fabrication | Severity |
 |---|---|---|---|
-| `HeroSection.tsx` | 42 | "150+ Weddings" | ❌ Fabricated |
-| `FounderTeaserSection.tsx` | 9–11 | "150+ Weddings Coordinated", "8 Years of Experience", "100% Client Satisfaction" | ❌ Fabricated |
-| `AboutFounderSection.tsx` | 8–12, 108 | "WPIC Certified", "7+ Years", "80+ Vendor Partners" | ❌ Unverified |
-| `TrustBarSection.tsx` | 224 | "150+" | ❌ Fabricated |
-| `Portfolio.tsx` | 112 | "75+ Weddings Planned", "8 Years of Experience", "100% Client Satisfaction", "15–20 Weddings Per Year" | ❌ Fabricated |
-| `StatsSection.tsx` | 8 | "7 Years of Experience, since 2018" | ❌ Unverified |
-| `About.tsx` | 112 | "50+ Weddings", "WPIC Certified", "Featured in Style Me Pretty" | ❌ Fabricated |
-| `About.tsx` | 435 | "WPIC Member", "Alberta Wedding Network", "Featured Vendor — Jasper Park Lodge" | ❌ Unverified |
+| `Portfolio.tsx` | 23–32 | 8 named couples + venues + seasons ("Sarah & Michael · Fairmont 2024", "Emma & James · The Glass House 2024", …) | High |
+| `Portfolio.tsx` | 145–153 | Featured Story Spotlight with quote attributed to fake couple Sarah & Michael | High |
+| `Portfolio.tsx` | 172–175 | Testimonial attributed to Emma & James at The Glass House Autumn 2024 | High |
+| `Portfolio.tsx` | 73 | "the moments we've had the privilege of helping create" — implies extensive portfolio body | Medium |
+| `PressMentionsSection.tsx` | 6–7 + grid | "Wedding Bells — Top Wedding Planners to Watch 2024", "Style Me Pretty — Editor's Pick 2023", plus the "As Featured In · As Featured In" ticker | Critical |
+| `AboutTestimonials.tsx` / `TestimonialSection.tsx` | various | Named couple testimonials (already flagged in Section 5 pass but kept visually — same logic applies here) | High |
 
-**The fix**: replace every fabricated metric with the **real, owner-confirmed credibility signals** — framed editorially so they feel like proof, not numbers.
+A discerning Polished Paige bride checks press features in 10 seconds. "Style Me Pretty 2023" is searchable. Finding nothing is worse than finding modest-but-true.
 
-**Proposed replacement credentials set** (uses only what the owner actually told us):
+### Fix strategy — **keep the aesthetic, anonymize the claim**
+
+We do NOT remove the visual sections. The compositions are good and the imagery is fine to keep as **portfolio-direction inspiration** until real shoots arrive. We just stop attributing them to fake people, fake venues, and fake press.
+
+**Portfolio.tsx — anonymize the 8 wedding cards**:
+
+Replace named tuple with category-only labels. The masonry visual stays identical:
 
 ```ts
-const credentials = [
-  { value: "2026", label: "Summer & Fall Fully Booked" },
-  { value: "Aug 15", label: "Editorial Styled Shoot" },
-  { value: "Growing", label: "Vendor Network" },
+// SAMPLE STORIES — anonymized until owner provides real featured weddings (6.11)
+const weddingStories = [
+  { src: heroImage, alt: "Garden reception tablescape at golden hour",
+    title: "Garden Reception", venue: "Edmonton", season: "Summer", category: "Full Planning", aspect: "aspect-[3/4]" },
+  { src: receptionImage, alt: "Rustic farmhouse reception with eucalyptus and candlelight",
+    title: "Farmhouse Candlelight", venue: "Alberta", season: "Autumn", category: "Full Planning", aspect: "aspect-square" },
+  { src: ceremonyImage, alt: "Mountain ceremony with floral arch and white draping",
+    title: "Mountain Ceremony", venue: "Canadian Rockies", season: "Summer", category: "Partial Planning", aspect: "aspect-[4/5]" },
+  { src: bouquetImage, alt: "Bridal bouquet with white roses and sage eucalyptus",
+    title: "Bridal Florals", venue: "Edmonton", season: "Spring", category: "Day-Of", aspect: "aspect-[3/4]" },
+  { src: venueImage, alt: "Rustic barn venue at twilight with string lights",
+    title: "Twilight Barn", venue: "Alberta", season: "Autumn", category: "Full Planning", aspect: "aspect-[16/10]" },
+  { src: editorialImage, alt: "Sage and ivory floral arrangement detail",
+    title: "Floral Detail", venue: "Edmonton", season: "Winter", category: "Day-Of", aspect: "aspect-square" },
+  { src: firstDanceImage, alt: "First dance under string lights at outdoor reception",
+    title: "First Dance", venue: "River Valley", season: "Summer", category: "Partial Planning", aspect: "aspect-[3/4]" },
+  { src: detailImage, alt: "Calligraphy place card with gold cutlery detail",
+    title: "Place Setting", venue: "Edmonton", season: "Spring", category: "Full Planning", aspect: "aspect-square" },
 ];
 ```
 
-For the hero "trust strip" (currently `["150+ Weddings", ...]`):
+The masonry component receives the new shape; we'll thread `title` where `couple` was. Visual layout is unchanged — every column, gap, aspect ratio, and hover state stays the same.
 
-```ts
-["Summer 2026 — Fully Booked", "Edmonton & Alberta", "Now Booking 2027"]
+**Featured Story Spotlight** — replace with an editorial "Direction" card (no fake quote, no fake couple). Keep the same hero image, swap the body text to an honest design-direction note:
+
+```tsx
+<PortfolioFeaturedStory
+  image={heroImage}
+  alt="Garden reception at golden hour — aesthetic direction"
+  title="Garden Reception"
+  venue="Edmonton"
+  season="Summer"
+  description="A glimpse of the aesthetic direction Hickory & Rose is built around — soft textures, candlelight, and the quiet sophistication of refined rustic elegance."
+  quote="Designed for how it feels — not just how it looks."
+/>
 ```
 
-For the `About.tsx` credential pill row:
+(The `couple` prop becomes `title`; the testimonial quote becomes our own brand line from Section 4.5. This means a small prop rename in `PortfolioFeaturedStory.tsx`.)
 
-```ts
-["2026 Season Fully Booked", "Editorial Shoot — Aug 2026", "Now Booking 2027"]
+**Portfolio testimonial section (lines 159–178)** — same treatment as Section 5's testimonials: keep the block, replace the named attribution with an editorial pull-quote from the brand itself, and mark the original with a TODO for when real testimonials arrive:
+
+```tsx
+<blockquote>"We design for how it feels — not just how it looks. Every detail intentional, every moment protected."</blockquote>
+<p>Hickory & Rose · Design Philosophy</p>
 ```
 
-For `StatsSection.tsx` and the Portfolio stats grid — remove the year/weddings counters entirely and replace with **editorial proof points** (qualitative, not quantitative):
+**Portfolio hero subhead** — change `"the moments we've had the privilege of helping create"` → `"A glimpse into the aesthetic we design around — and the kind of day we plan for our couples."`
 
-| Stat | Replace with |
-|---|---|
-| "8 Years of Experience" | "Edmonton-Based Studio" / "Trusted by Alberta couples" |
-| "150+ / 75+ / 50+ Weddings" | "Limited Calendar — Intentional By Design" |
-| "100% Client Satisfaction" | (remove — unverifiable) |
-| "15–20 Weddings Per Year" | "Two-Person Team — Standard from 2027" |
+**Portfolio "Editorial Intro" 8 Stories counter** (line 100) — change `{weddingStories.length} Stories` → `Aesthetic Direction`. Plural-of-zero scrutiny disappears.
 
-This keeps the section visually intact while removing any claim the owner can't back up.
+**`PressMentionsSection`** — the most exposed lie on the site. Two options:
 
-For the `AboutFounderSection.tsx` "WPIC Certified Wedding Planner" line (line 108): soften to **"Founder & Lead Planner"** until the owner confirms certifications.
+- **A (recommended)**: Stop rendering it on the homepage until real press exists. Remove the `<PressMentionsSection />` line from `Index.tsx` (the component file stays — easy to re-enable later). The homepage flow is long enough that one section dropping is invisible.
+- **B**: Replace its data with a single honest tile — "Editorial Styled Shoot · August 2026" — and rename the section heading to "What's Next" instead of "As Featured In". This keeps a visual beat in the rhythm but is harder to make feel intentional with one card.
 
-For `About.tsx:435` (the recognition row): replace with the actual credibility signals — *"Editorial Styled Shoot — August 2026"*, *"Summer & Fall 2026 — Fully Booked"*, *"Now Welcoming 2027 Couples"*.
+Recommendation: **A**. Cleaner. Re-introduce when she has the first real feature.
 
 ---
 
-## Section 4 — Experience plan
+## Section 6 — Portfolio plan (what we can answer today)
 
-### 4.1 / 4.2 — Feeling words ✅ already in `brand-identity.ts`. No change.
+| Q | Status | Action |
+|---|---|---|
+| 6.1 Purpose ("most important sales engine") | ✅ Established | No change |
+| 6.2 Gallery storage | TBC | Flag in config |
+| 6.3 Real vs styled-shoot ratio | TBC (today: 0 real, 1 upcoming styled) | Flag in config |
+| 6.4 Curation rule | Owner-pending — what makes a wedding feature-worthy | Flag |
+| 6.5 Ten-second proof | ✅ Already implicit: refined rustic elegance, cohesive design, calm execution | Lift into config |
+| 6.6 Organization (stories vs grid) | Defaults to both — current site uses masonry grid + per-card story page (future) | Flag |
+| 6.11 Featured weddings list | TBC | Anonymize sample data now; swap on receipt |
+| 6.13 Privacy restrictions | TBC | Flag |
+| 6.14 Vendor credit format | TBC | Flag |
+| 6.15 Editing style | TBC | Flag |
 
-### 4.5 — "Story-driven, personal" + 2.5 — "feel, not just look"
-
-Owner's strongest single insight from the questionnaire (paraphrased): *"create the wedding the way you want it to feel — not just the way it looks."*
-
-This is currently **not stated on the site**. Add it as a quiet pull-quote in the `BrandManifestoSection` — one line, no new layout. Proposed:
-
-> *"We design for how it feels — not just how it looks."*
-
-Placement: existing manifesto block, between current paragraphs. One sentence, italic, editorial. No visual restructuring.
-
-### 4.9 — Venue coordinator vs day-of ✅ FAQ already correct. No change.
-
-### 4.3, 4.4, 4.6, 4.7, 4.8, 4.10, 4.11 — TBC
-
-These are owner-research items (ideal energy, micro-moments, experience failures, hero stories). Mark in `brand-identity.ts` under an `experience` block so we have one source of truth:
+Add a `portfolio` block to `brand-identity.ts` so this is one source of truth:
 
 ```ts
-experience: {
-  coupleFeel: ["dream vision", "love", "comfort", "luxury", "calm"],
-  guestFeel: ["structured", "smooth", "calm", "love", "enjoyable"],
-  feelOverLook: "We design for how it feels — not just how it looks.",
-  personalizationPrinciples: [
-    "Story-driven planning",
-    "Their love story made visible",
-    "Personalized elements throughout",
-    "Family and friends woven into the experience",
-  ],
-  venueCoordinatorVsPlanner:
-    "A venue coordinator manages the venue. A wedding day coordinator works for you — managing every vendor, every in-between moment, and the rhythm of the day from start to finish.",
-  // TBC by owner
-  idealEnergyArc: "",       // 4.3
-  luxuryGuestExperience: "", // 4.4
-  microMomentsProtected: [], // 4.6
-  experienceFailures: [],    // 4.7
-  nonNegotiables: [],        // 4.8
-  biggestRiskRemoved: "",    // 4.10
-  proofStoriesToTell: [],    // 4.11
+portfolio: {
+  purpose: "Primary sales engine — proves aesthetic + execution",
+  tenSecondProof: "Refined rustic elegance · cohesive design · elevated execution · calm in the room",
+  contentStatus: {
+    realWeddings: 0,                          // 6.3
+    styledShoots: 0,                          // first one: 2026-08-15
+    upcomingShoots: ["2026-08-15"],
+    professionalBrandPhotosAvailable: false,  // 5.11
+    namedTestimonialsAvailable: false,        // 5.7
+    pressFeaturesAvailable: false,            // 5.6 — PressMentionsSection currently hidden on homepage
+  },
+  // TBC owner
+  galleryStorage: "",        // 6.2
+  curationRule: "",          // 6.4
+  organization: "",          // 6.6
+  privacyRestrictions: "",   // 6.13
+  vendorCreditFormat: "",    // 6.14
+  editingStyle: "",          // 6.15
+  featuredWeddings: [],      // 6.11
 },
 ```
 
 ---
 
-## Section 5 — About & Authority plan
+## Section 7 — Website Strategy plan
 
-### 5.1 — Founder story
-Owner: *"I'll work on this"*. The current `AboutFounderSection.tsx` story is plausibly written but unverified ("started Hickory & Rose because too many brides told me…"). **Soften** to a shorter, honest opening that doesn't put words in her mouth — pending her own version.
+### What's already correct on the site (no change needed)
 
-**Proposed replacement paragraphs** (uses only her self-described personality from 5.2):
+- **7.1 Primary action** = Inquire. Confirmed across `HeroSection`, `CTASection`, nav, sticky CTAs. ✅
+- **7.5 Pages** = Home, About, Approach, Services, Portfolio, Journal, FAQ, Inquire. ✅
+- **7.6 Top menu** matches. ✅
+- **7.7 Critical path** = Home → Services → Inquire is the dominant journey; About / Portfolio are reassurance side-trips. ✅
+- **7.9 Trust signals above the fold** — currently three signals (Edmonton & Alberta · refined rustic elegance · now booking 2027). ✅ post Section 5 fix.
+- **7.18 Inquiry tone** = warm + clear. Already implemented via `InquireCelebration` redesign from Sections 1–3. ✅
+- **7.20 Response expectation** — currently "Replies within 24–48 business hours" on `Inquire`. ✅
+- **7.21 Lead magnet** = not enabled (owner TBC). ✅
+- **7.23–7.25 CTA language + capacity** = "Now booking 2027" + "Limited weddings each season" already surfaced post Section 3.
 
+### What needs a quiet edit
+
+**7.10 — Homepage story arc**: currently 16+ stacked sections. Audit shows two structural risks:
+
+1. `PressMentionsSection` — remove (above)
+2. `StatsSection` — already softened in Section 5 pass, but we should double-check it still flows after `PressMentionsSection` is removed. Order becomes: Hero → BrandPromise → Trust → NowBooking → ServicesOverview → Gallery → Testimonial → EditorialSplit → LoveQuote → ProcessTeaser → FounderTeaser → Stats → BrandManifesto → Filmstrip → VendorShowcase → CTA → Instagram → JournalTeaser. Still long but each beat has a clear emotional job. No further restructuring without owner input on 7.10.
+
+**7.11 — Services page advantage** — already covered in Section 3 (Investment Philosophy, comparison grid). No change.
+
+**7.12–7.15 — Approach page / framework name** — TBC. The `Approach` page exists but the framework isn't formally named. Flag in config: `frameworkName: ""` and `namedFramework: null` — pending owner. No edits today; she may want to name it after seeing the rest land.
+
+**7.16 — Reviews page emphasis** — TBC; the Reviews/Testimonials surfaces are currently using sample data (Section 5 pass already flagged). No change beyond what's already done.
+
+**7.17 — FAQ purpose** — current FAQ is well-scoped to objection-filtering. ✅
+
+**7.24 — CTA promise** — TBC owner. Current CTA copy ("Begin Your Inquiry" / "Plan with calm") works as placeholder.
+
+Add a `websiteStrategy` block to `brand-identity.ts`:
+
+```ts
+websiteStrategy: {
+  primaryAction: "inquire",                    // 7.1 ✅
+  criticalPath: ["Home", "Services", "Inquire"], // 7.7
+  pages: ["Home", "About", "Approach", "Services", "Portfolio", "Journal", "FAQ", "Inquire"],
+  homepageRhythm: {
+    pressMentionsEnabled: false,               // off until real press
+    statsEnabled: true,                         // qualitative only post Section 5
+    testimonialsAttribution: "anonymized",      // sample data; swap on real reviews
+  },
+  inquiryTone: ["warm", "clear", "confident"], // 7.18 ✅
+  responseSLA: "Replies within 24–48 business hours", // 7.20 ✅
+  leadMagnet: { enabled: false },              // 7.21
+  // TBC owner
+  homepageStoryArc: "",                        // 7.10
+  servicesPageAdvantage: "",                   // 7.11
+  approachProves: "",                          // 7.12
+  namedFramework: null as boolean | null,       // 7.13
+  frameworkName: "",                           // 7.14
+  ctaPrimaryLanguage: "",                      // 7.23
+  ctaPromise: "",                              // 7.24
+},
 ```
-I'm Alexandra — the founder of Hickory & Rose. I started this studio
-because I believe a wedding should feel as beautiful to live inside as
-it looks in the photos.
-
-My couples describe me as organized, calming, and genuinely easy to
-work with. I run on thoughtful preparation and quiet leadership — the
-kind that lets you stay present on a day that's only going to happen
-once.
-
-Hickory & Rose exists to protect the beauty, intention, and experience
-behind every celebration. I'd love to do that for yours.
-```
-
-Pull-quote stays (it's good and on-brand). "Personal Philosophy" list stays.
-
-### 5.2 — Personality ✅
-Add a short "How I Show Up" label list using her exact words. Insert as a quiet caption beneath the founder image or next to the credential row:
-
-```
-Organized · Friendly · Calming · Detailed · Experienced
-```
-
-### 5.3 / 5.4 — TBC, flagged in config.
-
-### 5.5 — Credibility signals
-Covered in the priority section above. Replace fabricated numbers with the owner's actual signals.
-
-### 5.6 — Reviews/press: TBC, flagged.
-
-### 5.7 — Testimonials hero proofs: TBC. **Current site shows hard testimonials with named couples** (`Lauren & Ethan`, etc.) in `AboutTestimonials.tsx` and `TestimonialSection.tsx`. These are placeholders. Mark them clearly as "sample testimonials, pending owner-supplied real ones" — but **don't remove yet** since the layout depends on them. Add a `TODO` comment in the file headers.
-
-### 5.11 — No professional brand photos yet
-Owner explicitly said "Not yet". The site uses placeholder `founder-portrait.jpg`. Add a code comment marking it as placeholder so it's swapped when real photos arrive. No visual change.
-
-### 5.15 — Vendor list pending
-The "80+ Vendor Partners" claim must go (handled above). Use "Growing vendor network" until she sends the real list.
 
 ---
 
 ## Files touched
 
-**Honesty/credibility fixes (high priority):**
-1. `src/components/wedding/HeroSection.tsx` — fix trust strip
-2. `src/components/wedding/FounderTeaserSection.tsx` — replace credentials array
-3. `src/components/wedding/AboutFounderSection.tsx` — replace credentials, soften "WPIC Certified" line, rewrite the 3 founder paragraphs, add personality caption
-4. `src/components/wedding/TrustBarSection.tsx` — replace "150+" stat
-5. `src/components/wedding/StatsSection.tsx` — replace fabricated stats
-6. `src/pages/Portfolio.tsx` — replace stat grid
-7. `src/pages/About.tsx` — replace 2× credential pill rows
+**Section 6 honesty edits:**
+1. `src/pages/Portfolio.tsx` — anonymize 8 sample stories, replace Featured Story attribution, replace named testimonial, soften hero subhead, change "8 Stories" → "Aesthetic Direction"
+2. `src/components/wedding/PortfolioFeaturedStory.tsx` — rename `couple` prop → `title` (or accept both for compat)
+3. `src/components/wedding/PortfolioMasonryGrid.tsx` — accept `title` field instead of `couple` (or both)
 
-**Section 4 additions:**
-8. `src/components/wedding/BrandManifestoSection.tsx` — add "we design for how it feels" pull-quote line
-9. `src/config/brand-identity.ts` — add `experience` block
+**Section 7 honesty edit:**
+4. `src/pages/Index.tsx` — comment out `<PressMentionsSection />` with a `// TODO: re-enable when real press features arrive (5.6)` note
 
-**Section 5 additions:**
-10. `src/config/brand-identity.ts` — add `founder` block with personality words + flagged TBCs
-11. Code comments in `AboutTestimonials.tsx`, `TestimonialSection.tsx`, and the founder portrait import — mark as placeholder pending owner content
-
-## What stays untouched
-
-All layout, animation, imagery (photo files stay — just the *claims* on top change), navigation, hero motion, the FAQ venue-vs-planner answer, the philosophy pillars, and Alexandra's pull quote.
+**Config:**
+5. `src/config/brand-identity.ts` — add `portfolio` block and `websiteStrategy` block
 
 ---
 
-## Why the honesty fix matters
+## What stays untouched
 
-The owner's brand is built on calm, trust, and "Polished Paige" — a discerning bride who'll absolutely Google "WPIC Certified" and "Style Me Pretty feature". One unverified credential, surfaced by a sharp prospect, vaporizes the entire trust-building exercise the rest of the site is doing. Replacing inflated numbers with the owner's real, current, modest-but-true signals is **more credible**, not less — it reads as quietly confident rather than overstated.
+Every layout, animation, photo file, hero motion, gallery composition, FAQ copy, services page, Approach page, navigation, footer, inquire flow, and the lazy-loading rhythm. Only attribution copy + one homepage section removal.
 
-Ready to implement on approval.
+---
+
+## Why this matters
+
+Sections 5 + 6 + 7 all leak the same way: the site is dressed for an established planner with five years of press and a hundred named testimonials, when the owner is at the start of an intentional, editorial debut. Polished Paige notices that gap immediately. Anonymizing the sample work + dropping the fake press lets the site tell the **actual** story — *"a refined new studio with a clear point of view, booked through 2026, and welcoming a small 2027 calendar"* — which is far more compelling than overstated numbers a careful bride will fact-check in a single search.
+
+Ready to execute.
