@@ -36,7 +36,7 @@ const Journal = () => {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
-    setPageMeta({ title: "Journal — Wedding Planning Inspiration | Hickory & Rose Edmonton", description: "Planning wisdom, real wedding stories, and the design details that make each celebration unforgettable. Read the Hickory & Rose journal.", path: "/journal" });
+    setPageMeta({ title: "Journal | Hickory & Rose Edmonton Wedding Planner", description: "Planning notes, design inspiration, and real-wedding stories from the Hickory & Rose studio in Edmonton, Alberta.", path: "/journal" });
   }, []);
 
   const featuredArticle = articles[0];

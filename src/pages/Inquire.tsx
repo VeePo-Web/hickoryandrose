@@ -46,8 +46,8 @@ const Inquire = () => {
 
   useEffect(() => {
     setPageMeta({
-      title: "Inquire — Start Planning Your Wedding | Hickory & Rose Edmonton",
-      description: "Ready to plan your dream wedding? Reach out to Hickory & Rose for a complimentary discovery call. No pressure, just a warm conversation about your vision.",
+      title: "Inquire | Hickory & Rose Edmonton Wedding Planner",
+      description: "Start your planning conversation with Hickory & Rose. A warm, no-pressure inquiry — replies within 24–48 business hours.",
       path: "/inquire",
     });
   }, []);

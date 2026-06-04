@@ -118,8 +118,8 @@ const Approach = () => {
 
   useEffect(() => {
     setPageMeta({
-      title: "Our Approach — How We Plan Your Wedding | Hickory & Rose Edmonton",
-      description: "From discovery call to wedding day, learn Hickory & Rose's 5-step planning process. Calm leadership, meticulous coordination, and elevated design — every step of the way.",
+      title: "Our Approach | Hickory & Rose Edmonton Wedding Planner",
+      description: "From discovery call to wedding day — Hickory & Rose's calm, intentional planning process. Meticulous coordination and elevated design at every step.",
       path: "/approach",
     });
   }, []);

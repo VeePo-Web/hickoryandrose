@@ -73,7 +73,7 @@ const FAQ = () => {
   const watermarkY = useTransform(catScrollProgress, [0, 1], ["15%", "-15%"]);
 
   useEffect(() => {
-    setPageMeta({ title: "FAQ — Frequently Asked Questions | Hickory & Rose Wedding Planner", description: "Answers to common questions about Hickory & Rose wedding planning services, pricing, process, and coverage areas. Serving Edmonton, the Alberta Rockies, and beyond.", path: "/faq" });
+    setPageMeta({ title: "FAQ | Hickory & Rose Edmonton Wedding Planner", description: "Answers on pricing, services, planning timelines, and coverage across Edmonton, the Canadian Rockies, and Alberta — from Hickory & Rose.", path: "/faq" });
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.textContent = JSON.stringify(faqSchema);
