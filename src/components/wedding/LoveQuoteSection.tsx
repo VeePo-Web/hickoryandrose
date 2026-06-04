@@ -103,7 +103,7 @@ const LoveQuoteSection = () => {
         <div className="flex flex-col items-center gap-3 -rotate-90 origin-center">
           <span className="w-8 h-px bg-primary-foreground/8" />
           <span className="font-sans-wedding text-[0.45rem] tracking-[0.25em] uppercase text-primary-foreground/10">
-            Est. 2018
+            Edmonton · Alberta
           </span>
           <span className="w-8 h-px bg-primary-foreground/8" />
         </div>
@@ -250,7 +250,7 @@ const LoveQuoteSection = () => {
             <div className="flex items-center gap-3">
               <span className="w-4 h-px bg-primary-foreground/15" />
               <span className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-primary-foreground/25">
-                Edmonton · Alberta · Est. 2018
+                Edmonton · Alberta · Canadian Rockies
               </span>
               <span className="w-4 h-px bg-primary-foreground/15" />
             </div>

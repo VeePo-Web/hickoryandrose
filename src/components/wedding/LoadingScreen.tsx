@@ -317,7 +317,7 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
               >
                 <span className="w-5 h-px bg-background/15" />
                 <span className="font-sans-wedding text-caption tracking-[0.35em] uppercase text-background/50 font-light">
-                  Edmonton · Alberta · Est. 2018
+                  Edmonton · Alberta · Canadian Rockies
                 </span>
                 <span className="w-5 h-px bg-background/15" />
               </motion.div>

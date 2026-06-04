@@ -270,7 +270,7 @@ const Approach = () => {
                 {/* Est. date chip */}
                 <div className="flex items-center gap-2 mt-3 mb-6">
                   <span className="w-4 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.25), transparent)" }} />
-                  <span className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-muted-foreground/60">Est. 2018</span>
+                  <span className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-muted-foreground/60">Edmonton · Alberta</span>
                 </div>
 
                 {/* Editorial image inset — mobile */}

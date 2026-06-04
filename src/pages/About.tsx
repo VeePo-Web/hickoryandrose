@@ -383,10 +383,10 @@ const About = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {[
-                { publication: "Edmonton Bridal", note: "Featured Planner, 2024" },
-                { publication: "The Knot", note: "Best of Weddings" },
-                { publication: "Style Me Pretty", note: "Real Wedding Feature" },
-                { publication: "Alberta Weddings", note: "Top 10 Planners" },
+                { publication: "2026 Season", note: "Summer & Fall Fully Booked" },
+                { publication: "Aug 2026", note: "Editorial Styled Shoot" },
+                { publication: "2027 Season", note: "Now Booking — Limited Calendar" },
+                { publication: "Edmonton · Alberta", note: "Studio Location" },
               ].map((press, i) => (
                 <motion.div
                   key={press.publication}

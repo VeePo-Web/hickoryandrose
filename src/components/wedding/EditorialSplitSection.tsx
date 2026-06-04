@@ -154,7 +154,7 @@ const EditorialSplitSection = () => {
 
             {/* Philosophy note */}
             <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary-foreground/60 mt-12">
-              Our Design Philosophy · Est. 2018
+              Our Design Philosophy · Edmonton, Alberta
             </p>
           </div>
         </ScrollReveal>
