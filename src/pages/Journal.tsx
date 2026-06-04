@@ -66,7 +66,7 @@ const Journal = () => {
               </span>
             </p>
             <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">The Journal</h1>
-            <p className="font-sans-wedding text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto font-light">Planning wisdom, real wedding stories, and the design details that make each celebration unforgettable.</p>
+            <p className="font-sans-wedding text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto font-light">Field notes from the studio — planning thinking, design philosophy, and the small details we believe in. Publishing alongside our 2027 season.</p>
           </ScrollReveal>
         </motion.div>
         <GoldFrame inset="20px" delay={1} />
