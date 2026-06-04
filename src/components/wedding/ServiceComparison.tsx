@@ -3,9 +3,9 @@ import ScrollReveal from "./ScrollReveal";
 import MagneticButton from "./MagneticButton";
 
 const comparisonTiers = [
-  { tier: "Day-Of", desc: "You've planned it all — we perfect and lead the day.", price: "From $2,500", popular: false },
-  { tier: "Partial", desc: "Collaborate on design and vendors with expert guidance.", price: "From $5,000", popular: true },
-  { tier: "Full-Service", desc: "We handle everything from vision to final send-off.", price: "From $8,500", popular: false },
+  { tier: "Day-Of", desc: "You've planned it all — we perfect and lead the day.", price: "Starting at — inquire", popular: false },
+  { tier: "Partial", desc: "Collaborate on design and vendors with expert guidance.", price: "Starting at — inquire", popular: true },
+  { tier: "Full-Service", desc: "We handle everything from vision to final send-off.", price: "Starting at — inquire", popular: false },
 ];
 
 const ServiceComparison = () => (

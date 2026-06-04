@@ -28,9 +28,9 @@ const serviceTiers = [
     id: "day-of",
     title: "Day-Of Coordination",
     tagline: "You planned it. We perfect it.",
-    investment: "Starting at $2,500",
+    investment: "Starting at — inquire",
     description:
-      "For couples who love planning and have handled the details — we step in 4-6 weeks before to review everything, confirm vendors, build your timeline, and lead the day with calm authority.",
+      "For couples who love planning and have handled the details — we step in 6–8 weeks before, with unlimited communication through to the day, to review everything, confirm vendors, build your timeline, and lead the day with calm authority.",
     includes: [
       "Detailed timeline creation and management",
       "Vendor confirmation and logistics coordination",
@@ -48,19 +48,17 @@ const serviceTiers = [
     id: "partial",
     title: "Partial Planning",
     tagline: "Collaboration at every turn.",
-    investment: "Starting at $5,000",
+    investment: "Starting at — inquire",
     description:
-      "For couples who want professional guidance without handing over the reins entirely. We partner with you on design direction, vendor selection, and planning milestones while you maintain creative control.",
+      "For couples who've started planning but need a trusted partner to complete the vendor team and carry the rest of the load with you.",
     includes: [
       "Everything in Day-Of Coordination",
-      "Design concept development and mood boarding",
-      "Vendor recommendations and booking assistance",
-      "Budget tracking and management",
-      "Monthly planning meetings",
-      "Décor and styling guidance",
+      "Remaining vendor sourcing and curation",
+      "Vendor recommendations from our trusted network",
+      "Planning check-ins to round out your team",
     ],
     idealFor:
-      "Couples who want expert support and creative direction while staying involved.",
+      "Couples who want expert support and a complete vendor team while staying creatively involved.",
     image: serviceStationeryImage,
     imageAlt: "Luxury wedding stationery suite with calligraphy and wax seals on marble",
   },
@@ -68,17 +66,15 @@ const serviceTiers = [
     id: "full",
     title: "Full-Service Planning",
     tagline: "From vision to celebration.",
-    investment: "Starting at $8,500",
+    investment: "Starting at — inquire",
     description:
-      "For couples who want the complete experience — from the earliest conversations about your vision to the final send-off. We become an extension of you, handling every detail so you can simply be present.",
+      "For couples who want the complete experience — held from the moment of engagement through the final send-off. Design, vision, vendors, and execution, all carried for you.",
     includes: [
       "Everything in Partial Planning",
-      "Complete event design and styling",
-      "Full vendor sourcing, negotiation, and management",
-      "Stationery and invitation guidance",
-      "Guest experience curation",
-      "Comprehensive logistics and production management",
-      "Welcome event and post-wedding brunch coordination",
+      "Design direction and vision development",
+      "End-to-end vendor sourcing, negotiation, and management",
+      "Comprehensive logistics and production",
+      "Held from engagement through final send-off",
     ],
     idealFor:
       "Couples who want a truly hands-free, elevated experience from start to finish.",
@@ -101,7 +97,7 @@ const Services = () => {
   useEffect(() => {
     setPageMeta({
       title: "Wedding Planning Services — Day-Of, Partial & Full-Service | Hickory & Rose",
-      description: "Explore Hickory & Rose wedding planning services in Edmonton. Day-of coordination from $2,500, partial planning from $5,000, full-service from $8,500. Custom proposals for every couple.",
+      description: "Explore Hickory & Rose wedding planning services in Edmonton — day-of coordination, partial planning, and full-service planning. Custom proposals tailored to every couple.",
       path: "/services",
     });
   }, []);
@@ -179,7 +175,7 @@ const Services = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.6, duration: 0.8 }}
         >
-          {["Three Curated Tiers", "Custom Proposals", "From $2,500"].map((t, i) => (
+          {["Three Curated Tiers", "Custom Proposals", "Tailored to You"].map((t, i) => (
             <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/30 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
