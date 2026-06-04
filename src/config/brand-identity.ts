@@ -13,6 +13,7 @@ export const BRAND_IDENTITY = {
   name: {
     full: "Hickory & Rose Wedding and Event Planning",
     short: "Hickory & Rose",
+    monogram: "H&R", // decorative watermark only — never used as a readable label
     tagline: "Seamless, stress-free execution. Luxury, personalized planning. Thoughtfully bringing your vision to life.",
   },
 
