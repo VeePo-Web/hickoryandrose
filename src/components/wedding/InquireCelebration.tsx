@@ -23,9 +23,9 @@ const DIAMONDS = Array.from({ length: 16 }, (_, i) => {
 });
 
 const STEPS = [
-  { text: "We'll review your details with care and respond personally within 48 hours." },
-  { text: "We'll schedule a relaxed, complimentary discovery call to learn about your vision." },
-  { text: "If we're the right fit, you'll receive a tailored proposal built around your day." },
+  { text: "Press send in your mail app — your message is already composed and addressed." },
+  { text: "We'll review your details with care and respond personally within 24–48 business hours." },
+  { text: "If we feel like the right fit, we'll set a calm discovery call and prepare a tailored proposal." },
 ];
 
 const BOKEH = [
