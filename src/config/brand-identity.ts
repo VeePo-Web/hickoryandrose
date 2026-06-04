@@ -18,7 +18,8 @@ export const BRAND_IDENTITY = {
   },
 
   positioning: {
-    oneSentence: "", // TBC — Section 1.4
+    oneSentence:
+      "Hickory & Rose is an Edmonton-based wedding and event planning studio guiding refined couples through seamless, stress-free celebrations with calm leadership and thoughtful design.",
     namedPromise:
       "Hickory & Rose exists to protect the beauty, intention, and experience behind every celebration.",
     positioningOptions: [
@@ -37,12 +38,19 @@ export const BRAND_IDENTITY = {
       "Seamless, elegant wedding planning paired with friendly, caring coordination.",
     refinedRusticEleganceIs:
       "The harmony of natural beauty, thoughtful design, and elevated details that feel both effortless and timeless.",
-    refinedRusticEleganceIsNot: "", // TBC — Section 1.11
+    refinedRusticEleganceIsNot:
+      "Not rustic-country, not barnyard, not boho-casual. Never cluttered, themed, or kitsch. Never cold or clinical minimalism.",
   },
 
   voice: {
     tone: ["luxury", "friendly", "caring", "seamless", "calming"],
-    boundaries: [], // TBC — Section 1.16
+    boundaries: [
+      "Never pushy or sales-y",
+      "Never casual to the point of unprofessional",
+      "Never cold, clinical, or corporate",
+      "Never trend-chasing or buzzword-heavy",
+      "Never minimize the couple's vision or feelings",
+    ],
     repeatWords: [
       "seamless",
       "calm",
@@ -52,9 +60,30 @@ export const BRAND_IDENTITY = {
       "presence",
       "personalized",
     ],
-    avoidWords: [], // TBC — Section 1.18
-    manifesto: "", // TBC — Section 1.19
-    personaIfGuest: "", // TBC — Section 1.20
+    avoidWords: [
+      "rustic (without 'refined' modifier)",
+      "barn",
+      "boho",
+      "cheap",
+      "budget",
+      "DIY",
+      "chaos",
+      "drama",
+      "girl boss",
+      "babe",
+      "obsessed",
+      "literally",
+      "vibes",
+    ],
+    manifesto: [
+      "We believe every celebration deserves presence.",
+      "We believe calm is a form of luxury.",
+      "We believe the most beautiful weddings feel inevitable — never forced.",
+      "We believe in protecting the joy, not just the timeline.",
+      "We believe in showing up, fully, so you can too.",
+    ].join("\n"),
+    personaIfGuest:
+      "The trusted older sister who happens to be exquisitely organized. Calm, warm, never flustered. Quietly fixes problems before anyone notices. Genuinely delighted to be there. Knows when to step in and when to step back.",
   },
 
   visual: {
