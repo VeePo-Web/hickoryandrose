@@ -160,4 +160,30 @@ export const BRAND_IDENTITY = {
     // From 3.25 — owner intends two-person team standard for 2027
     twoPersonTeamFrom2027: true,
   },
+
+  services: {
+    dayOf: {
+      leadTime: "6–8 weeks before the wedding",
+      communication: "Unlimited communication from intake through the day",
+      scopeBoundaries: "", // TBC — 3.5
+    },
+    partial: {
+      coreAddition: "Remaining vendor sourcing and curation",
+      deliverables: "", // TBC — 3.7
+      flexibilityRules: "", // TBC — 3.8
+    },
+    fullService: {
+      entryPoint: "From the moment of engagement",
+      scope: "Design, vision, vendor sourcing, end-to-end execution",
+      designLogisticsBalance: "", // TBC — 3.10
+    },
+    pricing: {
+      displayMode: "starting-at-inquire", // 3.23
+      pricesFinalized: false, // 3.22 — pending owner confirmation
+      privatePricingLanguage: "", // TBC — 3.24
+    },
+    vendorPhilosophy: "We work as a team with every vendor — always.",
+    contingency: "Emergency kit on hand; calm leadership protects the room.",
+    upgrades2027: "Two-person planning team standard for every 2027 wedding.",
+  },
 } as const;
