@@ -155,13 +155,24 @@ const Journal = () => {
                   </div>
                   <div className="border border-border/30 p-8 md:p-10">
                     <p className="font-serif-wedding text-sm italic text-foreground/40 mb-6">"The best planning starts with inspiration."</p>
-                    <form onSubmit={(e) => { e.preventDefault(); }} className="flex flex-col sm:flex-row items-stretch gap-3 mb-4">
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        const input = (e.currentTarget.elements.namedItem("journal-email") as HTMLInputElement | null);
+                        const email = input?.value.trim();
+                        if (!email) { input?.focus(); return; }
+                        const subject = "Studio Notebook — Notify me when essays publish";
+                        const body = `Please add me to the notebook list.\n\nEmail: ${email}\n\n— Sent from hickoryandrose.com/journal`;
+                        window.location.href = `mailto:sales@hickoryandrose.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                      }}
+                      className="flex flex-col sm:flex-row items-stretch gap-3 mb-4"
+                    >
                       <div className="flex-1 input-gold-focus relative">
-                        <input type="email" placeholder="your@email.com" className="w-full px-4 py-3.5 bg-transparent border border-border/60 font-sans-wedding text-sm text-foreground font-light placeholder:text-muted-foreground/40 focus:outline-none focus:ring-0 focus:border-transparent transition-colors duration-300" aria-label="Email address for newsletter" />
+                        <input name="journal-email" type="email" required placeholder="your@email.com" className="w-full px-4 py-3.5 bg-transparent border border-border/60 font-sans-wedding text-sm text-foreground font-light placeholder:text-muted-foreground/40 focus:outline-none focus:ring-0 focus:border-transparent transition-colors duration-300" aria-label="Email address for notebook notifications" />
                       </div>
                       <button type="submit" className="px-8 py-3.5 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.18em] uppercase font-light hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 relative overflow-hidden group shrink-0">
                         <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.15), transparent 60%)" }} />
-                        <span className="relative z-10">Subscribe</span>
+                        <span className="relative z-10">Notify Me</span>
                       </button>
                     </form>
                     <p className="font-sans-wedding text-caption tracking-[0.08em] text-muted-foreground/60 font-light">One email per month · Unsubscribe anytime</p>
