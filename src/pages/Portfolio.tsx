@@ -44,6 +44,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     setPageMeta({ title: "Portfolio | Hickory & Rose Edmonton Wedding Planner", description: "Aesthetic direction from Hickory & Rose — refined rustic elegance for Edmonton & Alberta weddings. A glimpse of the day we design for our couples.", path: "/portfolio" });
+    setBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Portfolio", path: "/portfolio" }]);
   }, []);
 
   const filtered = active === "All" ? weddingStories : weddingStories.filter((s) => s.category === active);
