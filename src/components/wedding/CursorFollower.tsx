@@ -46,6 +46,10 @@ const CursorFollower = memo(() => {
       isTouchDevice.current = true;
       return;
     }
+    // Respect reduced-motion — a trailing custom cursor is unwelcome motion
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
 
     const handleMove = (e: MouseEvent) => {
       x.set(e.clientX);

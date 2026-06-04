@@ -10,6 +10,8 @@ const SmoothScrollProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     // Skip smooth scroll on touch devices for better native performance
     if (window.matchMedia("(pointer: coarse)").matches) return;
+    // Respect reduced-motion preference — Lenis' inertial scroll is itself motion
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const lenis = new Lenis({
       lerp: 0.07,
