@@ -37,6 +37,7 @@ const Journal = () => {
 
   useEffect(() => {
     setPageMeta({ title: "Journal | Hickory & Rose Edmonton Wedding Planner", description: "Planning notes, design inspiration, and real-wedding stories from the Hickory & Rose studio in Edmonton, Alberta.", path: "/journal" });
+    setBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Journal", path: "/journal" }]);
   }, []);
 
   const featuredArticle = articles[0];
