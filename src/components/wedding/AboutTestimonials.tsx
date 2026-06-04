@@ -2,6 +2,8 @@ import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
+// TODO (5.7): Replace with real, owner-supplied testimonials once received.
+// Current entries are illustrative placeholders aligned with brand voice.
 const testimonials = [
   {
     quote: "From our first call, we knew we were in the right hands. Our wedding felt exactly like us — intimate, elegant, and completely stress-free.",

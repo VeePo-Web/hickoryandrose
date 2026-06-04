@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
 import MagneticButton from "./MagneticButton";
+// TODO (5.11): Placeholder portrait — owner has no professional brand photos yet. Swap when delivered.
 import founderImage from "@/assets/founder-portrait.jpg";
 
 // TODO: Update credentials when owner confirms certifications and verified metrics (Section 5.5).
