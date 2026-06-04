@@ -100,6 +100,10 @@ const Services = () => {
       description: "Day-of coordination, partial planning, and full-service wedding planning in Edmonton & the Canadian Rockies. Tailored proposals, calm execution.",
       path: "/services",
     });
+    setBreadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Services", path: "/services" },
+    ]);
   }, []);
 
   return (
