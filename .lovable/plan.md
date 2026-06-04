@@ -1,65 +1,67 @@
-# Remaining SEO + A11y Gaps — Focused Pass
+# Next Pass — Performance + Polish Gaps
 
-After the canonical-domain fix, a sweep of pages and head metadata reveals three concrete gaps still worth closing. Each is small, high-leverage, and contained to presentation/SEO code.
+The big SEO/a11y items are closed (canonical www, breadcrumbs, robots on 404, sitemap lastmod, alt text, landmarks, skip link, `lang="en"`, theme-color, hero `fetchPriority="high"`). Three concrete, contained gaps remain.
 
 ---
 
-## 1. `NotFound.tsx` is missing SEO hygiene (high priority)
+## 1. Hero LCP image isn't preloaded (highest-leverage perf win)
 
-The 404 page sets `document.title` directly but:
-- Does **not** call `setPageMeta`, so canonical, OG, Twitter, and description tags from the previous route leak onto the 404.
-- Does **not** emit `<meta name="robots" content="noindex,follow">`, so Google can (and will) index 404s — wasting crawl budget and surfacing dead URLs in search.
+`HeroSection.tsx` correctly sets `loading="eager" fetchPriority="high"` on the LCP image, but the browser still has to wait for React to hydrate and render the `<img>` tag before it discovers the URL. A `<link rel="preload" as="image">` in `index.html` lets the browser start the fetch during HTML parse — typically shaving 200–600ms off LCP on cold loads.
+
+**Fix:** In `index.html`, add right after the existing font preloads:
+
+```html
+<link
+  rel="preload"
+  as="image"
+  href="/src/assets/hero-tablescape.jpg"  <!-- exact path from HeroSection import -->
+  fetchpriority="high"
+/>
+```
+
+I'll read `HeroSection.tsx` to confirm the exact built asset path/import, then preload that URL (Vite rewrites `src/assets/*` imports to hashed `/assets/*.jpg` at build, so we may need to import the URL in a small inline `<script type="module">` or — simpler — preload via the `imagetools`/known hashed path. The pragmatic move: import the asset at the top of `main.tsx`, write the resolved URL to a `<link>` injected at runtime before React mounts. Lowest-risk variant: keep `fetchPriority` on the `<img>` (already in place) and additionally add a `modulepreload`-style runtime preload in `main.tsx`.
+
+**Implementation choice (recommended):** add a tiny preload helper in `src/main.tsx` that imports the hero image URL and injects `<link rel="preload" as="image" href={url} fetchpriority="high">` synchronously before `createRoot().render()`. This guarantees the hashed Vite URL is correct in both dev and prod.
+
+---
+
+## 2. Lazy `<img>` tags without `width`/`height` attributes (CLS)
+
+`FilmstripSection.tsx` (line 167) and `GallerySection.tsx` lightbox `<img>` (line 378) use `loading="lazy"` but only the grid img has explicit `width`/`height`. The filmstrip frames are inside a fixed `aspect-[3/4]` wrapper so CLS is already prevented there — **no change needed**. Confirmed by reading the file.
+
+**Action:** Spot-audit the remaining lazy `<img>` tags in `JournalArticleCard`, `JournalFeatured`, `PortfolioMasonryGrid`, `PortfolioFeaturedStory`, `AboutFounderSection` — any lazy `<img>` not wrapped in an aspect-ratio container needs `width`/`height` attributes (intrinsic ratio hint). Add them where missing. No visual change; pure CLS insurance.
+
+---
+
+## 3. PWA / device icon coverage incomplete
+
+`public/` ships `favicon.svg`, `favicon.png`, `favicon.ico`, and `og-image.jpg`, but `index.html` has no:
+- `<link rel="apple-touch-icon">` — iOS home-screen icon falls back to a low-quality screenshot.
+- `<link rel="manifest" href="/manifest.webmanifest">` — Android "Add to home screen" and Lighthouse PWA checks both flag this.
 
 **Fix:**
-- Add a `setRobotsMeta("noindex,follow")` helper in `src/lib/seo.ts` that creates/updates the robots meta tag and **removes it again on cleanup** (so other routes stay indexable).
-- In `NotFound.tsx`, replace the manual `document.title` line with `setPageMeta({...})` and call `setRobotsMeta("noindex,follow")`, returning a cleanup that resets robots to `index,follow`.
+1. Add `public/apple-touch-icon.png` (180×180, derived from existing `favicon.png` — can reuse the 512px source if available).
+2. Add `public/manifest.webmanifest` with: `name`, `short_name: "Hickory & Rose"`, `start_url: "/"`, `display: "standalone"`, `background_color: "#f7f4f0"` (matches existing `theme-color`), `theme_color: "#f7f4f0"`, and `icons` array pointing to existing `favicon.png` + new apple-touch-icon.
+3. In `index.html` `<head>`, add:
+   ```html
+   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+   <link rel="manifest" href="/manifest.webmanifest" />
+   ```
 
----
-
-## 2. No `BreadcrumbList` structured data on inner pages
-
-`index.html` has `LocalBusiness` JSON-LD and `FAQ.tsx` has `FAQPage` JSON-LD, but no inner page emits `BreadcrumbList` — which Google uses to render breadcrumb trails in SERPs (visible ranking signal + better CTR).
-
-**Fix:**
-- Add a `setBreadcrumbSchema(items)` helper in `src/lib/seo.ts` that injects/updates a single `<script type="application/ld+json" id="breadcrumb-schema">` element.
-- Call it from each inner page's `useEffect` alongside `setPageMeta`:
-  - `/about` → Home › About
-  - `/approach` → Home › Approach
-  - `/services` → Home › Services
-  - `/portfolio` → Home › Portfolio
-  - `/journal` → Home › Journal
-  - `/faq` → Home › FAQ
-  - `/inquire` → Home › Inquire
-- Skip on `/` (home) and on 404.
-
----
-
-## 3. `sitemap.xml` has no `lastmod` dates
-
-Sitemap entries lack `<lastmod>`, which means crawlers can't prioritize freshness and Search Console flags this as a quality issue.
-
-**Fix:** Add `<lastmod>2026-06-04</lastmod>` to every URL entry in `public/sitemap.xml` (today's date as a baseline; can be updated when content meaningfully changes).
+Pure additive — no visual or behavioral change.
 
 ---
 
 ## Files touched
 
-- `src/lib/seo.ts` — add `setRobotsMeta`, `setBreadcrumbSchema` helpers
-- `src/pages/NotFound.tsx` — wire `setPageMeta` + `setRobotsMeta("noindex,follow")` with cleanup
-- `src/pages/About.tsx`, `Approach.tsx`, `Services.tsx`, `Portfolio.tsx`, `Journal.tsx`, `FAQ.tsx`, `Inquire.tsx` — add `setBreadcrumbSchema` call
-- `public/sitemap.xml` — add `<lastmod>` to all 8 URL entries
+- `index.html` — add apple-touch-icon + manifest links
+- `src/main.tsx` — runtime hero image preload (Vite-correct hashed URL)
+- `public/manifest.webmanifest` — new file
+- `public/apple-touch-icon.png` — new asset (180×180)
+- Spot edits to ~5 `JournalArticleCard.tsx` / `JournalFeatured.tsx` / `PortfolioMasonryGrid.tsx` / `PortfolioFeaturedStory.tsx` / `AboutFounderSection.tsx` — add `width`/`height` to lazy imgs only where no aspect-ratio wrapper exists.
 
 ## What stays untouched
 
-No visual, layout, animation, or content changes. Pure metadata + SEO scaffolding.
-
----
-
-## What is NOT needed (verified)
-
-- **PressMentionsSection fabricated copy** — component is commented out in `Index.tsx` (line 81 TODO), not rendered. No user-facing leak.
-- **`.lovable/plan.md` honesty sweep** — appears to be a historical doc from a prior pass; no live fabricated content surfaced in spot checks (Est. 2018, named couples) on this run beyond the already-hidden PressMentions component.
-- **`prefers-reduced-motion`** — already covered globally via `MotionConfig reducedMotion="user"`, Lenis guard, and CursorFollower guard.
-- **OG image absolute URLs / canonical www** — both fixed in prior passes.
+No content, layout, animation, or copy changes. Verified TODO comments in the codebase (PressMentions, fabricated testimonials, founder portrait) are all intentionally gated behind owner-supplied content and already handled — not in scope for this pass.
 
 Ready to execute on your approval.
