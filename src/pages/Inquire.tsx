@@ -89,9 +89,40 @@ const Inquire = () => {
 
   const handleSubmit = () => {
     const result = inquirySchema.safeParse(formData);
-    if (!result.success) { toast({ title: "Please check your details", description: "Name and email are required." }); setStep(0); return; }
+    if (!result.success) {
+      toast({ title: "Please check your details", description: "Name and email are required." });
+      setStep(0);
+      return;
+    }
+
+    // Deliver inquiry via the visitor's mail client — opens a pre-composed
+    // message to sales@hickoryandrose.com so the studio actually receives it.
+    const f = result.data;
+    const subject = `New Wedding Inquiry — ${f.name}${f.partner ? ` & ${f.partner}` : ""}`;
+    const lines = [
+      `Name: ${f.name}`,
+      f.partner ? `Partner: ${f.partner}` : null,
+      `Email: ${f.email}`,
+      f.date ? `Wedding date: ${f.date}` : null,
+      f.venue ? `Venue / location: ${f.venue}` : null,
+      f.guests ? `Guest count: ${f.guests}` : null,
+      f.service ? `Service of interest: ${f.service}` : null,
+      f.referral ? `How they heard about us: ${f.referral}` : null,
+      "",
+      "Their vision:",
+      f.message?.trim() ? f.message.trim() : "(none shared yet)",
+      "",
+      "— Sent from hickoryandrose.com/inquire",
+    ].filter(Boolean).join("\n");
+
+    const mailto = `mailto:sales@hickoryandrose.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines)}`;
+    window.location.href = mailto;
+
     setSubmitted(true);
-    toast({ title: "Thank you for your inquiry!", description: "We'll be in touch within 48 hours to schedule a discovery call." });
+    toast({
+      title: "Your mail client should now be open",
+      description: "Press send to deliver your inquiry. We reply within 24–48 business hours.",
+    });
   };
 
   const inputCls = (field: keyof InquiryForm) =>

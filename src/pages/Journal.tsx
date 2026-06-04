@@ -66,7 +66,7 @@ const Journal = () => {
               </span>
             </p>
             <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">The Journal</h1>
-            <p className="font-sans-wedding text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto font-light">Planning wisdom, real wedding stories, and the design details that make each celebration unforgettable.</p>
+            <p className="font-sans-wedding text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto font-light">Field notes from the studio — planning thinking, design philosophy, and the small details we believe in. Publishing alongside our 2027 season.</p>
           </ScrollReveal>
         </motion.div>
         <GoldFrame inset="20px" delay={1} />
@@ -115,9 +115,9 @@ const Journal = () => {
             <div className="flex items-center gap-4 mb-12 md:mb-16">
               <span className="font-serif-wedding text-sm text-primary/60 font-light">02</span>
               <span className="w-8 h-px bg-primary/30" />
-              <p className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.2em]">All Articles</p>
+              <p className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.2em]">Studio Notebook</p>
               <span className="flex-1 h-px bg-border/20 hidden md:block" />
-              <span className="font-sans-wedding text-caption tracking-[0.12em] text-muted-foreground/60 tabular-nums hidden md:block">{remainingArticles.length} Stories</span>
+              <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60 hidden md:block">Publishing with 2027 Season</span>
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
@@ -155,13 +155,24 @@ const Journal = () => {
                   </div>
                   <div className="border border-border/30 p-8 md:p-10">
                     <p className="font-serif-wedding text-sm italic text-foreground/40 mb-6">"The best planning starts with inspiration."</p>
-                    <form onSubmit={(e) => { e.preventDefault(); }} className="flex flex-col sm:flex-row items-stretch gap-3 mb-4">
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        const input = (e.currentTarget.elements.namedItem("journal-email") as HTMLInputElement | null);
+                        const email = input?.value.trim();
+                        if (!email) { input?.focus(); return; }
+                        const subject = "Studio Notebook — Notify me when essays publish";
+                        const body = `Please add me to the notebook list.\n\nEmail: ${email}\n\n— Sent from hickoryandrose.com/journal`;
+                        window.location.href = `mailto:sales@hickoryandrose.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                      }}
+                      className="flex flex-col sm:flex-row items-stretch gap-3 mb-4"
+                    >
                       <div className="flex-1 input-gold-focus relative">
-                        <input type="email" placeholder="your@email.com" className="w-full px-4 py-3.5 bg-transparent border border-border/60 font-sans-wedding text-sm text-foreground font-light placeholder:text-muted-foreground/40 focus:outline-none focus:ring-0 focus:border-transparent transition-colors duration-300" aria-label="Email address for newsletter" />
+                        <input name="journal-email" type="email" required placeholder="your@email.com" className="w-full px-4 py-3.5 bg-transparent border border-border/60 font-sans-wedding text-sm text-foreground font-light placeholder:text-muted-foreground/40 focus:outline-none focus:ring-0 focus:border-transparent transition-colors duration-300" aria-label="Email address for notebook notifications" />
                       </div>
                       <button type="submit" className="px-8 py-3.5 bg-primary text-primary-foreground font-sans-wedding text-xs tracking-[0.18em] uppercase font-light hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 relative overflow-hidden group shrink-0">
                         <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.15), transparent 60%)" }} />
-                        <span className="relative z-10">Subscribe</span>
+                        <span className="relative z-10">Notify Me</span>
                       </button>
                     </form>
                     <p className="font-sans-wedding text-caption tracking-[0.08em] text-muted-foreground/60 font-light">One email per month · Unsubscribe anytime</p>
