@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { setPageMeta } from "@/lib/seo";
+import { setPageMeta, setBreadcrumbSchema } from "@/lib/seo";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { z } from "zod";
 import Navigation from "@/components/wedding/Navigation";
@@ -50,6 +50,10 @@ const Inquire = () => {
       description: "Start your planning conversation with Hickory & Rose. A warm, no-pressure inquiry — replies within 24–48 business hours.",
       path: "/inquire",
     });
+    setBreadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Inquire", path: "/inquire" },
+    ]);
   }, []);
 
   const [step, setStep] = useState(0);

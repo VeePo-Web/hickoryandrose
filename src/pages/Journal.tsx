@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { setPageMeta } from "@/lib/seo";
+import { setPageMeta, setBreadcrumbSchema } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import CTASection from "@/components/wedding/CTASection";
@@ -37,6 +37,7 @@ const Journal = () => {
 
   useEffect(() => {
     setPageMeta({ title: "Journal | Hickory & Rose Edmonton Wedding Planner", description: "Planning notes, design inspiration, and real-wedding stories from the Hickory & Rose studio in Edmonton, Alberta.", path: "/journal" });
+    setBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Journal", path: "/journal" }]);
   }, []);
 
   const featuredArticle = articles[0];

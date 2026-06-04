@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { setPageMeta } from "@/lib/seo";
+import { setPageMeta, setBreadcrumbSchema } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
 import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Navigation from "@/components/wedding/Navigation";
@@ -44,6 +44,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     setPageMeta({ title: "Portfolio | Hickory & Rose Edmonton Wedding Planner", description: "Aesthetic direction from Hickory & Rose — refined rustic elegance for Edmonton & Alberta weddings. A glimpse of the day we design for our couples.", path: "/portfolio" });
+    setBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Portfolio", path: "/portfolio" }]);
   }, []);
 
   const filtered = active === "All" ? weddingStories : weddingStories.filter((s) => s.category === active);

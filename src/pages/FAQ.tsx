@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { setPageMeta } from "@/lib/seo";
+import { setPageMeta, setBreadcrumbSchema } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import PreFooterDivider from "@/components/wedding/PreFooterDivider";
@@ -75,6 +75,7 @@ const FAQ = () => {
 
   useEffect(() => {
     setPageMeta({ title: "FAQ | Hickory & Rose Edmonton Wedding Planner", description: "Answers on pricing, services, planning timelines, and coverage across Edmonton, the Canadian Rockies, and Alberta — from Hickory & Rose.", path: "/faq" });
+    setBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "FAQ", path: "/faq" }]);
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.textContent = JSON.stringify(faqSchema);

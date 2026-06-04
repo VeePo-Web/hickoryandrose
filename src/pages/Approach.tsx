@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { setPageMeta } from "@/lib/seo";
+import { setPageMeta, setBreadcrumbSchema } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import PreFooterDivider from "@/components/wedding/PreFooterDivider";
@@ -122,6 +122,10 @@ const Approach = () => {
       description: "From discovery call to wedding day — Hickory & Rose's calm, intentional planning process. Meticulous coordination and elevated design at every step.",
       path: "/approach",
     });
+    setBreadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Approach", path: "/approach" },
+    ]);
   }, []);
 
   return (
