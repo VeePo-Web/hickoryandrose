@@ -244,7 +244,7 @@ const Footer = () => {
           <div className="border-t border-background/[0.08]" />
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8">
             <p className="font-sans-wedding text-caption text-background/50 font-light">
-              © {new Date().getFullYear()} Hickory & Rose. All rights reserved.
+              © {new Date().getFullYear()} Hickory & Rose Wedding and Event Planning. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
               <Link
