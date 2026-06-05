@@ -1,13 +1,14 @@
 import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
 import { useLocation, Link } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
-import Footer from "@/components/wedding/Footer";
 import MagneticButton from "@/components/wedding/MagneticButton";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 import notfoundImage from "@/assets/notfound-editorial.jpg";
+
+const Footer = lazy(() => import("@/components/wedding/Footer"));
 
 const suggestedPages = [
   { label: "Our Services", path: "/services", desc: "Day-of, partial, and full-service planning" },
@@ -28,7 +29,6 @@ const NotFound = () => {
 
   useEffect(() => {
     document.title = "Page Not Found | Hickory & Rose — Edmonton Wedding Planner";
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
   }, [location.pathname]);
 
   return (
@@ -46,6 +46,8 @@ const NotFound = () => {
             alt=""
             className="w-full h-[130%] object-cover"
             loading="eager"
+            fetchPriority="high"
+            sizes="100vw"
             aria-hidden="true"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/45 to-black/70" />
@@ -236,7 +238,9 @@ const NotFound = () => {
         </motion.span>
       </section>
 
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </main>
   );
 };

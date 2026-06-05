@@ -1,23 +1,25 @@
 import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
-import { useEffect, useRef } from "react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
-import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Navigation from "@/components/wedding/Navigation";
-import CTASection from "@/components/wedding/CTASection";
-import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
-import FullWidthImage from "@/components/wedding/FullWidthImage";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
-import AboutPromises from "@/components/wedding/AboutPromises";
-import AboutTestimonials from "@/components/wedding/AboutTestimonials";
 import AboutFounderSection from "@/components/wedding/AboutFounderSection";
-import AboutValuesGrid from "@/components/wedding/AboutValuesGrid";
-import AboutProcessRibbon from "@/components/wedding/AboutProcessRibbon";
+import DeferredRender from "@/components/wedding/DeferredRender";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import aboutHeroImage from "@/assets/about-hero.jpg";
 import editorialFloralsImage from "@/assets/editorial-florals.jpg";
+
+const PreFooterDivider = lazy(() => import("@/components/wedding/PreFooterDivider"));
+const CTASection = lazy(() => import("@/components/wedding/CTASection"));
+const Footer = lazy(() => import("@/components/wedding/Footer"));
+const FullWidthImage = lazy(() => import("@/components/wedding/FullWidthImage"));
+const AboutPromises = lazy(() => import("@/components/wedding/AboutPromises"));
+const AboutTestimonials = lazy(() => import("@/components/wedding/AboutTestimonials"));
+const AboutValuesGrid = lazy(() => import("@/components/wedding/AboutValuesGrid"));
+const AboutProcessRibbon = lazy(() => import("@/components/wedding/AboutProcessRibbon"));
 
 const About = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -148,6 +150,8 @@ const About = () => {
 
       <AboutFounderSection />
 
+      <DeferredRender>
+        <Suspense fallback={null}>
       {/* Signature Quote — editorial with gold ornaments */}
       <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden" style={{ contain: "layout style" }}>
         {/* Radial gold ambient glow */}
@@ -471,6 +475,8 @@ const About = () => {
       <CTASection />
       <PreFooterDivider />
       <Footer />
+        </Suspense>
+      </DeferredRender>
     </main>
   );
 };

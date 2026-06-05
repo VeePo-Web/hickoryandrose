@@ -1,26 +1,28 @@
 import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
-import PreFooterDivider from "@/components/wedding/PreFooterDivider";
-import CTASection from "@/components/wedding/CTASection";
-import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
-import FullWidthImage from "@/components/wedding/FullWidthImage";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 import ImageReveal from "@/components/wedding/ImageReveal";
-import ApproachProcessTimeline from "@/components/wedding/ApproachProcessTimeline";
-import ApproachDifferentiators from "@/components/wedding/ApproachDifferentiators";
-import ApproachStatsRibbon from "@/components/wedding/ApproachStatsRibbon";
-import EditorialSplitSection from "@/components/wedding/EditorialSplitSection";
-import MagneticButton from "@/components/wedding/MagneticButton";
+import DeferredRender from "@/components/wedding/DeferredRender";
 
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
 import approachDetailsImage from "@/assets/approach-details.jpg";
 import approachHeroImage from "@/assets/approach-hero.jpg";
 import founderImage from "@/assets/founder-portrait.jpg";
+
+const PreFooterDivider = lazy(() => import("@/components/wedding/PreFooterDivider"));
+const CTASection = lazy(() => import("@/components/wedding/CTASection"));
+const Footer = lazy(() => import("@/components/wedding/Footer"));
+const FullWidthImage = lazy(() => import("@/components/wedding/FullWidthImage"));
+const ApproachProcessTimeline = lazy(() => import("@/components/wedding/ApproachProcessTimeline"));
+const ApproachDifferentiators = lazy(() => import("@/components/wedding/ApproachDifferentiators"));
+const ApproachStatsRibbon = lazy(() => import("@/components/wedding/ApproachStatsRibbon"));
+const EditorialSplitSection = lazy(() => import("@/components/wedding/EditorialSplitSection"));
+const MagneticButton = lazy(() => import("@/components/wedding/MagneticButton"));
 
 /* Stagger helpers */
 const wordContainer = { hidden: {}, visible: { transition: { staggerChildren: 0.06 } } };
@@ -373,6 +375,8 @@ const Approach = () => {
         </div>
       </section>
 
+      <DeferredRender>
+        <Suspense fallback={null}>
       {/* ──────────────── Stats Ribbon ──────────────── */}
       <ApproachStatsRibbon />
 
@@ -617,6 +621,8 @@ const Approach = () => {
       <CTASection />
       <PreFooterDivider />
       <Footer />
+        </Suspense>
+      </DeferredRender>
     </main>
   );
 };

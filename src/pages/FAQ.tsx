@@ -1,18 +1,12 @@
 import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
-import React, { useEffect, useRef } from "react";
+import React, { lazy, Suspense, useEffect, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
-import PreFooterDivider from "@/components/wedding/PreFooterDivider";
-import Footer from "@/components/wedding/Footer";
-import CTASection from "@/components/wedding/CTASection";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
-import FullWidthImage from "@/components/wedding/FullWidthImage";
-import MagneticButton from "@/components/wedding/MagneticButton";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
-import FAQImageMosaic from "@/components/wedding/FAQImageMosaic";
-import FAQTestimonialCarousel from "@/components/wedding/FAQTestimonialCarousel";
+import DeferredRender from "@/components/wedding/DeferredRender";
 import faqEditorialImage from "@/assets/faq-editorial.jpg";
 import faqHeroImage from "@/assets/faq-hero.jpg";
 import {
@@ -21,6 +15,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+const PreFooterDivider = lazy(() => import("@/components/wedding/PreFooterDivider"));
+const Footer = lazy(() => import("@/components/wedding/Footer"));
+const FullWidthImage = lazy(() => import("@/components/wedding/FullWidthImage"));
+const MagneticButton = lazy(() => import("@/components/wedding/MagneticButton"));
+const FAQImageMosaic = lazy(() => import("@/components/wedding/FAQImageMosaic"));
+const FAQTestimonialCarousel = lazy(() => import("@/components/wedding/FAQTestimonialCarousel"));
 
 const faqCategories = [
   {
@@ -124,7 +125,9 @@ const FAQ = () => {
       </section>
 
       {/* Editorial image mosaic */}
-      <FAQImageMosaic mainImage={faqEditorialImage} mainAlt="Gold wedding rings on handwritten calligraphy vows with eucalyptus" secondaryImage={faqHeroImage} secondaryAlt="Luxury wedding stationery with sage envelope and gold wax seal" />
+      <Suspense fallback={null}>
+        <FAQImageMosaic mainImage={faqEditorialImage} mainAlt="Gold wedding rings on handwritten calligraphy vows with eucalyptus" secondaryImage={faqHeroImage} secondaryAlt="Luxury wedding stationery with sage envelope and gold wax seal" />
+      </Suspense>
 
       {/* Quick stats bar */}
       <section className="py-6 md:py-8 bg-sage-deep border-b border-primary-foreground/[0.06]">
@@ -261,6 +264,8 @@ const FAQ = () => {
         </div>
       </section>
 
+      <DeferredRender>
+        <Suspense fallback={null}>
       {/* Inline testimonial carousel */}
       <FAQTestimonialCarousel testimonials={testimonials} />
 
@@ -294,6 +299,8 @@ const FAQ = () => {
       </section>
       <PreFooterDivider />
       <Footer />
+        </Suspense>
+      </DeferredRender>
     </main>
   );
 };

@@ -25,7 +25,7 @@ This branch implements the visual-preserving fixes from the audit:
 - Split Lenis smooth scrolling out of the initial app shell and deferred the home page's below-fold section tree until viewport approach or idle fallback.
 - Removed unused runtime dependencies from the initial app tree and corrected lint-blocking type patterns.
 
-## Final Verification Snapshot
+## First Implementation Verification Snapshot
 
 Production preview audited on `http://127.0.0.1:4173` after implementation.
 
@@ -554,3 +554,49 @@ Recommended hygiene:
 - `npx --yes lighthouse <route> --only-categories=performance,accessibility,best-practices,seo --chrome-flags="--headless=new --disable-gpu --no-sandbox" --output=json`
 
 Note: Lighthouse produced valid JSON reports, but Chrome cleanup threw Windows temp-folder `EPERM` messages after some runs. The audit JSON files were still written and read successfully.
+
+## Second Implementation Update
+
+This follow-up pass continued the same no-redesign performance work:
+
+- Converted the first-load `LoadingScreen` and `PageTransition` from Framer Motion to CSS-driven animation.
+- Removed the fixed 2.4s loader dwell and replaced it with a page-load-aware dismissal path, preserving the branded loader while reducing artificial LCP delay.
+- Deferred below-fold component trees on Services, Portfolio, About, Approach, Journal, Inquire, FAQ, and 404.
+- Added route-specific HTML shell generation for all primary routes with per-route title, description, canonical, Open Graph/Twitter metadata, and route hero AVIF preload.
+- Emitted both directory shells (`/services/index.html`) and clean URL shells (`/services.html`) for static hosting.
+- Added static asset cache headers in `public/_headers` and `vercel.json`, plus `cleanUrls` for Vercel extensionless route shells.
+- Removed the 404 console error that was lowering Best Practices.
+
+Build output after this pass:
+
+- Main JS: `176.61 kB`, `57.33 kB` gzip.
+- Main CSS: `138.63 kB`, `22.24 kB` gzip.
+- Framer transform code is now split from the app shell, but still loads on routes whose above-the-fold hero imports `framer-motion`.
+- Route shells prerendered: `/`, `/services`, `/portfolio`, `/about`, `/approach`, `/journal`, `/inquire`, `/faq`, and `/404`.
+
+Latest route-shell/browser checks:
+
+- Static route shell `/services` returns the Services title and canonical before JavaScript.
+- Browser verification across `/`, `/services`, `/portfolio`, `/about`, `/approach`, `/journal`, `/inquire`, `/faq`, and a missing route found one `h1`, meaningful content, no Vite overlay, and no console errors on each page.
+- Lighthouse was run from a local static server with clean URL resolution and immutable cache headers. The local server does not provide the same compression/CDN behavior as production hosting, so the scores are useful for relative route triage but not a perfect Vercel production forecast.
+
+Latest mobile Lighthouse snapshot:
+
+| Route | Performance | Accessibility | Best Practices | SEO | FCP | LCP | TBT | CLS | Total Bytes |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `/` | 59 | 100 | 100 | 100 | 3.7s | 5.8s | 350ms | 0.000 | 725 KB |
+| `/services` | 55 | 100 | 100 | 100 | 3.7s | 6.8s | 450ms | 0.000 | 802 KB |
+| `/portfolio` | 69 | 96 | 100 | 100 | 3.6s | 6.2s | 70ms | 0.000 | 810 KB |
+| `/about` | 60 | 100 | 100 | 100 | 3.6s | 6.7s | 330ms | 0.000 | 825 KB |
+| `/approach` | 54 | 97 | 100 | 100 | 4.2s | 6.6s | 400ms | 0.000 | 764 KB |
+| `/journal` | 67 | 96 | 100 | 100 | 3.4s | 6.0s | 200ms | 0.000 | 738 KB |
+| `/inquire` | 63 | 96 | 100 | 100 | 3.8s | 6.2s | 230ms | 0.000 | 763 KB |
+| `/faq` | 63 | 96 | 100 | 100 | 3.8s | 6.1s | 240ms | 0.000 | 748 KB |
+| `/404` | 67 | 98 | 100 | 100 | 3.6s | 5.5s | 130ms | 0.000 | 688 KB |
+
+Remaining structural ceiling:
+
+- This is still a client-rendered Vite SPA, so real route content is not in the initial HTML body. The new shells improve metadata, canonicalization, and LCP image discovery, but not crawlable pre-JS content.
+- Above-the-fold heroes still import Framer Motion on most routes. That keeps the `use-transform` chunk on the first route load and remains the largest shared JS execution target.
+- The next major no-layout-change performance step is to move hero parallax/entrance motion to CSS or route-local idle motion, then split below-fold motion into separate lazy route islands.
+- To reliably reach 90+ mobile Lighthouse, the site likely needs either static prerendered route body HTML or a move to SSR/SSG, plus production CDN compression measurement.

@@ -1,19 +1,14 @@
 import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
-import { useEffect, useRef } from "react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
-import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Navigation from "@/components/wedding/Navigation";
-import CTASection from "@/components/wedding/CTASection";
-import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
-import FullWidthImage from "@/components/wedding/FullWidthImage";
 import ImageReveal from "@/components/wedding/ImageReveal";
 import MagneticButton from "@/components/wedding/MagneticButton";
-import ServiceTierCard from "@/components/wedding/ServiceTierCard";
-import ServiceComparison from "@/components/wedding/ServiceComparison";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
+import DeferredRender from "@/components/wedding/DeferredRender";
 import servicesHeroImage from "@/assets/services-hero.jpg";
 import serviceDayofImage from "@/assets/service-dayof.jpg";
 import servicePlanningImage from "@/assets/service-planning.jpg";
@@ -21,8 +16,15 @@ import serviceStationeryImage from "@/assets/service-stationery.jpg";
 import serviceFullserviceImage from "@/assets/service-fullservice.jpg";
 import editorialFloralsImage from "@/assets/editorial-florals.jpg";
 import vendorDetailImage from "@/assets/vendor-detail.jpg";
-import ServicesVendorPartners from "@/components/wedding/ServicesVendorPartners";
-import ServicesInvestmentPhilosophy from "@/components/wedding/ServicesInvestmentPhilosophy";
+
+const PreFooterDivider = lazy(() => import("@/components/wedding/PreFooterDivider"));
+const CTASection = lazy(() => import("@/components/wedding/CTASection"));
+const Footer = lazy(() => import("@/components/wedding/Footer"));
+const FullWidthImage = lazy(() => import("@/components/wedding/FullWidthImage"));
+const ServiceTierCard = lazy(() => import("@/components/wedding/ServiceTierCard"));
+const ServiceComparison = lazy(() => import("@/components/wedding/ServiceComparison"));
+const ServicesVendorPartners = lazy(() => import("@/components/wedding/ServicesVendorPartners"));
+const ServicesInvestmentPhilosophy = lazy(() => import("@/components/wedding/ServicesInvestmentPhilosophy"));
 
 const serviceTiers = [
   {
@@ -221,6 +223,8 @@ const Services = () => {
         </div>
       </section>
 
+      <DeferredRender>
+        <Suspense fallback={null}>
       {/* Service Tiers */}
       {serviceTiers.map((service, index) => (
         <div key={service.id}>
@@ -507,6 +511,8 @@ const Services = () => {
       <CTASection />
       <PreFooterDivider />
       <Footer />
+        </Suspense>
+      </DeferredRender>
     </main>
   );
 };

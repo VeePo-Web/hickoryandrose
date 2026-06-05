@@ -1,22 +1,24 @@
 import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
-import CTASection from "@/components/wedding/CTASection";
-import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
-import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
-import JournalFeatured from "@/components/wedding/JournalFeatured";
-import JournalArticleCard from "@/components/wedding/JournalArticleCard";
+import DeferredRender from "@/components/wedding/DeferredRender";
 import journalVowsImage from "@/assets/journal-vows.jpg";
 import journalBrideImage from "@/assets/journal-bride.jpg";
 import journalReceptionImage from "@/assets/journal-reception.jpg";
 import editorialFloralsImage from "@/assets/editorial-florals.jpg";
 import detailImage from "@/assets/detail-placecard.jpg";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
+
+const CTASection = lazy(() => import("@/components/wedding/CTASection"));
+const Footer = lazy(() => import("@/components/wedding/Footer"));
+const PreFooterDivider = lazy(() => import("@/components/wedding/PreFooterDivider"));
+const JournalFeatured = lazy(() => import("@/components/wedding/JournalFeatured"));
+const JournalArticleCard = lazy(() => import("@/components/wedding/JournalArticleCard"));
 
 const articles = [
   { image: journalBrideImage, alt: "Bride in ivory silk gown standing in sunlit conservatory with orchids and ferns", category: "Planning", title: "The Art of Being Present on Your Wedding Day", excerpt: "How letting go of the details you've labored over is the final — and most important — step in your wedding journey.", readTime: "6 min read", date: "March 2026", pullQuote: "Presence is the final gift you give yourself.", featured: true },
@@ -51,7 +53,7 @@ const Journal = () => {
       {/* Cinematic Hero */}
       <section ref={heroRef} className="relative h-[55vh] md:h-[65vh] overflow-hidden grain-overlay vignette">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <OptimizedImage src={journalBrideImage} alt="Bride in natural light surrounded by florals — editorial wedding photography" className="w-full h-[120%] object-cover" loading="eager" fetchPriority="high" />
+          <OptimizedImage src={journalBrideImage} alt="Bride in natural light surrounded by florals — editorial wedding photography" className="w-full h-[120%] object-cover" loading="eager" fetchPriority="high" sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/15 to-black/55" />
         </motion.div>
         <motion.div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "15%"]) }} initial={{ opacity: 0 }} animate={{ opacity: 0.03 }} transition={{ duration: 2, delay: 0.5 }}>
@@ -81,6 +83,8 @@ const Journal = () => {
         </motion.div>
       </section>
 
+      <DeferredRender>
+        <Suspense fallback={null}>
       {/* Featured Article */}
       <JournalFeatured article={featuredArticle} />
 
@@ -203,6 +207,8 @@ const Journal = () => {
       <CTASection />
       <PreFooterDivider />
       <Footer />
+        </Suspense>
+      </DeferredRender>
     </main>
   );
 };

@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 import { lazy, Suspense, useEffect, useState } from "react";
 import SmoothScrollProvider from "./components/wedding/SmoothScrollProvider";
 import LoadingScreen from "./components/wedding/LoadingScreen";
@@ -23,21 +22,19 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const AnimatedRoutes = () => {
   const location = useLocation();
   return (
-    <AnimatePresence mode="wait">
-      <Suspense fallback={null}>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<PageTransition><Index /></PageTransition>} />
-          <Route path="/services" element={<PageTransition><Services /></PageTransition>} />
-          <Route path="/portfolio" element={<PageTransition><Portfolio /></PageTransition>} />
-          <Route path="/about" element={<PageTransition><About /></PageTransition>} />
-          <Route path="/approach" element={<PageTransition><Approach /></PageTransition>} />
-          <Route path="/journal" element={<PageTransition><Journal /></PageTransition>} />
-          <Route path="/inquire" element={<PageTransition><Inquire /></PageTransition>} />
-          <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
-          <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
-        </Routes>
-      </Suspense>
-    </AnimatePresence>
+    <Suspense fallback={null}>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageTransition><Index /></PageTransition>} />
+        <Route path="/services" element={<PageTransition><Services /></PageTransition>} />
+        <Route path="/portfolio" element={<PageTransition><Portfolio /></PageTransition>} />
+        <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+        <Route path="/approach" element={<PageTransition><Approach /></PageTransition>} />
+        <Route path="/journal" element={<PageTransition><Journal /></PageTransition>} />
+        <Route path="/inquire" element={<PageTransition><Inquire /></PageTransition>} />
+        <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
+        <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+      </Routes>
+    </Suspense>
   );
 };
 

@@ -1,16 +1,12 @@
 import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
-import { useEffect, useState, useRef } from "react";
+import { lazy, Suspense, useEffect, useState, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, useScroll, useTransform } from "framer-motion";
-import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Navigation from "@/components/wedding/Navigation";
-import CTASection from "@/components/wedding/CTASection";
-import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
-import PortfolioFeaturedStory from "@/components/wedding/PortfolioFeaturedStory";
-import PortfolioMasonryGrid from "@/components/wedding/PortfolioMasonryGrid";
+import DeferredRender from "@/components/wedding/DeferredRender";
 import portfolioHeroImage from "@/assets/portfolio-hero.jpg";
 import heroImage from "@/assets/hero-wedding.jpg";
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
@@ -20,6 +16,12 @@ import editorialImage from "@/assets/editorial-florals.jpg";
 import receptionImage from "@/assets/portfolio-reception.jpg";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import venueImage from "@/assets/portfolio-venue.jpg";
+
+const PreFooterDivider = lazy(() => import("@/components/wedding/PreFooterDivider"));
+const CTASection = lazy(() => import("@/components/wedding/CTASection"));
+const Footer = lazy(() => import("@/components/wedding/Footer"));
+const PortfolioFeaturedStory = lazy(() => import("@/components/wedding/PortfolioFeaturedStory"));
+const PortfolioMasonryGrid = lazy(() => import("@/components/wedding/PortfolioMasonryGrid"));
 
 // SAMPLE STORIES — anonymized aesthetic direction. Swap with real featured weddings
 // when owner provides them (discovery 6.11). Until then, no fabricated couples / venues / dates.
@@ -107,6 +109,8 @@ const Portfolio = () => {
         </div>
       </section>
 
+      <DeferredRender>
+        <Suspense fallback={null}>
       {/* By the Numbers */}
       <section className="py-8 md:py-10 bg-sage-deep relative overflow-hidden">
         <motion.div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[200px] pointer-events-none" initial={{ opacity: 0 }} whileInView={{ opacity: 0.05 }} viewport={{ once: true }} transition={{ duration: 2 }} style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.15), transparent 70%)" }} aria-hidden="true" />
@@ -184,6 +188,8 @@ const Portfolio = () => {
       <CTASection />
       <PreFooterDivider />
       <Footer />
+        </Suspense>
+      </DeferredRender>
     </main>
   );
 };

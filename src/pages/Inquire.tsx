@@ -1,21 +1,23 @@
 import { OptimizedImage, OptimizedMotionImage } from "@/components/wedding/OptimizedImage";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { lazy, Suspense, useState, useEffect, useCallback, useRef } from "react";
 import { setPageMeta } from "@/lib/seo";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { z } from "zod";
 import Navigation from "@/components/wedding/Navigation";
-import Footer from "@/components/wedding/Footer";
-import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import { toast } from "@/hooks/use-toast";
 import { Heart, ArrowRight, ArrowLeft } from "lucide-react";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
-import InquireStepIndicator from "@/components/wedding/InquireStepIndicator";
-import InquireCelebration from "@/components/wedding/InquireCelebration";
+import DeferredRender from "@/components/wedding/DeferredRender";
 import { buildSteps, type InquiryForm } from "@/components/wedding/InquireFormSteps";
 import inquireHeroImage from "@/assets/inquire-hero.jpg";
 import inquireEditorialImage from "@/assets/inquire-editorial.jpg";
+
+const Footer = lazy(() => import("@/components/wedding/Footer"));
+const PreFooterDivider = lazy(() => import("@/components/wedding/PreFooterDivider"));
+const InquireStepIndicator = lazy(() => import("@/components/wedding/InquireStepIndicator"));
+const InquireCelebration = lazy(() => import("@/components/wedding/InquireCelebration"));
 
 /* ─── Schema ─── */
 const inquirySchema = z.object({
@@ -111,7 +113,9 @@ const Inquire = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <InquireCelebration />
+          <Suspense fallback={null}>
+            <InquireCelebration />
+          </Suspense>
         </motion.div>
       ) : (
         <motion.main
@@ -181,6 +185,8 @@ const Inquire = () => {
         </div>
       </section>
 
+      <DeferredRender>
+        <Suspense fallback={null}>
       {/* Form Section */}
       <section className="bg-background py-16 md:py-24">
         <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
@@ -295,6 +301,8 @@ const Inquire = () => {
 
       <PreFooterDivider />
       <Footer />
+        </Suspense>
+      </DeferredRender>
     </motion.main>
       )}
     </AnimatePresence>
