@@ -1,30 +1,32 @@
-# Plan: Final Alexandra/owner-pronoun sweep
+# Speed up page transitions (keep initial loader as-is)
 
-## Findings
+## Goal
+Initial site load (`LoadingScreen` cinematic curtain) stays at its current ~2.4s cinematic pacing. The between-page transition (`PageTransition`, fires on every route change) feels snappier — roughly half the current duration — while keeping the same visual choreography (sage + foreground curtains, gold sweep, monogram, content fade).
 
-**"Alexandra"** — 0 hits in shipped code. Only remaining matches are in `.lovable/plan.md` (the historical rename plan document — safe to leave as a record, but I can scrub it for cleanliness).
+## Scope
+One file: `src/components/wedding/PageTransition.tsx`. No changes to `LoadingScreen.tsx`, routes, or motion variants elsewhere.
 
-**"she/her" referring to the owner Meg** — only **1 real hit**:
-- `src/config/brand-identity.ts:218` — `story: "", // TBC — 5.1, owner writing her own`
+## Changes (PageTransition.tsx)
 
-Every other `she/her` match is intentional and correct:
-- ~14 hits about **Polished Paige** (the customer persona) in `ideal-customer.ts`, `design-plan.ts`, `ui-visual.ts`, `ui-navigation.ts`, `discovery-framework.ts`, and `brand-identity.ts` lines 133/141 — these describe the *bride*, not the owner.
-- 1 hit in `discovery-framework.ts:48` is the brand-as-guest metaphor ("If Hickory & Rose were a guest…how would she show up?") — keeps brand femininity intentional.
+Tighten each motion timing roughly 50%, preserving order/overlap:
 
-## Changes
+| Element | Current (dur / delay) | New (dur / delay) |
+|---|---|---|
+| Sage base curtain (slide up) | 0.6 / 0.2 | 0.32 / 0.1 |
+| Foreground curtain (slide down) | 0.55 / 0.15 | 0.3 / 0.08 |
+| Gold shimmer line sweep | 0.7 / 0.35 | 0.38 / 0.18 |
+| Monogram container fade-out | 0.2 / 0.1 | 0.14 / 0.05 |
+| Monogram char staggers (0, 0.03, 0.06) | 0.2–0.25 | 0.14 / staggers 0, 0.02, 0.04 |
+| Top gold accent line reveal | 0.5 / 0.6 | 0.28 / 0.32 |
+| Center gold glow pulse | 0.8 / 0.3 | 0.45 / 0.16 |
+| Content fade-in (y:10 → 0) | 0.5 / 0.3 | 0.32 / 0.16 |
 
-### 1. `src/config/brand-identity.ts` line 218 (the only ambiguous owner pronoun)
-Make the placeholder unambiguous and signed to Meg:
-- From: `story: "", // TBC — 5.1, owner writing her own`
-- To:   `story: "", // TBC — 5.1, Meg Wolodko to write her own founder story`
+Net effect: total transition ~0.95s → ~0.5s. Same easing curves (`cubicEase`, `smoothEase`) kept so motion identity is unchanged — just faster.
 
-### 2. `.lovable/plan.md` (housekeeping — optional but tidy)
-Add a one-line footer noting the rename was completed and the file is archived, so future searches for "Alexandra" don't surface a confusing active-looking plan. Body stays as historical record.
+## Out of scope
+- LoadingScreen timings (initial 2.4s arrival is intentional cinematic moment).
+- Lenis smooth-scroll behavior.
+- Route-level data/code-split loading (already lazy via `Suspense`).
 
-## Not changing
-- Any "she/her" referring to Polished Paige or to the brand metaphor — those are deliberate.
-- Memory files — already updated to Meg.
-
-## Verification after build mode
-`rg -ni "alexandra" src/ public/ index.html` → expect 0 hits.
-`rg -ni "owner.*\bher\b|\bher\b.*owner" src/` → expect 0 hits.
+## Verification
+Open preview, navigate Home → About → Services → Portfolio. Transitions should feel noticeably faster (~half) but still show the curtain + gold sweep + monogram. First hard reload should still show the long branded loader unchanged.
