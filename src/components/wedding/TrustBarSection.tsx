@@ -2,8 +2,9 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
-// TODO (5.6): Replace with real press features when owner has them.
-// Current entries reflect honest, owner-confirmed booking + editorial signals.
+// Editorial "studio notes" — honest signals about where the studio is right now.
+// Intentionally NOT framed as press features (5.6 — no real press yet). When real
+// press lands, swap this list and rename headings back to "As Featured In".
 const publications = [
   { name: "2026 Season", category: "Booking Status", year: "", note: "Summer & Fall Fully Booked", badge: "Booked" },
   { name: "Aug 2026", category: "Editorial", year: "", note: "Styled Shoot in Production", badge: "Upcoming" },
@@ -30,7 +31,7 @@ const TrustBarSection = () => {
     <section
       ref={sectionRef}
       className="py-20 md:py-32 bg-background relative overflow-hidden"
-      aria-label="Featured in"
+      aria-label="Studio notes"
     >
       {/* Subtle grain texture */}
       <div 
@@ -49,7 +50,7 @@ const TrustBarSection = () => {
         aria-hidden="true"
       >
         <span className="font-serif-wedding text-[8rem] md:text-[14rem] font-light text-foreground/[0.015] whitespace-nowrap tracking-tight italic">
-          As Seen In
+          The Studio
         </span>
       </motion.div>
 
@@ -80,19 +81,11 @@ const TrustBarSection = () => {
             <span className="font-serif-wedding text-sm text-primary/60 font-light">03</span>
             <span className="w-8 h-px bg-primary/15" />
             <p className="font-sans-wedding text-label uppercase text-muted-foreground tracking-[0.2em]">
-              As Featured In
+              Studio Notes
             </p>
             <span className="flex-1 h-px bg-border/30 hidden md:block" />
-            {/* Recognition counter */}
-            <motion.div
-              className="hidden md:flex items-center gap-3"
-              style={{ scale: counterScale, opacity: counterOpacity }}
-            >
-              <span className="font-serif-wedding text-2xl font-light text-primary/60">5+</span>
-              <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground">
-                Publications
-              </span>
-            </motion.div>
+            {/* Counter intentionally removed — no real press to count (5.6).
+                Reinstate once owner-confirmed press features exist. */}
           </div>
         </ScrollReveal>
 

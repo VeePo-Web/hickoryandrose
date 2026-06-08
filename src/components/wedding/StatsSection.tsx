@@ -3,12 +3,13 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import BreathingDiamond from "./BreathingDiamond";
 
-// Stats reflect owner-confirmed 2026 booking status (5.5). Update as the calendar fills and credentials are verified.
+// Stats reflect owner-confirmed 2026 booking status (5.5). Mirrors ApproachStatsRibbon
+// so the home and approach pages tell the same story. Update only when Meg confirms new metrics.
 const stats = [
-  { value: 5, suffix: "", label: "Weddings Booked", detail: "2026 calendar" },
-  { value: 2, suffix: "", label: "Seasons Sold Out", detail: "summer & fall 2026" },
+  { value: 2026, suffix: "", label: "Season Fully Booked", detail: "Summer & fall" },
+  { value: 2027, suffix: "", label: "Now Booking", detail: "Two-person team standard" },
   { value: 1, suffix: "", label: "Editorial Styled Shoot", detail: "August 15, 2026" },
-  { value: 2027, suffix: "", label: "Now Booking", detail: "two-person team standard" },
+  { value: 48, suffix: "hr", label: "Inquiry Response", detail: "Within 24–48 business hours" },
 ];
 
 const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
