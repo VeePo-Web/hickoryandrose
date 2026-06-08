@@ -5,7 +5,7 @@ import ceremonyImage from "@/assets/ceremony-setup.jpg";
 
 const promises = [
   {
-    promise: "Unlimited communication, 6–8 weeks out",
+    promise: "Open communication in the weeks leading up to your day",
     subtext: "From our first call to the final send-off",
   },
   {
