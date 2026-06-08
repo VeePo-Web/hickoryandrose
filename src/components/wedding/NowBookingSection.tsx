@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
+// Honest booking status — no fabricated percentages or "X dates left" specifics
+// until Meg confirms exact counts. Mirrors language used elsewhere on the site.
 const seasonDetails = [
-  { label: "Spring", status: "Limited", fill: 85, accent: true },
-  { label: "Summer", status: "2 Dates Left", fill: 90, accent: true },
-  { label: "Autumn", status: "Accepting", fill: 45, accent: false },
-  { label: "Winter", status: "Open", fill: 20, accent: false },
+  { label: "2026", status: "Summer & Fall Booked", fill: 100, accent: true },
+  { label: "2027", status: "Now Booking", fill: 30, accent: true },
 ];
 
 const NowBookingSection = () => {

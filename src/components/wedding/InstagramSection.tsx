@@ -9,13 +9,15 @@ import firstDanceImage from "@/assets/first-dance.jpg";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import editorialImage from "@/assets/editorial-florals.jpg";
 
+// Aesthetic-direction imagery — neutral category captions only, no fabricated
+// venue/event attributions (brand-identity §5.5, §6.11). Swap for real grid when ready.
 const photos = [
-  { src: heroImage, alt: "Elegant wedding tablescape at golden hour", caption: "The tablescape that started it all", category: "Details" },
-  { src: ceremonyImage, alt: "Mountain ceremony setup", caption: "Jasper morning light", category: "Ceremony" },
-  { src: detailImage, alt: "Calligraphy place card detail", caption: "Every name, hand-lettered", category: "Stationery" },
-  { src: firstDanceImage, alt: "First dance under lights", caption: "That first dance feeling", category: "Reception" },
-  { src: bouquetImage, alt: "Bridal bouquet with eucalyptus", caption: "Sage & garden roses", category: "Florals" },
-  { src: editorialImage, alt: "Sage floral arrangement", caption: "Detail is everything", category: "Details" },
+  { src: heroImage, alt: "Editorial wedding tablescape at golden hour", caption: "Tablescape", category: "Details" },
+  { src: ceremonyImage, alt: "Outdoor ceremony setup with floral arch", caption: "Ceremony", category: "Ceremony" },
+  { src: detailImage, alt: "Calligraphy place card detail with linen", caption: "Stationery", category: "Stationery" },
+  { src: firstDanceImage, alt: "Couple's first dance under string lights", caption: "Reception", category: "Reception" },
+  { src: bouquetImage, alt: "Bridal bouquet with eucalyptus and roses", caption: "Florals", category: "Florals" },
+  { src: editorialImage, alt: "Sage floral arrangement on linen", caption: "Details", category: "Details" },
 ];
 
 const InstagramSection = () => {

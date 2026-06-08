@@ -182,13 +182,14 @@ const FounderTeaserSection = () => {
                       transition={{ duration: 0.4 }}
                       className="absolute bottom-6 left-6 right-6"
                     >
+                      {/* Brand line, not attributed to Meg directly — no fabricated founder quotes (5.5). */}
                       <p className="font-serif-wedding text-sm text-white/70 italic">
-                        "I believe every couple deserves to feel present on their wedding day."
+                        "A wedding day should feel as beautiful to live inside as it looks in the photos."
                       </p>
                       <div className="flex items-center gap-2 mt-2">
                         <span className="w-4 h-px bg-white/30" />
                         <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/60">
-                          Founder · Hickory & Rose
+                          Hickory & Rose
                         </span>
                       </div>
                     </motion.div>
