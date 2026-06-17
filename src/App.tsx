@@ -47,24 +47,39 @@ const AnimatedRoutes = () => {
   );
 };
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <MotionConfig reducedMotion="user">
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <a href="#main-content" className="skip-to-content">Skip to content</a>
-          <LoadingScreen>
-            <SmoothScrollProvider>
-              <CursorFollower />
-              <AnimatedRoutes />
-            </SmoothScrollProvider>
-          </LoadingScreen>
-        </BrowserRouter>
-      </TooltipProvider>
-    </MotionConfig>
-  </QueryClientProvider>
-);
+const App = () => {
+  const [unlocked, setUnlocked] = useState(
+    () => typeof window !== "undefined" && sessionStorage.getItem("hr_site_unlocked") === "true"
+  );
+
+  if (!unlocked) {
+    return (
+      <Suspense fallback={null}>
+        <PasswordGate onUnlock={() => setUnlocked(true)} />
+      </Suspense>
+    );
+  }
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <MotionConfig reducedMotion="user">
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <a href="#main-content" className="skip-to-content">Skip to content</a>
+            <LoadingScreen>
+              <SmoothScrollProvider>
+                <CursorFollower />
+                <AnimatedRoutes />
+              </SmoothScrollProvider>
+            </LoadingScreen>
+          </BrowserRouter>
+        </TooltipProvider>
+      </MotionConfig>
+    </QueryClientProvider>
+  );
+};
+
 
 export default App;
