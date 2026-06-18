@@ -90,7 +90,7 @@ const BrandPromiseSection = () => {
         }}
       />
 
-      <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
+      <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative z-10">
         <ScrollReveal>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-20 md:mb-28">
             {/* Left: Overline + editorial drop-cap quote */}
