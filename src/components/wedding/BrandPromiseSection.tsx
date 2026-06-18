@@ -1,8 +1,9 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
 import editorialFloralsImage from "@/assets/editorial-florals.jpg";
+import receptionWideVideo from "@/assets/reception-wide.mov.asset.json";
 
 const pillars = [
   { label: "Calm Leadership", detail: "Thoughtful preparation, clear timelines, and challenges anticipated long before they reach you — so the day feels steady from start to finish.", emphasis: "Calm" },
@@ -12,7 +13,13 @@ const pillars = [
 
 const BrandPromiseSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const bgVideoRef = useRef<HTMLVideoElement>(null);
+  const prefersReducedMotion = useReducedMotion();
   const [activePillar, setActivePillar] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (bgVideoRef.current) bgVideoRef.current.playbackRate = 0.5;
+  }, []);
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -27,6 +34,39 @@ const BrandPromiseSection = () => {
       ref={sectionRef}
       className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden"
     >
+      {/* Ambient reception-wide video bleed — B&W, low-opacity, behind everything */}
+      {!prefersReducedMotion && (
+        <div
+          className="absolute inset-0 pointer-events-none overflow-hidden z-0"
+          aria-hidden="true"
+          style={{
+            WebkitMaskImage:
+              "radial-gradient(ellipse at center, black 35%, transparent 80%)",
+            maskImage:
+              "radial-gradient(ellipse at center, black 35%, transparent 80%)",
+          }}
+        >
+          <video
+            ref={bgVideoRef}
+            src={receptionWideVideo.url}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-auto h-auto"
+            style={{
+              opacity: 0.22,
+              filter: "grayscale(1) contrast(1.1) brightness(0.95) blur(1px)",
+              // Tight horizontal sliver: scale up + center to skip PA/ceiling
+              transform: "translate(-50%, -50%) scale(2.4)",
+              objectFit: "cover",
+              objectPosition: "50% 55%",
+            }}
+          />
+        </div>
+      )}
+
       {/* Large decorative watermark */}
       <motion.div
         className="absolute -right-10 top-1/2 pointer-events-none select-none"
