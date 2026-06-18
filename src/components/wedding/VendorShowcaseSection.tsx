@@ -2,13 +2,15 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
+// No fabricated vendor brands. Categories only — to be populated with real,
+// confirmed partner names when the vendor network is announced.
 const vendors = [
-  { name: "Fairmont Hotels", category: "Venues", note: "Preferred Partner" },
-  { name: "Art of Cake", category: "Culinary", note: "Exclusive Baker" },
-  { name: "Bloom & Petal", category: "Florals", note: "Lead Florist" },
-  { name: "Ember & Grain", category: "Catering", note: "Featured Chef" },
-  { name: "Lumen Studio", category: "Photography", note: "Creative Partner" },
-  { name: "Velvet Note", category: "Entertainment", note: "Curated Music" },
+  { name: "Venues", category: "Spaces", note: "Curated Selection" },
+  { name: "Florals", category: "Design", note: "Lead Stylists" },
+  { name: "Catering", category: "Culinary", note: "Featured Chefs" },
+  { name: "Photography", category: "Imagery", note: "Creative Partners" },
+  { name: "Stationery", category: "Paper", note: "Hand Calligraphy" },
+  { name: "Entertainment", category: "Music", note: "Curated Selection" },
 ];
 
 const VendorShowcaseSection = () => {
@@ -62,7 +64,7 @@ const VendorShowcaseSection = () => {
             </div>
             <div className="md:col-span-7">
               <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light leading-relaxed max-w-sm md:ml-auto">
-                Every vendor in our network is hand-selected for excellence, reliability, and shared commitment to creating unforgettable celebrations.
+                Every vendor we work with is hand-selected for excellence, reliability, and shared commitment to creating unforgettable celebrations.
               </p>
             </div>
           </div>

@@ -87,20 +87,18 @@ const LakeLouiseDiptychSection = () => {
 
           <DiptychPanel
             src={winterAsset.url}
-            alt="Lake Louise frozen in February — Mount Victoria veiled in low cloud above silver ice"
+            alt="Lake Louise in winter"
             y={winterY}
             frameLabel="FR W·01"
             season="Winter"
-            meta="Feb · Frozen · −18°C"
             align="right"
           />
           <DiptychPanel
             src={summerAsset.url}
-            alt="Lake Louise in August — glacial turquoise water beneath Mount Victoria and the Victoria Glacier"
+            alt="Lake Louise in summer"
             y={summerY}
             frameLabel="FR S·01"
             season="Summer"
-            meta="Aug · Glacial · 14°C"
             align="left"
           />
         </div>
@@ -118,9 +116,6 @@ const LakeLouiseDiptychSection = () => {
             <p className="font-serif-wedding text-lg md:text-xl text-muted-foreground italic font-light max-w-md mx-auto leading-relaxed">
               We plan in both. The valley does the rest.
             </p>
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.25em] uppercase text-brand-text-tertiary mt-4">
-              Edmonton · Banff · Lake Louise · Jasper
-            </p>
           </div>
         </ScrollReveal>
       </div>
@@ -134,11 +129,10 @@ type PanelProps = {
   y: ReturnType<typeof useTransform<number, string>>;
   frameLabel: string;
   season: string;
-  meta: string;
   align: "left" | "right";
 };
 
-const DiptychPanel = ({ src, alt, y, frameLabel, season, meta, align }: PanelProps) => (
+const DiptychPanel = ({ src, alt, y, frameLabel, season }: PanelProps) => (
   <div className="aspect-[3/4] md:aspect-[4/5] overflow-hidden relative group">
     {/* Cinematic letterbox bars */}
     <div className="absolute top-0 left-0 right-0 z-20 h-[5%] bg-foreground/90 -translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] pointer-events-none" />
@@ -203,23 +197,6 @@ const DiptychPanel = ({ src, alt, y, frameLabel, season, meta, align }: PanelPro
       </span>
     </div>
 
-    {/* Bottom caption — reveals on hover */}
-    <div
-      className={`absolute bottom-0 left-0 right-0 p-5 md:p-6 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 z-20 pointer-events-none text-${align}`}
-    >
-      <span
-        className={`block w-6 h-px mb-2 ${align === "right" ? "ml-auto" : ""}`}
-        style={{
-          background:
-            align === "right"
-              ? "linear-gradient(270deg, hsl(var(--gold) / 0.6), transparent)"
-              : "linear-gradient(90deg, hsl(var(--gold) / 0.6), transparent)",
-        }}
-      />
-      <span className="font-sans-wedding text-[0.6rem] tracking-[0.2em] uppercase text-white/80">
-        {meta}
-      </span>
-    </div>
   </div>
 );
 

@@ -11,61 +11,15 @@ import firstDanceImage from "@/assets/first-dance.jpg";
 import editorialImage from "@/assets/editorial-florals.jpg";
 import venueImage from "@/assets/portfolio-venue.jpg";
 
+// Aesthetic direction only — no fabricated venues, couples, dates, or narrative captions.
+// Category is drawn from what the image visually depicts, nothing more.
 const photos = [
-  {
-    src: heroImage,
-    alt: "Elegant garden reception tablescape at golden hour with sage and ivory florals",
-    title: "Golden Hour Reception",
-    location: "Fairmont Hotel Macdonald",
-    category: "Reception",
-    story: "An evening where every candle told a story.",
-    season: "Summer 2024",
-  },
-  {
-    src: detailImage,
-    alt: "Elegant calligraphy place card with gold cutlery on fine linen",
-    title: "Calligraphy Details",
-    location: "The Glass House",
-    category: "Details",
-    story: "Handwritten with intention.",
-    season: "Spring 2024",
-  },
-  {
-    src: editorialImage,
-    alt: "Sage eucalyptus and ivory garden rose floral arrangement detail",
-    title: "Sage & Ivory Florals",
-    location: "Art Gallery of Alberta",
-    category: "Florals",
-    story: "Nature's palette, elevated.",
-    season: "Autumn 2023",
-  },
-  {
-    src: ceremonyImage,
-    alt: "Outdoor ceremony with mountain backdrop and floral arch",
-    title: "Mountain Ceremony",
-    location: "Jasper Park Lodge",
-    category: "Ceremony",
-    story: "Where the mountains bore witness.",
-    season: "Summer 2023",
-  },
-  {
-    src: firstDanceImage,
-    alt: "Couple's first dance under string lights at outdoor reception",
-    title: "First Dance",
-    location: "Devonian Botanic Garden",
-    category: "Moments",
-    story: "The world fell away for three minutes.",
-    season: "Summer 2024",
-  },
-  {
-    src: venueImage,
-    alt: "Heritage timber venue at twilight with warm string lights and mountain backdrop",
-    title: "Twilight Reception",
-    location: "Canadian Rockies",
-    category: "Venue",
-    story: "Golden hour met candlelight.",
-    season: "Autumn 2024",
-  },
+  { src: heroImage, alt: "Reception tablescape", category: "Reception" },
+  { src: detailImage, alt: "Place setting detail", category: "Details" },
+  { src: editorialImage, alt: "Floral arrangement", category: "Florals" },
+  { src: ceremonyImage, alt: "Ceremony arch", category: "Ceremony" },
+  { src: firstDanceImage, alt: "Reception under string lights", category: "Reception" },
+  { src: venueImage, alt: "Venue at twilight", category: "Venue" },
 ];
 
 /* Editorial masonry spans — asymmetric for visual interest */
@@ -199,38 +153,16 @@ const GallerySection = () => {
                     <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
                   </div>
 
-                  {/* Hover editorial overlay */}
+                  {/* Hover overlay — aesthetic category only */}
                   <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    {/* Category badge */}
                     <span className="absolute top-4 left-4 font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/60 bg-white/10 backdrop-blur-sm px-2.5 py-1 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                       {photo.category}
                     </span>
-
-                    {/* Story pull-quote */}
-                    <p className="font-serif-wedding text-xs italic text-white/40 mb-2 translate-y-3 group-hover:translate-y-0 transition-transform duration-500 delay-75">
-                      "{photo.story}"
-                    </p>
-
-                    <p className="font-serif-wedding text-sm md:text-base text-white/90 leading-tight translate-y-3 group-hover:translate-y-0 transition-transform duration-500 delay-100">
-                      {photo.title}
-                    </p>
-
-                    <div className="flex items-center gap-2 mt-1.5 translate-y-3 group-hover:translate-y-0 transition-transform duration-500 delay-150">
-                      <span className="w-3 h-px bg-white/25" />
-                      <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-white/60">
-                        {photo.location}
-                      </span>
-                    </div>
                   </div>
 
                   {/* Frame index */}
                   <span className="absolute top-3 right-3 font-serif-wedding text-caption text-white/0 group-hover:text-white/60 transition-colors duration-500 tabular-nums">
                     {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  {/* Season badge — bottom-left */}
-                  <span className="absolute bottom-3 left-3 font-sans-wedding text-caption tracking-[0.1em] uppercase text-white/0 group-hover:text-white/60 transition-colors duration-500 delay-200">
-                    {photo.season}
                   </span>
                 </button>
               </ImageReveal>
@@ -268,7 +200,7 @@ const GallerySection = () => {
             </div>
             {/* Editorial credential strip */}
             <div className="flex items-center justify-center gap-6 mt-6">
-              {["Curated Collection", "Real Weddings", "Edmonton & Rockies"].map((label, i) => (
+              {["Aesthetic Direction", "Refined Rustic Elegance"].map((label, i) => (
                 <motion.span
                   key={label}
                   initial={{ opacity: 0 }}
@@ -380,26 +312,17 @@ const GallerySection = () => {
                   />
                 </div>
 
-                {/* Lightbox editorial metadata */}
+                {/* Lightbox — aesthetic category only */}
                 <motion.div
                   className="mt-8 text-center"
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
                 >
-                  <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-background/50 block mb-2">
-                    {photos[selectedIndex].category} · {photos[selectedIndex].season}
-                  </span>
-                  <p className="font-serif-wedding text-xl text-background/70">
-                    {photos[selectedIndex].title}
-                  </p>
-                  <p className="font-serif-wedding text-xs italic text-background/50 mt-3 max-w-sm">
-                    "{photos[selectedIndex].story}"
-                  </p>
-                  <div className="flex items-center justify-center gap-3 mt-4">
+                  <div className="flex items-center justify-center gap-3">
                     <span className="w-6 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.2))" }} />
-                    <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-background/50">
-                      {photos[selectedIndex].location}
+                    <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-background/50">
+                      {photos[selectedIndex].category}
                     </span>
                     <span className="w-6 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold, 38 60% 55%) / 0.2), transparent)" }} />
                   </div>

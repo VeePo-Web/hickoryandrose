@@ -6,57 +6,13 @@ import detailImage from "@/assets/detail-placecard.jpg";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import receptionImage from "@/assets/portfolio-reception.jpg";
 
+// Aesthetic direction only. No fabricated couples / venues / dates / narrative captions.
 const slides = [
-  {
-    src: ceremonyImage,
-    alt: "Mountain ceremony with floral arch at golden hour",
-    couple: "Hickory & Rose",
-    venue: "Design Philosophy",
-    label: "Ceremony",
-    season: "",
-    snippet: "An intimate mountain exchange under a wild eucalyptus arch.",
-    category: "Full-Service",
-  },
-  {
-    src: detailImage,
-    alt: "Calligraphy place card with gold cutlery detail",
-    couple: "Hickory & Rose",
-    venue: "Detail Craft",
-    label: "Details",
-    season: "",
-    snippet: "Hand-lettered place cards on Italian linen with gold leaf.",
-    category: "Partial Planning",
-  },
-  {
-    src: receptionImage,
-    alt: "Candlelit reception table with sage and ivory florals",
-    couple: "Hickory & Rose",
-    venue: "Reception Design",
-    label: "Reception",
-    season: "",
-    snippet: "A twilight reception under a glass canopy, hundreds of candles lit.",
-    category: "Full-Service",
-  },
-  {
-    src: bouquetImage,
-    alt: "Bridal bouquet with white roses and sage eucalyptus",
-    couple: "Hickory & Rose",
-    venue: "Floral Direction",
-    label: "Florals",
-    season: "",
-    snippet: "Garden roses and sage eucalyptus — softly unstructured.",
-    category: "Day-Of",
-  },
-  {
-    src: firstDanceImage,
-    alt: "First dance under string lights at outdoor reception",
-    couple: "Hickory & Rose",
-    venue: "Calm Leadership",
-    label: "Celebration",
-    season: "",
-    snippet: "A first dance under a canopy of a thousand lights.",
-    category: "Full-Service",
-  },
+  { src: ceremonyImage, alt: "Ceremony arch", label: "Ceremony" },
+  { src: detailImage, alt: "Place setting detail", label: "Details" },
+  { src: receptionImage, alt: "Reception table", label: "Reception" },
+  { src: bouquetImage, alt: "Bridal bouquet", label: "Florals" },
+  { src: firstDanceImage, alt: "Reception under string lights", label: "Celebration" },
 ];
 
 const FilmstripSection = () => {
@@ -196,20 +152,6 @@ const FilmstripSection = () => {
               >
                 FR{String(i + 1).padStart(2, "0")}
               </span>
-              {/* Category badge */}
-              <span className="absolute top-3 left-3 font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/0 group-hover:text-white/70 transition-colors duration-500 border border-white/0 group-hover:border-white/30 px-2 py-0.5">
-                {slide.category}
-              </span>
-              {/* Hover caption with story snippet */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                <p className="font-serif-wedding text-xs text-white/70 italic leading-relaxed mb-2">
-                  {slide.snippet}
-                </p>
-                <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/60">
-                  {slide.season}
-                </p>
-              </div>
-              
               {/* Corner frame accents — gold gradient on hover */}
               <div className="absolute top-3 left-3 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
                 <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
@@ -221,17 +163,12 @@ const FilmstripSection = () => {
               </div>
             </div>
 
-            {/* Editorial caption */}
+            {/* Editorial caption — aesthetic label only */}
             <div className="mt-4 flex items-start justify-between">
-              <div>
-                <p className="font-serif-wedding text-lg text-foreground/70 group-hover:text-foreground transition-colors duration-500">
-                  {slide.couple}
-                </p>
-                <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground/60 mt-0.5">
-                  {slide.venue}
-                </p>
-              </div>
-              <span className="font-serif-wedding text-xs text-primary/60 mt-1 tabular-nums">
+              <p className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-muted-foreground/70">
+                {slide.label}
+              </p>
+              <span className="font-serif-wedding text-xs text-primary/60 mt-0.5 tabular-nums">
                 {String(i + 1).padStart(2, "0")}
               </span>
             </div>
