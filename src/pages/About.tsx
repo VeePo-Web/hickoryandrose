@@ -309,7 +309,7 @@ const About = () => {
                 <div className="aspect-[3/2] overflow-hidden relative group">
                   <img
                     src={aboutHeroImage}
-                    alt="Wedding planner Meg reviewing day-of timeline with vendors in sunlit garden conservatory"
+                    alt="Sunlit garden conservatory ceremony setup with vendor timeline in progress"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />

@@ -83,7 +83,7 @@ const ApproachDifferentiators = () => {
 
                   <img
                     src={founderImage}
-                    alt="Hickory & Rose founder reviewing wedding details"
+                    alt="Meg Wolodko, founder of Hickory & Rose"
                     className={`w-full h-full object-cover transition-transform duration-700 ${isHovered ? "scale-105" : "scale-100"}`}
                     loading="lazy"
                   />

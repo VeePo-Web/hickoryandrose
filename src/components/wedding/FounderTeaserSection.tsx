@@ -145,7 +145,7 @@ const FounderTeaserSection = () => {
 
                 <motion.img
                   src={founderImage}
-                  alt="Founder of Hickory & Rose, smiling warmly in a garden setting with sage eucalyptus and ivory roses"
+                  alt="Meg Wolodko, founder of Hickory & Rose, smiling warmly in a soft natural-light portrait"
                   className="w-full h-[110%] object-cover relative z-[1]"
                   style={{ y: imageY, scale: imageScale }}
                   animate={{ filter: isImageHovered ? "brightness(0.95)" : "brightness(1)" }}
