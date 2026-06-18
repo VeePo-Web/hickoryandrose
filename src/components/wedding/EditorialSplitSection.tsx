@@ -168,7 +168,7 @@ const EditorialSplitSection = () => {
       >
         <motion.img
           src={detailImage}
-          alt="Elegant calligraphy place card with gold cutlery on fine linen"
+          alt=""
           className="absolute inset-0 w-full h-[120%] object-cover"
           style={{ y: imageY }}
           animate={{ scale: isHovered ? 1.03 : 1 }}
@@ -262,7 +262,7 @@ const EditorialSplitSection = () => {
                 <div className="absolute bottom-0 left-0 right-0 h-[6%] bg-black/60 z-10" />
                 <img
                   src={vendorImage}
-                  alt="Vendor collaboration detail"
+                  alt=""
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 border border-white/20" />

@@ -39,7 +39,7 @@ const EditorialImageBreak = () => {
       <div className="aspect-[21/9] md:aspect-[21/9] w-full overflow-hidden grain-overlay">
         <motion.img
           src={editorialImage}
-          alt="Brass candlestick holders with warm flickering flames on sage linen runner with ivory rose petals and gold calligraphy place cards in a heritage timber venue"
+          alt=""
           className="w-full h-[120%] object-cover transition-[filter] duration-700"
           style={{ y }}
           animate={{ 

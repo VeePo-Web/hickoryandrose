@@ -87,20 +87,18 @@ const LakeLouiseDiptychSection = () => {
 
           <DiptychPanel
             src={winterAsset.url}
-            alt="Lake Louise frozen in February — Mount Victoria veiled in low cloud above silver ice"
+            alt="Lake Louise in winter"
             y={winterY}
             frameLabel="FR W·01"
             season="Winter"
-            meta="Feb · Frozen · −18°C"
             align="right"
           />
           <DiptychPanel
             src={summerAsset.url}
-            alt="Lake Louise in August — glacial turquoise water beneath Mount Victoria and the Victoria Glacier"
+            alt="Lake Louise in summer"
             y={summerY}
             frameLabel="FR S·01"
             season="Summer"
-            meta="Aug · Glacial · 14°C"
             align="left"
           />
         </div>
@@ -117,9 +115,6 @@ const LakeLouiseDiptychSection = () => {
             />
             <p className="font-serif-wedding text-lg md:text-xl text-muted-foreground italic font-light max-w-md mx-auto leading-relaxed">
               We plan in both. The valley does the rest.
-            </p>
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.25em] uppercase text-brand-text-tertiary mt-4">
-              Edmonton · Banff · Lake Louise · Jasper
             </p>
           </div>
         </ScrollReveal>

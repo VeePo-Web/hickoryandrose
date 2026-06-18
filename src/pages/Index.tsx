@@ -67,10 +67,9 @@ const Index = () => {
         <ProcessTeaserSection />
         <FullWidthImage
           src={venueImage}
-          alt="Heritage timber venue at twilight with warm string lights and mountain backdrop"
+          alt=""
           height="h-[50vh] md:h-[60vh]"
           overlay
-          caption="Edmonton · Alberta · The Canadian Rockies"
         />
         <FounderTeaserSection />
         <StatsSection />
