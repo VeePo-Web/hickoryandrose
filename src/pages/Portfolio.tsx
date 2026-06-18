@@ -8,7 +8,7 @@ import Footer from "@/components/wedding/Footer";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
-import PortfolioFeaturedStory from "@/components/wedding/PortfolioFeaturedStory";
+// PortfolioFeaturedStory removed until real featured wedding exists (6.11)
 import PortfolioMasonryGrid from "@/components/wedding/PortfolioMasonryGrid";
 import portfolioHeroImage from "@/assets/portfolio-hero.jpg";
 import heroImage from "@/assets/hero-wedding.jpg";
@@ -20,20 +20,20 @@ import receptionImage from "@/assets/portfolio-reception.jpg";
 import bouquetImage from "@/assets/portfolio-bouquet.jpg";
 import venueImage from "@/assets/portfolio-venue.jpg";
 
-// SAMPLE STORIES — anonymized aesthetic direction. Swap with real featured weddings
-// when owner provides them (discovery 6.11). Until then, no fabricated couples / venues / dates.
+// Aesthetic direction only — no fabricated couples / venues / dates / service tiers.
+// Filters reflect what each image visually depicts, not what we planned.
 const weddingStories = [
-  { src: heroImage, alt: "Garden reception tablescape at golden hour", couple: "Garden Reception", venue: "Edmonton", season: "Summer", category: "Full Planning", aspect: "aspect-[3/4]" },
-  { src: receptionImage, alt: "Refined farmhouse reception with eucalyptus and candlelight", couple: "Farmhouse Candlelight", venue: "Alberta", season: "Autumn", category: "Full Planning", aspect: "aspect-square" },
-  { src: ceremonyImage, alt: "Mountain ceremony with floral arch and white draping", couple: "Mountain Ceremony", venue: "Canadian Rockies", season: "Summer", category: "Partial Planning", aspect: "aspect-[4/5]" },
-  { src: bouquetImage, alt: "Bridal bouquet with white roses and sage eucalyptus", couple: "Bridal Florals", venue: "Edmonton", season: "Spring", category: "Day-Of", aspect: "aspect-[3/4]" },
-  { src: venueImage, alt: "Heritage timber venue at twilight with string lights", couple: "Twilight Venue", venue: "Alberta", season: "Autumn", category: "Full Planning", aspect: "aspect-[16/10]" },
-  { src: editorialImage, alt: "Sage and ivory floral arrangement detail", couple: "Floral Detail", venue: "Edmonton", season: "Winter", category: "Day-Of", aspect: "aspect-square" },
-  { src: firstDanceImage, alt: "First dance under string lights at outdoor reception", couple: "First Dance", venue: "River Valley", season: "Summer", category: "Partial Planning", aspect: "aspect-[3/4]" },
-  { src: detailImage, alt: "Calligraphy place card with gold cutlery detail", couple: "Place Setting", venue: "Edmonton", season: "Spring", category: "Full Planning", aspect: "aspect-square" },
+  { src: heroImage, alt: "Reception tablescape", category: "Reception", aspect: "aspect-[3/4]" },
+  { src: receptionImage, alt: "Reception detail", category: "Reception", aspect: "aspect-square" },
+  { src: ceremonyImage, alt: "Ceremony arch", category: "Ceremony", aspect: "aspect-[4/5]" },
+  { src: bouquetImage, alt: "Bridal bouquet", category: "Florals", aspect: "aspect-[3/4]" },
+  { src: venueImage, alt: "Venue at twilight", category: "Venue", aspect: "aspect-[16/10]" },
+  { src: editorialImage, alt: "Floral arrangement", category: "Florals", aspect: "aspect-square" },
+  { src: firstDanceImage, alt: "Reception under string lights", category: "Reception", aspect: "aspect-[3/4]" },
+  { src: detailImage, alt: "Place setting detail", category: "Details", aspect: "aspect-square" },
 ];
 
-const filters = ["All", "Full Planning", "Partial Planning", "Day-Of"] as const;
+const filters = ["All", "Reception", "Ceremony", "Florals", "Details"] as const;
 
 const Portfolio = () => {
   const [active, setActive] = useState<string>("All");
@@ -78,7 +78,7 @@ const Portfolio = () => {
         </motion.div>
         <GoldFrame inset="20px" delay={1} />
         <motion.div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-4 py-3 pointer-events-none" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6, duration: 0.8 }}>
-          {["Curated Collection", "Real Weddings", "Edmonton & Rockies"].map((t, i) => (
+          {["Aesthetic Direction", "Refined Rustic Elegance"].map((t, i) => (
             <span key={t} className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-white/60 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
@@ -144,16 +144,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Featured Story Spotlight — SAMPLE direction. Swap with real featured wedding when available (6.11). */}
-      <PortfolioFeaturedStory
-        image={heroImage}
-        alt="Garden reception at golden hour — aesthetic direction"
-        couple="Garden Reception"
-        venue="Edmonton"
-        season="Summer"
-        description="A glimpse of the aesthetic Hickory & Rose is built around — soft textures, candlelight, and the quiet sophistication of refined rustic elegance. The kind of day designed for how it feels, not just how it looks."
-        quote="Designed for how it feels — not just how it looks."
-      />
+      {/* Featured story removed — will be reinstated when a real featured wedding is available (6.11). */}
 
       {/* Gallery */}
       <PortfolioMasonryGrid stories={filtered} />
