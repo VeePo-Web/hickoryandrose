@@ -129,11 +129,10 @@ type PanelProps = {
   y: ReturnType<typeof useTransform<number, string>>;
   frameLabel: string;
   season: string;
-  meta: string;
   align: "left" | "right";
 };
 
-const DiptychPanel = ({ src, alt, y, frameLabel, season, meta, align }: PanelProps) => (
+const DiptychPanel = ({ src, alt, y, frameLabel, season }: PanelProps) => (
   <div className="aspect-[3/4] md:aspect-[4/5] overflow-hidden relative group">
     {/* Cinematic letterbox bars */}
     <div className="absolute top-0 left-0 right-0 z-20 h-[5%] bg-foreground/90 -translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] pointer-events-none" />
@@ -198,23 +197,6 @@ const DiptychPanel = ({ src, alt, y, frameLabel, season, meta, align }: PanelPro
       </span>
     </div>
 
-    {/* Bottom caption — reveals on hover */}
-    <div
-      className={`absolute bottom-0 left-0 right-0 p-5 md:p-6 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 z-20 pointer-events-none text-${align}`}
-    >
-      <span
-        className={`block w-6 h-px mb-2 ${align === "right" ? "ml-auto" : ""}`}
-        style={{
-          background:
-            align === "right"
-              ? "linear-gradient(270deg, hsl(var(--gold) / 0.6), transparent)"
-              : "linear-gradient(90deg, hsl(var(--gold) / 0.6), transparent)",
-        }}
-      />
-      <span className="font-sans-wedding text-[0.6rem] tracking-[0.2em] uppercase text-white/80">
-        {meta}
-      </span>
-    </div>
   </div>
 );
 
