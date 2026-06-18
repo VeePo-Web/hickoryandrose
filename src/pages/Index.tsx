@@ -8,7 +8,6 @@ import ScrollProgress from "@/components/wedding/ScrollProgress";
 import BackToTop from "@/components/wedding/BackToTop";
 import SectionIndicator from "@/components/wedding/SectionIndicator";
 import venueImage from "@/assets/portfolio-venue.jpg";
-import rockiesImage from "@/assets/service-area-rockies.jpg";
 
 // Lazy-load below-fold sections
 const ServicesOverviewSection = lazy(() => import("@/components/wedding/ServicesOverviewSection"));
@@ -25,6 +24,7 @@ const FounderTeaserSection = lazy(() => import("@/components/wedding/FounderTeas
 const StatsSection = lazy(() => import("@/components/wedding/StatsSection"));
 const PressMentionsSection = lazy(() => import("@/components/wedding/PressMentionsSection"));
 const BrandManifestoSection = lazy(() => import("@/components/wedding/BrandManifestoSection"));
+const LakeLouiseDiptychSection = lazy(() => import("@/components/wedding/LakeLouiseDiptychSection"));
 const FilmstripSection = lazy(() => import("@/components/wedding/FilmstripSection"));
 const InstagramSection = lazy(() => import("@/components/wedding/InstagramSection"));
 const JournalTeaserSection = lazy(() => import("@/components/wedding/JournalTeaserSection"));
@@ -80,13 +80,7 @@ const Index = () => {
         />
         {/* TODO: re-enable <PressMentionsSection /> when real press features arrive (discovery 5.6). Hidden today to avoid fabricated "As Featured In" claims. */}
         <BrandManifestoSection />
-        <FullWidthImage
-          src={rockiesImage}
-          alt="Cinematic aerial view of the Canadian Rocky Mountains at golden hour with alpine lake and evergreen forests"
-          height="h-[45vh] md:h-[55vh]"
-          overlay
-          caption="Serving Edmonton · Jasper · Banff · Lake Louise · The Canadian Rockies"
-        />
+        <LakeLouiseDiptychSection />
         <FilmstripSection />
         <VendorShowcaseSection />
         <CTASection />
