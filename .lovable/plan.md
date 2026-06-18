@@ -1,33 +1,37 @@
-# Use Meg's real photo everywhere the founder appears
+# Audit and align Meg's image + alt text site-wide
 
-## Findings
+## What's already correct
 
-Four components render a founder portrait, and all four import the **same** asset:
+All four components that render a founder portrait import `@/assets/founder-portrait.jpg`, which was replaced with Meg's real photo last turn. Confirmed usages:
 
-```
-@/assets/founder-portrait.jpg
-```
+1. `src/components/wedding/FounderTeaserSection.tsx` (home)
+2. `src/components/wedding/AboutFounderSection.tsx` (About)
+3. `src/components/wedding/ApproachDifferentiators.tsx` (Approach)
+4. `src/pages/Approach.tsx` (Approach hero attribution)
 
-Usages:
-1. `src/components/wedding/FounderTeaserSection.tsx` — home page teaser
-2. `src/components/wedding/AboutFounderSection.tsx` — About page "Meet Meg"
-3. `src/components/wedding/ApproachDifferentiators.tsx` — Approach page
-4. `src/pages/Approach.tsx` — Approach hero portrait
+No other components reference a founder image — the swap is already site-wide.
 
-Other mentions of "Meg / founder / owner" across the site are **text-only** (headings, alt text, TODO comments, SEO copy) and do not render an image, so no portrait needs to be added there.
+## Issues found in the audit
 
-## Plan
+### A. `src/pages/About.tsx` line ~312 — misleading alt text
+The image at that spot is `aboutHeroImage` (a ceremony/conservatory scene), but its alt reads:
+> "Wedding planner Meg reviewing day-of timeline with vendors in sunlit garden conservatory"
 
-1. Replace the binary at `src/assets/founder-portrait.jpg` with the uploaded `Meg.jpg`. Same path, same import — all 4 components pick it up automatically with zero code changes.
-2. Remove the `TODO (5.11): Placeholder portrait — owner has no professional brand photos yet` comment in `AboutFounderSection.tsx` since we now have a real photo.
-3. Spot-check the alt text on each of the 4 usages still reads correctly for Meg (it already does — "Meg Wolodko, founder of Hickory & Rose…"). No copy changes needed.
+That falsely claims Meg is pictured. Two clean options:
+- **(Chosen) Fix the alt** to describe the actual scene without naming Meg: `"Sunlit garden conservatory ceremony setup with vendor timeline in progress"`. Keeps the existing ceremony photo (which is the right visual for that storytelling slot) and stops impersonating Meg.
+
+### B. `src/components/wedding/FounderTeaserSection.tsx` line 148 — alt doesn't match Meg's real photo
+Current alt: `"Founder of Hickory & Rose, smiling warmly in a garden setting with sage eucalyptus and ivory roses"`. Meg's real photo is a clean indoor portrait with soft greenery in the background — no roses. Update to: `"Meg Wolodko, founder of Hickory & Rose, smiling warmly in a soft natural-light portrait"`.
+
+### C. `src/components/wedding/ApproachDifferentiators.tsx` line 86 — generic alt
+Current: `"Hickory & Rose founder reviewing wedding details"`. Image is actually her smiling portrait. Update to: `"Meg Wolodko, founder of Hickory & Rose"`.
 
 ## Out of scope
 
-- Not adding a new portrait to text-only sections (Brand Promise quote, FAQ, Portfolio, Index hero, etc.) — they intentionally don't show a face and adding one would change the layout.
-- Not touching the OG image, About page secondary lifestyle image (`alt="Wedding planner Meg reviewing day-of timeline…"` — that's a separate ceremony scene), or any other assets.
-- No new components, no layout changes.
+- Text-only mentions ("Meet the Founder" headings, BrandPromiseSection's "— Founder, Hickory & Rose" quote attribution, SEO meta descriptions) — no image needed, leaving as-is.
+- TODO comments referencing "owner".
+- OG image, founder name spelling, layouts.
 
 ## Verification
 
-After the swap, open the preview at `/`, `/about`, and `/approach` and confirm Meg's new photo renders in all four spots at the existing aspect ratios (3/4 portrait crops). The uploaded photo is roughly 4:3 landscape, so the existing `object-cover` framing will crop to portrait — head/shoulders should remain centered. If framing looks off on any one of the four, follow-up with a per-location `object-position` tweak.
+After the three alt-text edits, grep for `alt=.*[Mm]eg` and confirm every result honestly describes either Meg's real portrait or another verifiable scene. Visual spot-check home, About, Approach in preview.
