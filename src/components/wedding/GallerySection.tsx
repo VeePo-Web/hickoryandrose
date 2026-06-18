@@ -200,7 +200,7 @@ const GallerySection = () => {
             </div>
             {/* Editorial credential strip */}
             <div className="flex items-center justify-center gap-6 mt-6">
-              {["Curated Collection", "Real Weddings", "Edmonton & Rockies"].map((label, i) => (
+              {["Aesthetic Direction", "Refined Rustic Elegance"].map((label, i) => (
                 <motion.span
                   key={label}
                   initial={{ opacity: 0 }}
@@ -312,26 +312,17 @@ const GallerySection = () => {
                   />
                 </div>
 
-                {/* Lightbox editorial metadata */}
+                {/* Lightbox — aesthetic category only */}
                 <motion.div
                   className="mt-8 text-center"
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
                 >
-                  <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-background/50 block mb-2">
-                    {photos[selectedIndex].category} · {photos[selectedIndex].season}
-                  </span>
-                  <p className="font-serif-wedding text-xl text-background/70">
-                    {photos[selectedIndex].title}
-                  </p>
-                  <p className="font-serif-wedding text-xs italic text-background/50 mt-3 max-w-sm">
-                    "{photos[selectedIndex].story}"
-                  </p>
-                  <div className="flex items-center justify-center gap-3 mt-4">
+                  <div className="flex items-center justify-center gap-3">
                     <span className="w-6 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.2))" }} />
-                    <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-background/50">
-                      {photos[selectedIndex].location}
+                    <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-background/50">
+                      {photos[selectedIndex].category}
                     </span>
                     <span className="w-6 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold, 38 60% 55%) / 0.2), transparent)" }} />
                   </div>
