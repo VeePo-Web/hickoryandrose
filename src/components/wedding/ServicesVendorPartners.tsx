@@ -3,12 +3,13 @@ import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
 import vendorDetailImage from "@/assets/vendor-detail.jpg";
 
+// No fabricated vendor brands — categories only until real partners are confirmed.
 const partners = [
-  { category: "Florals & Styling", names: "Bloomsbury House · Wild North Florals" },
-  { category: "Photography", names: "Everly Studio · Sage & Cedar" },
-  { category: "Catering", names: "The Butternut Tree · RGE RD" },
-  { category: "Venues", names: "Fairmont Macdonald · Jasper Park Lodge" },
-  { category: "Stationery", names: "Quill & Oak · Foiled Calligraphy" },
+  { category: "Florals & Styling", names: "Curated local florists" },
+  { category: "Photography", names: "Selected creative partners" },
+  { category: "Catering", names: "Featured culinary teams" },
+  { category: "Venues", names: "Hand-picked Edmonton & Alberta spaces" },
+  { category: "Stationery", names: "Calligraphy & fine paper" },
 ];
 
 const ServicesVendorPartners = () => (
@@ -20,7 +21,7 @@ const ServicesVendorPartners = () => (
             <div className="aspect-square overflow-hidden">
               <img
                 src={vendorDetailImage}
-                alt="Luxury wedding stationery flatlay with gold scissors, calligraphy, sage eucalyptus, and wax seal on marble"
+                alt=""
                 className="w-full h-full object-cover"
                 loading="lazy"
               />

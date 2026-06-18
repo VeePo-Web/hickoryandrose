@@ -151,21 +151,7 @@ const CTASection = () => {
                 </div>
               </div>
               
-              {/* Image attribution */}
-              <motion.div
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-                className="flex items-center justify-between mt-4"
-              >
-                <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-white/60">
-                  Jasper Park Lodge
-                </p>
-                <p className="font-serif-wedding text-caption italic text-white/60">
-                  Summer 2024
-                </p>
-              </motion.div>
+              {/* Image attribution removed — no fabricated venue / date claims */}
             </ScrollReveal>
           </motion.div>
 
