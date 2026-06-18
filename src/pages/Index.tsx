@@ -30,6 +30,8 @@ const InstagramSection = lazy(() => import("@/components/wedding/InstagramSectio
 const JournalTeaserSection = lazy(() => import("@/components/wedding/JournalTeaserSection"));
 const CTASection = lazy(() => import("@/components/wedding/CTASection"));
 const Footer = lazy(() => import("@/components/wedding/Footer"));
+const CeremonyInterludeSection = lazy(() => import("@/components/wedding/CeremonyInterludeSection"));
+const ReceptionDetailsSection = lazy(() => import("@/components/wedding/ReceptionDetailsSection"));
 
 // LocalBusiness JSON-LD lives in index.html (single source of truth, crawler-safe pre-JS).
 // Do NOT inject a duplicate here. No aggregateRating until real reviews exist (8.x honesty).
@@ -53,6 +55,8 @@ const Index = () => {
       <TrustBarSection />
       <NowBookingSection />
       <Suspense fallback={null}>
+        <CeremonyInterludeSection />
+        <ReceptionDetailsSection />
         <ServicesOverviewSection />
         <EditorialQuoteRibbon
           quote="Your wedding day should be felt, not managed."

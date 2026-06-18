@@ -1,86 +1,55 @@
-# Honesty pass — strip every fabricated photo claim from the site
+# Reception + Ceremony cinematic build
 
-You're right. The site is full of metadata that *names* specific real venues, real seasons, and real couples for photos that are stock imagery or aesthetic direction. That's the most damaging form of fabrication for a wedding planner — visitors who recognize "Fairmont Hotel Macdonald" or "Jasper Park Lodge" will assume you have weddings to show there, and you don't yet. This pass removes every place/event/couple claim and removes per-photo descriptive captions across the board, exactly as you asked.
+## Heads-up before we start
+Your `/mnt/user-uploads/` folder also contains **IMG_7120, 7122, 7124, 7125, 7126, 7127** — I have not audited those yet. This plan ships the assets you've already approved. If those six are also reception/tent images at the same quality tier as 7123, several will likely fail audit and won't make the public site. I'll audit them in the next turn if you want; nothing in this plan depends on them.
 
-What gets kept: business-level service-area statements ("Edmonton, Alberta" as where you serve), the Lake Louise section title (those two photos really are Lake Louise — they're Meg's), navigation/SEO copy that doesn't tie a photo to a place, and the visual design itself. We're only changing words, not layouts.
+## Asset decisions (locked from your answers)
+| Asset | Decision | Treatment |
+|---|---|---|
+| IMG_8502.mov (close tablescape) | Approved | Trim 2.0–6.5s, 21:9 center-crop, 0.5× speed, warm-cream LUT, looping ambient |
+| IMG_8506.jpeg (overhead flat-lay) | Approved | Hero still, magazine crop |
+| IMG_8519.jpeg (long-table perspective) | Approved | 4:5 crop, vignette + soft blur on upper third to mute venue background |
+| IMG_8492.mov (pews + stained glass) | Approved — no caption | Heavy treatment: B&W → soft warm grade, 0.6× speed, vignette |
+| IMG_8494.mov (altar + crucifix) | Approved — no caption | Paired with #1, same grade, no overlay text |
+| IMG_8503.mov (wide reception, PA visible) | Tight crop behind text | 21:9 sliver of centerpiece run only, B&W, 25% opacity, behind body text in Studio Promises beat |
+| IMG_7123.jpeg (tent table) | Detail tile only | Crop to wooden "8" table-number + single mercury votive on linen, desaturated, ~180×240px tile in a gallery grid |
 
-## Inventory of fabricated claims found
+## What gets built
 
-| # | File | What's made up |
-|---|------|----------------|
-| 1 | `src/components/wedding/GallerySection.tsx` lines 14-69 | 6 photos each with fake `title`, `location` (Fairmont Hotel Macdonald, The Glass House, Art Gallery of Alberta, **Jasper Park Lodge**, Devonian Botanic Garden, Canadian Rockies), `category`, `story` line, and `season "Summer 2024"` style date claims |
-| 2 | `src/pages/Portfolio.tsx` lines 25-34 | 8 stories with fabricated `couple` names ("Garden Reception", "Farmhouse Candlelight", "Mountain Ceremony", "Bridal Florals", "Twilight Venue", "Floral Detail", "First Dance", "Place Setting"), fake `venue` ("Edmonton", "Alberta", "Canadian Rockies", "River Valley") and `season` |
-| 3 | `src/pages/Portfolio.tsx` lines 148-156 | `PortfolioFeaturedStory` filled with fake couple/venue/description/quote |
-| 4 | `src/components/wedding/FilmstripSection.tsx` lines 9-60 | 5 narrative `snippet` lines describing stock photos as real moments ("An intimate mountain exchange under a wild eucalyptus arch") |
-| 5 | `src/pages/Index.tsx` lines 67-74 | `FullWidthImage` with caption `"Edmonton · Alberta · The Canadian Rockies"` under a stock timber-venue photo |
-| 6 | `src/components/wedding/LakeLouiseDiptychSection.tsx` lines 100-113 | Fake temperature/month meta: `Feb · Frozen · −18°C` and `Aug · Glacial · 14°C`, plus alt text claiming "frozen in February" / "in August" |
-| 7 | `src/components/wedding/HeroSection.tsx` line 91 | Alt claims "Canadian Rocky Mountain peaks at golden hour" of a stock tablescape |
-| 8 | `src/components/wedding/HeroFloatingInset.tsx` line 39 | Alt describes a stock photo as "Mountain ceremony with candlelit aisle and eucalyptus garlands" |
-| 9 | `src/components/wedding/EditorialImageBreak.tsx` line 42 | Long alt claiming "brass candlestick holders... in a heritage timber venue" |
-| 10 | `src/components/wedding/EditorialSplitSection.tsx` lines 171, 265 | Two descriptive alts |
-| 11 | `src/components/wedding/PortfolioMasonryGrid.tsx` | Renders couple/venue/season/category badges from the fabricated story objects in #2 |
+### 1. `CeremonyInterludeSection.tsx` (NEW)
+- Full-bleed two-video diptych on the homepage, placed between the existing Hero/Manifesto beat and the new Reception beat.
+- Left half: IMG_8492 (pews/light). Right half: IMG_8494 (altar). Both autoplay muted loop, slow grade.
+- Gold hairline divider between, letterbox bars top/bottom, film-index mark `CR · 01`.
+- No caption text per your instruction — visuals carry it.
+- Reduced-motion fallback: first frame of each as still image.
 
-## How each one gets fixed
+### 2. `ReceptionDetailsSection.tsx` (NEW)
+- Three-column editorial row on desktop, stacked on mobile.
+- Left: IMG_8502 video (looping ambient tablescape).
+- Center: IMG_8506 flat-lay still with eyebrow "Reception" + headline "Welcomed by name." + 2-line body.
+- Right: IMG_8519 perspective still, 4:5, vignetted.
+- Secondary micro-row below: existing blurred seating-board pattern + the IMG_7123 desaturated detail tile + a small typographic mark. Three tiles, equal weight, treated as memorabilia not hero imagery.
+- Film-index mark `RC · 02`, same gold-corner frame system as the rest of the site.
 
-The pattern is the same across the board: **remove the specific claim, keep the design.** I'm not redesigning anything — just neutralizing language and metadata.
+### 3. Quiet "Studio Promises" treatment
+- Pick the existing `AboutPromises` (or `BrandPromiseSection`) beat and add IMG_8503 as a B&W, 25% opacity, tight-crop background video behind the text. No new section — just background bleed.
 
-### 1. `GallerySection.tsx` — strip the venue tags and stories
+### 4. Asset pipeline
+- All `.mov` and `.jpeg` files uploaded via `lovable-assets create` from `/mnt/user-uploads/` → `.asset.json` pointers in `src/assets/`. No binaries committed.
+- Video treatments (trim, crop, speed, grade) handled via CSS `object-fit`, `clip-path`, `filter`, and `playbackRate` on the `<video>` element — no re-encode. This keeps fidelity high and avoids ffmpeg in the build.
 
-For each of the 6 photos, drop `location`, `story`, `season`, and rework `title`/`category` into honest, neutral aesthetic labels (or remove entirely). Lightbox UI stays — it just stops naming venues and seasons. Where the rendered template currently shows `{photo.location}` or `{photo.story}` or `{photo.season}`, delete those JSX nodes too. The grid keeps its art direction; the captions just go quiet.
+### 5. Page wiring
+- New beats inserted into `src/pages/Index.tsx` (homepage) in this order: Hero → Manifesto → **CeremonyInterlude (NEW)** → **ReceptionDetails (NEW)** → existing downstream sections.
+- Promises background-video edit applied in place.
 
-### 2 + 3 + 11. `Portfolio.tsx` + `PortfolioMasonryGrid.tsx` + `PortfolioFeaturedStory.tsx`
-
-Rebuild the `weddingStories` array around honest aesthetic categories only (Reception, Ceremony, Florals, Details, etc. — drawn from what the image actually depicts visually, with no place names attached). Remove `couple`, `venue`, `season` fields from the data and from the rendered badges. Remove the filter set ("Full Planning / Partial Planning / Day-Of") since those tag a photo to a service tier you didn't actually plan — replace with `All / Reception / Ceremony / Florals / Details` aesthetic filters tied to the image content, or remove filters entirely until real work exists.
-
-For `PortfolioFeaturedStory`, either:
-- **(Preferred) Remove the featured-story block from `Portfolio.tsx` entirely** until a real featured wedding exists. The page already has the TODO comment acknowledging this (line 23). Cleanest move.
-- Or call it with honest aesthetic-direction copy that doesn't pretend to be a couple.
-
-I'll go with the removal — it's the most honest option and the page still has a hero, intro band, stats ribbon, masonry, and CTA. It does not feel hollow.
-
-`PortfolioMasonryGrid.tsx` itself: stop rendering the `couple`/`venue`/`season`/`category` badges; replace the badge row with a single small aesthetic label (Reception / Ceremony / Florals / Details) that reflects the image's *content*, not its provenance.
-
-### 4. `FilmstripSection.tsx`
-
-Strip every `snippet` (5 narrative sentences). Strip the `venue` field per slide — even the abstract values like "Design Philosophy" / "Reception Design" read as venue labels in context and should go. Keep the `label` column (Ceremony, Details, Reception, Florals, Celebration) — those are honest visual taxonomies. The component template that renders `{slide.snippet}` and `{slide.venue}` is updated to stop rendering those nodes.
-
-### 5. `Index.tsx` FullWidthImage
-
-Delete `caption="Edmonton · Alberta · The Canadian Rockies"` from the `<FullWidthImage src={venueImage} … />` block (it's tying a stock photo to a place list). The same business statement still appears in the footer service-area list and in SEO meta where it belongs at a business level, not a photo level. Pass an empty/neutral alt: just `alt=""` since the image is decorative within a designed section.
-
-### 6. `LakeLouiseDiptychSection.tsx`
-
-These photos are legitimately Lake Louise — that label stays. But everything around them was speculative:
-- Remove the `meta` prop entirely from both panels (drops "Feb · Frozen · −18°C" and "Aug · Glacial · 14°C"). The film-index marks (`FR W·01`, `FR S·01`) and the `Winter`/`Summer` badges stay — winter vs summer is verifiable from looking at the photos.
-- Shorten alt text to factual only: `"Lake Louise in winter"` and `"Lake Louise in summer"`. Drop the "February", "−18°C", "August", "Mount Victoria veiled in low cloud" narrative claims.
-- Remove the closing service-area microline `"Edmonton · Banff · Lake Louise · Jasper"` from the section — that one's redundant with the footer and shouldn't sit under photo content as if naming where the photos are from.
-
-### 7-10. Alt text cleanup (Hero, HeroFloatingInset, EditorialImageBreak, EditorialSplitSection)
-
-Per your instruction "Don't include descriptions for any picture, because it's all made up," collapse every long descriptive/narrative alt on stock imagery to one of two patterns:
-- If the image is **decorative** inside a designed editorial section: `alt=""` plus `aria-hidden="true"`. Lets screen readers skip and stops pretending it depicts a real H&R wedding.
-- If the image **must be announced** to screen readers for accessibility (e.g. lone hero image): a 3-5 word non-claiming alt like `"Wedding tablescape"`, `"Ceremony arch"`, `"Floral arrangement"`. No venue, no season, no narrative, no "golden hour", no "heritage timber".
-
-This is the right WCAG move too — decorative content shouldn't have invented alt text.
-
-## What stays untouched
-
-- **Service-area copy** in the footer, nav, SEO meta descriptions, JSON-LD, and `seo.ts` ("Edmonton, Alberta", "Canadian Rockies"). These describe your business reach, not photos.
-- **Lake Louise** as the section title in the diptych — those two photos really are Lake Louise.
-- **Stats**, **founder copy**, **promises**, **manifesto** — text-only, already audited in earlier turns.
-- **OG image** and meta tags.
-- **Layout, animation, typography, gold accents, watermarks** — zero design changes. Pure copy + metadata edit.
+## Technical notes
+- All videos: `playsInline muted loop autoPlay preload="metadata"`, with `<source>` and a poster from first frame.
+- `prefers-reduced-motion` → poster-only fallback for every video.
+- All copy, color, and motion stay inside the existing semantic token system — no hardcoded colors.
+- No new dependencies.
+- No backend, no data, no auth touched.
 
 ## Out of scope
-
-- Not adding new photos. Not removing any photos (the stock imagery stays as aesthetic direction, just unlabelled).
-- Not rebuilding the Portfolio filter pills logic if "remove filters" turns out to require restructuring — in that case I'll leave a single "All" pill and a clear `// TODO: reinstate filters when real categorized work exists` comment.
-- Not changing the Reception Details section (it was never built — the previous turn was interrupted before file writes).
-- Not retitling the Portfolio page from "Real Weddings" to something softer. Open to doing that next pass if you want; it's a separate decision since it changes nav copy and SEO.
-
-## Verification
-
-1. After the edits, run: `rg -i "fairmont|jasper park|glass house|art gallery of alberta|devonian|river valley" src/components src/pages` — must return zero results.
-2. Run: `rg -n "season:|couple:|venue:|location:|story:|snippet:" src/components src/pages` — should only return service-area or schema usages, not per-photo metadata.
-3. Visually walk `/`, `/portfolio`, hover gallery tiles, open the lightbox — confirm no photo names a real venue, no photo claims a season-year, no photo attributes a couple.
-4. Run an accessibility scan on `/` and confirm alt attributes are either short-and-factual or empty with `aria-hidden`.
+- Auditing the six un-reviewed `IMG_71xx` uploads.
+- Re-encoding video files (treatments are CSS-only).
+- Any change to existing Hero, Manifesto, or downstream sections beyond the Promises background bleed.
