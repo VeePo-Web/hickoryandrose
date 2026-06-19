@@ -152,9 +152,21 @@ html.lenis, html.lenis body {
     @apply bg-background text-foreground;
     font-family: 'Jost', sans-serif;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.7;
   }
+
+  /* Sitewide readability floor — no body text below 14px, no body weight below 400.
+     Display headings (Cormorant) intentionally exempted via :where selector below. */
+  p, li, a, span, button, input, textarea, select, label,
+  small, figcaption, blockquote, td, th, dd, dt {
+    font-size: max(1em, 0.875rem);
+  }
+  :where(p, li, a, span, button, input, textarea, select, label,
+    small, figcaption, blockquote, td, th, dd, dt).font-light {
+    font-weight: 400;
+  }
+
 
   h1, h2, h3, h4, h5 {
     font-family: 'Cormorant Garamond', serif;
