@@ -60,38 +60,65 @@ const BrandPromiseSection = () => {
       ref={sectionRef}
       className="py-section-mobile md:py-section-tablet lg:py-section-desktop bg-background relative overflow-hidden"
     >
-      {/* Ambient reception-wide video bleed — B&W, low-opacity, behind everything */}
-      {!prefersReducedMotion && (
-        <div
-          className="absolute inset-0 pointer-events-none overflow-hidden z-0"
-          aria-hidden="true"
-          style={{
-            WebkitMaskImage:
-              "radial-gradient(ellipse at center, black 35%, transparent 80%)",
-            maskImage:
-              "radial-gradient(ellipse at center, black 35%, transparent 80%)",
-          }}
-        >
-          <video
-            ref={bgVideoRef}
-            src={receptionWideVideo.url}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-auto h-auto"
-            style={{
-              opacity: 0.22,
-              filter: "grayscale(1) contrast(1.1) brightness(0.95) blur(1px)",
-              // Tight horizontal sliver: scale up + center to skip PA/ceiling
-              transform: "translate(-50%, -50%) scale(2.4)",
-              objectFit: "cover",
-              objectPosition: "50% 55%",
-            }}
-          />
-        </div>
-      )}
+      {/* Ambient reception-wide bleed — responsive: poster on mobile/tablet, video on desktop */}
+      {!prefersReducedMotion && (() => {
+        const useVideo = bp === "desktop" && !saveData;
+        const maskImage =
+          bp === "mobile"
+            ? "linear-gradient(180deg, transparent 0%, transparent 55%, black 82%, transparent 100%)"
+            : bp === "tablet"
+            ? "radial-gradient(ellipse at 75% 50%, black 30%, transparent 72%)"
+            : "radial-gradient(ellipse at center, black 35%, transparent 80%)";
+        const opacity = bp === "mobile" ? 0.1 : bp === "tablet" ? 0.16 : 0.22;
+        const scale = bp === "mobile" ? 1.4 : bp === "tablet" ? 2.0 : 2.4;
+        const objectPosition = bp === "mobile" ? "50% 70%" : "50% 55%";
+
+        return (
+          <div
+            className="absolute inset-0 pointer-events-none overflow-hidden z-0"
+            aria-hidden="true"
+            style={{ WebkitMaskImage: maskImage, maskImage }}
+          >
+            {useVideo ? (
+              <video
+                ref={bgVideoRef}
+                src={receptionWideVideo.url}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster={receptionPoster.url}
+                className="absolute left-1/2 top-1/2 min-w-full min-h-full w-auto h-auto"
+                style={{
+                  opacity,
+                  filter: "grayscale(1) contrast(1.1) brightness(0.95) blur(1px)",
+                  transform: `translate(-50%, -50%) scale(${scale})`,
+                  objectFit: "cover",
+                  objectPosition,
+                }}
+              />
+            ) : (
+              <img
+                src={receptionPoster.url}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                // @ts-expect-error fetchpriority is valid HTML
+                fetchpriority="low"
+                className="absolute left-1/2 top-1/2 min-w-full min-h-full w-auto h-auto"
+                style={{
+                  opacity,
+                  filter: "grayscale(1) contrast(1.05) brightness(0.95) blur(1px)",
+                  transform: `translate(-50%, -50%) scale(${scale})`,
+                  objectFit: "cover",
+                  objectPosition,
+                }}
+              />
+            )}
+          </div>
+        );
+      })()}
 
       {/* Large decorative watermark */}
       <motion.div
