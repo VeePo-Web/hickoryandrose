@@ -24,11 +24,17 @@ export default {
         "display-md": ["clamp(1.5rem, 3vw, 2rem)", { lineHeight: "1.2", letterSpacing: "-0.015em", fontWeight: "400" }],
         "display-sm": ["clamp(1.125rem, 2vw, 1.5rem)", { lineHeight: "1.3", letterSpacing: "-0.01em", fontWeight: "400" }],
         "pull-quote": ["clamp(1.5rem, 3vw, 2.25rem)", { lineHeight: "1.35", letterSpacing: "-0.01em", fontWeight: "300" }],
-        "body-lg": ["1.0625rem", { lineHeight: "1.7", fontWeight: "300" }],
-        "body": ["0.9375rem", { lineHeight: "1.7", fontWeight: "300" }],
-        "body-sm": ["0.8125rem", { lineHeight: "1.6", fontWeight: "400" }],
-        "label": ["0.8125rem", { lineHeight: "1.5", letterSpacing: "0.18em", fontWeight: "400" }],
-        "caption": ["0.8125rem", { lineHeight: "1.5", letterSpacing: "0.04em", fontWeight: "400" }],
+        // Readability floor: body >= 16px, body-sm >= 14px, weight >= 400
+        "body-lg": ["1.125rem", { lineHeight: "1.7", fontWeight: "400" }],
+        "body": ["1rem", { lineHeight: "1.7", fontWeight: "400" }],
+        "body-sm": ["0.875rem", { lineHeight: "1.65", fontWeight: "400" }],
+        "label": ["0.875rem", { lineHeight: "1.5", letterSpacing: "0.18em", fontWeight: "400" }],
+        "caption": ["0.875rem", { lineHeight: "1.5", letterSpacing: "0.04em", fontWeight: "400" }],
+        // Override Tailwind defaults so legacy text-xs/text-sm usages meet the floor
+        "xs": ["0.8125rem", { lineHeight: "1.5" }],
+        "sm": ["0.875rem", { lineHeight: "1.6" }],
+        "base": ["1rem", { lineHeight: "1.7" }],
+
       },
       colors: {
         border: "hsl(var(--border))",
