@@ -4,6 +4,7 @@ import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
 import editorialFloralsImage from "@/assets/editorial-florals.jpg";
 import receptionWideVideo from "@/assets/reception-wide.mov.asset.json";
+import receptionPoster from "@/assets/reception-flatlay.jpg.asset.json";
 
 const pillars = [
   { label: "Calm Leadership", detail: "Thoughtful preparation, clear timelines, and challenges anticipated long before they reach you — so the day feels steady from start to finish.", emphasis: "Calm" },
