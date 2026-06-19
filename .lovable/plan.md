@@ -1,49 +1,68 @@
-# Responsive Video Bleed — BrandPromiseSection
+# Sitewide Minimum Text Size — Readability Pass
 
-Make the ambient `reception-wide.mov` background bleed behave seamlessly across mobile, tablet, and desktop without ever competing with the headline, drop‑cap quote, or pillar rows — while keeping load cost near zero on small screens.
+Right now, body text is set to 15px and dozens of components use Tailwind's `text-xs` (12px), arbitrary `text-[11px]`/`text-[13px]`, and ultra-thin font weights (300). On a real screen, captions, labels, footer text, badges, and form helper copy fall below comfortable reading size. This plan establishes a **hard floor of 14px** (16px on body) and raises everything that falls under it — without altering the editorial hierarchy or desktop layout.
 
-## Problem today
+## The Rule (sitewide)
 
-`BrandPromiseSection.tsx` renders the video full‑section with a hard `scale(2.4)` and a radial center mask. On <768px viewports this:
-- Pushes motion directly behind the drop‑cap pull‑quote, reducing legibility.
-- Loads a ~22 MB `.mov` on phones where it is barely visible.
-- Uses a radial mask sized for desktop, so on portrait phones the masked region bleeds across the headline column.
+| Role                  | Old        | New (minimum)  |
+| --------------------- | ---------- | -------------- |
+| Body / paragraphs     | 15px / 300 | **16px / 400** |
+| Body large            | 17px       | 18px           |
+| Body small            | 13px / 300 | **14px / 400** |
+| Captions              | 13px       | **14px**       |
+| Labels / overlines    | 13px       | **14px**       |
+| Badges / chips        | 12px       | **13px**       |
+| Footer / nav meta     | 12–13px    | **14px**       |
+| Form helper / errors  | 12px       | **14px**       |
+| Min font-weight (body)| 300        | **400**        |
 
-## Approach (presentation‑only, no logic changes)
+Display / serif headings (Cormorant) are unchanged — they're already large.
 
-Single component edit. No new deps. No re‑encode. All work in `src/components/wedding/BrandPromiseSection.tsx`.
+## What changes
 
-### 1. Gate the video by viewport + capability
-- Use existing `useIsMobile()` (768px) plus a new `useIsTablet()` check (≥768 and <1024 via `matchMedia`) — no new hook file; inline `matchMedia` in an effect.
-- Render the `<video>` only on `lg+` (≥1024px). On mobile and tablet, render a static poster image instead (first‑frame JPG already implied by `preload="metadata"`; we'll add an explicit `poster` derived from `reception-flatlay.jpg` as a stand‑in or generate a dedicated still later — for now reuse `reception-flatlay.jpg` as poster fallback to avoid new asset upload in this pass).
-- Also short‑circuit when `navigator.connection?.saveData` is true or `effectiveType` is `2g`/`slow-2g` → poster only.
-- `prefersReducedMotion` already short‑circuits; keep.
+1. **`src/index.css` — base body**
+   - `body { font-size: 16px; font-weight: 400; line-height: 1.7; }`
+   - Add an enforcement layer that re-floors anything tiny:
+     ```css
+     @layer base {
+       p, li, span, a, button, input, textarea, select, label,
+       small, figcaption, blockquote, td, th { font-size: max(1em, 14px); }
+       .font-overline, .font-caption { font-size: 14px; letter-spacing: 0.18em; }
+     }
+     ```
+   - Bump `.font-overline` from 0.8125rem → **0.875rem (14px)**.
+   - Drop-cap and decorative styles untouched.
 
-### 2. Reposition the bleed away from the headline column
-- Desktop (lg+): keep current centered radial mask, `scale(2.4)`, opacity `0.22`.
-- Tablet (md): shift the mask to the right side so the left text column stays clean. Mask becomes `radial-gradient(ellipse at 75% 50%, black 30%, transparent 70%)`, opacity `0.16`, `scale(2.0)`.
-- Mobile (<md): poster only, anchored bottom, opacity `0.10`, mask `linear-gradient(180deg, transparent 0%, transparent 55%, black 80%, transparent 100%)` so it sits behind the pillar rows, never behind the drop‑cap.
+2. **`tailwind.config.ts` — token scale**
+   - `body-lg`: 1.0625 → **1.125rem (18px)**, weight 400
+   - `body`: 0.9375 → **1rem (16px)**, weight 400
+   - `body-sm`: 0.8125 → **0.875rem (14px)**, weight 400
+   - `label`: 0.8125 → **0.875rem (14px)**
+   - `caption`: 0.8125 → **0.875rem (14px)**
+   - Add custom utility override so `text-xs` resolves to **0.8125rem (13px)** instead of 0.75rem (12px) — catches every legacy usage in one shot without touching 60+ files.
 
-### 3. Guarantee text legibility
-- Add a `::before` scrim on the headline container at `<lg`: `bg-gradient-to-b from-background via-background/85 to-transparent` over the top 60% so the drop‑cap always has a clean ground.
-- Bump headline `relative z-10` (already in place on the container) — verify and reinforce on the inner grid.
+3. **shadcn primitives** (`button.tsx`, `badge.tsx`, `input.tsx`, `label.tsx`, `form.tsx`)
+   - Replace `text-xs` on badges/form-messages with `text-[0.8125rem]` (13px) where chips need to stay compact, `text-sm` (14px) everywhere else.
+   - Inputs/textarea: `text-sm` → **text-base** (16px) — also stops iOS Safari from auto-zooming on focus.
 
-### 4. Performance
-- `<video>` only mounts at `lg+` → mobile/tablet never fetch the 22 MB file.
-- Add `preload="none"` on tablet path (we're not rendering video there anyway, but documented).
-- Desktop keeps `preload="metadata"` and `playbackRate = 0.5`.
-- Wrap the bleed layer in `will-change: transform, opacity` only while in view via `IntersectionObserver` (lightweight, no framer dep) to avoid GPU layer pinning when section is off‑screen.
-- Poster `<img>` uses `loading="lazy"`, `decoding="async"`, `fetchpriority="low"`.
+4. **High-traffic wedding components** — sweep `text-xs` → `text-sm` (or `text-[13px]` for true micro-labels) in:
+   - `Footer.tsx`, `FooterNewsletter.tsx`, `FooterServiceAreas.tsx`
+   - `Navigation.tsx`, `NavigationMobileMenu.tsx`
+   - `TrustBarSection.tsx`, `StatsSection.tsx`, `PressMentionsSection.tsx`
+   - `ServicesOverviewSection.tsx`, `ServicesInvestmentPhilosophy.tsx`, `ServicesVendorPartners.tsx`
+   - `VendorShowcaseSection.tsx`, `GallerySection.tsx`, `TestimonialSection.tsx`, `BrandManifestoSection.tsx`, `FounderTeaserSection.tsx`, `NowBookingSection.tsx`, `TravelSection.tsx`, `ThingsToDoSection.tsx`, `FullWidthImage.tsx`
+   - Page files: `FAQ`, `About`, `Services`, `Journal`, `Portfolio`, `Inquire`
 
-### 5. Reduced motion + a11y
-- `prefersReducedMotion` → poster only at every breakpoint.
-- `aria-hidden="true"` retained on the bleed layer.
+5. **Weight floor**: any `font-light` / `font-weight: 300` applied to body copy (not display headings) → `font-normal` (400). Cormorant display text keeps its editorial weight.
 
-## Files touched
-- `src/components/wedding/BrandPromiseSection.tsx` — only file changed.
+6. **Persona doc** — update `src/config/personas/responsive-mobile.ts` and `src/config/personas/ui-visual.ts` with the new rule: "No body text under 14px sitewide; body default is 16px/400."
 
 ## Out of scope
-- No changes to other sections, no new assets uploaded, no re‑encode of the `.mov`, no new hooks files, no design‑token changes. A dedicated optimized poster/WebM pass can be a follow‑up.
+- No changes to Cormorant display headings, drop-cap, script font, or section spacing.
+- No layout/grid changes.
+- No new dependencies.
 
 ## Verification
-- `browser--view_preview` at 375, 768, 1024, 1440 widths; confirm: (a) no video request on mobile/tablet via network panel, (b) drop‑cap quote fully legible at every width, (c) desktop bleed unchanged.
+- Build passes.
+- `browser--view_preview` at 1440 and 375 — confirm footer, badges, captions, form helper text all read at ≥14px; inputs no longer trigger iOS zoom.
+- Quick `rg "text-xs"` sweep after — only intentional micro-labels remain (and even those now resolve to 13px via the token override).
