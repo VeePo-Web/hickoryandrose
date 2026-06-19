@@ -17,10 +17,35 @@ const BrandPromiseSection = () => {
   const bgVideoRef = useRef<HTMLVideoElement>(null);
   const prefersReducedMotion = useReducedMotion();
   const [activePillar, setActivePillar] = useState<number | null>(null);
+  const [bp, setBp] = useState<"mobile" | "tablet" | "desktop">("desktop");
+  const [saveData, setSaveData] = useState(false);
+
+  useEffect(() => {
+    const mqMobile = window.matchMedia("(max-width: 767px)");
+    const mqTablet = window.matchMedia("(min-width: 768px) and (max-width: 1023px)");
+    const update = () => {
+      setBp(mqMobile.matches ? "mobile" : mqTablet.matches ? "tablet" : "desktop");
+    };
+    update();
+    mqMobile.addEventListener("change", update);
+    mqTablet.addEventListener("change", update);
+
+    const conn = (navigator as any).connection;
+    if (conn) {
+      const checkData = () =>
+        setSaveData(!!conn.saveData || /2g/.test(conn.effectiveType || ""));
+      checkData();
+      conn.addEventListener?.("change", checkData);
+    }
+    return () => {
+      mqMobile.removeEventListener("change", update);
+      mqTablet.removeEventListener("change", update);
+    };
+  }, []);
 
   useEffect(() => {
     if (bgVideoRef.current) bgVideoRef.current.playbackRate = 0.5;
-  }, []);
+  }, [bp]);
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
