@@ -1,55 +1,49 @@
-# Reception + Ceremony cinematic build
+# Responsive Video Bleed — BrandPromiseSection
 
-## Heads-up before we start
-Your `/mnt/user-uploads/` folder also contains **IMG_7120, 7122, 7124, 7125, 7126, 7127** — I have not audited those yet. This plan ships the assets you've already approved. If those six are also reception/tent images at the same quality tier as 7123, several will likely fail audit and won't make the public site. I'll audit them in the next turn if you want; nothing in this plan depends on them.
+Make the ambient `reception-wide.mov` background bleed behave seamlessly across mobile, tablet, and desktop without ever competing with the headline, drop‑cap quote, or pillar rows — while keeping load cost near zero on small screens.
 
-## Asset decisions (locked from your answers)
-| Asset | Decision | Treatment |
-|---|---|---|
-| IMG_8502.mov (close tablescape) | Approved | Trim 2.0–6.5s, 21:9 center-crop, 0.5× speed, warm-cream LUT, looping ambient |
-| IMG_8506.jpeg (overhead flat-lay) | Approved | Hero still, magazine crop |
-| IMG_8519.jpeg (long-table perspective) | Approved | 4:5 crop, vignette + soft blur on upper third to mute venue background |
-| IMG_8492.mov (pews + stained glass) | Approved — no caption | Heavy treatment: B&W → soft warm grade, 0.6× speed, vignette |
-| IMG_8494.mov (altar + crucifix) | Approved — no caption | Paired with #1, same grade, no overlay text |
-| IMG_8503.mov (wide reception, PA visible) | Tight crop behind text | 21:9 sliver of centerpiece run only, B&W, 25% opacity, behind body text in Studio Promises beat |
-| IMG_7123.jpeg (tent table) | Detail tile only | Crop to wooden "8" table-number + single mercury votive on linen, desaturated, ~180×240px tile in a gallery grid |
+## Problem today
 
-## What gets built
+`BrandPromiseSection.tsx` renders the video full‑section with a hard `scale(2.4)` and a radial center mask. On <768px viewports this:
+- Pushes motion directly behind the drop‑cap pull‑quote, reducing legibility.
+- Loads a ~22 MB `.mov` on phones where it is barely visible.
+- Uses a radial mask sized for desktop, so on portrait phones the masked region bleeds across the headline column.
 
-### 1. `CeremonyInterludeSection.tsx` (NEW)
-- Full-bleed two-video diptych on the homepage, placed between the existing Hero/Manifesto beat and the new Reception beat.
-- Left half: IMG_8492 (pews/light). Right half: IMG_8494 (altar). Both autoplay muted loop, slow grade.
-- Gold hairline divider between, letterbox bars top/bottom, film-index mark `CR · 01`.
-- No caption text per your instruction — visuals carry it.
-- Reduced-motion fallback: first frame of each as still image.
+## Approach (presentation‑only, no logic changes)
 
-### 2. `ReceptionDetailsSection.tsx` (NEW)
-- Three-column editorial row on desktop, stacked on mobile.
-- Left: IMG_8502 video (looping ambient tablescape).
-- Center: IMG_8506 flat-lay still with eyebrow "Reception" + headline "Welcomed by name." + 2-line body.
-- Right: IMG_8519 perspective still, 4:5, vignetted.
-- Secondary micro-row below: existing blurred seating-board pattern + the IMG_7123 desaturated detail tile + a small typographic mark. Three tiles, equal weight, treated as memorabilia not hero imagery.
-- Film-index mark `RC · 02`, same gold-corner frame system as the rest of the site.
+Single component edit. No new deps. No re‑encode. All work in `src/components/wedding/BrandPromiseSection.tsx`.
 
-### 3. Quiet "Studio Promises" treatment
-- Pick the existing `AboutPromises` (or `BrandPromiseSection`) beat and add IMG_8503 as a B&W, 25% opacity, tight-crop background video behind the text. No new section — just background bleed.
+### 1. Gate the video by viewport + capability
+- Use existing `useIsMobile()` (768px) plus a new `useIsTablet()` check (≥768 and <1024 via `matchMedia`) — no new hook file; inline `matchMedia` in an effect.
+- Render the `<video>` only on `lg+` (≥1024px). On mobile and tablet, render a static poster image instead (first‑frame JPG already implied by `preload="metadata"`; we'll add an explicit `poster` derived from `reception-flatlay.jpg` as a stand‑in or generate a dedicated still later — for now reuse `reception-flatlay.jpg` as poster fallback to avoid new asset upload in this pass).
+- Also short‑circuit when `navigator.connection?.saveData` is true or `effectiveType` is `2g`/`slow-2g` → poster only.
+- `prefersReducedMotion` already short‑circuits; keep.
 
-### 4. Asset pipeline
-- All `.mov` and `.jpeg` files uploaded via `lovable-assets create` from `/mnt/user-uploads/` → `.asset.json` pointers in `src/assets/`. No binaries committed.
-- Video treatments (trim, crop, speed, grade) handled via CSS `object-fit`, `clip-path`, `filter`, and `playbackRate` on the `<video>` element — no re-encode. This keeps fidelity high and avoids ffmpeg in the build.
+### 2. Reposition the bleed away from the headline column
+- Desktop (lg+): keep current centered radial mask, `scale(2.4)`, opacity `0.22`.
+- Tablet (md): shift the mask to the right side so the left text column stays clean. Mask becomes `radial-gradient(ellipse at 75% 50%, black 30%, transparent 70%)`, opacity `0.16`, `scale(2.0)`.
+- Mobile (<md): poster only, anchored bottom, opacity `0.10`, mask `linear-gradient(180deg, transparent 0%, transparent 55%, black 80%, transparent 100%)` so it sits behind the pillar rows, never behind the drop‑cap.
 
-### 5. Page wiring
-- New beats inserted into `src/pages/Index.tsx` (homepage) in this order: Hero → Manifesto → **CeremonyInterlude (NEW)** → **ReceptionDetails (NEW)** → existing downstream sections.
-- Promises background-video edit applied in place.
+### 3. Guarantee text legibility
+- Add a `::before` scrim on the headline container at `<lg`: `bg-gradient-to-b from-background via-background/85 to-transparent` over the top 60% so the drop‑cap always has a clean ground.
+- Bump headline `relative z-10` (already in place on the container) — verify and reinforce on the inner grid.
 
-## Technical notes
-- All videos: `playsInline muted loop autoPlay preload="metadata"`, with `<source>` and a poster from first frame.
-- `prefers-reduced-motion` → poster-only fallback for every video.
-- All copy, color, and motion stay inside the existing semantic token system — no hardcoded colors.
-- No new dependencies.
-- No backend, no data, no auth touched.
+### 4. Performance
+- `<video>` only mounts at `lg+` → mobile/tablet never fetch the 22 MB file.
+- Add `preload="none"` on tablet path (we're not rendering video there anyway, but documented).
+- Desktop keeps `preload="metadata"` and `playbackRate = 0.5`.
+- Wrap the bleed layer in `will-change: transform, opacity` only while in view via `IntersectionObserver` (lightweight, no framer dep) to avoid GPU layer pinning when section is off‑screen.
+- Poster `<img>` uses `loading="lazy"`, `decoding="async"`, `fetchpriority="low"`.
+
+### 5. Reduced motion + a11y
+- `prefersReducedMotion` → poster only at every breakpoint.
+- `aria-hidden="true"` retained on the bleed layer.
+
+## Files touched
+- `src/components/wedding/BrandPromiseSection.tsx` — only file changed.
 
 ## Out of scope
-- Auditing the six un-reviewed `IMG_71xx` uploads.
-- Re-encoding video files (treatments are CSS-only).
-- Any change to existing Hero, Manifesto, or downstream sections beyond the Promises background bleed.
+- No changes to other sections, no new assets uploaded, no re‑encode of the `.mov`, no new hooks files, no design‑token changes. A dedicated optimized poster/WebM pass can be a follow‑up.
+
+## Verification
+- `browser--view_preview` at 375, 768, 1024, 1440 widths; confirm: (a) no video request on mobile/tablet via network panel, (b) drop‑cap quote fully legible at every width, (c) desktop bleed unchanged.
