@@ -115,7 +115,7 @@ const InstagramSection = () => {
             
             {/* Right description */}
             <div className="md:text-right max-w-xs">
-              <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light leading-relaxed">
+              <p className="font-sans-wedding text-body-sm text-muted-foreground/75 font-light leading-relaxed">
                 Behind the scenes, real weddings, and the details that make it all come together.
               </p>
               <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground/60 mt-3 inline-flex items-center gap-2">

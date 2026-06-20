@@ -70,7 +70,7 @@ const ScrollProgress = memo(() => {
           animate={{ opacity: 1 }}
           className="fixed top-3 right-6 z-[60] pointer-events-none"
         >
-          <span className="font-sans-wedding text-caption tracking-[0.25em] text-muted-foreground/40 tabular-nums">
+          <span className="font-sans-wedding text-caption tracking-[0.25em] text-muted-foreground/70 tabular-nums">
             {percent}%
           </span>
         </motion.div>

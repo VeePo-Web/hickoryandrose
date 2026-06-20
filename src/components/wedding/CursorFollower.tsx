@@ -137,7 +137,7 @@ const CursorFollower = memo(() => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
-                className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-primary-foreground font-medium"
+                className="font-sans-wedding text-[0.75rem] tracking-[0.15em] uppercase text-primary-foreground font-medium"
               >
                 {cursorLabel}
               </motion.span>

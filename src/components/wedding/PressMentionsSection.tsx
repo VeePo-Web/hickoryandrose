@@ -134,7 +134,7 @@ const PressMentionsSection = () => {
                 
                 {/* Year */}
                 <div className="hidden md:block col-span-2 text-center">
-                  <span className="font-serif-wedding text-xs italic text-foreground/8 group-hover:text-foreground/25 transition-colors duration-500">
+                  <span className="font-serif-wedding text-xs italic text-foreground/8 group-hover:text-foreground/60 transition-colors duration-500">
                     {mention.year}
                   </span>
                 </div>

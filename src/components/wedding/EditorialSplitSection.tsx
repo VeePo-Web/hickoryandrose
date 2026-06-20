@@ -134,7 +134,7 @@ const EditorialSplitSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="font-sans-wedding text-body-sm text-primary-foreground/30 leading-relaxed mb-8 font-light max-w-sm"
+              className="font-sans-wedding text-body-sm text-primary-foreground/65 leading-relaxed mb-8 font-light max-w-sm"
             >
               We obsess over the details so you don't have to.
             </motion.p>
@@ -147,7 +147,7 @@ const EditorialSplitSection = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="w-6 h-px bg-primary-foreground/15 origin-left"
               />
-              <span className="font-script text-xl text-primary-foreground/35">
+              <span className="font-script text-xl text-primary-foreground/70">
                 Hickory & Rose
               </span>
             </div>

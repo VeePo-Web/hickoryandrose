@@ -53,7 +53,7 @@ const JournalFeatured = ({ article }: JournalFeaturedProps) => (
                 {article.category}
               </span>
               <span className="w-4 h-px bg-border/40" />
-              <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/50">
+              <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/75">
                 Studio Note
               </span>
             </div>

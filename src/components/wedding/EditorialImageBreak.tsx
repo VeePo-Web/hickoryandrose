@@ -151,7 +151,7 @@ const EditorialImageBreak = () => {
                 background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.5))",
               }}
             />
-            <span className="font-script text-white/50 text-lg">&</span>
+            <span className="font-script text-white/75 text-lg">&</span>
             <motion.div
               className="h-px origin-left"
               style={{
@@ -204,10 +204,10 @@ const EditorialImageBreak = () => {
 
       {/* Corner index marks */}
       <div className="absolute bottom-6 left-6 z-20 pointer-events-none hidden md:block" aria-hidden="true">
-        <span className="font-serif-wedding text-xs text-white/30 font-light">04</span>
+        <span className="font-serif-wedding text-xs text-white/65 font-light">04</span>
       </div>
       <div className="absolute bottom-6 right-6 z-20 pointer-events-none hidden md:block" aria-hidden="true">
-        <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/30">Editorial</span>
+        <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-white/65">Editorial</span>
       </div>
     </section>
   );

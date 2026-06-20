@@ -107,7 +107,7 @@ const TestimonialSection = () => {
               <div className="flex items-center gap-4 mb-8">
                 <span className="font-serif-wedding text-sm text-primary/20 font-light">05</span>
                 <span className="w-8 h-px bg-primary/20" />
-                <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 tracking-[0.2em]">
+                <p className="font-sans-wedding text-label uppercase text-muted-foreground/75 tracking-[0.2em]">
                   From the Studio
                 </p>
               </div>
@@ -204,7 +204,7 @@ const TestimonialSection = () => {
                             {active.venue}
                           </p>
                           <span className="text-muted-foreground/20">·</span>
-                          <p className="text-caption text-muted-foreground/40 italic">
+                          <p className="text-caption text-muted-foreground/70 italic">
                             {active.season}
                           </p>
                         </div>

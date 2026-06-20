@@ -112,7 +112,7 @@ const PreFooterDivider = () => {
                 <BreathingDiamond size={10} />
               </div>
 
-              <p className="font-overline text-muted-foreground/35 mb-6">
+              <p className="font-overline text-muted-foreground/70 mb-6">
                 Limited Availability
               </p>
 
@@ -120,7 +120,7 @@ const PreFooterDivider = () => {
                 Currently accepting a limited number of weddings for 2025 & 2026.
               </p>
 
-              <p className="font-sans-wedding text-body-sm text-muted-foreground/40 font-light mb-4 max-w-md mx-auto lg:mx-0">
+              <p className="font-sans-wedding text-body-sm text-muted-foreground/70 font-light mb-4 max-w-md mx-auto lg:mx-0">
                 We take on a curated number of couples each season to ensure every
                 wedding receives our full attention and care.
               </p>
@@ -138,7 +138,7 @@ const PreFooterDivider = () => {
                       transition={{ duration: 0.35 }}
                       className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-foreground/60 font-light inline-block"
                     >
-                      {seasonSlots[activeSeason].season} — <span className={seasonSlots[activeSeason].accent ? "text-primary/60" : "text-muted-foreground/40"}>{seasonSlots[activeSeason].status}</span>
+                      {seasonSlots[activeSeason].season} — <span className={seasonSlots[activeSeason].accent ? "text-primary/60" : "text-muted-foreground/70"}>{seasonSlots[activeSeason].status}</span>
                     </motion.span>
                   </AnimatePresence>
                 </div>

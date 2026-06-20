@@ -231,7 +231,7 @@ const InquireCelebration = () => (
           </MagneticButton>
           <a
             href="/approach"
-            className="font-sans-wedding text-xs text-muted-foreground/50 underline underline-offset-4 hover:text-primary transition-colors"
+            className="font-sans-wedding text-xs text-muted-foreground/75 underline underline-offset-4 hover:text-primary transition-colors"
           >
             Learn about our approach
           </a>

@@ -180,7 +180,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                   <li key={link.path}>
                     <Link
                       to={link.path}
-                      className={`relative px-4 py-2 font-sans-wedding text-[0.6875rem] tracking-[0.18em] uppercase font-light transition-all duration-200 hover:opacity-80 group ${
+                      className={`relative px-4 py-2 font-sans-wedding text-[0.8125rem] tracking-[0.18em] uppercase font-light transition-all duration-200 hover:opacity-80 group ${
                         showSolidBg ? "text-foreground" : "text-white"
                       }`}
                     >
@@ -224,7 +224,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
             <div className="hidden lg:block">
               <Link
                 to="/inquire"
-                className={`relative inline-flex items-center px-6 py-2.5 text-[0.6875rem] tracking-[0.18em] uppercase font-sans-wedding font-light border transition-all duration-300 overflow-hidden group ${
+                className={`relative inline-flex items-center px-6 py-2.5 text-[0.8125rem] tracking-[0.18em] uppercase font-sans-wedding font-light border transition-all duration-300 overflow-hidden group ${
                   showSolidBg
                     ? "border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                     : "border-white/60 text-white hover:bg-white/10 hover:border-white"

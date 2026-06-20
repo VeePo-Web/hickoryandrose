@@ -139,7 +139,7 @@ const StatsSection = () => {
             <div className="md:col-span-5">
               <div className="flex items-center gap-4 mb-4">
                 <span className="w-5 h-px bg-background/15" />
-                <p className="font-sans-wedding text-label uppercase text-background/25 tracking-[0.2em]">
+                <p className="font-sans-wedding text-label uppercase text-background/60 tracking-[0.2em]">
                   At a Glance
                 </p>
               </div>
@@ -155,7 +155,7 @@ const StatsSection = () => {
               />
             </div>
             <div className="md:col-span-7">
-              <p className="font-sans-wedding text-body-sm text-background/25 font-light leading-relaxed max-w-sm md:ml-auto">
+              <p className="font-sans-wedding text-body-sm text-background/60 font-light leading-relaxed max-w-sm md:ml-auto">
                 A snapshot of where Hickory & Rose is right now. We keep our calendar intentionally limited, so every couple has our full attention.
               </p>
             </div>
@@ -224,11 +224,11 @@ const StatsSection = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
                       />
-                      <p className="font-sans-wedding text-label uppercase text-background/40 group-hover:text-background/60 transition-colors duration-500">
+                      <p className="font-sans-wedding text-label uppercase text-background/70 group-hover:text-background/60 transition-colors duration-500">
                         {stat.label}
                       </p>
                     </div>
-                    <p className="font-sans-wedding text-xs text-background/20 font-light italic pl-9 group-hover:text-background/30 transition-colors duration-500">
+                    <p className="font-sans-wedding text-xs text-background/20 font-light italic pl-9 group-hover:text-background/65 transition-colors duration-500">
                       {stat.detail}
                     </p>
                   </div>
@@ -293,7 +293,7 @@ const StatsSection = () => {
                   style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.03) 40%, hsl(var(--gold) / 0.06) 50%, hsl(var(--gold) / 0.03) 60%, transparent 100%)" }}
                 />
                 <p className="font-serif-wedding text-sm text-background/60 italic group-hover/foot:text-background/70 transition-colors duration-500">{item.label}</p>
-                <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-background/50 mt-1 group-hover/foot:text-background/60 transition-colors duration-500">{item.note}</p>
+                <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-background/75 mt-1 group-hover/foot:text-background/60 transition-colors duration-500">{item.note}</p>
               </motion.div>
             ))}
           </div>
@@ -317,7 +317,7 @@ const StatsSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.7 + i * 0.1, duration: 0.4 }}
-                    className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-background/50 flex items-center gap-2"
+                    className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-background/75 flex items-center gap-2"
                   >
                     <span className="w-1 h-1 rotate-45" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }} />
                     {cred}

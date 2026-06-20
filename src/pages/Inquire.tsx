@@ -169,7 +169,7 @@ const Inquire = () => {
         </motion.div>
         <motion.div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6" style={{ opacity: heroOpacity }}>
           <ScrollReveal>
-            <p className="font-sans-wedding text-label uppercase text-white/50 mb-4">
+            <p className="font-sans-wedding text-label uppercase text-white/75 mb-4">
               <span className="inline-flex items-center gap-3">
                 <motion.span className="w-8 h-px bg-white/30 origin-right" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.8, delay: 0.5 }} />
                 Begin Your Story
@@ -183,7 +183,7 @@ const Inquire = () => {
         <GoldFrame inset="20px" delay={1} />
         <motion.div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-4 py-3 pointer-events-none" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6, duration: 0.8 }}>
           {["Complimentary Call", "No Commitment", "24–48hr Reply"].map((t, i) => (
-            <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/30 flex items-center gap-4">
+            <span key={t} className="font-sans-wedding text-[0.75rem] tracking-[0.18em] uppercase text-white/65 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
             </span>
@@ -243,7 +243,7 @@ const Inquire = () => {
               <div className="mt-8 relative">
                 <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }} className="w-10 h-px mb-4 origin-left" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), hsl(var(--primary) / 0.1))" }} />
                 <p className="font-serif-wedding text-lg italic text-brand-text-secondary leading-relaxed">"Every great wedding starts with a simple conversation."</p>
-                <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-brand-text-decorative mt-3">— Hickory & Rose</p>
+                <p className="font-sans-wedding text-[0.75rem] tracking-[0.12em] uppercase text-brand-text-decorative mt-3">— Hickory & Rose</p>
               </div>
             </div>
 
@@ -285,7 +285,7 @@ const Inquire = () => {
                   rel="noopener noreferrer"
                   className="group inline-flex items-center justify-center gap-1 mt-3 w-full"
                 >
-                  <span className="text-caption tracking-[0.1em] uppercase text-muted-foreground/40 group-hover:text-muted-foreground/60 transition-colors duration-300">
+                  <span className="text-caption tracking-[0.1em] uppercase text-muted-foreground/70 group-hover:text-muted-foreground/60 transition-colors duration-300">
                     This website is powered locally by
                   </span>
                   <span
@@ -318,9 +318,9 @@ const Inquire = () => {
             ].map((stat, i) => (
               <div key={stat.label} className="relative">
                 {i > 0 && <span className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 rotate-45 hidden md:block" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }} />}
-                <p className="font-serif-wedding text-lg md:text-xl text-foreground/50 font-light">{stat.value}</p>
+                <p className="font-serif-wedding text-lg md:text-xl text-foreground/75 font-light">{stat.value}</p>
                 <motion.div className="w-4 h-px mx-auto my-1.5 origin-center" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }} style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25), transparent)" }} />
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-brand-text-decorative mt-1">{stat.label}</p>
+                <p className="font-sans-wedding text-[0.75rem] tracking-[0.15em] uppercase text-brand-text-decorative mt-1">{stat.label}</p>
               </div>
             ))}
           </div>

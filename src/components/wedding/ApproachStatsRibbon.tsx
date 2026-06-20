@@ -56,7 +56,7 @@ const ApproachStatsRibbon = () => (
 
     <div className="container mx-auto px-6 lg:px-8 max-w-5xl relative">
       <ScrollReveal>
-        <p className="font-overline text-muted-foreground/50 text-center mb-10">By the Numbers</p>
+        <p className="font-overline text-muted-foreground/75 text-center mb-10">By the Numbers</p>
       </ScrollReveal>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">

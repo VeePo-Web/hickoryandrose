@@ -191,7 +191,7 @@ const BrandManifestoSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 1.6 }}
-          className="font-script text-xl text-white/30 mt-6"
+          className="font-script text-xl text-white/65 mt-6"
         >
           Hickory & Rose
         </motion.p>
@@ -209,7 +209,7 @@ const BrandManifestoSection = () => {
 
       {/* Corner index */}
       <motion.span
-        className="absolute bottom-8 right-8 font-serif-wedding text-xs text-white/30 tracking-widest"
+        className="absolute bottom-8 right-8 font-serif-wedding text-xs text-white/65 tracking-widest"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

@@ -42,7 +42,7 @@ const PortfolioFeaturedStory = ({ image, alt, couple, venue, season, description
           {/* Slide Projector Optical Focus Reveal */}
           <ScrollReveal delay={0.15}>
             <div>
-              <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-3">
+              <p className="font-sans-wedding text-label uppercase text-muted-foreground/75 mb-3">
                 <span className="inline-flex items-center gap-3">
                   <span className="w-5 h-px bg-primary/30" />
                   Featured Wedding
@@ -79,14 +79,14 @@ const PortfolioFeaturedStory = ({ image, alt, couple, venue, season, description
                 ))}
               </h2>
 
-              <p className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-muted-foreground/40 mb-6">
+              <p className="font-sans-wedding text-[0.75rem] tracking-[0.15em] uppercase text-muted-foreground/70 mb-6">
                 {venue} · {season}
               </p>
               <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light mb-6">
                 {description}
               </p>
               <div className="border-l-2 border-primary/15 pl-5">
-                <p className="font-serif-wedding text-sm italic text-foreground/50 leading-relaxed">
+                <p className="font-serif-wedding text-sm italic text-foreground/75 leading-relaxed">
                   "{quote}"
                 </p>
               </div>

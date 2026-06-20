@@ -87,7 +87,7 @@ const AboutPromises = () => {
             <span className="font-serif-wedding text-5xl font-light text-white/10 block mb-3">
               04
             </span>
-            <p className="font-sans-wedding text-label uppercase text-white/40 mb-4">
+            <p className="font-sans-wedding text-label uppercase text-white/70 mb-4">
               <span className="inline-flex items-center gap-3">
                 <span className="w-5 h-px bg-white/20" />
                 What You Can Count On
@@ -129,7 +129,7 @@ const AboutPromises = () => {
             <p className="font-serif-wedding text-xl md:text-2xl text-white/70 italic font-light max-w-md mx-auto leading-relaxed">
               "We don't make promises lightly — we make them because you deserve certainty."
             </p>
-            <p className="font-script text-lg text-white/30 mt-4">
+            <p className="font-script text-lg text-white/65 mt-4">
               Hickory & Rose
             </p>
           </div>
@@ -211,7 +211,7 @@ const PromiseCard = ({
     </p>
 
     {/* Subtext */}
-    <p className="font-sans-wedding text-sm text-white/40 italic leading-relaxed group-hover:text-white/60 transition-colors duration-500">
+    <p className="font-sans-wedding text-sm text-white/70 italic leading-relaxed group-hover:text-white/60 transition-colors duration-500">
       {item.subtext}
     </p>
   </motion.div>

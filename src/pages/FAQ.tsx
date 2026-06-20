@@ -99,7 +99,7 @@ const FAQ = () => {
         </motion.div>
         <motion.div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6" style={{ opacity: heroOpacity }}>
           <ScrollReveal>
-            <p className="font-sans-wedding text-label uppercase text-white/50 mb-4">
+            <p className="font-sans-wedding text-label uppercase text-white/75 mb-4">
               <span className="inline-flex items-center gap-3">
                 <motion.span className="w-8 h-px bg-white/30 origin-right" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.8, delay: 0.5 }} />
                 Common Questions
@@ -247,7 +247,7 @@ const FAQ = () => {
                     </div>
                     <div className="md:col-span-5 flex items-center">
                       <div className="py-6 md:py-0 md:pl-4">
-                        <span className="font-overline text-muted-foreground/40 mb-3 block">Our Approach</span>
+                        <span className="font-overline text-muted-foreground/70 mb-3 block">Our Approach</span>
                         <p className="font-serif-wedding text-display-sm text-foreground leading-relaxed mb-4">Clarity at every step.</p>
                         <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">We believe transparency builds trust. That's why we answer every question before you even think to ask it.</p>
                       </div>
@@ -270,7 +270,7 @@ const FAQ = () => {
       <section className="py-section-mobile md:py-section-tablet bg-background">
         <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
           <ScrollReveal>
-            <p className="font-overline text-muted-foreground/50 mb-4">Still Curious?</p>
+            <p className="font-overline text-muted-foreground/75 mb-4">Still Curious?</p>
             <h3 className="font-serif-wedding text-display-lg text-foreground mb-4">We'd love to hear from you.</h3>
             <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed mb-10 max-w-md mx-auto font-light">No question is too small. Reach out and we'll get back to you within 48 hours — or schedule a discovery call to chat in person.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

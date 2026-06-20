@@ -98,7 +98,7 @@ const ServicesOverviewSection = () => {
               </h2>
             </div>
             <div className="md:col-span-7 md:pt-12">
-              <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light leading-relaxed">
+              <p className="font-sans-wedding text-body-sm text-muted-foreground/75 font-light leading-relaxed">
                 Every couple is different. Our services meet you where you are — whether you need a steady hand on the day or a partner from the very beginning.
               </p>
             </div>
@@ -140,7 +140,7 @@ const ServicesOverviewSection = () => {
                 </div>
                 <div className="flex items-center justify-end gap-2 mt-3">
                   <span className="w-4 h-px bg-muted-foreground/15" />
-                  <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-muted-foreground/25">
+                  <p className="font-sans-wedding text-[0.75rem] tracking-[0.15em] uppercase text-muted-foreground/60">
                     {services[hoveredIndex].title}
                   </p>
                 </div>
@@ -174,7 +174,7 @@ const ServicesOverviewSection = () => {
                       className="absolute top-3 right-4 flex items-center gap-2 overflow-hidden"
                     >
                       <span className="w-1.5 h-1.5 rotate-45 bg-primary/40" />
-                      <span className="font-overline text-[0.5rem] text-primary/60 tracking-[0.25em] relative">
+                      <span className="font-overline text-[0.75rem] text-primary/60 tracking-[0.25em] relative">
                         Most Popular
                         {/* Gold shimmer sweep */}
                         <span
@@ -213,11 +213,11 @@ const ServicesOverviewSection = () => {
                   </div>
 
                   <div className="md:col-span-2 flex items-center justify-between md:flex-col md:items-end gap-2">
-                    <span className="font-overline text-primary text-[0.625rem]">
+                    <span className="font-overline text-primary text-[0.75rem]">
                       {service.investment}
                     </span>
                     <motion.span
-                      className="font-sans-wedding text-sm text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300"
+                      className="font-sans-wedding text-sm text-muted-foreground/70 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300"
                     >
                       →
                     </motion.span>
@@ -265,7 +265,7 @@ const ServicesOverviewSection = () => {
                   className="w-2 h-2 rotate-45"
                   style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.15))" }}
                 />
-                <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-muted-foreground/30 font-light">
+                <p className="font-sans-wedding text-[0.75rem] tracking-[0.2em] uppercase text-muted-foreground/65 font-light">
                   Quick Comparison
                 </p>
                 <span className="flex-1 h-px bg-border/20" />
@@ -275,7 +275,7 @@ const ServicesOverviewSection = () => {
               {services.map((s) => (
                 <div key={s.number}>
                   <p className="font-serif-wedding text-sm text-foreground/60 mb-1">{s.title}</p>
-                  <p className="font-overline text-[0.5rem] text-primary/50">{s.investment}</p>
+                  <p className="font-overline text-[0.75rem] text-primary/50">{s.investment}</p>
                 </div>
               ))}
             </div>
@@ -286,11 +286,11 @@ const ServicesOverviewSection = () => {
                 { label: "Timeline Management", vals: ["✓", "✓", "✓"] },
               ].map((row) => (
                 <div key={row.label} className="contents">
-                  <p className="font-sans-wedding text-[0.55rem] tracking-[0.1em] uppercase text-muted-foreground/40 text-left py-2">
+                  <p className="font-sans-wedding text-[0.75rem] tracking-[0.1em] uppercase text-muted-foreground/70 text-left py-2">
                     {row.label}
                   </p>
                   {row.vals.map((val, i) => (
-                    <p key={i} className="font-sans-wedding text-xs text-muted-foreground/50 font-light py-2">
+                    <p key={i} className="font-sans-wedding text-xs text-muted-foreground/75 font-light py-2">
                       {val}
                     </p>
                   ))}

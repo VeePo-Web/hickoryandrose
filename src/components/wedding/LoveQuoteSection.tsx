@@ -82,7 +82,7 @@ const LoveQuoteSection = () => {
         style={{ y: watermarkY, opacity: secondaryQuoteOpacity }}
         aria-hidden="true"
       >
-        <p className="font-serif-wedding text-lg italic text-primary-foreground/50 max-w-[200px] text-right leading-relaxed">
+        <p className="font-serif-wedding text-lg italic text-primary-foreground/75 max-w-[200px] text-right leading-relaxed">
           Every detail in service of the moment.
         </p>
         <motion.div
@@ -102,7 +102,7 @@ const LoveQuoteSection = () => {
       >
         <div className="flex flex-col items-center gap-3 -rotate-90 origin-center">
           <span className="w-8 h-px bg-primary-foreground/8" />
-          <span className="font-sans-wedding text-[0.45rem] tracking-[0.25em] uppercase text-primary-foreground/10">
+          <span className="font-sans-wedding text-[0.75rem] tracking-[0.25em] uppercase text-primary-foreground/10">
             Edmonton · Alberta
           </span>
           <span className="w-8 h-px bg-primary-foreground/8" />
@@ -244,12 +244,12 @@ const LoveQuoteSection = () => {
               className="w-px h-10 origin-top"
               style={{ background: "linear-gradient(180deg, hsl(var(--primary-foreground) / 0.25), transparent)" }}
             />
-            <span className="font-script text-2xl text-primary-foreground/40">
+            <span className="font-script text-2xl text-primary-foreground/70">
               Hickory & Rose
             </span>
             <div className="flex items-center gap-3">
               <span className="w-4 h-px bg-primary-foreground/15" />
-              <span className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-primary-foreground/25">
+              <span className="font-sans-wedding text-[0.75rem] tracking-[0.2em] uppercase text-primary-foreground/60">
                 Edmonton · Alberta · Canadian Rockies
               </span>
               <span className="w-4 h-px bg-primary-foreground/15" />

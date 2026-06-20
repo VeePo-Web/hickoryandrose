@@ -47,7 +47,7 @@ const VendorShowcaseSection = () => {
               <div className="flex items-center gap-4 mb-4">
                 <span className="font-serif-wedding text-sm text-primary/20 font-light">08</span>
                 <span className="w-8 h-px bg-primary/15" />
-                <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em]">
+                <p className="font-sans-wedding text-label uppercase text-muted-foreground/70 tracking-[0.2em]">
                   Vendor Network
                 </p>
               </div>
@@ -63,7 +63,7 @@ const VendorShowcaseSection = () => {
               />
             </div>
             <div className="md:col-span-7">
-              <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light leading-relaxed max-w-sm md:ml-auto">
+              <p className="font-sans-wedding text-body-sm text-muted-foreground/75 font-light leading-relaxed max-w-sm md:ml-auto">
                 Every vendor we work with is hand-selected — for excellence, reliability, and standards that match our own.
               </p>
             </div>
@@ -129,7 +129,7 @@ const VendorShowcaseSection = () => {
 
                 {/* Vendor name */}
                 <div className="col-span-5 md:col-span-4">
-                  <p className="font-serif-wedding text-xl md:text-2xl font-light text-foreground/40 group-hover:text-foreground/80 transition-colors duration-500 tracking-tight italic">
+                  <p className="font-serif-wedding text-xl md:text-2xl font-light text-foreground/70 group-hover:text-foreground/80 transition-colors duration-500 tracking-tight italic">
                     {vendor.name}
                   </p>
                 </div>
@@ -168,7 +168,7 @@ const VendorShowcaseSection = () => {
                     />
                     {vendor.note}
                   </span>
-                  <span className="font-sans-wedding text-sm text-muted-foreground/0 group-hover:text-muted-foreground/25 transition-all duration-500 translate-x-0 group-hover:translate-x-1">
+                  <span className="font-sans-wedding text-sm text-muted-foreground/0 group-hover:text-muted-foreground/60 transition-all duration-500 translate-x-0 group-hover:translate-x-1">
                     →
                   </span>
                 </div>

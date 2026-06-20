@@ -46,7 +46,7 @@ const JournalArticleCard = ({ article, index }: JournalArticleCardProps) => (
           </div>
           {/* Pull-quote reveal on hover */}
           <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 z-10">
-            <p className="font-serif-wedding text-xs italic text-white/50 leading-snug">
+            <p className="font-serif-wedding text-xs italic text-white/75 leading-snug">
               &ldquo;{article.pullQuote}&rdquo;
             </p>
           </div>
@@ -59,7 +59,7 @@ const JournalArticleCard = ({ article, index }: JournalArticleCardProps) => (
             {article.category}
           </span>
           <span className="w-3 h-px bg-border/40" />
-          <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/50">
+          <span className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/75">
             Studio Note
           </span>
         </div>

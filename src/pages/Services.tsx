@@ -143,7 +143,7 @@ const Services = () => {
           style={{ opacity: heroOpacity }}
         >
           <ScrollReveal>
-            <p className="font-sans-wedding text-label uppercase text-white/50 mb-4">
+            <p className="font-sans-wedding text-label uppercase text-white/75 mb-4">
               <span className="inline-flex items-center gap-3">
                 <motion.span
                   className="w-8 h-px bg-white/30 origin-right"
@@ -181,7 +181,7 @@ const Services = () => {
           transition={{ delay: 1.6, duration: 0.8 }}
         >
           {["Three Curated Tiers", "Custom Proposals", "Tailored to You"].map((t, i) => (
-            <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/30 flex items-center gap-4">
+            <span key={t} className="font-sans-wedding text-[0.75rem] tracking-[0.18em] uppercase text-white/65 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
             </span>
@@ -205,7 +205,7 @@ const Services = () => {
           <ScrollReveal>
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-baseline">
               <div className="md:col-span-5">
-                <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-3">
+                <p className="font-sans-wedding text-label uppercase text-muted-foreground/75 mb-3">
                   <span className="inline-flex items-center gap-3">
                     <span className="w-5 h-px bg-primary/30" />
                     Our Philosophy
@@ -324,7 +324,7 @@ const Services = () => {
             <p className="font-sans-wedding text-body-sm font-light text-primary-foreground/70">
               Hickory & Rose
             </p>
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.12em] uppercase text-primary-foreground/25 mt-2">
+            <p className="font-sans-wedding text-[0.75rem] tracking-[0.12em] uppercase text-primary-foreground/60 mt-2">
               Design Philosophy
             </p>
           </ScrollReveal>
@@ -354,7 +354,7 @@ const Services = () => {
         <div className="container mx-auto px-6 lg:px-8 max-w-4xl relative">
           <ScrollReveal>
             <div className="text-center mb-16 md:mb-20">
-              <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
+              <p className="font-sans-wedding text-label uppercase text-muted-foreground/75 mb-4">
                 <span className="inline-flex items-center gap-3">
                   <span className="w-5 h-px bg-border" />
                   From Inquiry to "I Do"

@@ -113,7 +113,7 @@ const AboutTestimonials = () => {
                           {testimonials[activeTestimonial].couple}
                         </p>
                         <div className="flex items-center gap-2 mt-1 flex-wrap">
-                          <p className="font-sans-wedding text-[0.55rem] tracking-[0.12em] uppercase text-brand-text-tertiary">
+                          <p className="font-sans-wedding text-[0.75rem] tracking-[0.12em] uppercase text-brand-text-tertiary">
                             {testimonials[activeTestimonial].venue}
                           </p>
                         </div>
@@ -152,7 +152,7 @@ const AboutTestimonials = () => {
                     </button>
                   ))}
                 </div>
-                <span className="font-sans-wedding text-[0.6rem] text-brand-text-tertiary tabular-nums tracking-[0.15em]">
+                <span className="font-sans-wedding text-[0.75rem] text-brand-text-tertiary tabular-nums tracking-[0.15em]">
                   {String(activeTestimonial + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
                 </span>
               </div>

@@ -53,10 +53,10 @@ const FAQImageMosaic = ({ mainImage, mainAlt, secondaryImage, secondaryAlt }: FA
             <div className="relative flex items-center justify-center bg-sage-deep p-6">
               <div className="text-center">
                 <span className="w-1.5 h-1.5 rotate-45 inline-block mb-3" style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.1))" }} />
-                <p className="font-serif-wedding text-sm md:text-base italic text-primary-foreground/50 leading-relaxed">
+                <p className="font-serif-wedding text-sm md:text-base italic text-primary-foreground/75 leading-relaxed">
                   "Every detail answered with warmth."
                 </p>
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-primary-foreground/20 mt-2">
+                <p className="font-sans-wedding text-[0.75rem] tracking-[0.15em] uppercase text-primary-foreground/20 mt-2">
                   — Our Promise
                 </p>
               </div>

@@ -95,7 +95,7 @@ const About = () => {
             <h1 className="font-serif-wedding text-display-xl text-white mb-6 max-w-3xl">
               Meet Hickory & Rose
             </h1>
-            <p className="font-sans-wedding text-[0.6rem] tracking-[0.2em] uppercase text-white/75 mb-4">
+            <p className="font-sans-wedding text-[0.75rem] tracking-[0.2em] uppercase text-white/75 mb-4">
               For brides who want to be present — not stressed
             </p>
             <p className="font-sans-wedding text-lg md:text-xl text-white/85 leading-relaxed max-w-xl mx-auto font-light tracking-wide">
@@ -114,7 +114,7 @@ const About = () => {
           transition={{ delay: 1.6, duration: 0.8 }}
         >
           {["2026 Season Fully Booked", "Editorial Shoot — Aug 2026", "Now Booking 2027"].map((t, i) => (
-            <span key={t} className="font-sans-wedding text-[0.5rem] tracking-[0.18em] uppercase text-white/55 flex items-center gap-4">
+            <span key={t} className="font-sans-wedding text-[0.75rem] tracking-[0.18em] uppercase text-white/55 flex items-center gap-4">
               {i > 0 && <BreathingDiamond size={4} />}
               {t}
             </span>
@@ -128,7 +128,7 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2, duration: 0.8 }}
         >
-          <span className="font-sans-wedding text-[0.45rem] tracking-[0.25em] uppercase text-white/50">
+          <span className="font-sans-wedding text-[0.75rem] tracking-[0.25em] uppercase text-white/75">
             Meet the Founder
           </span>
           <motion.div
@@ -140,7 +140,7 @@ const About = () => {
         </motion.div>
 
         <motion.span
-          className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/30 tracking-widest z-20"
+          className="absolute bottom-8 right-8 font-serif-wedding text-sm text-white/65 tracking-widest z-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.6 }}
@@ -294,7 +294,7 @@ const About = () => {
                 style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2))" }}
               />
               <div className="text-center shrink-0">
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.3em] uppercase text-brand-text-tertiary mb-3">
+                <p className="font-sans-wedding text-[0.75rem] tracking-[0.3em] uppercase text-brand-text-tertiary mb-3">
                   As Seen In
                 </p>
                 <p className="font-serif-wedding text-2xl md:text-3xl italic font-light text-brand-text-decorative">

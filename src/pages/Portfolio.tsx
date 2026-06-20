@@ -65,7 +65,7 @@ const Portfolio = () => {
         </motion.div>
         <motion.div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6" style={{ opacity: heroOpacity }}>
           <ScrollReveal>
-            <p className="font-sans-wedding text-label uppercase text-white/50 mb-4">
+            <p className="font-sans-wedding text-label uppercase text-white/75 mb-4">
               <span className="inline-flex items-center gap-3">
                 <motion.span className="w-8 h-px bg-white/30 origin-right" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.8, delay: 0.5 }} />
                 Our Work
@@ -100,7 +100,7 @@ const Portfolio = () => {
                 <p className="font-sans-wedding text-body-sm text-muted-foreground leading-relaxed font-light">We believe the best weddings feel like the couple — not a template. Browse our portfolio and imagine what yours could look like.</p>
               </div>
               <div className="md:col-span-3 md:col-start-12 hidden md:flex items-center justify-end">
-                <span className="font-sans-wedding text-label uppercase text-muted-foreground/30">Aesthetic Direction</span>
+                <span className="font-sans-wedding text-label uppercase text-muted-foreground/65">Aesthetic Direction</span>
               </div>
             </div>
           </ScrollReveal>
@@ -115,7 +115,7 @@ const Portfolio = () => {
             {[{ value: "2026", label: "Season Fully Booked" }, { value: "Aug 15", label: "Editorial Styled Shoot" }, { value: "Growing", label: "Vendor Network" }, { value: "2027", label: "Now Booking" }].map((stat, i) => (
               <ScrollReveal key={stat.label} delay={i * 0.08}>
                 <div className="group">
-                  <p className="font-serif-wedding text-2xl md:text-3xl text-primary-foreground/50 font-light group-hover:text-primary-foreground/70 transition-colors duration-500">{stat.value}</p>
+                  <p className="font-serif-wedding text-2xl md:text-3xl text-primary-foreground/75 font-light group-hover:text-primary-foreground/70 transition-colors duration-500">{stat.value}</p>
                   <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }} className="w-6 h-px mx-auto my-2 origin-center" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent)" }} />
                   <p className="font-sans-wedding text-caption tracking-[0.18em] uppercase text-primary-foreground/60">{stat.label}</p>
                 </div>
@@ -129,7 +129,7 @@ const Portfolio = () => {
       <section className="py-5 md:py-6 bg-background border-b border-border/30 sticky top-16 md:top-20 z-30">
         <div className="container mx-auto px-6 lg:px-8 flex justify-center gap-0">
           {filters.map((f) => (
-            <button key={f} onClick={() => setActive(f)} className={`relative font-sans-wedding text-xs tracking-[0.15em] uppercase px-5 md:px-7 py-2.5 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 z-10 ${active === f ? "text-foreground" : "text-muted-foreground/40 hover:text-muted-foreground"}`}>
+            <button key={f} onClick={() => setActive(f)} className={`relative font-sans-wedding text-xs tracking-[0.15em] uppercase px-5 md:px-7 py-2.5 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 z-10 ${active === f ? "text-foreground" : "text-muted-foreground/70 hover:text-muted-foreground"}`}>
               {active === f && (
                 <motion.div
                   layoutId="portfolio-active-pill"

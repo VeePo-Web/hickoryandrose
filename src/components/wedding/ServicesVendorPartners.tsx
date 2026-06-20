@@ -31,7 +31,7 @@ const ServicesVendorPartners = () => (
 
         <ScrollReveal delay={0.15}>
           <div>
-            <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
+            <p className="font-sans-wedding text-label uppercase text-muted-foreground/75 mb-4">
               <span className="inline-flex items-center gap-3">
                 <span className="w-5 h-px bg-primary/30" />
                 Our Network
@@ -70,7 +70,7 @@ const ServicesVendorPartners = () => (
                     aria-hidden="true"
                   />
                   <div className="col-span-4 relative">
-                    <p className="font-sans-wedding text-[0.6rem] tracking-[0.15em] uppercase text-primary/50 group-hover:text-primary transition-colors duration-500">
+                    <p className="font-sans-wedding text-[0.75rem] tracking-[0.15em] uppercase text-primary/50 group-hover:text-primary transition-colors duration-500">
                       {partner.category}
                     </p>
                   </div>

@@ -169,7 +169,7 @@ const Approach = () => {
           style={{ opacity: heroOpacity }}
         >
           {/* Overline */}
-          <p className="font-sans-wedding text-label uppercase text-white/50 mb-4">
+          <p className="font-sans-wedding text-label uppercase text-white/75 mb-4">
             <span className="inline-flex items-center gap-3">
               <motion.span className="w-8 h-px bg-white/30 origin-right" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.8, delay: 0.5 }} />
               Our Approach
@@ -267,7 +267,7 @@ const Approach = () => {
                     aria-hidden="true"
                   />
                 </div>
-                <p className="font-overline text-muted-foreground/50 mb-3">Philosophy</p>
+                <p className="font-overline text-muted-foreground/75 mb-3">Philosophy</p>
                 <h2 className="font-serif-wedding text-display-md text-foreground">Planning with intention.</h2>
 
                 {/* Est. date chip */}
@@ -422,7 +422,7 @@ const Approach = () => {
                     aria-hidden="true"
                   />
                 </div>
-                <p className="font-overline text-muted-foreground/50 mb-3">Our Promise</p>
+                <p className="font-overline text-muted-foreground/75 mb-3">Our Promise</p>
                 <h3 className="font-serif-wedding text-display-md text-foreground">Every detail, protected.</h3>
                 <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="w-10 h-px mt-4 origin-left" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
                 <div className="mt-4">
@@ -514,7 +514,7 @@ const Approach = () => {
                     transition={{ duration: 0.8, delay: 0.3 }}
                   />
 
-                  <p className="font-sans-wedding text-body-sm font-light text-foreground/40">{t.couple}</p>
+                  <p className="font-sans-wedding text-body-sm font-light text-foreground/70">{t.couple}</p>
                   <p className="font-sans-wedding text-caption tracking-[0.12em] uppercase text-muted-foreground/60 mt-1">{t.venue} · {t.season}</p>
                   <div className="mt-3">
                     <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary/60 border border-primary/20 px-3 py-1">

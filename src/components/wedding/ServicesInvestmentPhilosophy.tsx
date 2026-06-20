@@ -58,16 +58,16 @@ const ServicesInvestmentPhilosophy = () => (
           />
         </div>
 
-        <p className="font-sans-wedding text-label uppercase text-primary-foreground/30 mb-4 tracking-[0.2em]">
+        <p className="font-sans-wedding text-label uppercase text-primary-foreground/65 mb-4 tracking-[0.2em]">
           Our Investment Philosophy
         </p>
         <h2 className="font-serif-wedding text-display-lg text-primary-foreground leading-relaxed mb-6 max-w-2xl mx-auto">
           You're not paying for hours — you're investing in peace of mind.
         </h2>
-        <p className="font-sans-wedding text-body-sm text-primary-foreground/40 leading-relaxed font-light max-w-xl mx-auto mb-4">
+        <p className="font-sans-wedding text-body-sm text-primary-foreground/70 leading-relaxed font-light max-w-xl mx-auto mb-4">
           Our pricing reflects the depth of care, creative vision, and seamless execution we bring to every wedding. We limit our calendar intentionally — because the couples who choose us deserve our undivided attention.
         </p>
-        <p className="font-sans-wedding text-[0.7rem] tracking-[0.18em] uppercase text-primary-foreground/30 max-w-xl mx-auto mb-10">
+        <p className="font-sans-wedding text-[0.7rem] tracking-[0.18em] uppercase text-primary-foreground/65 max-w-xl mx-auto mb-10">
           For 2027 weddings, a two-person planning team is included as standard.
         </p>
 
@@ -87,7 +87,7 @@ const ServicesInvestmentPhilosophy = () => (
                 <h3 className="font-serif-wedding text-lg text-primary-foreground/60 group-hover:text-primary-foreground/80 transition-colors duration-500 mb-2">
                   {pillar.title}
                 </h3>
-                <p className="font-sans-wedding text-[0.75rem] text-primary-foreground/25 leading-relaxed font-light">
+                <p className="font-sans-wedding text-[0.75rem] text-primary-foreground/60 leading-relaxed font-light">
                   {pillar.desc}
                 </p>
               </div>

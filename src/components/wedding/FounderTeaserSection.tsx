@@ -224,7 +224,7 @@ const FounderTeaserSection = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
                 />
-                <p className="font-serif-wedding text-base md:text-lg italic text-foreground/40 leading-relaxed whitespace-nowrap">
+                <p className="font-serif-wedding text-base md:text-lg italic text-foreground/70 leading-relaxed whitespace-nowrap">
                   "Calm is not the absence of planning — it's the presence of it."
                 </p>
                 <motion.div

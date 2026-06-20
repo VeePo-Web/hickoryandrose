@@ -184,7 +184,7 @@ const DiptychPanel = ({ src, alt, y, frameLabel, season }: PanelProps) => (
 
     {/* Frame index mark — top right */}
     <div className="absolute top-4 right-4 z-20 pointer-events-none">
-      <span className="font-sans-wedding text-[0.5rem] tracking-[0.2em] uppercase text-white/55">
+      <span className="font-sans-wedding text-[0.75rem] tracking-[0.2em] uppercase text-white/55">
         {frameLabel}
       </span>
     </div>
@@ -192,7 +192,7 @@ const DiptychPanel = ({ src, alt, y, frameLabel, season }: PanelProps) => (
     {/* Season badge — top left, always visible */}
     <div className="absolute top-4 left-4 z-20 pointer-events-none flex items-center gap-2">
       <span className="w-4 h-px bg-white/40" />
-      <span className="font-sans-wedding text-[0.55rem] tracking-[0.3em] uppercase text-white/75">
+      <span className="font-sans-wedding text-[0.75rem] tracking-[0.3em] uppercase text-white/75">
         {season}
       </span>
     </div>

@@ -85,7 +85,7 @@ const FAQSection = () => {
                   className="w-8 h-px bg-primary/15 origin-left"
                 />
               </div>
-              <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em] mb-4">
+              <p className="font-sans-wedding text-label uppercase text-muted-foreground/70 tracking-[0.2em] mb-4">
                 Questions & Answers
               </p>
               <h2 className="font-serif-wedding text-display-lg text-foreground">
@@ -123,7 +123,7 @@ const FAQSection = () => {
                   />
                   <AccordionTrigger className="font-sans-wedding text-body text-foreground text-left hover:text-primary hover:no-underline py-6 font-light gap-4 pl-3">
                     <span className="flex items-baseline gap-4">
-                      <span className="font-serif-wedding text-xs text-muted-foreground/25 shrink-0 tabular-nums group-data-[state=open]:text-primary/40 transition-colors duration-300">
+                      <span className="font-serif-wedding text-xs text-muted-foreground/60 shrink-0 tabular-nums group-data-[state=open]:text-primary/40 transition-colors duration-300">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <span>{faq.question}</span>

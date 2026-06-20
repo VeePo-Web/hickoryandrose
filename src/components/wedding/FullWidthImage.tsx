@@ -132,7 +132,7 @@ const FullWidthImage = ({
               transition={{ duration: 0.8 }}
               className="w-10 h-px bg-white/20 origin-right hidden md:block"
             />
-            <p className="font-overline text-white/45 text-center text-[0.55rem] tracking-[0.3em]">
+            <p className="font-overline text-white/45 text-center text-[0.75rem] tracking-[0.3em]">
               {caption}
             </p>
             <motion.div

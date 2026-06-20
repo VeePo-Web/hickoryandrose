@@ -140,7 +140,7 @@ const NavigationMobileMenu = ({ isOpen, setIsOpen, navLinks, locationPathname }:
             <Link
               to="/inquire"
               onClick={() => setIsOpen(false)}
-              className="relative inline-flex items-center px-10 py-3.5 text-[0.6875rem] tracking-[0.2em] uppercase font-sans-wedding font-light bg-primary text-primary-foreground hover:bg-sage-deep transition-colors duration-200 overflow-hidden group"
+              className="relative inline-flex items-center px-10 py-3.5 text-[0.8125rem] tracking-[0.2em] uppercase font-sans-wedding font-light bg-primary text-primary-foreground hover:bg-sage-deep transition-colors duration-200 overflow-hidden group"
             >
               {/* Mobile gold shimmer sweep */}
               <span

@@ -182,7 +182,7 @@ const NotFound = () => {
               className="w-px h-6 mx-auto mb-4 origin-top"
               style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.2), transparent)" }}
             />
-            <p className="font-overline text-white/25 mb-8">Or explore</p>
+            <p className="font-overline text-white/60 mb-8">Or explore</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {suggestedPages.map((page, i) => (

@@ -58,7 +58,7 @@ const ApproachProcessTimeline = () => {
       <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
         <ScrollReveal>
           <div className="text-center mb-16 md:mb-24">
-            <p className="font-overline text-muted-foreground/50 mb-4">Five Steps</p>
+            <p className="font-overline text-muted-foreground/75 mb-4">Five Steps</p>
             <h2 className="font-serif-wedding text-display-lg text-foreground">
               From First Call to Final Dance
             </h2>
@@ -147,7 +147,7 @@ const ApproachProcessTimeline = () => {
                       {step.title}
                     </h3>
                   </div>
-                  <p className="font-overline text-muted-foreground/40 mt-1">
+                  <p className="font-overline text-muted-foreground/70 mt-1">
                     {step.time}
                   </p>
                 </div>
@@ -203,7 +203,7 @@ const StepLabel = ({ index, title, currentIndex }: { index: number; title: strin
   const opacity = useTransform(isActive, (v: boolean) => (v ? 1 : 0.3));
   return (
     <motion.span
-      className="font-sans-wedding text-[0.5rem] tracking-[0.12em] uppercase text-foreground/60 transition-colors"
+      className="font-sans-wedding text-[0.75rem] tracking-[0.12em] uppercase text-foreground/60 transition-colors"
       style={{ opacity }}
     >
       {title}

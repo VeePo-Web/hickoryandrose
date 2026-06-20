@@ -106,7 +106,7 @@ const ApproachDifferentiators = () => {
           <div>
             <ScrollReveal>
               <span className="font-serif-wedding text-5xl font-light text-primary/10 block mb-3">02</span>
-              <p className="font-overline text-muted-foreground/50 mb-3">The Difference</p>
+              <p className="font-overline text-muted-foreground/75 mb-3">The Difference</p>
               <h2 className="font-serif-wedding text-display-lg text-foreground mb-4">
                 What Sets Us Apart
               </h2>
@@ -182,7 +182,7 @@ const ApproachDifferentiators = () => {
                                 animate={{ scaleY: 1 }}
                                 transition={{ duration: 0.6, delay: 0.1 }}
                               />
-                              <p className="font-sans-wedding text-body-sm text-muted-foreground/50 leading-relaxed font-light pl-4">
+                              <p className="font-sans-wedding text-body-sm text-muted-foreground/75 leading-relaxed font-light pl-4">
                                 {diff.expanded}
                               </p>
                             </div>

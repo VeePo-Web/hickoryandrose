@@ -13,7 +13,7 @@ const ServiceComparison = () => (
     <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
       <ScrollReveal>
         <div className="text-center mb-16">
-          <p className="font-sans-wedding text-label uppercase text-muted-foreground/50 mb-4">
+          <p className="font-sans-wedding text-label uppercase text-muted-foreground/75 mb-4">
             <span className="inline-flex items-center gap-3">
               <span className="w-5 h-px bg-border" />
               Find Your Fit

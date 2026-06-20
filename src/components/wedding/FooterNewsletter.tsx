@@ -34,7 +34,7 @@ const FooterNewsletter = () => {
             <h3 className="font-serif-wedding text-2xl md:text-3xl text-background/70 font-light leading-tight">
               Planning wisdom, delivered with care.
             </h3>
-            <p className="font-sans-wedding text-xs text-background/25 font-light mt-3 leading-relaxed max-w-xs">
+            <p className="font-sans-wedding text-xs text-background/60 font-light mt-3 leading-relaxed max-w-xs">
               Curated inspiration, vendor insights, and planning tips — never spam, always intentional.
             </p>
           </div>
@@ -55,7 +55,7 @@ const FooterNewsletter = () => {
                     transition={{ type: "spring", stiffness: 400, damping: 15, delay: 0.1 }}
                     className="w-8 h-8 rounded-full border border-background/20 flex items-center justify-center"
                   >
-                    <Check size={14} strokeWidth={1.5} className="text-background/50" />
+                    <Check size={14} strokeWidth={1.5} className="text-background/75" />
                   </motion.div>
                   <div>
                     <p className="font-serif-wedding text-sm text-background/60 italic">

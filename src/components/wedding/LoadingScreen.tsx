@@ -287,7 +287,7 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                   initial={{ opacity: 0 }}
                   animate={active ? { opacity: 1 } : {}}
                   transition={{ duration: 0.3, delay: 0.5 }}
-                  className="font-sans-wedding text-caption tracking-[0.3em] text-background/50 mt-3 tabular-nums"
+                  className="font-sans-wedding text-caption tracking-[0.3em] text-background/75 mt-3 tabular-nums"
                 >
                   {Math.round(progress)}%
                 </motion.p>
@@ -298,7 +298,7 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                     initial={{ y: "100%", opacity: 0 }}
                     animate={active ? { y: "0%", opacity: 1 } : {}}
                     transition={{ duration: 0.5, delay: 0.45, ease }}
-                    className="font-sans-wedding text-caption tracking-[0.4em] uppercase text-background/50 font-light"
+                    className="font-sans-wedding text-caption tracking-[0.4em] uppercase text-background/75 font-light"
                   >
                     Hickory & Rose
                   </motion.p>
@@ -309,7 +309,7 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                   initial={{ opacity: 0 }}
                   animate={active ? { opacity: 1 } : {}}
                   transition={{ duration: 0.4, delay: 0.65 }}
-                  className="font-serif-wedding text-caption italic text-background/50 mt-3 tracking-wide"
+                  className="font-serif-wedding text-caption italic text-background/75 mt-3 tracking-wide"
                 >
                   Luxury Wedding Planning
                 </motion.p>
@@ -323,7 +323,7 @@ const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
                 className="absolute bottom-10 flex items-center gap-3"
               >
                 <span className="w-5 h-px bg-background/15" />
-                <span className="font-sans-wedding text-caption tracking-[0.35em] uppercase text-background/50 font-light">
+                <span className="font-sans-wedding text-caption tracking-[0.35em] uppercase text-background/75 font-light">
                   Edmonton · Alberta · Canadian Rockies
                 </span>
                 <span className="w-5 h-px bg-background/15" />

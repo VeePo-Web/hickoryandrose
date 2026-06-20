@@ -295,7 +295,7 @@ const ProcessTeaserSection = () => {
                     style={{ originY: 0 }}
                   />
                   <div>
-                    <p className="font-serif-wedding text-sm italic text-foreground/35 max-w-sm leading-relaxed">
+                    <p className="font-serif-wedding text-sm italic text-foreground/70 max-w-sm leading-relaxed">
                       "We don't just coordinate — we protect the feeling of your day."
                     </p>
                     <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-muted-foreground/60 mt-2">

@@ -182,7 +182,7 @@ const NowBookingSection = () => {
                     transition={{ delay: 0.3 + i * 0.1, duration: 0.4 }}
                     className="text-center relative min-w-[72px] group/season"
                   >
-                    <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-primary-foreground/50 mb-1.5 group-hover/season:text-primary-foreground/70 transition-colors duration-300">
+                    <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-primary-foreground/75 mb-1.5 group-hover/season:text-primary-foreground/70 transition-colors duration-300">
                       {season.label}
                     </p>
                     {/* Availability fill bar — gold gradient for accent items */}
@@ -210,7 +210,7 @@ const NowBookingSection = () => {
                         />
                       )}
                     </div>
-                    <p className={`font-serif-wedding text-caption italic ${season.accent ? 'text-primary-foreground/60' : 'text-primary-foreground/50'}`}>
+                    <p className={`font-serif-wedding text-caption italic ${season.accent ? 'text-primary-foreground/60' : 'text-primary-foreground/75'}`}>
                       {season.status}
                     </p>
                   </motion.div>
@@ -236,7 +236,7 @@ const NowBookingSection = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="md:col-span-3 md:text-right"
             >
-              <span className="font-sans-wedding text-[0.7rem] tracking-[0.2em] uppercase text-primary-foreground/30 group-hover:text-primary-foreground/60 transition-colors duration-300 inline-flex items-center gap-2.5">
+              <span className="font-sans-wedding text-[0.7rem] tracking-[0.2em] uppercase text-primary-foreground/65 group-hover:text-primary-foreground/60 transition-colors duration-300 inline-flex items-center gap-2.5">
                 Begin Your Story
                 <motion.span
                   className="inline-block"
@@ -246,14 +246,14 @@ const NowBookingSection = () => {
                   →
                 </motion.span>
               </span>
-              <p className="font-serif-wedding text-xs italic text-primary-foreground/50 mt-2 hidden md:block">
+              <p className="font-serif-wedding text-xs italic text-primary-foreground/75 mt-2 hidden md:block">
                 Complimentary discovery call
               </p>
               
               {/* Trust element */}
               <div className="hidden md:flex items-center justify-end gap-2 mt-4">
                 <span className="w-4 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.15))" }} />
-                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary-foreground/50">
+                <span className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-primary-foreground/75">
                   48hr Response
                 </span>
               </div>

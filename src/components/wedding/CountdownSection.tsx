@@ -80,7 +80,7 @@ const CountdownSection = () => {
           <h2 className="font-serif-wedding text-display-lg text-foreground text-center mb-3">
             February 15, 2025
           </h2>
-          <p className="font-serif-wedding text-sm italic text-muted-foreground/40 text-center mb-12">
+          <p className="font-serif-wedding text-sm italic text-muted-foreground/70 text-center mb-12">
             Four o'clock in the afternoon
           </p>
         </ScrollReveal>
@@ -101,7 +101,7 @@ const CountdownSection = () => {
                     {unit.value.toString().padStart(2, "0")}
                   </span>
                 </div>
-                <p className="font-overline text-muted-foreground/50 text-[0.55rem] md:text-[0.625rem]">
+                <p className="font-overline text-muted-foreground/75 text-[0.75rem] md:text-[0.75rem]">
                   {unit.label}
                 </p>
                 {i < timeUnits.length - 1 && (
@@ -121,7 +121,7 @@ const CountdownSection = () => {
               transition={{ duration: 0.8 }}
               className="w-6 h-px bg-primary/15 origin-right"
             />
-            <p className="font-serif-wedding text-xs italic text-muted-foreground/30">
+            <p className="font-serif-wedding text-xs italic text-muted-foreground/65">
               Every moment, worth the wait
             </p>
             <motion.div

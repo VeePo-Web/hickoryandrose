@@ -265,7 +265,7 @@ const GallerySection = () => {
 
             <button
               onClick={() => setSelectedIndex(null)}
-              className="absolute top-10 right-6 text-background/40 hover:text-background/80 transition-colors z-30"
+              className="absolute top-10 right-6 text-background/70 hover:text-background/80 transition-colors z-30"
               aria-label="Close lightbox"
             >
               <X size={20} strokeWidth={1} />
@@ -321,7 +321,7 @@ const GallerySection = () => {
                 >
                   <div className="flex items-center justify-center gap-3">
                     <span className="w-6 h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold, 38 60% 55%) / 0.2))" }} />
-                    <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-background/50">
+                    <span className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-background/75">
                       {photos[selectedIndex].category}
                     </span>
                     <span className="w-6 h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold, 38 60% 55%) / 0.2), transparent)" }} />

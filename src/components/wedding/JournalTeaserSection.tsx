@@ -83,7 +83,7 @@ const JournalTeaserSection = () => {
               <div className="flex items-center gap-4 mb-4">
                 <span className="font-serif-wedding text-sm text-primary/20 font-light">10</span>
                 <span className="w-8 h-px bg-primary/15" />
-                <p className="font-sans-wedding text-label uppercase text-muted-foreground/40 tracking-[0.2em]">
+                <p className="font-sans-wedding text-label uppercase text-muted-foreground/70 tracking-[0.2em]">
                   Our Journal
                 </p>
               </div>
@@ -189,7 +189,7 @@ const ArticleCard = ({
           {/* Hover reveal: pull-quote + title */}
           <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
             {featured && (
-              <p className="font-serif-wedding text-xs italic text-white/40 mb-2">
+              <p className="font-serif-wedding text-xs italic text-white/70 mb-2">
                 "{article.pullQuote}"
               </p>
             )}

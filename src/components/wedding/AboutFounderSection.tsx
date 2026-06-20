@@ -77,13 +77,13 @@ const AboutFounderSection = () => {
 
                 {/* Frame index mark */}
                 <div className="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <span className="font-sans-wedding text-[0.5rem] tracking-[0.15em] uppercase text-white/60">FR01</span>
+                  <span className="font-sans-wedding text-[0.75rem] tracking-[0.15em] uppercase text-white/60">FR01</span>
                 </div>
 
                 {/* Caption reveal */}
                 <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 z-10 pointer-events-none">
                   <span className="block w-6 h-px mb-2" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.5), transparent)" }} />
-                  <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-white/70">Meg Wolodko, Founder</span>
+                  <span className="font-sans-wedding text-[0.75rem] tracking-[0.15em] uppercase text-white/70">Meg Wolodko, Founder</span>
                 </div>
               </div>
             </ImageReveal>
@@ -126,7 +126,7 @@ const AboutFounderSection = () => {
               {/* Personality caption — from owner Section 5.2 */}
               <div className="mt-6 mb-8 flex flex-wrap items-center gap-x-3 gap-y-1">
                 {personality.map((word, i) => (
-                  <span key={word} className="font-sans-wedding text-[0.6rem] tracking-[0.2em] uppercase text-brand-text-tertiary flex items-center gap-3">
+                  <span key={word} className="font-sans-wedding text-[0.75rem] tracking-[0.2em] uppercase text-brand-text-tertiary flex items-center gap-3">
                     {i > 0 && <span className="w-1 h-1 rotate-45" style={{ background: "hsl(var(--gold) / 0.4)" }} />}
                     {word}
                   </span>
@@ -142,7 +142,7 @@ const AboutFounderSection = () => {
                     )}
                     <div className="text-center">
                       <span className="font-serif-wedding text-xl text-foreground block leading-tight">{cred.value}</span>
-                      <span className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-brand-text-tertiary">{cred.label}</span>
+                      <span className="font-sans-wedding text-[0.75rem] tracking-[0.15em] uppercase text-brand-text-tertiary">{cred.label}</span>
                     </div>
                   </div>
                 ))}
@@ -174,7 +174,7 @@ const AboutFounderSection = () => {
 
               {/* Personal Philosophy */}
               <div className="mb-10">
-                <p className="font-sans-wedding text-[0.55rem] tracking-[0.2em] uppercase text-brand-text-tertiary mb-4">
+                <p className="font-sans-wedding text-[0.75rem] tracking-[0.2em] uppercase text-brand-text-tertiary mb-4">
                   Personal Philosophy
                 </p>
                 <ul className="space-y-3">

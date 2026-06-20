@@ -111,7 +111,7 @@ const Footer = () => {
                   background: "radial-gradient(circle, hsl(var(--gold) / 0.7), hsl(var(--gold) / 0.2))",
                 }}
               />
-              <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-background/50 font-light">
+              <p className="font-sans-wedding text-caption tracking-[0.15em] uppercase text-background/75 font-light">
                 Edmonton, Alberta
               </p>
             </div>
@@ -131,7 +131,7 @@ const Footer = () => {
               <div className="absolute top-0 bottom-0 left-2/3 w-px hidden md:block" style={{ background: "linear-gradient(180deg, transparent, hsl(var(--background) / 0.06), transparent)" }} />
               {/* Navigation */}
               <div>
-                <p className="font-overline text-background/50 mb-5">
+                <p className="font-overline text-background/75 mb-5">
                   Explore
                 </p>
                 <nav aria-label="Footer navigation">
@@ -142,7 +142,7 @@ const Footer = () => {
                           to={link.path}
                           className="font-sans-wedding text-sm text-background/60 hover:text-background transition-colors duration-200 font-light inline-flex items-center gap-2 group"
                         >
-                          <span className="text-background/30 font-serif-wedding text-caption group-hover:text-background/50 transition-colors">
+                          <span className="text-background/65 font-serif-wedding text-caption group-hover:text-background/75 transition-colors">
                             {String(i + 1).padStart(2, "0")}
                           </span>
                           {link.label}
@@ -155,7 +155,7 @@ const Footer = () => {
 
               {/* Contact */}
               <div>
-                <p className="font-overline text-background/50 mb-5">
+                <p className="font-overline text-background/75 mb-5">
                   Contact
                 </p>
                 <div className="space-y-4">
@@ -163,17 +163,17 @@ const Footer = () => {
                     href="mailto:sales@hickoryandrose.com"
                     className="flex items-start gap-2.5 font-sans-wedding text-sm text-background/60 hover:text-background transition-colors duration-200 font-light"
                   >
-                    <Mail size={14} strokeWidth={1.5} className="shrink-0 text-background/40 mt-0.5" />
+                    <Mail size={14} strokeWidth={1.5} className="shrink-0 text-background/70 mt-0.5" />
                     <span>sales@hickoryandrose.com</span>
                   </a>
                   <div className="flex items-start gap-2.5 font-sans-wedding text-sm text-background/60 font-light">
-                    <MapPin size={14} strokeWidth={1.5} className="shrink-0 text-background/40 mt-0.5" />
+                    <MapPin size={14} strokeWidth={1.5} className="shrink-0 text-background/70 mt-0.5" />
                     <span>Edmonton, Alberta</span>
                   </div>
                 </div>
 
                 <div className="mt-6 border-t border-background/[0.06] pt-4">
-                  <p className="font-sans-wedding text-caption tracking-[0.1em] uppercase text-background/50 font-light">
+                  <p className="font-sans-wedding text-caption tracking-[0.1em] uppercase text-background/75 font-light">
                     Typically responds within 48 hours
                   </p>
                 </div>
@@ -242,25 +242,25 @@ const Footer = () => {
         >
           <div className="border-t border-background/[0.08]" />
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8">
-            <p className="font-sans-wedding text-caption text-background/50 font-light">
+            <p className="font-sans-wedding text-caption text-background/75 font-light">
               © {new Date().getFullYear()} Hickory & Rose Wedding and Event Planning. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
               <Link
                 to="/privacy"
-                className="font-sans-wedding text-caption text-background/50 hover:text-background/70 transition-colors font-light"
+                className="font-sans-wedding text-caption text-background/75 hover:text-background/70 transition-colors font-light"
               >
                 Privacy
               </Link>
               <Link
                 to="/terms"
-                className="font-sans-wedding text-caption text-background/50 hover:text-background/70 transition-colors font-light"
+                className="font-sans-wedding text-caption text-background/75 hover:text-background/70 transition-colors font-light"
               >
                 Terms
               </Link>
               <motion.button
                 onClick={scrollToTop}
-                className="flex items-center gap-1.5 font-sans-wedding text-caption text-background/50 hover:text-background/70 transition-colors font-light group relative"
+                className="flex items-center gap-1.5 font-sans-wedding text-caption text-background/75 hover:text-background/70 transition-colors font-light group relative"
                 aria-label="Back to top"
                 whileHover={{ y: -2 }}
                 transition={{ duration: 0.3 }}

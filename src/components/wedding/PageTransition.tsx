@@ -50,7 +50,7 @@ const PageTransition = ({ children }: PageTransitionProps) => {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.14, delay: 0 }}
-            className="font-serif-wedding text-lg text-primary-foreground/50 tracking-[0.15em]"
+            className="font-serif-wedding text-lg text-primary-foreground/75 tracking-[0.15em]"
           >
             H
           </motion.span>
@@ -58,7 +58,7 @@ const PageTransition = ({ children }: PageTransitionProps) => {
             initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.16, delay: 0.02 }}
-            className="font-script text-2xl text-primary-foreground/25 mx-0.5"
+            className="font-script text-2xl text-primary-foreground/60 mx-0.5"
           >
             &
           </motion.span>
@@ -66,7 +66,7 @@ const PageTransition = ({ children }: PageTransitionProps) => {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.14, delay: 0.04 }}
-            className="font-script text-2xl text-primary-foreground/50"
+            className="font-script text-2xl text-primary-foreground/75"
           >
             R
           </motion.span>
