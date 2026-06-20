@@ -3,7 +3,7 @@ import ScrollReveal from "./ScrollReveal";
 import MagneticButton from "./MagneticButton";
 
 const comparisonTiers = [
-  { tier: "Day-Of", desc: "You've planned it all — we perfect and lead the day.", price: "Starting at — inquire", popular: false },
+  { tier: "Day-Of", desc: "You've planned it all — we perfect and lead the day.", price: "From $1,200 + GST", popular: false },
   { tier: "Partial", desc: "Collaborate on design and vendors with expert guidance.", price: "Starting at — inquire", popular: true },
   { tier: "Full-Service", desc: "We handle everything from vision to final send-off.", price: "Starting at — inquire", popular: false },
 ];

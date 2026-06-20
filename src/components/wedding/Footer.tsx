@@ -4,6 +4,7 @@ import { Mail, MapPin, ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
 import FooterNewsletter from "./FooterNewsletter";
 import FooterServiceAreas from "./FooterServiceAreas";
+import logoFullReversed from "@/assets/logo-full-reversed.webp";
 
 
 const footerLinks = [
@@ -82,15 +83,13 @@ const Footer = () => {
             transition={{ duration: 0.7 }}
             className="lg:col-span-5"
           >
-            <Link to="/" className="inline-block group">
-              <span className="font-serif-wedding text-4xl md:text-5xl lg:text-6xl font-light tracking-[-0.03em] text-background leading-tight">
-                Hickory
-                <br />
-                <span className="font-normal opacity-30">&</span>{" "}
-                <span className="font-script text-5xl md:text-6xl lg:text-7xl group-hover:text-primary transition-colors duration-500">
-                  Rose
-                </span>
-              </span>
+            <Link to="/" className="inline-block group" aria-label="Hickory & Rose Wedding and Event Planning — home">
+              <img
+                src={logoFullReversed}
+                alt="Hickory & Rose Wedding and Event Planning"
+                className="w-56 md:w-64 lg:w-72 h-auto group-hover:opacity-90 transition-opacity duration-500 select-none"
+                draggable={false}
+              />
             </Link>
             <motion.div
               initial={{ scaleX: 0 }}

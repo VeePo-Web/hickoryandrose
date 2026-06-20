@@ -3,6 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import NavigationMobileMenu from "./NavigationMobileMenu";
+import logoEmblem from "@/assets/logo-emblem.webp";
+import logoScript from "@/assets/logo-script.webp";
+import logoScriptIvory from "@/assets/logo-script-ivory.webp";
 
 interface NavigationProps {
   variant?: "overlay" | "solid";
@@ -117,13 +120,7 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                       transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                       style={{ background: "radial-gradient(circle, hsl(var(--gold) / 0.4), transparent 70%)" }}
                     />
-                    <span className="font-serif-wedding text-lg font-light tracking-tight relative">H</span>
-                    <motion.span
-                      className="font-script text-xl text-primary/60 relative"
-                      animate={{ opacity: [0.6, 0.9, 0.6] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    >&</motion.span>
-                    <span className="font-script text-2xl relative">R</span>
+                    <img src={logoEmblem} alt="Hickory & Rose" className="h-8 w-auto relative select-none" draggable={false} />
                     {/* Page context label */}
                     {(() => {
                       const pageLabels: Record<string, string> = {
@@ -161,18 +158,14 @@ const Navigation = ({ variant = "solid" }: NavigationProps) => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="font-serif-wedding text-xl md:text-2xl font-light tracking-tight relative overflow-hidden"
+                    className="flex items-center gap-2.5 md:gap-3 relative"
                   >
-                    Hickory <span className="font-normal">&</span>{" "}
-                    <span className="font-script text-2xl md:text-3xl">Rose</span>
-                    <motion.span
-                      className="absolute inset-0 pointer-events-none"
-                      initial={{ x: "-100%" }}
-                      animate={{ x: "200%" }}
-                      transition={{ duration: 1.2, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                      style={{
-                        background: "linear-gradient(110deg, transparent 20%, hsl(var(--gold) / 0.25) 45%, hsl(var(--gold) / 0.4) 50%, hsl(var(--gold) / 0.25) 55%, transparent 80%)",
-                      }}
+                    <img src={logoEmblem} alt="" aria-hidden="true" className="h-8 md:h-10 w-auto select-none" draggable={false} />
+                    <img
+                      src={showSolidBg ? logoScript : logoScriptIvory}
+                      alt="Hickory & Rose Wedding and Event Planning"
+                      className="h-[1.1rem] md:h-[1.45rem] w-auto select-none"
+                      draggable={false}
                     />
                   </motion.span>
                 )}

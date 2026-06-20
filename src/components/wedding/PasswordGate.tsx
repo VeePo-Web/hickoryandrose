@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import logoFull from "@/assets/logo-full.webp";
 
 interface PasswordGateProps {
   onUnlock: () => void;
@@ -26,10 +27,13 @@ const PasswordGate: React.FC<PasswordGateProps> = ({ onUnlock }) => {
         className="flex flex-col items-center gap-6 w-full max-w-xs text-center"
       >
         <div className="flex flex-col items-center gap-1">
-          <span className="font-script text-5xl text-primary leading-none">&amp;</span>
-          <h1 className="font-serif-wedding text-2xl tracking-wide text-foreground">
-            Hickory &amp; Rose
-          </h1>
+          <img
+            src={logoFull}
+            alt="Hickory & Rose Wedding and Event Planning"
+            className="w-52 h-auto select-none"
+            draggable={false}
+          />
+          <h1 className="sr-only">Hickory &amp; Rose Wedding and Event Planning</h1>
         </div>
         <label
           htmlFor="site-password"

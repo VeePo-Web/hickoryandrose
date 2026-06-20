@@ -22,13 +22,14 @@ import editorialFloralsImage from "@/assets/editorial-florals.jpg";
 import vendorDetailImage from "@/assets/vendor-detail.jpg";
 import ServicesVendorPartners from "@/components/wedding/ServicesVendorPartners";
 import ServicesInvestmentPhilosophy from "@/components/wedding/ServicesInvestmentPhilosophy";
+import DayOfScopeSection from "@/components/wedding/DayOfScopeSection";
 
 const serviceTiers = [
   {
     id: "day-of",
     title: "Day-Of Coordination",
     tagline: "You planned it. We perfect it.",
-    investment: "Starting at — inquire",
+    investment: "Starting at $1,200 + GST",
     description:
       "For couples who love planning and have handled the details — we step in 6–8 weeks before, with unlimited communication through to the day, to review everything, confirm vendors, build your timeline, and lead the day with calm authority.",
     includes: [
@@ -249,6 +250,9 @@ const Services = () => {
           )}
         </div>
       ))}
+
+      {/* Full Day-Of Coordination scope of services + pricing */}
+      <DayOfScopeSection />
 
       {/* Testimonial — editorial with gold ornaments and parallax watermark */}
       <section className="py-20 md:py-28 bg-sage-deep relative overflow-hidden">

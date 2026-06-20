@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import logoFull from "@/assets/logo-full.webp";
 
 interface NavigationMobileMenuProps {
   isOpen: boolean;
@@ -78,19 +79,12 @@ const NavigationMobileMenu = ({ isOpen, setIsOpen, navLinks, locationPathname }:
             transition={{ delay: 0.15, duration: 0.5 }}
             className="mb-12"
           >
-            <p className="font-serif-wedding text-3xl font-light text-foreground tracking-tight text-center relative overflow-hidden">
-              Hickory <span className="font-normal">&</span>{" "}
-              <span className="font-script text-4xl">Rose</span>
-              <motion.span
-                className="absolute inset-0 pointer-events-none"
-                initial={{ x: "-100%" }}
-                animate={{ x: "200%" }}
-                transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                style={{
-                  background: "linear-gradient(110deg, transparent 20%, hsl(var(--gold) / 0.2) 45%, hsl(var(--gold) / 0.35) 50%, hsl(var(--gold) / 0.2) 55%, transparent 80%)",
-                }}
-              />
-            </p>
+            <img
+              src={logoFull}
+              alt="Hickory & Rose Wedding and Event Planning"
+              className="w-48 h-auto mx-auto select-none"
+              draggable={false}
+            />
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
