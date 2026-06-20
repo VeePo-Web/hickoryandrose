@@ -368,20 +368,3 @@ html.lenis, html.lenis body {
   }
 }
 
-/* ----------------------------------------------------------------------
-   Performance: skip layout/paint for off-screen editorial sections.
-   The browser stops rendering these sections (and their scroll-linked
-   parallax + infinite animations) until they're near the viewport, which
-   frees the main thread during scroll for much smoother motion.
-
-   Scoped to sections that ALREADY clip their overflow, so the paint
-   containment introduces no new clipping — and hero sections
-   (grain-overlay / vignette) are excluded so above-the-fold/LCP is never
-   skipped. contain-intrinsic-size uses the `auto` keyword so real heights
-   are cached after first render (no scrollbar drift on return scrolls).
-   No visual change — only wasted off-screen work is removed.
-   ---------------------------------------------------------------------- */
-main section.overflow-hidden:not(.grain-overlay):not(.vignette) {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 700px;
-}
