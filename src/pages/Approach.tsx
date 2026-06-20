@@ -13,7 +13,6 @@ import ImageReveal from "@/components/wedding/ImageReveal";
 import ApproachProcessTimeline from "@/components/wedding/ApproachProcessTimeline";
 import ApproachDifferentiators from "@/components/wedding/ApproachDifferentiators";
 import ApproachStatsRibbon from "@/components/wedding/ApproachStatsRibbon";
-import EditorialSplitSection from "@/components/wedding/EditorialSplitSection";
 import MagneticButton from "@/components/wedding/MagneticButton";
 
 import ceremonyImage from "@/assets/ceremony-setup.jpg";
@@ -388,9 +387,6 @@ const Approach = () => {
         label="VOWS & DETAILS"
       />
 
-      {/* Editorial Split Section — narrative breathing room */}
-      <EditorialSplitSection />
-
       <ApproachDifferentiators />
 
       {/* ──────────────── Promise Section ──────────────── */}
@@ -444,10 +440,10 @@ const Approach = () => {
                 />
                 <div className="md:pl-8">
                   <p className="font-sans-wedding text-body text-muted-foreground leading-relaxed font-light mb-4">
-                    We don't just plan logistics — we anticipate emotions. From the moment your guests arrive to the final dance, we ensure every transition is seamless, every moment is savored, and you never have to think about what comes next.
+                    We don't just plan logistics — we anticipate emotions. From the first guest's arrival to the final dance, every transition is seamless, and you never have to think about what comes next.
                   </p>
                   <p className="font-sans-wedding text-body-sm text-muted-foreground/60 leading-relaxed font-light mb-6">
-                    That's the Hickory & Rose difference: you're not just getting a planner — you're getting a partner who protects the feeling of your day.
+                    That's the Hickory & Rose difference — a partner, not just a planner.
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {["Calm Leadership", "Elevated Design", "Seamless Execution"].map((pill) => (
