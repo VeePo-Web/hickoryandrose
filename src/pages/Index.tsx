@@ -3,7 +3,6 @@ import { setPageMeta } from "@/lib/seo";
 import HeroSection from "@/components/wedding/HeroSection";
 import BrandPromiseSection from "@/components/wedding/BrandPromiseSection";
 import TrustBarSection from "@/components/wedding/TrustBarSection";
-import NowBookingSection from "@/components/wedding/NowBookingSection";
 import ScrollProgress from "@/components/wedding/ScrollProgress";
 import BackToTop from "@/components/wedding/BackToTop";
 import SectionIndicator from "@/components/wedding/SectionIndicator";
@@ -53,16 +52,10 @@ const Index = () => {
       <HeroSection />
       <BrandPromiseSection />
       <TrustBarSection />
-      <NowBookingSection />
       <Suspense fallback={null}>
         <CeremonyInterludeSection />
         <ReceptionDetailsSection />
         <ServicesOverviewSection />
-        <EditorialQuoteRibbon
-          quote="Your wedding day should be felt, not managed."
-          attribution="Hickory & Rose"
-          direction="left"
-        />
         <GallerySection />
         <EditorialImageBreak />
         <TestimonialSection />
