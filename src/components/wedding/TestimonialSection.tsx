@@ -2,9 +2,9 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
-import ceremonyImage from "@/assets/ceremony-setup.jpg";
-import detailImage from "@/assets/detail-placecard.jpg";
-import firstDanceImage from "@/assets/first-dance.jpg";
+import ceremonyImage from "@/assets/ceremony-setup.webp";
+import detailImage from "@/assets/detail-placecard.webp";
+import firstDanceImage from "@/assets/first-dance.webp";
 
 // TODO (5.7): Replace with real, owner-supplied testimonials once received.
 // Current entries are illustrative placeholders aligned with brand voice.

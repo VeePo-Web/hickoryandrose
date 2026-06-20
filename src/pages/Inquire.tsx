@@ -13,8 +13,8 @@ import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 import InquireStepIndicator from "@/components/wedding/InquireStepIndicator";
 import InquireCelebration from "@/components/wedding/InquireCelebration";
 import { buildSteps, type InquiryForm } from "@/components/wedding/InquireFormSteps";
-import inquireHeroImage from "@/assets/inquire-hero.jpg";
-import inquireEditorialImage from "@/assets/inquire-editorial.jpg";
+import inquireHeroImage from "@/assets/inquire-hero.webp";
+import inquireEditorialImage from "@/assets/inquire-editorial.webp";
 
 /* ─── Schema ─── */
 const inquirySchema = z.object({

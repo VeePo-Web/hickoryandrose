@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
-import vendorDetailImage from "@/assets/vendor-detail.jpg";
+import vendorDetailImage from "@/assets/vendor-detail.webp";
 
 // No fabricated vendor brands — categories only until real partners are confirmed.
 const partners = [

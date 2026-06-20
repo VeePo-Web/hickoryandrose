@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { useRef, useState, useEffect, useCallback } from "react";
 import ScrollReveal from "./ScrollReveal";
 import BreathingDiamond from "./BreathingDiamond";
-import inquireImage from "@/assets/inquire-editorial.jpg";
+import inquireImage from "@/assets/inquire-editorial.webp";
 
 const seasonSlots = [
   { season: "Spring 2026", status: "Limited", accent: true },

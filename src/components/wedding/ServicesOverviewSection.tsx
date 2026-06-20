@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef } from "react";
 import ScrollReveal from "./ScrollReveal";
-import dayofImage from "@/assets/service-dayof.jpg";
-import planningImage from "@/assets/service-planning.jpg";
-import fullserviceImage from "@/assets/service-fullservice.jpg";
+import dayofImage from "@/assets/service-dayof.webp";
+import planningImage from "@/assets/service-planning.webp";
+import fullserviceImage from "@/assets/service-fullservice.webp";
 
 const services = [
   {

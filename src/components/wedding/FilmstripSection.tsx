@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import ceremonyImage from "@/assets/ceremony-setup.jpg";
-import firstDanceImage from "@/assets/first-dance.jpg";
-import detailImage from "@/assets/detail-placecard.jpg";
-import bouquetImage from "@/assets/portfolio-bouquet.jpg";
-import receptionImage from "@/assets/portfolio-reception.jpg";
+import ceremonyImage from "@/assets/ceremony-setup.webp";
+import firstDanceImage from "@/assets/first-dance.webp";
+import detailImage from "@/assets/detail-placecard.webp";
+import bouquetImage from "@/assets/portfolio-bouquet.webp";
+import receptionImage from "@/assets/portfolio-reception.webp";
 
 // Aesthetic direction only. No fabricated couples / venues / dates / narrative captions.
 const slides = [

@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import ScrollReveal from "./ScrollReveal";
-import ceremonyImage from "@/assets/ceremony-setup.jpg";
+import ceremonyImage from "@/assets/ceremony-setup.webp";
 
 const promises = [
   {

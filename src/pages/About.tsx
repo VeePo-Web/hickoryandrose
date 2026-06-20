@@ -14,9 +14,9 @@ import AboutTestimonials from "@/components/wedding/AboutTestimonials";
 import AboutFounderSection from "@/components/wedding/AboutFounderSection";
 import AboutValuesGrid from "@/components/wedding/AboutValuesGrid";
 import AboutProcessRibbon from "@/components/wedding/AboutProcessRibbon";
-import bouquetImage from "@/assets/portfolio-bouquet.jpg";
-import aboutHeroImage from "@/assets/about-hero.jpg";
-import editorialFloralsImage from "@/assets/editorial-florals.jpg";
+import bouquetImage from "@/assets/portfolio-bouquet.webp";
+import aboutHeroImage from "@/assets/about-hero.webp";
+import editorialFloralsImage from "@/assets/editorial-florals.webp";
 
 const About = () => {
   const heroRef = useRef<HTMLElement>(null);

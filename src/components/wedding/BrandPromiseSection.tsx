@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import { useEffect, useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
-import editorialFloralsImage from "@/assets/editorial-florals.jpg";
+import editorialFloralsImage from "@/assets/editorial-florals.webp";
 import receptionWideVideo from "@/assets/reception-wide.mov.asset.json";
 import receptionPoster from "@/assets/reception-flatlay.jpg.asset.json";
 

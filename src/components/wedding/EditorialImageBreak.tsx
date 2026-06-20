@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import BreathingDiamond from "./BreathingDiamond";
-import editorialImage from "@/assets/editorial-candlelight.jpg";
+import editorialImage from "@/assets/editorial-candlelight.webp";
 
 const EditorialImageBreak = () => {
   const ref = useRef<HTMLElement>(null);

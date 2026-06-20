@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import manifestoImage from "@/assets/manifesto-hero.jpg";
+import manifestoImage from "@/assets/manifesto-hero.webp";
 
 const manifestoLines = [
   { text: "We believe your wedding day", weight: "light" as const },

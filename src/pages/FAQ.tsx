@@ -11,8 +11,8 @@ import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 import FAQImageMosaic from "@/components/wedding/FAQImageMosaic";
 import FAQTestimonialCarousel from "@/components/wedding/FAQTestimonialCarousel";
-import faqEditorialImage from "@/assets/faq-editorial.jpg";
-import faqHeroImage from "@/assets/faq-hero.jpg";
+import faqEditorialImage from "@/assets/faq-editorial.webp";
+import faqHeroImage from "@/assets/faq-hero.webp";
 import {
   Accordion,
   AccordionContent,

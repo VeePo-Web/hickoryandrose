@@ -4,12 +4,12 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
-import heroImage from "@/assets/hero-wedding.jpg";
-import ceremonyImage from "@/assets/ceremony-setup.jpg";
-import detailImage from "@/assets/detail-placecard.jpg";
-import firstDanceImage from "@/assets/first-dance.jpg";
-import editorialImage from "@/assets/editorial-florals.jpg";
-import venueImage from "@/assets/portfolio-venue.jpg";
+import heroImage from "@/assets/hero-wedding.webp";
+import ceremonyImage from "@/assets/ceremony-setup.webp";
+import detailImage from "@/assets/detail-placecard.webp";
+import firstDanceImage from "@/assets/first-dance.webp";
+import editorialImage from "@/assets/editorial-florals.webp";
+import venueImage from "@/assets/portfolio-venue.webp";
 
 // Aesthetic direction only — no fabricated venues, couples, dates, or narrative captions.
 // Category is drawn from what the image visually depicts, nothing more.

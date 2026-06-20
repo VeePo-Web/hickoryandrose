@@ -10,12 +10,12 @@ import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 import JournalFeatured from "@/components/wedding/JournalFeatured";
 import JournalArticleCard from "@/components/wedding/JournalArticleCard";
-import journalVowsImage from "@/assets/journal-vows.jpg";
-import journalBrideImage from "@/assets/journal-bride.jpg";
-import journalReceptionImage from "@/assets/journal-reception.jpg";
-import editorialFloralsImage from "@/assets/editorial-florals.jpg";
-import detailImage from "@/assets/detail-placecard.jpg";
-import ceremonyImage from "@/assets/ceremony-setup.jpg";
+import journalVowsImage from "@/assets/journal-vows.webp";
+import journalBrideImage from "@/assets/journal-bride.webp";
+import journalReceptionImage from "@/assets/journal-reception.webp";
+import editorialFloralsImage from "@/assets/editorial-florals.webp";
+import detailImage from "@/assets/detail-placecard.webp";
+import ceremonyImage from "@/assets/ceremony-setup.webp";
 
 // Studio Notebook is structure-only until the first real essay ships
 // (brand-identity §8.5, seo.blog.postCount: 0). The single tile below is a

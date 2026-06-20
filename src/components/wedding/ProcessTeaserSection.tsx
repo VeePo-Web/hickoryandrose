@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
-import bouquetImage from "@/assets/portfolio-bouquet.jpg";
+import bouquetImage from "@/assets/portfolio-bouquet.webp";
 
 const steps = [
   {

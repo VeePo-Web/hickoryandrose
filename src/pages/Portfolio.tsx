@@ -10,15 +10,15 @@ import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
 // PortfolioFeaturedStory removed until real featured wedding exists (6.11)
 import PortfolioMasonryGrid from "@/components/wedding/PortfolioMasonryGrid";
-import portfolioHeroImage from "@/assets/portfolio-hero.jpg";
-import heroImage from "@/assets/hero-wedding.jpg";
-import ceremonyImage from "@/assets/ceremony-setup.jpg";
-import detailImage from "@/assets/detail-placecard.jpg";
-import firstDanceImage from "@/assets/first-dance.jpg";
-import editorialImage from "@/assets/editorial-florals.jpg";
-import receptionImage from "@/assets/portfolio-reception.jpg";
-import bouquetImage from "@/assets/portfolio-bouquet.jpg";
-import venueImage from "@/assets/portfolio-venue.jpg";
+import portfolioHeroImage from "@/assets/portfolio-hero.webp";
+import heroImage from "@/assets/hero-wedding.webp";
+import ceremonyImage from "@/assets/ceremony-setup.webp";
+import detailImage from "@/assets/detail-placecard.webp";
+import firstDanceImage from "@/assets/first-dance.webp";
+import editorialImage from "@/assets/editorial-florals.webp";
+import receptionImage from "@/assets/portfolio-reception.webp";
+import bouquetImage from "@/assets/portfolio-bouquet.webp";
+import venueImage from "@/assets/portfolio-venue.webp";
 
 // Aesthetic direction only — no fabricated couples / venues / dates / service tiers.
 // Filters reflect what each image visually depicts, not what we planned.

@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import heroImage from "@/assets/hero-wedding-premium.jpg";
+import heroImage from "@/assets/hero-wedding-premium.webp";
 
 // Preload LCP hero image as early as possible (before React mounts).
 // Vite resolves the import to the hashed asset URL, ensuring dev + prod correctness.

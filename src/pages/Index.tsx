@@ -6,7 +6,7 @@ import TrustBarSection from "@/components/wedding/TrustBarSection";
 import ScrollProgress from "@/components/wedding/ScrollProgress";
 import BackToTop from "@/components/wedding/BackToTop";
 import SectionIndicator from "@/components/wedding/SectionIndicator";
-import venueImage from "@/assets/portfolio-venue.jpg";
+import venueImage from "@/assets/portfolio-venue.webp";
 
 // Lazy-load below-fold sections
 const ServicesOverviewSection = lazy(() => import("@/components/wedding/ServicesOverviewSection"));

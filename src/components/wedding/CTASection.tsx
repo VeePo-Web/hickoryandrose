@@ -2,8 +2,8 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import MagneticButton from "./MagneticButton";
-import receptionImage from "@/assets/portfolio-reception.jpg";
-import ceremonyImage from "@/assets/ceremony-setup.jpg";
+import receptionImage from "@/assets/portfolio-reception.webp";
+import ceremonyImage from "@/assets/ceremony-setup.webp";
 
 const CTASection = () => {
   const ref = useRef<HTMLElement>(null);

@@ -2,9 +2,9 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
-import journalVowsImage from "@/assets/journal-vows.jpg";
-import journalBrideImage from "@/assets/journal-bride.jpg";
-import journalReceptionImage from "@/assets/journal-reception.jpg";
+import journalVowsImage from "@/assets/journal-vows.webp";
+import journalBrideImage from "@/assets/journal-bride.webp";
+import journalReceptionImage from "@/assets/journal-reception.webp";
 
 const articles = [
   {

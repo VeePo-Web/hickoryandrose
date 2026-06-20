@@ -5,7 +5,7 @@ import Navigation from "./Navigation";
 import MagneticButton from "./MagneticButton";
 import HeroFloatingInset from "./HeroFloatingInset";
 import HeroSidebars from "./HeroSidebars";
-import heroImage from "@/assets/hero-wedding-premium.jpg";
+import heroImage from "@/assets/hero-wedding-premium.webp";
 
 const charVariants = {
   hidden: { opacity: 0, y: 40 },

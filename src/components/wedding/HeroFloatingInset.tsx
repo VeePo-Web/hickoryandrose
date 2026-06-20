@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, MotionValue } from "framer-motion";
-import ceremonyImage from "@/assets/ceremony-setup.jpg";
+import ceremonyImage from "@/assets/ceremony-setup.webp";
 
 interface HeroFloatingInsetProps {
   secondaryImgY: MotionValue<string>;

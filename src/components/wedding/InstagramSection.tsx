@@ -2,12 +2,12 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Instagram } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
-import heroImage from "@/assets/hero-wedding.jpg";
-import ceremonyImage from "@/assets/ceremony-setup.jpg";
-import detailImage from "@/assets/detail-placecard.jpg";
-import firstDanceImage from "@/assets/first-dance.jpg";
-import bouquetImage from "@/assets/portfolio-bouquet.jpg";
-import editorialImage from "@/assets/editorial-florals.jpg";
+import heroImage from "@/assets/hero-wedding.webp";
+import ceremonyImage from "@/assets/ceremony-setup.webp";
+import detailImage from "@/assets/detail-placecard.webp";
+import firstDanceImage from "@/assets/first-dance.webp";
+import bouquetImage from "@/assets/portfolio-bouquet.webp";
+import editorialImage from "@/assets/editorial-florals.webp";
 
 // Aesthetic-direction imagery — neutral category captions only, no fabricated
 // venue/event attributions (brand-identity §5.5, §6.11). Swap for real grid when ready.

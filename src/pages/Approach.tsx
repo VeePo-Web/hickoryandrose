@@ -15,9 +15,9 @@ import ApproachDifferentiators from "@/components/wedding/ApproachDifferentiator
 import ApproachStatsRibbon from "@/components/wedding/ApproachStatsRibbon";
 import MagneticButton from "@/components/wedding/MagneticButton";
 
-import ceremonyImage from "@/assets/ceremony-setup.jpg";
-import approachDetailsImage from "@/assets/approach-details.jpg";
-import approachHeroImage from "@/assets/approach-hero.jpg";
+import ceremonyImage from "@/assets/ceremony-setup.webp";
+import approachDetailsImage from "@/assets/approach-details.webp";
+import approachHeroImage from "@/assets/approach-hero.webp";
 import founderImage from "@/assets/founder-portrait.jpg";
 
 /* Stagger helpers */

@@ -1,8 +1,8 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
-import detailImage from "@/assets/detail-placecard.jpg";
-import vendorImage from "@/assets/vendor-detail.jpg";
+import detailImage from "@/assets/detail-placecard.webp";
+import vendorImage from "@/assets/vendor-detail.webp";
 
 const EditorialSplitSection = () => {
   const ref = useRef<HTMLElement>(null);

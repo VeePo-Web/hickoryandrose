@@ -7,7 +7,7 @@ import Footer from "@/components/wedding/Footer";
 import MagneticButton from "@/components/wedding/MagneticButton";
 import GoldFrame from "@/components/wedding/GoldFrame";
 import BreathingDiamond from "@/components/wedding/BreathingDiamond";
-import notfoundImage from "@/assets/notfound-editorial.jpg";
+import notfoundImage from "@/assets/notfound-editorial.webp";
 
 const suggestedPages = [
   { label: "Our Services", path: "/services", desc: "Day-of, partial, and full-service planning" },
