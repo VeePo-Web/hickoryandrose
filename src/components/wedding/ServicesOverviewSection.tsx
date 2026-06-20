@@ -14,7 +14,7 @@ const services = [
     tagline: "Fully taken care of.",
     description:
       "We step in 6–8 weeks before your day with unlimited communication, a full timeline build, and vendor coordination — so you arrive present and ready.",
-    investment: "Starting at — inquire",
+    investment: "From $1,200 + GST",
     link: "/services#day-of",
     featured: false,
     image: dayofImage,
@@ -99,7 +99,7 @@ const ServicesOverviewSection = () => {
             </div>
             <div className="md:col-span-7 md:pt-12">
               <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light leading-relaxed">
-                Every couple is different. Our services flex to meet you exactly where you are in your planning journey — whether you need a steady hand on the day or a creative partner from the very beginning. Tailored options are also available.
+                Every couple is different. Our services meet you where you are — whether you need a steady hand on the day or a partner from the very beginning.
               </p>
             </div>
           </div>

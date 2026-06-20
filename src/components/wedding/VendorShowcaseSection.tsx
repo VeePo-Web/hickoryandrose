@@ -64,7 +64,7 @@ const VendorShowcaseSection = () => {
             </div>
             <div className="md:col-span-7">
               <p className="font-sans-wedding text-body-sm text-muted-foreground/50 font-light leading-relaxed max-w-sm md:ml-auto">
-                Every vendor we work with is hand-selected for excellence, reliability, and shared commitment to creating unforgettable celebrations.
+                Every vendor we work with is hand-selected — for excellence, reliability, and standards that match our own.
               </p>
             </div>
           </div>

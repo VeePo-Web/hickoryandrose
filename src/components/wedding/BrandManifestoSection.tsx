@@ -169,9 +169,8 @@ const BrandManifestoSection = () => {
           <span className="block font-serif-wedding italic text-white/75 text-base md:text-lg mb-3">
             We design for how it feels — not just how it looks.
           </span>
-          Every detail, placed with intention. We handle the planning, logistics,
-          and coordination behind the scenes — so you can focus on the moments
-          that matter most.
+          We handle the planning, logistics, and coordination behind the
+          scenes — so you can focus on the moments that matter most.
         </motion.p>
 
         {/* Bottom gold rule */}

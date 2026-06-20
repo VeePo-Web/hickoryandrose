@@ -136,7 +136,7 @@ const EditorialSplitSection = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="font-sans-wedding text-body-sm text-primary-foreground/30 leading-relaxed mb-8 font-light max-w-sm"
             >
-              We obsess over the details so you don't have to. Every choice, every placement, every moment — curated with intention.
+              We obsess over the details so you don't have to.
             </motion.p>
 
             <div className="flex items-center gap-4">
