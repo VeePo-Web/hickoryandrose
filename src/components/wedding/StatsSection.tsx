@@ -140,11 +140,11 @@ const StatsSection = () => {
               <div className="flex items-center gap-4 mb-4">
                 <span className="w-5 h-px bg-background/15" />
                 <p className="font-sans-wedding text-label uppercase text-background/25 tracking-[0.2em]">
-                  By the Numbers
+                  At a Glance
                 </p>
               </div>
               <h2 className="font-serif-wedding text-display-md text-background/60 font-light">
-                The Story So Far
+                Where We Are Now
               </h2>
               <motion.div
                 initial={{ scaleX: 0 }}
@@ -156,7 +156,7 @@ const StatsSection = () => {
             </div>
             <div className="md:col-span-7">
               <p className="font-sans-wedding text-body-sm text-background/25 font-light leading-relaxed max-w-sm md:ml-auto">
-                Every number here represents a couple who trusted us with their most important day — and walked away grateful they did.
+                A snapshot of where Hickory & Rose is right now. We keep our calendar intentionally limited, so every couple has our full attention.
               </p>
             </div>
           </div>

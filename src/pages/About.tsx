@@ -357,7 +357,7 @@ const About = () => {
                 />
               </div>
             </div>
-            <div className="flex items-center gap-6 mb-16 md:mb-16">
+            <div className="flex items-center gap-6 mb-10">
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
@@ -367,11 +367,14 @@ const About = () => {
                 style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2))" }}
               />
               <div className="text-center shrink-0">
-                <p className="font-sans-wedding text-[0.5rem] tracking-[0.3em] uppercase text-brand-text-tertiary mb-2">
+                <p className="font-sans-wedding text-[0.5rem] tracking-[0.3em] uppercase text-brand-text-tertiary mb-3">
                   As Seen In
                 </p>
+                <p className="font-serif-wedding text-2xl md:text-3xl italic font-light text-brand-text-decorative">
+                  coming soon…
+                </p>
                 <span
-                  className="w-1.5 h-1.5 rotate-45 inline-block"
+                  className="w-1.5 h-1.5 rotate-45 inline-block mt-3"
                   style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.5), hsl(var(--gold) / 0.15))" }}
                 />
               </div>
@@ -383,65 +386,6 @@ const About = () => {
                 className="flex-1 h-px origin-right"
                 style={{ background: "linear-gradient(270deg, transparent, hsl(var(--gold) / 0.2))" }}
               />
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              {[
-                { publication: "2026 Season", note: "Summer & Fall Fully Booked" },
-                { publication: "Aug 2026", note: "Editorial Styled Shoot" },
-                { publication: "2027 Season", note: "Now Booking — Limited Calendar" },
-                { publication: "Edmonton · Alberta", note: "Studio Location" },
-              ].map((press, i) => (
-                <motion.div
-                  key={press.publication}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="group relative p-6 md:p-8 text-center overflow-hidden"
-                  style={{ border: "1px solid hsl(var(--gold) / 0.08)" }}
-                >
-                  {/* Gold shimmer sweep on hover */}
-                  <div
-                    className="absolute inset-0 -translate-x-full group-hover:translate-x-[200%] transition-transform duration-[1.2s] ease-in-out pointer-events-none"
-                    style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.05) 35%, hsl(var(--gold) / 0.1) 50%, hsl(var(--gold) / 0.05) 65%, transparent 100%)" }}
-                  />
-                  {/* Gold corner accents */}
-                  <div className="absolute top-2 left-2 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
-                    <span className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.3), transparent)" }} />
-                    <span className="absolute top-0 left-0 h-full w-px" style={{ background: "linear-gradient(180deg, hsl(var(--gold) / 0.3), transparent)" }} />
-                  </div>
-                  <div className="absolute bottom-2 right-2 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
-                    <span className="absolute bottom-0 right-0 w-full h-px" style={{ background: "linear-gradient(270deg, hsl(var(--gold) / 0.3), transparent)" }} />
-                    <span className="absolute bottom-0 right-0 h-full w-px" style={{ background: "linear-gradient(0deg, hsl(var(--gold) / 0.3), transparent)" }} />
-                  </div>
-                  {/* Content */}
-                  <p className="font-serif-wedding text-xl md:text-2xl italic font-light text-brand-text-decorative group-hover:text-brand-text-secondary transition-colors duration-500 mb-2">
-                    {press.publication}
-                  </p>
-                  <motion.div
-                    className="w-5 h-px mx-auto mb-2"
-                    style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25), transparent)" }}
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.3 + i * 0.1 }}
-                  />
-                  <p className="font-sans-wedding text-[0.55rem] tracking-[0.15em] uppercase text-brand-text-tertiary group-hover:text-brand-text-secondary transition-colors duration-500">
-                    {press.note}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Certifications row */}
-            <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6 mt-12 mb-10">
-              {["Editorial Styled Shoot — Aug 2026", "Summer & Fall 2026 — Fully Booked", "Welcoming 2027 Couples"].map((cert, i) => (
-                <span key={cert} className="font-sans-wedding text-[0.45rem] md:text-[0.5rem] tracking-[0.15em] uppercase text-brand-text-tertiary flex items-center gap-3 md:gap-6">
-                  {i > 0 && <span className="w-1 h-1 rotate-45 hidden md:block" style={{ background: "hsl(var(--gold) / 0.25)" }} />}
-                  {cert}
-                </span>
-              ))}
             </div>
 
             {/* Bottom ornament */}
