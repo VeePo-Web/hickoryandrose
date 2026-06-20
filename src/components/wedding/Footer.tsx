@@ -277,6 +277,25 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Subtle creator credit */}
+          <div className="mt-6 text-center">
+            <a
+              href="https://veepo.ca"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Website powered by Veepo (opens in a new tab)"
+              className="group inline-flex items-center gap-1.5 font-sans-wedding text-caption tracking-[0.18em] uppercase font-light text-background/40 hover:text-background/70 transition-colors duration-300"
+            >
+              Website powered by
+              <span
+                className="transition-[filter] duration-300 group-hover:brightness-125"
+                style={{ color: "hsl(var(--gold) / 0.7)" }}
+              >
+                Veepo
+              </span>
+            </a>
+          </div>
+
         </motion.div>
       </div>
     </footer>
