@@ -1,16 +1,23 @@
-Sitemap: https://www.hickoryandrose.com/sitemap.xml
-
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
+# PRIVATE PREVIEW — site is not public yet.
+# Block all search engines until launch. To go live, restore the
+# allow rules below (and remove the noindex meta tag in index.html).
 User-agent: *
-Allow: /
+Disallow: /
+
+# --- RESTORE AT LAUNCH -------------------------------------------------
+# Sitemap: https://www.hickoryandrose.com/sitemap.xml
+#
+# User-agent: Googlebot
+# Allow: /
+#
+# User-agent: Bingbot
+# Allow: /
+#
+# User-agent: Twitterbot
+# Allow: /
+#
+# User-agent: facebookexternalhit
+# Allow: /
+#
+# User-agent: *
+# Allow: /
