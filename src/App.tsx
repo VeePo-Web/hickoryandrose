@@ -4,13 +4,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, MotionConfig } from "framer-motion";
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense } from "react";
 import SmoothScrollProvider from "./components/wedding/SmoothScrollProvider";
 import LoadingScreen from "./components/wedding/LoadingScreen";
 import CursorFollower from "./components/wedding/CursorFollower";
 import PageTransition from "./components/wedding/PageTransition";
-
-const PasswordGate = lazy(() => import("./components/wedding/PasswordGate"));
 
 // Lazy-loaded routes for code-splitting
 const Index = lazy(() => import("./pages/Index"));
@@ -48,18 +46,6 @@ const AnimatedRoutes = () => {
 };
 
 const App = () => {
-  const [unlocked, setUnlocked] = useState(
-    () => typeof window !== "undefined" && sessionStorage.getItem("hr_site_unlocked") === "true"
-  );
-
-  if (!unlocked) {
-    return (
-      <Suspense fallback={null}>
-        <PasswordGate onUnlock={() => setUnlocked(true)} />
-      </Suspense>
-    );
-  }
-
   return (
     <QueryClientProvider client={queryClient}>
       <MotionConfig reducedMotion="user">
