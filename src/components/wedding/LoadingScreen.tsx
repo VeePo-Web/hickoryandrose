@@ -2,31 +2,38 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  // Only show the intro on the first arrival of a session. Refreshes and
+  // return visits within the session skip straight to the content.
+  const alreadySeen =
+    typeof window !== "undefined" && sessionStorage.getItem("hr_intro_seen") === "true";
+  const [isLoading, setIsLoading] = useState(!alreadySeen);
   const [phase, setPhase] = useState<"enter" | "hold" | "exit">("enter");
   const progressRef = useRef(0);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    if (alreadySeen) return;
+    sessionStorage.setItem("hr_intro_seen", "true");
+
     const interval = setInterval(() => {
-      progressRef.current += Math.random() * 15 + 5;
+      progressRef.current += Math.random() * 18 + 8;
       if (progressRef.current >= 100) {
         progressRef.current = 100;
         clearInterval(interval);
       }
       setProgress(Math.min(progressRef.current, 100));
-    }, 120);
+    }, 90);
 
-    const holdTimer = setTimeout(() => setPhase("hold"), 400);
-    const exitTimer = setTimeout(() => setPhase("exit"), 1600);
-    const doneTimer = setTimeout(() => setIsLoading(false), 2400);
+    const holdTimer = setTimeout(() => setPhase("hold"), 250);
+    const exitTimer = setTimeout(() => setPhase("exit"), 800);
+    const doneTimer = setTimeout(() => setIsLoading(false), 1500);
     return () => {
       clearInterval(interval);
       clearTimeout(holdTimer);
       clearTimeout(exitTimer);
       clearTimeout(doneTimer);
     };
-  }, []);
+  }, [alreadySeen]);
 
   const ease = [0.25, 0.1, 0.25, 1.0] as const;
   const active = phase !== "enter";
