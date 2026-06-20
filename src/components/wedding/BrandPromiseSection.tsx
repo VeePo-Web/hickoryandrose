@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import ImageReveal from "./ImageReveal";
 import editorialFloralsImage from "@/assets/editorial-florals.webp";
-import receptionWideVideo from "@/assets/reception-wide.mov.asset.json";
-import receptionPoster from "@/assets/reception-flatlay.jpg.asset.json";
+import receptionWideMp4 from "@/assets/reception-wide.mp4";
+import receptionWidePoster from "@/assets/reception-wide-poster.webp";
 
 const pillars = [
   { label: "Calm Leadership", detail: "Thoughtful preparation, clear timelines, and challenges anticipated long before they reach you — so the day feels steady from start to finish.", emphasis: "Calm" },
@@ -82,13 +82,13 @@ const BrandPromiseSection = () => {
             {useVideo ? (
               <video
                 ref={bgVideoRef}
-                src={receptionWideVideo.url}
+                src={receptionWideMp4}
                 autoPlay
                 muted
                 loop
                 playsInline
                 preload="metadata"
-                poster={receptionPoster.url}
+                poster={receptionWidePoster}
                 className="absolute left-1/2 top-1/2 min-w-full min-h-full w-auto h-auto"
                 style={{
                   opacity,
@@ -100,7 +100,7 @@ const BrandPromiseSection = () => {
               />
             ) : (
               <img
-                src={receptionPoster.url}
+                src={receptionWidePoster}
                 alt=""
                 loading="lazy"
                 decoding="async"

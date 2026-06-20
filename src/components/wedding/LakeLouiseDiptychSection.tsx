@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-import winterAsset from "@/assets/lake-louise-winter.jpg.asset.json";
-import summerAsset from "@/assets/lake-louise-summer.jpg.asset.json";
+import winterImg from "@/assets/lake-louise-winter.webp";
+import summerImg from "@/assets/lake-louise-summer.webp";
 
 const LakeLouiseDiptychSection = () => {
   const ref = useRef<HTMLElement>(null);
@@ -86,7 +86,7 @@ const LakeLouiseDiptychSection = () => {
           />
 
           <DiptychPanel
-            src={winterAsset.url}
+            src={winterImg}
             alt="Lake Louise in winter"
             y={winterY}
             frameLabel="FR W·01"
@@ -94,7 +94,7 @@ const LakeLouiseDiptychSection = () => {
             align="right"
           />
           <DiptychPanel
-            src={summerAsset.url}
+            src={summerImg}
             alt="Lake Louise in summer"
             y={summerY}
             frameLabel="FR S·01"

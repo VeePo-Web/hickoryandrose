@@ -1,10 +1,11 @@
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import ScrollReveal from "./ScrollReveal";
-import tablescapeVideo from "@/assets/reception-tablescape.mov.asset.json";
-import flatlayAsset from "@/assets/reception-flatlay.jpg.asset.json";
-import longtableAsset from "@/assets/reception-longtable.jpg.asset.json";
-import detailTileAsset from "@/assets/reception-detail-tile.jpg.asset.json";
+import tablescapeMp4 from "@/assets/reception-tablescape.mp4";
+import tablescapePoster from "@/assets/reception-tablescape-poster.webp";
+import flatlayImg from "@/assets/reception-flatlay.webp";
+import longtableImg from "@/assets/reception-longtable.webp";
+import detailTileImg from "@/assets/reception-detail-tile.webp";
 
 /**
  * ReceptionDetailsSection
@@ -96,7 +97,7 @@ const ReceptionDetailsSection = () => {
             <div className="relative aspect-[4/5] overflow-hidden bg-muted/20">
               {prefersReducedMotion ? (
                 <img
-                  src={flatlayAsset.url}
+                  src={flatlayImg}
                   alt=""
                   className="absolute inset-0 w-full h-full object-cover"
                   style={{ filter: warmFilter }}
@@ -107,7 +108,8 @@ const ReceptionDetailsSection = () => {
                   ref={videoRef}
                   className="absolute inset-0 w-full h-full object-cover"
                   style={{ filter: warmFilter }}
-                  src={tablescapeVideo.url}
+                  src={tablescapeMp4}
+                  poster={tablescapePoster}
                   autoPlay
                   muted
                   loop
@@ -142,7 +144,7 @@ const ReceptionDetailsSection = () => {
             <ScrollReveal>
               <div className="relative aspect-square overflow-hidden bg-muted/20 group">
                 <img
-                  src={flatlayAsset.url}
+                  src={flatlayImg}
                   alt="Overhead reception place setting with gold-leaf charger, dove-blue napkin and floral centerpiece"
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[1.4s]"
                   loading="lazy"
@@ -191,7 +193,7 @@ const ReceptionDetailsSection = () => {
           >
             <div className="relative aspect-[4/5] overflow-hidden bg-muted/20">
               <img
-                src={longtableAsset.url}
+                src={longtableImg}
                 alt="Long farmhouse reception table with floating candles, gauze runner and floral centerpieces"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[1.4s]"
                 loading="lazy"
@@ -250,7 +252,7 @@ const ReceptionDetailsSection = () => {
             {/* Detail tile — IMG_7123 desaturated crop */}
             <div className="md:col-span-3 relative aspect-[3/4] overflow-hidden bg-muted/20 group max-w-[200px] md:max-w-none">
               <img
-                src={detailTileAsset.url}
+                src={detailTileImg}
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{

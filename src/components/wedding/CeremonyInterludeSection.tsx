@@ -1,7 +1,9 @@
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useEffect, useRef } from "react";
-import pewsAsset from "@/assets/ceremony-pews.mov.asset.json";
-import altarAsset from "@/assets/ceremony-altar.mov.asset.json";
+import pewsMp4 from "@/assets/ceremony-pews.mp4";
+import pewsPoster from "@/assets/ceremony-pews-poster.webp";
+import altarMp4 from "@/assets/ceremony-altar.mp4";
+import altarPoster from "@/assets/ceremony-altar-poster.webp";
 
 /**
  * CeremonyInterludeSection
@@ -73,7 +75,7 @@ const CeremonyInterludeSection = () => {
             <div
               className={videoClass}
               style={{
-                backgroundImage: `url(${pewsAsset.url}#t=0.5)`,
+                backgroundImage: `url(${pewsPoster})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 filter: cinemaFilter,
@@ -84,7 +86,8 @@ const CeremonyInterludeSection = () => {
               ref={leftVideoRef}
               className={videoClass}
               style={{ filter: cinemaFilter }}
-              src={pewsAsset.url}
+              src={pewsMp4}
+              poster={pewsPoster}
               autoPlay
               muted
               loop
@@ -122,7 +125,7 @@ const CeremonyInterludeSection = () => {
             <div
               className={videoClass}
               style={{
-                backgroundImage: `url(${altarAsset.url}#t=0.5)`,
+                backgroundImage: `url(${altarPoster})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 filter: cinemaFilter,
@@ -133,7 +136,8 @@ const CeremonyInterludeSection = () => {
               ref={rightVideoRef}
               className={videoClass}
               style={{ filter: cinemaFilter }}
-              src={altarAsset.url}
+              src={altarMp4}
+              poster={altarPoster}
               autoPlay
               muted
               loop
