@@ -4,7 +4,7 @@ import ScrollReveal from "./ScrollReveal";
 const pillars = [
   { title: "Transparent Pricing", desc: "No hidden costs. Your custom proposal outlines every detail, so you know exactly what to expect." },
   { title: "Flexible Payment", desc: "Spread your investment across the planning timeline with comfortable milestone-based payments." },
-  { title: "Intentional Calendar", desc: "We take on only 15–20 weddings per year. Your day never competes for our attention." },
+  { title: "Intentional Calendar", desc: "We take on a limited number of weddings each year. Your day never competes for our attention." },
 ];
 
 const ServicesInvestmentPhilosophy = () => (

@@ -14,13 +14,13 @@ const differentiators = [
   },
   {
     title: "Curated Vendor Network",
-    detail: "We've spent years building relationships with Edmonton's finest vendors. Every recommendation is personally vetted and aligned with your aesthetic.",
-    expanded: "Our vendor partners are selected through rigorous vetting — we've seen their work firsthand across dozens of weddings. When we recommend a florist, photographer, or caterer, it's because we trust them implicitly and know they'll deliver excellence on your day.",
+    detail: "We've built genuine relationships with Edmonton's finest vendors. Every recommendation is personally vetted and aligned with your aesthetic.",
+    expanded: "Our vendor partners are selected through rigorous vetting — we've seen their work firsthand. When we recommend a florist, photographer, or caterer, it's because we trust them implicitly and know they'll deliver excellence on your day.",
   },
   {
     title: "Calm Under Pressure",
     detail: "Rain on ceremony day? Vendor running late? You'll never know. Our team leads with quiet confidence, handling every pivot behind the scenes.",
-    expanded: "We rehearse contingency plans for every scenario — weather changes, timeline shifts, last-minute surprises. Our calm demeanor is earned through hundreds of events and the discipline to prepare for the unexpected so you can stay fully present.",
+    expanded: "We rehearse contingency plans for every scenario — weather changes, timeline shifts, last-minute surprises. Our calm comes from the discipline to prepare for the unexpected so you can stay fully present.",
   },
   {
     title: "Design-Led Approach",

@@ -178,41 +178,6 @@ const BrandPromiseSection = () => {
                 and enjoy your wedding day.
               </p>
 
-              {/* Trust metric strip with gold separators */}
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex items-center gap-6 mt-8 pt-6 border-t border-border/20 relative"
-              >
-                {/* Ambient gold glow behind metrics */}
-                <motion.div
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[80px] pointer-events-none"
-                  animate={{ opacity: [0.03, 0.08, 0.03] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                  style={{ background: "radial-gradient(ellipse, hsl(var(--gold) / 0.2), transparent 70%)" }}
-                  aria-hidden="true"
-                />
-                {[
-                  { value: "100+", label: "Weddings" },
-                  { value: "7+", label: "Years" },
-                  { value: "100%", label: "Calm Days" },
-                ].map((stat, i) => (
-                  <div key={stat.label} className="flex items-center gap-6">
-                    {i > 0 && (
-                      <span
-                        className="w-1 h-1 rotate-45 shrink-0"
-                        style={{ background: "linear-gradient(135deg, hsl(var(--gold) / 0.3), hsl(var(--gold) / 0.08))" }}
-                      />
-                    )}
-                    <div className="text-center relative">
-                      <p className="font-serif-wedding text-lg text-foreground/40 font-light">{stat.value}</p>
-                      <p className="font-sans-wedding text-caption tracking-[0.2em] uppercase text-muted-foreground mt-0.5">{stat.label}</p>
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
             </div>
 
             {/* Right: Floating editorial image + quote */}
