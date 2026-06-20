@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "@/components/wedding/Navigation";
 import PreFooterDivider from "@/components/wedding/PreFooterDivider";
 import Footer from "@/components/wedding/Footer";
-import CTASection from "@/components/wedding/CTASection";
 import ScrollReveal from "@/components/wedding/ScrollReveal";
 import FullWidthImage from "@/components/wedding/FullWidthImage";
 import MagneticButton from "@/components/wedding/MagneticButton";
@@ -266,17 +265,6 @@ const FAQ = () => {
 
       {/* Editorial image break */}
       <FullWidthImage src={faqEditorialImage} alt="Gold wedding rings on handwritten calligraphy vows with eucalyptus and candlelight" height="h-[35vh] md:h-[45vh]" />
-
-      {/* Quote */}
-      <section className="py-20 md:py-28 bg-sage-deep">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl text-center">
-          <ScrollReveal>
-            <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="w-12 h-px bg-primary-foreground/20 mx-auto mb-10 origin-center" />
-            <blockquote className="font-serif-wedding text-display-md text-primary-foreground leading-relaxed mb-8">"No question is too small. We're here to make every part of the process feel clear, calm, and cared for."</blockquote>
-            <span className="font-script text-xl text-primary-foreground/35">Hickory & Rose</span>
-          </ScrollReveal>
-        </div>
-      </section>
 
       {/* Still have questions */}
       <section className="py-section-mobile md:py-section-tablet bg-background">
