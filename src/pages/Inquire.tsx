@@ -280,7 +280,7 @@ const Inquire = () => {
                 </div>
                 <p className="font-sans-wedding text-xs text-brand-text-tertiary mt-4 text-center font-light">We respond to every inquiry within 24–48 business hours.</p>
                 <a
-                  href="https://veepo.ca/case-studies"
+                  href="https://veepo.ca"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center justify-center gap-1 mt-3 w-full"

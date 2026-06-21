@@ -177,6 +177,21 @@ const NavigationMobileMenu = ({ isOpen, setIsOpen, navLinks, locationPathname }:
           <p className="font-sans-wedding text-caption tracking-[0.1em] text-muted-foreground/60 mt-1.5">
             Now booking 2025 · 2026
           </p>
+          <a
+            href="https://veepo.ca"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Website powered by Veepo (opens in a new tab)"
+            className="group inline-flex items-center gap-1.5 mt-4 font-sans-wedding text-caption tracking-[0.18em] uppercase font-light text-muted-foreground/50 hover:text-muted-foreground/80 transition-colors duration-300"
+          >
+            Powered by
+            <span
+              className="transition-[filter] duration-300 group-hover:brightness-110"
+              style={{ color: "hsl(var(--gold) / 0.7)" }}
+            >
+              Veepo
+            </span>
+          </a>
         </motion.div>
       </motion.div>
     )}
