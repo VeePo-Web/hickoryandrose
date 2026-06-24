@@ -166,14 +166,29 @@ const Journal = () => {
                   <div className="border border-border/30 p-8 md:p-10">
                     <p className="font-serif-wedding text-sm italic text-foreground/70 mb-6">"The best planning starts with inspiration."</p>
                     <form
-                      onSubmit={(e) => {
+                      onSubmit={async (e) => {
                         e.preventDefault();
                         const input = (e.currentTarget.elements.namedItem("journal-email") as HTMLInputElement | null);
                         const email = input?.value.trim();
                         if (!email) { input?.focus(); return; }
-                        const subject = "Studio Notebook — Notify me when essays publish";
-                        const body = `Please add me to the notebook list.\n\nEmail: ${email}\n\n— Sent from hickoryandrose.com/journal`;
-                        window.location.href = `mailto:sales@hickoryandrose.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                        try {
+                          const { supabase } = await import("@/integrations/supabase/client");
+                          const { toast } = await import("@/hooks/use-toast");
+                          const { error } = await supabase.functions.invoke("send-inquiry", {
+                            body: { type: "journal", payload: { email } },
+                          });
+                          if (error) throw error;
+                          if (input) input.value = "";
+                          toast({
+                            title: "You're on the list",
+                            description: "A welcome note is on its way to your inbox.",
+                          });
+                        } catch (err) {
+                          console.error("Journal signup failed", err);
+                          const subject = "Studio Notebook — Notify me when essays publish";
+                          const body = `Please add me to the notebook list.\n\nEmail: ${email}`;
+                          window.location.href = `mailto:sales@hickoryandrose.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                        }
                       }}
                       className="flex flex-col sm:flex-row items-stretch gap-3 mb-4"
                     >
