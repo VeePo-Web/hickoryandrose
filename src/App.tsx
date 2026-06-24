@@ -46,18 +46,6 @@ const AnimatedRoutes = () => {
 };
 
 const App = () => {
-  const [unlocked, setUnlocked] = useState(
-    () => typeof window !== "undefined" && sessionStorage.getItem("hr_site_unlocked") === "true"
-  );
-
-  if (!unlocked) {
-    return (
-      <Suspense fallback={null}>
-        <PasswordGate onUnlock={() => setUnlocked(true)} />
-      </Suspense>
-    );
-  }
-
   return (
     <QueryClientProvider client={queryClient}>
       <MotionConfig reducedMotion="user">
