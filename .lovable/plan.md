@@ -1,68 +1,46 @@
-# Sitewide Minimum Text Size — Readability Pass
+# Remove Gate + Wire Real Email Delivery
 
-Right now, body text is set to 15px and dozens of components use Tailwind's `text-xs` (12px), arbitrary `text-[11px]`/`text-[13px]`, and ultra-thin font weights (300). On a real screen, captions, labels, footer text, badges, and form helper copy fall below comfortable reading size. This plan establishes a **hard floor of 14px** (16px on body) and raises everything that falls under it — without altering the editorial hierarchy or desktop layout.
+## 1. Remove the password gate
+- `src/App.tsx`: drop the `PasswordGate` lazy import, the `unlocked` state, and the gating branch — render the app directly.
+- Delete `src/components/wedding/PasswordGate.tsx`.
 
-## The Rule (sitewide)
+## 2. Email audit (sitewide)
+Only one address is currently referenced anywhere on the site: **sales@hickoryandrose.com** (Footer, Accommodations, Inquire, Journal, brand-identity config). Nothing to remove — the audit is already clean. I'll add a brief comment in `brand-identity.ts` codifying the "single inbox" rule so future additions don't reintroduce hello@/info@/contact@.
 
-| Role                  | Old        | New (minimum)  |
-| --------------------- | ---------- | -------------- |
-| Body / paragraphs     | 15px / 300 | **16px / 400** |
-| Body large            | 17px       | 18px           |
-| Body small            | 13px / 300 | **14px / 400** |
-| Captions              | 13px       | **14px**       |
-| Labels / overlines    | 13px       | **14px**       |
-| Badges / chips        | 12px       | **13px**       |
-| Footer / nav meta     | 12–13px    | **14px**       |
-| Form helper / errors  | 12px       | **14px**       |
-| Min font-weight (body)| 300        | **400**        |
+## 3. Real email delivery (replace `mailto:` flows)
+Two forms currently dump into the visitor's mail client. Both will switch to real backend sends via Resend:
 
-Display / serif headings (Cormorant) are unchanged — they're already large.
+**a. Enable Lovable Cloud** (required to host the edge function and store the Resend connection).
 
-## What changes
+**b. Connect Resend** via the standard connector (`standard_connectors--connect` → `resend`). The user already mentioned Resend explicitly, so no provider question.
 
-1. **`src/index.css` — base body**
-   - `body { font-size: 16px; font-weight: 400; line-height: 1.7; }`
-   - Add an enforcement layer that re-floors anything tiny:
-     ```css
-     @layer base {
-       p, li, span, a, button, input, textarea, select, label,
-       small, figcaption, blockquote, td, th { font-size: max(1em, 14px); }
-       .font-overline, .font-caption { font-size: 14px; letter-spacing: 0.18em; }
-     }
-     ```
-   - Bump `.font-overline` from 0.8125rem → **0.875rem (14px)**.
-   - Drop-cap and decorative styles untouched.
+**c. Edge function `send-inquiry`** (single function, two template types):
+- Accepts `{ type: "inquiry" | "journal", payload }`.
+- Validates input with zod (name/email length caps, email format, message ≤ 2000 chars).
+- Sends **two emails** per submission through the Resend gateway:
+  1. **Studio notification** → `sales@hickoryandrose.com` with all form fields (subject: `New Wedding Inquiry — {name}` or `Studio Notebook signup — {email}`).
+  2. **Visitor confirmation** → the submitter's email, From `Hickory & Rose <sales@hickoryandrose.com>`, Reply-To `sales@hickoryandrose.com`.
+- Returns `{ ok: true }` or a structured error.
 
-2. **`tailwind.config.ts` — token scale**
-   - `body-lg`: 1.0625 → **1.125rem (18px)**, weight 400
-   - `body`: 0.9375 → **1rem (16px)**, weight 400
-   - `body-sm`: 0.8125 → **0.875rem (14px)**, weight 400
-   - `label`: 0.8125 → **0.875rem (14px)**
-   - `caption`: 0.8125 → **0.875rem (14px)**
-   - Add custom utility override so `text-xs` resolves to **0.8125rem (13px)** instead of 0.75rem (12px) — catches every legacy usage in one shot without touching 60+ files.
+**d. Email templates (new, brand-aligned)** — none exist yet, so I'm creating them. Built as inline HTML strings inside the edge function (no React Email dep needed for two simple templates) using the brand palette (ivory background, sage accents, Cormorant-style serif via web-safe `Georgia` fallback, gold hairline divider). Once created they become the "templates that are there and up to standard" — future edits will leave them alone per your rule.
+  - `inquiry-confirmation.html` — warm thank-you to bride: "Your inquiry has arrived at the studio. Meg will personally reply within 24–48 business hours." Includes a recap of what they submitted and the signature quote.
+  - `inquiry-studio.html` — clean internal layout of all fields for the studio inbox.
+  - `journal-confirmation.html` — short welcome to the Studio Notebook list.
+  - `journal-studio.html` — single-line notice with the new subscriber's email.
 
-3. **shadcn primitives** (`button.tsx`, `badge.tsx`, `input.tsx`, `label.tsx`, `form.tsx`)
-   - Replace `text-xs` on badges/form-messages with `text-[0.8125rem]` (13px) where chips need to stay compact, `text-sm` (14px) everywhere else.
-   - Inputs/textarea: `text-sm` → **text-base** (16px) — also stops iOS Safari from auto-zooming on focus.
+**e. Wire the forms**
+- `src/pages/Inquire.tsx` `handleSubmit`: replace the `window.location.href = mailto…` block with `supabase.functions.invoke("send-inquiry", { body: { type: "inquiry", payload: f } })`. Keep the existing success state + toast; on failure show an error toast and offer the mailto link as fallback.
+- `src/pages/Journal.tsx` notify form: same swap, `type: "journal"`.
 
-4. **High-traffic wedding components** — sweep `text-xs` → `text-sm` (or `text-[13px]` for true micro-labels) in:
-   - `Footer.tsx`, `FooterNewsletter.tsx`, `FooterServiceAreas.tsx`
-   - `Navigation.tsx`, `NavigationMobileMenu.tsx`
-   - `TrustBarSection.tsx`, `StatsSection.tsx`, `PressMentionsSection.tsx`
-   - `ServicesOverviewSection.tsx`, `ServicesInvestmentPhilosophy.tsx`, `ServicesVendorPartners.tsx`
-   - `VendorShowcaseSection.tsx`, `GallerySection.tsx`, `TestimonialSection.tsx`, `BrandManifestoSection.tsx`, `FounderTeaserSection.tsx`, `NowBookingSection.tsx`, `TravelSection.tsx`, `ThingsToDoSection.tsx`, `FullWidthImage.tsx`
-   - Page files: `FAQ`, `About`, `Services`, `Journal`, `Portfolio`, `Inquire`
+Footer and Accommodations stay as plain `mailto:` links (those are direct contact affordances, not forms — they don't need backend delivery).
 
-5. **Weight floor**: any `font-light` / `font-weight: 300` applied to body copy (not display headings) → `font-normal` (400). Cormorant display text keeps its editorial weight.
-
-6. **Persona doc** — update `src/config/personas/responsive-mobile.ts` and `src/config/personas/ui-visual.ts` with the new rule: "No body text under 14px sitewide; body default is 16px/400."
-
-## Out of scope
-- No changes to Cormorant display headings, drop-cap, script font, or section spacing.
-- No layout/grid changes.
-- No new dependencies.
+## 4. Out of scope
+- No changes to existing copy, layout, fonts, or the recently-shipped readability floor.
+- No marketing/list emails — confirmation only, triggered by the user's own submission (transactional).
+- No new dependencies beyond what the Resend connector and Lovable Cloud already provide.
 
 ## Verification
-- Build passes.
-- `browser--view_preview` at 1440 and 375 — confirm footer, badges, captions, form helper text all read at ≥14px; inputs no longer trigger iOS zoom.
-- Quick `rg "text-xs"` sweep after — only intentional micro-labels remain (and even those now resolve to 13px via the token override).
+- Confirm preview loads with no gate.
+- Submit the Inquire form with a test address; confirm both emails arrive (studio + bride) and the page shows the success state.
+- Submit the Journal form; confirm both emails arrive.
+- `rg "PasswordGate|mailto:.*@"` — no PasswordGate refs remain; only the intentional Footer/Accommodations mailto links to sales@.
