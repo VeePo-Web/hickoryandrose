@@ -351,7 +351,7 @@ export const BRAND_IDENTITY = {
   technical: {
     // From Section 11
     domain: "hickoryandrose.com",                                     // 11.2 (final TBC)
-    brandedEmail: true,                                                // sales@hickoryandrose.com in use
+    brandedEmail: true,                                                // SINGLE INBOX RULE: only sales@hickoryandrose.com appears anywhere on the site or in outbound mail. Do NOT add hello@/info@/contact@.
     editableContent: ["portfolio", "testimonials", "journal", "FAQs", "services", "about"], // 11.6
     crm: { platform: "", autoRoute: null as boolean | null },         // 11.8 / 11.9
     scheduling: { enabled: null as boolean | null, tool: "" },        // 11.10 / 11.11
